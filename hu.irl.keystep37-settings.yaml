@@ -1,0 +1,31 @@
+id: hu.irl.keystep37-settings
+runtime: org.gnome.Platform
+runtime-version: '47'
+sdk: org.gnome.Sdk
+command: keystep37-settings
+finish-args:
+  # show windows with Wayland
+  - --socket=wayland
+  # show windows using X11, if Wayland is not available
+  - --socket=fallback-x11
+  # share IPC namespace with the host (necessary for X11)
+  - --share=ipc
+  # MIDI
+  - --device=all
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /man
+  - /share/doc
+  - /share/gtk-doc
+  - /share/man
+  - /share/pkgconfig
+  - *.la
+  - *.a
+modules:
+  - name: keystep37-settings
+    builddir: true
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://github.com/soyersoyer/keystep37-settings

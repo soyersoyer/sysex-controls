@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ks37PageCcBank" parent="Ks37PreferencesPage">
+
+    <child>
+      <object class="Ks37PageCcBankKnob">
+        <property name="title" translatable="yes">Knob 1</property>
+        <property name="midi-id-offset">0</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ks37PageCcBankKnob">
+        <property name="title" translatable="yes">Knob 2</property>
+        <property name="midi-id-offset">4</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ks37PageCcBankKnob">
+        <property name="title" translatable="yes">Knob 3</property>
+        <property name="midi-id-offset">8</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ks37PageCcBankKnob">
+        <property name="title" translatable="yes">Knob 4</property>
+        <property name="midi-id-offset">12</property>
+      </object>
+    </child>
+
+  </template>
+</interface>
+

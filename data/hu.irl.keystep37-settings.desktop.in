@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=KeyStep37 Settings
+Exec=keystep37-settings
+Icon=hu.irl.keystep37-settings
+Terminal=false
+Type=Application
+Categories=Settings;AudioVideo;Utility;GNOME;GTK;
+StartupNotify=true

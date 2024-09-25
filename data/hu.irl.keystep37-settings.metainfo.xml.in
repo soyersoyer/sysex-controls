@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+	<id>hu.irl.keystep37-settings</id>
+	<launchable type="desktop-id">hu.irl.keystep37-settings.desktop</launchable>
+	<name>KeyStep37 Settings</name>
+	<developer id="hu.irl">
+		<name translatable="no">Gergo Koteles</name>
+	</developer>
+	<summary>KeyStep 37 settings for Linux</summary>
+	<metadata_license>FSFAP</metadata_license>
+	<project_license>GPL-3.0-or-later</project_license>
+	<description>
+		<p>
+			GTK UI that allows to configure the Arturia KeyStep 37 MIDI keyboard.
+			It currently allows for reading the control settings, changing them and
+			writing back to the device.
+		</p>
+	</description>
+	<supports>
+		<control>pointing</control>
+		<control>keyboard</control>
+		<control>touch</control>
+		<control>tablet</control>
+	</supports>
+	<recommends>
+		<display_length compare="ge">300</display_length>
+	</recommends>
+	<content_rating type="oars-1.1"/>
+	<url type="homepage">https://github.com/soyersoyer/keystep37-settings</url>
+	<url type="bugtracker">https://github.com/soyersoyer/keystep37-settings/issues</url>
+	<screenshots>
+		<screenshot type="default">
+			<image>https://github.com/soyersoyer/keystep37-settings/raw/v0.1.0/data/screenshots/page_1.png</image>
+			<caption>Controller page</caption>
+		</screenshot>
+	</screenshots>
+	<releases>
+		<release version="0.1.0" date="2024-09-25">
+			<description>
+				<ul>
+					<li>Initial release</li>
+				</ul>
+			</description>
+		</release>
+	</releases>
+</component>
+

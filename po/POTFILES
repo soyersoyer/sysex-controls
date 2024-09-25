@@ -1,0 +1,6 @@
+data/hu.irl.keystep37-settings.desktop.in
+data/hu.irl.keystep37-settings.metainfo.xml.in
+data/hu.irl.keystep37-settings.gschema.xml
+src/main.c
+src/ks37-window.c
+src/ks37-window.ui
