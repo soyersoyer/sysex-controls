@@ -34,7 +34,6 @@ struct _Ks37Window
 	AdwToolbarView *content_view;
 	AdwNavigationView  *navigation_view;
 	AdwNavigationSplitView *split_view;
-	AdwBin *book;
 };
 
 G_DEFINE_FINAL_TYPE (Ks37Window, ks37_window, ADW_TYPE_APPLICATION_WINDOW)
@@ -273,17 +272,11 @@ notify_visible_child_cb (GtkStack* stack, GParamSpec *pspec, Ks37Window *self)
 
 
 static void
-add_ks37_book(Ks37Window *self)
+ks37_window_set_book(Ks37Window *self, AdwBin *book)
 {
-	GtkStack *stack;
-
-	if (self->book)
-		return;
-
-	self->book = ADW_BIN (ks37_book_new());
-	adw_toolbar_view_set_content(self->content_view, GTK_WIDGET (self->book));
-
-	stack = GTK_STACK (adw_bin_get_child(self->book));
+	GtkStack *stack = GTK_STACK (adw_bin_get_child(book));
+	self->controls_n = 0;
+	adw_toolbar_view_set_content(self->content_view, GTK_WIDGET (book));
 	gtk_stack_sidebar_set_stack (self->sidebar, stack);
 
 	g_signal_connect(stack, "notify::visible-child", G_CALLBACK(notify_visible_child_cb), self);
@@ -312,7 +305,7 @@ ks37_midi_init(Ks37Window *self)
 		return;
 	}
 
-	add_ks37_book(self);
+	ks37_window_set_book(self, ADW_BIN (ks37_book_new()));
 
 	adw_navigation_view_replace_with_tags(self->navigation_view, (const char * const[]){"load"}, 1);
 	g_idle_add(ks37_create_load_task, self);
