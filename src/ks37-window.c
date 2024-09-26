@@ -13,7 +13,7 @@
 #include "ks37-midi.h"
 
 #define KS37_MIDI_NAME "Arturia KeyStep 37"
-#define CONTROLS_N 95
+#define CONTROLS_MAX_N 100
 
 typedef struct {
 	uint8_t id;
@@ -28,7 +28,8 @@ struct _Ks37Window
 	snd_seq_t *seq;
 	snd_seq_addr_t seq_addr;
 
-	control_t controls[CONTROLS_N];
+	control_t controls[CONTROLS_MAX_N];
+	int controls_n;
 
 	/* Template widgets */
 	AdwToastOverlay *toast_overlay;
@@ -53,18 +54,8 @@ ks37_io_problem(Ks37Window *self, const char *message)
 static control_t *
 get_control_by_id(Ks37Window *self, uint8_t control_id)
 {
-	for(int i = 0; i < CONTROLS_N; ++i)
+	for(int i = 0; i < self->controls_n; ++i)
 		if (self->controls[i].id == control_id)
-			return &self->controls[i];
-
-	return NULL;
-}
-
-static control_t *
-get_next_free_control(Ks37Window *self)
-{
-	for(int i = 0; i < CONTROLS_N; ++i)
-		if (!self->controls[i].id)
 			return &self->controls[i];
 
 	return NULL;
@@ -149,11 +140,13 @@ ks37_window_register_control(Ks37Window *self, uint8_t control_id, GtkWidget *wi
 		return;
 	}
 
-	control = get_next_free_control(self);
-	if (!control) {
+	if (self->controls_n == CONTROLS_MAX_N) {
 		g_error("Control space exhausted\n");
 		return;
 	}
+
+	control = &self->controls[self->controls_n];
+	self->controls_n++;
 
 	control->id = control_id;
 	control->widget = widget;
@@ -233,7 +226,7 @@ ks37_load_task(GTask *task, gpointer source_obj, gpointer task_data, GCancellabl
 {
 	Ks37Window *self = KS37_WINDOW (source_obj);
 	g_debug("ks37_load_task start\n");
-	for(int i = 0;i < CONTROLS_N; ++i) {
+	for(int i = 0; i < self->controls_n; ++i) {
 		control_t *c = &self->controls[i];
 		int err = ks37_midi_read_control(self->seq, self->seq_addr, c->id, &c->val);
 		if (err < 0) {
@@ -256,7 +249,7 @@ ks37_load_task_finish(GObject* source_object, GAsyncResult* res, gpointer data)
 		ks37_io_problem(self, error->message);
 		return;
 	}
-	for(int i = 0;i < CONTROLS_N; ++i) {
+	for(int i = 0; i < self->controls_n; ++i) {
 		control_t *c = &self->controls[i];
 		update_gui_control (c);
 	}
