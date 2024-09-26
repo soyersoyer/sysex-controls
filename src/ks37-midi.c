@@ -2,7 +2,6 @@
 
 #include "ks37-midi.h"
 
-#define KS37_MIDI_NAME "Arturia KeyStep 37"
 #define DESIRED_CAPS (SND_SEQ_PORT_CAP_READ | SND_SEQ_PORT_CAP_SUBS_READ | \
 			SND_SEQ_PORT_CAP_WRITE | SND_SEQ_PORT_CAP_SUBS_WRITE)
 
@@ -157,7 +156,7 @@ ks37_midi_connect(snd_seq_t *seq, snd_seq_addr_t addr)
 }
 
 int
-ks37_midi_get_address(snd_seq_t *seq, snd_seq_addr_t *addr) {
+ks37_midi_get_address(snd_seq_t *seq, const char* name, snd_seq_addr_t *addr) {
 	snd_seq_client_info_t *cinfo;
 	snd_seq_port_info_t *pinfo;
 
@@ -176,7 +175,7 @@ ks37_midi_get_address(snd_seq_t *seq, snd_seq_addr_t *addr) {
 			if (!(snd_seq_port_info_get_type(pinfo) & SND_SEQ_PORT_TYPE_HARDWARE))
 				continue;
 
-			if (strcmp(KS37_MIDI_NAME, snd_seq_client_info_get_name(cinfo)) != 0)
+			if (strcmp(name, snd_seq_client_info_get_name(cinfo)) != 0)
 				continue;
 
 			addr->client = snd_seq_client_info_get_client(cinfo);

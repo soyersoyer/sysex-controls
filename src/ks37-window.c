@@ -12,6 +12,7 @@
 #include "ks37-window.h"
 #include "ks37-midi.h"
 
+#define KS37_MIDI_NAME "Arturia KeyStep 37"
 #define CONTROLS_N 95
 
 typedef struct {
@@ -282,7 +283,7 @@ ks37_midi_init(Ks37Window *self)
 		return;
 	}
 
-	if (ks37_midi_get_address(self->seq, &self->seq_addr) < 0) {
+	if (ks37_midi_get_address(self->seq, KS37_MIDI_NAME, &self->seq_addr) < 0) {
 		g_warning("Failed to find controller\n");
 		return;
 	}
