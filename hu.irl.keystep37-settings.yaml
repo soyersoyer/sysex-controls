@@ -10,8 +10,10 @@ finish-args:
   - --socket=fallback-x11
   # share IPC namespace with the host (necessary for X11)
   - --share=ipc
+  # access direct rendering (OpenGL/Vulkan)
+  - --device=dri
   # MIDI
-  - --device=all
+  - --socket=pulseaudio
 cleanup:
   - /include
   - /lib/pkgconfig
