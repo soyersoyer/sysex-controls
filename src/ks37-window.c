@@ -33,6 +33,7 @@ struct _Ks37Window
 	GtkStack *stack;
 	GtkStackSidebar *sidebar;
 	AdwNavigationPage  *content_page;
+	AdwToolbarView *content_view;
 	AdwNavigationView  *navigation_view;
 	AdwNavigationSplitView *split_view;
 	AdwBin *book;
@@ -263,6 +264,34 @@ ks37_create_load_task(void *self)
 }
 
 static void
+notify_visible_child_cb (Ks37Window *self)
+{
+	GtkWidget *child = gtk_stack_get_visible_child (self->stack);
+	GtkStackPage *page = gtk_stack_get_page (self->stack, child);
+
+	adw_navigation_page_set_title (self->content_page, gtk_stack_page_get_title (page));
+	adw_navigation_split_view_set_show_content (self->split_view, TRUE);
+}
+
+
+static void
+add_ks37_book(Ks37Window *self)
+{
+	if (self->book)
+		return;
+
+	self->book = ADW_BIN (ks37_book_new());
+	adw_toolbar_view_set_content(self->content_view, GTK_WIDGET (self->book));
+
+	self->stack = GTK_STACK (adw_bin_get_child(self->book));
+	gtk_stack_sidebar_set_stack (self->sidebar, self->stack);
+
+	g_signal_connect_swapped(self->stack, "notify::visible-child", G_CALLBACK(notify_visible_child_cb), self);
+
+	notify_visible_child_cb (self);
+}
+
+static void
 ks37_midi_init(Ks37Window *self)
 {
 	if (self->seq)
@@ -283,25 +312,16 @@ ks37_midi_init(Ks37Window *self)
 		return;
 	}
 
+	add_ks37_book(self);
+
 	adw_navigation_view_replace_with_tags(self->navigation_view, (const char * const[]){"load"}, 1);
 	g_idle_add(ks37_create_load_task, self);
 }
-
 
 static void
 refresh_button_click_cb (Ks37Window *self)
 {
 	ks37_midi_init(KS37_WINDOW(self));
-}
-
-static void
-notify_visible_child_cb (Ks37Window *self)
-{
-	GtkWidget *child = gtk_stack_get_visible_child (self->stack);
-	GtkStackPage *page = gtk_stack_get_page (self->stack, child);
-
-	adw_navigation_page_set_title (self->content_page, gtk_stack_page_get_title (page));
-	adw_navigation_split_view_set_show_content (self->split_view, TRUE);
 }
 
 static void
@@ -313,9 +333,9 @@ ks37_window_class_init (Ks37WindowClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, Ks37Window, toast_overlay);
 	gtk_widget_class_bind_template_child (widget_class, Ks37Window, sidebar);
 	gtk_widget_class_bind_template_child (widget_class, Ks37Window, content_page);
+	gtk_widget_class_bind_template_child (widget_class, Ks37Window, content_view);
 	gtk_widget_class_bind_template_child (widget_class, Ks37Window, navigation_view);
 	gtk_widget_class_bind_template_child (widget_class, Ks37Window, split_view);
-	gtk_widget_class_bind_template_child (widget_class, Ks37Window, book);
 	gtk_widget_class_bind_template_callback (widget_class, refresh_button_click_cb);
 }
 
@@ -325,13 +345,6 @@ ks37_window_init (Ks37Window *self)
 	g_type_ensure (KS37_TYPE_BOOK);
 
 	gtk_widget_init_template (GTK_WIDGET (self));
-
-	self->stack = GTK_STACK(adw_bin_get_child(self->book));
-	gtk_stack_sidebar_set_stack (self->sidebar, self->stack);
-
-	g_signal_connect_swapped(self->stack, "notify::visible-child", G_CALLBACK(notify_visible_child_cb), self);
-
-	notify_visible_child_cb (self);
 
 	// remove the unecessary right border
 	gtk_widget_remove_css_class (GTK_WIDGET (self->sidebar), "sidebar");

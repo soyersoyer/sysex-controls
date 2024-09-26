@@ -120,13 +120,10 @@
                   <object class="AdwNavigationPage" id="content_page">
                     <property name="tag">content</property>
                     <property name="child">
-                      <object class="AdwToolbarView">
+                      <object class="AdwToolbarView" id="content_view">
                         <child type="top">
                           <object class="AdwHeaderBar" />
                         </child>
-                        <property name="content">
-                          <object class="Ks37Book" id="book" />
-                        </property>
                       </object>
                     </property>
                   </object>

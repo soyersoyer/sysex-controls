@@ -33,3 +33,9 @@ ks37_book_init (Ks37Book *self)
 	gtk_widget_init_template (GTK_WIDGET (self));
 }
 
+GtkWidget *
+ks37_book_new (void)
+{
+	return g_object_new (KS37_TYPE_BOOK, NULL);
+}
+
