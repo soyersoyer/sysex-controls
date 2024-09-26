@@ -29,8 +29,6 @@ struct _Ks37Window
 
 	/* Template widgets */
 	AdwToastOverlay *toast_overlay;
-	AdwHeaderBar *header_bar;
-	GtkStack *stack;
 	GtkStackSidebar *sidebar;
 	AdwNavigationPage  *content_page;
 	AdwToolbarView *content_view;
@@ -264,10 +262,10 @@ ks37_create_load_task(void *self)
 }
 
 static void
-notify_visible_child_cb (Ks37Window *self)
+notify_visible_child_cb (GtkStack* stack, GParamSpec *pspec, Ks37Window *self)
 {
-	GtkWidget *child = gtk_stack_get_visible_child (self->stack);
-	GtkStackPage *page = gtk_stack_get_page (self->stack, child);
+	GtkWidget *child = gtk_stack_get_visible_child (stack);
+	GtkStackPage *page = gtk_stack_get_page (stack, child);
 
 	adw_navigation_page_set_title (self->content_page, gtk_stack_page_get_title (page));
 	adw_navigation_split_view_set_show_content (self->split_view, TRUE);
@@ -277,18 +275,20 @@ notify_visible_child_cb (Ks37Window *self)
 static void
 add_ks37_book(Ks37Window *self)
 {
+	GtkStack *stack;
+
 	if (self->book)
 		return;
 
 	self->book = ADW_BIN (ks37_book_new());
 	adw_toolbar_view_set_content(self->content_view, GTK_WIDGET (self->book));
 
-	self->stack = GTK_STACK (adw_bin_get_child(self->book));
-	gtk_stack_sidebar_set_stack (self->sidebar, self->stack);
+	stack = GTK_STACK (adw_bin_get_child(self->book));
+	gtk_stack_sidebar_set_stack (self->sidebar, stack);
 
-	g_signal_connect_swapped(self->stack, "notify::visible-child", G_CALLBACK(notify_visible_child_cb), self);
+	g_signal_connect(stack, "notify::visible-child", G_CALLBACK(notify_visible_child_cb), self);
 
-	notify_visible_child_cb (self);
+	notify_visible_child_cb (stack, NULL, self);
 }
 
 static void
