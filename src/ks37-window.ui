@@ -110,7 +110,6 @@
                         </child>
                         <property name="content">
                           <object class="GtkStackSidebar" id="sidebar">
-                            <property name="stack">stack</property>
                           </object>
                         </property>
                       </object>
@@ -126,92 +125,7 @@
                           <object class="AdwHeaderBar" />
                         </child>
                         <property name="content">
-                          <object class="GtkStack" id="stack">
-                            <property name="vhomogeneous">False</property>
-                            <property name="valign">start</property>
-                            <signal name="notify::visible-child" handler="notify_visible_child_cb" after="yes" swapped="yes" />
-
-                            <child>
-                              <object class="GtkStackPage">
-                                <property name="title" translatable="yes">Controller</property>
-                                <property name="child">
-                                  <object class="Ks37PageController" />
-                                </property>
-                              </object>
-                            </child>
-
-                            <child>
-                              <object class="GtkStackPage">
-                                <property name="title" translatable="yes">Sequence</property>
-                                <property name="child">
-                                  <object class="Ks37PageSequence" />
-                                </property>
-                              </object>
-                            </child>
-
-                            <child>
-                              <object class="GtkStackPage">
-                                <property name="title" translatable="yes">CV / Gate</property>
-                                <property name="child">
-                                  <object class="Ks37PageCvGate" />
-                                </property>
-                              </object>
-                            </child>
-
-                            <child>
-                              <object class="GtkStackPage">
-                                <property name="title" translatable="yes">Transport</property>
-                                <property name="child">
-                                  <object class="Ks37PageTransport" />
-                                </property>
-                              </object>
-                            </child>
-
-                            <child>
-                              <object class="GtkStackPage">
-                                <property name="title" translatable="yes">CC Bank 1</property>
-                                <property name="child">
-                                  <object class="Ks37PageCcBank">
-                                    <property name="midi-id-offset">0x2f</property>
-                                  </object>
-                                </property>
-                              </object>
-                            </child>
-
-                            <child>
-                              <object class="GtkStackPage">
-                                <property name="title" translatable="yes">CC Bank 2</property>
-                                <property name="child">
-                                  <object class="Ks37PageCcBank">
-                                    <property name="midi-id-offset">0x3f</property>
-                                  </object>
-                                </property>
-                              </object>
-                            </child>
-
-                            <child>
-                              <object class="GtkStackPage">
-                                <property name="title" translatable="yes">CC Bank 3</property>
-                                <property name="child">
-                                  <object class="Ks37PageCcBank">
-                                    <property name="midi-id-offset">0x4f</property>
-                                  </object>
-                                </property>
-                              </object>
-                            </child>
-
-                            <child>
-                              <object class="GtkStackPage">
-                                <property name="title" translatable="yes">CC Bank 4</property>
-                                <property name="child">
-                                  <object class="Ks37PageCcBank">
-                                    <property name="midi-id-offset">0x5f</property>
-                                  </object>
-                                </property>
-                              </object>
-                            </child>
-
-                          </object>
+                          <object class="Ks37Book" id="book" />
                         </property>
                       </object>
                     </property>

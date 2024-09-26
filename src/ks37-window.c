@@ -2,11 +2,7 @@
 
 #include "config.h"
 
-#include "pages/cc-bank/ks37-page-cc-bank.h"
-#include "pages/controller/ks37-page-controller.h"
-#include "pages/cv-gate/ks37-page-cv-gate.h"
-#include "pages/sequence/ks37-page-sequence.h"
-#include "pages/transport/ks37-page-transport.h"
+#include "ks37-book.h"
 #include "ks37-control-value.h"
 
 #include "ks37-window.h"
@@ -39,6 +35,7 @@ struct _Ks37Window
 	AdwNavigationPage  *content_page;
 	AdwNavigationView  *navigation_view;
 	AdwNavigationSplitView *split_view;
+	AdwBin *book;
 };
 
 G_DEFINE_FINAL_TYPE (Ks37Window, ks37_window, ADW_TYPE_APPLICATION_WINDOW)
@@ -314,25 +311,25 @@ ks37_window_class_init (Ks37WindowClass *klass)
 
 	gtk_widget_class_set_template_from_resource (widget_class, "/hu/irl/keystep37-settings/ks37-window.ui");
 	gtk_widget_class_bind_template_child (widget_class, Ks37Window, toast_overlay);
-	gtk_widget_class_bind_template_child (widget_class, Ks37Window, stack);
 	gtk_widget_class_bind_template_child (widget_class, Ks37Window, sidebar);
 	gtk_widget_class_bind_template_child (widget_class, Ks37Window, content_page);
 	gtk_widget_class_bind_template_child (widget_class, Ks37Window, navigation_view);
 	gtk_widget_class_bind_template_child (widget_class, Ks37Window, split_view);
-	gtk_widget_class_bind_template_callback (widget_class, notify_visible_child_cb);
+	gtk_widget_class_bind_template_child (widget_class, Ks37Window, book);
 	gtk_widget_class_bind_template_callback (widget_class, refresh_button_click_cb);
 }
 
 static void
 ks37_window_init (Ks37Window *self)
 {
-	g_type_ensure (KS37_TYPE_PAGE_CC_BANK);
-	g_type_ensure (KS37_TYPE_PAGE_CONTROLLER);
-	g_type_ensure (KS37_TYPE_PAGE_CV_GATE);
-	g_type_ensure (KS37_TYPE_PAGE_SEQUENCE);
-	g_type_ensure (KS37_TYPE_PAGE_TRANSPORT);
+	g_type_ensure (KS37_TYPE_BOOK);
 
 	gtk_widget_init_template (GTK_WIDGET (self));
+
+	self->stack = GTK_STACK(adw_bin_get_child(self->book));
+	gtk_stack_sidebar_set_stack (self->sidebar, self->stack);
+
+	g_signal_connect_swapped(self->stack, "notify::visible-child", G_CALLBACK(notify_visible_child_cb), self);
 
 	notify_visible_child_cb (self);
 

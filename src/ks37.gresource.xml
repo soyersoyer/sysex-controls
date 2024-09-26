@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/hu/irl/keystep37-settings">
+    <file preprocess="xml-stripblanks">ks37-book.ui</file>
     <file preprocess="xml-stripblanks">ks37-window.ui</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
     <file preprocess="xml-stripblanks">pages/cc-bank/ks37-page-cc-bank.ui</file>

@@ -3,6 +3,7 @@ ks37_sources = [
   'ks37-application.c',
   'ks37-window.c',
   'ks37-midi.c',
+  'ks37-book.c',
   'ks37-control-value.c',
   'ks37-combo-row.c',
   'ks37-preferences-page.c',
