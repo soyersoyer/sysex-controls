@@ -79,7 +79,7 @@ combo_row_change_cb(GObject * widget, GParamSpec *pspec, control_t *control) {
 		return;
 
 	g_debug("combo control change %02x: %02x -> %02x %s\n", control->id, control->val, val, ks37_control_value_get_name (item));
-	if (ks37_midi_write_control_value(window->seq, window->seq_addr, control->id, val) < 0) {
+	if (ks37_midi_write_control(window->seq, window->seq_addr, control->id, val) < 0) {
 		ks37_io_problem (window, "Control change failed\n");
 		return;
 	}
@@ -97,7 +97,7 @@ switch_row_change_cb(GObject * widget, GParamSpec *pspec, control_t *control) {
 		return;
 
 	g_debug("switch control change %02x: %02x -> %02x\n", control->id, control->val, val);
-	if (ks37_midi_write_control_value(window->seq, window->seq_addr, control->id, val) < 0) {
+	if (ks37_midi_write_control(window->seq, window->seq_addr, control->id, val) < 0) {
 		ks37_io_problem (window, "Control change failed\n");
 		return;
 	}
@@ -117,7 +117,7 @@ spin_row_change_cb(GObject * widget, GParamSpec *pspec, control_t *control) {
 
 	g_debug("spin control change %02x: %02x -> %02x\n", control->id, control->val, val);
 
-	if (ks37_midi_write_control_value(window->seq, window->seq_addr, control->id, val) < 0) {
+	if (ks37_midi_write_control(window->seq, window->seq_addr, control->id, val) < 0) {
 		ks37_io_problem (window, "Control change failed\n");
 
 		/*
@@ -234,7 +234,7 @@ ks37_load_task(GTask *task, gpointer source_obj, gpointer task_data, GCancellabl
 	g_debug("ks37_load_task start\n");
 	for(int i = 0;i < CONTROLS_N; ++i) {
 		control_t *c = &self->controls[i];
-		int err = ks37_midi_read_control_value(self->seq, self->seq_addr, c->id, &c->val);
+		int err = ks37_midi_read_control(self->seq, self->seq_addr, c->id, &c->val);
 		if (err < 0) {
 			g_task_return_new_error_literal(task, G_IO_ERROR, G_IO_ERROR_FAILED, "control value read failed\n");
 			return;
@@ -275,19 +275,19 @@ static void
 ks37_midi_init(Ks37Window *self)
 {
 	if (self->seq)
-		ks37_midi_close_client(&self->seq);
+		ks37_midi_close(&self->seq);
 
-	if (ks37_midi_open_client(&self->seq) < 0) {
+	if (ks37_midi_open(&self->seq) < 0) {
 		g_warning("Failed to open midi\n");
 		return;
 	}
 
-	if (ks37_midi_get_midi_address(self->seq, &self->seq_addr) < 0) {
+	if (ks37_midi_get_address(self->seq, &self->seq_addr) < 0) {
 		g_warning("Failed to find controller\n");
 		return;
 	}
 
-	if (ks37_midi_connect_to(self->seq, self->seq_addr) < 0) {
+	if (ks37_midi_connect(self->seq, self->seq_addr) < 0) {
 		g_warning("Failed to connect %d:%d\n", self->seq_addr.client, self->seq_addr.port);
 		return;
 	}

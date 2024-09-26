@@ -69,10 +69,10 @@
 #define P_BANK4_KNOB4_MAX		0x6D  // 0-127
 #define P_BANK4_KNOB4_CHAN		0x6E  // 0-15, user=0x41
 
-int ks37_midi_read_control_value(snd_seq_t *seq, snd_seq_addr_t addr, uint8_t control_id, uint8_t *val);
-int ks37_midi_write_control_value(snd_seq_t *seq, snd_seq_addr_t addr, uint8_t control_id, uint8_t val);
-int ks37_midi_connect_to(snd_seq_t *seq, snd_seq_addr_t addr);
-int ks37_midi_get_midi_address(snd_seq_t *seq, snd_seq_addr_t *addr);
-int ks37_midi_open_client(snd_seq_t **seq);
-int ks37_midi_close_client(snd_seq_t **seq);
+int ks37_midi_read_control(snd_seq_t *seq, snd_seq_addr_t addr, uint8_t control_id, uint8_t *val);
+int ks37_midi_write_control(snd_seq_t *seq, snd_seq_addr_t addr, uint8_t control_id, uint8_t val);
+int ks37_midi_connect(snd_seq_t *seq, snd_seq_addr_t addr);
+int ks37_midi_get_address(snd_seq_t *seq, snd_seq_addr_t *addr);
+int ks37_midi_open(snd_seq_t **seq);
+int ks37_midi_close(snd_seq_t **seq);
 

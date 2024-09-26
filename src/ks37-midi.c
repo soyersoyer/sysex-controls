@@ -10,7 +10,7 @@
 #define MIN(X,Y) ((X) < (Y) ? (X) : (Y))
 
 int
-ks37_midi_write_control_value(snd_seq_t *seq, snd_seq_addr_t addr, uint8_t control_id, uint8_t val)
+ks37_midi_write_control(snd_seq_t *seq, snd_seq_addr_t addr, uint8_t control_id, uint8_t val)
 {
 	char data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00, 0x41, 0x00, 0x00, 0xf7};
 	snd_seq_event_t ev;
@@ -106,7 +106,7 @@ process_control_event(snd_seq_t *seq, uint8_t control_id, uint8_t *val) {
 }
 
 int
-ks37_midi_read_control_value(snd_seq_t *seq, snd_seq_addr_t addr, uint8_t control_id, uint8_t *val)
+ks37_midi_read_control(snd_seq_t *seq, snd_seq_addr_t addr, uint8_t control_id, uint8_t *val)
 {
 	char data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x01, 0x00, 0x41, 0x00, 0xf7};
 	snd_seq_event_t ev;
@@ -137,7 +137,7 @@ ks37_midi_read_control_value(snd_seq_t *seq, snd_seq_addr_t addr, uint8_t contro
 }
 
 int
-ks37_midi_connect_to(snd_seq_t *seq, snd_seq_addr_t addr)
+ks37_midi_connect(snd_seq_t *seq, snd_seq_addr_t addr)
 {
 	int err;
 
@@ -157,7 +157,7 @@ ks37_midi_connect_to(snd_seq_t *seq, snd_seq_addr_t addr)
 }
 
 int
-ks37_midi_get_midi_address(snd_seq_t *seq, snd_seq_addr_t *addr) {
+ks37_midi_get_address(snd_seq_t *seq, snd_seq_addr_t *addr) {
 	snd_seq_client_info_t *cinfo;
 	snd_seq_port_info_t *pinfo;
 
@@ -188,7 +188,7 @@ ks37_midi_get_midi_address(snd_seq_t *seq, snd_seq_addr_t *addr) {
 }
 
 int
-ks37_midi_open_client(snd_seq_t **seq)
+ks37_midi_open(snd_seq_t **seq)
 {
 	int err;
 
@@ -213,7 +213,7 @@ ks37_midi_open_client(snd_seq_t **seq)
 }
 
 int
-ks37_midi_close_client(snd_seq_t **seq) {
+ks37_midi_close(snd_seq_t **seq) {
 	int err = snd_seq_close(*seq);
 	*seq = NULL;
 	return err;
