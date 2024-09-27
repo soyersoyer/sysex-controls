@@ -2,13 +2,9 @@
 
 #include "ks37-control-value.h"
 
-struct _Ks37ComboRow
-{
-	AdwComboRow parent_instance;
-};
 
 
-G_DEFINE_FINAL_TYPE (Ks37ComboRow, ks37_combo_row, ADW_TYPE_COMBO_ROW)
+G_DEFINE_TYPE (Ks37ComboRow, ks37_combo_row, ADW_TYPE_COMBO_ROW)
 
 static void
 ks37_combo_row_class_init (Ks37ComboRowClass *klass)
