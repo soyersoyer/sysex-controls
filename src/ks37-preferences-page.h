@@ -13,7 +13,7 @@ struct _Ks37PreferencesPageClass
 	AdwPreferencesPageClass parent_class;
 };
 
-uint8_t ks37_preferences_page_get_midi_id_offset (Ks37PreferencesPage *self);
+uint16_t ks37_preferences_page_get_control_id_offset (Ks37PreferencesPage *self);
 
 G_END_DECLS
 

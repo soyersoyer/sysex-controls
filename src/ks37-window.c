@@ -12,7 +12,7 @@
 #define CONTROLS_MAX_N 100
 
 typedef struct {
-	uint8_t id;
+	uint16_t id;
 	uint8_t val;
 	GtkWidget *widget;
 } control_t;
@@ -47,7 +47,7 @@ ks37_io_problem(Ks37Window *self, const char *message)
 }
 
 static control_t *
-get_control_by_id(Ks37Window *self, uint8_t control_id)
+get_control_by_id(Ks37Window *self, uint16_t control_id)
 {
 	for(int i = 0; i < self->controls_n; ++i)
 		if (self->controls[i].id == control_id)
@@ -126,7 +126,7 @@ spin_row_change_cb(GObject * widget, GParamSpec *pspec, control_t *control) {
 }
 
 void
-ks37_window_register_control(Ks37Window *self, uint8_t control_id, GtkWidget *widget)
+ks37_window_register_control(Ks37Window *self, uint16_t control_id, GtkWidget *widget)
 {
 	control_t *control = get_control_by_id(self, control_id);
 

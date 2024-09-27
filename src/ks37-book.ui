@@ -49,7 +49,7 @@
             <property name="title" translatable="yes">CC Bank 1</property>
             <property name="child">
               <object class="Ks37PageCcBank">
-                <property name="midi-id-offset">0x2f</property>
+                <property name="control-id-offset">0x412f</property>
               </object>
             </property>
           </object>
@@ -60,7 +60,7 @@
             <property name="title" translatable="yes">CC Bank 2</property>
             <property name="child">
               <object class="Ks37PageCcBank">
-                <property name="midi-id-offset">0x3f</property>
+                <property name="control-id-offset">0x413f</property>
               </object>
             </property>
           </object>
@@ -71,7 +71,7 @@
             <property name="title" translatable="yes">CC Bank 3</property>
             <property name="child">
               <object class="Ks37PageCcBank">
-                <property name="midi-id-offset">0x4f</property>
+                <property name="control-id-offset">0x414f</property>
               </object>
             </property>
           </object>
@@ -82,7 +82,7 @@
             <property name="title" translatable="yes">CC Bank 4</property>
             <property name="child">
               <object class="Ks37PageCcBank">
-                <property name="midi-id-offset">0x5f</property>
+                <property name="control-id-offset">0x415f</property>
               </object>
             </property>
           </object>

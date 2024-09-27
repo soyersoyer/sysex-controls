@@ -9,9 +9,13 @@
 #define MIN(X,Y) ((X) < (Y) ? (X) : (Y))
 
 int
-ks37_midi_write_control(snd_seq_t *seq, snd_seq_addr_t addr, uint8_t control_id, uint8_t val)
+ks37_midi_write_control(snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t val)
 {
-	char data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00, 0x41, 0x00, 0x00, 0xf7};
+	//                                                             control_id  value
+	//                                                             ||||||||||  ||||
+	char data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00, 0x00, 0x00, 0x00, 0xf7};
+	uint8_t p_id = (uint8_t)(control_id >> 8);
+	uint8_t c_id = (uint8_t)control_id;
 	snd_seq_event_t ev;
 	int err;
 
@@ -23,7 +27,8 @@ ks37_midi_write_control(snd_seq_t *seq, snd_seq_addr_t addr, uint8_t control_id,
 	snd_seq_ev_set_direct(&ev);
 	snd_seq_ev_set_sysex(&ev, ARRAY_SIZE (data), data);
 
-	data[9] = control_id;
+	data[8] = p_id;
+	data[9] = c_id;
 	data[10] = val;
 
 	err = snd_seq_event_output(seq, &ev);
@@ -42,9 +47,9 @@ ks37_midi_write_control(snd_seq_t *seq, snd_seq_addr_t addr, uint8_t control_id,
 }
 
 static int
-process_sysex_message(snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n, uint8_t control_id, int *set, uint8_t *val) {
+process_sysex_message(snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n, uint8_t p_id, uint8_t c_id, int *set, uint8_t *val) {
 	//static const char arturia_ack[] =   {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x1c, 0x00, 0xf7};
-	static const char arturia_value[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00, 0x41};
+	static const char arturia_value[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00};
 
 	snd_seq_event_t *ev_input;
 	int ret;
@@ -72,32 +77,32 @@ process_sysex_message(snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n, uint8
 	input = ev_input->data.ext.ptr;
 
 	if (memcmp(input, arturia_value, MIN(len, ARRAY_SIZE(arturia_value))) == 0 &&
-	    len == ARRAY_SIZE(arturia_value) + 3) {
-		if (input[9] == control_id) {
+	    len == ARRAY_SIZE(arturia_value) + 4) {
+		if (input[8] == p_id && input[9] == c_id) {
 			*val = input[10];
 			*set = 1;
 		} else {
-			fprintf(stderr, "process_sysex_message: unexpected control %02x with value %02x\n", input[9], input[10]);
+			fprintf(stderr, "process_sysex_message: unexpected control %02x%02x with value %02x\n", input[8], input[9], input[10]);
 		}
-		//printf("MIDI VALUE %02x -> %02x\n", input[9], input[10]);
+		//printf("MIDI VALUE %02x%02x -> %02x\n", input[8], input[9], input[10]);
 	}
 	return 0;
 }
 
 static int
-process_control_event(snd_seq_t *seq, uint8_t control_id, uint8_t *val) {
+process_control_event(snd_seq_t *seq, uint8_t p_id, uint8_t c_id, uint8_t *val) {
 	int ret, set = 0, pfds_n = 0;
 
 	struct pollfd pfds[1] = {};
 	pfds_n = snd_seq_poll_descriptors(seq, pfds, 1, POLLIN);
 
 	// read value
-	ret = process_sysex_message (seq, pfds, pfds_n, control_id, &set, val);
+	ret = process_sysex_message (seq, pfds, pfds_n, p_id, c_id, &set, val);
 	if (ret < 0)
 		return ret;
 
 	// read ack
-	ret = process_sysex_message (seq, pfds, pfds_n, control_id, &set, val);
+	ret = process_sysex_message (seq, pfds, pfds_n, p_id, c_id, &set, val);
 	if (ret < 0)
 		return ret;
 
@@ -105,9 +110,13 @@ process_control_event(snd_seq_t *seq, uint8_t control_id, uint8_t *val) {
 }
 
 int
-ks37_midi_read_control(snd_seq_t *seq, snd_seq_addr_t addr, uint8_t control_id, uint8_t *val)
+ks37_midi_read_control(snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t *val)
 {
-	char data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x01, 0x00, 0x41, 0x00, 0xf7};
+	//                                                             control_id
+	//                                                             ||||||||||
+	char data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x01, 0x00, 0x00, 0x00, 0xf7};
+	uint8_t p_id = (uint8_t)(control_id >> 8);
+	uint8_t c_id = (uint8_t)control_id;
 	snd_seq_event_t ev;
 	int err;
 
@@ -119,7 +128,8 @@ ks37_midi_read_control(snd_seq_t *seq, snd_seq_addr_t addr, uint8_t control_id, 
 	snd_seq_ev_set_direct(&ev);
 	snd_seq_ev_set_sysex(&ev, ARRAY_SIZE (data), data);
 
-	data[9] = control_id;
+	data[8] = p_id;
+	data[9] = c_id;
 
 	err = snd_seq_event_output(seq, &ev);
 	if (err < 0) {
@@ -132,7 +142,7 @@ ks37_midi_read_control(snd_seq_t *seq, snd_seq_addr_t addr, uint8_t control_id, 
 		return err;
 	}
 
-	return process_control_event (seq, control_id, val);
+	return process_control_event (seq, p_id, c_id, val);
 }
 
 int

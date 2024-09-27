@@ -6,7 +6,7 @@
 
     <child>
       <object class="AdwSpinRow">
-        <child><object class="Ks37MidiConnect"><property name="midi-id">0x00</property></object></child>
+        <child><object class="Ks37MidiConnect"><property name="control-id">0x00</property></object></child>
         <property name="title" translatable="yes">CC</property>
         <property name="adjustment">
           <object class="GtkAdjustment">
@@ -22,7 +22,7 @@
 
     <child>
       <object class="AdwSpinRow">
-        <child><object class="Ks37MidiConnect"><property name="midi-id">0x01</property></object></child>
+        <child><object class="Ks37MidiConnect"><property name="control-id">0x01</property></object></child>
         <property name="title" translatable="yes">Min</property>
         <property name="adjustment">
           <object class="GtkAdjustment">
@@ -38,7 +38,7 @@
 
     <child>
       <object class="AdwSpinRow" id="knob_max_range">
-        <child><object class="Ks37MidiConnect"><property name="midi-id">0x02</property></object></child>
+        <child><object class="Ks37MidiConnect"><property name="control-id">0x02</property></object></child>
         <property name="title" translatable="yes">Max</property>
         <property name="adjustment">
           <object class="GtkAdjustment">
@@ -54,7 +54,7 @@
 
     <child>
       <object class="Ks37ComboRow">
-        <child><object class="Ks37MidiConnect"><property name="midi-id">0x03</property></object></child>
+        <child><object class="Ks37MidiConnect"><property name="control-id">0x03</property></object></child>
         <property name="title" translatable="yes">Channel</property>
         <property name="title-lines">1</property>
         <property name="model">

@@ -8,7 +8,7 @@
 
         <child>
           <object class="Ks37ComboRow">
-            <child><object class="Ks37MidiConnect"><property name="midi-id">0x18</property></object></child>
+            <child><object class="Ks37MidiConnect"><property name="control-id">0x4118</property></object></child>
             <property name="title" translatable="yes">PITCH CV Output</property>
             <property name="subtitle">The two standards. Each uses a different MIDI note reference</property>
             <property name="subtitle-lines">2</property>
@@ -25,7 +25,7 @@
 
         <child>
           <object class="Ks37ComboRow">
-            <child><object class="Ks37MidiConnect"><property name="midi-id">0x1a</property></object></child>
+            <child><object class="Ks37MidiConnect"><property name="control-id">0x411a</property></object></child>
             <property name="title" translatable="yes">0V MIDI Note</property>
             <property name="subtitle">With Volts per Octave</property>
             <property name="model">
@@ -177,7 +177,7 @@
 
         <child>
           <object class="Ks37ComboRow">
-            <child><object class="Ks37MidiConnect"><property name="midi-id">0x1b</property></object></child>
+            <child><object class="Ks37MidiConnect"><property name="control-id">0x411b</property></object></child>
             <property name="title" translatable="yes">1V MIDI Note</property>
             <property name="subtitle">With Hertz per Volt</property>
             <property name="model">
@@ -335,7 +335,7 @@
 
         <child>
           <object class="Ks37ComboRow">
-            <child><object class="Ks37MidiConnect"><property name="midi-id">0x1c</property></object></child>
+            <child><object class="Ks37MidiConnect"><property name="control-id">0x411c</property></object></child>
             <property name="title" translatable="yes">Note priority</property>
             <property name="subtitle">Specifies the response of monophonic devices</property>
             <property name="model">
@@ -352,7 +352,7 @@
 
         <child>
           <object class="Ks37ComboRow">
-            <child><object class="Ks37MidiConnect"><property name="midi-id">0x1d</property></object></child>
+            <child><object class="Ks37MidiConnect"><property name="control-id">0x411d</property></object></child>
             <property name="title" translatable="yes">MOD CV Source</property>
             <property name="subtitle">Determines which KeyStep 37 feature drives the Mod CV</property>
             <property name="subtitle-lines">2</property>
@@ -370,7 +370,7 @@
 
         <child>
           <object class="Ks37ComboRow">
-            <child><object class="Ks37MidiConnect"><property name="midi-id">0x1e</property></object></child>
+            <child><object class="Ks37MidiConnect"><property name="control-id">0x411e</property></object></child>
             <property name="title" translatable="yes">MOD CV Max Voltage</property>
             <property name="subtitle">Minimum = 0 Volts in all cases; maximum can be 5 to 12 volts.</property>
             <property name="subtitle-lines">2</property>
@@ -393,7 +393,7 @@
 
         <child>
           <object class="AdwSpinRow">
-            <child><object class="Ks37MidiConnect"><property name="midi-id">0x1f</property></object></child>
+            <child><object class="Ks37MidiConnect"><property name="control-id">0x411f</property></object></child>
             <property name="title" translatable="yes">Pitch Bend Range (Semi-tones)</property>
             <property name="subtitle">Chooses how much the Pitch CV will vary when the Pitch strip is used.</property>
             <property name="adjustment">
@@ -416,7 +416,7 @@
 
         <child>
           <object class="Ks37ComboRow">
-            <child><object class="Ks37MidiConnect"><property name="midi-id">0x19</property></object></child>
+            <child><object class="Ks37MidiConnect"><property name="control-id">0x4119</property></object></child>
             <property name="title" translatable="yes">Gate CV Output</property>
             <property name="subtitle">'Short/negative' trigger and two common types of 'Voltage/positive' triggers.</property>
             <property name="subtitle-lines">2</property>

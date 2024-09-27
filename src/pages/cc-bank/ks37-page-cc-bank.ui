@@ -7,28 +7,28 @@
     <child>
       <object class="Ks37PageCcBankKnob">
         <property name="title" translatable="yes">Knob 1</property>
-        <property name="midi-id-offset">0</property>
+        <property name="control-id-offset">0x00</property>
       </object>
     </child>
 
     <child>
       <object class="Ks37PageCcBankKnob">
         <property name="title" translatable="yes">Knob 2</property>
-        <property name="midi-id-offset">4</property>
+        <property name="control-id-offset">0x04</property>
       </object>
     </child>
 
     <child>
       <object class="Ks37PageCcBankKnob">
         <property name="title" translatable="yes">Knob 3</property>
-        <property name="midi-id-offset">8</property>
+        <property name="control-id-offset">0x08</property>
       </object>
     </child>
 
     <child>
       <object class="Ks37PageCcBankKnob">
         <property name="title" translatable="yes">Knob 4</property>
-        <property name="midi-id-offset">12</property>
+        <property name="control-id-offset">0x0c</property>
       </object>
     </child>
 
