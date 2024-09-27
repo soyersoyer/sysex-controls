@@ -24,5 +24,10 @@ meson install -C builddir
 ```
 The resulting binary doesn't need to be installed, `./builddir/src/keystep37-settings` works also.
 
-<img alt="keystep37 settings controller page" src="https://github.com/soyersoyer/keystep37-settings/raw/main/data/screenshots/page_1.png" width="500">
-
+<div>
+<img alt="KeyStep37 Settings Controller page" src="https://github.com/soyersoyer/keystep37-settings/raw/main/data/screenshots/page_1.png" width="410">
+<img alt="KeyStep37 Settings Sequence page" src="https://github.com/soyersoyer/keystep37-settings/raw/main/data/screenshots/page_2.png" width="410">
+<img alt="KeyStep37 Settings CV/Gate page" src="https://github.com/soyersoyer/keystep37-settings/raw/main/data/screenshots/page_3.png" width="410">
+<img alt="KeyStep37 Settings Transport page" src="https://github.com/soyersoyer/keystep37-settings/raw/main/data/screenshots/page_4.png" width="410">
+<img alt="KeyStep37 Settings CC Bank 1 page" src="https://github.com/soyersoyer/keystep37-settings/raw/main/data/screenshots/page_5.png" width="410">
+</div>
