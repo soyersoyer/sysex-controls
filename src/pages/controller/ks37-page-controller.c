@@ -6,10 +6,10 @@
 
 struct _Ks37PageController
 {
-	AdwPreferencesPage parent_instance;
+	Ks37PreferencesPage parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ks37PageController, ks37_page_controller, ADW_TYPE_PREFERENCES_PAGE)
+G_DEFINE_FINAL_TYPE (Ks37PageController, ks37_page_controller, KS37_TYPE_PREFERENCES_PAGE)
 
 static void
 ks37_page_controller_class_init (Ks37PageControllerClass *klass)

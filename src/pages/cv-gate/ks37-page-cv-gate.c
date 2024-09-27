@@ -2,10 +2,10 @@
 
 struct _Ks37PageCvGate
 {
-	AdwPreferencesPage parent_instance;
+	Ks37PreferencesPage parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ks37PageCvGate, ks37_page_cv_gate, ADW_TYPE_PREFERENCES_PAGE)
+G_DEFINE_FINAL_TYPE (Ks37PageCvGate, ks37_page_cv_gate, KS37_TYPE_PREFERENCES_PAGE)
 
 static void
 ks37_page_cv_gate_class_init (Ks37PageCvGateClass *klass)

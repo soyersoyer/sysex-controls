@@ -4,10 +4,10 @@
 
 struct _Ks37PageSequence
 {
-	AdwPreferencesPage parent_instance;
+	Ks37PreferencesPage parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ks37PageSequence, ks37_page_sequence, ADW_TYPE_PREFERENCES_PAGE)
+G_DEFINE_FINAL_TYPE (Ks37PageSequence, ks37_page_sequence, KS37_TYPE_PREFERENCES_PAGE)
 
 static void
 ks37_page_sequence_class_init (Ks37PageSequenceClass *klass)

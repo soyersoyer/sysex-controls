@@ -2,10 +2,10 @@
 
 struct _Ks37PageTransport
 {
-  AdwPreferencesPage parent_instance;
+  Ks37PreferencesPage parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ks37PageTransport, ks37_page_transport, ADW_TYPE_PREFERENCES_PAGE)
+G_DEFINE_FINAL_TYPE (Ks37PageTransport, ks37_page_transport, KS37_TYPE_PREFERENCES_PAGE)
 
 static void
 ks37_page_transport_class_init (Ks37PageTransportClass *klass)

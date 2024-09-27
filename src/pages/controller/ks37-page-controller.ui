@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="Ks37PageController" parent="AdwPreferencesPage">
+  <template class="Ks37PageController" parent="Ks37PreferencesPage">
     <child>
       <object class="AdwPreferencesGroup">
 
