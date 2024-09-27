@@ -9,7 +9,7 @@ back to the device.
 
 ## Installation
 
-### From Flathub
+### From Flathub (not yet, under [review](https://github.com/flathub/flathub/pull/5635))
 
 ```
 flatpak install flathub hu.irl.keystep37-settings
@@ -20,9 +20,9 @@ flatpak install flathub hu.irl.keystep37-settings
 ```
 meson setup builddir
 meson compile -C builddir
-./builddir/src/keystep37-settings
+meson install -C builddir
 ```
-The resulting binary doesn't need to be installed but `meson install -C builddir` works also.
+The resulting binary doesn't need to be installed, `./builddir/src/keystep37-settings` works also.
 
 <img alt="keystep37 settings controller page" src="https://github.com/soyersoyer/keystep37-settings/raw/main/data/screenshots/page_1.png" width="500">
 
