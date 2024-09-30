@@ -1,6 +1,6 @@
-data/hu.irl.keystep37-settings.desktop.in
-data/hu.irl.keystep37-settings.metainfo.xml.in
-data/hu.irl.keystep37-settings.gschema.xml
+data/hu.irl.sysex-controls.desktop.in
+data/hu.irl.sysex-controls.metainfo.xml.in
+data/hu.irl.sysex-controls.gschema.xml
 src/main.c
-src/ks37-window.c
-src/ks37-window.ui
+src/sc-window.c
+src/sc-window.ui

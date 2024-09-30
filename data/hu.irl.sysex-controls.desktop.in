@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SysEx Controls
+Exec=sysex-controls
+Icon=hu.irl.sysex-controls
+Terminal=false
+Type=Application
+Categories=Settings;AudioVideo;Utility;GNOME;GTK;
+StartupNotify=true

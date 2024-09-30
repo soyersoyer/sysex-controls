@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="sysex-controls">
+	<schema id="hu.irl.sysex-controls" path="/hu/irl/sysex-controls/">
+	</schema>
+</schemalist>

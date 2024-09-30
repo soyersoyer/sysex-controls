@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ks37PageCcBank" parent="ScPreferencesPage">
+
+    <child>
+      <object class="Ks37PageCcBankKnob">
+        <property name="title" translatable="yes">Knob 1</property>
+        <property name="control-id-offset">0x00</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ks37PageCcBankKnob">
+        <property name="title" translatable="yes">Knob 2</property>
+        <property name="control-id-offset">0x04</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ks37PageCcBankKnob">
+        <property name="title" translatable="yes">Knob 3</property>
+        <property name="control-id-offset">0x08</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ks37PageCcBankKnob">
+        <property name="title" translatable="yes">Knob 4</property>
+        <property name="control-id-offset">0x0c</property>
+      </object>
+    </child>
+
+  </template>
+</interface>
+

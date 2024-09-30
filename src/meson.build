@@ -1,35 +1,35 @@
-ks37_sources = [
-  'ks37-application.c',
-  'ks37-book.c',
-  'ks37-combo-row.c',
-  'ks37-control-value.c',
-  'ks37-midi.c',
-  'ks37-midi-connect.c',
-  'ks37-preferences-group.c',
-  'ks37-preferences-page.c',
-  'ks37-window.c',
+sc_sources = [
+  'sc-application.c',
+  'sc-combo-row.c',
+  'sc-control-value.c',
+  'sc-midi.c',
+  'sc-midi-connect.c',
+  'sc-preferences-group.c',
+  'sc-preferences-page.c',
+  'sc-window.c',
   'main.c',
-  'pages/cc-bank/ks37-page-cc-bank.c',
-  'pages/cc-bank/ks37-page-cc-bank-knob.c',
-  'pages/controller/ks37-page-controller.c',
-  'pages/cv-gate/ks37-page-cv-gate.c',
-  'pages/sequence/ks37-page-sequence.c',
-  'pages/transport/ks37-page-transport.c',
+  'keystep37/ks37-book.c',
+  'keystep37/ks37-page-cc-bank.c',
+  'keystep37/ks37-page-cc-bank-knob.c',
+  'keystep37/ks37-page-controller.c',
+  'keystep37/ks37-page-cv-gate.c',
+  'keystep37/ks37-page-sequence.c',
+  'keystep37/ks37-page-transport.c',
 ]
 
-ks37_deps = [
+sc_deps = [
   dependency('gtk4'),
   dependency('libadwaita-1', version: '>= 1.4'),
   dependency('alsa'),
   dependency('gmodule-export-2.0'),
 ]
 
-ks37_sources += gnome.compile_resources('ks37-resources',
-  'ks37.gresource.xml',
-  c_name: 'ks37'
+sc_sources += gnome.compile_resources('sc-resources',
+  'sc.gresource.xml',
+  c_name: 'sc'
 )
 
-executable('keystep37-settings', ks37_sources,
-  dependencies: ks37_deps,
+executable('sysex-controls', sc_sources,
+  dependencies: sc_deps,
        install: true,
 )

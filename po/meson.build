@@ -1,1 +1,1 @@
-i18n.gettext('keystep37-settings', preset: 'glib')
+i18n.gettext('sysex-controls', preset: 'glib')

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ks37PageController" parent="ScPreferencesPage">
+    <child>
+      <object class="AdwPreferencesGroup">
+
+        <child>
+          <object class="ScComboRow">
+            <child><object class="ScMidiConnect"><property name="control-id">0x4103</property></object></child>
+            <property name="title" translatable="yes">User Channel</property>
+            <property name="subtitle" translatable="yes">MIDI channel on which the keyboard transmits data</property>
+            <property name="model">
+              <object class="ScControlValueList">
+                <items>
+                  <item>1</item>
+                  <item>2</item>
+                  <item>3</item>
+                  <item>4</item>
+                  <item>5</item>
+                  <item>6</item>
+                  <item>7</item>
+                  <item>8</item>
+                  <item>9</item>
+                  <item>10</item>
+                  <item>11</item>
+                  <item>12</item>
+                  <item>13</item>
+                  <item>14</item>
+                  <item>15</item>
+                  <item>16</item>
+                </items>
+              </object>
+            </property>
+          </object>
+        </child>
+
+        <child>
+          <object class="ScComboRow">
+            <child><object class="ScMidiConnect"><property name="control-id">0x4101</property></object></child>
+            <property name="title" translatable="yes">MIDI Input Channel</property>
+            <property name="subtitle" translatable="yes">USB/MIDI CV channel when Seq/Arp are stopped</property>
+            <property name="model">
+              <object class="ScControlValueList">
+                <items>
+                  <item>1</item>
+                  <item>2</item>
+                  <item>3</item>
+                  <item>4</item>
+                  <item>5</item>
+                  <item>6</item>
+                  <item>7</item>
+                  <item>8</item>
+                  <item>9</item>
+                  <item>10</item>
+                  <item>11</item>
+                  <item>12</item>
+                  <item>13</item>
+                  <item>14</item>
+                  <item>15</item>
+                  <item>16</item>
+                  <item value="0x41">User</item>
+                </items>
+              </object>
+            </property>
+          </object>
+        </child>
+
+        <child>
+          <object class="AdwSwitchRow">
+            <child><object class="ScMidiConnect"><property name="control-id">0x4102</property></object></child>
+            <property name="title" translatable="yes">MIDI Thru</property>
+            <property name="subtitle" translatable="yes">Patch MIDI In to Out</property>
+          </object>
+        </child>
+
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwPreferencesGroup">
+        <child>
+          <object class="ScComboRow">
+            <child><object class="ScMidiConnect"><property name="control-id">0x4106</property></object></child>
+            <property name="title" translatable="yes">Velocity Curve</property>
+            <property name="subtitle" translatable="yes">Sets velocity response type</property>
+            <property name="model">
+              <object class="ScControlValueList">
+                <items>
+                  <item>Log</item>
+                  <item>Lin</item>
+                  <item>AntiLog</item>
+                </items>
+              </object>
+            </property>
+          </object>
+        </child>
+
+        <child>
+          <object class="ScComboRow">
+            <child><object class="ScMidiConnect"><property name="control-id">0x4107</property></object></child>
+            <property name="title" translatable="yes">Aftertouch Curve</property>
+            <property name="subtitle" translatable="yes">Sets Aftertouch response type</property>
+            <property name="model">
+              <object class="ScControlValueList">
+                <items>
+                  <item>Log</item>
+                  <item>Lin</item>
+                  <item>AntiLog</item>
+                  <item>Soft</item>
+                </items>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="ScComboRow">
+            <child><object class="ScMidiConnect"><property name="control-id">0x412e</property></object></child>
+            <property name="title" translatable="yes">Knob Catchup</property>
+            <property name="subtitle" translatable="yes">Matches the physical knob position with the digital value it represents</property>
+            <property name="model">
+              <object class="ScControlValueList">
+                <items>
+                  <item>Jump</item>
+                  <item>Hook</item>
+                  <item>Scale</item>
+                </items>
+              </object>
+            </property>
+          </object>
+        </child>
+
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwPreferencesGroup">
+        <child>
+          <object class="ScComboRow">
+            <child><object class="ScMidiConnect"><property name="control-id">0x416f</property></object></child>
+            <property name="title" translatable="yes">Hold Switch Function</property>
+            <property name="subtitle" translatable="yes">Act as Sus. Pedal or not</property>
+            <property name="model">
+              <object class="ScControlValueList">
+                <items>
+                  <item value="0x01">Hold</item>
+                  <item>Sustain</item>
+                  <item>Both</item>
+                </items>
+              </object>
+            </property>
+          </object>
+        </child>
+
+        <child>
+          <object class="ScComboRow">
+            <child><object class="ScMidiConnect"><property name="control-id">0x4170</property></object></child>
+            <property name="title" translatable="yes">Sustain Pedal Function</property>
+            <property name="subtitle" translatable="yes">Act as Hold button or not</property>
+            <property name="model">
+              <object class="ScControlValueList">
+                <items>
+                  <item value="0x01">Hold</item>
+                  <item>Sustain</item>
+                  <item>Both</item>
+                </items>
+              </object>
+            </property>
+          </object>
+        </child>
+
+      </object>
+    </child>
+  </template>
+</interface>
+

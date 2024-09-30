@@ -1,4 +1,4 @@
-application_id = 'hu.irl.keystep37-settings'
+application_id = 'hu.irl.sysex-controls'
 
 scalable_dir = 'hicolor' / 'scalable' / 'apps'
 install_data(
