@@ -2,14 +2,29 @@
 
 #include "config.h"
 
-#include "keystep37/ks37-book.h"
 #include "sc-control-value.h"
-
-#include "sc-window.h"
 #include "sc-midi.h"
+#include "sc-window.h"
 
-#define KS37_MIDI_NAME "Arturia KeyStep 37"
+#include "keystep37/ks37-book.h"
+#include "minilab2/ml2-book.h"
+
 #define CONTROLS_MAX_N 100
+
+#define CONTROLLERS_N 2
+
+typedef GtkWidget * (*book_init_func)(void);
+
+typedef const struct {
+  const char *midi_name;
+  const char *short_name;
+  book_init_func init;
+} controller_t;
+
+static controller_t controllers[CONTROLLERS_N] = {
+  {KS37_MIDI_NAME, KS37_SHORT_NAME, ks37_book_new},
+  {ML2_MIDI_NAME, ML2_SHORT_NAME, ml2_book_new},
+};
 
 typedef struct {
   uint16_t id;
@@ -30,6 +45,7 @@ struct _ScWindow
   /* Template widgets */
   AdwToastOverlay *toast_overlay;
   GtkStackSidebar *sidebar;
+  AdwNavigationPage  *setting_page;
   AdwNavigationPage  *content_page;
   AdwToolbarView *content_view;
   AdwNavigationView  *navigation_view;
@@ -312,6 +328,8 @@ sc_window_set_book(ScWindow *self, AdwBin *book)
 static void
 sc_midi_init(ScWindow *self)
 {
+  controller_t *controller = NULL;
+
   if (self->seq)
     sc_midi_close (&self->seq);
 
@@ -321,8 +339,14 @@ sc_midi_init(ScWindow *self)
     return;
   }
 
-  if (sc_midi_get_address (self->seq, KS37_MIDI_NAME, &self->seq_addr) < 0)
-  {
+  for (int i = 0; i < CONTROLLERS_N; ++i)
+    if (sc_midi_get_address (self->seq, controllers[i].midi_name, &self->seq_addr) == 0)
+    {
+      controller = &controllers[i];
+      break;
+    }
+
+  if (controller == NULL) {
     g_warning ("Failed to find controller\n");
     return;
   }
@@ -333,7 +357,8 @@ sc_midi_init(ScWindow *self)
     return;
   }
 
-  sc_window_set_book (self, ADW_BIN (ks37_book_new ()));
+  adw_navigation_page_set_title (self->setting_page, controller->short_name);
+  sc_window_set_book (self, ADW_BIN (controller->init ()));
 
   adw_navigation_view_replace_with_tags (self->navigation_view, (const char * const[]){"load"}, 1);
   g_idle_add (sc_create_load_task, self);
@@ -353,6 +378,7 @@ sc_window_class_init (ScWindowClass *klass)
   gtk_widget_class_set_template_from_resource (widget_class, "/hu/irl/sysex-controls/sc-window.ui");
   gtk_widget_class_bind_template_child (widget_class, ScWindow, toast_overlay);
   gtk_widget_class_bind_template_child (widget_class, ScWindow, sidebar);
+  gtk_widget_class_bind_template_child (widget_class, ScWindow, setting_page);
   gtk_widget_class_bind_template_child (widget_class, ScWindow, content_page);
   gtk_widget_class_bind_template_child (widget_class, ScWindow, content_view);
   gtk_widget_class_bind_template_child (widget_class, ScWindow, navigation_view);

@@ -2,6 +2,9 @@
 
 #include <adwaita.h>
 
+#define KS37_MIDI_NAME "Arturia KeyStep 37"
+#define KS37_SHORT_NAME "KeyStep 37"
+
 G_BEGIN_DECLS
 
 #define KS37_TYPE_BOOK (ks37_book_get_type ())

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ml2Book" parent="AdwBin">
+    <property name="child">
+      <object class="GtkStack">
+        <property name="vhomogeneous">False</property>
+        <property name="valign">start</property>
+
+        <child>
+          <object class="GtkStackPage">
+            <property name="title" translatable="yes">Pad Colors</property>
+            <property name="child">
+              <object class="ScPreferencesPage">
+
+                <child>
+                  <object class="AdwPreferencesGroup">
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x1070</property></object></child>
+                        <property name="title" translatable="yes">Pad 1</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x1071</property></object></child>
+                        <property name="title" translatable="yes">Pad 2</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x1072</property></object></child>
+                        <property name="title" translatable="yes">Pad 3</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x1073</property></object></child>
+                        <property name="title" translatable="yes">Pad 4</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x1074</property></object></child>
+                        <property name="title" translatable="yes">Pad 5</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x1075</property></object></child>
+                        <property name="title" translatable="yes">Pad 6</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x1076</property></object></child>
+                        <property name="title" translatable="yes">Pad 7</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x1077</property></object></child>
+                        <property name="title" translatable="yes">Pad 8</property>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwPreferencesGroup">
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x1078</property></object></child>
+                        <property name="title" translatable="yes">Pad 9</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x1079</property></object></child>
+                        <property name="title" translatable="yes">Pad 10</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x107a</property></object></child>
+                        <property name="title" translatable="yes">Pad 11</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x107b</property></object></child>
+                        <property name="title" translatable="yes">Pad 12</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x107c</property></object></child>
+                        <property name="title" translatable="yes">Pad 13</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x107d</property></object></child>
+                        <property name="title" translatable="yes">Pad 14</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x107e</property></object></child>
+                        <property name="title" translatable="yes">Pad 15</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ml2ColorRow">
+                        <child><object class="ScMidiConnect"><property name="control-id">0x107f</property></object></child>
+                        <property name="title" translatable="yes">Pad 16</property>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+              </object>
+            </property>
+          </object>
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>
+

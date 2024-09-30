@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ml2ColorRow" parent="ScComboRow">
+    <property name="model">
+      <object class="ScControlValueList">
+        <items>
+          <item>Off</item>
+          <item>Red</item>
+          <item value="0x4">Green</item>
+          <item>Yellow</item>
+          <item value="0x10">Blue</item>
+          <item>Magenta</item>
+          <item value="0x14">Cyan</item>
+          <item value="0x7f">White</item>
+        </items>
+      </object>
+    </property>
+  </template>
+</interface>
+

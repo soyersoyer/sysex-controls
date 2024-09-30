@@ -15,6 +15,8 @@ sc_sources = [
   'keystep37/ks37-page-cv-gate.c',
   'keystep37/ks37-page-sequence.c',
   'keystep37/ks37-page-transport.c',
+  'minilab2/ml2-book.c',
+  'minilab2/ml2-color-row.c',
 ]
 
 sc_deps = [

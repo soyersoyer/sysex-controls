@@ -10,6 +10,8 @@
     <file preprocess="xml-stripblanks">keystep37/ks37-page-cv-gate.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-page-sequence.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-page-transport.ui</file>
+    <file preprocess="xml-stripblanks">minilab2/ml2-book.ui</file>
+    <file preprocess="xml-stripblanks">minilab2/ml2-color-row.ui</file>
   </gresource>
 </gresources>
 

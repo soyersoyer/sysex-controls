@@ -91,7 +91,7 @@
               <object class="AdwNavigationSplitView" id="split_view">
                 <property name="min-sidebar-width">200</property>
                 <property name="sidebar">
-                  <object class="AdwNavigationPage">
+                  <object class="AdwNavigationPage" id="setting_page">
                     <property name="title" translatable="yes">SysEx Controls</property>
                     <property name="tag">sidebar</property>
                     <property name="child">
