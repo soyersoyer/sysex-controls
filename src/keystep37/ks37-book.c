@@ -1,11 +1,11 @@
 #include "ks37-book.h"
 
+#include "ks37-cc-bank-page.h"
+#include "ks37-controller-page.h"
+#include "ks37-cv-gate-page.h"
 #include "ks37-note-row.h"
-#include "ks37-page-cc-bank.h"
-#include "ks37-page-controller.h"
-#include "ks37-page-cv-gate.h"
-#include "ks37-page-sequence.h"
-#include "ks37-page-transport.h"
+#include "ks37-sequence-page.h"
+#include "ks37-transport-page.h"
 
 struct _Ks37Book
 {
@@ -25,12 +25,12 @@ ks37_book_class_init (Ks37BookClass *klass)
 static void
 ks37_book_init (Ks37Book *self)
 {
+  g_type_ensure (KS37_TYPE_CC_BANK_PAGE);
+  g_type_ensure (KS37_TYPE_CONTROLLER_PAGE);
+  g_type_ensure (KS37_TYPE_CV_GATE_PAGE);
   g_type_ensure (KS37_TYPE_NOTE_ROW);
-  g_type_ensure (KS37_TYPE_PAGE_CC_BANK);
-  g_type_ensure (KS37_TYPE_PAGE_CONTROLLER);
-  g_type_ensure (KS37_TYPE_PAGE_CV_GATE);
-  g_type_ensure (KS37_TYPE_PAGE_SEQUENCE);
-  g_type_ensure (KS37_TYPE_PAGE_TRANSPORT);
+  g_type_ensure (KS37_TYPE_SEQUENCE_PAGE);
+  g_type_ensure (KS37_TYPE_TRANSPORT_PAGE);
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }

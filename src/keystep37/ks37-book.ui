@@ -12,7 +12,7 @@
           <object class="GtkStackPage">
             <property name="title" translatable="yes">Controller</property>
             <property name="child">
-              <object class="Ks37PageController" />
+              <object class="Ks37ControllerPage" />
             </property>
           </object>
         </child>
@@ -21,7 +21,7 @@
           <object class="GtkStackPage">
             <property name="title" translatable="yes">Sequence</property>
             <property name="child">
-              <object class="Ks37PageSequence" />
+              <object class="Ks37SequencePage" />
             </property>
           </object>
         </child>
@@ -30,7 +30,7 @@
           <object class="GtkStackPage">
             <property name="title" translatable="yes">CV / Gate</property>
             <property name="child">
-              <object class="Ks37PageCvGate" />
+              <object class="Ks37CvGatePage" />
             </property>
           </object>
         </child>
@@ -39,7 +39,7 @@
           <object class="GtkStackPage">
             <property name="title" translatable="yes">Transport</property>
             <property name="child">
-              <object class="Ks37PageTransport" />
+              <object class="Ks37TransportPage" />
             </property>
           </object>
         </child>
@@ -48,7 +48,7 @@
           <object class="GtkStackPage">
             <property name="title" translatable="yes">CC Bank 1</property>
             <property name="child">
-              <object class="Ks37PageCcBank">
+              <object class="Ks37CcBankPage">
                 <property name="control-id-offset">0x412f</property>
               </object>
             </property>
@@ -59,7 +59,7 @@
           <object class="GtkStackPage">
             <property name="title" translatable="yes">CC Bank 2</property>
             <property name="child">
-              <object class="Ks37PageCcBank">
+              <object class="Ks37CcBankPage">
                 <property name="control-id-offset">0x413f</property>
               </object>
             </property>
@@ -70,7 +70,7 @@
           <object class="GtkStackPage">
             <property name="title" translatable="yes">CC Bank 3</property>
             <property name="child">
-              <object class="Ks37PageCcBank">
+              <object class="Ks37CcBankPage">
                 <property name="control-id-offset">0x414f</property>
               </object>
             </property>
@@ -81,7 +81,7 @@
           <object class="GtkStackPage">
             <property name="title" translatable="yes">CC Bank 4</property>
             <property name="child">
-              <object class="Ks37PageCcBank">
+              <object class="Ks37CcBankPage">
                 <property name="control-id-offset">0x415f</property>
               </object>
             </property>
