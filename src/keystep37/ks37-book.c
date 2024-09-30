@@ -1,5 +1,6 @@
 #include "ks37-book.h"
 
+#include "ks37-note-row.h"
 #include "ks37-page-cc-bank.h"
 #include "ks37-page-controller.h"
 #include "ks37-page-cv-gate.h"
@@ -24,6 +25,7 @@ ks37_book_class_init (Ks37BookClass *klass)
 static void
 ks37_book_init (Ks37Book *self)
 {
+  g_type_ensure (KS37_TYPE_NOTE_ROW);
   g_type_ensure (KS37_TYPE_PAGE_CC_BANK);
   g_type_ensure (KS37_TYPE_PAGE_CONTROLLER);
   g_type_ensure (KS37_TYPE_PAGE_CV_GATE);

@@ -9,6 +9,7 @@ sc_sources = [
   'sc-window.c',
   'main.c',
   'keystep37/ks37-book.c',
+  'keystep37/ks37-note-row.c',
   'keystep37/ks37-page-cc-bank.c',
   'keystep37/ks37-page-cc-bank-knob.c',
   'keystep37/ks37-page-controller.c',

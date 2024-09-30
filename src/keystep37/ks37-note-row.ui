@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ks37NoteRow" parent="ScComboRow">
+    <property name="model">
+      <object class="ScControlValueList">
+        <items>
+          <item>C-2</item>
+          <item>C#-2</item>
+          <item>D-2</item>
+          <item>D#-2</item>
+          <item>E-2</item>
+          <item>F-2</item>
+          <item>F#-2</item>
+          <item>G-2</item>
+          <item>G#-2</item>
+          <item>A-2</item>
+          <item>A#-2</item>
+          <item>B-2</item>
+
+          <item>C-1</item>
+          <item>C#-1</item>
+          <item>D-1</item>
+          <item>D#-1</item>
+          <item>E-1</item>
+          <item>F-1</item>
+          <item>F#-1</item>
+          <item>G-1</item>
+          <item>G#-1</item>
+          <item>A-1</item>
+          <item>A#-1</item>
+          <item>B-1</item>
+
+          <item>C0</item>
+          <item>C#0</item>
+          <item>D0</item>
+          <item>D#0</item>
+          <item>E0</item>
+          <item>F0</item>
+          <item>F#0</item>
+          <item>G0</item>
+          <item>G#0</item>
+          <item>A0</item>
+          <item>A#0</item>
+          <item>B0</item>
+
+          <item>C1</item>
+          <item>C#1</item>
+          <item>D1</item>
+          <item>D#1</item>
+          <item>E1</item>
+          <item>F1</item>
+          <item>F#1</item>
+          <item>G1</item>
+          <item>G#1</item>
+          <item>A1</item>
+          <item>A#1</item>
+          <item>B1</item>
+
+          <item>C2</item>
+          <item>C#2</item>
+          <item>D2</item>
+          <item>D#2</item>
+          <item>E2</item>
+          <item>F2</item>
+          <item>F#2</item>
+          <item>G2</item>
+          <item>G#2</item>
+          <item>A2</item>
+          <item>A#2</item>
+          <item>B2</item>
+
+          <item>C3</item>
+          <item>C#3</item>
+          <item>D3</item>
+          <item>D#3</item>
+          <item>E3</item>
+          <item>F3</item>
+          <item>F#3</item>
+          <item>G3</item>
+          <item>G#3</item>
+          <item>A3</item>
+          <item>A#3</item>
+          <item>B3</item>
+
+          <item>C4</item>
+          <item>C#4</item>
+          <item>D4</item>
+          <item>D#4</item>
+          <item>E4</item>
+          <item>F4</item>
+          <item>F#4</item>
+          <item>G4</item>
+          <item>G#4</item>
+          <item>A4</item>
+          <item>A#4</item>
+          <item>B4</item>
+
+          <item>C5</item>
+          <item>C#5</item>
+          <item>D5</item>
+          <item>D#5</item>
+          <item>E5</item>
+          <item>F5</item>
+          <item>F#5</item>
+          <item>G5</item>
+          <item>G#5</item>
+          <item>A5</item>
+          <item>A#5</item>
+          <item>B5</item>
+
+          <item>C6</item>
+          <item>C#6</item>
+          <item>D6</item>
+          <item>D#6</item>
+          <item>E6</item>
+          <item>F6</item>
+          <item>F#6</item>
+          <item>G6</item>
+          <item>G#6</item>
+          <item>A6</item>
+          <item>A#6</item>
+          <item>B6</item>
+
+          <item>C7</item>
+          <item>C#7</item>
+          <item>D7</item>
+          <item>D#7</item>
+          <item>E7</item>
+          <item>F7</item>
+          <item>F#7</item>
+          <item>G7</item>
+          <item>G#7</item>
+          <item>A7</item>
+          <item>A#7</item>
+          <item>B7</item>
+
+          <item>C8</item>
+          <item>C#8</item>
+          <item>D8</item>
+          <item>D#8</item>
+          <item>E8</item>
+          <item>F8</item>
+          <item>F#8</item>
+          <item>G8</item>
+        </items>
+      </object>
+    </property>
+  </template>
+</interface>
+

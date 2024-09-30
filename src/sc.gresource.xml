@@ -4,6 +4,7 @@
     <file preprocess="xml-stripblanks">sc-window.ui</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-book.ui</file>
+    <file preprocess="xml-stripblanks">keystep37/ks37-note-row.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-page-cc-bank.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-page-cc-bank-knob.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-page-controller.ui</file>
