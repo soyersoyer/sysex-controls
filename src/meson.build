@@ -1,5 +1,6 @@
 sc_sources = [
   'sc-application.c',
+  'sc-cc-row.c',
   'sc-combo-row.c',
   'sc-control-value.c',
   'sc-midi.c',

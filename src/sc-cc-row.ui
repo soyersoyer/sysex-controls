@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="ScCcRow" parent="ScComboRow">
+    <property name="title" translatable="yes">CC</property>
+    <property name="model">
+      <object class="ScControlValueList">
+        <items>
+          <item>0 Bank Select (MSB)</item>
+          <item>1 Modulation Wheel</item>
+          <item>2 Breath controller</item>
+          <item>3 Undefined</item>
+          <item>4 Foot Pedal (MSB)</item>
+          <item>5 Portamento Time (MSB)</item>
+          <item>6 Data Entry (MSB)</item>
+          <item>7 Volume (MSB)</item>
+          <item>8 Balance (MSB)</item>
+          <item>9 Undefined</item>
+          <item>10 Pan position (MSB)</item>
+          <item>11 Expression (MSB)</item>
+          <item>12 Effect Control 1 (MSB)</item>
+          <item>13 Effect Control 2 (MSB)</item>
+          <item>14 Undefined</item>
+          <item>15 Undefined</item>
+          <item>16 General Purpose</item>
+          <item>17 General Purpose</item>
+          <item>18 General Purpose</item>
+          <item>19 General Purpose</item>
+          <item>20 Undefined</item>
+          <item>21 Undefined</item>
+          <item>22 Undefined</item>
+          <item>23 Undefined</item>
+          <item>24 Undefined</item>
+          <item>25 Undefined</item>
+          <item>26 Undefined</item>
+          <item>27 Undefined</item>
+          <item>28 Undefined</item>
+          <item>29 Undefined</item>
+          <item>30 Undefined</item>
+          <item>31 Undefined</item>
+          <item>32 Controller 0</item>
+          <item>33 Controller 1</item>
+          <item>34 Controller 2</item>
+          <item>35 Controller 3</item>
+          <item>36 Controller 4</item>
+          <item>37 Controller 5</item>
+          <item>38 Controller 6</item>
+          <item>39 Controller 7</item>
+          <item>40 Controller 8</item>
+          <item>41 Controller 9</item>
+          <item>42 Controller 10</item>
+          <item>43 Controller 11</item>
+          <item>44 Controller 12</item>
+          <item>45 Controller 13</item>
+          <item>46 Controller 14</item>
+          <item>47 Controller 15</item>
+          <item>48 Controller 16</item>
+          <item>49 Controller 17</item>
+          <item>50 Controller 18</item>
+          <item>51 Controller 19</item>
+          <item>52 Controller 20</item>
+          <item>53 Controller 21</item>
+          <item>54 Controller 22</item>
+          <item>55 Controller 23</item>
+          <item>56 Controller 24</item>
+          <item>57 Controller 25</item>
+          <item>58 Controller 26</item>
+          <item>59 Controller 27</item>
+          <item>60 Controller 28</item>
+          <item>61 Controller 29</item>
+          <item>62 Controller 30</item>
+          <item>63 Controller 31</item>
+          <item>64 Hold Pedal (on/off)</item>
+          <item>65 Portamento (on/off)</item>
+          <item>66 Sostenuto Pedal (on/off)</item>
+          <item>67 Soft Pedal (on/off)</item>
+          <item>68 Legato Pedal (on/off)</item>
+          <item>69 Hold 2 Pedal (on/off)</item>
+          <item>70 Sound Variation</item>
+          <item>71 Resonance (Timbre)</item>
+          <item>72 Sound Release Time</item>
+          <item>73 Sound Attack Time</item>
+          <item>74 Frequency Cutoff (Brightness)</item>
+          <item>75 Sound Control 6</item>
+          <item>76 Sound Control 7</item>
+          <item>77 Sound Control 8</item>
+          <item>78 Sound Control 9</item>
+          <item>79 Sound Control 10</item>
+          <item>80 Decay or General Purpose Button 1 (on/off) Roland Tone level 1</item>
+          <item>81 Hi Pass Filter Frequency or General Purpose Button 2 (on/off) Roland Tone level 2</item>
+          <item>82 General Purpose Button 3 (on/off) Roland Tone level 3</item>
+          <item>83 General Purpose Button 4 (on/off) Roland Tone level 4</item>
+          <item>84 Portamento Amount</item>
+          <item>85 Undefined</item>
+          <item>86 Undefined</item>
+          <item>87 Undefined</item>
+          <item>88 Undefined</item>
+          <item>89 Undefined</item>
+          <item>90 Undefined</item>
+          <item>91 Reverb Level</item>
+          <item>92 Tremolo Level</item>
+          <item>93 Chorus Level</item>
+          <item>94 Detune Level</item>
+          <item>95 Phaser Level</item>
+          <item>96 Data Button increment</item>
+          <item>97 Data Button decrement</item>
+          <item>98 Non-registered Parameter (LSB)</item>
+          <item>99 Non-registered Parameter (MSB)</item>
+          <item>100 Registered Parameter (LSB)</item>
+          <item>101 Registered Parameter (MSB)</item>
+          <item>102 Undefined</item>
+          <item>103 Undefined</item>
+          <item>104 Undefined</item>
+          <item>105 Undefined</item>
+          <item>106 Undefined</item>
+          <item>107 Undefined</item>
+          <item>108 Undefined</item>
+          <item>109 Undefined</item>
+          <item>110 Undefined</item>
+          <item>111 Undefined</item>
+          <item>112 Undefined</item>
+          <item>113 Undefined</item>
+          <item>114 Undefined</item>
+          <item>115 Undefined</item>
+          <item>116 Undefined</item>
+          <item>118 Undefined</item>
+          <item>119 Undefined</item>
+          <item>120 All Sound Off</item>
+          <item>121 All Controllers Off</item>
+          <item>122 Local Keyboard (on/off)</item>
+          <item>123 All Notes Off</item>
+          <item>124 Omni Mode Off</item>
+          <item>125 Omni Mode On</item>
+          <item>126 Mono Operation</item>
+          <item>127 Poly Mode</item>
+        </items>
+      </object>
+    </property>
+  </template>
+</interface>

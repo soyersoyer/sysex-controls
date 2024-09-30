@@ -1,4 +1,5 @@
 #include "ks37-cc-bank-knob.h"
+#include "sc-cc-row.h"
 
 struct _Ks37CcBankKnob
 {
@@ -19,6 +20,7 @@ ks37_cc_bank_knob_class_init (Ks37CcBankKnobClass *klass)
 static void
 ks37_cc_bank_knob_init (Ks37CcBankKnob *self)
 {
+  g_type_ensure (SC_TYPE_CC_ROW);
+
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-
