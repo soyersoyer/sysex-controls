@@ -1,5 +1,6 @@
 sc_sources = [
   'sc-application.c',
+  'sc-arturia-book.c',
   'sc-cc-row.c',
   'sc-combo-row.c',
   'sc-controller-row.c',

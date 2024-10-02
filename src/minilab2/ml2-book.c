@@ -30,8 +30,10 @@ ml2_book_init (Ml2Book *self)
 }
 
 GtkWidget *
-ml2_book_new (void)
+ml2_book_new (snd_seq_t *seq, snd_seq_addr_t *addr)
 {
-  return g_object_new (ML2_TYPE_BOOK, NULL);
+  GtkWidget *book = g_object_new (ML2_TYPE_BOOK, NULL);
+  sc_arturia_book_set_seq (SC_ARTURIA_BOOK (book), seq, addr);
+  return book;
 }
 

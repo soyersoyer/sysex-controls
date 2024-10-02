@@ -1,6 +1,6 @@
 #include "sc-midi-connect.h"
 
-#include "sc-window.h"
+#include "sc-arturia-book.h"
 #include "sc-preferences-page.h"
 #include "sc-preferences-group.h"
 
@@ -103,7 +103,7 @@ sc_midi_connect_register (void *widget)
   if (group_widget)
     control_id += sc_preferences_group_get_control_id_offset (SC_PREFERENCES_GROUP (group_widget));
 
-  sc_window_register_control (SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (adw_widget))), control_id, adw_widget);
+  sc_arturia_book_register_control (SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (adw_widget), SC_TYPE_ARTURIA_BOOK)), control_id, adw_widget);
 
   return false;
 }

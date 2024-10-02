@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="Ml2Book" parent="AdwBin">
+  <template class="Ml2Book" parent="ScArturiaBook">
     <property name="child">
       <object class="GtkStack">
         <property name="vhomogeneous">False</property>

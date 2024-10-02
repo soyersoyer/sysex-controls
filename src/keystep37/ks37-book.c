@@ -9,10 +9,10 @@
 
 struct _Ks37Book
 {
-  AdwBin parent_instance;
+  ScArturiaBook parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ks37Book, ks37_book, ADW_TYPE_BIN)
+G_DEFINE_FINAL_TYPE (Ks37Book, ks37_book, SC_TYPE_ARTURIA_BOOK)
 
 static void
 ks37_book_class_init (Ks37BookClass *klass)
@@ -36,8 +36,10 @@ ks37_book_init (Ks37Book *self)
 }
 
 GtkWidget *
-ks37_book_new (void)
+ks37_book_new (snd_seq_t *seq, snd_seq_addr_t *addr)
 {
-  return g_object_new (KS37_TYPE_BOOK, NULL);
+  GtkWidget *book = g_object_new (KS37_TYPE_BOOK, NULL);
+  sc_arturia_book_set_seq (SC_ARTURIA_BOOK (book), seq, addr);
+  return book;
 }
 
