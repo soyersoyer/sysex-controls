@@ -82,10 +82,10 @@ combo_row_change_cb (GObject * widget, GParamSpec *pspec, control_t *control)
   if (control->val == val)
     return;
 
-  g_debug ("combo control change %02x: %02x -> %02x %s\n", control->id, control->val, val, sc_control_value_get_name (item));
+  g_debug ("combo control change %02x: %02x -> %02x %s", control->id, control->val, val, sc_control_value_get_name (item));
   if (sc_midi_write_control (window->seq, window->seq_addr, control->id, val) < 0)
   {
-    sc_io_problem (window, "Control change failed\n");
+    sc_io_problem (window, "Control change failed");
     return;
   }
 
@@ -105,7 +105,7 @@ switch_row_change_cb (GObject * widget, GParamSpec *pspec, control_t *control)
   g_debug ("switch control change %02x: %02x -> %02x\n", control->id, control->val, val);
   if (sc_midi_write_control (window->seq, window->seq_addr, control->id, val) < 0)
   {
-    sc_io_problem (window, "Control change failed\n");
+    sc_io_problem (window, "Control change failed");
     return;
   }
 
@@ -122,11 +122,11 @@ spin_row_change_cb (GObject * widget, GParamSpec *pspec, control_t *control)
   if (control->val == val)
     return;
 
-  g_debug("spin control change %02x: %02x -> %02x\n", control->id, control->val, val);
+  g_debug("spin control change %02x: %02x -> %02x", control->id, control->val, val);
 
   if (sc_midi_write_control (window->seq, window->seq_addr, control->id, val) < 0)
   {
-    sc_io_problem (window, "Control change failed\n");
+    sc_io_problem (window, "Control change failed");
 
     /*
      * When setting page replaced by search page this spins forever
@@ -153,13 +153,13 @@ sc_window_register_control (ScWindow *self, uint16_t control_id, GtkWidget *widg
 
   if (control)
   {
-    g_error ("Control already added: 0x%02x\n", control_id);
+    g_error ("Control already added: 0x%02x", control_id);
     return;
   }
 
   if (self->controls_n == CONTROLS_MAX_N)
   {
-    g_error ("Control space exhausted\n");
+    g_error ("Control space exhausted");
     return;
   }
 
@@ -176,11 +176,11 @@ sc_window_register_control (ScWindow *self, uint16_t control_id, GtkWidget *widg
   else if (ADW_IS_SPIN_ROW(widget))
     g_signal_connect (G_OBJECT (widget), "notify::value", G_CALLBACK (spin_row_change_cb), control);
   else
-    g_error("Unsupported control type: %s id: 0x%02x\n",
+    g_error("Unsupported control type: %s id: 0x%02x",
             gtk_widget_get_name(GTK_WIDGET (widget)),
             control_id);
 
-  g_debug("sc_window_register_control %02x\n", control_id);
+  g_debug("sc_window_register_control %02x", control_id);
 }
 
 static void
@@ -204,21 +204,21 @@ update_gui_control (control_t *c)
     if (pos != GTK_INVALID_LIST_POSITION)
       adw_combo_row_set_selected (combo_row, pos);
 
-    g_debug("Set combo row id %02x to pos %02x\n", c->id, pos);
+    g_debug("Set combo row id %02x to pos %02x", c->id, pos);
   }
   else if (ADW_IS_SWITCH_ROW (c->widget))
   {
     AdwSwitchRow *switch_row = ADW_SWITCH_ROW (c->widget);
     adw_switch_row_set_active (switch_row, c->val);
-    g_debug ("Set switch row with id %02x to %02x\n", c->id, c->val);
+    g_debug ("Set switch row with id %02x to %02x", c->id, c->val);
   }
   else if (ADW_IS_SPIN_ROW (c->widget))
   {
     AdwSpinRow *spin_row = ADW_SPIN_ROW (c->widget);
     adw_spin_row_set_value (spin_row, c->val);
-    g_debug ("Set spin row with id %02x to %02x\n", c->id, c->val);
+    g_debug ("Set spin row with id %02x to %02x", c->id, c->val);
   } else {
-    g_error ("Unsupported control type: %s id: 0x%02x\n",
+    g_error ("Unsupported control type: %s id: 0x%02x",
               gtk_widget_get_name (GTK_WIDGET (c->widget)),
               c->id);
     }
@@ -256,20 +256,20 @@ static void
 sc_load_task (GTask *task, gpointer source_obj, gpointer task_data, GCancellable *cancellable)
 {
   ScWindow *self = SC_WINDOW (source_obj);
-  g_debug ("sc_load_task start\n");
+  g_debug ("sc_load_task start");
   for(int i = 0; i < self->controls_n; ++i)
   {
     control_t *c = &self->controls[i];
     int err = sc_midi_read_control (self->seq, self->seq_addr, c->id, &c->val);
     if (err < 0)
     {
-      g_task_return_new_error_literal (task, G_IO_ERROR, G_IO_ERROR_FAILED, "control value read failed\n");
+      g_task_return_new_error_literal (task, G_IO_ERROR, G_IO_ERROR_FAILED, "control value read failed");
       return;
     }
   }
 
   g_task_return_boolean (task, true);
-  g_debug ("sc_load_task end\n");
+  g_debug ("sc_load_task end");
 }
 
 static void
@@ -313,7 +313,7 @@ notify_visible_child_cb (GtkStack* stack, GParamSpec *pspec, ScWindow *self)
 
 
 static void
-sc_window_set_book(ScWindow *self, AdwBin *book)
+sc_window_set_book (ScWindow *self, AdwBin *book)
 {
   GtkStack *stack = GTK_STACK (adw_bin_get_child(book));
   self->controls_n = 0;
