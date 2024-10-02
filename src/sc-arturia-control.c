@@ -1,4 +1,4 @@
-#include "sc-midi-connect.h"
+#include "sc-arturia-control.h"
 
 #include "sc-arturia-book.h"
 #include "sc-preferences-page.h"
@@ -10,7 +10,7 @@ enum {
   LAST_PROP,
 };
 
-struct _ScMidiConnect
+struct _ScArturiaControl
 {
   AdwBin parent_instance;
   uint16_t control_id;
@@ -18,27 +18,27 @@ struct _ScMidiConnect
 
 static GParamSpec *value_props[LAST_PROP];
 
-G_DEFINE_FINAL_TYPE (ScMidiConnect, sc_midi_connect, ADW_TYPE_BIN)
+G_DEFINE_FINAL_TYPE (ScArturiaControl, sc_arturia_control, ADW_TYPE_BIN)
 
 uint16_t
-sc_midi_connect_get_control_id (ScMidiConnect *self)
+sc_arturia_control_get_id (ScArturiaControl *self)
 {
-  g_return_val_if_fail (SC_IS_MIDI_CONNECT (self), 0);
+  g_return_val_if_fail (SC_IS_ARTURIA_CONTROL (self), 0);
   return self->control_id;
 }
 
 static void
-sc_midi_connect_get_property (GObject    *object,
-                              guint       prop_id,
-                              GValue     *value,
-                              GParamSpec *pspec)
+sc_arturia_control_get_property (GObject    *object,
+                                 guint       prop_id,
+                                 GValue     *value,
+                                 GParamSpec *pspec)
 {
-  ScMidiConnect *self = SC_MIDI_CONNECT (object);
+  ScArturiaControl *self = SC_ARTURIA_CONTROL (object);
 
   switch (prop_id)
     {
     case PROP_CONTROL_ID:
-      g_value_set_uint (value, sc_midi_connect_get_control_id (self));
+      g_value_set_uint (value, sc_arturia_control_get_id (self));
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -47,12 +47,12 @@ sc_midi_connect_get_property (GObject    *object,
 
 
 static void
-sc_midi_connect_set_property (GObject      *object,
-                              guint         prop_id,
-                              const GValue *value,
-                              GParamSpec   *pspec)
+sc_arturia_control_set_property (GObject      *object,
+                                 guint         prop_id,
+                                 const GValue *value,
+                                 GParamSpec   *pspec)
 {
-  ScMidiConnect *self = SC_MIDI_CONNECT (object);
+  ScArturiaControl *self = SC_ARTURIA_CONTROL (object);
 
   switch (prop_id)
     {
@@ -65,12 +65,12 @@ sc_midi_connect_set_property (GObject      *object,
 }
 
 static void
-sc_midi_connect_class_init (ScMidiConnectClass *klass)
+sc_arturia_control_class_init (ScArturiaControlClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->get_property = sc_midi_connect_get_property;
-  object_class->set_property = sc_midi_connect_set_property;
+  object_class->get_property = sc_arturia_control_get_property;
+  object_class->set_property = sc_arturia_control_set_property;
 
   value_props[PROP_CONTROL_ID] = g_param_spec_uint ("control-id", NULL, NULL,
                                                     0, G_MAXUINT16, 0,
@@ -80,9 +80,9 @@ sc_midi_connect_class_init (ScMidiConnectClass *klass)
 }
 
 static int
-sc_midi_connect_register (void *widget)
+sc_arturia_control_register (void *widget)
 {
-  ScMidiConnect *self = SC_MIDI_CONNECT (widget);
+  ScArturiaControl *self = SC_ARTURIA_CONTROL (widget);
   GtkWidget *adw_widget, *page_widget, *group_widget;
   uint16_t control_id = self->control_id;
 
@@ -109,15 +109,14 @@ sc_midi_connect_register (void *widget)
 }
 
 static void
-sc_midi_connect_register_cb (ScMidiConnect *self)
+sc_arturia_control_register_cb (ScArturiaControl *self)
 {
-  g_idle_add (sc_midi_connect_register, self);
+  g_idle_add (sc_arturia_control_register, self);
 }
 
 static void
-sc_midi_connect_init (ScMidiConnect *self)
+sc_arturia_control_init (ScArturiaControl *self)
 {
   gtk_widget_set_visible (GTK_WIDGET (&self->parent_instance), false);
-  g_signal_connect (G_OBJECT (self), "notify::control-id", G_CALLBACK (sc_midi_connect_register_cb), NULL);
+  g_signal_connect (G_OBJECT (self), "notify::control-id", G_CALLBACK (sc_arturia_control_register_cb), NULL);
 }
-

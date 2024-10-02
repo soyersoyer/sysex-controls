@@ -1,12 +1,12 @@
 sc_sources = [
   'sc-application.c',
   'sc-arturia-book.c',
+  'sc-arturia-control.c',
   'sc-cc-row.c',
   'sc-combo-row.c',
   'sc-controller-row.c',
   'sc-control-value.c',
   'sc-midi.c',
-  'sc-midi-connect.c',
   'sc-preferences-group.c',
   'sc-preferences-page.c',
   'sc-window.c',

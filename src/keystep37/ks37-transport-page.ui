@@ -8,7 +8,7 @@
 
         <child>
           <object class="ScComboRow">
-            <child><object class="ScMidiConnect"><property name="control-id">0x4127</property></object></child>
+            <child><object class="ScArturiaControl"><property name="control-id">0x4127</property></object></child>
             <property name="title" translatable="yes">Play / Pause</property>
             <property name="subtitle">Pause or 'stutter' sequence</property>
             <property name="model">
@@ -24,7 +24,7 @@
 
         <child>
           <object class="ScComboRow">
-            <child><object class="ScMidiConnect"><property name="control-id">0x4120</property></object></child>
+            <child><object class="ScArturiaControl"><property name="control-id">0x4120</property></object></child>
             <property name="title" translatable="yes">Transport Mode</property>
             <property name="model">
               <object class="ScControlValueList">
