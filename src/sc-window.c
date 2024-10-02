@@ -55,11 +55,20 @@ struct _ScWindow
 G_DEFINE_FINAL_TYPE (ScWindow, sc_window, ADW_TYPE_APPLICATION_WINDOW)
 
 static void
-sc_io_problem (ScWindow *self, const char *message)
+__attribute__ ((format (gnu_printf, 2, 3)))
+sc_io_problem (ScWindow *self, const char *format, ...)
 {
+  char message[128];
+  va_list args;
+
+  va_start(args, format);
+  vsnprintf(message, 128,  format, args);
+  va_end (args);
+
   g_warning ("%s", message);
+
   adw_toast_overlay_add_toast (self->toast_overlay, adw_toast_new (message));
-  adw_navigation_view_replace_with_tags(self->navigation_view, (const char * const[]){"search"}, 1);
+  adw_navigation_view_replace_with_tags(self->navigation_view, (const char * const[]){"list"}, 1);
 }
 
 static control_t *
@@ -281,7 +290,7 @@ sc_load_task_finish (GObject* source_object, GAsyncResult* res, gpointer data)
 
   if (error)
   {
-    sc_io_problem (self, error->message);
+    sc_io_problem (self, "%s", error->message);
     return;
   }
   for(int i = 0; i < self->controls_n; ++i)
