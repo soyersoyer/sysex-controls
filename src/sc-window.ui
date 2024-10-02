@@ -3,8 +3,8 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="Adw" version="1.0"/>
   <template class="ScWindow" parent="AdwApplicationWindow">
-    <property name="width-request">200</property>
-    <property name="height-request">200</property>
+    <property name="width-request">300</property>
+    <property name="height-request">300</property>
     <property name="default-width">600</property>
     <property name="default-height">425</property>
 
@@ -40,7 +40,7 @@
                 <property name="content">
                   <object class="AdwStatusPage">
                     <property name="icon-name">system-search-symbolic</property>
-                    <property name="title">No controller detected</property>
+                    <property name="title">No controllers detected</property>
                     <property name="description">Please connect your controller</property>
                     <child>
                       <object class="GtkButton">
@@ -49,6 +49,42 @@
                         <style><class name="pill"/></style>
                         <signal name="clicked" handler="refresh_button_click_cb" swapped="yes"/>
                       </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwNavigationPage">
+            <property name="title" translatable="yes">SysEx Controls</property>
+            <property name="tag">list</property>
+            <property name="child">
+              <object class="AdwToolbarView">
+                <child type="top">
+                  <object class="AdwHeaderBar">
+                    <child type="start">
+                      <object class="GtkButton">
+                        <property name="icon-name">view-refresh-symbolic</property>
+                        <signal name="clicked" handler="refresh_button_click_cb" swapped="yes"/>
+                      </object>
+                    </child>
+                    <child type="end">
+                      <object class="GtkMenuButton">
+                        <property name="icon-name">open-menu-symbolic</property>
+                        <property name="menu-model">primary_menu</property>
+                        <property name="primary">True</property>
+                        <property name="tooltip-text" translatable="yes">Main Menu</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <property name="content">
+                  <object class="AdwStatusPage" >
+                    <property name="icon-name">hu.irl.sysex-controls-midi-controller-symbolic</property>
+                    <child>
+                      <object class="AdwClamp" id="controller_list_clamp"/>
                     </child>
                   </object>
                 </property>
@@ -87,6 +123,7 @@
         <child>
           <object class="AdwNavigationPage">
             <property name="tag">setting</property>
+            <signal name="hidden" handler="setting_hidden_cb" swapped="yes"/>
             <property name="child">
               <object class="AdwNavigationSplitView" id="split_view">
                 <property name="min-sidebar-width">200</property>
@@ -98,6 +135,12 @@
                       <object class="AdwToolbarView">
                         <child type="top">
                           <object class="AdwHeaderBar">
+                            <child type="start">
+                              <object class="GtkButton">
+                                <property name="icon-name">go-previous-symbolic</property>
+                                <signal name="clicked" handler="show_list_click_cb" swapped="yes" />
+                              </object>
+                            </child>
                             <child type="end">
                               <object class="GtkMenuButton" id="menuButton">
                                 <property name="icon-name">open-menu-symbolic</property>
@@ -122,7 +165,7 @@
                     <property name="child">
                       <object class="AdwToolbarView" id="content_view">
                         <child type="top">
-                          <object class="AdwHeaderBar" />
+                          <object class="AdwHeaderBar" id="content_header"/>
                         </child>
                       </object>
                     </property>

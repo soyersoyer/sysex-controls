@@ -161,6 +161,26 @@ sc_midi_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, 
 }
 
 int
+sc_midi_disconnect (snd_seq_t *seq, snd_seq_addr_t addr)
+{
+  int err;
+
+  err = snd_seq_disconnect_from (seq, 0, addr.client, addr.port);
+  if (err < 0) {
+    fprintf (stderr, "snd_seq_disconnect_from(%d:%d) failed %d\n", addr.client, addr.port, err);
+    return err;
+  }
+
+  err = snd_seq_disconnect_to (seq, 0, addr.client, addr.port);
+  if (err < 0) {
+    fprintf (stderr, "snd_seq_disconnect_to(%d:%d) failed %d\n", addr.client, addr.port, err);
+    return err;
+  }
+
+  return err;
+}
+
+int
 sc_midi_connect (snd_seq_t *seq, snd_seq_addr_t addr)
 {
   int err;
@@ -183,10 +203,11 @@ sc_midi_connect (snd_seq_t *seq, snd_seq_addr_t addr)
 }
 
 int
-sc_midi_get_address (snd_seq_t *seq, const char* name, snd_seq_addr_t *addr)
+sc_midi_get_controllers (snd_seq_t *seq, sc_midi_info_t *controllers, int n)
 {
   snd_seq_client_info_t *cinfo;
   snd_seq_port_info_t *pinfo;
+  int i = 0;
 
   snd_seq_client_info_alloca (&cinfo);
   snd_seq_port_info_alloca (&pinfo);
@@ -205,15 +226,18 @@ sc_midi_get_address (snd_seq_t *seq, const char* name, snd_seq_addr_t *addr)
       if (!(snd_seq_port_info_get_type (pinfo) & SND_SEQ_PORT_TYPE_HARDWARE))
         continue;
 
-      if (strcmp (name, snd_seq_client_info_get_name (cinfo)) != 0)
-        continue;
+      if (i == n)
+        return i;
 
-      addr->client = snd_seq_client_info_get_client (cinfo);
-      addr->port = snd_seq_port_info_get_port (pinfo);
-      return 0;
+      strncpy(controllers[i].client_name, snd_seq_client_info_get_name (cinfo), NAME_SIZE);
+      strncpy(controllers[i].port_name, snd_seq_port_info_get_name (pinfo), NAME_SIZE);
+      controllers[i].addr.client = snd_seq_client_info_get_client (cinfo);
+      controllers[i].addr.port = snd_seq_port_info_get_port (pinfo);
+
+      i++;
     }
   }
-  return -ENODEV;
+  return i;
 }
 
 int

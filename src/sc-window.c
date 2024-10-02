@@ -2,6 +2,7 @@
 
 #include "config.h"
 
+#include "sc-controller-row.h"
 #include "sc-control-value.h"
 #include "sc-midi.h"
 #include "sc-window.h"
@@ -45,6 +46,7 @@ struct _ScWindow
   /* Template widgets */
   AdwToastOverlay *toast_overlay;
   GtkStackSidebar *sidebar;
+  AdwClamp *controller_list_clamp;
   AdwNavigationPage  *setting_page;
   AdwNavigationPage  *content_page;
   AdwToolbarView *content_view;
@@ -335,34 +337,28 @@ sc_window_set_book (ScWindow *self, AdwBin *book)
 }
 
 static void
-sc_midi_init(ScWindow *self)
+sc_window_midi_connect (ScWindow *self, ScControllerRow *row)
 {
   controller_t *controller = NULL;
+  sc_midi_info_t *ci = sc_controller_row_get_info (row);
 
-  if (self->seq)
-    sc_midi_close (&self->seq);
-
-  if (sc_midi_open (&self->seq) < 0)
-  {
-    g_warning ("Failed to open midi\n");
-    return;
-  }
-
-  for (int i = 0; i < CONTROLLERS_N; ++i)
-    if (sc_midi_get_address (self->seq, controllers[i].midi_name, &self->seq_addr) == 0)
+  for (int i = 0; i < CONTROLLERS_N; ++i) {
+    if (strcmp(controllers[i].midi_name, ci->client_name) == 0)
     {
       controller = &controllers[i];
+      self->seq_addr = ci->addr;
       break;
     }
+  }
 
   if (controller == NULL) {
-    g_warning ("Failed to find controller\n");
+    sc_io_problem (self, "%s is not supported yet. Please open an issue.", ci->client_name);
     return;
   }
 
   if (sc_midi_connect (self->seq, self->seq_addr) < 0)
   {
-    g_warning ("Failed to connect %d:%d\n", self->seq_addr.client, self->seq_addr.port);
+    sc_io_problem (self, "Failed to connect %d:%d", self->seq_addr.client, self->seq_addr.port);
     return;
   }
 
@@ -374,9 +370,77 @@ sc_midi_init(ScWindow *self)
 }
 
 static void
+controller_select_cb (ScWindow *self, AdwActionRow *row)
+{
+  sc_window_midi_connect (self, SC_CONTROLLER_ROW (row));
+}
+
+/*
+ * The back button of AdwNavigationSplitView doesn't work well when the view
+ * is inside AdwNavigationSplitView,
+ *
+ * add a separated back button
+ * never push list and setting to the navigation stack together
+ *
+ *  TODO: check later or fix in libadwaita
+ */
+
+static void
+show_list_click_cb (ScWindow *self, GtkButton *btn)
+{
+  adw_navigation_view_replace_with_tags (self->navigation_view, (const char * const[]){"list"}, 1);
+}
+
+static void
+sc_midi_init (ScWindow *self)
+{
+  sc_midi_info_t cc[10];
+  GtkWidget *controller_list;
+  int fc;
+
+  if (self->seq)
+    sc_midi_close (&self->seq);
+
+  if (sc_midi_open (&self->seq) < 0)
+  {
+    g_warning ("Failed to open midi");
+    return;
+  }
+
+  fc = sc_midi_get_controllers (self->seq, cc, 10);
+
+  g_debug ("found %d controller:", fc);
+
+  controller_list = adw_preferences_group_new ();
+  adw_preferences_group_set_title (ADW_PREFERENCES_GROUP (controller_list), "Controllers");
+
+  for (int i = 0; i < fc; ++i)
+  {
+    GtkWidget *row = sc_controller_row_new (&cc[i]);
+    g_signal_connect_swapped (G_OBJECT (row), "activated", G_CALLBACK (controller_select_cb), self);
+    adw_preferences_group_add (ADW_PREFERENCES_GROUP (controller_list), row);
+
+    g_debug ("%s %d:%d", cc[i].port_name, cc[i].addr.client, cc[i].addr.port);
+  }
+
+  adw_clamp_set_child (self->controller_list_clamp, controller_list);
+
+  if (fc == 0)
+    adw_navigation_view_replace_with_tags (self->navigation_view, (const char * const[]){"search"}, 1);
+  else
+    adw_navigation_view_replace_with_tags (self->navigation_view, (const char * const[]){"list"}, 1);
+}
+
+static void
 refresh_button_click_cb (ScWindow *self)
 {
   sc_midi_init (SC_WINDOW (self));
+}
+
+static void
+setting_hidden_cb (ScWindow *self)
+{
+  sc_midi_disconnect (self->seq, self->seq_addr);
 }
 
 static void
@@ -387,12 +451,16 @@ sc_window_class_init (ScWindowClass *klass)
   gtk_widget_class_set_template_from_resource (widget_class, "/hu/irl/sysex-controls/sc-window.ui");
   gtk_widget_class_bind_template_child (widget_class, ScWindow, toast_overlay);
   gtk_widget_class_bind_template_child (widget_class, ScWindow, sidebar);
+  gtk_widget_class_bind_template_child (widget_class, ScWindow, controller_list_clamp);
   gtk_widget_class_bind_template_child (widget_class, ScWindow, setting_page);
   gtk_widget_class_bind_template_child (widget_class, ScWindow, content_page);
   gtk_widget_class_bind_template_child (widget_class, ScWindow, content_view);
   gtk_widget_class_bind_template_child (widget_class, ScWindow, navigation_view);
   gtk_widget_class_bind_template_child (widget_class, ScWindow, split_view);
   gtk_widget_class_bind_template_callback (widget_class, refresh_button_click_cb);
+  gtk_widget_class_bind_template_callback (widget_class, controller_select_cb);
+  gtk_widget_class_bind_template_callback (widget_class, show_list_click_cb);
+  gtk_widget_class_bind_template_callback (widget_class, setting_hidden_cb);
 }
 
 static void

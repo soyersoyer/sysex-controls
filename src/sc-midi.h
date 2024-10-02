@@ -69,10 +69,19 @@
 #define P_BANK4_KNOB4_MAX		0x6D  // 0-127
 #define P_BANK4_KNOB4_CHAN		0x6E  // 0-15, user=0x41
 
+#define NAME_SIZE 128
+
+typedef struct {
+  char client_name[NAME_SIZE];
+  char port_name[NAME_SIZE];
+  snd_seq_addr_t addr;
+} sc_midi_info_t;
+
 int sc_midi_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t *val);
 int sc_midi_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t val);
+int sc_midi_disconnect (snd_seq_t *seq, snd_seq_addr_t addr);
 int sc_midi_connect (snd_seq_t *seq, snd_seq_addr_t addr);
-int sc_midi_get_address (snd_seq_t *seq, const char* name, snd_seq_addr_t *addr);
+int sc_midi_get_controllers (snd_seq_t *seq, sc_midi_info_t *controllers, int n);
 int sc_midi_open (snd_seq_t **seq);
 int sc_midi_close (snd_seq_t **seq);
 
