@@ -9,7 +9,9 @@ back to the device.
 
 ## Installation
 
-### From Flathub (not yet, under [review](https://github.com/flathub/flathub/pull/5635))
+### From Flathub
+
+<a href='https://flathub.org/apps/details/hu.irl.sysex-controls'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
 ```
 flatpak install flathub hu.irl.sysex-controls
