@@ -9,7 +9,7 @@
 #define MIN(X,Y) ((X) < (Y) ? (X) : (Y))
 
 int
-sc_midi_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t val)
+sc_midi_arturia_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t val)
 {
   //                                                             control_id  value
   //                                                             ||||||||||  ||||
@@ -121,7 +121,7 @@ process_control_event (snd_seq_t *seq, uint8_t p_id, uint8_t c_id, uint8_t *val)
 }
 
 int
-sc_midi_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t *val)
+sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t *val)
 {
   //                                                             control_id
   //                                                             ||||||||||
