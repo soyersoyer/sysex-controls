@@ -6,10 +6,10 @@
 
 struct _Ml2Book
 {
-  AdwBin parent_instance;
+  ScArturiaBook parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ml2Book, ml2_book, ADW_TYPE_BIN)
+G_DEFINE_FINAL_TYPE (Ml2Book, ml2_book, SC_TYPE_ARTURIA_BOOK)
 
 static void
 ml2_book_class_init (Ml2BookClass *klass)
