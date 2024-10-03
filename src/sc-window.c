@@ -199,7 +199,7 @@ refresh_button_click_cb (ScWindow *self)
 static void
 setting_hidden_cb (ScWindow *self)
 {
-  sc_midi_disconnect (self->seq, *sc_arturia_book_get_addr (self->book));
+  sc_midi_disconnect (self->seq, sc_arturia_book_get_addr (self->book));
 }
 
 void

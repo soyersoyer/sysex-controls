@@ -1,6 +1,7 @@
 #pragma once
 
 #include <adwaita.h>
+#include "sc-arturia-control.h"
 #include "sc-midi.h"
 
 G_BEGIN_DECLS
@@ -15,8 +16,9 @@ struct _ScArturiaBookClass
 };
 
 void sc_arturia_book_set_seq (ScArturiaBook *self, snd_seq_t *seq, snd_seq_addr_t *addr);
-snd_seq_addr_t * sc_arturia_book_get_addr (ScArturiaBook *self);
-void sc_arturia_book_register_control (ScArturiaBook *self, uint16_t control_id, GtkWidget *widget);
+snd_seq_t * sc_arturia_book_get_seq (ScArturiaBook *self);
+snd_seq_addr_t sc_arturia_book_get_addr (ScArturiaBook *self);
+void sc_arturia_book_register_control (ScArturiaBook *self, uint16_t control_id, ScArturiaControl *control);
 void sc_arturia_book_load_task (GTask *task, gpointer source_obj, gpointer task_data, GCancellable *cancellable);
 void sc_arturia_book_load_task_finish (GObject* source_object, GAsyncResult* res, gpointer data);
 
