@@ -293,4 +293,3 @@ static void
 sc_arturia_book_init (ScArturiaBook *self)
 {
 }
-

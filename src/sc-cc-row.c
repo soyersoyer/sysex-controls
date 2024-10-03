@@ -25,4 +25,3 @@ sc_cc_row_init (ScCcRow *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-

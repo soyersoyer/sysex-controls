@@ -81,4 +81,3 @@ static void
 sc_preferences_group_init (ScPreferencesGroup *self)
 {
 }
-

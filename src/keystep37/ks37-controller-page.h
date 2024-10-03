@@ -11,5 +11,3 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (Ks37ControllerPage, ks37_controller_page, KS37, CONTROLLER_PAGE, ScPreferencesPage)
 
 G_END_DECLS
-
-

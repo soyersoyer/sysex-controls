@@ -274,4 +274,3 @@ sc_midi_close (snd_seq_t **seq)
   *seq = NULL;
   return err;
 }
-

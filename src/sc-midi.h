@@ -84,4 +84,3 @@ int sc_midi_connect (snd_seq_t *seq, snd_seq_addr_t addr);
 int sc_midi_get_controllers (snd_seq_t *seq, sc_midi_info_t *controllers, int n);
 int sc_midi_open (snd_seq_t **seq);
 int sc_midi_close (snd_seq_t **seq);
-

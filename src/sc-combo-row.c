@@ -15,4 +15,3 @@ sc_combo_row_init (ScComboRow *self)
   GtkExpression *expression = gtk_property_expression_new (SC_TYPE_CONTROL_VALUE, NULL, "name");
   adw_combo_row_set_expression (&self->parent_instance, expression);
 }
-

@@ -25,4 +25,3 @@ ks37_note_row_init (Ks37NoteRow *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-

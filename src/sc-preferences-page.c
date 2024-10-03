@@ -81,4 +81,3 @@ static void
 sc_preferences_page_init (ScPreferencesPage *self)
 {
 }
-

@@ -11,4 +11,3 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (Ks37NoteRow, ks37_note_row, KS37, NOTE_ROW, ScComboRow)
 
 G_END_DECLS
-

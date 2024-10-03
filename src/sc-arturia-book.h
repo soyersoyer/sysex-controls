@@ -21,4 +21,3 @@ void sc_arturia_book_load_task (GTask *task, gpointer source_obj, gpointer task_
 void sc_arturia_book_load_task_finish (GObject* source_object, GAsyncResult* res, gpointer data);
 
 G_END_DECLS
-

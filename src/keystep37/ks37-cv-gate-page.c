@@ -20,4 +20,3 @@ ks37_cv_gate_page_init (Ks37CvGatePage *self)
 {
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-

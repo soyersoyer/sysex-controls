@@ -36,4 +36,3 @@ ml2_book_new (snd_seq_t *seq, snd_seq_addr_t *addr)
   sc_arturia_book_set_seq (SC_ARTURIA_BOOK (book), seq, addr);
   return book;
 }
-

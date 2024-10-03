@@ -26,4 +26,3 @@ void sc_control_value_list_splice (ScControlValueList *self, guint position,
 const ScControlValue * sc_control_value_list_get_cv (ScControlValueList *self, guint position);
 
 G_END_DECLS
-

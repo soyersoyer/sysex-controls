@@ -432,4 +432,3 @@ static void
 sc_control_value_list_class_init (ScControlValueListClass *class)
 {
 }
-

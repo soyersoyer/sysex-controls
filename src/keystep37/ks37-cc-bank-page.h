@@ -9,4 +9,3 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (Ks37CcBankPage, ks37_cc_bank_page, KS37, CC_BANK_PAGE, ScPreferencesPage)
 
 G_END_DECLS
-

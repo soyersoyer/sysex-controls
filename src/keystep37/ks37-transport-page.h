@@ -11,4 +11,3 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (Ks37TransportPage, ks37_transport_page, KS37, TRANSPORT_PAGE, ScPreferencesPage)
 
 G_END_DECLS
-

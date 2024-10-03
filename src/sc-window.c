@@ -238,4 +238,3 @@ sc_window_init (ScWindow *self)
 
   sc_midi_init (self);
 }
-

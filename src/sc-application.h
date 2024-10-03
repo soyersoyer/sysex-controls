@@ -12,4 +12,3 @@ ScApplication *sc_application_new (const char        *application_id,
                                    GApplicationFlags  flags);
 
 G_END_DECLS
-

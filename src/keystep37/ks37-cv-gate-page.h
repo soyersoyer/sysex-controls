@@ -11,4 +11,3 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (Ks37CvGatePage, ks37_cv_gate_page, KS37, CV_GATE_PAGE, ScPreferencesPage)
 
 G_END_DECLS
-

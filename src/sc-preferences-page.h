@@ -16,4 +16,3 @@ struct _ScPreferencesPageClass
 uint16_t sc_preferences_page_get_control_id_offset (ScPreferencesPage *self);
 
 G_END_DECLS
-

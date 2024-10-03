@@ -20,4 +20,3 @@ ks37_transport_page_init (Ks37TransportPage *self)
 {
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-

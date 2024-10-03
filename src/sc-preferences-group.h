@@ -16,4 +16,3 @@ struct _ScPreferencesGroupClass
 uint16_t sc_preferences_group_get_control_id_offset (ScPreferencesGroup *self);
 
 G_END_DECLS
-

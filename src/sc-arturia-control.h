@@ -11,4 +11,3 @@ G_DECLARE_FINAL_TYPE (ScArturiaControl, sc_arturia_control, SC, ARTURIA_CONTROL,
 uint16_t sc_arturia_control_get_id (ScArturiaControl *self);
 
 G_END_DECLS
-

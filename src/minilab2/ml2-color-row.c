@@ -25,4 +25,3 @@ ml2_color_row_init (Ml2ColorRow *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-

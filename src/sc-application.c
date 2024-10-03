@@ -102,4 +102,3 @@ sc_application_init (ScApplication *self)
                                          "app.quit",
                                          (const char *[]) { "<primary>q", NULL });
 }
-

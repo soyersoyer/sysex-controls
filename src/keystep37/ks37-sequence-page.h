@@ -11,4 +11,3 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (Ks37SequencePage, ks37_sequence_page, KS37, SEQUENCE_PAGE, ScPreferencesPage)
 
 G_END_DECLS
-

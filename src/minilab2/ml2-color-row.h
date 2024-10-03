@@ -11,4 +11,3 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (Ml2ColorRow, ml2_color_row, ML2, COLOR_ROW, ScComboRow)
 
 G_END_DECLS
-

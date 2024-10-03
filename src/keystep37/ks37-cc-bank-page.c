@@ -24,4 +24,3 @@ ks37_cc_bank_page_init (Ks37CcBankPage *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-

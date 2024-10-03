@@ -28,5 +28,3 @@ ks37_controller_page_init (Ks37ControllerPage *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-
-

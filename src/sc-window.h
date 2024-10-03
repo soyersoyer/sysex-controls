@@ -12,4 +12,3 @@ void __attribute__ ((format (gnu_printf, 2, 3))) sc_io_problem (ScWindow *self, 
 void sc_window_load_page (ScWindow *self, const char* name);
 
 G_END_DECLS
-

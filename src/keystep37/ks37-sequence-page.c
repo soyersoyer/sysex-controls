@@ -20,4 +20,3 @@ ks37_sequence_page_init (Ks37SequencePage *self)
 {
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-
