@@ -2,10 +2,11 @@
 
 #include "sc-midi.h"
 
+#include "sc-util.h"
+
 #define DESIRED_CAPS (SND_SEQ_PORT_CAP_READ | SND_SEQ_PORT_CAP_SUBS_READ | \
                       SND_SEQ_PORT_CAP_WRITE | SND_SEQ_PORT_CAP_SUBS_WRITE)
 
-#define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
 #define MIN(X,Y) ((X) < (Y) ? (X) : (Y))
 
 int

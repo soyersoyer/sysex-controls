@@ -5,12 +5,12 @@
 #include "sc-controller-row.h"
 #include "sc-control-value.h"
 #include "sc-midi.h"
+#include "sc-util.h"
 #include "sc-window.h"
 
 #include "keystep37/ks37-book.h"
 #include "minilab2/ml2-book.h"
-
-#define CONTROLLERS_N 2
+#include "minilab3/ml3-book.h"
 
 typedef GtkWidget * (*book_init_func)(snd_seq_t*, snd_seq_addr_t*);
 
@@ -20,7 +20,7 @@ typedef const struct {
   book_init_func init;
 } controller_t;
 
-static controller_t controllers[CONTROLLERS_N] = {
+static controller_t controllers[] = {
   {KS37_MIDI_NAME, KS37_SHORT_NAME, ks37_book_new},
   {ML2_MIDI_NAME, ML2_SHORT_NAME, ml2_book_new},
 };
@@ -102,7 +102,7 @@ sc_window_midi_connect (ScWindow *self, ScControllerRow *row)
   controller_t *controller = NULL;
   sc_midi_info_t *ci = sc_controller_row_get_info (row);
 
-  for (int i = 0; i < CONTROLLERS_N; ++i) {
+  for (int i = 0; i < ARRAY_SIZE(controllers); ++i) {
     if (strcmp(controllers[i].midi_name, ci->client_name) == 0)
     {
       controller = &controllers[i];
