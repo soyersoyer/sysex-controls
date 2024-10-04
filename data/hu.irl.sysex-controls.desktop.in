@@ -5,4 +5,5 @@ Icon=hu.irl.sysex-controls
 Terminal=false
 Type=Application
 Categories=Settings;AudioVideo;Utility;GNOME;GTK;
+Keywords=MIDI;Arturia;KeyStep;MiniLab;Keyboard
 StartupNotify=true
