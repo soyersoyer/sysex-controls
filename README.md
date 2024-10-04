@@ -2,7 +2,7 @@
 
 <img align='left' height='80' src='https://github.com/soyersoyer/sysex-controls/raw/main/data/icons/hicolor/scalable/apps/hu.irl.sysex-controls.svg'>
 
-This is a GTK UI that allows to configure the Arturia KeyStep 37 and Arturia MiniLab MkII MIDI keyboards.
+This is a GTK UI that allows to configure the Arturia KeyStep 37, MiniLab MkII, MiniLab 3 MIDI keyboards.
 
 It currently allows for reading the controls, changing them and writing
 back to the device.
