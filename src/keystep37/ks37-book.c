@@ -4,7 +4,6 @@
 #include "ks37-controller-page.h"
 #include "ks37-cv-gate-page.h"
 #include "ks37-knob.h"
-#include "ks37-note-row.h"
 #include "ks37-sequence-page.h"
 #include "ks37-transport-page.h"
 
@@ -30,7 +29,6 @@ ks37_book_init (Ks37Book *self)
   g_type_ensure (KS37_TYPE_CONTROLLER_PAGE);
   g_type_ensure (KS37_TYPE_CV_GATE_PAGE);
   g_type_ensure (KS37_TYPE_KNOB);
-  g_type_ensure (KS37_TYPE_NOTE_ROW);
   g_type_ensure (KS37_TYPE_SEQUENCE_PAGE);
   g_type_ensure (KS37_TYPE_TRANSPORT_PAGE);
 

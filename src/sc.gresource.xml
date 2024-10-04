@@ -3,6 +3,7 @@
   <gresource prefix="/hu/irl/sysex-controls">
     <file preprocess="xml-stripblanks">sc-cc-row.ui</file>
     <file preprocess="xml-stripblanks">sc-controller-row.ui</file>
+    <file preprocess="xml-stripblanks">sc-note-row.ui</file>
     <file preprocess="xml-stripblanks">sc-window.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-book.ui</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
@@ -11,7 +12,6 @@
     <file preprocess="xml-stripblanks">keystep37/ks37-controller-page.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-cv-gate-page.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-knob.ui</file>
-    <file preprocess="xml-stripblanks">keystep37/ks37-note-row.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-sequence-page.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-transport-page.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-book.ui</file>

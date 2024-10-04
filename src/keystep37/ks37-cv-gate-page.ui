@@ -24,7 +24,7 @@
         </child>
 
         <child>
-          <object class="Ks37NoteRow">
+          <object class="ScNoteRow">
             <child><object class="ScArturiaControl"><property name="control-id">0x411a</property></object></child>
             <property name="title" translatable="yes">0V MIDI Note</property>
             <property name="subtitle">With Volts per Octave</property>
@@ -32,7 +32,7 @@
         </child>
 
         <child>
-          <object class="Ks37NoteRow">
+          <object class="ScNoteRow">
             <child><object class="ScArturiaControl"><property name="control-id">0x411b</property></object></child>
             <property name="title" translatable="yes">1V MIDI Note</property>
             <property name="subtitle">With Hertz per Volt</property>
