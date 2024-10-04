@@ -12,7 +12,7 @@
   <description>
     <p>
       This is a GTK UI that allows to configure the Arturia KeyStep 37,
-      MiniLab MkII, MiniLab 3 MIDI keyboards.
+      MiniLab MkII, MiniLab 3, BeatStep MIDI keyboards.
       It currently allows for reading the control settings, changing them and
       writing back to the device.
     </p>
