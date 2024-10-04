@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="Ks37CcBankKnob" parent="ScPreferencesGroup">
+  <template class="Ks37Knob" parent="ScPreferencesGroup">
 
     <child>
       <object class="ScCcRow">

@@ -7,10 +7,10 @@
     <file preprocess="xml-stripblanks">beatstep/bs-book.ui</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-book.ui</file>
-    <file preprocess="xml-stripblanks">keystep37/ks37-cc-bank-knob.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-cc-bank-page.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-controller-page.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-cv-gate-page.ui</file>
+    <file preprocess="xml-stripblanks">keystep37/ks37-knob.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-note-row.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-sequence-page.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-transport-page.ui</file>

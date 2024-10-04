@@ -5,28 +5,28 @@
   <template class="Ks37CcBankPage" parent="ScPreferencesPage">
 
     <child>
-      <object class="Ks37CcBankKnob">
+      <object class="Ks37Knob">
         <property name="title" translatable="yes">Knob 1</property>
         <property name="control-id-offset">0x00</property>
       </object>
     </child>
 
     <child>
-      <object class="Ks37CcBankKnob">
+      <object class="Ks37Knob">
         <property name="title" translatable="yes">Knob 2</property>
         <property name="control-id-offset">0x04</property>
       </object>
     </child>
 
     <child>
-      <object class="Ks37CcBankKnob">
+      <object class="Ks37Knob">
         <property name="title" translatable="yes">Knob 3</property>
         <property name="control-id-offset">0x08</property>
       </object>
     </child>
 
     <child>
-      <object class="Ks37CcBankKnob">
+      <object class="Ks37Knob">
         <property name="title" translatable="yes">Knob 4</property>
         <property name="control-id-offset">0x0c</property>
       </object>
