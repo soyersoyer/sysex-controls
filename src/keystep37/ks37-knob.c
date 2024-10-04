@@ -2,11 +2,10 @@
 
 struct _Ks37Knob
 {
-  AdwPreferencesGroup parent_instance;
+  ScPreferencesGroup parent_instance;
 };
 
 G_DEFINE_FINAL_TYPE (Ks37Knob, ks37_knob, SC_TYPE_PREFERENCES_GROUP)
-
 
 static void
 ks37_knob_class_init (Ks37KnobClass *klass)

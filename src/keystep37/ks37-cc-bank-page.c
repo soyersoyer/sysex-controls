@@ -2,11 +2,10 @@
 
 struct _Ks37CcBankPage
 {
-  AdwPreferencesPage parent_instance;
+  ScPreferencesPage parent_instance;
 };
 
 G_DEFINE_FINAL_TYPE (Ks37CcBankPage, ks37_cc_bank_page, SC_TYPE_PREFERENCES_PAGE)
-
 
 static void
 ks37_cc_bank_page_class_init (Ks37CcBankPageClass *klass)
