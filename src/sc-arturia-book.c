@@ -5,7 +5,7 @@
 #include "sc-midi.h"
 #include "sc-window.h"
 
-#define CONTROLS_MAX_N 100
+#define CONTROLS_MAX_N 150
 
 typedef struct
 {
