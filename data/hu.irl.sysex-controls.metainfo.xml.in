@@ -31,11 +31,21 @@
   <url type="bugtracker">https://github.com/soyersoyer/sysex-controls/issues</url>
   <screenshots>
     <screenshot type="default">
-      <image>https://github.com/soyersoyer/sysex-controls/raw/v0.1.0/data/screenshots/page_1.png</image>
+      <image>https://github.com/soyersoyer/sysex-controls/raw/v0.2.1/data/screenshots/page_1.png</image>
       <caption>KeyStep 37 Controller page</caption>
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.1" date="2024-10-04">
+      <description>
+        <ul>
+          <li>MiniLab 3 global controls</li>
+          <li>MiniLab mkII global controls</li>
+          <li>BeatStep global controls</li>
+          <li>KeyStep 37 additional transport controls</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.0" date="2024-09-30">
       <description>
         <ul>
