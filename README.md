@@ -26,6 +26,12 @@ meson install -C builddir
 ```
 The resulting binary doesn't need to be installed, `./builddir/src/sysex-controls` works also.
 
+You can uninstall the program later by running
+
+```
+sudo ninja uninstall -C builddir
+```
+
 <div>
 <img alt="SysEX Controls KeyStep37 Controller page" src="https://github.com/soyersoyer/sysex-controls/raw/main/data/screenshots/page_1.png" width="410">
 <img alt="SysEX Controls KeyStep37 Sequence page" src="https://github.com/soyersoyer/sysex-controls/raw/main/data/screenshots/page_2.png" width="410">
