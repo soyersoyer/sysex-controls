@@ -1,8 +1,5 @@
 #include "ml3-book.h"
 
-#include "sc-arturia-control.h"
-#include "sc-preferences-page.h"
-
 struct _Ml3Book
 {
   ScArturiaBook parent_instance;

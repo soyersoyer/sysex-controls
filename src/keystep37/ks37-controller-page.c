@@ -1,7 +1,4 @@
 #include "ks37-controller-page.h"
-#include "sc-arturia-control.h"
-#include "sc-control-value.h"
-#include "sc-combo-row.h"
 
 struct _Ks37ControllerPage
 {
@@ -21,10 +18,5 @@ ks37_controller_page_class_init (Ks37ControllerPageClass *klass)
 static void
 ks37_controller_page_init (Ks37ControllerPage *self)
 {
-  g_type_ensure (SC_TYPE_ARTURIA_CONTROL);
-  g_type_ensure (SC_TYPE_CONTROL_VALUE);
-  g_type_ensure (SC_TYPE_CONTROL_VALUE_LIST);
-  g_type_ensure (SC_TYPE_COMBO_ROW);
-
   gtk_widget_init_template (GTK_WIDGET (self));
 }

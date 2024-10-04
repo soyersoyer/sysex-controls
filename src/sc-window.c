@@ -234,6 +234,8 @@ sc_window_class_init (ScWindowClass *klass)
 static void
 sc_window_init (ScWindow *self)
 {
+  g_type_ensure (SC_TYPE_CONTROLLER_ROW);
+
   gtk_widget_init_template (GTK_WIDGET (self));
 
   // remove the unecessary right border

@@ -1,7 +1,5 @@
 #include "bs-book.h"
 
-#include "sc-arturia-control.h"
-
 struct _BsBook
 {
   ScArturiaBook parent_instance;

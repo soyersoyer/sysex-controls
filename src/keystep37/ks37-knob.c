@@ -1,5 +1,4 @@
 #include "ks37-knob.h"
-#include "sc-cc-row.h"
 
 struct _Ks37Knob
 {
@@ -20,7 +19,5 @@ ks37_knob_class_init (Ks37KnobClass *klass)
 static void
 ks37_knob_init (Ks37Knob *self)
 {
-  g_type_ensure (SC_TYPE_CC_ROW);
-
   gtk_widget_init_template (GTK_WIDGET (self));
 }

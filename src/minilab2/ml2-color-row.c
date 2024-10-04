@@ -1,7 +1,5 @@
 #include "ml2-color-row.h"
 
-#include "sc-control-value.h"
-
 struct _Ml2ColorRow
 {
   ScComboRow parent_instance;
@@ -20,8 +18,5 @@ ml2_color_row_class_init (Ml2ColorRowClass *klass)
 static void
 ml2_color_row_init (Ml2ColorRow *self)
 {
-  g_type_ensure (SC_TYPE_CONTROL_VALUE_LIST);
-  g_type_ensure (SC_TYPE_CONTROL_VALUE);
-
   gtk_widget_init_template (GTK_WIDGET (self));
 }

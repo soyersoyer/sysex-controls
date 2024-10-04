@@ -1,7 +1,5 @@
 #include "ks37-note-row.h"
 
-#include "sc-control-value.h"
-
 struct _Ks37NoteRow
 {
   ScComboRow parent_instance;
@@ -20,8 +18,5 @@ ks37_note_row_class_init (Ks37NoteRowClass *klass)
 static void
 ks37_note_row_init (Ks37NoteRow *self)
 {
-  g_type_ensure (SC_TYPE_CONTROL_VALUE_LIST);
-  g_type_ensure (SC_TYPE_CONTROL_VALUE);
-
   gtk_widget_init_template (GTK_WIDGET (self));
 }

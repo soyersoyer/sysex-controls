@@ -1,7 +1,11 @@
 #include "sc-arturia-book.h"
 
 #include "sc-arturia-control.h"
+#include "sc-cc-row.h"
+#include "sc-combo-row.h"
 #include "sc-control-value.h"
+#include "sc-preferences-group.h"
+#include "sc-preferences-page.h"
 #include "sc-midi.h"
 #include "sc-window.h"
 
@@ -107,4 +111,11 @@ sc_arturia_book_class_init (ScArturiaBookClass *klass)
 static void
 sc_arturia_book_init (ScArturiaBook *self)
 {
+  g_type_ensure (SC_TYPE_ARTURIA_CONTROL);
+  g_type_ensure (SC_TYPE_CC_ROW);
+  g_type_ensure (SC_TYPE_COMBO_ROW);
+  g_type_ensure (SC_TYPE_CONTROL_VALUE);
+  g_type_ensure (SC_TYPE_CONTROL_VALUE_LIST);
+  g_type_ensure (SC_TYPE_PREFERENCES_GROUP);
+  g_type_ensure (SC_TYPE_PREFERENCES_PAGE);
 }

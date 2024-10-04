@@ -1,7 +1,5 @@
 #include "ml2-book.h"
 
-#include "sc-arturia-control.h"
-#include "sc-preferences-page.h"
 #include "ml2-color-row.h"
 
 struct _Ml2Book
@@ -22,8 +20,6 @@ ml2_book_class_init (Ml2BookClass *klass)
 static void
 ml2_book_init (Ml2Book *self)
 {
-  g_type_ensure (SC_TYPE_ARTURIA_CONTROL);
-  g_type_ensure (SC_TYPE_PREFERENCES_PAGE);
   g_type_ensure (ML2_TYPE_COLOR_ROW);
 
   gtk_widget_init_template (GTK_WIDGET (self));

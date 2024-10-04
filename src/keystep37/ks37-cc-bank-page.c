@@ -1,5 +1,4 @@
 #include "ks37-cc-bank-page.h"
-#include "ks37-knob.h"
 
 struct _Ks37CcBankPage
 {
@@ -20,7 +19,5 @@ ks37_cc_bank_page_class_init (Ks37CcBankPageClass *klass)
 static void
 ks37_cc_bank_page_init (Ks37CcBankPage *self)
 {
-  g_type_ensure (KS37_TYPE_KNOB);
-
   gtk_widget_init_template (GTK_WIDGET (self));
 }
