@@ -21,6 +21,7 @@ sc_sources = [
   'keystep37/ks37-transport-page.c',
   'minilab2/ml2-book.c',
   'minilab2/ml2-color-row.c',
+  'minilab3/ml3-book.c',
 ]
 
 sc_deps = [

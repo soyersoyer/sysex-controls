@@ -23,6 +23,7 @@ typedef const struct {
 static controller_t controllers[] = {
   {KS37_MIDI_NAME, KS37_SHORT_NAME, ks37_book_new},
   {ML2_MIDI_NAME, ML2_SHORT_NAME, ml2_book_new},
+  {ML3_MIDI_NAME, ML3_SHORT_NAME, ml3_book_new},
 };
 
 struct _ScWindow

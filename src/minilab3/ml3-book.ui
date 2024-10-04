@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ml3Book" parent="ScArturiaBook">
+    <property name="child">
+      <object class="GtkStack">
+        <property name="vhomogeneous">False</property>
+        <property name="valign">start</property>
+
+        <child>
+          <object class="GtkStackPage">
+            <property name="title" translatable="yes">Global</property>
+            <property name="child">
+              <object class="ScPreferencesPage">
+
+                <child>
+                  <object class="AdwPreferencesGroup">
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4001</property></object></child>
+                        <property name="title" translatable="yes">Default Keyboard Channel</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item value="1">1</item>
+                              <item>2</item>
+                              <item>3</item>
+                              <item>4</item>
+                              <item>5</item>
+                              <item>6</item>
+                              <item>7</item>
+                              <item>8</item>
+                              <item>9</item>
+                              <item>10</item>
+                              <item>11</item>
+                              <item>12</item>
+                              <item>13</item>
+                              <item>14</item>
+                              <item>15</item>
+                              <item>16</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwPreferencesGroup">
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4018</property></object></child>
+                        <property name="title" translatable="yes">Transport Mode</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>MCU</item>
+                              <item>HUI</item>
+                              <item>Both</item>
+                              <item>None</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwPreferencesGroup">
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4000</property></object></child>
+                        <property name="title" translatable="yes">Sleep delay</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>5 minutes</item>
+                              <item>15 minutes</item>
+                              <item>30 minutes</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4019</property></object></child>
+                        <property name="title" translatable="yes">Sleep mode</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>VegasMode</item>
+                              <item>SleepMode</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4012</property></object></child>
+                        <property name="title" translatable="yes">Low power</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>Off</item>
+                              <item>On</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4007</property></object></child>
+                        <property name="title" translatable="yes">Backlight</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>Off</item>
+                              <item>On</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwPreferencesGroup">
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x400e</property></object></child>
+                        <property name="title" translatable="yes">Pitchbend</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>Off</item>
+                              <item>On</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x400f</property></object></child>
+                        <property name="title" translatable="yes">Pitchbend Settings</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>Standard</item>
+                              <item>Hold</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4010</property></object></child>
+                        <property name="title" translatable="yes">Modwheel</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>Off</item>
+                              <item>On</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4011</property></object></child>
+                        <property name="title" translatable="yes">Knob Acceleration</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>None</item>
+                              <item>Medium</item>
+                              <item>Fast</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+
+              </object>
+            </property>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkStackPage">
+            <property name="title" translatable="yes">Velocity</property>
+            <property name="child">
+              <object class="ScPreferencesPage">
+
+                <child>
+                  <object class="AdwPreferencesGroup">
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4002</property></object></child>
+                        <property name="title" translatable="yes">Key Velocity Curve</property>
+                        <property name="subtitle" translatable="yes">To personalize the responsiveness of the keyboard.</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>Linear</item>
+                              <item>Exponential</item>
+                              <item>Logarithmic</item>
+                              <item>Fixed</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="AdwSpinRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4003</property></object></child>
+                        <property name="title" translatable="yes">Key Fixed Velocity</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment">
+                            <property name="lower">1</property>
+                            <property name="upper">127</property>
+                            <property name="value">64</property>
+                            <property name="page-increment">10</property>
+                            <property name="step-increment">1</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwPreferencesGroup">
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4004</property></object></child>
+                        <property name="title" translatable="yes">Pad Velocity Curve</property>
+                        <property name="subtitle" translatable="yes">To personalize the responsiveness of the pads.</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>Linear</item>
+                              <item>Exponential</item>
+                              <item>Logarithmic</item>
+                              <item>Fixed</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="AdwSpinRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4005</property></object></child>
+                        <property name="title" translatable="yes">Pad Fixed Velocity</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment">
+                            <property name="lower">1</property>
+                            <property name="upper">127</property>
+                            <property name="value">64</property>
+                            <property name="page-increment">10</property>
+                            <property name="step-increment">1</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwPreferencesGroup">
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4006</property></object></child>
+                        <property name="title" translatable="yes">Pad aftertouch</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>Linear</item>
+                              <item>Exponential</item>
+                              <item>Logarithmic</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+
+              </object>
+            </property>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkStackPage">
+            <property name="title" translatable="yes">Pedal</property>
+            <property name="child">
+              <object class="ScPreferencesPage">
+
+                <child>
+                  <object class="AdwPreferencesGroup">
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4008</property></object></child>
+                        <property name="title" translatable="yes">Pedal Type</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>Sustain</item>
+                              <item>Expression</item>
+                              <item>FootSwitch</item>
+                              <item>Control</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x400b</property></object></child>
+                        <property name="title" translatable="yes">Pedal Polarity</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>Normal</item>
+                              <item>Inverted</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwPreferencesGroup">
+
+                    <child>
+                      <object class="ScCcRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4009</property></object></child>
+                        <property name="title" translatable="yes">Pedal Footswitch CC</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="ScCcRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x400a</property></object></child>
+                        <property name="title" translatable="yes">Pedal Control CC</property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="AdwSpinRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x400c</property></object></child>
+                        <property name="title" translatable="yes">Min Pedal Value</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment">
+                            <property name="lower">0</property>
+                            <property name="upper">127</property>
+                            <property name="value">0</property>
+                            <property name="page-increment">10</property>
+                            <property name="step-increment">1</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="AdwSpinRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x400d</property></object></child>
+                        <property name="title" translatable="yes">Max Pedal Value</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment">
+                            <property name="lower">0</property>
+                            <property name="upper">127</property>
+                            <property name="value">127</property>
+                            <property name="page-increment">10</property>
+                            <property name="step-increment">1</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+
+              </object>
+            </property>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkStackPage">
+            <property name="title" translatable="yes">User Programs</property>
+            <property name="child">
+              <object class="ScPreferencesPage">
+
+                <child>
+                  <object class="AdwPreferencesGroup">
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4013</property></object></child>
+                        <property name="title" translatable="yes">Preset 1</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>Enabled</item>
+                              <item>Disabled</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4014</property></object></child>
+                        <property name="title" translatable="yes">Preset 2</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>Enabled</item>
+                              <item>Disabled</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4015</property></object></child>
+                        <property name="title" translatable="yes">Preset 3</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>Enabled</item>
+                              <item>Disabled</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4016</property></object></child>
+                        <property name="title" translatable="yes">Preset 4</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>Enabled</item>
+                              <item>Disabled</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="ScComboRow">
+                        <child><object class="ScArturiaControl"><property name="control-id">0x4017</property></object></child>
+                        <property name="title" translatable="yes">Preset 5</property>
+                        <property name="model">
+                          <object class="ScControlValueList">
+                            <items>
+                              <item>Enabled</item>
+                              <item>Disabled</item>
+                            </items>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+
+              </object>
+            </property>
+          </object>
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>
