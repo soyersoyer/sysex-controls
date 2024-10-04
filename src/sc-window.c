@@ -11,6 +11,7 @@
 #include "keystep37/ks37-book.h"
 #include "minilab2/ml2-book.h"
 #include "minilab3/ml3-book.h"
+#include "beatstep/bs-book.h"
 
 typedef GtkWidget * (*book_init_func)(snd_seq_t*, snd_seq_addr_t*);
 
@@ -24,6 +25,7 @@ static controller_t controllers[] = {
   {KS37_MIDI_NAME, KS37_SHORT_NAME, ks37_book_new},
   {ML2_MIDI_NAME, ML2_SHORT_NAME, ml2_book_new},
   {ML3_MIDI_NAME, ML3_SHORT_NAME, ml3_book_new},
+  {BS_MIDI_NAME, BS_SHORT_NAME, bs_book_new},
 };
 
 struct _ScWindow

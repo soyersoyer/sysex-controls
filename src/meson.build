@@ -11,6 +11,7 @@ sc_sources = [
   'sc-preferences-page.c',
   'sc-window.c',
   'main.c',
+  'beatstep/bs-book.c',
   'keystep37/ks37-book.c',
   'keystep37/ks37-cc-bank-knob.c',
   'keystep37/ks37-cc-bank-page.c',
