@@ -5,6 +5,7 @@
 #include "sc-combo-row.h"
 #include "sc-control-value.h"
 #include "sc-note-row.h"
+#include "sc-pc-row.h"
 #include "sc-preferences-group.h"
 #include "sc-preferences-page.h"
 #include "sc-midi.h"
@@ -118,6 +119,7 @@ sc_arturia_book_init (ScArturiaBook *self)
   g_type_ensure (SC_TYPE_CONTROL_VALUE);
   g_type_ensure (SC_TYPE_CONTROL_VALUE_LIST);
   g_type_ensure (SC_TYPE_NOTE_ROW);
+  g_type_ensure (SC_TYPE_PC_ROW);
   g_type_ensure (SC_TYPE_PREFERENCES_GROUP);
   g_type_ensure (SC_TYPE_PREFERENCES_PAGE);
 }

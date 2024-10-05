@@ -8,6 +8,7 @@ sc_sources = [
   'sc-control-value.c',
   'sc-midi.c',
   'sc-note-row.c',
+  'sc-pc-row.c',
   'sc-preferences-group.c',
   'sc-preferences-page.c',
   'sc-window.c',

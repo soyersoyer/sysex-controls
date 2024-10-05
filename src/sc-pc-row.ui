@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="ScPcRow" parent="ScComboRow">
+    <property name="title" translatable="yes">Program Change</property>
+    <property name="model">
+      <object class="ScControlValueList">
+        <items>
+          <item>1 Acoustic Grand Piano</item>
+          <item>2 Bright Acoustic Piano or Piano 2</item>
+          <item>3 Electric Grand Piano or Piano 3 (usually modeled after Yamaha CP-70)</item>
+          <item>4 Honky-tonk Piano</item>
+          <item>5 Electric Piano 1 (usually a Rhodes or Wurlitzer piano)</item>
+          <item>6 Electric Piano 2 (usually an FM piano patch, often chorused)</item>
+          <item>7 Harpsichord (often with a fixed velocity level)</item>
+          <item>8 Clavinet</item>
+          <item>9 Celesta</item>
+          <item>10 Glockenspiel</item>
+          <item>11 Music Box</item>
+          <item>12 Vibraphone</item>
+          <item>13 Marimba</item>
+          <item>14 Xylophone</item>
+          <item>15 Tubular Bells</item>
+          <item>16 Dulcimer or Santoor</item>
+          <item>17 Drawbar Organ or Organ 1</item>
+          <item>18 Percussive Organ or Organ 2</item>
+          <item>19 Rock Organ or Organ 3</item>
+          <item>20 Church Organ</item>
+          <item>21 Reed Organ</item>
+          <item>22 Accordion</item>
+          <item>23 Harmonica</item>
+          <item>24 Bandoneon or Tango Accordion</item>
+          <item>25 Acoustic Guitar (nylon)</item>
+          <item>26 Acoustic Guitar (steel)</item>
+          <item>27 Electric Guitar (jazz)</item>
+          <item>28 Electric Guitar (clean, often chorused)</item>
+          <item>29 Electric Guitar (muted)</item>
+          <item>30 Electric Guitar (overdrive)</item>
+          <item>31 Electric Guitar (distortion)</item>
+          <item>32 Electric Guitar (harmonics)</item>
+          <item>33 Acoustic Bass</item>
+          <item>34 Electric Bass (finger)</item>
+          <item>35 Electric Bass (picked)</item>
+          <item>36 Electric Bass (fretless)</item>
+          <item>37 Slap Bass 1</item>
+          <item>38 Slap Bass 2</item>
+          <item>39 Synth Bass 1</item>
+          <item>40 Synth Bass 2</item>
+          <item>41 Violin</item>
+          <item>42 Viola</item>
+          <item>43 Cello</item>
+          <item>44 Contrabass</item>
+          <item>45 Tremolo Strings</item>
+          <item>46 Pizzicato Strings</item>
+          <item>47 Orchestral Harp</item>
+          <item>48 Timpani</item>
+          <item>49 String Ensemble 1 (often in marcato)</item>
+          <item>50 String Ensemble 2 (slower attack than String Ensemble 1)</item>
+          <item>51 Synth Strings 1</item>
+          <item>52 Synth Strings 2</item>
+          <item>53 Choir Aahs</item>
+          <item>54 Voice Oohs (or Doos)</item>
+          <item>55 Synth Voice or Synth Choir</item>
+          <item>56 Orchestra Hit</item>
+          <item>57 Trumpet</item>
+          <item>58 Trombone</item>
+          <item>59 Tuba</item>
+          <item>60 Muted Trumpet</item>
+          <item>61 French Horn</item>
+          <item>62 Brass Section</item>
+          <item>63 Synth Brass 1</item>
+          <item>64 Synth Brass 2</item>
+          <item>65 Soprano Sax</item>
+          <item>66 Alto Sax</item>
+          <item>67 Tenor Sax</item>
+          <item>68 Baritone Sax</item>
+          <item>69 Oboe</item>
+          <item>70 English Horn</item>
+          <item>71 Bassoon</item>
+          <item>72 Clarinet</item>
+          <item>73 Piccolo</item>
+          <item>74 Flute</item>
+          <item>75 Recorder</item>
+          <item>76 Pan Flute</item>
+          <item>77 Blown bottle</item>
+          <item>78 Shakuhachi</item>
+          <item>79 Whistle</item>
+          <item>80 Ocarina</item>
+          <item>81 Lead 1 (square)</item>
+          <item>82 Lead 2 (sawtooth or saw)</item>
+          <item>83 Lead 3 (calliope)</item>
+          <item>84 Lead 4 (chiff)</item>
+          <item>85 Lead 5 (charang)</item>
+          <item>86 Lead 6 (voice)</item>
+          <item>87 Lead 7 (fifths)</item>
+          <item>88 Lead 8 (bass and lead or solo lead)</item>
+          <item>89 Pad 1 (new age)</item>
+          <item>90 Pad 2 (warm)</item>
+          <item>91 Pad 3 (polysynth or poly)</item>
+          <item>92 Pad 4 (choir)</item>
+          <item>93 Pad 5 (bowed glass or bowed)</item>
+          <item>94 Pad 6 (metallic)</item>
+          <item>95 Pad 7 (halo)</item>
+          <item>96 Pad 8 (sweep)</item>
+          <item>97 FX 1 (rain)</item>
+          <item>98 FX 2 (soundtrack)</item>
+          <item>99 FX 3 (crystal)</item>
+          <item>100 FX 4 (atmosphere)</item>
+          <item>101 FX 5 (brightness)</item>
+          <item>102 FX 6 (goblins)</item>
+          <item>103 FX 7 (echoes or echo drops)</item>
+          <item>104 FX 8 (sci-fi or star theme)</item>
+          <item>105 Sitar</item>
+          <item>106 Banjo</item>
+          <item>107 Shamisen</item>
+          <item>108 Koto</item>
+          <item>109 Kalimba</item>
+          <item>110 Bag pipe</item>
+          <item>111 Fiddle</item>
+          <item>112 Shanai</item>
+          <item>113 Tinkle Bell</item>
+          <item>114 Agogô or cowbell</item>
+          <item>115 Steel Drums</item>
+          <item>116 Woodblock</item>
+          <item>117 Taiko Drum or Surdo</item>
+          <item>118 Melodic Tom</item>
+          <item>119 Synth Drum</item>
+          <item>120 Reverse Cymbal</item>
+          <item>121 Guitar Fret Noise</item>
+          <item>122 Breath Noise</item>
+          <item>123 Seashore</item>
+          <item>124 Bird Tweet</item>
+          <item>125 Telephone Ring</item>
+          <item>126 Helicopter</item>
+          <item>127 Applause</item>
+          <item>128 Gunshot</item>
+        </items>
+      </object>
+    </property>
+  </template>
+</interface>
