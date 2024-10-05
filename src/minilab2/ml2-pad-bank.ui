@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ml2PadBank" parent="ScPreferencesPage">
+
+    <child>
+      <object class="Ml2Pad">
+        <property name="title" translatable="yes">Pad 1</property>
+        <property name="control-id-offset">0x00</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml2Pad">
+        <property name="title" translatable="yes">Pad 2</property>
+        <property name="control-id-offset">0x01</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml2Pad">
+        <property name="title" translatable="yes">Pad 3</property>
+        <property name="control-id-offset">0x02</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml2Pad">
+        <property name="title" translatable="yes">Pad 4</property>
+        <property name="control-id-offset">0x03</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml2Pad">
+        <property name="title" translatable="yes">Pad 5</property>
+        <property name="control-id-offset">0x04</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml2Pad">
+        <property name="title" translatable="yes">Pad 6</property>
+        <property name="control-id-offset">0x05</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml2Pad">
+        <property name="title" translatable="yes">Pad 7</property>
+        <property name="control-id-offset">0x06</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml2Pad">
+        <property name="title" translatable="yes">Pad 8</property>
+        <property name="control-id-offset">0x07</property>
+      </object>
+    </child>
+
+  </template>
+</interface>

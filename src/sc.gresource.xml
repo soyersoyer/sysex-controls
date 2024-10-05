@@ -17,6 +17,8 @@
     <file preprocess="xml-stripblanks">keystep37/ks37-transport-page.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-book.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-color-row.ui</file>
+    <file preprocess="xml-stripblanks">minilab2/ml2-pad.ui</file>
+    <file preprocess="xml-stripblanks">minilab2/ml2-pad-bank.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-book.ui</file>
   </gresource>
 </gresources>
