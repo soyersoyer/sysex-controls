@@ -18,6 +18,10 @@ ml3_book_class_init (Ml3BookClass *klass)
 static void
 ml3_book_init (Ml3Book *self)
 {
+  ScArturiaBookClass *scklass = SC_ARTURIA_BOOK_GET_CLASS (self);
+  scklass->read_control = sc_midi_arturia_v3_read_control;
+  scklass->write_control = sc_midi_arturia_v3_write_control;
+
   gtk_widget_init_template (GTK_WIDGET (self));
 }
 

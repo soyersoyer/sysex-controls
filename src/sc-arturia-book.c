@@ -50,7 +50,7 @@ sc_arturia_book_load_task (GTask *task, gpointer source_obj, gpointer task_data,
   g_debug ("sc_arturia_book_load_task start");
   for(int i = 0; i < priv->controls_n; ++i)
   {
-    int err = sc_arturia_control_read_value (priv->controls[i], priv->seq, priv->seq_addr);
+    int err = sc_arturia_control_read_value (priv->controls[i]);
     if (err < 0)
     {
       g_task_return_new_error_literal (task, G_IO_ERROR, G_IO_ERROR_FAILED, "control value read failed");
@@ -108,6 +108,36 @@ sc_arturia_book_get_addr (ScArturiaBook *self)
 static void
 sc_arturia_book_class_init (ScArturiaBookClass *klass)
 {
+  klass->read_control = sc_midi_arturia_read_control;
+  klass->write_control = sc_midi_arturia_write_control;
+}
+
+int
+sc_arturia_book_read_control (ScArturiaBook *self, uint16_t control_id, uint8_t *val)
+{
+  ScArturiaBookClass *klass;
+  ScArturiaBookPrivate *priv;
+
+  g_return_val_if_fail (SC_IS_ARTURIA_BOOK (self), -EINVAL);
+
+  klass = SC_ARTURIA_BOOK_GET_CLASS (self);
+  priv = sc_arturia_book_get_instance_private (self);
+
+  return klass->read_control (priv->seq, priv->seq_addr, control_id, val);
+}
+
+int
+sc_arturia_book_write_control (ScArturiaBook *self, uint16_t control_id, uint8_t val)
+{
+  ScArturiaBookClass *klass;
+  ScArturiaBookPrivate *priv;
+
+  g_return_val_if_fail (SC_IS_ARTURIA_BOOK (self), -EINVAL);
+
+  klass = SC_ARTURIA_BOOK_GET_CLASS (self);
+  priv = sc_arturia_book_get_instance_private (self);
+
+  return klass->write_control (priv->seq, priv->seq_addr, control_id, val);
 }
 
 static void

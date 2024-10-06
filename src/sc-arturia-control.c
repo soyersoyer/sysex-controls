@@ -96,7 +96,7 @@ combo_row_change_cb (GObject * widget, GParamSpec *pspec, ScArturiaControl *self
     return;
 
   g_debug ("combo control change %02x: %02x -> %02x %s", self->real_id, self->value, val, sc_control_value_get_name (item));
-  if (sc_midi_arturia_write_control (sc_arturia_book_get_seq (book), sc_arturia_book_get_addr (book), self->real_id, val) < 0)
+  if (sc_arturia_book_write_control (book, self->real_id, val) < 0)
   {
     sc_io_problem (window, "Control change failed");
     return;
@@ -117,7 +117,7 @@ switch_row_change_cb (GObject * widget, GParamSpec *pspec, ScArturiaControl *sel
     return;
 
   g_debug ("switch control change %02x: %02x -> %02x", self->real_id, self->value, val);
-  if (sc_midi_arturia_write_control (sc_arturia_book_get_seq (book), sc_arturia_book_get_addr (book), self->real_id, val) < 0)
+  if (sc_arturia_book_write_control (book, self->real_id, val) < 0)
   {
     sc_io_problem (window, "Control change failed");
     return;
@@ -139,7 +139,7 @@ spin_row_change_cb (GObject * widget, GParamSpec *pspec, ScArturiaControl *self)
 
   g_debug("spin control change %02x: %02x -> %02x", self->real_id, self->value, val);
 
-  if (sc_midi_arturia_write_control (sc_arturia_book_get_seq (book), sc_arturia_book_get_addr (book), self->real_id, val) < 0)
+  if (sc_arturia_book_write_control (book, self->real_id, val) < 0)
   {
     sc_io_problem (window, "Control change failed");
 
@@ -249,9 +249,10 @@ sc_arturia_control_update_gui (ScArturiaControl *self)
 }
 
 int
-sc_arturia_control_read_value (ScArturiaControl *self, snd_seq_t *seq, snd_seq_addr_t addr)
+sc_arturia_control_read_value (ScArturiaControl *self)
 {
-  return sc_midi_arturia_read_control (seq, addr, self->real_id, &self->value);
+  ScArturiaBook *book = SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), SC_TYPE_ARTURIA_BOOK));
+  return sc_arturia_book_read_control (book, self->real_id, &self->value);
 }
 
 static void
