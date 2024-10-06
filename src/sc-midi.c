@@ -10,6 +10,161 @@
 #define MIN(X,Y) ((X) < (Y) ? (X) : (Y))
 
 int
+sc_midi_arturia_v3_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t val)
+{
+  //                                                             control_id        value
+  //                                                             ||||||||||        ||||
+  char data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x21, 0x08, 0x00, 0x00, 0x00, 0x00, 0xf7};
+  uint8_t p_id = (uint8_t)(control_id >> 8);
+  uint8_t c_id = (uint8_t)control_id;
+  snd_seq_event_t ev;
+  int err;
+
+  //printf ("write_control_value %02x value to %02x\n", control_id, val);
+
+  snd_seq_ev_clear (&ev);
+  snd_seq_ev_set_source (&ev, 0);
+  snd_seq_ev_set_dest (&ev, addr.client, addr.port);
+  snd_seq_ev_set_direct (&ev);
+  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (data), data);
+
+  data[8] = p_id;
+  data[9] = c_id;
+  data[11] = val;
+
+  err = snd_seq_event_output (seq, &ev);
+  if (err < 0)
+  {
+    fprintf (stderr, "write_control_value snd_seq_event_output failed %d\n", err);
+    return err;
+  }
+
+  err = snd_seq_drain_output (seq);
+  if (err < 0)
+  {
+    fprintf (stderr, "write_control_value snd_seq_drain_output failed %d\n", err);
+    return err;
+  }
+
+  return 0;
+}
+
+static int
+process_arturia_v3_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n, uint8_t p_id, uint8_t c_id, int *set, uint8_t *val)
+{
+  /*                                      pid cid     val
+   * In:  F0  00  20  6B  7F  42  21  08  40  00  00  00  F7  |  Sysex
+   */
+
+  static const char arturia_value[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x21, 0x08};
+  static const char arturia_init[] =  {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00, 0x40, 0x63, 0x00, 0xf7};
+
+  snd_seq_event_t *ev_input;
+  int ret;
+
+  unsigned int len;
+  char* input;
+
+  ret = poll (pfds, pfds_n, 20);
+  if (ret < 0)
+  {
+    fprintf (stderr, "poll failed %d\n", ret);
+    return ret;
+  }
+  if (ret == 0)
+  {
+    fprintf (stderr, "poll timeout %d\n", ret);
+    return -ETIMEDOUT;
+  }
+
+  ret = snd_seq_event_input (seq, &ev_input);
+  if (ret < 0)
+  {
+    fprintf (stderr, "snd_seq_event_input failed %d\n", ret);
+    return ret;
+  }
+
+  len = ev_input->data.ext.len;
+  input = ev_input->data.ext.ptr;
+
+  if (memcmp (input, arturia_value, MIN (len, ARRAY_SIZE (arturia_value))) == 0 &&
+      len == ARRAY_SIZE (arturia_value) + 5)
+  {
+    if (input[8] == p_id && input[9] == c_id)
+    {
+      *val = input[11];
+      *set = 1;
+    }
+    else
+    {
+      fprintf (stderr, "process_arturia_v3_message: unexpected control %02x%02x with value %02x\n", input[8], input[9], input[11]);
+    }
+    //printf ("MIDI VALUE %02x%02x -> %02x\n", input[8], input[9], input[10]);
+  }
+  else if (memcmp (input, arturia_init, MIN (len, ARRAY_SIZE (arturia_init))) == 0)
+  {
+    return process_arturia_v3_message (seq, pfds, pfds_n, p_id, c_id, set, val);
+  }
+  else
+  {
+    fprintf (stderr, "process_arturia_v3_message: unexpected message len %d: ", len);
+    for (int i=0; i < len; ++i)
+      fprintf(stderr, "%02x ", (uint8_t)input[i]);
+    fprintf(stderr, "\n");
+  }
+  return 0;
+}
+
+int
+sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t *val)
+{
+  /**                                        
+   *                                        pid cid
+   * Out:   F0   00  20  6B  7F  42  20  08  40  00  00  F7  |  Sysex
+   */
+  char data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x20, 0x08, 0x00, 0x00, 0x00, 0xf7};
+  uint8_t p_id = (uint8_t)(control_id >> 8);
+  uint8_t c_id = (uint8_t)control_id;
+  int err, set = 0, pfds_n = 0;
+  struct pollfd pfds[1] = {};
+  snd_seq_event_t ev;
+
+  //printf ("read_control_value %02x\n", control_id);
+
+  snd_seq_ev_clear (&ev);
+  snd_seq_ev_set_source (&ev, 0);
+  snd_seq_ev_set_dest (&ev, addr.client, addr.port);
+  snd_seq_ev_set_direct (&ev);
+  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (data), data);
+
+  data[8] = p_id;
+  data[9] = c_id;
+
+  err = snd_seq_event_output (seq, &ev);
+  if (err < 0)
+  {
+    fprintf (stderr, "sc_midi_arturia_v3_read_control(%02x) snd_seq_event_output failed %d\n", control_id, err);
+    return err;
+  }
+
+  err = snd_seq_drain_output(seq);
+
+  if (err < 0)
+  {
+    fprintf (stderr, "sc_midi_arturia_v3_read_control(%02x) snd_seq_drain_output failed %d\n", control_id, err);
+    return err;
+  }
+
+  pfds_n = snd_seq_poll_descriptors(seq, pfds, 1, POLLIN);
+
+  err = process_arturia_v3_message (seq, pfds, pfds_n, p_id, c_id, &set, val);
+  if (err < 0)
+    return err;
+
+  return set ? 0 : -EIO;
+}
+
+int
 sc_midi_arturia_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t val)
 {
   //                                                             control_id  value
@@ -35,14 +190,14 @@ sc_midi_arturia_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t con
   err = snd_seq_event_output (seq, &ev);
   if (err < 0)
   {
-    fprintf (stderr, "write_control_value snd_seq_event_output failed %d\n", err);
+    fprintf (stderr, "sc_midi_arturia_write_control snd_seq_event_output failed %d\n", err);
     return err;
   }
 
   err = snd_seq_drain_output (seq);
   if (err < 0)
   {
-    fprintf (stderr, "write_control_value snd_seq_drain_output failed %d\n", err);
+    fprintf (stderr, "sc_midi_arturia_write_control snd_seq_drain_output failed %d\n", err);
     return err;
   }
 
@@ -50,7 +205,7 @@ sc_midi_arturia_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t con
 }
 
 static int
-process_sysex_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n, uint8_t p_id, uint8_t c_id, int *set, uint8_t *val)
+process_arturia_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n, uint8_t p_id, uint8_t c_id, int *set, uint8_t *val)
 {
   //static const char arturia_ack[] =   {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x1c, 0x00, 0xf7};
   static const char arturia_value[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00};
@@ -109,12 +264,12 @@ process_control_event (snd_seq_t *seq, uint8_t p_id, uint8_t c_id, uint8_t *val)
   pfds_n = snd_seq_poll_descriptors(seq, pfds, 1, POLLIN);
 
   // read value
-  ret = process_sysex_message (seq, pfds, pfds_n, p_id, c_id, &set, val);
+  ret = process_arturia_message (seq, pfds, pfds_n, p_id, c_id, &set, val);
   if (ret < 0)
     return ret;
 
   // read ack
-  ret = process_sysex_message (seq, pfds, pfds_n, p_id, c_id, &set, val);
+  ret = process_arturia_message (seq, pfds, pfds_n, p_id, c_id, &set, val);
   if (ret < 0)
     return ret;
 
@@ -146,7 +301,7 @@ sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t cont
   err = snd_seq_event_output (seq, &ev);
   if (err < 0)
   {
-    fprintf (stderr, "read_control_value(%02x) snd_seq_event_output failed %d\n", control_id, err);
+    fprintf (stderr, "sc_midi_arturia_read_control(%02x) snd_seq_event_output failed %d\n", control_id, err);
     return err;
   }
 
@@ -154,9 +309,9 @@ sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t cont
 
   if (err < 0)
   {
-    fprintf (stderr, "read_control_value(%02x) snd_seq_drain_output failed %d\n", control_id, err);
+    fprintf (stderr, "sc_midi_arturia_read_control(%02x) snd_seq_drain_output failed %d\n", control_id, err);
     return err;
-}
+  }
 
   return process_control_event (seq, p_id, c_id, val);
 }
