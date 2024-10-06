@@ -16,7 +16,7 @@
               <object class="ScControlValueList">
                 <items>
                   <item>Volts per octave</item>
-                  <item>Herts per Volt</item>
+                  <item>Hertz per Volt</item>
                 </items>
               </object>
             </property>
