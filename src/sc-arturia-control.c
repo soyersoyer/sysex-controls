@@ -225,6 +225,8 @@ sc_arturia_control_update_gui (ScArturiaControl *self)
 
     if (pos != GTK_INVALID_LIST_POSITION)
       adw_combo_row_set_selected (combo_row, pos);
+    else
+      g_warning("Set combo row id %02x to invalid pos %02x", self->real_id, pos);
 
     g_debug("Set combo row id %02x to pos %02x", self->real_id, pos);
   }
