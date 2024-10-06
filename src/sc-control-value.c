@@ -310,7 +310,7 @@ item_start_element (GtkBuildableParseContext  *context,
     data->is_control_value = TRUE;
     if (value)
     {
-      v = g_ascii_strtoll (value, &vptr, 16);
+      v = g_ascii_strtoll (value, &vptr, 0);
       if (!errno && vptr != value)
         data->value = v;
     }
