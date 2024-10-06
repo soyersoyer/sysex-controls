@@ -7,6 +7,15 @@ This is a GTK UI that allows to configure the Arturia KeyStep 37, MiniLab MkII, 
 It currently allows for reading the controls, changing them and writing
 back to the device.
 
+## Controller Support Status
+
+|Controller     |Supported Features         |Missing Features    |Need testing|
+|---------------|---------------------------|--------------------|------------|
+|KeyStep37      |Global settings, CC Banks  |Sequencer settings  |            |
+|MiniLab MkII   |Global settings, Color Pads|Presets, Knobs, Pads| yes        |
+|MiniLab 3      |Global settings            |Presets, Knobs, Pads|            |
+|BeatStep       |Global settings            |Presets, Pads       | yes        |
+
 ## Installation
 
 ### From Flathub
