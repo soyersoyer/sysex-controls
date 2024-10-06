@@ -162,19 +162,22 @@ spin_row_change_cb (GObject * widget, GParamSpec *pspec, ScArturiaControl *self)
 }
 
 static int
-sc_arturia_control_register (void *widget)
+sc_arturia_control_register (void *ac_widget)
 {
-  ScArturiaControl *self = SC_ARTURIA_CONTROL (widget);
-  GtkWidget *adw_widget, *page_widget, *group_widget;
+  ScArturiaControl *self = SC_ARTURIA_CONTROL (ac_widget);
+  GtkWidget *widget, *page_widget, *group_widget;
   self->real_id = self->control_id;
 
-  adw_widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), ADW_TYPE_COMBO_ROW);
+  widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), ADW_TYPE_COMBO_ROW);
 
-  if (!adw_widget)
-    adw_widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), ADW_TYPE_SPIN_ROW);
+  if (!widget)
+    widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), GTK_TYPE_DROP_DOWN);
 
-  if (!adw_widget)
-    adw_widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), ADW_TYPE_SWITCH_ROW);
+  if (!widget)
+    widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), ADW_TYPE_SPIN_ROW);
+
+  if (!widget)
+    widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), ADW_TYPE_SWITCH_ROW);
 
   page_widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), SC_TYPE_PREFERENCES_PAGE);
   if (page_widget)
@@ -185,18 +188,18 @@ sc_arturia_control_register (void *widget)
     self->real_id += sc_preferences_group_get_control_id_offset (SC_PREFERENCES_GROUP (group_widget));
 
   self->value = 0;
-  self->widget = adw_widget;
-  sc_arturia_book_register_control (SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (adw_widget), SC_TYPE_ARTURIA_BOOK)), self->real_id, self);
+  self->widget = widget;
+  sc_arturia_book_register_control (SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (widget), SC_TYPE_ARTURIA_BOOK)), self->real_id, self);
 
-  if (ADW_IS_COMBO_ROW (adw_widget))
-    g_signal_connect (G_OBJECT (adw_widget), "notify::selected-item", G_CALLBACK (combo_row_change_cb), self);
-  else if (ADW_IS_SWITCH_ROW (adw_widget))
-    g_signal_connect (G_OBJECT (adw_widget), "notify::active", G_CALLBACK (switch_row_change_cb), self);
-  else if (ADW_IS_SPIN_ROW (adw_widget))
-    g_signal_connect (G_OBJECT (adw_widget), "notify::value", G_CALLBACK (spin_row_change_cb), self);
+  if (ADW_IS_COMBO_ROW (widget))
+    g_signal_connect (G_OBJECT (widget), "notify::selected-item", G_CALLBACK (combo_row_change_cb), self);
+  else if (ADW_IS_SWITCH_ROW (widget))
+    g_signal_connect (G_OBJECT (widget), "notify::active", G_CALLBACK (switch_row_change_cb), self);
+  else if (ADW_IS_SPIN_ROW (widget))
+    g_signal_connect (G_OBJECT (widget), "notify::value", G_CALLBACK (spin_row_change_cb), self);
   else
     g_error("Unsupported control type: %s id: 0x%02x",
-            gtk_widget_get_name (GTK_WIDGET (adw_widget)),
+            gtk_widget_get_name (GTK_WIDGET (widget)),
             self->real_id);
 
   return false;
