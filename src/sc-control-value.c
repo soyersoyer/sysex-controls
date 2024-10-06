@@ -422,6 +422,21 @@ G_DEFINE_TYPE_WITH_CODE (ScControlValueList, sc_control_value_list, G_TYPE_OBJEC
                          G_IMPLEMENT_INTERFACE (G_TYPE_LIST_MODEL,
                                                 sc_control_value_list_model_init))
 
+G_MODULE_EXPORT gboolean
+cv_in (GObject *object, ScControlValue* value, GVariant* variant)
+{
+  int selected = sc_control_value_get_value (value);
+  const gint *array = NULL;
+  gsize n_elements;
+
+  array = g_variant_get_fixed_array (variant, &n_elements, sizeof(gint));
+  for (int i = 0; i < n_elements; ++i)
+    if (array[i] == selected)
+      return TRUE;
+
+  return FALSE;
+}
+
 static void
 sc_control_value_list_init (ScControlValueList *self)
 {

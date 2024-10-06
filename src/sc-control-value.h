@@ -11,6 +11,7 @@ G_DECLARE_FINAL_TYPE (ScControlValue, sc_control_value, SC, CONTROL_VALUE, GObje
 ScControlValue* sc_control_value_new (uint8_t value, const char *name);
 int sc_control_value_get_value (ScControlValue *self);
 const char* sc_control_value_get_name (ScControlValue *self);
+gboolean cv_in (GObject *object, ScControlValue* value, GVariant* variant);
 
 #define SC_TYPE_CONTROL_VALUE_LIST (sc_control_value_list_get_type ())
 
