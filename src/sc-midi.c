@@ -7,7 +7,6 @@
 #define DESIRED_CAPS (SND_SEQ_PORT_CAP_READ | SND_SEQ_PORT_CAP_SUBS_READ | \
                       SND_SEQ_PORT_CAP_WRITE | SND_SEQ_PORT_CAP_SUBS_WRITE)
 
-#define MIN(X,Y) ((X) < (Y) ? (X) : (Y))
 
 int
 sc_midi_arturia_v3_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val)
@@ -99,8 +98,8 @@ process_arturia_v3_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n,
   len = ev_input->data.ext.len;
   input = ev_input->data.ext.ptr;
 
-  if (memcmp (input, arturia_value, MIN (len, ARRAY_SIZE (arturia_value))) == 0 &&
-      len == ARRAY_SIZE (arturia_value) + 6)
+  if (len == ARRAY_SIZE (arturia_value) + 6 &&
+      memcmp (input, arturia_value, ARRAY_SIZE (arturia_value)) == 0)
   {
     if (input[7] == pr_id && input[8] == p_id && input[9] == c_id && input[10] == r_id)
     {
@@ -113,7 +112,8 @@ process_arturia_v3_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n,
     }
     //printf ("MIDI VALUE %02x%02x -> %02x\n", input[8], input[9], input[10]);
   }
-  else if (memcmp (input, arturia_init, MIN (len, ARRAY_SIZE (arturia_init))) == 0)
+  else if (len == ARRAY_SIZE (arturia_init) &&
+           memcmp (input, arturia_init, ARRAY_SIZE (arturia_init)) == 0)
   {
     return process_arturia_v3_message (seq, pfds, pfds_n, pr_id, p_id, c_id, r_id, set, val);
   }
@@ -254,8 +254,8 @@ process_arturia_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n, ui
   len = ev_input->data.ext.len;
   input = ev_input->data.ext.ptr;
 
-  if (memcmp (input, arturia_value, MIN (len, ARRAY_SIZE (arturia_value))) == 0 &&
-      len == ARRAY_SIZE (arturia_value) + 4)
+  if (len == ARRAY_SIZE (arturia_value) + 4 &&
+      memcmp (input, arturia_value, ARRAY_SIZE (arturia_value)) == 0)
   {
     if (input[8] == p_id && input[9] == c_id)
     {
