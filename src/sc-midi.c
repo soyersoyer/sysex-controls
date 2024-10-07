@@ -56,7 +56,7 @@ sc_midi_arturia_v3_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t 
 }
 
 static int
-process_arturia_v3_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n, uint8_t pr_id, uint8_t p_id, uint8_t c_id, uint8_t r_id, int *set, uint8_t *val)
+process_arturia_v3_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n, uint8_t pr_id, uint8_t p_id, uint8_t c_id, uint8_t r_id, uint8_t *val)
 {
   /*                                 prid pid cid rid val
    * In:  F0  00  20  6B  7F  42  21  08  40  00  00  00  F7  |  Sysex
@@ -104,18 +104,18 @@ process_arturia_v3_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n,
     if (input[7] == pr_id && input[8] == p_id && input[9] == c_id && input[10] == r_id)
     {
       *val = input[11];
-      *set = 1;
     }
     else
     {
       fprintf (stderr, "process_arturia_v3_message: unexpected control %02x%02x%02x%02x with value %02x\n", input[7], input[8], input[9], input[10], input[11]);
+      return -EIO;
     }
     //printf ("MIDI VALUE %02x%02x -> %02x\n", input[8], input[9], input[10]);
   }
   else if (len == ARRAY_SIZE (arturia_init) &&
            memcmp (input, arturia_init, ARRAY_SIZE (arturia_init)) == 0)
   {
-    return process_arturia_v3_message (seq, pfds, pfds_n, pr_id, p_id, c_id, r_id, set, val);
+    return process_arturia_v3_message (seq, pfds, pfds_n, pr_id, p_id, c_id, r_id, val);
   }
   else
   {
@@ -123,6 +123,7 @@ process_arturia_v3_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n,
     for (int i=0; i < len; ++i)
       fprintf(stderr, "%02x ", (uint8_t)input[i]);
     fprintf(stderr, "\n");
+    return -EIO;
   }
   return 0;
 }
@@ -139,7 +140,7 @@ sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t c
   uint8_t p_id = (uint8_t)(control_id >> 16);
   uint8_t c_id = (uint8_t)(control_id >> 8);
   uint8_t r_id = (uint8_t)(control_id);
-  int err, set = 0, pfds_n = 0;
+  int err, pfds_n = 0;
   struct pollfd pfds[1] = {};
   snd_seq_event_t ev;
 
@@ -173,11 +174,11 @@ sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t c
 
   pfds_n = snd_seq_poll_descriptors(seq, pfds, 1, POLLIN);
 
-  err = process_arturia_v3_message (seq, pfds, pfds_n, pr_id, p_id, c_id, r_id, &set, val);
+  err = process_arturia_v3_message (seq, pfds, pfds_n, pr_id, p_id, c_id, r_id, val);
   if (err < 0)
     return err;
 
-  return set ? 0 : -EIO;
+  return 0;
 }
 
 int
