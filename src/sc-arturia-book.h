@@ -14,8 +14,8 @@ struct _ScArturiaBookClass
 {
   AdwBinClass parent_class;
 
-  int (*read_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t *val);
-  int (*write_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t val);
+  int (*read_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t *val);
+  int (*write_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val);
 };
 
 void sc_arturia_book_set_seq (ScArturiaBook *self, snd_seq_t *seq, snd_seq_addr_t *addr);
@@ -25,7 +25,7 @@ void sc_arturia_book_register_control (ScArturiaBook *self, uint16_t control_id,
 void sc_arturia_book_load_task (GTask *task, gpointer source_obj, gpointer task_data, GCancellable *cancellable);
 void sc_arturia_book_load_task_finish (GObject* source_object, GAsyncResult* res, gpointer data);
 
-int sc_arturia_book_read_control (ScArturiaBook *self, uint16_t control_id, uint8_t *val);
-int sc_arturia_book_write_control (ScArturiaBook *self, uint16_t control_id, uint8_t val);
+int sc_arturia_book_read_control (ScArturiaBook *self, uint32_t control_id, uint8_t *val);
+int sc_arturia_book_write_control (ScArturiaBook *self, uint32_t control_id, uint8_t val);
 
 G_END_DECLS

@@ -15,8 +15,8 @@ enum {
 struct _ScArturiaControl
 {
   AdwBin parent_instance;
-  uint16_t control_id;
-  uint16_t real_id;
+  uint32_t control_id;
+  uint32_t real_id;
   uint8_t value;
   GtkWidget *widget;
 };
@@ -25,7 +25,7 @@ static GParamSpec *value_props[LAST_PROP];
 
 G_DEFINE_FINAL_TYPE (ScArturiaControl, sc_arturia_control, ADW_TYPE_BIN)
 
-uint16_t
+uint32_t
 sc_arturia_control_get_id (ScArturiaControl *self)
 {
   g_return_val_if_fail (SC_IS_ARTURIA_CONTROL (self), 0);
@@ -78,7 +78,7 @@ sc_arturia_control_class_init (ScArturiaControlClass *klass)
   object_class->set_property = sc_arturia_control_set_property;
 
   value_props[PROP_CONTROL_ID] = g_param_spec_uint ("control-id", NULL, NULL,
-                                                    0, G_MAXUINT16, 0,
+                                                    0, G_MAXUINT32, 0,
                                                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   g_object_class_install_properties (object_class, LAST_PROP, value_props);

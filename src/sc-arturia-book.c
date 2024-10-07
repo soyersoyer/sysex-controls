@@ -113,7 +113,7 @@ sc_arturia_book_class_init (ScArturiaBookClass *klass)
 }
 
 int
-sc_arturia_book_read_control (ScArturiaBook *self, uint16_t control_id, uint8_t *val)
+sc_arturia_book_read_control (ScArturiaBook *self, uint32_t control_id, uint8_t *val)
 {
   ScArturiaBookClass *klass;
   ScArturiaBookPrivate *priv;
@@ -127,7 +127,7 @@ sc_arturia_book_read_control (ScArturiaBook *self, uint16_t control_id, uint8_t 
 }
 
 int
-sc_arturia_book_write_control (ScArturiaBook *self, uint16_t control_id, uint8_t val)
+sc_arturia_book_write_control (ScArturiaBook *self, uint32_t control_id, uint8_t val)
 {
   ScArturiaBookClass *klass;
   ScArturiaBookPrivate *priv;

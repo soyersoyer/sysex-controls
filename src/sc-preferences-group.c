@@ -10,13 +10,13 @@ static GParamSpec *value_props[LAST_PROP];
 
 typedef struct
 {
-  uint16_t control_id_offset;
+  uint32_t control_id_offset;
 } ScPreferencesGroupPrivate;
 
 
 G_DEFINE_TYPE_WITH_PRIVATE (ScPreferencesGroup, sc_preferences_group, ADW_TYPE_PREFERENCES_GROUP)
 
-uint16_t
+uint32_t
 sc_preferences_group_get_control_id_offset (ScPreferencesGroup *self)
 {
   ScPreferencesGroupPrivate *priv = sc_preferences_group_get_instance_private (self);
@@ -71,7 +71,7 @@ sc_preferences_group_class_init (ScPreferencesGroupClass *klass)
   object_class->set_property = sc_preferences_group_set_property;
 
   value_props[PROP_CONTROL_ID_OFFSET] = g_param_spec_uint ("control-id-offset", NULL, NULL,
-                                                           0, G_MAXUINT16, 0,
+                                                           0, G_MAXUINT32, 0,
                                                            G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   g_object_class_install_properties (object_class, LAST_PROP, value_props);

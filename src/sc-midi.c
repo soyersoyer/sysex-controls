@@ -10,13 +10,18 @@
 #define MIN(X,Y) ((X) < (Y) ? (X) : (Y))
 
 int
-sc_midi_arturia_v3_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t val)
+sc_midi_arturia_v3_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val)
 {
   //                                                             control_id        value
-  //                                                             ||||||||||        ||||
-  char data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x21, 0x08, 0x00, 0x00, 0x00, 0x00, 0xf7};
-  uint8_t p_id = (uint8_t)(control_id >> 8);
-  uint8_t c_id = (uint8_t)control_id;
+  //                                                       ||||||||||||||||||||||  ||||
+  char data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf7};
+  //                                                       ||||  ||||  ||||  ||||
+  //                                                     preset  pid   cid   rid
+  //                                                    08:glob
+  uint8_t pr_id = (uint8_t)(control_id >> 24);
+  uint8_t p_id = (uint8_t)(control_id >> 16);
+  uint8_t c_id = (uint8_t)(control_id >> 8);
+  uint8_t r_id = (uint8_t)(control_id);
   snd_seq_event_t ev;
   int err;
 
@@ -28,8 +33,10 @@ sc_midi_arturia_v3_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t 
   snd_seq_ev_set_direct (&ev);
   snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (data), data);
 
+  data[7] = pr_id;
   data[8] = p_id;
   data[9] = c_id;
+  data[10] = r_id;
   data[11] = val;
 
   err = snd_seq_event_output (seq, &ev);
@@ -50,13 +57,18 @@ sc_midi_arturia_v3_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t 
 }
 
 static int
-process_arturia_v3_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n, uint8_t p_id, uint8_t c_id, int *set, uint8_t *val)
+process_arturia_v3_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n, uint8_t pr_id, uint8_t p_id, uint8_t c_id, uint8_t r_id, int *set, uint8_t *val)
 {
-  /*                                      pid cid     val
+  /*                                 prid pid cid rid val
    * In:  F0  00  20  6B  7F  42  21  08  40  00  00  00  F7  |  Sysex
+   *
+   *
+   * preset change from keyboard:            preset_number
+   *                                         ||
+   * F0  00  20  6B  7F  42  02  00  40  62  03  F7
    */
 
-  static const char arturia_value[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x21, 0x08};
+  static const char arturia_value[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x21};
   static const char arturia_init[] =  {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00, 0x40, 0x63, 0x00, 0xf7};
 
   snd_seq_event_t *ev_input;
@@ -88,22 +100,22 @@ process_arturia_v3_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n,
   input = ev_input->data.ext.ptr;
 
   if (memcmp (input, arturia_value, MIN (len, ARRAY_SIZE (arturia_value))) == 0 &&
-      len == ARRAY_SIZE (arturia_value) + 5)
+      len == ARRAY_SIZE (arturia_value) + 6)
   {
-    if (input[8] == p_id && input[9] == c_id)
+    if (input[7] == pr_id && input[8] == p_id && input[9] == c_id && input[10] == r_id)
     {
       *val = input[11];
       *set = 1;
     }
     else
     {
-      fprintf (stderr, "process_arturia_v3_message: unexpected control %02x%02x with value %02x\n", input[8], input[9], input[11]);
+      fprintf (stderr, "process_arturia_v3_message: unexpected control %02x%02x%02x%02x with value %02x\n", input[7], input[8], input[9], input[10], input[11]);
     }
     //printf ("MIDI VALUE %02x%02x -> %02x\n", input[8], input[9], input[10]);
   }
   else if (memcmp (input, arturia_init, MIN (len, ARRAY_SIZE (arturia_init))) == 0)
   {
-    return process_arturia_v3_message (seq, pfds, pfds_n, p_id, c_id, set, val);
+    return process_arturia_v3_message (seq, pfds, pfds_n, pr_id, p_id, c_id, r_id, set, val);
   }
   else
   {
@@ -116,15 +128,17 @@ process_arturia_v3_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n,
 }
 
 int
-sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t *val)
+sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t *val)
 {
   /**                                        
    *                                        pid cid
    * Out:   F0   00  20  6B  7F  42  20  08  40  00  00  F7  |  Sysex
    */
   char data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x20, 0x08, 0x00, 0x00, 0x00, 0xf7};
-  uint8_t p_id = (uint8_t)(control_id >> 8);
-  uint8_t c_id = (uint8_t)control_id;
+  uint8_t pr_id = (uint8_t)(control_id >> 24);
+  uint8_t p_id = (uint8_t)(control_id >> 16);
+  uint8_t c_id = (uint8_t)(control_id >> 8);
+  uint8_t r_id = (uint8_t)(control_id);
   int err, set = 0, pfds_n = 0;
   struct pollfd pfds[1] = {};
   snd_seq_event_t ev;
@@ -137,8 +151,10 @@ sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t c
   snd_seq_ev_set_direct (&ev);
   snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (data), data);
 
+  data[7] = pr_id;
   data[8] = p_id;
   data[9] = c_id;
+  data[10] = r_id;
 
   err = snd_seq_event_output (seq, &ev);
   if (err < 0)
@@ -157,7 +173,7 @@ sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t c
 
   pfds_n = snd_seq_poll_descriptors(seq, pfds, 1, POLLIN);
 
-  err = process_arturia_v3_message (seq, pfds, pfds_n, p_id, c_id, &set, val);
+  err = process_arturia_v3_message (seq, pfds, pfds_n, pr_id, p_id, c_id, r_id, &set, val);
   if (err < 0)
     return err;
 
@@ -165,7 +181,7 @@ sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t c
 }
 
 int
-sc_midi_arturia_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t val)
+sc_midi_arturia_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val)
 {
   //                                                             control_id  value
   //                                                             ||||||||||  ||||
@@ -277,7 +293,7 @@ process_control_event (snd_seq_t *seq, uint8_t p_id, uint8_t c_id, uint8_t *val)
 }
 
 int
-sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint16_t control_id, uint8_t *val)
+sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t *val)
 {
   //                                                             control_id
   //                                                             ||||||||||
