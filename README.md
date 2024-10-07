@@ -9,12 +9,36 @@ back to the device.
 
 ## Controller Support Status
 
-|Controller     |Supported Features         |Missing Features    |Need testing|
-|---------------|---------------------------|--------------------|------------|
-|KeyStep37      |Global settings, CC Banks  |Sequencer settings  |            |
-|MiniLab MkII   |Global settings, Color Pads|Presets, Knobs, Pads| yes        |
-|MiniLab 3      |Global settings            |Presets, Knobs, Pads|            |
-|BeatStep       |Global settings            |Presets, Pads       | yes        |
+### KeyStep37
+- [x] Global settings
+- [x] CC Banks
+- [ ] Sequencer settings
+
+### MiniLab MkII
+- [x] Global settings
+- [x] Color Pads
+- [ ] Presets
+- [ ] Knobs
+- [ ] Pads
+
+Testers or developers needed!
+
+### MiniLab 3
+- [x] Global settings
+- [x] Shift, Pitch, Mod
+- [x] Main Knob
+- [x] Knobs
+- [x] Faders
+- [x] Pads
+- [ ] Presets 4-7
+
+### BeatStep
+- [x] Global settings
+- [ ] Presets
+- [ ] Pads
+- [ ] Knobs
+
+Testers or developers needed!
 
 ## Installation
 
