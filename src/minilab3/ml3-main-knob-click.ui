@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ml3MainKnobClick" parent="ScPreferencesGroup">
+
+    <child>
+      <object class="ScComboRow" id="control_mode">
+        <child><object class="ScArturiaControl"><property name="id">0x1400</property></object></child>
+        <property name="title" translatable="yes">Mode</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item>Off</item>
+              <item>CC</item>
+              <item>MCU/HUI</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScComboRow">
+        <child><object class="ScArturiaControl"><property name="id">0x1600</property></object></child>
+        <property name="title" translatable="yes">Channel</property>
+        <binding name="visible">
+          <closure type='gboolean' function='cv_in'>
+            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
+            <constant type='GVariant'>[0x01]</constant>
+          </closure>
+        </binding>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item>Keyboard</item>
+              <item>1</item>
+              <item>2</item>
+              <item>3</item>
+              <item>4</item>
+              <item>5</item>
+              <item>6</item>
+              <item>7</item>
+              <item>8</item>
+              <item>9</item>
+              <item>10</item>
+              <item>11</item>
+              <item>12</item>
+              <item>13</item>
+              <item>14</item>
+              <item>15</item>
+              <item>16</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScCcRow">
+        <child><object class="ScArturiaControl"><property name="id">0x1800</property></object></child>
+        <binding name="visible">
+          <closure type='gboolean' function='cv_in'>
+            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
+            <constant type='GVariant'>[0x01]</constant>
+          </closure>
+        </binding>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ScArturiaControl"><property name="id">0x1a00</property></object></child>
+        <property name="title" translatable="yes">Off Value</property>
+        <binding name="visible">
+          <closure type='gboolean' function='cv_in'>
+            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
+            <constant type='GVariant'>[0x01]</constant>
+          </closure>
+        </binding>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ScArturiaControl"><property name="id">0x1c00</property></object></child>
+        <property name="title" translatable="yes">On Value</property>
+        <binding name="visible">
+          <closure type='gboolean' function='cv_in'>
+            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
+            <constant type='GVariant'>[0x01]</constant>
+          </closure>
+        </binding>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScComboRow">
+        <child><object class="ScArturiaControl"><property name="id">0x1e00</property></object></child>
+        <property name="title" translatable="yes">Type</property>
+        <binding name="visible">
+          <closure type='gboolean' function='cv_in'>
+            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
+            <constant type='GVariant'>[0x01]</constant>
+          </closure>
+        </binding>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item>Gate</item>
+              <item>Toggle</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScComboRow">
+        <child><object class="ScArturiaControl"><property name="id">0x2000</property></object></child>
+        <binding name="visible">
+          <closure type='gboolean' function='cv_in'>
+            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
+            <constant type='GVariant'>[0x02]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">MCU/HUI</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item>Click</item>
+              <item>Loop</item>
+              <item>Rewind</item>
+              <item>FastForward</item>
+              <item>Stop</item>
+              <item>Play</item>
+              <item>Rec</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+  </template>
+</interface>

@@ -437,6 +437,12 @@ cv_in (GObject *object, ScControlValue* value, GVariant* variant)
   return FALSE;
 }
 
+G_MODULE_EXPORT gboolean
+cv_in_2 (GObject *object, ScControlValue* value, GVariant* variant, ScControlValue* value2, GVariant* variant2)
+{
+  return cv_in (object, value, variant) && cv_in (object, value2, variant2);
+}
+
 static void
 sc_control_value_list_init (ScControlValueList *self)
 {

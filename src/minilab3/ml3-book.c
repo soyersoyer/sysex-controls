@@ -1,5 +1,15 @@
 #include "ml3-book.h"
 
+#include "ml3-fader.h"
+#include "ml3-knob.h"
+#include "ml3-main-knob.h"
+#include "ml3-main-knob-click.h"
+#include "ml3-mod.h"
+#include "ml3-pad.h"
+#include "ml3-pad-bank.h"
+#include "ml3-pitch.h"
+#include "ml3-shift.h"
+
 struct _Ml3Book
 {
   ScArturiaBook parent_instance;
@@ -21,6 +31,16 @@ ml3_book_init (Ml3Book *self)
   ScArturiaBookClass *scklass = SC_ARTURIA_BOOK_GET_CLASS (self);
   scklass->read_control = sc_midi_arturia_v3_read_control;
   scklass->write_control = sc_midi_arturia_v3_write_control;
+
+  g_type_ensure (ML3_TYPE_FADER);
+  g_type_ensure (ML3_TYPE_KNOB);
+  g_type_ensure (ML3_TYPE_MAIN_KNOB);
+  g_type_ensure (ML3_TYPE_MAIN_KNOB_CLICK);
+  g_type_ensure (ML3_TYPE_MOD);
+  g_type_ensure (ML3_TYPE_PAD);
+  g_type_ensure (ML3_TYPE_PAD_BANK);
+  g_type_ensure (ML3_TYPE_PITCH);
+  g_type_ensure (ML3_TYPE_SHIFT);
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }

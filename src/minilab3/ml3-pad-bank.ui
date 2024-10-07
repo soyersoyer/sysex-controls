@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ml3PadBank" parent="ScPreferencesPage">
+
+    <child>
+      <object class="Ml3Pad">
+        <property name="title" translatable="yes">Pad 1</property>
+        <property name="control-id-offset">0x0000</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml3Pad">
+        <property name="title" translatable="yes">Pad 2</property>
+        <property name="control-id-offset">0x0100</property>
+
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml3Pad">
+        <property name="title" translatable="yes">Pad 3</property>
+        <property name="control-id-offset">0x0200</property>
+        <property name="control-cc-offset">0x0400</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml3Pad">
+        <property name="title" translatable="yes">Pad 4</property>
+        <property name="control-id-offset">0x0300</property>
+        <property name="control-cc-offset">0x0600</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml3Pad">
+        <property name="title" translatable="yes">Pad 5</property>
+        <property name="control-id-offset">0x0400</property>
+        <property name="control-cc-offset">0x0800</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml3Pad">
+        <property name="title" translatable="yes">Pad 6</property>
+        <property name="control-id-offset">0x0500</property>
+        <property name="control-cc-offset">0x0a00</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml3Pad">
+        <property name="title" translatable="yes">Pad 7</property>
+        <property name="control-id-offset">0x0600</property>
+        <property name="control-cc-offset">0x0c00</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml3Pad">
+        <property name="title" translatable="yes">Pad 8</property>
+        <property name="control-id-offset">0x0700</property>
+        <property name="control-cc-offset">0x0e00</property>
+      </object>
+    </child>
+
+  </template>
+</interface>
