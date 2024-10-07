@@ -24,7 +24,7 @@ sc_midi_arturia_v3_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t 
   snd_seq_event_t ev;
   int err;
 
-  //printf ("write_control_value %02x value to %02x\n", control_id, val);
+  //printf ("write_control_value %08x value to %02x\n", control_id, val);
 
   snd_seq_ev_clear (&ev);
   snd_seq_ev_set_source (&ev, 0);
@@ -119,7 +119,7 @@ process_arturia_v3_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n,
   }
   else
   {
-    fprintf (stderr, "process_arturia_v3_message: unexpected message len %d: ", len);
+    fprintf (stderr, "process_arturia_v3_message: unexpected message: len %d: ", len);
     for (int i=0; i < len; ++i)
       fprintf(stderr, "%02x ", (uint8_t)input[i]);
     fprintf(stderr, "\n");
@@ -143,7 +143,7 @@ sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t c
   struct pollfd pfds[1] = {};
   snd_seq_event_t ev;
 
-  //printf ("read_control_value %02x\n", control_id);
+  //printf ("read_control_value 0x%08x\n", control_id);
 
   snd_seq_ev_clear (&ev);
   snd_seq_ev_set_source (&ev, 0);
@@ -159,7 +159,7 @@ sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t c
   err = snd_seq_event_output (seq, &ev);
   if (err < 0)
   {
-    fprintf (stderr, "sc_midi_arturia_v3_read_control(%02x) snd_seq_event_output failed %d\n", control_id, err);
+    fprintf (stderr, "sc_midi_arturia_v3_read_control(%08x) snd_seq_event_output failed %d\n", control_id, err);
     return err;
   }
 
@@ -167,7 +167,7 @@ sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t c
 
   if (err < 0)
   {
-    fprintf (stderr, "sc_midi_arturia_v3_read_control(%02x) snd_seq_drain_output failed %d\n", control_id, err);
+    fprintf (stderr, "sc_midi_arturia_v3_read_control(%08x) snd_seq_drain_output failed %d\n", control_id, err);
     return err;
   }
 
@@ -317,7 +317,7 @@ sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t cont
   err = snd_seq_event_output (seq, &ev);
   if (err < 0)
   {
-    fprintf (stderr, "sc_midi_arturia_read_control(%02x) snd_seq_event_output failed %d\n", control_id, err);
+    fprintf (stderr, "sc_midi_arturia_read_control(%04x) snd_seq_event_output failed %d\n", control_id, err);
     return err;
   }
 
@@ -325,7 +325,7 @@ sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t cont
 
   if (err < 0)
   {
-    fprintf (stderr, "sc_midi_arturia_read_control(%02x) snd_seq_drain_output failed %d\n", control_id, err);
+    fprintf (stderr, "sc_midi_arturia_read_control(%04x) snd_seq_drain_output failed %d\n", control_id, err);
     return err;
   }
 
