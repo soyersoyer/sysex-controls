@@ -25,7 +25,7 @@ typedef struct
 G_DEFINE_TYPE_WITH_PRIVATE (ScArturiaBook, sc_arturia_book, ADW_TYPE_BIN)
 
 void
-sc_arturia_book_register_control (ScArturiaBook *self, uint16_t control_id, ScArturiaControl *control)
+sc_arturia_book_register_control (ScArturiaBook *self, uint32_t control_id, uint32_t real_id, ScArturiaControl *control)
 {
   ScArturiaBookPrivate *priv = sc_arturia_book_get_instance_private (self);
 
@@ -38,7 +38,7 @@ sc_arturia_book_register_control (ScArturiaBook *self, uint16_t control_id, ScAr
   priv->controls[priv->controls_n] = control;
   priv->controls_n++;
 
-  g_debug ("sc_window_register_control %02x", control_id);
+  g_debug ("sc_arturia_book_register_control 0x%08x as 0x%08x", control_id, real_id);
 }
 
 void
@@ -103,6 +103,13 @@ sc_arturia_book_get_addr (ScArturiaBook *self)
 {
   ScArturiaBookPrivate *priv = sc_arturia_book_get_instance_private (self);
   return priv->seq_addr;
+}
+
+bool
+sc_arturia_book_use_v3 (ScArturiaBook *self)
+{
+  ScArturiaBookClass *scklass = SC_ARTURIA_BOOK_GET_CLASS (self);
+  return scklass->write_control == sc_midi_arturia_v3_write_control;
 }
 
 static void

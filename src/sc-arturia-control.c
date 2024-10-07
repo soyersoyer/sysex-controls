@@ -8,14 +8,16 @@
 
 enum {
   PROP_0,
-  PROP_CONTROL_ID,
+  PROP_ID,
+  PROP_USE_CC_OFFSET,
   LAST_PROP,
 };
 
 struct _ScArturiaControl
 {
   AdwBin parent_instance;
-  uint32_t control_id;
+  uint32_t id;
+  gboolean use_cc_offset;
   uint32_t real_id;
   uint8_t value;
   GtkWidget *widget;
@@ -29,7 +31,14 @@ uint32_t
 sc_arturia_control_get_id (ScArturiaControl *self)
 {
   g_return_val_if_fail (SC_IS_ARTURIA_CONTROL (self), 0);
-  return self->control_id;
+  return self->id;
+}
+
+gboolean
+sc_arturia_control_get_use_cc_offset (ScArturiaControl *self)
+{
+  g_return_val_if_fail (SC_IS_ARTURIA_CONTROL (self), 0);
+  return self->use_cc_offset;
 }
 
 static void
@@ -42,8 +51,11 @@ sc_arturia_control_get_property (GObject    *object,
 
   switch (prop_id)
     {
-    case PROP_CONTROL_ID:
+    case PROP_ID:
       g_value_set_uint (value, sc_arturia_control_get_id (self));
+    break;
+    case PROP_USE_CC_OFFSET:
+      g_value_set_uint (value, sc_arturia_control_get_use_cc_offset (self));
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -61,8 +73,11 @@ sc_arturia_control_set_property (GObject      *object,
 
   switch (prop_id)
     {
-    case PROP_CONTROL_ID:
-      self->control_id = g_value_get_uint (value);
+    case PROP_ID:
+      self->id = g_value_get_uint (value);
+    break;
+    case PROP_USE_CC_OFFSET:
+      self->use_cc_offset = g_value_get_boolean (value);
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -77,9 +92,13 @@ sc_arturia_control_class_init (ScArturiaControlClass *klass)
   object_class->get_property = sc_arturia_control_get_property;
   object_class->set_property = sc_arturia_control_set_property;
 
-  value_props[PROP_CONTROL_ID] = g_param_spec_uint ("control-id", NULL, NULL,
-                                                    0, G_MAXUINT32, 0,
-                                                    G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+  value_props[PROP_ID] = g_param_spec_uint ("id", NULL, NULL,
+                                            0, G_MAXUINT32, 0,
+                                            G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+
+  value_props[PROP_USE_CC_OFFSET] = g_param_spec_boolean ("use-cc-offset", NULL, NULL,
+                                                          0,
+                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   g_object_class_install_properties (object_class, LAST_PROP, value_props);
 }
@@ -95,7 +114,7 @@ combo_row_change_cb (GObject * widget, GParamSpec *pspec, ScArturiaControl *self
   if (self->value == val)
     return;
 
-  g_debug ("combo control change %02x: %02x -> %02x %s", self->real_id, self->value, val, sc_control_value_get_name (item));
+  g_debug ("combo control change %08x: %02x -> %02x %s", self->real_id, self->value, val, sc_control_value_get_name (item));
   if (sc_arturia_book_write_control (book, self->real_id, val) < 0)
   {
     sc_io_problem (window, "Control change failed");
@@ -116,7 +135,7 @@ switch_row_change_cb (GObject * widget, GParamSpec *pspec, ScArturiaControl *sel
   if (self->value == val)
     return;
 
-  g_debug ("switch control change %02x: %02x -> %02x", self->real_id, self->value, val);
+  g_debug ("switch control change %08x: %02x -> %02x", self->real_id, self->value, val);
   if (sc_arturia_book_write_control (book, self->real_id, val) < 0)
   {
     sc_io_problem (window, "Control change failed");
@@ -137,7 +156,7 @@ spin_row_change_cb (GObject * widget, GParamSpec *pspec, ScArturiaControl *self)
   if (self->value == val)
     return;
 
-  g_debug("spin control change %02x: %02x -> %02x", self->real_id, self->value, val);
+  g_debug("spin control change %08x: %02x -> %02x", self->real_id, self->value, val);
 
   if (sc_arturia_book_write_control (book, self->real_id, val) < 0)
   {
@@ -165,8 +184,11 @@ static int
 sc_arturia_control_register (void *ac_widget)
 {
   ScArturiaControl *self = SC_ARTURIA_CONTROL (ac_widget);
-  GtkWidget *widget, *page_widget, *group_widget;
-  self->real_id = self->control_id;
+  ScPreferencesGroup *group_widget;
+  ScPreferencesPage *page_widget;
+  GtkWidget *widget;
+  uint8_t *rid = (uint8_t*)&(self->real_id);
+  self->real_id = self->id;
 
   widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), ADW_TYPE_COMBO_ROW);
 
@@ -179,17 +201,31 @@ sc_arturia_control_register (void *ac_widget)
   if (!widget)
     widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), ADW_TYPE_SWITCH_ROW);
 
-  page_widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), SC_TYPE_PREFERENCES_PAGE);
-  if (page_widget)
-    self->real_id += sc_preferences_page_get_control_id_offset (SC_PREFERENCES_PAGE (page_widget));
+  page_widget = SC_PREFERENCES_PAGE (gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), SC_TYPE_PREFERENCES_PAGE));
+  if (page_widget) {
+    uint32_t cc_offset = sc_preferences_page_get_control_cc_offset (page_widget);
+    self->real_id += self->use_cc_offset && cc_offset ? cc_offset : sc_preferences_page_get_control_id_offset (page_widget);
+  }
 
-  group_widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), SC_TYPE_PREFERENCES_GROUP);
-  if (group_widget)
-    self->real_id += sc_preferences_group_get_control_id_offset (SC_PREFERENCES_GROUP (group_widget));
+  group_widget = SC_PREFERENCES_GROUP (gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), SC_TYPE_PREFERENCES_GROUP));
+  if (group_widget) {
+    uint32_t cc_offset = sc_preferences_group_get_control_cc_offset (group_widget);
+    self->real_id += self->use_cc_offset && cc_offset ? cc_offset : sc_preferences_group_get_control_id_offset (group_widget);
+  }
+
+  /* normalize
+   * in the protocol v3 we need to normalize control id by this way
+   * */
+
+  if (sc_arturia_book_use_v3 (SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (widget), SC_TYPE_ARTURIA_BOOK))))
+    while (rid[1] >= 0x80) {
+      rid[0]++;
+      rid[1]-=0x80;
+    }
 
   self->value = 0;
   self->widget = widget;
-  sc_arturia_book_register_control (SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (widget), SC_TYPE_ARTURIA_BOOK)), self->real_id, self);
+  sc_arturia_book_register_control (SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (widget), SC_TYPE_ARTURIA_BOOK)), self->id, self->real_id, self);
 
   if (ADW_IS_COMBO_ROW (widget))
     g_signal_connect (G_OBJECT (widget), "notify::selected-item", G_CALLBACK (combo_row_change_cb), self);
@@ -198,7 +234,7 @@ sc_arturia_control_register (void *ac_widget)
   else if (ADW_IS_SPIN_ROW (widget))
     g_signal_connect (G_OBJECT (widget), "notify::value", G_CALLBACK (spin_row_change_cb), self);
   else
-    g_error("Unsupported control type: %s id: 0x%02x",
+    g_error("Unsupported control type: %s id: %08x",
             gtk_widget_get_name (GTK_WIDGET (widget)),
             self->real_id);
 
@@ -265,5 +301,5 @@ static void
 sc_arturia_control_init (ScArturiaControl *self)
 {
   gtk_widget_set_visible (GTK_WIDGET (&self->parent_instance), false);
-  g_signal_connect (G_OBJECT (self), "notify::control-id", G_CALLBACK (sc_arturia_control_register_cb), NULL);
+  g_signal_connect (G_OBJECT (self), "notify::id", G_CALLBACK (sc_arturia_control_register_cb), NULL);
 }

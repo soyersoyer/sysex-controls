@@ -19,7 +19,7 @@
 
                     <child>
                       <object class="ScComboRow">
-                        <child><object class="ScArturiaControl"><property name="control-id">0x4006</property></object></child>
+                        <child><object class="ScArturiaControl"><property name="id">0x4006</property></object></child>
                         <property name="title" translatable="yes">Global Channel</property>
                         <property name="model">
                           <object class="ScControlValueList">
@@ -48,7 +48,7 @@
 
                     <child>
                       <object class="ScComboRow">
-                        <child><object class="ScArturiaControl"><property name="control-id">0x500c</property></object></child>
+                        <child><object class="ScArturiaControl"><property name="id">0x500c</property></object></child>
                         <property name="title" translatable="yes">CV/Gate Channel</property>
                         <property name="model">
                           <object class="ScControlValueList">
@@ -83,7 +83,7 @@
 
                     <child>
                       <object class="ScComboRow">
-                        <child><object class="ScArturiaControl"><property name="control-id">0x4104</property></object></child>
+                        <child><object class="ScArturiaControl"><property name="id">0x4104</property></object></child>
                         <property name="title" translatable="yes">Knob Acceleration</property>
                         <property name="model">
                           <object class="ScControlValueList">
@@ -99,7 +99,7 @@
 
                     <child>
                       <object class="ScComboRow">
-                        <child><object class="ScArturiaControl"><property name="control-id">0x4103</property></object></child>
+                        <child><object class="ScArturiaControl"><property name="id">0x4103</property></object></child>
                         <property name="title" translatable="yes">Pad Velocity Curve</property>
                         <property name="model">
                           <object class="ScControlValueList">
@@ -133,7 +133,7 @@
 
                     <child>
                       <object class="ScComboRow">
-                        <child><object class="ScArturiaControl"><property name="control-id">0x5001</property></object></child>
+                        <child><object class="ScArturiaControl"><property name="id">0x5001</property></object></child>
                         <property name="title" translatable="yes">Sequence Channel</property>
                         <property name="model">
                           <object class="ScControlValueList">
@@ -168,7 +168,7 @@
 
                     <child>
                       <object class="ScComboRow">
-                        <child><object class="ScArturiaControl"><property name="control-id">0x5002</property></object></child>
+                        <child><object class="ScArturiaControl"><property name="id">0x5002</property></object></child>
                         <property name="title" translatable="yes">Overall Transpose</property>
                         <property name="model">
                           <object class="ScControlValueList">
@@ -206,7 +206,7 @@
 
                     <child>
                       <object class="ScComboRow">
-                        <child><object class="ScArturiaControl"><property name="control-id">0x5003</property></object></child>
+                        <child><object class="ScArturiaControl"><property name="id">0x5003</property></object></child>
                         <property name="title" translatable="yes">Scale Type</property>
                         <property name="model">
                           <object class="ScControlValueList">
@@ -227,7 +227,7 @@
 
                     <child>
                       <object class="ScComboRow">
-                        <child><object class="ScArturiaControl"><property name="control-id">0x5004</property></object></child>
+                        <child><object class="ScArturiaControl"><property name="id">0x5004</property></object></child>
                         <property name="title" translatable="yes">Pattern Mode</property>
                         <property name="model">
                           <object class="ScControlValueList">
@@ -244,7 +244,7 @@
 
                     <child>
                       <object class="AdwSpinRow">
-                        <child><object class="ScArturiaControl"><property name="control-id">0x5007</property></object></child>
+                        <child><object class="ScArturiaControl"><property name="id">0x5007</property></object></child>
                         <property name="title" translatable="yes">Swing</property>
                         <property name="adjustment">
                           <object class="GtkAdjustment">
@@ -259,7 +259,7 @@
 
                     <child>
                       <object class="AdwSpinRow">
-                        <child><object class="ScArturiaControl"><property name="control-id">0x5008</property></object></child>
+                        <child><object class="ScArturiaControl"><property name="id">0x5008</property></object></child>
                         <property name="title" translatable="yes">Gate Time</property>
                         <property name="adjustment">
                           <object class="GtkAdjustment">
@@ -274,7 +274,7 @@
 
                     <child>
                       <object class="ScComboRow">
-                        <child><object class="ScArturiaControl"><property name="control-id">0x5009</property></object></child>
+                        <child><object class="ScArturiaControl"><property name="id">0x5009</property></object></child>
                         <property name="title" translatable="yes">Legato</property>
                         <property name="model">
                           <object class="ScControlValueList">
@@ -308,7 +308,7 @@
 
                     <child>
                       <object class="ScComboRow">
-                        <child><object class="ScArturiaControl"><property name="control-id">0x5005</property></object></child>
+                        <child><object class="ScArturiaControl"><property name="id">0x5005</property></object></child>
                         <property name="title" translatable="yes">Step Size</property>
                         <property name="model">
                           <object class="ScControlValueList">
@@ -325,7 +325,7 @@
 
                     <child>
                       <object class="ScComboRow">
-                        <child><object class="ScArturiaControl"><property name="control-id">0x5006</property></object></child>
+                        <child><object class="ScArturiaControl"><property name="id">0x5006</property></object></child>
                         <property name="title" translatable="yes">Pattern Length</property>
                         <property name="model">
                           <object class="ScControlValueList">

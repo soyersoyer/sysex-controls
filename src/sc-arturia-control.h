@@ -9,6 +9,7 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (ScArturiaControl, sc_arturia_control, SC, ARTURIA_CONTROL, AdwBin)
 
 uint32_t sc_arturia_control_get_id (ScArturiaControl *self);
+gboolean sc_arturia_control_get_use_cc_offset (ScArturiaControl *self);
 int sc_arturia_control_read_value (ScArturiaControl *self);
 void sc_arturia_control_update_gui (ScArturiaControl *self);
 
