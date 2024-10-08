@@ -443,6 +443,22 @@ cv_in_2 (GObject *object, ScControlValue* value, GVariant* variant, ScControlVal
   return cv_in (object, value, variant) && cv_in (object, value2, variant2);
 }
 
+G_MODULE_EXPORT gchararray
+cv_to_markup_color (GObject *object, ScControlValue* value)
+{
+  GString *markup;
+
+  /* TODO: why can it be NULL? */
+  if (!value)
+    return NULL;
+
+  g_return_val_if_fail (SC_IS_CONTROL_VALUE (value), NULL);
+
+  markup = g_string_new("<span bgcolor=\"::color\">     </span>");
+  g_string_replace(markup, "::color", sc_control_value_get_name (value), 1);
+  return g_string_free_and_steal(markup);
+}
+
 static void
 sc_control_value_list_init (ScControlValueList *self)
 {
