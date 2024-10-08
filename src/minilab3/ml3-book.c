@@ -7,7 +7,7 @@
 #include "ml3-main-knob-click.h"
 #include "ml3-mod-page.h"
 #include "ml3-pad.h"
-#include "ml3-pad-bank.h"
+#include "ml3-pad-page.h"
 #include "ml3-pedal-page.h"
 #include "ml3-pitch-page.h"
 #include "ml3-preset-page.h"
@@ -43,7 +43,7 @@ ml3_book_init (Ml3Book *self)
   g_type_ensure (ML3_TYPE_MAIN_KNOB_CLICK);
   g_type_ensure (ML3_TYPE_MOD_PAGE);
   g_type_ensure (ML3_TYPE_PAD);
-  g_type_ensure (ML3_TYPE_PAD_BANK);
+  g_type_ensure (ML3_TYPE_PAD_PAGE);
   g_type_ensure (ML3_TYPE_PEDAL_PAGE);
   g_type_ensure (ML3_TYPE_PITCH_PAGE);
   g_type_ensure (ML3_TYPE_PRESET_PAGE);

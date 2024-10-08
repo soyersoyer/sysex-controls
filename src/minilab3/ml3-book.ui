@@ -234,7 +234,7 @@
           <object class="GtkStackPage">
             <property name="title" translatable="yes">Preset 1 Pad A</property>
             <property name="child">
-              <object class="Ml3PadBank">
+              <object class="Ml3PadPage">
                 <property name="control-id-offset">0x03400000</property>
                 <property name="control-cc-offset">0x03400000</property>
               </object>
@@ -246,7 +246,7 @@
           <object class="GtkStackPage">
             <property name="title" translatable="yes">Preset 1 Pad B</property>
             <property name="child">
-              <object class="Ml3PadBank">
+              <object class="Ml3PadPage">
                 <property name="control-id-offset">0x03400800</property>
                 <property name="control-cc-offset">0x03400100</property>
               </object>

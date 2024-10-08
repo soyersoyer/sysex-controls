@@ -33,7 +33,7 @@ sc_sources = [
   'minilab3/ml3-main-knob-click.c',
   'minilab3/ml3-mod-page.c',
   'minilab3/ml3-pad.c',
-  'minilab3/ml3-pad-bank.c',
+  'minilab3/ml3-pad-page.c',
   'minilab3/ml3-pedal-page.c',
   'minilab3/ml3-pitch-page.c',
   'minilab3/ml3-preset-page.c',
