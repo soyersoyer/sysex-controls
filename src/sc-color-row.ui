@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="ScColorRow" parent="AdwComboRow">
+    <property name="title" translatable="yes">Color</property>
+    <property name="factory">
+      <object class="GtkBuilderListItemFactory">
+        <property name="resource">/hu/irl/sysex-controls/sc-color-item.ui</property>
+      </object>
+    </property>
+  </template>
+</interface>

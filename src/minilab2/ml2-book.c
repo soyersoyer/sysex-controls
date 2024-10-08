@@ -1,6 +1,5 @@
 #include "ml2-book.h"
 
-#include "ml2-color-row.h"
 #include "ml2-pad.h"
 #include "ml2-pad-bank.h"
 
@@ -22,7 +21,6 @@ ml2_book_class_init (Ml2BookClass *klass)
 static void
 ml2_book_init (Ml2Book *self)
 {
-  g_type_ensure (ML2_TYPE_COLOR_ROW);
   g_type_ensure (ML2_TYPE_PAD);
   g_type_ensure (ML2_TYPE_PAD_BANK);
 

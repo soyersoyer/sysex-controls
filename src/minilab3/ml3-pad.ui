@@ -34,14 +34,8 @@
     </child>
 
     <child>
-      <object class="ScComboRow">
+      <object class="ScColorRow">
         <child><object class="ScArturiaControl"><property name="id">0x1601</property></object></child>
-        <property name="title" translatable="yes">Color</property>
-        <property name="factory">
-          <object class="GtkBuilderListItemFactory">
-            <property name="resource">/hu/irl/sysex-controls/minilab3/ml3-color-item.ui</property>
-          </object>
-        </property>
         <property name="model">
           <object class="ScControlValueList">
             <items>

@@ -23,7 +23,7 @@
     </child>
 
     <child>
-      <object class="Ml2ColorRow">
+      <object class="ScColorRow">
         <!-- TODO: or 0x1170? -->
         <child><object class="ScArturiaControl"><property name="id">0x1070</property></object></child>
         <binding name="visible">
@@ -32,7 +32,20 @@
             <constant type="GVariant">[0x07, 0x08, 0x09, 0x0b]</constant>
           </closure>
         </binding>
-        <property name="title" translatable="yes">Color</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item value="0x00">#000000</item>
+              <item value="0x01">#ff0000</item>
+              <item value="0x04">#00ff00</item>
+              <item value="0x05">#ffff00</item>
+              <item value="0x10">#0000ff</item>
+              <item value="0x11">#ff00ff</item>
+              <item value="0x14">#00ffff</item>
+              <item value="0x7f">#ffffff</item>
+            </items>
+          </object>
+        </property>
       </object>
     </child>
 

@@ -2,6 +2,8 @@
 <gresources>
   <gresource prefix="/hu/irl/sysex-controls">
     <file preprocess="xml-stripblanks">sc-cc-row.ui</file>
+    <file preprocess="xml-stripblanks">sc-color-item.ui</file>
+    <file preprocess="xml-stripblanks">sc-color-row.ui</file>
     <file preprocess="xml-stripblanks">sc-controller-row.ui</file>
     <file preprocess="xml-stripblanks">sc-note-row.ui</file>
     <file preprocess="xml-stripblanks">sc-pc-row.ui</file>
@@ -20,13 +22,11 @@
     <file preprocess="xml-stripblanks">keystep37/ks37-transport-page.ui</file>
 
     <file preprocess="xml-stripblanks">minilab2/ml2-book.ui</file>
-    <file preprocess="xml-stripblanks">minilab2/ml2-color-row.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-pad.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-pad-bank.ui</file>
 
     <file preprocess="xml-stripblanks">minilab3/ml3-book.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-ch-row.ui</file>
-    <file preprocess="xml-stripblanks">minilab3/ml3-color-item.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-fader.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-fader-page.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-global-page.ui</file>
