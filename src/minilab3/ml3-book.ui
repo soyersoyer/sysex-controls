@@ -54,7 +54,7 @@
 
         <child>
           <object class="GtkStackPage">
-            <property name="title" translatable="yes">Preset 3 Shift</property>
+            <property name="title" translatable="yes">Preset 1 Shift</property>
             <property name="child">
               <object class="Ml3ShiftPage">
                 <property name="control-id-offset">0x03400000</property>
@@ -65,7 +65,7 @@
 
         <child>
           <object class="GtkStackPage">
-            <property name="title" translatable="yes">Preset 3 Pitch</property>
+            <property name="title" translatable="yes">Preset 1 Pitch</property>
             <property name="child">
               <object class="Ml3PitchPage">
                 <property name="control-id-offset">0x03400000</property>
@@ -76,7 +76,7 @@
 
         <child>
           <object class="GtkStackPage">
-            <property name="title" translatable="yes">Preset 3 Mod</property>
+            <property name="title" translatable="yes">Preset 1 Mod</property>
             <property name="child">
               <object class="Ml3ModPage">
                 <property name="control-id-offset">0x03400000</property>
@@ -87,7 +87,7 @@
 
         <child>
           <object class="GtkStackPage">
-            <property name="title" translatable="yes">Preset 3 Main Knob</property>
+            <property name="title" translatable="yes">Preset 1 Main Knob</property>
             <property name="child">
               <object class="ScPreferencesPage">
 
@@ -126,7 +126,7 @@
 
         <child>
           <object class="GtkStackPage">
-            <property name="title" translatable="yes">Preset 3 Knobs</property>
+            <property name="title" translatable="yes">Preset 1 Knobs</property>
             <property name="child">
               <object class="ScPreferencesPage">
 
@@ -193,7 +193,7 @@
 
         <child>
           <object class="GtkStackPage">
-            <property name="title" translatable="yes">Preset 3 Faders</property>
+            <property name="title" translatable="yes">Preset 1 Faders</property>
             <property name="child">
               <object class="ScPreferencesPage">
 
@@ -232,7 +232,7 @@
 
         <child>
           <object class="GtkStackPage">
-            <property name="title" translatable="yes">Preset 3 Pad A</property>
+            <property name="title" translatable="yes">Preset 1 Pad A</property>
             <property name="child">
               <object class="Ml3PadBank">
                 <property name="control-id-offset">0x03400000</property>
@@ -244,7 +244,7 @@
 
         <child>
           <object class="GtkStackPage">
-            <property name="title" translatable="yes">Preset 3 Pad B</property>
+            <property name="title" translatable="yes">Preset 1 Pad B</property>
             <property name="child">
               <object class="Ml3PadBank">
                 <property name="control-id-offset">0x03400800</property>
