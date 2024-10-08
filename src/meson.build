@@ -27,14 +27,18 @@ sc_sources = [
   'minilab2/ml2-pad-bank.c',
   'minilab3/ml3-book.c',
   'minilab3/ml3-fader.c',
+  'minilab3/ml3-global-page.c',
   'minilab3/ml3-knob.c',
   'minilab3/ml3-main-knob.c',
   'minilab3/ml3-main-knob-click.c',
-  'minilab3/ml3-mod.c',
+  'minilab3/ml3-mod-page.c',
   'minilab3/ml3-pad.c',
   'minilab3/ml3-pad-bank.c',
-  'minilab3/ml3-pitch.c',
-  'minilab3/ml3-shift.c',
+  'minilab3/ml3-pedal-page.c',
+  'minilab3/ml3-pitch-page.c',
+  'minilab3/ml3-preset-page.c',
+  'minilab3/ml3-shift-page.c',
+  'minilab3/ml3-velocity-page.c',
 ]
 
 sc_deps = [

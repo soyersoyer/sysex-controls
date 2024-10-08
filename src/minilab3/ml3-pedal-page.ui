@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ml3PedalPage" parent="ScPreferencesPage">
+
+    <child>
+      <object class="AdwPreferencesGroup">
+      <property name="title" translatable="yes">Pedal</property>
+
+        <child>
+          <object class="ScComboRow" id="pedal_type">
+            <child><object class="ScArturiaControl"><property name="id">0x0800</property></object></child>
+            <property name="title" translatable="yes">Type</property>
+            <property name="model">
+              <object class="ScControlValueList">
+                <items>
+                  <item>Sustain</item>
+                  <item>Expression</item>
+                  <item>FootSwitch</item>
+                  <item>Control</item>
+                </items>
+              </object>
+            </property>
+          </object>
+        </child>
+
+        <child>
+          <object class="ScComboRow">
+            <child><object class="ScArturiaControl"><property name="id">0x0b00</property></object></child>
+            <property name="title" translatable="yes">Polarity</property>
+            <property name="model">
+              <object class="ScControlValueList">
+                <items>
+                  <item>Normal</item>
+                  <item>Inverted</item>
+                </items>
+              </object>
+            </property>
+          </object>
+        </child>
+
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwPreferencesGroup">
+        <binding name="visible">
+          <closure type='gboolean' function='cv_in'>
+            <lookup type='ScComboRow' name='selected-item'>pedal_type</lookup>
+            <constant type='GVariant'>[0x01, 0x02, 0x03]</constant>
+          </closure>
+        </binding>
+
+        <child>
+          <object class="ScCcRow">
+            <child><object class="ScArturiaControl"><property name="id">0x0900</property></object></child>
+            <property name="title" translatable="yes">Footswitch CC</property>
+            <binding name="visible">
+              <closure type='gboolean' function='cv_in'>
+                <lookup type='ScComboRow' name='selected-item'>pedal_type</lookup>
+                <constant type='GVariant'>[0x02]</constant>
+              </closure>
+            </binding>
+          </object>
+        </child>
+
+        <child>
+          <object class="ScCcRow">
+            <child><object class="ScArturiaControl"><property name="id">0x0a00</property></object></child>
+            <property name="title" translatable="yes">Control CC</property>
+            <binding name="visible">
+              <closure type='gboolean' function='cv_in'>
+                <lookup type='ScComboRow' name='selected-item'>pedal_type</lookup>
+                <constant type='GVariant'>[0x03]</constant>
+              </closure>
+            </binding>
+          </object>
+        </child>
+
+        <child>
+          <object class="AdwSpinRow">
+            <child><object class="ScArturiaControl"><property name="id">0x0c00</property></object></child>
+            <property name="title" translatable="yes">Min Value</property>
+            <binding name="visible">
+              <closure type='gboolean' function='cv_in'>
+                <lookup type='ScComboRow' name='selected-item'>pedal_type</lookup>
+                <constant type='GVariant'>[0x01, 0x02, 0x03]</constant>
+              </closure>
+            </binding>
+            <property name="adjustment">
+              <object class="GtkAdjustment">
+                <property name="lower">0</property>
+                <property name="upper">127</property>
+                <property name="value">0</property>
+                <property name="page-increment">10</property>
+                <property name="step-increment">1</property>
+              </object>
+            </property>
+          </object>
+        </child>
+
+        <child>
+          <object class="AdwSpinRow">
+            <child><object class="ScArturiaControl"><property name="id">0x0d00</property></object></child>
+            <property name="title" translatable="yes">Max Value</property>
+            <binding name="visible">
+              <closure type='gboolean' function='cv_in'>
+                <lookup type='ScComboRow' name='selected-item'>pedal_type</lookup>
+                <constant type='GVariant'>[0x01, 0x02, 0x03]</constant>
+              </closure>
+            </binding>
+            <property name="adjustment">
+              <object class="GtkAdjustment">
+                <property name="lower">0</property>
+                <property name="upper">127</property>
+                <property name="value">127</property>
+                <property name="page-increment">10</property>
+                <property name="step-increment">1</property>
+              </object>
+            </property>
+          </object>
+        </child>
+
+      </object>
+    </child>
+  </template>
+</interface>
