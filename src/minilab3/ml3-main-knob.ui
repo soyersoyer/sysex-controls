@@ -23,9 +23,9 @@
       <object class="Ml3ChRow">
         <child><object class="ScArturiaControl"><property name="id">0x1000</property></object></child>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_output</lookup>
-            <constant type='GVariant'>[0x01]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_output</lookup>
+            <constant type="GVariant">[0x01]</constant>
           </closure>
         </binding>
       </object>
@@ -35,9 +35,9 @@
       <object class="ScCcRow">
         <child><object class="ScArturiaControl"><property name="id">0x1200</property></object></child>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_output</lookup>
-            <constant type='GVariant'>[0x01]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_output</lookup>
+            <constant type="GVariant">[0x01]</constant>
           </closure>
         </binding>
       </object>

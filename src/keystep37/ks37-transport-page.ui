@@ -45,9 +45,9 @@
     <child>
       <object class="AdwPreferencesGroup">
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>transport_mode</lookup>
-            <constant type='GVariant'>[0x01, 0x03]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">transport_mode</lookup>
+            <constant type="GVariant">[0x01, 0x03]</constant>
           </closure>
         </binding>
 
@@ -146,9 +146,9 @@
     <child>
       <object class="AdwPreferencesGroup">
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>transport_mode</lookup>
-            <constant type='GVariant'>[0x01, 0x03]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">transport_mode</lookup>
+            <constant type="GVariant">[0x01, 0x03]</constant>
           </closure>
         </binding>
 

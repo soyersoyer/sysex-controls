@@ -29,9 +29,9 @@
             <property name="title" translatable="yes">0V MIDI Note</property>
             <property name="subtitle">With Volts per Octave</property>
             <binding name="visible">
-              <closure type='gboolean' function='cv_in'>
-                <lookup type='ScComboRow' name='selected-item'>pitch_cv_output</lookup>
-                <constant type='GVariant'>[0x00]</constant>
+              <closure type="gboolean" function="cv_in">
+                <lookup type="ScComboRow" name="selected-item">pitch_cv_output</lookup>
+                <constant type="GVariant">[0x00]</constant>
               </closure>
             </binding>
           </object>
@@ -43,9 +43,9 @@
             <property name="title" translatable="yes">1V MIDI Note</property>
             <property name="subtitle">With Hertz per Volt</property>
             <binding name="visible">
-              <closure type='gboolean' function='cv_in'>
-                <lookup type='ScComboRow' name='selected-item'>pitch_cv_output</lookup>
-                <constant type='GVariant'>[0x01]</constant>
+              <closure type="gboolean" function="cv_in">
+                <lookup type="ScComboRow" name="selected-item">pitch_cv_output</lookup>
+                <constant type="GVariant">[0x01]</constant>
               </closure>
             </binding>
           </object>

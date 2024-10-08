@@ -30,9 +30,9 @@
         <child><object class="ScArturiaControl"><property name="id">0x3200</property></object></child>
         <property name="title" translatable="yes">Scale</property>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_output</lookup>
-            <constant type='GVariant'>[0x01]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_output</lookup>
+            <constant type="GVariant">[0x01]</constant>
           </closure>
         </binding>
         <property name="model">
@@ -56,9 +56,9 @@
       <object class="ScCcRow">
         <child><object class="ScArturiaControl"><property name="id">0x3a00</property></object></child>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_output</lookup>
-            <constant type='GVariant'>[0x00]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_output</lookup>
+            <constant type="GVariant">[0x00]</constant>
           </closure>
         </binding>
       </object>
@@ -69,9 +69,9 @@
         <child><object class="ScArturiaControl"><property name="id">0x3702</property></object></child>
         <property name="title" translatable="yes">Option</property>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_output</lookup>
-            <constant type='GVariant'>[0x00]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_output</lookup>
+            <constant type="GVariant">[0x00]</constant>
           </closure>
         </binding>
         <property name="model">
@@ -92,9 +92,9 @@
         <child><object class="ScArturiaControl"><property name="id">0x4200</property></object></child>
         <property name="title" translatable="yes">Parameter MSB</property>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_output</lookup>
-            <constant type='GVariant'>[0x01]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_output</lookup>
+            <constant type="GVariant">[0x01]</constant>
           </closure>
         </binding>
         <property name="adjustment">
@@ -112,9 +112,9 @@
         <child><object class="ScArturiaControl"><property name="id">0x4a00</property></object></child>
         <property name="title" translatable="yes">Parameter LSB</property>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_output</lookup>
-            <constant type='GVariant'>[0x01]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_output</lookup>
+            <constant type="GVariant">[0x01]</constant>
           </closure>
         </binding>
         <property name="adjustment">
@@ -133,11 +133,11 @@
         <child><object class="ScArturiaControl"><property name="id">0x5200</property></object></child>
         <property name="title" translatable="yes">Min Value</property>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in_2'>
-            <lookup type='ScComboRow' name='selected-item'>control_output</lookup>
-            <constant type='GVariant'>[0x00]</constant>
-            <lookup type='ScComboRow' name='selected-item'>control_option</lookup>
-            <constant type='GVariant'>[0x00]</constant>
+          <closure type="gboolean" function="cv_in_2">
+            <lookup type="ScComboRow" name="selected-item">control_output</lookup>
+            <constant type="GVariant">[0x00]</constant>
+            <lookup type="ScComboRow" name="selected-item">control_option</lookup>
+            <constant type="GVariant">[0x00]</constant>
           </closure>
         </binding>
         <property name="adjustment">
@@ -156,11 +156,11 @@
         <child><object class="ScArturiaControl"><property name="id">0x5a00</property></object></child>
         <property name="title" translatable="yes">Max Value</property>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in_2'>
-            <lookup type='ScComboRow' name='selected-item'>control_output</lookup>
-            <constant type='GVariant'>[0x00]</constant>
-            <lookup type='ScComboRow' name='selected-item'>control_option</lookup>
-            <constant type='GVariant'>[0x00]</constant>
+          <closure type="gboolean" function="cv_in_2">
+            <lookup type="ScComboRow" name="selected-item">control_output</lookup>
+            <constant type="GVariant">[0x00]</constant>
+            <lookup type="ScComboRow" name="selected-item">control_option</lookup>
+            <constant type="GVariant">[0x00]</constant>
           </closure>
         </binding>
         <property name="adjustment">

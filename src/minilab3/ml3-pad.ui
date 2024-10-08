@@ -25,9 +25,9 @@
       <object class="Ml3ChRow">
         <child><object class="ScArturiaControl"><property name="id">0x0601</property></object></child>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
-            <constant type='GVariant'>[0x00, 0x01, 0x03]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x00, 0x01, 0x03]</constant>
           </closure>
         </binding>
       </object>
@@ -92,9 +92,9 @@
       <object class="ScComboRow">
         <child><object class="ScArturiaControl"><property name="id">0x2601</property></object></child>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
-            <constant type='GVariant'>[0x00, 0x01]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x00, 0x01]</constant>
           </closure>
         </binding>
         <property name="title" translatable="yes">Option</property>
@@ -113,9 +113,9 @@
       <object class="ScCcRow">
         <child><object class="ScArturiaControl"><property name="id">0x3601</property><property name="use-cc-offset">yes</property></object></child>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
-            <constant type='GVariant'>[0x01]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x01]</constant>
           </closure>
         </binding>
       </object>
@@ -125,9 +125,9 @@
       <object class="AdwSpinRow">
         <child><object class="ScArturiaControl"><property name="id">0x5601</property></object></child>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
-            <constant type='GVariant'>[0x01]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x01]</constant>
           </closure>
         </binding>
         <property name="title" translatable="yes">Off Value</property>
@@ -146,9 +146,9 @@
       <object class="AdwSpinRow">
         <child><object class="ScArturiaControl"><property name="id">0x4601</property></object></child>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
-            <constant type='GVariant'>[0x01]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x01]</constant>
           </closure>
         </binding>
         <property name="title" translatable="yes">On Value</property>
@@ -167,9 +167,9 @@
       <object class="ScNoteRow">
         <child><object class="ScArturiaControl"><property name="id">0x6601</property></object></child>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
-            <constant type='GVariant'>[0x00]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x00]</constant>
           </closure>
         </binding>
         <property name="title" translatable="yes">Note</property>
@@ -180,9 +180,9 @@
       <object class="ScPcRow">
         <child><object class="ScArturiaControl"><property name="id">0x7601</property><property name="use-cc-offset">yes</property></object></child>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
-            <constant type='GVariant'>[0x03]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x03]</constant>
           </closure>
         </binding>
       </object>
@@ -192,9 +192,9 @@
       <object class="AdwSpinRow">
         <child><object class="ScArturiaControl"><property name="id">0x0602</property><property name="use-cc-offset">yes</property></object></child>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
-            <constant type='GVariant'>[0x03]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x03]</constant>
           </closure>
         </binding>
         <property name="title" translatable="yes">Bank MSB</property>
@@ -213,9 +213,9 @@
       <object class="AdwSpinRow">
         <child><object class="ScArturiaControl"><property name="id">0x1602</property><property name="use-cc-offset">yes</property></object></child>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
-            <constant type='GVariant'>[0x03]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x03]</constant>
           </closure>
         </binding>
         <property name="title" translatable="yes">Bank LSB</property>
@@ -234,9 +234,9 @@
       <object class="ScComboRow">
         <child><object class="ScArturiaControl"><property name="id">0x2602</property><property name="use-cc-offset">yes</property></object></child>
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
-            <constant type='GVariant'>[0x02]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x02]</constant>
           </closure>
         </binding>
         <property name="title" translatable="yes">MCU/HUI</property>

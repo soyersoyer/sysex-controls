@@ -27,9 +27,9 @@
     <child>
       <object class="AdwPreferencesGroup">
       <binding name="visible">
-        <closure type='gboolean' function='cv_in'>
-          <lookup type='ScComboRow' name='selected-item'>control_mode</lookup>
-          <constant type='GVariant'>[0x01]</constant>
+        <closure type="gboolean" function="cv_in">
+          <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+          <constant type="GVariant">[0x01]</constant>
         </closure>
       </binding>
 

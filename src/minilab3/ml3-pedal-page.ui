@@ -46,9 +46,9 @@
     <child>
       <object class="AdwPreferencesGroup">
         <binding name="visible">
-          <closure type='gboolean' function='cv_in'>
-            <lookup type='ScComboRow' name='selected-item'>pedal_type</lookup>
-            <constant type='GVariant'>[0x01, 0x02, 0x03]</constant>
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">pedal_type</lookup>
+            <constant type="GVariant">[0x01, 0x02, 0x03]</constant>
           </closure>
         </binding>
 
@@ -57,9 +57,9 @@
             <child><object class="ScArturiaControl"><property name="id">0x0900</property></object></child>
             <property name="title" translatable="yes">Footswitch CC</property>
             <binding name="visible">
-              <closure type='gboolean' function='cv_in'>
-                <lookup type='ScComboRow' name='selected-item'>pedal_type</lookup>
-                <constant type='GVariant'>[0x02]</constant>
+              <closure type="gboolean" function="cv_in">
+                <lookup type="ScComboRow" name="selected-item">pedal_type</lookup>
+                <constant type="GVariant">[0x02]</constant>
               </closure>
             </binding>
           </object>
@@ -70,9 +70,9 @@
             <child><object class="ScArturiaControl"><property name="id">0x0a00</property></object></child>
             <property name="title" translatable="yes">Control CC</property>
             <binding name="visible">
-              <closure type='gboolean' function='cv_in'>
-                <lookup type='ScComboRow' name='selected-item'>pedal_type</lookup>
-                <constant type='GVariant'>[0x03]</constant>
+              <closure type="gboolean" function="cv_in">
+                <lookup type="ScComboRow" name="selected-item">pedal_type</lookup>
+                <constant type="GVariant">[0x03]</constant>
               </closure>
             </binding>
           </object>
@@ -83,9 +83,9 @@
             <child><object class="ScArturiaControl"><property name="id">0x0c00</property></object></child>
             <property name="title" translatable="yes">Min Value</property>
             <binding name="visible">
-              <closure type='gboolean' function='cv_in'>
-                <lookup type='ScComboRow' name='selected-item'>pedal_type</lookup>
-                <constant type='GVariant'>[0x01, 0x02, 0x03]</constant>
+              <closure type="gboolean" function="cv_in">
+                <lookup type="ScComboRow" name="selected-item">pedal_type</lookup>
+                <constant type="GVariant">[0x01, 0x02, 0x03]</constant>
               </closure>
             </binding>
             <property name="adjustment">
@@ -105,9 +105,9 @@
             <child><object class="ScArturiaControl"><property name="id">0x0d00</property></object></child>
             <property name="title" translatable="yes">Max Value</property>
             <binding name="visible">
-              <closure type='gboolean' function='cv_in'>
-                <lookup type='ScComboRow' name='selected-item'>pedal_type</lookup>
-                <constant type='GVariant'>[0x01, 0x02, 0x03]</constant>
+              <closure type="gboolean" function="cv_in">
+                <lookup type="ScComboRow" name="selected-item">pedal_type</lookup>
+                <constant type="GVariant">[0x01, 0x02, 0x03]</constant>
               </closure>
             </binding>
             <property name="adjustment">
