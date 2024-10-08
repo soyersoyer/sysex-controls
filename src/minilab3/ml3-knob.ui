@@ -20,32 +20,8 @@
     </child>
 
     <child>
-      <object class="ScComboRow">
+      <object class="Ml3ChRow">
         <child><object class="ScArturiaControl"><property name="id">0x2a00</property></object></child>
-        <property name="title" translatable="yes">Channel</property>
-        <property name="model">
-          <object class="ScControlValueList">
-            <items>
-              <item>Keyboard</item>
-              <item>1</item>
-              <item>2</item>
-              <item>3</item>
-              <item>4</item>
-              <item>5</item>
-              <item>6</item>
-              <item>7</item>
-              <item>8</item>
-              <item>9</item>
-              <item>10</item>
-              <item>11</item>
-              <item>12</item>
-              <item>13</item>
-              <item>14</item>
-              <item>15</item>
-              <item>16</item>
-            </items>
-          </object>
-        </property>
       </object>
     </child>
 

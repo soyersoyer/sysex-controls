@@ -26,6 +26,7 @@ sc_sources = [
   'minilab2/ml2-pad.c',
   'minilab2/ml2-pad-bank.c',
   'minilab3/ml3-book.c',
+  'minilab3/ml3-ch-row.c',
   'minilab3/ml3-fader.c',
   'minilab3/ml3-fader-page.c',
   'minilab3/ml3-global-page.c',
