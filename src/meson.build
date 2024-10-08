@@ -24,7 +24,7 @@ sc_sources = [
   'keystep37/ks37-transport-page.c',
   'minilab2/ml2-book.c',
   'minilab2/ml2-pad.c',
-  'minilab2/ml2-pad-bank.c',
+  'minilab2/ml2-pad-page.c',
   'minilab3/ml3-book.c',
   'minilab3/ml3-ch-row.c',
   'minilab3/ml3-fader.c',

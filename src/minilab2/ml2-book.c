@@ -1,7 +1,7 @@
 #include "ml2-book.h"
 
 #include "ml2-pad.h"
-#include "ml2-pad-bank.h"
+#include "ml2-pad-page.h"
 
 struct _Ml2Book
 {
@@ -22,7 +22,7 @@ static void
 ml2_book_init (Ml2Book *self)
 {
   g_type_ensure (ML2_TYPE_PAD);
-  g_type_ensure (ML2_TYPE_PAD_BANK);
+  g_type_ensure (ML2_TYPE_PAD_PAGE);
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }

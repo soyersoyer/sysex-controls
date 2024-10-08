@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="Ml2PadBank" parent="ScPreferencesPage">
+  <template class="Ml2PadPage" parent="ScPreferencesPage">
 
     <child>
       <object class="Ml2Pad">
