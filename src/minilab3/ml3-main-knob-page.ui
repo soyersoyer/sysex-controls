@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ml3MainKnobPage" parent="ScPreferencesPage">
+
+    <child>
+      <object class="Ml3MainKnob">
+        <property name="title" translatable="yes">Main Knob</property>
+        <property name="control-id-offset">0x0000</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml3MainKnob">
+        <property name="title" translatable="yes">Main Knob + Shift</property>
+        <property name="control-id-offset">0x0100</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml3MainKnobClick">
+        <property name="title" translatable="yes">Main Knob Click</property>
+        <property name="control-id-offset">0x0000</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ml3MainKnobClick">
+        <property name="title" translatable="yes">Main Knob Click + Shift</property>
+        <property name="control-id-offset">0x0100</property>
+      </object>
+    </child>
+
+  </template>
+</interface>

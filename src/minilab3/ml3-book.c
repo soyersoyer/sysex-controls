@@ -1,10 +1,13 @@
 #include "ml3-book.h"
 
 #include "ml3-fader.h"
+#include "ml3-fader-page.h"
 #include "ml3-global-page.h"
 #include "ml3-knob.h"
+#include "ml3-knob-page.h"
 #include "ml3-main-knob.h"
 #include "ml3-main-knob-click.h"
+#include "ml3-main-knob-page.h"
 #include "ml3-mod-page.h"
 #include "ml3-pad.h"
 #include "ml3-pad-page.h"
@@ -37,10 +40,13 @@ ml3_book_init (Ml3Book *self)
   scklass->write_control = sc_midi_arturia_v3_write_control;
 
   g_type_ensure (ML3_TYPE_FADER);
+  g_type_ensure (ML3_TYPE_FADER_PAGE);
   g_type_ensure (ML3_TYPE_GLOBAL_PAGE);
   g_type_ensure (ML3_TYPE_KNOB);
+  g_type_ensure (ML3_TYPE_KNOB_PAGE);
   g_type_ensure (ML3_TYPE_MAIN_KNOB);
   g_type_ensure (ML3_TYPE_MAIN_KNOB_CLICK);
+  g_type_ensure (ML3_TYPE_MAIN_KNOB_PAGE);
   g_type_ensure (ML3_TYPE_MOD_PAGE);
   g_type_ensure (ML3_TYPE_PAD);
   g_type_ensure (ML3_TYPE_PAD_PAGE);
