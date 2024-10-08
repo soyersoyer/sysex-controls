@@ -15,7 +15,7 @@
       <object class="Ml3Pad">
         <property name="title" translatable="yes">Pad 2</property>
         <property name="control-id-offset">0x0100</property>
-
+        <property name="control-cc-offset">0x0200</property>
       </object>
     </child>
 
