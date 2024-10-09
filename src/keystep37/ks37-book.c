@@ -36,7 +36,7 @@ ks37_book_init (Ks37Book *self)
 }
 
 GtkWidget *
-ks37_book_new (snd_seq_t *seq, snd_seq_addr_t *addr)
+ks37_book_new (snd_seq_t *seq, snd_seq_addr_t addr)
 {
   GtkWidget *book = g_object_new (KS37_TYPE_BOOK, NULL);
   sc_arturia_book_set_seq (SC_ARTURIA_BOOK (book), seq, addr);

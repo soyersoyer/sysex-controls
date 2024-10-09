@@ -84,11 +84,11 @@ sc_arturia_book_load_task_finish (GObject* source_object, GAsyncResult* res, gpo
 }
 
 void
-sc_arturia_book_set_seq (ScArturiaBook *self, snd_seq_t *seq, snd_seq_addr_t *addr)
+sc_arturia_book_set_seq (ScArturiaBook *self, snd_seq_t *seq, snd_seq_addr_t addr)
 {
   ScArturiaBookPrivate *priv = sc_arturia_book_get_instance_private (self);
   priv->seq = seq;
-  priv->seq_addr = *addr;
+  priv->seq_addr = addr;
 }
 
 snd_seq_t *

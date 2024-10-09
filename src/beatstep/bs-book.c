@@ -22,7 +22,7 @@ bs_book_init (BsBook *self)
 }
 
 GtkWidget *
-bs_book_new (snd_seq_t *seq, snd_seq_addr_t *addr)
+bs_book_new (snd_seq_t *seq, snd_seq_addr_t addr)
 {
   GtkWidget *book = g_object_new (BS_TYPE_BOOK, NULL);
   sc_arturia_book_set_seq (SC_ARTURIA_BOOK (book), seq, addr);

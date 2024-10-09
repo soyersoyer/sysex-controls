@@ -18,7 +18,7 @@ struct _ScArturiaBookClass
   int (*write_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val);
 };
 
-void sc_arturia_book_set_seq (ScArturiaBook *self, snd_seq_t *seq, snd_seq_addr_t *addr);
+void sc_arturia_book_set_seq (ScArturiaBook *self, snd_seq_t *seq, snd_seq_addr_t addr);
 snd_seq_t * sc_arturia_book_get_seq (ScArturiaBook *self);
 snd_seq_addr_t sc_arturia_book_get_addr (ScArturiaBook *self);
 void sc_arturia_book_register_control (ScArturiaBook *self, uint32_t control_id, uint32_t real_id, ScArturiaControl *control);
