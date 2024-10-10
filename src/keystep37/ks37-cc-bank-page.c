@@ -2,10 +2,10 @@
 
 struct _Ks37CcBankPage
 {
-  ScPreferencesPage parent_instance;
+  ScNavigationPage parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ks37CcBankPage, ks37_cc_bank_page, SC_TYPE_PREFERENCES_PAGE)
+G_DEFINE_FINAL_TYPE (Ks37CcBankPage, ks37_cc_bank_page, SC_TYPE_NAVIGATION_PAGE)
 
 static void
 ks37_cc_bank_page_class_init (Ks37CcBankPageClass *klass)

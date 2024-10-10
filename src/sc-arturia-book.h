@@ -8,11 +8,11 @@ G_BEGIN_DECLS
 
 #define SC_TYPE_ARTURIA_BOOK (sc_arturia_book_get_type ())
 
-G_DECLARE_DERIVABLE_TYPE (ScArturiaBook, sc_arturia_book, SC, ARTURIA_BOOK, AdwBin)
+G_DECLARE_DERIVABLE_TYPE (ScArturiaBook, sc_arturia_book, SC, ARTURIA_BOOK, AdwNavigationPage)
 
 struct _ScArturiaBookClass
 {
-  AdwBinClass parent_class;
+  AdwNavigationPageClass parent_class;
 
   int (*read_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t *val);
   int (*write_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val);

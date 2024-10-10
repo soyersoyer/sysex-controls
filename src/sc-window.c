@@ -34,13 +34,13 @@ struct _ScWindow
 
   snd_seq_t *seq;
 
+  GListStore *page_list;
+
   /* Template widgets */
   AdwToastOverlay *toast_overlay;
-  GtkStackSidebar *sidebar;
+  GtkListBox *sidebar;
   AdwClamp *controller_list_clamp;
   AdwNavigationPage  *setting_page;
-  AdwNavigationPage  *content_page;
-  AdwToolbarView *content_view;
   AdwNavigationView  *navigation_view;
   AdwNavigationSplitView *split_view;
   ScArturiaBook *book;
@@ -76,27 +76,42 @@ sc_create_load_task (ScArturiaBook *book)
 }
 
 static void
-notify_visible_child_cb (GtkStack* stack, GParamSpec *pspec, ScWindow *self)
+on_sidebar_row_activated_cb (GtkListBox* list, GtkListBoxRow *row, ScWindow *self)
 {
-  GtkWidget *child = gtk_stack_get_visible_child (stack);
-  GtkStackPage *page = gtk_stack_get_page (stack, child);
-
-  adw_navigation_page_set_title (self->content_page, gtk_stack_page_get_title (page));
+  int idx = gtk_list_box_row_get_index (row);
+  AdwNavigationPage *page = ADW_NAVIGATION_PAGE (g_list_model_get_item (G_LIST_MODEL (self->page_list), idx));
+  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_parent (GTK_WIDGET (page)));
+  adw_navigation_view_replace (view, (AdwNavigationPage *[]){page}, 1);
   adw_navigation_split_view_set_show_content (self->split_view, TRUE);
 }
 
+static GtkWidget *
+sidebar_row_new (AdwNavigationPage *page, AdwNavigationView *self)
+{
+  GtkListBoxRow *row = GTK_LIST_BOX_ROW (gtk_list_box_row_new ());
+  GtkLabel *label = GTK_LABEL (gtk_label_new (adw_navigation_page_get_title (ADW_NAVIGATION_PAGE (page))));
+  gtk_widget_set_margin_top (GTK_WIDGET (label), 12);
+  gtk_widget_set_margin_bottom (GTK_WIDGET (label), 12);
+  gtk_widget_set_margin_start (GTK_WIDGET (label), 6);
+  gtk_widget_set_margin_end (GTK_WIDGET (label), 6);
+  gtk_widget_set_halign (GTK_WIDGET (label), GTK_ALIGN_START);
+  gtk_list_box_row_set_child (row, GTK_WIDGET (label));
+  return GTK_WIDGET (row);
+}
 
 static void
 sc_window_set_book (ScWindow *self, ScArturiaBook *book)
 {
-  GtkStack *stack = GTK_STACK (adw_bin_get_child(ADW_BIN (book)));
+  AdwNavigationView *view = ADW_NAVIGATION_VIEW (adw_navigation_page_get_child (ADW_NAVIGATION_PAGE (book)));
+  adw_navigation_split_view_set_content(self->split_view, ADW_NAVIGATION_PAGE (book));
   self->book = book;
-  adw_toolbar_view_set_content(self->content_view, GTK_WIDGET (book));
-  gtk_stack_sidebar_set_stack (self->sidebar, stack);
 
-  g_signal_connect (stack, "notify::visible-child", G_CALLBACK (notify_visible_child_cb), self);
+  g_list_store_remove_all (self->page_list);
 
-  notify_visible_child_cb (stack, NULL, self);
+  for (GtkWidget *page = gtk_widget_get_first_child (GTK_WIDGET (view));
+       page; page = gtk_widget_get_next_sibling (page))
+    if (ADW_IS_NAVIGATION_PAGE (page))
+      g_list_store_append (self->page_list, page);
 }
 
 static void
@@ -221,8 +236,6 @@ sc_window_class_init (ScWindowClass *klass)
   gtk_widget_class_bind_template_child (widget_class, ScWindow, sidebar);
   gtk_widget_class_bind_template_child (widget_class, ScWindow, controller_list_clamp);
   gtk_widget_class_bind_template_child (widget_class, ScWindow, setting_page);
-  gtk_widget_class_bind_template_child (widget_class, ScWindow, content_page);
-  gtk_widget_class_bind_template_child (widget_class, ScWindow, content_view);
   gtk_widget_class_bind_template_child (widget_class, ScWindow, navigation_view);
   gtk_widget_class_bind_template_child (widget_class, ScWindow, split_view);
   gtk_widget_class_bind_template_callback (widget_class, refresh_button_click_cb);
@@ -238,8 +251,9 @@ sc_window_init (ScWindow *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 
-  // remove the unecessary right border
-  gtk_widget_remove_css_class (GTK_WIDGET (self->sidebar), "sidebar");
+  self->page_list = g_list_store_new(ADW_TYPE_NAVIGATION_PAGE);
+  gtk_list_box_bind_model (self->sidebar, G_LIST_MODEL (self->page_list), (GtkListBoxCreateWidgetFunc)sidebar_row_new, self->sidebar, NULL);
+  g_signal_connect (self->sidebar, "row-activated", G_CALLBACK (on_sidebar_row_activated_cb), self);
 
   sc_midi_init (self);
 }

@@ -2,10 +2,10 @@
 
 struct _Ml3ModPage
 {
-  ScPreferencesPage parent_instance;
+  ScNavigationPage parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ml3ModPage, ml3_mod_page, SC_TYPE_PREFERENCES_PAGE)
+G_DEFINE_FINAL_TYPE (Ml3ModPage, ml3_mod_page, SC_TYPE_NAVIGATION_PAGE)
 
 static void
 ml3_mod_page_class_init (Ml3ModPageClass *klass)

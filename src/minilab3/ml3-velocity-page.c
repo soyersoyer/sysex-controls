@@ -2,10 +2,10 @@
 
 struct _Ml3VelocityPage
 {
-  ScPreferencesPage parent_instance;
+  ScNavigationPage parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ml3VelocityPage, ml3_velocity_page, SC_TYPE_PREFERENCES_PAGE)
+G_DEFINE_FINAL_TYPE (Ml3VelocityPage, ml3_velocity_page, SC_TYPE_NAVIGATION_PAGE)
 
 static void
 ml3_velocity_page_class_init (Ml3VelocityPageClass *klass)

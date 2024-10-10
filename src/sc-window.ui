@@ -19,6 +19,7 @@
       <object class="AdwToastOverlay" id="toast_overlay">
         <property name="child">
       <object class="AdwNavigationView" id="navigation_view">
+
         <child>
           <object class="AdwNavigationPage">
             <property name="title" translatable="yes">SysEx Controls</property>
@@ -56,6 +57,7 @@
             </property>
           </object>
         </child>
+
         <child>
           <object class="AdwNavigationPage">
             <property name="title" translatable="yes">SysEx Controls</property>
@@ -92,6 +94,7 @@
             </property>
           </object>
         </child>
+
         <child>
           <object class="AdwNavigationPage">
             <property name="title" translatable="yes">SysEx Controls</property>
@@ -120,6 +123,7 @@
             </property>
           </object>
         </child>
+
         <child>
           <object class="AdwNavigationPage">
             <property name="tag">setting</property>
@@ -142,7 +146,7 @@
                               </object>
                             </child>
                             <child type="end">
-                              <object class="GtkMenuButton" id="menuButton">
+                              <object class="GtkMenuButton">
                                 <property name="icon-name">open-menu-symbolic</property>
                                 <property name="menu-model">primary_menu</property>
                                 <property name="primary">True</property>
@@ -152,21 +156,14 @@
                           </object>
                         </child>
                         <property name="content">
-                          <object class="GtkStackSidebar" id="sidebar">
+                          <object class="GtkScrolledWindow">
+                            <property name="child">
+                              <object class="GtkListBox" id="sidebar">
+                                <style><class name="navigation-sidebar"/></style>
+                              </object>
+                            </property>
                           </object>
                         </property>
-                      </object>
-                    </property>
-                  </object>
-                </property>
-                <property name="content">
-                  <object class="AdwNavigationPage" id="content_page">
-                    <property name="tag">content</property>
-                    <property name="child">
-                      <object class="AdwToolbarView" id="content_view">
-                        <child type="top">
-                          <object class="AdwHeaderBar" id="content_header"/>
-                        </child>
                       </object>
                     </property>
                   </object>
@@ -175,6 +172,7 @@
             </property>
           </object>
         </child>
+
       </object>
         </property>
       </object>

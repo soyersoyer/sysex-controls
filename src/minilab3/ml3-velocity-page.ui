@@ -2,119 +2,129 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="Ml3VelocityPage" parent="ScPreferencesPage">
-    <child>
-      <object class="AdwPreferencesGroup">
+  <template class="Ml3VelocityPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Velocity</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+            <child>
+              <object class="AdwPreferencesGroup">
 
-        <child>
-          <object class="ScComboRow" id="key_velocity_curve">
-            <child><object class="ScArturiaControl"><property name="id">0x0200</property></object></child>
-            <property name="title" translatable="yes">Key Velocity Curve</property>
-            <property name="subtitle" translatable="yes">To personalize the responsiveness of the keyboard.</property>
-            <property name="model">
-              <object class="ScControlValueList">
-                <items>
-                  <item>Linear</item>
-                  <item>Exponential</item>
-                  <item>Logarithmic</item>
-                  <item>Fixed</item>
-                </items>
+                <child>
+                  <object class="ScComboRow" id="key_velocity_curve">
+                    <child><object class="ScArturiaControl"><property name="id">0x0200</property></object></child>
+                    <property name="title" translatable="yes">Key Velocity Curve</property>
+                    <property name="subtitle" translatable="yes">To personalize the responsiveness of the keyboard.</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Exponential</item>
+                          <item>Logarithmic</item>
+                          <item>Fixed</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x0300</property></object></child>
+                    <property name="title" translatable="yes">Key Fixed Velocity</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">key_velocity_curve</lookup>
+                        <constant type="GVariant">[0x03]</constant>
+                      </closure>
+                    </binding>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">127</property>
+                        <property name="value">64</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
               </object>
-            </property>
-          </object>
-        </child>
+            </child>
 
-        <child>
-          <object class="AdwSpinRow">
-            <child><object class="ScArturiaControl"><property name="id">0x0300</property></object></child>
-            <property name="title" translatable="yes">Key Fixed Velocity</property>
-            <binding name="visible">
-              <closure type="gboolean" function="cv_in">
-                <lookup type="ScComboRow" name="selected-item">key_velocity_curve</lookup>
-                <constant type="GVariant">[0x03]</constant>
-              </closure>
-            </binding>
-            <property name="adjustment">
-              <object class="GtkAdjustment">
-                <property name="lower">1</property>
-                <property name="upper">127</property>
-                <property name="value">64</property>
-                <property name="page-increment">10</property>
-                <property name="step-increment">1</property>
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow" id="pad_velocity_curve">
+                    <child><object class="ScArturiaControl"><property name="id">0x0400</property></object></child>
+                    <property name="title" translatable="yes">Pad Velocity Curve</property>
+                    <property name="subtitle" translatable="yes">To personalize the responsiveness of the pads.</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Exponential</item>
+                          <item>Logarithmic</item>
+                          <item>Fixed</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x0500</property></object></child>
+                    <property name="title" translatable="yes">Pad Fixed Velocity</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">pad_velocity_curve</lookup>
+                        <constant type="GVariant">[0x03]</constant>
+                      </closure>
+                    </binding>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">127</property>
+                        <property name="value">64</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
               </object>
-            </property>
-          </object>
-        </child>
+            </child>
+            <child>
+              <object class="AdwPreferencesGroup">
 
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x0600</property></object></child>
+                    <property name="title" translatable="yes">Pad aftertouch</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Exponential</item>
+                          <item>Logarithmic</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
       </object>
-    </child>
-
-    <child>
-      <object class="AdwPreferencesGroup">
-
-        <child>
-          <object class="ScComboRow" id="pad_velocity_curve">
-            <child><object class="ScArturiaControl"><property name="id">0x0400</property></object></child>
-            <property name="title" translatable="yes">Pad Velocity Curve</property>
-            <property name="subtitle" translatable="yes">To personalize the responsiveness of the pads.</property>
-            <property name="model">
-              <object class="ScControlValueList">
-                <items>
-                  <item>Linear</item>
-                  <item>Exponential</item>
-                  <item>Logarithmic</item>
-                  <item>Fixed</item>
-                </items>
-              </object>
-            </property>
-          </object>
-        </child>
-
-        <child>
-          <object class="AdwSpinRow">
-            <child><object class="ScArturiaControl"><property name="id">0x0500</property></object></child>
-            <property name="title" translatable="yes">Pad Fixed Velocity</property>
-            <binding name="visible">
-              <closure type="gboolean" function="cv_in">
-                <lookup type="ScComboRow" name="selected-item">pad_velocity_curve</lookup>
-                <constant type="GVariant">[0x03]</constant>
-              </closure>
-            </binding>
-            <property name="adjustment">
-              <object class="GtkAdjustment">
-                <property name="lower">1</property>
-                <property name="upper">127</property>
-                <property name="value">64</property>
-                <property name="page-increment">10</property>
-                <property name="step-increment">1</property>
-              </object>
-            </property>
-          </object>
-        </child>
-
-      </object>
-    </child>
-    <child>
-      <object class="AdwPreferencesGroup">
-
-        <child>
-          <object class="ScComboRow">
-            <child><object class="ScArturiaControl"><property name="id">0x0600</property></object></child>
-            <property name="title" translatable="yes">Pad aftertouch</property>
-            <property name="model">
-              <object class="ScControlValueList">
-                <items>
-                  <item>Linear</item>
-                  <item>Exponential</item>
-                  <item>Logarithmic</item>
-                </items>
-              </object>
-            </property>
-          </object>
-        </child>
-
-      </object>
-    </child>
-
+    </property>
   </template>
 </interface>

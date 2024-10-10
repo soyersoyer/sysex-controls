@@ -22,7 +22,7 @@ typedef struct
 } ScArturiaBookPrivate;
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (ScArturiaBook, sc_arturia_book, ADW_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (ScArturiaBook, sc_arturia_book, ADW_TYPE_NAVIGATION_PAGE)
 
 void
 sc_arturia_book_register_control (ScArturiaBook *self, uint32_t control_id, uint32_t real_id, ScArturiaControl *control)

@@ -2,35 +2,45 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="Ml3FaderPage" parent="ScPreferencesPage">
+  <template class="Ml3FaderPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Faders</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+            <child>
+              <object class="Ml3Fader">
+                <property name="title" translatable="yes">Fader 1</property>
+                <property name="control-id-offset">0x0000</property>
+              </object>
+            </child>
 
-    <child>
-      <object class="Ml3Fader">
-        <property name="title" translatable="yes">Fader 1</property>
-        <property name="control-id-offset">0x0000</property>
-      </object>
-    </child>
+            <child>
+              <object class="Ml3Fader">
+                <property name="title" translatable="yes">Fader 2</property>
+                <property name="control-id-offset">0x0100</property>
+              </object>
+            </child>
 
-    <child>
-      <object class="Ml3Fader">
-        <property name="title" translatable="yes">Fader 2</property>
-        <property name="control-id-offset">0x0100</property>
-      </object>
-    </child>
+            <child>
+              <object class="Ml3Fader">
+                <property name="title" translatable="yes">Fader 3</property>
+                <property name="control-id-offset">0x0200</property>
+              </object>
+            </child>
 
-    <child>
-      <object class="Ml3Fader">
-        <property name="title" translatable="yes">Fader 3</property>
-        <property name="control-id-offset">0x0200</property>
-      </object>
-    </child>
+            <child>
+              <object class="Ml3Fader">
+                <property name="title" translatable="yes">Fader 4</property>
+                <property name="control-id-offset">0x0300</property>
+              </object>
+            </child>
 
-    <child>
-      <object class="Ml3Fader">
-        <property name="title" translatable="yes">Fader 4</property>
-        <property name="control-id-offset">0x0300</property>
+          </object>
+        </property>
       </object>
-    </child>
+    </property>
 
   </template>
 </interface>

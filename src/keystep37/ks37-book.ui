@@ -4,89 +4,52 @@
   <requires lib="libadwaita" version="1.0"/>
   <template class="Ks37Book" parent="ScArturiaBook">
     <property name="child">
-      <object class="GtkStack">
-        <property name="vhomogeneous">False</property>
-        <property name="valign">start</property>
+      <object class="AdwNavigationView">
 
         <child>
-          <object class="GtkStackPage">
-            <property name="title" translatable="yes">Controller</property>
-            <property name="child">
-              <object class="Ks37ControllerPage" />
-            </property>
-          </object>
+          <object class="Ks37ControllerPage" />
         </child>
 
         <child>
-          <object class="GtkStackPage">
-            <property name="title" translatable="yes">Sequence</property>
-            <property name="child">
-              <object class="Ks37SequencePage" />
-            </property>
-          </object>
+          <object class="Ks37SequencePage" />
         </child>
 
         <child>
-          <object class="GtkStackPage">
-            <property name="title" translatable="yes">CV / Gate</property>
-            <property name="child">
-              <object class="Ks37CvGatePage" />
-            </property>
-          </object>
+          <object class="Ks37CvGatePage" />
         </child>
 
         <child>
-          <object class="GtkStackPage">
-            <property name="title" translatable="yes">Transport</property>
-            <property name="child">
-              <object class="Ks37TransportPage" />
-            </property>
-          </object>
+          <object class="Ks37TransportPage" />
         </child>
 
         <child>
-          <object class="GtkStackPage">
+          <object class="Ks37CcBankPage">
             <property name="title" translatable="yes">CC Bank 1</property>
-            <property name="child">
-              <object class="Ks37CcBankPage">
-                <property name="control-id-offset">0x412f</property>
-              </object>
-            </property>
+            <property name="control-id-offset">0x412f</property>
           </object>
         </child>
 
         <child>
-          <object class="GtkStackPage">
+          <object class="Ks37CcBankPage">
+            <property name="control-id-offset">0x413f</property>
             <property name="title" translatable="yes">CC Bank 2</property>
-            <property name="child">
-              <object class="Ks37CcBankPage">
-                <property name="control-id-offset">0x413f</property>
-              </object>
-            </property>
           </object>
         </child>
 
         <child>
-          <object class="GtkStackPage">
+          <object class="Ks37CcBankPage">
+            <property name="control-id-offset">0x414f</property>
             <property name="title" translatable="yes">CC Bank 3</property>
-            <property name="child">
-              <object class="Ks37CcBankPage">
-                <property name="control-id-offset">0x414f</property>
-              </object>
-            </property>
           </object>
         </child>
 
         <child>
-          <object class="GtkStackPage">
+          <object class="Ks37CcBankPage">
             <property name="title" translatable="yes">CC Bank 4</property>
-            <property name="child">
-              <object class="Ks37CcBankPage">
-                <property name="control-id-offset">0x415f</property>
-              </object>
-            </property>
+            <property name="control-id-offset">0x415f</property>
           </object>
         </child>
+
       </object>
     </property>
   </template>

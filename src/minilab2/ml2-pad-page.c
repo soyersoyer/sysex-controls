@@ -2,10 +2,10 @@
 
 struct _Ml2PadPage
 {
-  ScPreferencesPage parent_instance;
+  ScNavigationPage parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ml2PadPage, ml2_pad_page, SC_TYPE_PREFERENCES_PAGE)
+G_DEFINE_FINAL_TYPE (Ml2PadPage, ml2_pad_page, SC_TYPE_NAVIGATION_PAGE)
 
 static void
 ml2_pad_page_class_init (Ml2PadPageClass *klass)

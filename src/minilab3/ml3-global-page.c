@@ -2,10 +2,10 @@
 
 struct _Ml3GlobalPage
 {
-  ScPreferencesPage parent_instance;
+  ScNavigationPage parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ml3GlobalPage, ml3_global_page, SC_TYPE_PREFERENCES_PAGE)
+G_DEFINE_FINAL_TYPE (Ml3GlobalPage, ml3_global_page, SC_TYPE_NAVIGATION_PAGE)
 
 static void
 ml3_global_page_class_init (Ml3GlobalPageClass *klass)

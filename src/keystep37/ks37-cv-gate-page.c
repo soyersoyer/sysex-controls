@@ -2,10 +2,10 @@
 
 struct _Ks37CvGatePage
 {
-  ScPreferencesPage parent_instance;
+  ScNavigationPage parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ks37CvGatePage, ks37_cv_gate_page, SC_TYPE_PREFERENCES_PAGE)
+G_DEFINE_FINAL_TYPE (Ks37CvGatePage, ks37_cv_gate_page, SC_TYPE_NAVIGATION_PAGE)
 
 static void
 ks37_cv_gate_page_class_init (Ks37CvGatePageClass *klass)

@@ -2,240 +2,252 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="Ks37SequencePage" parent="ScPreferencesPage">
-    <child>
-      <object class="AdwPreferencesGroup">
+  <template class="Ks37SequencePage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Sequence</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+            <child>
+              <object class="AdwPreferencesGroup">
 
-        <child>
-          <object class="ScComboRow">
-            <child><object class="ScArturiaControl"><property name="id">0x4108</property></object></child>
-            <property name="title" translatable="yes">Sync Clock In/Out Settings</property>
-            <property name="subtitle" translatable="yes">Set Sync input/output type. Refer to external device documentation to determine what the settings should be.</property>
-            <property name="subtitle-lines">3</property>
-            <property name="model">
-              <object class="ScControlValueList">
-                <items>
-                  <item>1 Step (Gate)</item>
-                  <item>1 Step (Clock)</item>
-                  <item>1 Pulse (Korg)</item>
-                  <item>24 ppq</item>
-                  <item>48 ppq</item>
-                </items>
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x4108</property></object></child>
+                    <property name="title" translatable="yes">Sync Clock In/Out Settings</property>
+                    <property name="subtitle" translatable="yes">Set Sync input/output type. Refer to external device documentation to determine what the settings should be.</property>
+                    <property name="subtitle-lines">3</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1 Step (Gate)</item>
+                          <item>1 Step (Clock)</item>
+                          <item>1 Pulse (Korg)</item>
+                          <item>24 ppq</item>
+                          <item>48 ppq</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x410b</property></object></child>
+                    <property name="title" translatable="yes">Sync Clock Start</property>
+                    <property name="subtitle" translatable="yes">Determines which sort of signal will start KeyStep 37.</property>
+                    <property name="subtitle-lines">2</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>On Clock</item>
+                          <item>On Gate Start</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x410c</property></object></child>
+                    <property name="title" translatable="yes">Next Seq</property>
+                    <property name="subtitle" translatable="yes">Continue</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>End</item>
+                          <item>Instant Reset</item>
+                          <item>Instant Continue</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
               </object>
-            </property>
-          </object>
-        </child>
+            </child>
 
-        <child>
-          <object class="ScComboRow">
-            <child><object class="ScArturiaControl"><property name="id">0x410b</property></object></child>
-            <property name="title" translatable="yes">Sync Clock Start</property>
-            <property name="subtitle" translatable="yes">Determines which sort of signal will start KeyStep 37.</property>
-            <property name="subtitle-lines">2</property>
-            <property name="model">
-              <object class="ScControlValueList">
-                <items>
-                  <item>On Clock</item>
-                  <item>On Gate Start</item>
-                </items>
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x410f</property></object></child>
+                    <property name="title" translatable="yes">Transposition Input Port</property>
+                    <property name="subtitle" translatable="yes">Sequences can be transposed by external devices. This decides which ones are allowed to do so.</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="0x01">USB</item>
+                          <item>MIDI</item>
+                          <item>USB &amp; MIDI</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x4109</property></object></child>
+                    <property name="title" translatable="yes">Transpose Input Channel</property>
+                    <property name="subtitle" translatable="yes">Specifies the MIDI channel to obey for transposition.</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1</item>
+                          <item>2</item>
+                          <item>3</item>
+                          <item>4</item>
+                          <item>5</item>
+                          <item>6</item>
+                          <item>7</item>
+                          <item>8</item>
+                          <item>9</item>
+                          <item>10</item>
+                          <item>11</item>
+                          <item>12</item>
+                          <item>13</item>
+                          <item>14</item>
+                          <item>15</item>
+                          <item>16</item>
+                          <item>None</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x410e</property></object></child>
+                    <property name="title" translatable="yes">Transposition Latch</property>
+                    <property name="subtitle" translatable="yes">Decides whether a sequence will only be transposed while a key is held down.</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x4113</property></object></child>
+                    <property name="title" translatable="yes">Transpose Center Pitch</property>
+                    <property name="subtitle" translatable="yes">Notes above/below center transpose the sequence up/down</property>
+                  </object>
+                </child>
+
               </object>
-            </property>
-          </object>
-        </child>
+            </child>
 
-        <child>
-          <object class="ScComboRow">
-            <child><object class="ScArturiaControl"><property name="id">0x410c</property></object></child>
-            <property name="title" translatable="yes">Next Seq</property>
-            <property name="subtitle" translatable="yes">Continue</property>
-            <property name="model">
-              <object class="ScControlValueList">
-                <items>
-                  <item>End</item>
-                  <item>Instant Reset</item>
-                  <item>Instant Continue</item>
-                </items>
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x4111</property></object></child>
+                    <property name="title" translatable="yes">Velocity</property>
+                    <property name="subtitle" translatable="yes">Disregard velocity or not</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>As Recorded</item>
+                          <item>Fixed</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x4112</property></object></child>
+                    <property name="title" translatable="yes">Fixed Velocity Value</property>
+                    <property name="subtitle" translatable="yes">Set the preferred value</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">127</property>
+                        <property name="value">50</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x410a</property></object></child>
+                    <property name="title" translatable="yes">Tap Tempo Average</property>
+                    <property name="subtitle" translatable="yes">Number of taps to respond</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="0x03">3</item>
+                          <item>4</item>
+                          <item>5</item>
+                          <item>6</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
               </object>
-            </property>
-          </object>
-        </child>
+            </child>
 
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow" id="arm_to_start">
+                    <child><object class="ScArturiaControl"><property name="id">0x4115</property></object></child>
+                    <property name="title" translatable="yes">Arm To Start</property>
+                    <property name="subtitle" translatable="yes">Determines the start/stop behavior of the sequencer when working with external clock sources</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x4116</property></object></child>
+                    <property name="title" translatable="yes">Tie Mode</property>
+                    <property name="subtitle" translatable="yes">Determines how notes are "tied" together in the Sequencer</property>
+                    <property name="subtitle-lines">2</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Tie to Previous</item>
+                          <item>Tie to Next</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x4117</property></object></child>
+                    <property name="title" translatable="yes">Sequence Length Update</property>
+                    <property name="subtitle" translatable="yes">Specifies behavior of sequencer when user shortens a sequence</property>
+                    <property name="subtitle-lines">2</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Keep beyond seq length</item>
+                          <item>Clear beyond seq length</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
       </object>
-    </child>
+    </property>
 
-    <child>
-      <object class="AdwPreferencesGroup">
-
-        <child>
-          <object class="ScComboRow">
-            <child><object class="ScArturiaControl"><property name="id">0x410f</property></object></child>
-            <property name="title" translatable="yes">Transposition Input Port</property>
-            <property name="subtitle" translatable="yes">Sequences can be transposed by external devices. This decides which ones are allowed to do so.</property>
-            <property name="model">
-              <object class="ScControlValueList">
-                <items>
-                  <item value="0x01">USB</item>
-                  <item>MIDI</item>
-                  <item>USB &amp; MIDI</item>
-                </items>
-              </object>
-            </property>
-          </object>
-        </child>
-
-        <child>
-          <object class="ScComboRow">
-            <child><object class="ScArturiaControl"><property name="id">0x4109</property></object></child>
-            <property name="title" translatable="yes">Transpose Input Channel</property>
-            <property name="subtitle" translatable="yes">Specifies the MIDI channel to obey for transposition.</property>
-            <property name="model">
-              <object class="ScControlValueList">
-                <items>
-                  <item>1</item>
-                  <item>2</item>
-                  <item>3</item>
-                  <item>4</item>
-                  <item>5</item>
-                  <item>6</item>
-                  <item>7</item>
-                  <item>8</item>
-                  <item>9</item>
-                  <item>10</item>
-                  <item>11</item>
-                  <item>12</item>
-                  <item>13</item>
-                  <item>14</item>
-                  <item>15</item>
-                  <item>16</item>
-                  <item>None</item>
-                </items>
-              </object>
-            </property>
-          </object>
-        </child>
-
-        <child>
-          <object class="AdwSwitchRow">
-            <child><object class="ScArturiaControl"><property name="id">0x410e</property></object></child>
-            <property name="title" translatable="yes">Transposition Latch</property>
-            <property name="subtitle" translatable="yes">Decides whether a sequence will only be transposed while a key is held down.</property>
-          </object>
-        </child>
-
-        <child>
-          <object class="ScNoteRow">
-            <child><object class="ScArturiaControl"><property name="id">0x4113</property></object></child>
-            <property name="title" translatable="yes">Transpose Center Pitch</property>
-            <property name="subtitle" translatable="yes">Notes above/below center transpose the sequence up/down</property>
-          </object>
-        </child>
-
-      </object>
-    </child>
-
-    <child>
-      <object class="AdwPreferencesGroup">
-
-        <child>
-          <object class="ScComboRow">
-            <child><object class="ScArturiaControl"><property name="id">0x4111</property></object></child>
-            <property name="title" translatable="yes">Velocity</property>
-            <property name="subtitle" translatable="yes">Disregard velocity or not</property>
-            <property name="model">
-              <object class="ScControlValueList">
-                <items>
-                  <item>As Recorded</item>
-                  <item>Fixed</item>
-                </items>
-              </object>
-            </property>
-          </object>
-        </child>
-
-        <child>
-          <object class="AdwSpinRow">
-            <child><object class="ScArturiaControl"><property name="id">0x4112</property></object></child>
-            <property name="title" translatable="yes">Fixed Velocity Value</property>
-            <property name="subtitle" translatable="yes">Set the preferred value</property>
-            <property name="adjustment">
-              <object class="GtkAdjustment">
-                <property name="lower">1</property>
-                <property name="upper">127</property>
-                <property name="value">50</property>
-                <property name="page-increment">10</property>
-                <property name="step-increment">1</property>
-              </object>
-            </property>
-          </object>
-        </child>
-
-        <child>
-          <object class="ScComboRow">
-            <child><object class="ScArturiaControl"><property name="id">0x410a</property></object></child>
-            <property name="title" translatable="yes">Tap Tempo Average</property>
-            <property name="subtitle" translatable="yes">Number of taps to respond</property>
-            <property name="model">
-              <object class="ScControlValueList">
-                <items>
-                  <item value="0x03">3</item>
-                  <item>4</item>
-                  <item>5</item>
-                  <item>6</item>
-                </items>
-              </object>
-            </property>
-          </object>
-        </child>
-
-      </object>
-    </child>
-
-    <child>
-      <object class="AdwPreferencesGroup">
-
-        <child>
-          <object class="AdwSwitchRow" id="arm_to_start">
-            <child><object class="ScArturiaControl"><property name="id">0x4115</property></object></child>
-            <property name="title" translatable="yes">Arm To Start</property>
-            <property name="subtitle" translatable="yes">Determines the start/stop behavior of the sequencer when working with external clock sources</property>
-          </object>
-        </child>
-
-        <child>
-          <object class="ScComboRow">
-            <child><object class="ScArturiaControl"><property name="id">0x4116</property></object></child>
-            <property name="title" translatable="yes">Tie Mode</property>
-            <property name="subtitle" translatable="yes">Determines how notes are "tied" together in the Sequencer</property>
-            <property name="subtitle-lines">2</property>
-            <property name="model">
-              <object class="ScControlValueList">
-                <items>
-                  <item>Tie to Previous</item>
-                  <item>Tie to Next</item>
-                </items>
-              </object>
-            </property>
-          </object>
-        </child>
-
-        <child>
-          <object class="ScComboRow">
-            <child><object class="ScArturiaControl"><property name="id">0x4117</property></object></child>
-            <property name="title" translatable="yes">Sequence Length Update</property>
-            <property name="subtitle" translatable="yes">Specifies behavior of sequencer when user shortens a sequence</property>
-            <property name="subtitle-lines">2</property>
-            <property name="model">
-              <object class="ScControlValueList">
-                <items>
-                  <item>Keep beyond seq length</item>
-                  <item>Clear beyond seq length</item>
-                </items>
-              </object>
-            </property>
-          </object>
-        </child>
-
-      </object>
-    </child>
   </template>
 </interface>

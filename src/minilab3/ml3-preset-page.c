@@ -2,10 +2,10 @@
 
 struct _Ml3PresetPage
 {
-  ScPreferencesPage parent_instance;
+  ScNavigationPage parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ml3PresetPage, ml3_preset_page, SC_TYPE_PREFERENCES_PAGE)
+G_DEFINE_FINAL_TYPE (Ml3PresetPage, ml3_preset_page, SC_TYPE_NAVIGATION_PAGE)
 
 static void
 ml3_preset_page_class_init (Ml3PresetPageClass *klass)
