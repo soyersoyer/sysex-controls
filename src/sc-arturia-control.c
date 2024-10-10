@@ -2,6 +2,7 @@
 
 #include "sc-arturia-book.h"
 #include "sc-control-value.h"
+#include "sc-navigation-page.h"
 #include "sc-preferences-page.h"
 #include "sc-preferences-group.h"
 #include "sc-window.h"
@@ -186,6 +187,7 @@ sc_arturia_control_register (void *ac_widget)
   ScArturiaControl *self = SC_ARTURIA_CONTROL (ac_widget);
   ScPreferencesGroup *group_widget;
   ScPreferencesPage *page_widget;
+  ScNavigationPage *nav_page_widget;
   GtkWidget *widget;
   uint8_t *rid = (uint8_t*)&(self->real_id);
   self->real_id = self->id;
@@ -200,6 +202,12 @@ sc_arturia_control_register (void *ac_widget)
 
   if (!widget)
     widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), ADW_TYPE_SWITCH_ROW);
+
+  nav_page_widget = SC_NAVIGATION_PAGE (gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), SC_TYPE_NAVIGATION_PAGE));
+  if (nav_page_widget) {
+    uint32_t cc_offset = sc_navigation_page_get_control_cc_offset (nav_page_widget);
+    self->real_id += self->use_cc_offset && cc_offset ? cc_offset : sc_navigation_page_get_control_id_offset (nav_page_widget);
+  }
 
   page_widget = SC_PREFERENCES_PAGE (gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), SC_TYPE_PREFERENCES_PAGE));
   if (page_widget) {
