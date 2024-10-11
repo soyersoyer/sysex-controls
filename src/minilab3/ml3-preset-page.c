@@ -3,10 +3,8 @@
 #include "ml3-fader-page.h"
 #include "ml3-knob-page.h"
 #include "ml3-main-knob-page.h"
-#include "ml3-mod-page.h"
 #include "ml3-pad-page.h"
-#include "ml3-pitch-page.h"
-#include "ml3-shift-page.h"
+#include "ml3-spm-page.h"
 
 struct _Ml3PresetPage
 {
@@ -24,28 +22,10 @@ get_preset_offset (ScNavigationPage *self)
 }
 
 void
-on_shift_activated (ScNavigationPage *self, AdwActionRow* row)
+on_spm_activated (ScNavigationPage *self, AdwActionRow* row)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
-  AdwNavigationPage *page = g_object_new (ML3_TYPE_SHIFT_PAGE, "control-id-offset", get_preset_offset (self), NULL);
-  adw_navigation_view_push (view, page);
-  g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), page);
-}
-
-void
-on_pitch_activated (ScNavigationPage *self, AdwActionRow* row)
-{
-  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
-  AdwNavigationPage *page = g_object_new (ML3_TYPE_PITCH_PAGE, "control-id-offset", get_preset_offset (self), NULL);
-  adw_navigation_view_push (view, page);
-  g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), page);
-}
-
-void
-on_mod_activated (ScNavigationPage *self, AdwActionRow* row)
-{
-  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
-  AdwNavigationPage *page = g_object_new (ML3_TYPE_MOD_PAGE, "control-id-offset", get_preset_offset (self), NULL);
+  AdwNavigationPage *page = g_object_new (ML3_TYPE_SPM_PAGE, "control-id-offset", get_preset_offset (self), NULL);
   adw_navigation_view_push (view, page);
   g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), page);
 }

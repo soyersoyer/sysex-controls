@@ -26,35 +26,9 @@
 
                 <child>
                   <object class="AdwActionRow">
-                    <property name="title" translatable="yes">Shift</property>
+                    <property name="title" translatable="yes">Shift / Pitch / Mod</property>
                     <property name="activatable">yes</property>
-                    <signal name="activated" handler="on_shift_activated" swapped="yes"/>
-                    <child type="suffix">
-                      <object class="GtkImage">
-                        <property name="icon-name">go-next-symbolic</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-
-                <child>
-                  <object class="AdwActionRow">
-                    <property name="title" translatable="yes">Pitch</property>
-                    <property name="activatable">yes</property>
-                    <signal name="activated" handler="on_pitch_activated" swapped="yes"/>
-                    <child type="suffix">
-                      <object class="GtkImage">
-                        <property name="icon-name">go-next-symbolic</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-
-                <child>
-                  <object class="AdwActionRow">
-                    <property name="title" translatable="yes">Mod</property>
-                    <property name="activatable">yes</property>
-                    <signal name="activated" handler="on_mod_activated" swapped="yes"/>
+                    <signal name="activated" handler="on_spm_activated" swapped="yes"/>
                     <child type="suffix">
                       <object class="GtkImage">
                         <property name="icon-name">go-next-symbolic</property>

@@ -9,13 +9,11 @@
 #include "ml3-main-knob.h"
 #include "ml3-main-knob-click.h"
 #include "ml3-main-knob-page.h"
-#include "ml3-mod-page.h"
 #include "ml3-pad.h"
 #include "ml3-pad-page.h"
 #include "ml3-pedal-page.h"
-#include "ml3-pitch-page.h"
 #include "ml3-preset-page.h"
-#include "ml3-shift-page.h"
+#include "ml3-spm-page.h"
 #include "ml3-velocity-page.h"
 
 struct _Ml3Book
@@ -49,13 +47,11 @@ ml3_book_init (Ml3Book *self)
   g_type_ensure (ML3_TYPE_MAIN_KNOB);
   g_type_ensure (ML3_TYPE_MAIN_KNOB_CLICK);
   g_type_ensure (ML3_TYPE_MAIN_KNOB_PAGE);
-  g_type_ensure (ML3_TYPE_MOD_PAGE);
   g_type_ensure (ML3_TYPE_PAD);
   g_type_ensure (ML3_TYPE_PAD_PAGE);
   g_type_ensure (ML3_TYPE_PEDAL_PAGE);
-  g_type_ensure (ML3_TYPE_PITCH_PAGE);
   g_type_ensure (ML3_TYPE_PRESET_PAGE);
-  g_type_ensure (ML3_TYPE_SHIFT_PAGE);
+  g_type_ensure (ML3_TYPE_SPM_PAGE);
   g_type_ensure (ML3_TYPE_VELOCITY_PAGE);
 
   gtk_widget_init_template (GTK_WIDGET (self));

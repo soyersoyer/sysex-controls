@@ -35,13 +35,11 @@
     <file preprocess="xml-stripblanks">minilab3/ml3-main-knob.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-main-knob-click.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-main-knob-page.ui</file>
-    <file preprocess="xml-stripblanks">minilab3/ml3-mod-page.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-pad.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-pad-page.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-pedal-page.ui</file>
-    <file preprocess="xml-stripblanks">minilab3/ml3-pitch-page.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-preset-page.ui</file>
-    <file preprocess="xml-stripblanks">minilab3/ml3-shift-page.ui</file>
+    <file preprocess="xml-stripblanks">minilab3/ml3-spm-page.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-velocity-page.ui</file>
   </gresource>
 </gresources>
