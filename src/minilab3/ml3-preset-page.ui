@@ -13,17 +13,9 @@
             <child>
               <object class="ScPreferencesGroup">
                 <child>
-                  <object class="ScComboRow">
+                  <object class="AdwSwitchRow">
                     <child><object class="ScArturiaControl"><property name="id">0x1300</property></object></child>
-                    <property name="title" translatable="yes">Show on controller</property>
-                    <property name="model">
-                      <object class="ScControlValueList">
-                        <items>
-                          <item>Enabled</item>
-                          <item>Disabled</item>
-                        </items>
-                      </object>
-                    </property>
+                    <property name="title" translatable="yes">Hide on controller</property>
                   </object>
                 </child>
               </object>
