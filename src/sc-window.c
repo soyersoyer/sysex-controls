@@ -90,8 +90,8 @@ sidebar_row_new (AdwNavigationPage *page, AdwNavigationView *self)
 {
   GtkListBoxRow *row = GTK_LIST_BOX_ROW (gtk_list_box_row_new ());
   GtkLabel *label = GTK_LABEL (gtk_label_new (adw_navigation_page_get_title (ADW_NAVIGATION_PAGE (page))));
-  gtk_widget_set_margin_top (GTK_WIDGET (label), 12);
-  gtk_widget_set_margin_bottom (GTK_WIDGET (label), 12);
+  gtk_widget_set_margin_top (GTK_WIDGET (label), 6);
+  gtk_widget_set_margin_bottom (GTK_WIDGET (label), 6);
   gtk_widget_set_margin_start (GTK_WIDGET (label), 6);
   gtk_widget_set_margin_end (GTK_WIDGET (label), 6);
   gtk_widget_set_halign (GTK_WIDGET (label), GTK_ALIGN_START);
