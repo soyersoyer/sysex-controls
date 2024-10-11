@@ -36,6 +36,15 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.2" date="2024-10-11">
+      <description>
+        <ul>
+          <li>MiniLab 3 Shift, Pitch, Mod, Main Knob, Knobs, Faders, Pads, Preset controls</li>
+          <li>Color chooser widget</li>
+          <li>Program chooser widget</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.1" date="2024-10-04">
       <description>
         <ul>
