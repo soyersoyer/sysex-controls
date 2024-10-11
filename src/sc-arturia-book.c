@@ -116,13 +116,6 @@ sc_arturia_book_get_addr (ScArturiaBook *self)
   return priv->seq_addr;
 }
 
-bool
-sc_arturia_book_use_v3 (ScArturiaBook *self)
-{
-  ScArturiaBookClass *scklass = SC_ARTURIA_BOOK_GET_CLASS (self);
-  return scklass->write_control == sc_midi_arturia_v3_write_control;
-}
-
 static void
 sc_arturia_book_class_init (ScArturiaBookClass *klass)
 {

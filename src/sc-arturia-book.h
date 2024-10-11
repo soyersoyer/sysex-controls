@@ -22,7 +22,6 @@ void sc_arturia_book_set_seq (ScArturiaBook *self, snd_seq_t *seq, snd_seq_addr_
 snd_seq_t * sc_arturia_book_get_seq (ScArturiaBook *self);
 snd_seq_addr_t sc_arturia_book_get_addr (ScArturiaBook *self);
 void sc_arturia_book_register_control (ScArturiaBook *self, uint32_t control_id, uint32_t real_id, ScArturiaControl *control);
-bool sc_arturia_book_use_v3 (ScArturiaBook *self);
 void sc_arturia_book_load_task (GTask *task, gpointer source_obj, gpointer task_data, GCancellable *cancellable);
 void sc_arturia_book_load_task_finish (GObject* source_object, GAsyncResult* res, gpointer data);
 

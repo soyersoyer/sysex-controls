@@ -222,14 +222,13 @@ sc_arturia_control_register (void *ac_widget)
   }
 
   /* normalize
-   * in the protocol v3 we need to normalize control id by this way
+   * sysex bytes are < 0x80
    * */
 
-  if (sc_arturia_book_use_v3 (SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (widget), SC_TYPE_ARTURIA_BOOK))))
-    while (rid[1] >= 0x80) {
-      rid[0]++;
-      rid[1]-=0x80;
-    }
+  while (rid[1] >= 0x80) {
+    rid[0]++;
+    rid[1] -= 0x80;
+  }
 
   self->value = 0;
   self->widget = widget;
