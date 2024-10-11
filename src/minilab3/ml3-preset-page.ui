@@ -37,8 +37,7 @@
                   <object class="AdwActionRow">
                     <property name="title" translatable="yes">Shift</property>
                     <property name="activatable">yes</property>
-                    <property name="action-name">navigation.push</property>
-                    <property name="action-target">'shift'</property>
+                    <signal name="activated" handler="on_shift_activated" swapped="yes"/>
                     <child type="suffix">
                       <object class="GtkImage">
                         <property name="icon-name">go-next-symbolic</property>
@@ -51,8 +50,7 @@
                   <object class="AdwActionRow">
                     <property name="title" translatable="yes">Pitch</property>
                     <property name="activatable">yes</property>
-                    <property name="action-name">navigation.push</property>
-                    <property name="action-target">'pitch'</property>
+                    <signal name="activated" handler="on_pitch_activated" swapped="yes"/>
                     <child type="suffix">
                       <object class="GtkImage">
                         <property name="icon-name">go-next-symbolic</property>
@@ -65,8 +63,7 @@
                   <object class="AdwActionRow">
                     <property name="title" translatable="yes">Mod</property>
                     <property name="activatable">yes</property>
-                    <property name="action-name">navigation.push</property>
-                    <property name="action-target">'mod'</property>
+                    <signal name="activated" handler="on_mod_activated" swapped="yes"/>
                     <child type="suffix">
                       <object class="GtkImage">
                         <property name="icon-name">go-next-symbolic</property>
@@ -79,8 +76,7 @@
                   <object class="AdwActionRow">
                     <property name="title" translatable="yes">Main Knob</property>
                     <property name="activatable">yes</property>
-                    <property name="action-name">navigation.push</property>
-                    <property name="action-target">'main-knob'</property>
+                    <signal name="activated" handler="on_main_knob_activated" swapped="yes"/>
                     <child type="suffix">
                       <object class="GtkImage">
                         <property name="icon-name">go-next-symbolic</property>
@@ -93,8 +89,7 @@
                   <object class="AdwActionRow">
                     <property name="title" translatable="yes">Knobs</property>
                     <property name="activatable">yes</property>
-                    <property name="action-name">navigation.push</property>
-                    <property name="action-target">'knob'</property>
+                    <signal name="activated" handler="on_knob_activated" swapped="yes"/>
                     <child type="suffix">
                       <object class="GtkImage">
                         <property name="icon-name">go-next-symbolic</property>
@@ -107,8 +102,7 @@
                   <object class="AdwActionRow">
                     <property name="title" translatable="yes">Faders</property>
                     <property name="activatable">yes</property>
-                    <property name="action-name">navigation.push</property>
-                    <property name="action-target">'fader'</property>
+                    <signal name="activated" handler="on_fader_activated" swapped="yes"/>
                     <child type="suffix">
                       <object class="GtkImage">
                         <property name="icon-name">go-next-symbolic</property>
@@ -121,8 +115,7 @@
                   <object class="AdwActionRow">
                     <property name="title" translatable="yes">Pads Bank A</property>
                     <property name="activatable">yes</property>
-                    <property name="action-name">navigation.push</property>
-                    <property name="action-target">'pad-a'</property>
+                    <signal name="activated" handler="on_pad_a_activated" swapped="yes"/>
                     <child type="suffix">
                       <object class="GtkImage">
                         <property name="icon-name">go-next-symbolic</property>
@@ -135,8 +128,7 @@
                   <object class="AdwActionRow">
                     <property name="title" translatable="yes">Pads Bank B</property>
                     <property name="activatable">yes</property>
-                    <property name="action-name">navigation.push</property>
-                    <property name="action-target">'pad-b'</property>
+                    <signal name="activated" handler="on_pad_b_activated" swapped="yes"/>
                     <child type="suffix">
                       <object class="GtkImage">
                         <property name="icon-name">go-next-symbolic</property>
@@ -150,80 +142,6 @@
 
           </object>
         </property>
-
-    <!--child>
-      <object class="AdwNavigationPage">
-        <property name="title" translatable="yes">Shift</property>
-        <property name="tag">shift</property>
-        <property name="child">
-          <object class="Ml3ShiftPage">
-            <property name="control-id-offset">0x03400000</property>
-          </object>
-        </property>
-      </object>
-    </child-->
-
-        <!--child>
-
-              <object class="Ml3PitchPage">
-                <property name="title" translatable="yes">Pitch</property>
-                <property name="control-id-offset">0x03400000</property>
-              </object>
-
-        </child>
-
-        <child>
-
-              <object class="Ml3ModPage">
-                <property name="title" translatable="yes">Mod</property>
-                <property name="control-id-offset">0x03400000</property>
-              </object>
-
-        </child>
-
-        <child>
-
-              <object class="Ml3MainKnobPage">
-                <property name="title" translatable="yes">Main Knob</property>
-                <property name="control-id-offset">0x03400000</property>
-              </object>
-
-        </child>
-
-        <child>
-
-              <object class="Ml3KnobPage">
-                <property name="title" translatable="yes">Knobs</property>
-                <property name="control-id-offset">0x03400000</property>
-              </object>
-
-        </child>
-
-        <child>
-
-              <object class="Ml3FaderPage">
-                <property name="title" translatable="yes">Faders</property>
-                <property name="control-id-offset">0x03400000</property>
-              </object>
-
-        </child>
-
-        <child>
-              <object class="Ml3PadPage">
-                <property name="title" translatable="yes">Pad A</property>
-                <property name="control-id-offset">0x03400000</property>
-                <property name="control-cc-offset">0x03400000</property>
-              </object>
-
-        </child>
-
-        <child>
-              <object class="Ml3PadPage">
-                <property name="title" translatable="yes">Pad B</property>
-                <property name="control-id-offset">0x03400800</property>
-                <property name="control-cc-offset">0x03400100</property>
-              </object>
-        </child-->
 
       </object>
     </property>
