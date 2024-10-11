@@ -84,6 +84,7 @@ on_pad_a_activated (ScNavigationPage *self, AdwActionRow* row)
   AdwNavigationPage *page = g_object_new (ML3_TYPE_PAD_PAGE,
                                           "control-id-offset", get_preset_offset (self),
                                           "control-cc-offset", get_preset_offset (self),
+                                          "title", "Pads Bank A",
                                           NULL);
   adw_navigation_view_push (view, page);
   g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), page);
@@ -96,6 +97,7 @@ on_pad_b_activated (ScNavigationPage *self, AdwActionRow* row)
   AdwNavigationPage *page = g_object_new (ML3_TYPE_PAD_PAGE,
                                           "control-id-offset", get_preset_offset (self) + 0x0800,
                                           "control-cc-offset", get_preset_offset (self) + 0x0100,
+                                          "title", "Pads Bank B",
                                           NULL);
   adw_navigation_view_push (view, page);
   g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), page);
