@@ -100,32 +100,16 @@
                 </child>
 
                 <child>
-                  <object class="ScComboRow">
+                  <object class="AdwSwitchRow">
                     <child><object class="ScArturiaControl"><property name="id">0x1200</property></object></child>
                     <property name="title" translatable="yes">Low power</property>
-                    <property name="model">
-                      <object class="ScControlValueList">
-                        <items>
-                          <item>Off</item>
-                          <item>On</item>
-                        </items>
-                      </object>
-                    </property>
                   </object>
                 </child>
 
                 <child>
-                  <object class="ScComboRow">
+                  <object class="AdwSwitchRow">
                     <child><object class="ScArturiaControl"><property name="id">0x0700</property></object></child>
                     <property name="title" translatable="yes">Backlight</property>
-                    <property name="model">
-                      <object class="ScControlValueList">
-                        <items>
-                          <item>Off</item>
-                          <item>On</item>
-                        </items>
-                      </object>
-                    </property>
                   </object>
                 </child>
 
@@ -135,17 +119,9 @@
               <object class="AdwPreferencesGroup">
 
                 <child>
-                  <object class="ScComboRow">
+                  <object class="AdwSwitchRow">
                     <child><object class="ScArturiaControl"><property name="id">0x0e00</property></object></child>
                     <property name="title" translatable="yes">Pitchbend</property>
-                    <property name="model">
-                      <object class="ScControlValueList">
-                        <items>
-                          <item>Off</item>
-                          <item>On</item>
-                        </items>
-                      </object>
-                    </property>
                   </object>
                 </child>
 
@@ -165,17 +141,9 @@
                 </child>
 
                 <child>
-                  <object class="ScComboRow">
+                  <object class="AdwSwitchRow">
                     <child><object class="ScArturiaControl"><property name="id">0x1000</property></object></child>
                     <property name="title" translatable="yes">Modwheel</property>
-                    <property name="model">
-                      <object class="ScControlValueList">
-                        <items>
-                          <item>Off</item>
-                          <item>On</item>
-                        </items>
-                      </object>
-                    </property>
                   </object>
                 </child>
 
