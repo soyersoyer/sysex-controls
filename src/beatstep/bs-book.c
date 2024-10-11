@@ -1,5 +1,9 @@
 #include "bs-book.h"
 
+#include "bs-controller-page.h"
+#include "bs-performance-page.h"
+#include "bs-sequence-page.h"
+
 struct _BsBook
 {
   ScArturiaBook parent_instance;
@@ -18,6 +22,10 @@ bs_book_class_init (BsBookClass *klass)
 static void
 bs_book_init (BsBook *self)
 {
+  g_type_ensure(BS_TYPE_CONTROLLER_PAGE);
+  g_type_ensure(BS_TYPE_PERFORMANCE_PAGE);
+  g_type_ensure(BS_TYPE_SEQUENCE_PAGE);
+
   gtk_widget_init_template (GTK_WIDGET (self));
 }
 

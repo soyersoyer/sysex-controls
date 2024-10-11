@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="BsControllerPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Controller</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x4006</property></object></child>
+                    <property name="title" translatable="yes">Global Channel</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1</item>
+                          <item>2</item>
+                          <item>3</item>
+                          <item>4</item>
+                          <item>5</item>
+                          <item>6</item>
+                          <item>7</item>
+                          <item>8</item>
+                          <item>9</item>
+                          <item>10</item>
+                          <item>11</item>
+                          <item>12</item>
+                          <item>13</item>
+                          <item>14</item>
+                          <item>15</item>
+                          <item>16</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x500c</property></object></child>
+                    <property name="title" translatable="yes">CV/Gate Channel</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1</item>
+                          <item>2</item>
+                          <item>3</item>
+                          <item>4</item>
+                          <item>5</item>
+                          <item>6</item>
+                          <item>7</item>
+                          <item>8</item>
+                          <item>9</item>
+                          <item>10</item>
+                          <item>11</item>
+                          <item>12</item>
+                          <item>13</item>
+                          <item>14</item>
+                          <item>15</item>
+                          <item>16</item>
+                          <item value="0x41">Global</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x4104</property></object></child>
+                    <property name="title" translatable="yes">Knob Acceleration</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Slow (Off)</item>
+                          <item>Medium</item>
+                          <item>Fast</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x4103</property></object></child>
+                    <property name="title" translatable="yes">Pad Velocity Curve</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Logarithmic</item>
+                          <item>Exponential</item>
+                          <item>Full</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+</interface>
