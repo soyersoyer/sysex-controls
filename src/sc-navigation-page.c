@@ -1,5 +1,7 @@
 #include "sc-navigation-page.h"
 
+#include "sc-window.h"
+
 enum {
   PROP_0,
   PROP_CONTROL_ID_OFFSET,
@@ -13,6 +15,7 @@ typedef struct
 {
   uint32_t control_id_offset;
   uint32_t control_cc_offset;
+  GListStore *controls;
 } ScNavigationPagePrivate;
 
 
@@ -99,4 +102,84 @@ sc_navigation_page_class_init (ScNavigationPageClass *klass)
 static void
 sc_navigation_page_init (ScNavigationPage *self)
 {
+  ScNavigationPagePrivate *priv = sc_navigation_page_get_instance_private (self);
+  priv->controls = g_list_store_new (SC_TYPE_ARTURIA_CONTROL);
+}
+
+void
+sc_navigation_page_register_control (ScNavigationPage *self, uint32_t control_id, uint32_t real_id, ScArturiaControl *control)
+{
+  ScNavigationPagePrivate *priv = sc_navigation_page_get_instance_private (self);
+
+  g_list_store_append (priv->controls, control);
+
+  g_debug ("sc_navigation_page_register_control 0x%08x as 0x%08x", control_id, real_id);
+}
+
+int
+sc_navigation_page_load_controls (ScNavigationPage *self)
+{
+  ScNavigationPagePrivate *priv = sc_navigation_page_get_instance_private (self);
+  GListModel *list = G_LIST_MODEL (priv->controls);
+
+  for(int i = 0; i < g_list_model_get_n_items (list); ++i)
+  {
+    int err = sc_arturia_control_read_value (SC_ARTURIA_CONTROL (g_list_model_get_item (list, i)));
+    if (err < 0)
+      return err;
+  }
+  return 0;
+}
+
+void
+sc_navigation_page_update_gui (ScNavigationPage *self)
+{
+  ScNavigationPagePrivate *priv = sc_navigation_page_get_instance_private (self);
+  GListModel *list = G_LIST_MODEL (priv->controls);
+
+  for(int i = 0; i < g_list_model_get_n_items (list); ++i)
+    sc_arturia_control_update_gui (SC_ARTURIA_CONTROL (g_list_model_get_item (list, i)));
+}
+
+static void
+sc_navigation_page_load_task (GTask *task, gpointer source_obj, gpointer task_data, GCancellable *cancellable)
+{
+  AdwNavigationPage *self = ADW_NAVIGATION_PAGE (source_obj);
+
+  g_debug ("sc_navigation_page_load_task start");
+  if (sc_navigation_page_load_controls (SC_NAVIGATION_PAGE (self)) < 0)
+  {
+    g_task_return_new_error_literal (task, G_IO_ERROR, G_IO_ERROR_FAILED, "control value read failed");
+    return;
+  }
+
+  g_task_return_boolean (task, true);
+  g_debug ("sc_navigation_page_load_task end");
+}
+
+static void
+sc_navigation_page_load_task_finish (GObject* source_object, GAsyncResult* res, gpointer data)
+{
+  AdwNavigationPage *self = ADW_NAVIGATION_PAGE (source_object);
+
+  ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (source_object)));
+  GError *error = NULL;
+  g_task_propagate_boolean (G_TASK (res), &error);
+
+  if (error)
+  {
+    sc_io_problem (window, "%s", error->message);
+    return;
+  }
+  sc_navigation_page_update_gui (SC_NAVIGATION_PAGE (self));
+}
+
+int
+sc_navigation_page_load_controls_and_update_bg (ScNavigationPage *self)
+{
+  GTask *task = g_task_new (self, NULL, sc_navigation_page_load_task_finish, NULL);
+  g_task_run_in_thread (task, sc_navigation_page_load_task);
+  g_object_unref (task);
+
+  return false;
 }

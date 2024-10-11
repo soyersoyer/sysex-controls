@@ -233,7 +233,7 @@ sc_arturia_control_register (void *ac_widget)
 
   self->value = 0;
   self->widget = widget;
-  sc_arturia_book_register_control (SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (widget), SC_TYPE_ARTURIA_BOOK)), self->id, self->real_id, self);
+  sc_navigation_page_register_control (SC_NAVIGATION_PAGE (gtk_widget_get_ancestor (GTK_WIDGET (widget), SC_TYPE_NAVIGATION_PAGE)), self->id, self->real_id, self);
 
   if (ADW_IS_COMBO_ROW (widget))
     g_signal_connect (G_OBJECT (widget), "notify::selected-item", G_CALLBACK (combo_row_change_cb), self);

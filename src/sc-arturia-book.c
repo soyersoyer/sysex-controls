@@ -4,6 +4,7 @@
 #include "sc-cc-row.h"
 #include "sc-combo-row.h"
 #include "sc-control-value.h"
+#include "sc-navigation-page.h"
 #include "sc-note-row.h"
 #include "sc-pc-row.h"
 #include "sc-preferences-group.h"
@@ -44,14 +45,17 @@ sc_arturia_book_register_control (ScArturiaBook *self, uint32_t control_id, uint
 void
 sc_arturia_book_load_task (GTask *task, gpointer source_obj, gpointer task_data, GCancellable *cancellable)
 {
-  ScArturiaBook *self = SC_ARTURIA_BOOK (source_obj);
-  ScArturiaBookPrivate *priv = sc_arturia_book_get_instance_private (self);
+  AdwNavigationPage *self = ADW_NAVIGATION_PAGE (source_obj);
+  AdwNavigationView *view = ADW_NAVIGATION_VIEW (adw_navigation_page_get_child (self));
 
   g_debug ("sc_arturia_book_load_task start");
-  for(int i = 0; i < priv->controls_n; ++i)
+  for(GtkWidget *page = gtk_widget_get_first_child (GTK_WIDGET (view));
+      page; page = gtk_widget_get_next_sibling (page))
   {
-    int err = sc_arturia_control_read_value (priv->controls[i]);
-    if (err < 0)
+    if (!SC_IS_NAVIGATION_PAGE (page))
+      continue;
+
+    if (sc_navigation_page_load_controls (SC_NAVIGATION_PAGE (page)) < 0)
     {
       g_task_return_new_error_literal (task, G_IO_ERROR, G_IO_ERROR_FAILED, "control value read failed");
       return;
@@ -65,8 +69,9 @@ sc_arturia_book_load_task (GTask *task, gpointer source_obj, gpointer task_data,
 void
 sc_arturia_book_load_task_finish (GObject* source_object, GAsyncResult* res, gpointer data)
 {
-  ScArturiaBook *self = SC_ARTURIA_BOOK (source_object);
-  ScArturiaBookPrivate *priv = sc_arturia_book_get_instance_private (self);
+  AdwNavigationPage *self = ADW_NAVIGATION_PAGE (source_object);
+  AdwNavigationView *view = ADW_NAVIGATION_VIEW (adw_navigation_page_get_child (self));
+
   ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (source_object)));
   GError *error = NULL;
   g_task_propagate_boolean (G_TASK (res), &error);
@@ -76,8 +81,14 @@ sc_arturia_book_load_task_finish (GObject* source_object, GAsyncResult* res, gpo
     sc_io_problem (window, "%s", error->message);
     return;
   }
-  for(int i = 0; i < priv->controls_n; ++i)
-    sc_arturia_control_update_gui (priv->controls[i]);
+  for(GtkWidget *page = gtk_widget_get_first_child (GTK_WIDGET (view));
+      page; page = gtk_widget_get_next_sibling (page))
+  {
+    if (!SC_IS_NAVIGATION_PAGE (page))
+      continue;
+
+    sc_navigation_page_update_gui (SC_NAVIGATION_PAGE (page));
+  }
 
   /* TODO: use signals or something better for this */
   sc_window_load_page (window, "setting");
