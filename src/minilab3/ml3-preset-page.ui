@@ -12,7 +12,6 @@
 
             <child>
               <object class="ScPreferencesGroup">
-                <property name="control-id-offset">0x08400000</property>
                 <child>
                   <object class="ScComboRow">
                     <child><object class="ScArturiaControl"><property name="id">0x1300</property></object></child>
