@@ -34,9 +34,10 @@ Testers or developers needed!
 
 ### BeatStep
 - [x] Global settings
+- [x] Pads
+- [x] Knobs
+- [ ] Transport buttons
 - [ ] Presets
-- [ ] Pads
-- [ ] Knobs
 
 Testers or developers needed!
 
