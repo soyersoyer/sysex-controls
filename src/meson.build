@@ -16,6 +16,7 @@ sc_sources = [
   'sc-window.c',
   'main.c',
   'beatstep/bs-book.c',
+  'beatstep/bs-ch-row.c',
   'beatstep/bs-controller-page.c',
   'beatstep/bs-performance-page.c',
   'beatstep/bs-sequence-page.c',
