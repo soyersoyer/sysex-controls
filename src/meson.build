@@ -24,6 +24,8 @@ sc_sources = [
   'beatstep/bs-pad-page.c',
   'beatstep/bs-performance-page.c',
   'beatstep/bs-sequence-page.c',
+  'beatstep/bs-transport-button.c',
+  'beatstep/bs-transport-button-page.c',
   'keystep37/ks37-book.c',
   'keystep37/ks37-cc-bank-page.c',
   'keystep37/ks37-controller-page.c',

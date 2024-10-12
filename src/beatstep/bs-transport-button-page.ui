@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="BsTransportButtonPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Transport Buttons</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="BsTransportButton">
+                <property name="title" translatable="yes">Play</property>
+                <property name="control-id-offset">0x00</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="BsTransportButton">
+                <property name="title" translatable="yes">Stop</property>
+                <property name="control-id-offset">0x01</property>
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+</interface>

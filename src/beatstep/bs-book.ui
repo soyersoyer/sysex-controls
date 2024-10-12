@@ -26,6 +26,10 @@
           <object class="BsPadPage"/>
         </child>
 
+        <child>
+          <object class="BsTransportButtonPage"/>
+        </child>
+
       </object>
     </property>
   </template>
