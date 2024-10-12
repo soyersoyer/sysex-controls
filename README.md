@@ -17,9 +17,9 @@ back to the device.
 ### MiniLab MkII
 - [x] Global settings
 - [x] Color Pads
-- [ ] Presets
 - [ ] Knobs
 - [ ] Pads
+- [ ] Presets
 
 Testers or developers needed!
 
@@ -36,7 +36,7 @@ Testers or developers needed!
 - [x] Global settings
 - [x] Pads
 - [x] Knobs
-- [ ] Transport buttons
+- [x] Transport buttons
 - [ ] Presets
 
 Testers or developers needed!
