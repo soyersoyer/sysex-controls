@@ -12,6 +12,10 @@
     <file preprocess="xml-stripblanks">beatstep/bs-book.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-ch-row.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">beatstep/bs-knob.ui</file>
+    <file preprocess="xml-stripblanks">beatstep/bs-knob-page.ui</file>
+    <file preprocess="xml-stripblanks">beatstep/bs-pad.ui</file>
+    <file preprocess="xml-stripblanks">beatstep/bs-pad-page.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-performance-page.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-sequence-page.ui</file>
 

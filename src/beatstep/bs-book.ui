@@ -18,6 +18,14 @@
           <object class="BsSequencePage"/>
         </child>
 
+        <child>
+          <object class="BsKnobPage"/>
+        </child>
+
+        <child>
+          <object class="BsPadPage"/>
+        </child>
+
       </object>
     </property>
   </template>

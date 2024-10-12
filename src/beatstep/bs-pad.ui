@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="BsPad" parent="ScPreferencesGroup">
+
+    <child>
+      <object class="ScComboRow" id="control_mode">
+        <child><object class="ScArturiaControl"><property name="id">0x0c70</property></object></child>
+        <property name="title" translatable="yes">Mode</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item value="0x00">Off</item>
+              <item value="0x07">MMC</item>
+              <item value="0x08">Switched Control</item>
+              <item value="0x09">MIDI Note</item>
+              <item value="0x0b">Patch Change</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScComboRow">
+        <child><object class="ScArturiaControl"><property name="id">0x0670</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x08, 0x09]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Option</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item>Toggle</item>
+              <item>Gate</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="BsChRow">
+        <child><object class="ScArturiaControl"><property name="id">0x0270</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x08, 0x09, 0x0b]</constant>
+          </closure>
+        </binding>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScComboRow">
+        <child><object class="ScArturiaControl"><property name="id">0x0370</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x07]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">MMC</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item>None</item>
+              <item>Stop</item>
+              <item>Play</item>
+              <item>Deferred Play</item>
+              <item>FastForward</item>
+              <item>Rewind</item>
+              <item>Record Strobe</item>
+              <item>Record Exit</item>
+              <item>Record Ready</item>
+              <item>Pause</item>
+              <item>Eject</item>
+              <item>Chase</item>
+              <item>InList Reset</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScCcRow">
+        <child><object class="ScArturiaControl"><property name="id">0x0370</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x08]</constant>
+          </closure>
+        </binding>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ScArturiaControl"><property name="id">0x0470</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x08]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Off Value</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ScArturiaControl"><property name="id">0x0570</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x08]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">On Value</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScNoteRow">
+        <child><object class="ScArturiaControl"><property name="id">0x0370</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x09]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Note</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScPcRow">
+        <child><object class="ScArturiaControl"><property name="id">0x0370</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x0b]</constant>
+          </closure>
+        </binding>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ScArturiaControl"><property name="id">0x0470</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x0b]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Bank LSB</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ScArturiaControl"><property name="id">0x0570</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x0b]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Bank MSB</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+  </template>
+</interface>

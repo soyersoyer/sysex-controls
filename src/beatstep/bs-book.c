@@ -2,6 +2,10 @@
 
 #include "bs-ch-row.h"
 #include "bs-controller-page.h"
+#include "bs-knob.h"
+#include "bs-knob-page.h"
+#include "bs-pad.h"
+#include "bs-pad-page.h"
 #include "bs-performance-page.h"
 #include "bs-sequence-page.h"
 
@@ -25,6 +29,10 @@ bs_book_init (BsBook *self)
 {
   g_type_ensure(BS_TYPE_CH_ROW);
   g_type_ensure(BS_TYPE_CONTROLLER_PAGE);
+  g_type_ensure(BS_TYPE_KNOB);
+  g_type_ensure(BS_TYPE_KNOB_PAGE);
+  g_type_ensure(BS_TYPE_PAD);
+  g_type_ensure(BS_TYPE_PAD_PAGE);
   g_type_ensure(BS_TYPE_PERFORMANCE_PAGE);
   g_type_ensure(BS_TYPE_SEQUENCE_PAGE);
 
