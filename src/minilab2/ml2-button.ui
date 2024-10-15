@@ -62,7 +62,6 @@
             <constant type="GVariant">[0x09]</constant>
           </closure>
         </binding>
-        <property name="title" translatable="yes">Note</property>
       </object>
     </child>
 

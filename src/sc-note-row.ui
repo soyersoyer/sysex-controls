@@ -3,6 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
   <template class="ScNoteRow" parent="ScComboRow">
+    <property name="title" translatable="yes">Note</property>
     <property name="model">
       <object class="ScControlValueList">
         <items>

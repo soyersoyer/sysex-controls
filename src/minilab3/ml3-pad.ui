@@ -171,7 +171,6 @@
             <constant type="GVariant">[0x00]</constant>
           </closure>
         </binding>
-        <property name="title" translatable="yes">Note</property>
       </object>
     </child>
 
