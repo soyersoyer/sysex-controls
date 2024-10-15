@@ -182,6 +182,78 @@ sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t c
 }
 
 int
+sc_midi_arturia_recall_preset (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t preset_id)
+{
+  //                                                       preset_id
+  //                                                       ||||
+  char data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x05, 0x00, 0xf7};
+  snd_seq_event_t ev;
+  int err;
+
+  snd_seq_ev_clear (&ev);
+  snd_seq_ev_set_source (&ev, 0);
+  snd_seq_ev_set_dest (&ev, addr.client, addr.port);
+  snd_seq_ev_set_direct (&ev);
+  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (data), data);
+
+  data[7] = preset_id;
+
+  //printf ("sc_midi_arturia_recall_preset %02x\n", preset_id);
+
+  err = snd_seq_event_output (seq, &ev);
+  if (err < 0)
+  {
+    fprintf (stderr, "sc_midi_arturia_recall_preset snd_seq_event_output failed %d\n", err);
+    return err;
+  }
+
+  err = snd_seq_drain_output (seq);
+  if (err < 0)
+  {
+    fprintf (stderr, "sc_midi_arturia_recall_preset snd_seq_drain_output failed %d\n", err);
+    return err;
+  }
+
+  return 0;
+}
+
+int
+sc_midi_arturia_store_preset (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t preset_id)
+{
+  //                                                       preset_id
+  //                                                       ||||
+  char data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x06, 0x00, 0xf7};
+  snd_seq_event_t ev;
+  int err;
+
+  snd_seq_ev_clear (&ev);
+  snd_seq_ev_set_source (&ev, 0);
+  snd_seq_ev_set_dest (&ev, addr.client, addr.port);
+  snd_seq_ev_set_direct (&ev);
+  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (data), data);
+
+  data[7] = preset_id;
+
+  //printf ("sc_midi_arturia_store_preset %02x\n", preset_id);
+
+  err = snd_seq_event_output (seq, &ev);
+  if (err < 0)
+  {
+    fprintf (stderr, "sc_midi_arturia_store_preset snd_seq_event_output failed %d\n", err);
+    return err;
+  }
+
+  err = snd_seq_drain_output (seq);
+  if (err < 0)
+  {
+    fprintf (stderr, "sc_midi_arturia_store_preset snd_seq_drain_output failed %d\n", err);
+    return err;
+  }
+
+  return 0;
+}
+
+int
 sc_midi_arturia_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val)
 {
   //                                                             control_id  value

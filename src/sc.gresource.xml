@@ -17,6 +17,9 @@
     <file preprocess="xml-stripblanks">beatstep/bs-pad.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-pad-page.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-performance-page.ui</file>
+    <file preprocess="xml-stripblanks">beatstep/bs-preset-chooser-page.ui</file>
+    <file preprocess="xml-stripblanks">beatstep/bs-preset-chooser-row.ui</file>
+    <file preprocess="xml-stripblanks">beatstep/bs-preset-page.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-sequence-page.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-transport-button.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-transport-button-page.ui</file>

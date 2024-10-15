@@ -30,6 +30,10 @@
           <object class="BsTransportButtonPage"/>
         </child>
 
+        <child>
+          <object class="BsPresetPage"/>
+        </child>
+
       </object>
     </property>
   </template>

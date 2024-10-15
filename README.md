@@ -12,7 +12,7 @@ back to the device.
 ### KeyStep37
 - [x] Global settings
 - [x] CC Banks
-- [ ] Sequencer settings
+- [ ] Sequencer
 
 ### MiniLab MkII
 - [x] Global settings
@@ -37,9 +37,10 @@ Testers or developers needed!
 - [x] Pads
 - [x] Knobs
 - [x] Transport buttons
-- [ ] Presets
+- [x] Presets
+- [ ] Sequencer
 
-Testers or developers needed!
+Testers needed!
 
 ## Installation
 

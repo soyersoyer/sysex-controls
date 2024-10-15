@@ -121,6 +121,8 @@ sc_arturia_book_class_init (ScArturiaBookClass *klass)
 {
   klass->read_control = sc_midi_arturia_read_control;
   klass->write_control = sc_midi_arturia_write_control;
+  klass->recall_preset = sc_midi_arturia_recall_preset;
+  klass->store_preset = sc_midi_arturia_store_preset;
 }
 
 int
@@ -149,6 +151,35 @@ sc_arturia_book_write_control (ScArturiaBook *self, uint32_t control_id, uint8_t
   priv = sc_arturia_book_get_instance_private (self);
 
   return klass->write_control (priv->seq, priv->seq_addr, control_id, val);
+}
+
+int
+sc_arturia_book_recall_preset (ScArturiaBook *self, uint8_t preset_id)
+{
+  ScArturiaBookClass *klass;
+  ScArturiaBookPrivate *priv;
+
+  g_return_val_if_fail (SC_IS_ARTURIA_BOOK (self), -EINVAL);
+
+  klass = SC_ARTURIA_BOOK_GET_CLASS (self);
+  priv = sc_arturia_book_get_instance_private (self);
+
+  return klass->recall_preset (priv->seq, priv->seq_addr, preset_id);
+}
+
+
+int
+sc_arturia_book_store_preset (ScArturiaBook *self, uint8_t preset_id)
+{
+  ScArturiaBookClass *klass;
+  ScArturiaBookPrivate *priv;
+
+  g_return_val_if_fail (SC_IS_ARTURIA_BOOK (self), -EINVAL);
+
+  klass = SC_ARTURIA_BOOK_GET_CLASS (self);
+  priv = sc_arturia_book_get_instance_private (self);
+
+  return klass->store_preset (priv->seq, priv->seq_addr, preset_id);
 }
 
 static void
