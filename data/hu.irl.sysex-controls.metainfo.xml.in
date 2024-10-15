@@ -36,6 +36,14 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.3" date="2024-10-15">
+      <description>
+        <ul>
+          <li>BeatStep Pads, Knobs, Transport buttons, Preset controls</li>
+          <li>MiniLab 3 aesthetic improvements</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.2" date="2024-10-11">
       <description>
         <ul>
