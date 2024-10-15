@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ml2KnobShiftPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Knobs + Shift</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="Ml2Knob">
+                <property name="title" translatable="yes">Knob 1 + Shift</property>
+                <property name="control-id-offset">0x32</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Ml2Knob">
+                <property name="title" translatable="yes">Knob 9 + Shift</property>
+                <property name="control-id-offset">0x35</property>
+              </object>
+            </child>
+
+          </object>
+        </property>
+
+      </object>
+    </property>
+  </template>
+</interface>

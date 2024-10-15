@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ml2KnobSwitchPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Knobs Switch</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="Ml2Button">
+                <property name="title" translatable="yes">Knob 1 switch</property>
+                <property name="control-id-offset">0x31</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Ml2Button">
+                <property name="title" translatable="yes">Knob 9 switch</property>
+                <property name="control-id-offset">0x34</property>
+              </object>
+            </child>
+
+          </object>
+        </property>
+
+      </object>
+    </property>
+  </template>
+</interface>

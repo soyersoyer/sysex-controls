@@ -16,9 +16,9 @@ back to the device.
 
 ### MiniLab MkII
 - [x] Global settings
-- [x] Color Pads
-- [ ] Knobs
-- [ ] Pads
+- [x] Mod Wheel / Pitch Bend / Sustain Pedal
+- [x] Knobs
+- [x] Pads
 - [ ] Presets
 
 Testers or developers needed!

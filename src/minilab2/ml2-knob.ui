@@ -2,20 +2,18 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="Ml2Pad" parent="ScPreferencesGroup">
+  <template class="Ml2Knob" parent="ScPreferencesGroup">
 
     <child>
       <object class="ScComboRow" id="control_mode">
-        <child><object class="ScArturiaControl"><property name="id">0x0170</property></object></child>
+        <child><object class="ScArturiaControl"><property name="id">0x0100</property></object></child>
         <property name="title" translatable="yes">Mode</property>
         <property name="model">
           <object class="ScControlValueList">
             <items>
               <item value="0x00">Off</item>
-              <item value="0x07">MMC</item>
-              <item value="0x08">Switched Control</item>
-              <item value="0x09">MIDI Note</item>
-              <item value="0x0b">Patch Change</item>
+              <item value="0x01">Control</item>
+              <item value="0x04">NRPN/RPN Control</item>
             </items>
           </object>
         </property>
@@ -23,26 +21,22 @@
     </child>
 
     <child>
-      <object class="ScColorRow">
-        <!-- TODO: or 0x1170? -->
-        <child><object class="ScArturiaControl"><property name="id">0x1070</property></object></child>
+      <object class="ScComboRow" id="control_option">
+        <child><object class="ScArturiaControl"><property name="id">0x0600</property></object></child>
+        <property name="title" translatable="yes">Option</property>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
-            <constant type="GVariant">[0x07, 0x08, 0x09, 0x0b]</constant>
+            <constant type="GVariant">[0x01]</constant>
           </closure>
         </binding>
         <property name="model">
           <object class="ScControlValueList">
             <items>
-              <item value="0x00">#000000</item>
-              <item value="0x01">#ff0000</item>
-              <item value="0x04">#00ff00</item>
-              <item value="0x05">#ffff00</item>
-              <item value="0x10">#0000ff</item>
-              <item value="0x11">#ff00ff</item>
-              <item value="0x14">#00ffff</item>
-              <item value="0x7f">#ffffff</item>
+              <item>Absolute</item>
+              <item>Relative 1</item>
+              <item>Relative 2</item>
+              <item>Relative 3</item>
             </items>
           </object>
         </property>
@@ -51,19 +45,19 @@
 
     <child>
       <object class="ScComboRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0670</property></object></child>
+        <child><object class="ScArturiaControl"><property name="id">0x0600</property></object></child>
+        <property name="title" translatable="yes">Option</property>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
-            <constant type="GVariant">[0x08, 0x09]</constant>
+            <constant type="GVariant">[0x04]</constant>
           </closure>
         </binding>
-        <property name="title" translatable="yes">Option</property>
         <property name="model">
           <object class="ScControlValueList">
             <items>
-              <item>Toggle</item>
-              <item>Gate</item>
+              <item>NRPN</item>
+              <item>RPN</item>
             </items>
           </object>
         </property>
@@ -72,42 +66,95 @@
 
     <child>
       <object class="Ml2ChRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0270</property></object></child>
+        <child><object class="ScArturiaControl"><property name="id">0x0200</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
-            <constant type="GVariant">[0x08, 0x09, 0x0b]</constant>
+            <constant type="GVariant">[0x01, 0x04]</constant>
           </closure>
         </binding>
       </object>
     </child>
 
     <child>
-      <object class="ScComboRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0670</property></object></child>
+      <object class="ScCcRow">
+        <child><object class="ScArturiaControl"><property name="id">0x0300</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
-            <constant type="GVariant">[0x07]</constant>
+            <constant type="GVariant">[0x01]</constant>
           </closure>
         </binding>
-        <property name="title" translatable="yes">MMC</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ScArturiaControl"><property name="id">0x0400</property></object></child>
+        <property name="title" translatable="yes">Min Value</property>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in_2">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x01]</constant>
+            <lookup type="ScComboRow" name="selected-item">control_option</lookup>
+            <constant type="GVariant">[0x00]</constant>
+          </closure>
+        </binding>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ScArturiaControl"><property name="id">0x0500</property></object></child>
+        <property name="title" translatable="yes">Max Value</property>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in_2">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x01]</constant>
+            <lookup type="ScComboRow" name="selected-item">control_option</lookup>
+            <constant type="GVariant">[0x00]</constant>
+          </closure>
+        </binding>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScComboRow">
+        <child><object class="ScArturiaControl"><property name="id">0x0300</property></object></child>
+        <property name="title" translatable="yes">Data Entry</property>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x04]</constant>
+          </closure>
+        </binding>
         <property name="model">
           <object class="ScControlValueList">
             <items>
-              <item>None</item>
-              <item>Stop</item>
-              <item>Play</item>
-              <item>Deferred Play</item>
-              <item>FastForward</item>
-              <item>Rewind</item>
-              <item>Record Strobe</item>
-              <item>Record Exit</item>
-              <item>Record Ready</item>
-              <item>Pause</item>
-              <item>Eject</item>
-              <item>Chase</item>
-              <item>InList Reset</item>
+              <item>1:128 (coarse)</item>
+              <item>1:64</item>
+              <item>1:32</item>
+              <item>1:16</item>
+              <item>1:8</item>
+              <item>1:4</item>
+              <item>1:2</item>
+              <item>1:1 (fine)</item>
             </items>
           </object>
         </property>
@@ -115,27 +162,15 @@
     </child>
 
     <child>
-      <object class="ScCcRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0370</property></object></child>
-        <binding name="visible">
-          <closure type="gboolean" function="cv_in">
-            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
-            <constant type="GVariant">[0x08]</constant>
-          </closure>
-        </binding>
-      </object>
-    </child>
-
-    <child>
       <object class="AdwSpinRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0470</property></object></child>
+        <child><object class="ScArturiaControl"><property name="id">0x0400</property></object></child>
+        <property name="title" translatable="yes">RPN/NRPN LSB</property>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
-            <constant type="GVariant">[0x08]</constant>
+            <constant type="GVariant">[0x04]</constant>
           </closure>
         </binding>
-        <property name="title" translatable="yes">Off Value</property>
         <property name="adjustment">
           <object class="GtkAdjustment">
             <property name="lower">0</property>
@@ -149,81 +184,14 @@
 
     <child>
       <object class="AdwSpinRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0570</property></object></child>
+        <child><object class="ScArturiaControl"><property name="id">0x0500</property></object></child>
+        <property name="title" translatable="yes">RPN/NRPN MSB</property>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
-            <constant type="GVariant">[0x08]</constant>
+            <constant type="GVariant">[0x04]</constant>
           </closure>
         </binding>
-        <property name="title" translatable="yes">On Value</property>
-        <property name="adjustment">
-          <object class="GtkAdjustment">
-            <property name="lower">0</property>
-            <property name="upper">127</property>
-            <property name="page-increment">10</property>
-            <property name="step-increment">1</property>
-          </object>
-        </property>
-      </object>
-    </child>
-
-    <child>
-      <object class="ScNoteRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0370</property></object></child>
-        <binding name="visible">
-          <closure type="gboolean" function="cv_in">
-            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
-            <constant type="GVariant">[0x09]</constant>
-          </closure>
-        </binding>
-        <property name="title" translatable="yes">Note</property>
-      </object>
-    </child>
-
-    <child>
-      <object class="ScPcRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0370</property></object></child>
-        <binding name="visible">
-          <closure type="gboolean" function="cv_in">
-            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
-            <constant type="GVariant">[0x0b]</constant>
-          </closure>
-        </binding>
-      </object>
-    </child>
-
-    <child>
-      <object class="AdwSpinRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0470</property></object></child>
-        <binding name="visible">
-          <closure type="gboolean" function="cv_in">
-            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
-            <constant type="GVariant">[0x0b]</constant>
-          </closure>
-        </binding>
-        <property name="title" translatable="yes">Bank LSB</property>
-        <property name="adjustment">
-          <object class="GtkAdjustment">
-            <property name="lower">0</property>
-            <property name="upper">127</property>
-            <property name="page-increment">10</property>
-            <property name="step-increment">1</property>
-          </object>
-        </property>
-      </object>
-    </child>
-
-    <child>
-      <object class="AdwSpinRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0570</property></object></child>
-        <binding name="visible">
-          <closure type="gboolean" function="cv_in">
-            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
-            <constant type="GVariant">[0x0b]</constant>
-          </closure>
-        </binding>
-        <property name="title" translatable="yes">Bank MSB</property>
         <property name="adjustment">
           <object class="GtkAdjustment">
             <property name="lower">0</property>
