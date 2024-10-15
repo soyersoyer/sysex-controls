@@ -18,29 +18,10 @@ typedef struct
 {
   snd_seq_t *seq;
   snd_seq_addr_t seq_addr;
-  ScArturiaControl * controls[CONTROLS_MAX_N];
-  int controls_n;
 } ScArturiaBookPrivate;
 
 
 G_DEFINE_TYPE_WITH_PRIVATE (ScArturiaBook, sc_arturia_book, ADW_TYPE_NAVIGATION_PAGE)
-
-void
-sc_arturia_book_register_control (ScArturiaBook *self, uint32_t control_id, uint32_t real_id, ScArturiaControl *control)
-{
-  ScArturiaBookPrivate *priv = sc_arturia_book_get_instance_private (self);
-
-  if (priv->controls_n == CONTROLS_MAX_N)
-  {
-    g_error ("Control space exhausted");
-    return;
-  }
-
-  priv->controls[priv->controls_n] = control;
-  priv->controls_n++;
-
-  g_debug ("sc_arturia_book_register_control 0x%08x as 0x%08x", control_id, real_id);
-}
 
 void
 sc_arturia_book_load_task (GTask *task, gpointer source_obj, gpointer task_data, GCancellable *cancellable)
