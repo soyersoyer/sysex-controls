@@ -39,9 +39,8 @@
     <file preprocess="xml-stripblanks">minilab2/ml2-ch-row.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-global-page.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-knob.ui</file>
+    <file preprocess="xml-stripblanks">minilab2/ml2-knob-extra-page.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-knob-page.ui</file>
-    <file preprocess="xml-stripblanks">minilab2/ml2-knob-shift-page.ui</file>
-    <file preprocess="xml-stripblanks">minilab2/ml2-knob-switch-page.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-mod-wheel-page.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-pad.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-pad-page.ui</file>

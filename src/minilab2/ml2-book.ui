@@ -27,11 +27,7 @@
         </child>
 
         <child>
-          <object class="Ml2KnobShiftPage"/>
-        </child>
-
-        <child>
-          <object class="Ml2KnobSwitchPage"/>
+          <object class="Ml2KnobExtraPage"/>
         </child>
 
         <child>

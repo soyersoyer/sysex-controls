@@ -4,9 +4,8 @@
 #include "ml2-ch-row.h"
 #include "ml2-global-page.h"
 #include "ml2-knob.h"
+#include "ml2-knob-extra-page.h"
 #include "ml2-knob-page.h"
-#include "ml2-knob-shift-page.h"
-#include "ml2-knob-switch-page.h"
 #include "ml2-mod-wheel-page.h"
 #include "ml2-pad.h"
 #include "ml2-pad-page.h"
@@ -35,9 +34,8 @@ ml2_book_init (Ml2Book *self)
   g_type_ensure (ML2_TYPE_CH_ROW);
   g_type_ensure (ML2_TYPE_GLOBAL_PAGE);
   g_type_ensure (ML2_TYPE_KNOB);
+  g_type_ensure (ML2_TYPE_KNOB_EXTRA_PAGE);
   g_type_ensure (ML2_TYPE_KNOB_PAGE);
-  g_type_ensure (ML2_TYPE_KNOB_SHIFT_PAGE);
-  g_type_ensure (ML2_TYPE_KNOB_SWITCH_PAGE);
   g_type_ensure (ML2_TYPE_MOD_WHEEL_PAGE);
   g_type_ensure (ML2_TYPE_PAD);
   g_type_ensure (ML2_TYPE_PAD_PAGE);
