@@ -19,9 +19,9 @@ back to the device.
 - [x] Mod Wheel / Pitch Bend / Sustain Pedal
 - [x] Knobs
 - [x] Pads
-- [ ] Presets
+- [x] Presets
 
-Testers or developers needed!
+Testers needed!
 
 ### MiniLab 3
 - [x] Global settings
