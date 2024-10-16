@@ -15,6 +15,6 @@ G_DECLARE_FINAL_TYPE (ArPresetChooserPage, ar_preset_chooser_page, AR, PRESET_CH
 
 typedef void (* preset_chooser_func) (ArPresetPage *, ArPresetChooserRow *);
 
-GtkWidget * ar_preset_chooser_page_new (int presets_num, preset_chooser_func activate_cb, ArPresetPage *preset_page);
+GtkWidget * ar_preset_chooser_page_new (int presets_num, int inactive_num, preset_chooser_func activate_cb, ArPresetPage *preset_page);
 
 G_END_DECLS
