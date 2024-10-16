@@ -12,8 +12,6 @@
 #include "sc-midi.h"
 #include "sc-window.h"
 
-#define CONTROLS_MAX_N 400
-
 typedef struct
 {
   snd_seq_t *seq;
