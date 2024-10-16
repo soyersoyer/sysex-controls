@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/hu/irl/sysex-controls">
+    <file preprocess="xml-stripblanks">ar-preset-chooser-page.ui</file>
+    <file preprocess="xml-stripblanks">ar-preset-chooser-row.ui</file>
+    <file preprocess="xml-stripblanks">ar-preset-page.ui</file>
     <file preprocess="xml-stripblanks">sc-cc-row.ui</file>
     <file preprocess="xml-stripblanks">sc-color-item.ui</file>
     <file preprocess="xml-stripblanks">sc-color-row.ui</file>
@@ -17,9 +20,6 @@
     <file preprocess="xml-stripblanks">beatstep/bs-pad.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-pad-page.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-performance-page.ui</file>
-    <file preprocess="xml-stripblanks">beatstep/bs-preset-chooser-page.ui</file>
-    <file preprocess="xml-stripblanks">beatstep/bs-preset-chooser-row.ui</file>
-    <file preprocess="xml-stripblanks">beatstep/bs-preset-page.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-sequence-page.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-transport-button.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-transport-button-page.ui</file>

@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="BsPresetPage" parent="ScNavigationPage">
+  <template class="ArPresetPage" parent="ScNavigationPage">
     <property name="title" translatable="yes">Preset</property>
     <property name="child">
       <object class="AdwToolbarView">

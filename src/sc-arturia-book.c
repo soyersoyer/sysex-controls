@@ -1,5 +1,8 @@
 #include "sc-arturia-book.h"
 
+#include "ar-preset-chooser-page.h"
+#include "ar-preset-chooser-row.h"
+#include "ar-preset-page.h"
 #include "sc-arturia-control.h"
 #include "sc-cc-row.h"
 #include "sc-combo-row.h"
@@ -164,6 +167,9 @@ sc_arturia_book_store_preset (ScArturiaBook *self, uint8_t preset_id)
 static void
 sc_arturia_book_init (ScArturiaBook *self)
 {
+  g_type_ensure (AR_TYPE_PRESET_CHOOSER_PAGE);
+  g_type_ensure (AR_TYPE_PRESET_CHOOSER_ROW);
+  g_type_ensure (AR_TYPE_PRESET_PAGE);
   g_type_ensure (SC_TYPE_ARTURIA_CONTROL);
   g_type_ensure (SC_TYPE_CC_ROW);
   g_type_ensure (SC_TYPE_COMBO_ROW);

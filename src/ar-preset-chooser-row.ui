@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="BsPresetChooserRow" parent="AdwActionRow">
+  <template class="ArPresetChooserRow" parent="AdwActionRow">
     <property name="activatable">yes</property>
     <child type="suffix">
       <object class="GtkImage">

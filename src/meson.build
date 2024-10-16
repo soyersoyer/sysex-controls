@@ -1,4 +1,7 @@
 sc_sources = [
+  'ar-preset-chooser-page.c',
+  'ar-preset-chooser-row.c',
+  'ar-preset-page.c',
   'sc-application.c',
   'sc-arturia-book.c',
   'sc-arturia-control.c',
@@ -23,9 +26,6 @@ sc_sources = [
   'beatstep/bs-pad.c',
   'beatstep/bs-pad-page.c',
   'beatstep/bs-performance-page.c',
-  'beatstep/bs-preset-chooser-page.c',
-  'beatstep/bs-preset-chooser-row.c',
-  'beatstep/bs-preset-page.c',
   'beatstep/bs-sequence-page.c',
   'beatstep/bs-transport-button.c',
   'beatstep/bs-transport-button-page.c',

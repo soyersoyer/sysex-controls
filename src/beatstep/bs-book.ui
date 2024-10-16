@@ -31,7 +31,7 @@
         </child>
 
         <child>
-          <object class="BsPresetPage"/>
+          <object class="ArPresetPage"/>
         </child>
 
       </object>
