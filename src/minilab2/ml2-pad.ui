@@ -24,7 +24,8 @@
 
     <child>
       <object class="ScColorRow">
-        <!-- TODO: or 0x1170? -->
+        <!-- TODO: What is this? Is this neccessary or just the 0x1170? -->
+        <!-- This is from: https://github.com/psitech/Arturia-Minilab-MKII-LED-control -->
         <child><object class="ScArturiaControl"><property name="id">0x1070</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
@@ -32,6 +33,34 @@
             <constant type="GVariant">[0x07, 0x08, 0x09, 0x0b]</constant>
           </closure>
         </binding>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item value="0x00">#000000</item>
+              <item value="0x01">#ff0000</item>
+              <item value="0x04">#00ff00</item>
+              <item value="0x05">#ffff00</item>
+              <item value="0x10">#0000ff</item>
+              <item value="0x11">#ff00ff</item>
+              <item value="0x14">#00ffff</item>
+              <item value="0x7f">#ffffff</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScColorRow">
+        <!-- TODO: is this the color of the toggle mode? -->
+        <child><object class="ScArturiaControl"><property name="id">0x1170</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x07, 0x08, 0x09, 0x0b]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Toggle Color</property>
         <property name="model">
           <object class="ScControlValueList">
             <items>
