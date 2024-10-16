@@ -36,6 +36,13 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.4" date="2024-10-16">
+      <description>
+        <ul>
+          <li>MiniLab MkII Mod Wheel, Pitch Bend, Sustain Pedal, Pads, Knobs, Preset controls</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.3" date="2024-10-15">
       <description>
         <ul>
