@@ -2,14 +2,30 @@
 
 <img align="left" height="80" src="https://github.com/soyersoyer/sysex-controls/raw/main/data/icons/hicolor/scalable/apps/hu.irl.sysex-controls.svg">
 
-This is a GTK UI that allows to configure the Arturia KeyStep 37, MiniLab MkII, MiniLab 3, BeatStep MIDI keyboards.
+This is a GTK UI that allows to configure the Arturia BeatStep, KeyStep 32, KeyStep 37, MiniLab MkII, MiniLab 3 MIDI keyboards.
 
 It currently allows for reading the controls, changing them and writing
 back to the device.
 
 ## Controller Support Status
 
-### KeyStep37
+### BeatStep
+- [x] Global settings
+- [x] Pads
+- [x] Knobs
+- [x] Transport buttons
+- [x] Presets
+- [ ] Sequencer
+
+Testers needed!
+
+### KeyStep 32
+- [x] Global settings
+- [ ] Sequencer
+
+Testers needed!
+
+### KeyStep 37
 - [x] Global settings
 - [x] CC Banks
 - [ ] Sequencer
@@ -31,16 +47,6 @@ Testers needed!
 - [x] Faders
 - [x] Pads
 - [x] Presets
-
-### BeatStep
-- [x] Global settings
-- [x] Pads
-- [x] Knobs
-- [x] Transport buttons
-- [x] Presets
-- [ ] Sequencer
-
-Testers needed!
 
 ## Installation
 

@@ -11,8 +11,8 @@
   <project_license>GPL-3.0-or-later</project_license>
   <description>
     <p>
-      This is a GTK UI that allows to configure the Arturia KeyStep 37,
-      MiniLab MkII, MiniLab 3, BeatStep MIDI keyboards.
+      This is a GTK UI that allows to configure the Arturia BeatStep, KeyStep 32,
+      KeyStep 37, MiniLab MkII, MiniLab 3 MIDI keyboards.
       It currently allows for reading the control settings, changing them and
       writing back to the device.
     </p>

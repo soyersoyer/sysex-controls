@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ks32Book" parent="ScArturiaBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="Ks32ControllerPage" />
+        </child>
+
+        <child>
+          <object class="Ks32HoldSwitchPage" />
+        </child>
+
+        <child>
+          <object class="Ks32ModPitchPage" />
+        </child>
+
+        <child>
+          <object class="Ks32SustainPedalPage" />
+        </child>
+
+        <child>
+          <object class="Ks32SequencePage" />
+        </child>
+
+        <child>
+          <object class="Ks32CvGatePage" />
+        </child>
+
+        <child>
+          <object class="Ks32TransportPage" />
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>

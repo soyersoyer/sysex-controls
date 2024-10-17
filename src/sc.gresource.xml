@@ -26,6 +26,16 @@
 
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
 
+    <file preprocess="xml-stripblanks">keystep32/ks32-book.ui</file>
+    <file preprocess="xml-stripblanks">keystep32/ks32-ch-row.ui</file>
+    <file preprocess="xml-stripblanks">keystep32/ks32-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">keystep32/ks32-cv-gate-page.ui</file>
+    <file preprocess="xml-stripblanks">keystep32/ks32-hold-switch-page.ui</file>
+    <file preprocess="xml-stripblanks">keystep32/ks32-mod-pitch-page.ui</file>
+    <file preprocess="xml-stripblanks">keystep32/ks32-sequence-page.ui</file>
+    <file preprocess="xml-stripblanks">keystep32/ks32-sustain-pedal-page.ui</file>
+    <file preprocess="xml-stripblanks">keystep32/ks32-transport-page.ui</file>
+
     <file preprocess="xml-stripblanks">keystep37/ks37-book.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-cc-bank-page.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-controller-page.ui</file>

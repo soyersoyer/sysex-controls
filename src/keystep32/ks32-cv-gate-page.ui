@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ks32CvGatePage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">CV / Gate</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow" id="pitch_cv_output">
+                    <child><object class="ScArturiaControl"><property name="id">0x4146</property></object></child>
+                    <property name="title" translatable="yes">PITCH CV Output</property>
+                    <property name="subtitle">The two standards. Each uses a different MIDI note reference</property>
+                    <property name="subtitle-lines">2</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Volts per octave</item>
+                          <item>Hertz per Volt</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x414a</property></object></child>
+                    <property name="title" translatable="yes">0V MIDI Note</property>
+                    <property name="subtitle">With Volts per Octave</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">pitch_cv_output</lookup>
+                        <constant type="GVariant">[0x00]</constant>
+                      </closure>
+                    </binding>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x414c</property></object></child>
+                    <property name="title" translatable="yes">1V MIDI Note</property>
+                    <property name="subtitle">With Hertz per Volt</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">pitch_cv_output</lookup>
+                        <constant type="GVariant">[0x01]</constant>
+                      </closure>
+                    </binding>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x414d</property></object></child>
+                    <property name="title" translatable="yes">Note priority</property>
+                    <property name="subtitle">Specifies the response of monophonic devices</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Low</item>
+                          <item>High</item>
+                          <item>Last</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x414e</property></object></child>
+                    <property name="title" translatable="yes">MOD CV Source</property>
+                    <property name="subtitle">Determines which KeyStep 32 feature drives the Mod CV</property>
+                    <property name="subtitle-lines">2</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>MOD Wheel</item>
+                          <item>Velocity</item>
+                          <item>Aftertouch</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x414f</property></object></child>
+                    <property name="title" translatable="yes">MOD CV Max Voltage</property>
+                    <property name="subtitle">Minimum = 0 Volts in all cases; maximum can be 5 to 12 volts.</property>
+                    <property name="subtitle-lines">2</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="0x05">5V</item>
+                          <item>6V</item>
+                          <item>7V</item>
+                          <item>8V</item>
+                          <item>9V</item>
+                          <item>10V</item>
+                          <item>11V</item>
+                          <item>12V</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x4150</property></object></child>
+                    <property name="title" translatable="yes">Pitch Bend Range (Semi-tones)</property>
+                    <property name="subtitle">Chooses how much the Pitch CV will vary when the Pitch strip is used.</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">24</property>
+                        <property name="value">2</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x4147</property></object></child>
+                    <property name="title" translatable="yes">Gate CV Output</property>
+                    <property name="subtitle">'Short/negative' trigger and two common types of 'Voltage/positive' triggers.</property>
+                    <property name="subtitle-lines">2</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>S-trig</item>
+                          <item>V-trig 5V</item>
+                          <item>V-trig 12V</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+
+          </object>
+        </property>
+
+      </object>
+    </property>
+
+  </template>
+</interface>
