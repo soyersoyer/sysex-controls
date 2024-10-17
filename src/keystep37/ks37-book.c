@@ -25,6 +25,8 @@ ks37_book_class_init (Ks37BookClass *klass)
 static void
 ks37_book_init (Ks37Book *self)
 {
+  sc_arturia_book_set_read_ack (SC_ARTURIA_BOOK (self), true);
+
   g_type_ensure (KS37_TYPE_CC_BANK_PAGE);
   g_type_ensure (KS37_TYPE_CONTROLLER_PAGE);
   g_type_ensure (KS37_TYPE_CV_GATE_PAGE);

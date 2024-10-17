@@ -19,6 +19,7 @@ typedef struct
 {
   snd_seq_t *seq;
   snd_seq_addr_t seq_addr;
+  uint8_t read_ack;
 } ScArturiaBookPrivate;
 
 
@@ -84,6 +85,13 @@ sc_arturia_book_set_seq (ScArturiaBook *self, snd_seq_t *seq, snd_seq_addr_t add
   priv->seq_addr = addr;
 }
 
+void
+sc_arturia_book_set_read_ack (ScArturiaBook *self, uint8_t read_ack)
+{
+  ScArturiaBookPrivate *priv = sc_arturia_book_get_instance_private (self);
+  priv->read_ack = read_ack;
+}
+
 snd_seq_t *
 sc_arturia_book_get_seq (ScArturiaBook *self)
 {
@@ -118,7 +126,7 @@ sc_arturia_book_read_control (ScArturiaBook *self, uint32_t control_id, uint8_t 
   klass = SC_ARTURIA_BOOK_GET_CLASS (self);
   priv = sc_arturia_book_get_instance_private (self);
 
-  return klass->read_control (priv->seq, priv->seq_addr, control_id, val);
+  return klass->read_control (priv->seq, priv->seq_addr, priv->read_ack, control_id, val);
 }
 
 int

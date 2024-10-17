@@ -129,7 +129,7 @@ process_arturia_v3_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n,
 }
 
 int
-sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t *val)
+sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_ack, uint32_t control_id, uint8_t *val)
 {
   /**                                        
    *                                        pid cid
@@ -176,7 +176,10 @@ sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t c
 
   err = process_arturia_v3_message (seq, pfds, pfds_n, pr_id, p_id, c_id, r_id, val);
   if (err < 0)
+  {
+    fprintf (stderr, "sc_midi_arturia_v3_read_control(%08x) read value failed %d\n", control_id, err);
     return err;
+  }
 
   return 0;
 }
@@ -294,9 +297,9 @@ sc_midi_arturia_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t con
 }
 
 static int
-process_arturia_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n, uint8_t p_id, uint8_t c_id, int *set, uint8_t *val)
+process_arturia_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n, uint8_t p_id, uint8_t c_id, uint8_t *val)
 {
-  //static const char arturia_ack[] =   {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x1c, 0x00, 0xf7};
+  static const char arturia_ack[] =   {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x1c, 0x00, 0xf7};
   static const char arturia_value[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00};
 
   snd_seq_event_t *ev_input;
@@ -333,48 +336,41 @@ process_arturia_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n, ui
     if (input[8] == p_id && input[9] == c_id)
     {
       *val = input[10];
-      *set = 1;
     }
     else
     {
-      fprintf (stderr, "process_sysex_message: unexpected control %02x%02x with value %02x\n", input[8], input[9], input[10]);
+      fprintf (stderr, "process_arturia_message: unexpected control %02x%02x with value %02x\n", input[8], input[9], input[10]);
+      return -EIO;
     }
     //printf ("MIDI VALUE %02x%02x -> %02x\n", input[8], input[9], input[10]);
+  }
+  else if (len == ARRAY_SIZE (arturia_ack) &&
+           memcmp (input, arturia_ack, ARRAY_SIZE (arturia_ack)) == 0)
+  {
+    //printf("ACK\n");
+  }
+  else
+  {
+    fprintf (stderr, "process_arturia_message: unexpected message: len %d: ", len);
+    for (int i=0; i < len; ++i)
+      fprintf(stderr, "%02x ", (uint8_t)input[i]);
+    fprintf(stderr, "\n");
+    return -EIO;
   }
   return 0;
 }
 
-static int
-process_control_event (snd_seq_t *seq, uint8_t p_id, uint8_t c_id, uint8_t *val)
-{
-  int ret, set = 0, pfds_n = 0;
-
-  struct pollfd pfds[1] = {};
-  pfds_n = snd_seq_poll_descriptors(seq, pfds, 1, POLLIN);
-
-  // read value
-  ret = process_arturia_message (seq, pfds, pfds_n, p_id, c_id, &set, val);
-  if (ret < 0)
-    return ret;
-
-  // read ack
-  ret = process_arturia_message (seq, pfds, pfds_n, p_id, c_id, &set, val);
-  if (ret < 0)
-    return ret;
-
-  return set ? 0 : -EIO;
-}
-
 int
-sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t *val)
+sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_ack, uint32_t control_id, uint8_t *val)
 {
   //                                                             control_id
   //                                                             ||||||||||
   char data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x01, 0x00, 0x00, 0x00, 0xf7};
   uint8_t p_id = (uint8_t)(control_id >> 8);
   uint8_t c_id = (uint8_t)control_id;
+  struct pollfd pfds[1] = {};
+  int err, pfds_n = 0;
   snd_seq_event_t ev;
-  int err;
 
   //printf ("read_control_value %02x\n", control_id);
 
@@ -402,7 +398,25 @@ sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t cont
     return err;
   }
 
-  return process_control_event (seq, p_id, c_id, val);
+  pfds_n = snd_seq_poll_descriptors(seq, pfds, 1, POLLIN);
+
+  // read value
+  err = process_arturia_message (seq, pfds, pfds_n, p_id, c_id, val);
+  if (err < 0)
+  {
+    fprintf (stderr, "sc_midi_arturia_read_control(%04x) read value failed %d\n", control_id, err);
+    return err;
+  }
+
+  if (read_ack)
+  {
+    err = process_arturia_message (seq, pfds, pfds_n, p_id, c_id, val);
+    if (err < 0)
+      fprintf (stderr, "sc_midi_arturia_read_control(%04x) read ack failed %d\n", control_id, err);
+    // maybe this is not an error
+  }
+
+  return 0;
 }
 
 int

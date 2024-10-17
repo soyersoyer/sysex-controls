@@ -14,13 +14,14 @@ struct _ScArturiaBookClass
 {
   AdwNavigationPageClass parent_class;
 
-  int (*read_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t *val);
+  int (*read_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_ack, uint32_t control_id, uint8_t *val);
   int (*write_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val);
   int (*recall_preset) (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t preset_id);
   int (*store_preset) (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t preset_id);
 };
 
 void sc_arturia_book_set_seq (ScArturiaBook *self, snd_seq_t *seq, snd_seq_addr_t addr);
+void sc_arturia_book_set_read_ack (ScArturiaBook *self, uint8_t read_ack);
 snd_seq_t * sc_arturia_book_get_seq (ScArturiaBook *self);
 snd_seq_addr_t sc_arturia_book_get_addr (ScArturiaBook *self);
 void sc_arturia_book_load_task (GTask *task, gpointer source_obj, gpointer task_data, GCancellable *cancellable);
