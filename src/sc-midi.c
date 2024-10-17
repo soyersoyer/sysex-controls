@@ -68,7 +68,9 @@ process_arturia_v3_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n,
    */
 
   static const char arturia_value[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x21};
-  static const char arturia_init[] =  {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00, 0x40, 0x63, 0x00, 0xf7};
+  static const char pad_change[] =    {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00, 0x40, 0x63};
+  static const char preset_change[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00, 0x40, 0x62};
+
 
   snd_seq_event_t *ev_input;
   int ret;
@@ -112,8 +114,13 @@ process_arturia_v3_message (snd_seq_t *seq, struct pollfd *pfds, uint8_t pfds_n,
     }
     //printf ("MIDI VALUE %02x%02x -> %02x\n", input[8], input[9], input[10]);
   }
-  else if (len == ARRAY_SIZE (arturia_init) &&
-           memcmp (input, arturia_init, ARRAY_SIZE (arturia_init)) == 0)
+  else if (len == ARRAY_SIZE (pad_change) + 2 &&
+           memcmp (input, pad_change, ARRAY_SIZE (pad_change)) == 0)
+  {
+    return process_arturia_v3_message (seq, pfds, pfds_n, pr_id, p_id, c_id, r_id, val);
+  }
+  else if (len == ARRAY_SIZE (preset_change) + 2 &&
+           memcmp (input, preset_change, ARRAY_SIZE (preset_change)) == 0)
   {
     return process_arturia_v3_message (seq, pfds, pfds_n, pr_id, p_id, c_id, r_id, val);
   }
