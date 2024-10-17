@@ -50,24 +50,6 @@ struct _ScWindow
 
 G_DEFINE_FINAL_TYPE (ScWindow, sc_window, ADW_TYPE_APPLICATION_WINDOW)
 
-void
-__attribute__ ((format (gnu_printf, 2, 3)))
-sc_io_problem (ScWindow *self, const char *format, ...)
-{
-  char message[128];
-  va_list args;
-
-  va_start(args, format);
-  vsnprintf(message, 128,  format, args);
-  va_end (args);
-
-  g_warning ("%s", message);
-
-  adw_toast_overlay_add_toast (self->toast_overlay, adw_toast_new (message));
-  adw_navigation_view_replace_with_tags(self->navigation_view, (const char * const[]){"list"}, 1);
-}
-
-
 static int
 sc_create_load_task (ScArturiaBook *book)
 {
@@ -257,5 +239,23 @@ sc_window_init (ScWindow *self)
   gtk_list_box_bind_model (self->sidebar, G_LIST_MODEL (self->page_list), (GtkListBoxCreateWidgetFunc)sidebar_row_new, self->sidebar, NULL);
   g_signal_connect (self->sidebar, "row-activated", G_CALLBACK (on_sidebar_row_activated_cb), self);
 
+  sc_midi_init (self);
+}
+
+void
+__attribute__ ((format (gnu_printf, 2, 3)))
+sc_io_problem (ScWindow *self, const char *format, ...)
+{
+  char message[128];
+  va_list args;
+
+  va_start(args, format);
+  vsnprintf(message, 128,  format, args);
+  va_end (args);
+
+  g_warning ("%s", message);
+
+  adw_toast_overlay_add_toast (self->toast_overlay, adw_toast_new (message));
+  // TODO: better error handling
   sc_midi_init (self);
 }
