@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="MicrolabBook" parent="ScArturiaBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="MicrolabKeyboardPage"/>
+        </child>
+
+        <child>
+          <object class="MicrolabModPage"/>
+        </child>
+
+        <child>
+          <object class="MicrolabPitchPage"/>
+        </child>
+
+        <child>
+          <object class="MicrolabHoldPage"/>
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>

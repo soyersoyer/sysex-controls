@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="MicrolabChRow" parent="ScComboRow">
+    <property name="title" translatable="yes">Channel</property>
+    <property name="model">
+      <object class="ScControlValueList">
+        <items>
+          <item>1</item>
+          <item>2</item>
+          <item>3</item>
+          <item>4</item>
+          <item>5</item>
+          <item>6</item>
+          <item>7</item>
+          <item>8</item>
+          <item>9</item>
+          <item>10</item>
+          <item>11</item>
+          <item>12</item>
+          <item>13</item>
+          <item>14</item>
+          <item>15</item>
+          <item>16</item>
+          <item value="0x41">Keyboard</item>
+        </items>
+      </object>
+    </property>
+  </template>
+</interface>
