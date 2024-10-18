@@ -40,6 +40,7 @@ sc_sources = [
   'keystep32/ks32-transport-page.c',
   'keystep37/ks37-book.c',
   'keystep37/ks37-cc-bank-page.c',
+  'keystep37/ks37-ch-row.c',
   'keystep37/ks37-controller-page.c',
   'keystep37/ks37-cv-gate-page.c',
   'keystep37/ks37-knob.c',

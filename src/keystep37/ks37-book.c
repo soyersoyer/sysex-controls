@@ -1,6 +1,7 @@
 #include "ks37-book.h"
 
 #include "ks37-cc-bank-page.h"
+#include "ks37-ch-row.h"
 #include "ks37-controller-page.h"
 #include "ks37-cv-gate-page.h"
 #include "ks37-knob.h"
@@ -28,6 +29,7 @@ ks37_book_init (Ks37Book *self)
   sc_arturia_book_set_read_ack (SC_ARTURIA_BOOK (self), true);
 
   g_type_ensure (KS37_TYPE_CC_BANK_PAGE);
+  g_type_ensure (KS37_TYPE_CH_ROW);
   g_type_ensure (KS37_TYPE_CONTROLLER_PAGE);
   g_type_ensure (KS37_TYPE_CV_GATE_PAGE);
   g_type_ensure (KS37_TYPE_KNOB);
