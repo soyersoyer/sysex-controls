@@ -99,11 +99,6 @@
                   </object>
                 </child>
 
-              </object>
-            </child>
-            <child>
-              <object class="AdwPreferencesGroup">
-
                 <child>
                   <object class="ScComboRow">
                     <child><object class="ScArturiaControl"><property name="id">0x0600</property></object></child>
@@ -114,6 +109,28 @@
                           <item>Linear</item>
                           <item>Exponential</item>
                           <item>Logarithmic</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ScArturiaControl"><property name="id">0x1100</property></object></child>
+                    <property name="title" translatable="yes">Knob Acceleration</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>None</item>
+                          <item>Medium</item>
+                          <item>Fast</item>
                         </items>
                       </object>
                     </property>

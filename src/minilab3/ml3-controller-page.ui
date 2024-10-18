@@ -2,8 +2,8 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="Ml3GlobalPage" parent="ScNavigationPage">
-    <property name="title" translatable="yes">Global</property>
+  <template class="Ml3ControllerPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Controller</property>
     <property name="child">
       <object class="AdwToolbarView">
         <child type="top"><object class="AdwHeaderBar"/></child>
@@ -99,6 +99,11 @@
                   </object>
                 </child>
 
+              </object>
+            </child>
+            <child>
+              <object class="AdwPreferencesGroup">
+
                 <child>
                   <object class="AdwSwitchRow">
                     <child><object class="ScArturiaControl"><property name="id">0x1200</property></object></child>
@@ -110,56 +115,6 @@
                   <object class="AdwSwitchRow">
                     <child><object class="ScArturiaControl"><property name="id">0x0700</property></object></child>
                     <property name="title" translatable="yes">Backlight</property>
-                  </object>
-                </child>
-
-              </object>
-            </child>
-            <child>
-              <object class="AdwPreferencesGroup">
-
-                <child>
-                  <object class="AdwSwitchRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x0e00</property></object></child>
-                    <property name="title" translatable="yes">Pitchbend</property>
-                  </object>
-                </child>
-
-                <child>
-                  <object class="ScComboRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x0f00</property></object></child>
-                    <property name="title" translatable="yes">Pitchbend Settings</property>
-                    <property name="model">
-                      <object class="ScControlValueList">
-                        <items>
-                          <item>Standard</item>
-                          <item>Hold</item>
-                        </items>
-                      </object>
-                    </property>
-                  </object>
-                </child>
-
-                <child>
-                  <object class="AdwSwitchRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x1000</property></object></child>
-                    <property name="title" translatable="yes">Modwheel</property>
-                  </object>
-                </child>
-
-                <child>
-                  <object class="ScComboRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x1100</property></object></child>
-                    <property name="title" translatable="yes">Knob Acceleration</property>
-                    <property name="model">
-                      <object class="ScControlValueList">
-                        <items>
-                          <item>None</item>
-                          <item>Medium</item>
-                          <item>Fast</item>
-                        </items>
-                      </object>
-                    </property>
                   </object>
                 </child>
 

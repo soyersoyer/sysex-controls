@@ -7,7 +7,13 @@
       <object class="AdwNavigationView">
 
         <child>
-          <object class="Ml3GlobalPage">
+          <object class="Ml3ControllerPage">
+            <property name="control-id-offset">0x08400000</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Ml3PitchModPage">
             <property name="control-id-offset">0x08400000</property>
           </object>
         </child>
