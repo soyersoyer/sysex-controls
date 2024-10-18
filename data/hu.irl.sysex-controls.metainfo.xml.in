@@ -36,6 +36,16 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.5" date="2024-10-18">
+      <description>
+        <ul>
+          <li>KeyStep 32 support</li>
+          <li>Robust sysex communication</li>
+          <li>Fixed MiniLab 3 channel value</li>
+          <li>MiniLab 3 rearrangements</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.4" date="2024-10-16">
       <description>
         <ul>
