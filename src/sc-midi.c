@@ -392,6 +392,46 @@ sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_
 }
 
 int
+sc_midi_arturia_device_inquiry (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t data[11])
+{
+  char inq_data[] = {0xf0, 0x7e, 0x7f, 0x06, 0x01, 0xf7};
+  ar_event_t ar_ev = {.type = AR_DEVICE_INQUIRY};
+  snd_seq_event_t ev;
+  int err;
+
+  snd_seq_ev_clear (&ev);
+  snd_seq_ev_set_source (&ev, 0);
+  snd_seq_ev_set_dest (&ev, addr.client, addr.port);
+  snd_seq_ev_set_direct (&ev);
+  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (inq_data), inq_data);
+
+  err = snd_seq_event_output (seq, &ev);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(): snd_seq_event_output failed %d\n", __func__, err);
+    return err;
+  }
+
+  err = snd_seq_drain_output (seq);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(): snd_seq_drain_output failed %d\n", __func__, err);
+    return err;
+  }
+
+  err = sc_midi_arturia_read_next (seq, &ar_ev);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(): sc_midi_arturia_read_next failed %d\n", __func__, err);
+    return err;
+  }
+
+  memcpy (data, ar_ev.inquiry.data, 11);
+
+  return 0;
+}
+
+int
 sc_midi_disconnect (snd_seq_t *seq, snd_seq_addr_t addr)
 {
   int err;
