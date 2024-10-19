@@ -1,4 +1,4 @@
-#include "sc-arturia-control.h"
+#include "ar-control.h"
 
 #include "sc-arturia-book.h"
 #include "sc-control.h"
@@ -15,7 +15,7 @@ enum {
   LAST_PROP,
 };
 
-struct _ScArturiaControl
+struct _ArControl
 {
   AdwBin parent_instance;
   uint32_t id;
@@ -27,40 +27,40 @@ struct _ScArturiaControl
 
 static GParamSpec *value_props[LAST_PROP];
 
-static void sc_arturia_control_interface_init (ScControlInterface *iface);
+static void ar_control_interface_init (ScControlInterface *iface);
 
-G_DEFINE_FINAL_TYPE_WITH_CODE (ScArturiaControl, sc_arturia_control, ADW_TYPE_BIN,
-                               G_IMPLEMENT_INTERFACE (SC_TYPE_CONTROL, sc_arturia_control_interface_init))
+G_DEFINE_FINAL_TYPE_WITH_CODE (ArControl, ar_control, ADW_TYPE_BIN,
+                               G_IMPLEMENT_INTERFACE (SC_TYPE_CONTROL, ar_control_interface_init))
 
 uint32_t
-sc_arturia_control_get_id (ScArturiaControl *self)
+ar_control_get_id (ArControl *self)
 {
-  g_return_val_if_fail (SC_IS_ARTURIA_CONTROL (self), 0);
+  g_return_val_if_fail (AR_IS_CONTROL (self), 0);
   return self->id;
 }
 
 gboolean
-sc_arturia_control_get_use_cc_offset (ScArturiaControl *self)
+ar_control_get_use_cc_offset (ArControl *self)
 {
-  g_return_val_if_fail (SC_IS_ARTURIA_CONTROL (self), 0);
+  g_return_val_if_fail (AR_IS_CONTROL (self), 0);
   return self->use_cc_offset;
 }
 
 static void
-sc_arturia_control_get_property (GObject    *object,
-                                 guint       prop_id,
-                                 GValue     *value,
-                                 GParamSpec *pspec)
+ar_control_get_property (GObject    *object,
+                         guint       prop_id,
+                         GValue     *value,
+                         GParamSpec *pspec)
 {
-  ScArturiaControl *self = SC_ARTURIA_CONTROL (object);
+  ArControl *self = AR_CONTROL (object);
 
   switch (prop_id)
     {
     case PROP_ID:
-      g_value_set_uint (value, sc_arturia_control_get_id (self));
+      g_value_set_uint (value, ar_control_get_id (self));
     break;
     case PROP_USE_CC_OFFSET:
-      g_value_set_uint (value, sc_arturia_control_get_use_cc_offset (self));
+      g_value_set_uint (value, ar_control_get_use_cc_offset (self));
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -69,12 +69,12 @@ sc_arturia_control_get_property (GObject    *object,
 
 
 static void
-sc_arturia_control_set_property (GObject      *object,
-                                 guint         prop_id,
-                                 const GValue *value,
-                                 GParamSpec   *pspec)
+ar_control_set_property (GObject      *object,
+                         guint         prop_id,
+                         const GValue *value,
+                         GParamSpec   *pspec)
 {
-  ScArturiaControl *self = SC_ARTURIA_CONTROL (object);
+  ArControl *self = AR_CONTROL (object);
 
   switch (prop_id)
     {
@@ -90,12 +90,12 @@ sc_arturia_control_set_property (GObject      *object,
 }
 
 static void
-sc_arturia_control_class_init (ScArturiaControlClass *klass)
+ar_control_class_init (ArControlClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->get_property = sc_arturia_control_get_property;
-  object_class->set_property = sc_arturia_control_set_property;
+  object_class->get_property = ar_control_get_property;
+  object_class->set_property = ar_control_set_property;
 
   value_props[PROP_ID] = g_param_spec_uint ("id", NULL, NULL,
                                             0, G_MAXUINT32, 0,
@@ -109,7 +109,7 @@ sc_arturia_control_class_init (ScArturiaControlClass *klass)
 }
 
 static void
-combo_row_change_cb (GObject * widget, GParamSpec *pspec, ScArturiaControl *self)
+combo_row_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
 {
   ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (self->widget)));
   ScArturiaBook *book = SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), SC_TYPE_ARTURIA_BOOK));
@@ -130,7 +130,7 @@ combo_row_change_cb (GObject * widget, GParamSpec *pspec, ScArturiaControl *self
 }
 
 static void
-switch_row_change_cb (GObject * widget, GParamSpec *pspec, ScArturiaControl *self)
+switch_row_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
 {
   ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (self->widget)));
   ScArturiaBook *book = SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), SC_TYPE_ARTURIA_BOOK));
@@ -151,7 +151,7 @@ switch_row_change_cb (GObject * widget, GParamSpec *pspec, ScArturiaControl *sel
 }
 
 static void
-spin_row_change_cb (GObject * widget, GParamSpec *pspec, ScArturiaControl *self)
+spin_row_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
 {
   ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (self->widget)));
   ScArturiaBook *book = SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), SC_TYPE_ARTURIA_BOOK));
@@ -186,9 +186,9 @@ spin_row_change_cb (GObject * widget, GParamSpec *pspec, ScArturiaControl *self)
 }
 
 static int
-sc_arturia_control_register (void *ac_widget)
+ar_control_register (void *ac_widget)
 {
-  ScArturiaControl *self = SC_ARTURIA_CONTROL (ac_widget);
+  ArControl *self = AR_CONTROL (ac_widget);
   ScPreferencesGroup *group_widget;
   ScPreferencesPage *page_widget;
   ScNavigationPage *nav_page_widget;
@@ -253,9 +253,9 @@ sc_arturia_control_register (void *ac_widget)
 }
 
 static void
-sc_arturia_control_update_gui (ScControl *control)
+ar_control_update_gui (ScControl *control)
 {
-  ScArturiaControl *self = SC_ARTURIA_CONTROL (control);
+  ArControl *self = AR_CONTROL (control);
 
   if (ADW_IS_COMBO_ROW (self->widget))
   {
@@ -298,29 +298,29 @@ sc_arturia_control_update_gui (ScControl *control)
 }
 
 static int
-sc_arturia_control_read_value (ScControl *control)
+ar_control_read_value (ScControl *control)
 {
-  ScArturiaControl *self = SC_ARTURIA_CONTROL (control);
+  ArControl *self = AR_CONTROL (control);
   ScArturiaBook *book = SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), SC_TYPE_ARTURIA_BOOK));
   return sc_arturia_book_read_control (book, self->real_id, &self->value);
 }
 
 static void
-sc_arturia_control_interface_init (ScControlInterface *iface)
+ar_control_interface_init (ScControlInterface *iface)
 {
-  iface->update_gui = sc_arturia_control_update_gui;
-  iface->read_value = sc_arturia_control_read_value;
+  iface->update_gui = ar_control_update_gui;
+  iface->read_value = ar_control_read_value;
 }
 
 static void
-sc_arturia_control_register_cb (ScArturiaControl *self)
+ar_control_register_cb (ArControl *self)
 {
-  g_idle_add (sc_arturia_control_register, self);
+  g_idle_add (ar_control_register, self);
 }
 
 static void
-sc_arturia_control_init (ScArturiaControl *self)
+ar_control_init (ArControl *self)
 {
   gtk_widget_set_visible (GTK_WIDGET (&self->parent_instance), false);
-  g_signal_connect (G_OBJECT (self), "notify::id", G_CALLBACK (sc_arturia_control_register_cb), NULL);
+  g_signal_connect (G_OBJECT (self), "notify::id", G_CALLBACK (ar_control_register_cb), NULL);
 }

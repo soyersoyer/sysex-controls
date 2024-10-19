@@ -1,10 +1,10 @@
 #include "sc-arturia-book.h"
 
+#include "ar-control.h"
 #include "ar-firmware-info-group.h"
 #include "ar-preset-chooser-page.h"
 #include "ar-preset-chooser-row.h"
 #include "ar-preset-page.h"
-#include "sc-arturia-control.h"
 #include "sc-cc-row.h"
 #include "sc-combo-row.h"
 #include "sc-control-value.h"
@@ -188,11 +188,11 @@ sc_arturia_book_device_inquiry (ScArturiaBook *self, uint8_t data[11])
 static void
 sc_arturia_book_init (ScArturiaBook *self)
 {
+  g_type_ensure (AR_TYPE_CONTROL);
   g_type_ensure (AR_TYPE_FIRMWARE_INFO_GROUP);
   g_type_ensure (AR_TYPE_PRESET_CHOOSER_PAGE);
   g_type_ensure (AR_TYPE_PRESET_CHOOSER_ROW);
   g_type_ensure (AR_TYPE_PRESET_PAGE);
-  g_type_ensure (SC_TYPE_ARTURIA_CONTROL);
   g_type_ensure (SC_TYPE_CC_ROW);
   g_type_ensure (SC_TYPE_COMBO_ROW);
   g_type_ensure (SC_TYPE_CONTROL_VALUE);

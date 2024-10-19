@@ -1,7 +1,6 @@
 #pragma once
 
 #include <adwaita.h>
-#include "sc-arturia-control.h"
 #include "sc-midi.h"
 
 G_BEGIN_DECLS

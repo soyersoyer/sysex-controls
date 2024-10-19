@@ -15,7 +15,7 @@
 
                 <child>
                   <object class="ScComboRow" id="pedal_type">
-                    <child><object class="ScArturiaControl"><property name="id">0x0800</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x0800</property></object></child>
                     <property name="title" translatable="yes">Type</property>
                     <property name="model">
                       <object class="ScControlValueList">
@@ -32,7 +32,7 @@
 
                 <child>
                   <object class="ScComboRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x0b00</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x0b00</property></object></child>
                     <property name="title" translatable="yes">Polarity</property>
                     <property name="model">
                       <object class="ScControlValueList">
@@ -59,7 +59,7 @@
 
                 <child>
                   <object class="ScCcRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x0900</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x0900</property></object></child>
                     <property name="title" translatable="yes">Footswitch CC</property>
                     <binding name="visible">
                       <closure type="gboolean" function="cv_in">
@@ -72,7 +72,7 @@
 
                 <child>
                   <object class="ScCcRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x0a00</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x0a00</property></object></child>
                     <property name="title" translatable="yes">Control CC</property>
                     <binding name="visible">
                       <closure type="gboolean" function="cv_in">
@@ -85,7 +85,7 @@
 
                 <child>
                   <object class="AdwSpinRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x0c00</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x0c00</property></object></child>
                     <property name="title" translatable="yes">Min Value</property>
                     <binding name="visible">
                       <closure type="gboolean" function="cv_in">
@@ -107,7 +107,7 @@
 
                 <child>
                   <object class="AdwSpinRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x0d00</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x0d00</property></object></child>
                     <property name="title" translatable="yes">Max Value</property>
                     <binding name="visible">
                       <closure type="gboolean" function="cv_in">

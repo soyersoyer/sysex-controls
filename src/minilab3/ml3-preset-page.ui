@@ -14,7 +14,7 @@
               <object class="ScPreferencesGroup">
                 <child>
                   <object class="AdwSwitchRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x1300</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x1300</property></object></child>
                     <property name="title" translatable="yes">Hide on controller</property>
                   </object>
                 </child>

@@ -15,7 +15,7 @@
 
                 <child>
                   <object class="ScComboRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x410e</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x410e</property></object></child>
                     <property name="title" translatable="yes">Mode</property>
                     <property name="subtitle" translatable="yes">Momentary or Latching</property>
                     <property name="model">
@@ -31,7 +31,7 @@
 
                 <child>
                   <object class="ScComboRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x410f</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x410f</property></object></child>
                     <property name="title" translatable="yes">Function</property>
                     <property name="subtitle" translatable="yes">Act as Sus. Pedal or not</property>
                     <property name="model">

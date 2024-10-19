@@ -15,7 +15,7 @@
 
                 <child>
                   <object class="ScComboRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x4167</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x4167</property></object></child>
                     <property name="title" translatable="yes">Play / Pause</property>
                     <property name="subtitle">Pause or 'stutter' sequence</property>
                     <property name="model">
@@ -31,7 +31,7 @@
 
                 <child>
                   <object class="ScComboRow" id="transport_mode">
-                    <child><object class="ScArturiaControl"><property name="id">0x4160</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x4160</property></object></child>
                     <property name="title" translatable="yes">Transport Mode</property>
                     <property name="model">
                       <object class="ScControlValueList">
@@ -59,21 +59,21 @@
 
                 <child>
                   <object class="Ks32ChRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x4161</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x4161</property></object></child>
                     <property name="title" translatable="yes">Stop Channel</property>
                   </object>
                 </child>
 
                 <child>
                   <object class="Ks32ChRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x4162</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x4162</property></object></child>
                     <property name="title" translatable="yes">Rec Channel</property>
                   </object>
                 </child>
 
                 <child>
                   <object class="Ks32ChRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x4163</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x4163</property></object></child>
                     <property name="title" translatable="yes">Play Channel</property>
                   </object>
                 </child>
@@ -91,21 +91,21 @@
 
                 <child>
                   <object class="ScCcRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x4164</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x4164</property></object></child>
                     <property name="title" translatable="yes">Stop CC</property>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScCcRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x4165</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x4165</property></object></child>
                     <property name="title" translatable="yes">Rec CC</property>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScCcRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x4166</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x4166</property></object></child>
                     <property name="title" translatable="yes">Play CC</property>
                   </object>
                 </child>

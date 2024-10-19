@@ -16,14 +16,14 @@
 
                 <child>
                   <object class="AdwSwitchRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x0e00</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x0e00</property></object></child>
                     <property name="title" translatable="yes">Enabled</property>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScComboRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x0f00</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x0f00</property></object></child>
                     <property name="title" translatable="yes">Mode</property>
                     <property name="model">
                       <object class="ScControlValueList">
@@ -45,7 +45,7 @@
 
                 <child>
                   <object class="AdwSwitchRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x1000</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x1000</property></object></child>
                     <property name="title" translatable="yes">Enabled</property>
                   </object>
                 </child>

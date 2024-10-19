@@ -6,7 +6,7 @@
 
     <child>
       <object class="ScComboRow" id="control_mode">
-        <child><object class="ScArturiaControl"><property name="id">0x0158</property></object></child>
+        <child><object class="ArControl"><property name="id">0x0158</property></object></child>
         <property name="title" translatable="yes">Mode</property>
         <property name="model">
           <object class="ScControlValueList">
@@ -24,7 +24,7 @@
 
     <child>
       <object class="BsChRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0258</property></object></child>
+        <child><object class="ArControl"><property name="id">0x0258</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
@@ -36,7 +36,7 @@
 
     <child>
       <object class="ScCcRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0358</property></object></child>
+        <child><object class="ArControl"><property name="id">0x0358</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
@@ -48,7 +48,7 @@
 
     <child>
       <object class="ScComboRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0658</property></object></child>
+        <child><object class="ArControl"><property name="id">0x0658</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
@@ -69,7 +69,7 @@
 
     <child>
       <object class="ScComboRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0358</property></object></child>
+        <child><object class="ArControl"><property name="id">0x0358</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
@@ -101,7 +101,7 @@
 
     <child>
       <object class="AdwSpinRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0458</property></object></child>
+        <child><object class="ArControl"><property name="id">0x0458</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
@@ -122,7 +122,7 @@
 
     <child>
       <object class="AdwSpinRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0558</property></object></child>
+        <child><object class="ArControl"><property name="id">0x0558</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
@@ -143,7 +143,7 @@
 
     <child>
       <object class="ScNoteRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0358</property></object></child>
+        <child><object class="ArControl"><property name="id">0x0358</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
@@ -155,7 +155,7 @@
 
     <child>
       <object class="ScPcRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0358</property></object></child>
+        <child><object class="ArControl"><property name="id">0x0358</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
@@ -167,7 +167,7 @@
 
     <child>
       <object class="AdwSpinRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0458</property></object></child>
+        <child><object class="ArControl"><property name="id">0x0458</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
@@ -188,7 +188,7 @@
 
     <child>
       <object class="AdwSpinRow">
-        <child><object class="ScArturiaControl"><property name="id">0x0558</property></object></child>
+        <child><object class="ArControl"><property name="id">0x0558</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>

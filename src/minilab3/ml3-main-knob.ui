@@ -6,7 +6,7 @@
 
     <child>
       <object class="ScComboRow" id="control_output">
-        <child><object class="ScArturiaControl"><property name="id">0x0e00</property></object></child>
+        <child><object class="ArControl"><property name="id">0x0e00</property></object></child>
         <property name="title" translatable="yes">Output</property>
         <property name="model">
           <object class="ScControlValueList">
@@ -21,7 +21,7 @@
 
     <child>
       <object class="Ml3ChRow">
-        <child><object class="ScArturiaControl"><property name="id">0x1000</property></object></child>
+        <child><object class="ArControl"><property name="id">0x1000</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_output</lookup>
@@ -33,7 +33,7 @@
 
     <child>
       <object class="ScCcRow">
-        <child><object class="ScArturiaControl"><property name="id">0x1200</property></object></child>
+        <child><object class="ArControl"><property name="id">0x1200</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_output</lookup>

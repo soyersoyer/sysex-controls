@@ -16,14 +16,14 @@
 
                 <child>
                   <object class="Ks32ChRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x4113</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x4113</property></object></child>
                     <property name="subtitle" translatable="yes">Fixed/follow User channel</property>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScCcRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x4114</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x4114</property></object></child>
                     <property name="subtitle" translatable="yes">Assign MIDI CC #</property>
                   </object>
                 </child>
@@ -37,7 +37,7 @@
 
                 <child>
                   <object class="Ks32ChRow">
-                    <child><object class="ScArturiaControl"><property name="id">0x4115</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x4115</property></object></child>
                     <property name="subtitle" translatable="yes">Fixed/follow User channel</property>
                   </object>
                 </child>
