@@ -11,6 +11,10 @@
           <object class="ScPreferencesPage">
 
             <child>
+              <object class="ArFirmwareInfoGroup"/>
+            </child>
+
+            <child>
               <object class="AdwPreferencesGroup">
 
                 <child>

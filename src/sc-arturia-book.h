@@ -31,5 +31,6 @@ int sc_arturia_book_read_control (ScArturiaBook *self, uint32_t control_id, uint
 int sc_arturia_book_write_control (ScArturiaBook *self, uint32_t control_id, uint8_t val);
 int sc_arturia_book_recall_preset (ScArturiaBook *self, uint8_t preset_id);
 int sc_arturia_book_store_preset (ScArturiaBook *self, uint8_t preset_id);
+int sc_arturia_book_device_inquiry (ScArturiaBook *self, uint8_t data[11]);
 
 G_END_DECLS

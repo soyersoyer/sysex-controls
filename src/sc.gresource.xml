@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/hu/irl/sysex-controls">
+    <file preprocess="xml-stripblanks">ar-firmware-info-group.ui</file>
     <file preprocess="xml-stripblanks">ar-preset-chooser-page.ui</file>
     <file preprocess="xml-stripblanks">ar-preset-chooser-row.ui</file>
     <file preprocess="xml-stripblanks">ar-preset-page.ui</file>

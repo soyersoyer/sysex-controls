@@ -1,5 +1,6 @@
 #include "sc-arturia-book.h"
 
+#include "ar-firmware-info-group.h"
 #include "ar-preset-chooser-page.h"
 #include "ar-preset-chooser-row.h"
 #include "ar-preset-page.h"
@@ -172,9 +173,22 @@ sc_arturia_book_store_preset (ScArturiaBook *self, uint8_t preset_id)
   return klass->store_preset (priv->seq, priv->seq_addr, preset_id);
 }
 
+int
+sc_arturia_book_device_inquiry (ScArturiaBook *self, uint8_t data[11])
+{
+  ScArturiaBookPrivate *priv;
+
+  g_return_val_if_fail (SC_IS_ARTURIA_BOOK (self), -EINVAL);
+
+  priv = sc_arturia_book_get_instance_private (self);
+
+  return sc_midi_arturia_device_inquiry (priv->seq, priv->seq_addr, data);
+}
+
 static void
 sc_arturia_book_init (ScArturiaBook *self)
 {
+  g_type_ensure (AR_TYPE_FIRMWARE_INFO_GROUP);
   g_type_ensure (AR_TYPE_PRESET_CHOOSER_PAGE);
   g_type_ensure (AR_TYPE_PRESET_CHOOSER_ROW);
   g_type_ensure (AR_TYPE_PRESET_PAGE);

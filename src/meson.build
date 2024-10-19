@@ -1,4 +1,5 @@
 sc_sources = [
+  'ar-firmware-info-group.c',
   'ar-preset-chooser-page.c',
   'ar-preset-chooser-row.c',
   'ar-preset-page.c',

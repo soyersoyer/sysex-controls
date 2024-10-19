@@ -9,6 +9,11 @@
         <child type="top"><object class="AdwHeaderBar"/></child>
         <property name="content">
           <object class="ScPreferencesPage">
+
+            <child>
+              <object class="ArFirmwareInfoGroup"/>
+            </child>
+
             <child>
               <object class="AdwPreferencesGroup">
 
