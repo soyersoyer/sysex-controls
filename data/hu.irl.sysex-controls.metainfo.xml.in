@@ -36,6 +36,15 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.6" date="2024-10-19">
+      <description>
+        <ul>
+          <li>MicroLab support</li>
+          <li>Firmware version info</li>
+          <li>MiniLab 2 rearrangements</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.5" date="2024-10-18">
       <description>
         <ul>
