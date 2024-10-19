@@ -2,7 +2,7 @@
 
 #include <adwaita.h>
 
-#include "sc-arturia-control.h"
+#include "sc-control.h"
 
 G_BEGIN_DECLS
 
@@ -17,7 +17,7 @@ struct _ScNavigationPageClass
 
 uint32_t sc_navigation_page_get_control_id_offset (ScNavigationPage *self);
 uint32_t sc_navigation_page_get_control_cc_offset (ScNavigationPage *self);
-void sc_navigation_page_register_control (ScNavigationPage *self, uint32_t control_id, uint32_t real_id, ScArturiaControl *control);
+void sc_navigation_page_register_control (ScNavigationPage *self, ScControl *control);
 int sc_navigation_page_load_controls (ScNavigationPage *self);
 void sc_navigation_page_update_gui (ScNavigationPage *self);
 int sc_navigation_page_load_controls_and_update_bg (ScNavigationPage *self);

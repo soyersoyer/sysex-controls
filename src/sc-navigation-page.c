@@ -103,17 +103,17 @@ static void
 sc_navigation_page_init (ScNavigationPage *self)
 {
   ScNavigationPagePrivate *priv = sc_navigation_page_get_instance_private (self);
-  priv->controls = g_list_store_new (SC_TYPE_ARTURIA_CONTROL);
+  priv->controls = g_list_store_new (SC_TYPE_CONTROL);
 }
 
 void
-sc_navigation_page_register_control (ScNavigationPage *self, uint32_t control_id, uint32_t real_id, ScArturiaControl *control)
+sc_navigation_page_register_control (ScNavigationPage *self, ScControl *control)
 {
   ScNavigationPagePrivate *priv = sc_navigation_page_get_instance_private (self);
 
   g_list_store_append (priv->controls, control);
 
-  g_debug ("sc_navigation_page_register_control 0x%08x as 0x%08x", control_id, real_id);
+  g_debug ("sc_navigation_page_register_control %s", gtk_widget_get_name (GTK_WIDGET (control)));
 }
 
 int
@@ -124,7 +124,7 @@ sc_navigation_page_load_controls (ScNavigationPage *self)
 
   for(int i = 0; i < g_list_model_get_n_items (list); ++i)
   {
-    int err = sc_arturia_control_read_value (SC_ARTURIA_CONTROL (g_list_model_get_item (list, i)));
+    int err = sc_control_read_value (SC_CONTROL (g_list_model_get_item (list, i)));
     if (err < 0)
       return err;
   }
@@ -138,7 +138,7 @@ sc_navigation_page_update_gui (ScNavigationPage *self)
   GListModel *list = G_LIST_MODEL (priv->controls);
 
   for(int i = 0; i < g_list_model_get_n_items (list); ++i)
-    sc_arturia_control_update_gui (SC_ARTURIA_CONTROL (g_list_model_get_item (list, i)));
+    sc_control_update_gui (SC_CONTROL (g_list_model_get_item (list, i)));
 }
 
 static void

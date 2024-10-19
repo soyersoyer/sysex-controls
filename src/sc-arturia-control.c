@@ -1,6 +1,7 @@
 #include "sc-arturia-control.h"
 
 #include "sc-arturia-book.h"
+#include "sc-control.h"
 #include "sc-control-value.h"
 #include "sc-navigation-page.h"
 #include "sc-preferences-page.h"
@@ -26,7 +27,10 @@ struct _ScArturiaControl
 
 static GParamSpec *value_props[LAST_PROP];
 
-G_DEFINE_FINAL_TYPE (ScArturiaControl, sc_arturia_control, ADW_TYPE_BIN)
+static void sc_arturia_control_interface_init (ScControlInterface *iface);
+
+G_DEFINE_FINAL_TYPE_WITH_CODE (ScArturiaControl, sc_arturia_control, ADW_TYPE_BIN,
+                               G_IMPLEMENT_INTERFACE (SC_TYPE_CONTROL, sc_arturia_control_interface_init))
 
 uint32_t
 sc_arturia_control_get_id (ScArturiaControl *self)
@@ -232,7 +236,7 @@ sc_arturia_control_register (void *ac_widget)
 
   self->value = 0;
   self->widget = widget;
-  sc_navigation_page_register_control (SC_NAVIGATION_PAGE (gtk_widget_get_ancestor (GTK_WIDGET (widget), SC_TYPE_NAVIGATION_PAGE)), self->id, self->real_id, self);
+  sc_navigation_page_register_control (nav_page_widget, SC_CONTROL (self));
 
   if (ADW_IS_COMBO_ROW (widget))
     g_signal_connect (G_OBJECT (widget), "notify::selected-item", G_CALLBACK (combo_row_change_cb), self);
@@ -248,9 +252,11 @@ sc_arturia_control_register (void *ac_widget)
   return false;
 }
 
-void
-sc_arturia_control_update_gui (ScArturiaControl *self)
+static void
+sc_arturia_control_update_gui (ScControl *control)
 {
+  ScArturiaControl *self = SC_ARTURIA_CONTROL (control);
+
   if (ADW_IS_COMBO_ROW (self->widget))
   {
     guint pos = GTK_INVALID_LIST_POSITION;
@@ -291,11 +297,19 @@ sc_arturia_control_update_gui (ScArturiaControl *self)
     }
 }
 
-int
-sc_arturia_control_read_value (ScArturiaControl *self)
+static int
+sc_arturia_control_read_value (ScControl *control)
 {
+  ScArturiaControl *self = SC_ARTURIA_CONTROL (control);
   ScArturiaBook *book = SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), SC_TYPE_ARTURIA_BOOK));
   return sc_arturia_book_read_control (book, self->real_id, &self->value);
+}
+
+static void
+sc_arturia_control_interface_init (ScControlInterface *iface)
+{
+  iface->update_gui = sc_arturia_control_update_gui;
+  iface->read_value = sc_arturia_control_read_value;
 }
 
 static void

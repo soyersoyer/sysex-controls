@@ -10,6 +10,7 @@ sc_sources = [
   'sc-combo-row.c',
   'sc-controller-row.c',
   'sc-control-value.c',
+  'sc-control.c',
   'sc-midi.c',
   'sc-navigation-page.c',
   'sc-note-row.c',
