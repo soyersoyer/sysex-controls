@@ -56,15 +56,15 @@
     <file preprocess="xml-stripblanks">minilab2/ml2-book.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-button.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-ch-row.ui</file>
-    <file preprocess="xml-stripblanks">minilab2/ml2-global-page.ui</file>
+    <file preprocess="xml-stripblanks">minilab2/ml2-controller-page.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-knob.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-knob-extra-page.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-knob-page.ui</file>
-    <file preprocess="xml-stripblanks">minilab2/ml2-mod-wheel-page.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-pad.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-pad-page.ui</file>
-    <file preprocess="xml-stripblanks">minilab2/ml2-pitch-bend-page.ui</file>
-    <file preprocess="xml-stripblanks">minilab2/ml2-sustain-pedal-page.ui</file>
+    <file preprocess="xml-stripblanks">minilab2/ml2-pedal-page.ui</file>
+    <file preprocess="xml-stripblanks">minilab2/ml2-pitch-mod-page.ui</file>
+    <file preprocess="xml-stripblanks">minilab2/ml2-velocity-page.ui</file>
 
     <file preprocess="xml-stripblanks">minilab3/ml3-book.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-ch-row.ui</file>

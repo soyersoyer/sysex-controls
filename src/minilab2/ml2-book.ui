@@ -7,19 +7,19 @@
       <object class="AdwNavigationView">
 
         <child>
-          <object class="Ml2GlobalPage"/>
+          <object class="Ml2ControllerPage"/>
         </child>
 
         <child>
-          <object class="Ml2ModWheelPage"/>
+          <object class="Ml2VelocityPage"/>
         </child>
 
         <child>
-          <object class="Ml2PitchBendPage"/>
+          <object class="Ml2PitchModPage"/>
         </child>
 
         <child>
-          <object class="Ml2SustainPedalPage"/>
+          <object class="Ml2PedalPage"/>
         </child>
 
         <child>

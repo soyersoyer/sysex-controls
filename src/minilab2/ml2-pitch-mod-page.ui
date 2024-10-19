@@ -2,8 +2,8 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="Ml2ModWheelPage" parent="ScNavigationPage">
-    <property name="title" translatable="yes">Mod Wheel</property>
+  <template class="Ml2PitchModPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Pitch / Mod</property>
     <property name="child">
       <object class="AdwToolbarView">
         <child type="top"><object class="AdwHeaderBar"/></child>
@@ -12,9 +12,65 @@
 
             <child>
               <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Pitch Bend</property>
 
                 <child>
-                  <object class="ScComboRow" id="control_mode">
+                  <object class="ScComboRow" id="pitch_mode">
+                    <child><object class="ArControl"><property name="id">0x0141</property></object></child>
+                    <property name="title" translatable="yes">Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="0x00">Off</item>
+                          <item value="0x10">Pitch Bend</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x0641</property></object></child>
+                    <property name="title" translatable="yes">Option</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">pitch_mode</lookup>
+                        <constant type="GVariant">[0x10]</constant>
+                      </closure>
+                    </binding>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Standard</item>
+                          <item>Hold</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="Ml2ChRow">
+                    <child><object class="ArControl"><property name="id">0x0241</property></object></child>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">pitch_mode</lookup>
+                        <constant type="GVariant">[0x10]</constant>
+                      </closure>
+                    </binding>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Mod Wheel</property>
+
+                <child>
+                  <object class="ScComboRow" id="mod_mode">
                     <child><object class="ArControl"><property name="id">0x0140</property></object></child>
                     <property name="title" translatable="yes">Mode</property>
                     <property name="model">
@@ -35,7 +91,7 @@
                     <property name="title" translatable="yes">Option</property>
                     <binding name="visible">
                       <closure type="gboolean" function="cv_in">
-                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <lookup type="ScComboRow" name="selected-item">mod_mode</lookup>
                         <constant type="GVariant">[0x04]</constant>
                       </closure>
                     </binding>
@@ -55,7 +111,7 @@
                     <child><object class="ArControl"><property name="id">0x0240</property></object></child>
                     <binding name="visible">
                       <closure type="gboolean" function="cv_in">
-                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <lookup type="ScComboRow" name="selected-item">mod_mode</lookup>
                         <constant type="GVariant">[0x01, 0x04]</constant>
                       </closure>
                     </binding>
@@ -67,7 +123,7 @@
                     <child><object class="ArControl"><property name="id">0x0340</property></object></child>
                     <binding name="visible">
                       <closure type="gboolean" function="cv_in">
-                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <lookup type="ScComboRow" name="selected-item">mod_mode</lookup>
                         <constant type="GVariant">[0x01]</constant>
                       </closure>
                     </binding>
@@ -80,7 +136,7 @@
                     <property name="title" translatable="yes">Min Value</property>
                     <binding name="visible">
                       <closure type="gboolean" function="cv_in">
-                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <lookup type="ScComboRow" name="selected-item">mod_mode</lookup>
                         <constant type="GVariant">[0x01]</constant>
                       </closure>
                     </binding>
@@ -101,7 +157,7 @@
                     <property name="title" translatable="yes">Max Value</property>
                     <binding name="visible">
                       <closure type="gboolean" function="cv_in">
-                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <lookup type="ScComboRow" name="selected-item">mod_mode</lookup>
                         <constant type="GVariant">[0x01]</constant>
                       </closure>
                     </binding>
@@ -122,7 +178,7 @@
                     <property name="title" translatable="yes">RPN/NRPN LSB</property>
                     <binding name="visible">
                       <closure type="gboolean" function="cv_in">
-                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <lookup type="ScComboRow" name="selected-item">mod_mode</lookup>
                         <constant type="GVariant">[0x04]</constant>
                       </closure>
                     </binding>
@@ -143,7 +199,7 @@
                     <property name="title" translatable="yes">RPN/NRPN MSB</property>
                     <binding name="visible">
                       <closure type="gboolean" function="cv_in">
-                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <lookup type="ScComboRow" name="selected-item">mod_mode</lookup>
                         <constant type="GVariant">[0x04]</constant>
                       </closure>
                     </binding>
