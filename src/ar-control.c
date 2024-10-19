@@ -1,6 +1,6 @@
 #include "ar-control.h"
 
-#include "sc-arturia-book.h"
+#include "ar-book.h"
 #include "sc-control.h"
 #include "sc-control-value.h"
 #include "sc-navigation-page.h"
@@ -112,7 +112,7 @@ static void
 combo_row_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
 {
   ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (self->widget)));
-  ScArturiaBook *book = SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), SC_TYPE_ARTURIA_BOOK));
+  ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), AR_TYPE_BOOK));
   ScControlValue *item = SC_CONTROL_VALUE (adw_combo_row_get_selected_item (ADW_COMBO_ROW (widget)));
   uint8_t val = sc_control_value_get_value (item);
 
@@ -120,7 +120,7 @@ combo_row_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
     return;
 
   g_debug ("combo control change %08x: %02x -> %02x %s", self->real_id, self->value, val, sc_control_value_get_name (item));
-  if (sc_arturia_book_write_control (book, self->real_id, val) < 0)
+  if (ar_book_write_control (book, self->real_id, val) < 0)
   {
     sc_io_problem (window, "Control change failed");
     return;
@@ -133,7 +133,7 @@ static void
 switch_row_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
 {
   ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (self->widget)));
-  ScArturiaBook *book = SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), SC_TYPE_ARTURIA_BOOK));
+  ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), AR_TYPE_BOOK));
   AdwSwitchRow *w = ADW_SWITCH_ROW (widget);
   uint8_t val = adw_switch_row_get_active (w);
 
@@ -141,7 +141,7 @@ switch_row_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
     return;
 
   g_debug ("switch control change %08x: %02x -> %02x", self->real_id, self->value, val);
-  if (sc_arturia_book_write_control (book, self->real_id, val) < 0)
+  if (ar_book_write_control (book, self->real_id, val) < 0)
   {
     sc_io_problem (window, "Control change failed");
     return;
@@ -154,7 +154,7 @@ static void
 spin_row_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
 {
   ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (self->widget)));
-  ScArturiaBook *book = SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), SC_TYPE_ARTURIA_BOOK));
+  ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), AR_TYPE_BOOK));
   AdwSpinRow *w = ADW_SPIN_ROW (self->widget);
   uint8_t val = (uint8_t)adw_spin_row_get_value (w);
 
@@ -163,7 +163,7 @@ spin_row_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
 
   g_debug("spin control change %08x: %02x -> %02x", self->real_id, self->value, val);
 
-  if (sc_arturia_book_write_control (book, self->real_id, val) < 0)
+  if (ar_book_write_control (book, self->real_id, val) < 0)
   {
     sc_io_problem (window, "Control change failed");
 
@@ -300,8 +300,8 @@ static int
 ar_control_read_value (ScControl *control)
 {
   ArControl *self = AR_CONTROL (control);
-  ScArturiaBook *book = SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), SC_TYPE_ARTURIA_BOOK));
-  return sc_arturia_book_read_control (book, self->real_id, &self->value);
+  ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), AR_TYPE_BOOK));
+  return ar_book_read_control (book, self->real_id, &self->value);
 }
 
 static void

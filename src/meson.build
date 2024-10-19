@@ -1,11 +1,11 @@
 sc_sources = [
+  'ar-book.c',
   'ar-control.c',
   'ar-firmware-info-group.c',
   'ar-preset-chooser-page.c',
   'ar-preset-chooser-row.c',
   'ar-preset-page.c',
   'sc-application.c',
-  'sc-arturia-book.c',
   'sc-cc-row.c',
   'sc-color-row.c',
   'sc-combo-row.c',

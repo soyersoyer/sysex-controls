@@ -1,6 +1,6 @@
 #include "ar-firmware-info-group.h"
 
-#include "sc-arturia-book.h"
+#include "ar-book.h"
 #include "sc-control.h"
 #include "sc-navigation-page.h"
 
@@ -59,8 +59,8 @@ static int
 ar_firmware_info_group_read_value (ScControl *control)
 {
   ArFirmwareInfoGroup *self = AR_FIRMWARE_INFO_GROUP (control);
-  ScArturiaBook *book = SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self), SC_TYPE_ARTURIA_BOOK));
-  return sc_arturia_book_device_inquiry (book, self->data);
+  ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self), AR_TYPE_BOOK));
+  return ar_book_device_inquiry (book, self->data);
 }
 
 static void

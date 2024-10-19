@@ -1,6 +1,6 @@
 #include "ar-preset-page.h"
 
-#include "sc-arturia-book.h"
+#include "ar-book.h"
 #include "ar-preset-chooser-page.h"
 #include "ar-preset-chooser-row.h"
 #include "sc-window.h"
@@ -38,11 +38,11 @@ ar_preset_page_get_readonly_num (ArPresetPage *self)
 static void on_selected_recall (ArPresetPage *self, ArPresetChooserRow *row)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
-  ScArturiaBook *book = SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self), SC_TYPE_ARTURIA_BOOK));
+  ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self), AR_TYPE_BOOK));
   ScWindow *window = SC_WINDOW (gtk_widget_get_ancestor (GTK_WIDGET (self), SC_TYPE_WINDOW));
   uint8_t preset_id = ar_preset_chooser_row_get_preset_id (row);
   g_debug ("on_selected_recall selected preset_id: %d", preset_id);
-  if (sc_arturia_book_recall_preset (book, preset_id) == 0)
+  if (ar_book_recall_preset (book, preset_id) == 0)
   {
     adw_navigation_view_pop (view);
     sc_window_load_page (window, "list");
@@ -58,11 +58,11 @@ static void on_selected_recall (ArPresetPage *self, ArPresetChooserRow *row)
 static void on_selected_store (ArPresetPage *self, ArPresetChooserRow *row)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
-  ScArturiaBook *book = SC_ARTURIA_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self), SC_TYPE_ARTURIA_BOOK));
+  ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self), AR_TYPE_BOOK));
   ScWindow *window = SC_WINDOW (gtk_widget_get_ancestor (GTK_WIDGET (self), SC_TYPE_WINDOW));
   uint8_t preset_id = ar_preset_chooser_row_get_preset_id (row);
   g_debug ("on_selected_store selected preset_id: %d", preset_id);
-  if (sc_arturia_book_store_preset (book, preset_id) != 0)
+  if (ar_book_store_preset (book, preset_id) != 0)
   {
     sc_io_problem (window, "Preset store failed");
     return;

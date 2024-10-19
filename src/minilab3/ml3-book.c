@@ -19,10 +19,10 @@
 
 struct _Ml3Book
 {
-  ScArturiaBook parent_instance;
+  ArBook parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ml3Book, ml3_book, SC_TYPE_ARTURIA_BOOK)
+G_DEFINE_FINAL_TYPE (Ml3Book, ml3_book, AR_TYPE_BOOK)
 
 static void
 ml3_book_class_init (Ml3BookClass *klass)
@@ -35,7 +35,7 @@ ml3_book_class_init (Ml3BookClass *klass)
 static void
 ml3_book_init (Ml3Book *self)
 {
-  ScArturiaBookClass *scklass = SC_ARTURIA_BOOK_GET_CLASS (self);
+  ArBookClass *scklass = AR_BOOK_GET_CLASS (self);
   scklass->read_control = sc_midi_arturia_v3_read_control;
   scklass->write_control = sc_midi_arturia_v3_write_control;
 
@@ -63,6 +63,6 @@ GtkWidget *
 ml3_book_new (snd_seq_t *seq, snd_seq_addr_t addr)
 {
   GtkWidget *book = g_object_new (ML3_TYPE_BOOK, NULL);
-  sc_arturia_book_set_seq (SC_ARTURIA_BOOK (book), seq, addr);
+  ar_book_set_seq (AR_BOOK (book), seq, addr);
   return book;
 }

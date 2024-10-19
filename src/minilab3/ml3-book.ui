@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="Ml3Book" parent="ScArturiaBook">
+  <template class="Ml3Book" parent="ArBook">
     <property name="child">
       <object class="AdwNavigationView">
 

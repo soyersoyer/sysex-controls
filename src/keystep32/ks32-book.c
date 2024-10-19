@@ -11,10 +11,10 @@
 
 struct _Ks32Book
 {
-  ScArturiaBook parent_instance;
+  ArBook parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ks32Book, ks32_book, SC_TYPE_ARTURIA_BOOK)
+G_DEFINE_FINAL_TYPE (Ks32Book, ks32_book, AR_TYPE_BOOK)
 
 static void
 ks32_book_class_init (Ks32BookClass *klass)
@@ -27,7 +27,7 @@ ks32_book_class_init (Ks32BookClass *klass)
 static void
 ks32_book_init (Ks32Book *self)
 {
-  sc_arturia_book_set_read_ack (SC_ARTURIA_BOOK (self), true);
+  ar_book_set_read_ack (AR_BOOK (self), true);
 
   g_type_ensure (KS32_TYPE_CH_ROW);
   g_type_ensure (KS32_TYPE_CONTROLLER_PAGE);
@@ -45,6 +45,6 @@ GtkWidget *
 ks32_book_new (snd_seq_t *seq, snd_seq_addr_t addr)
 {
   GtkWidget *book = g_object_new (KS32_TYPE_BOOK, NULL);
-  sc_arturia_book_set_seq (SC_ARTURIA_BOOK (book), seq, addr);
+  ar_book_set_seq (AR_BOOK (book), seq, addr);
   return book;
 }

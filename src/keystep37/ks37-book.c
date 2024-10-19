@@ -10,10 +10,10 @@
 
 struct _Ks37Book
 {
-  ScArturiaBook parent_instance;
+  ArBook parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ks37Book, ks37_book, SC_TYPE_ARTURIA_BOOK)
+G_DEFINE_FINAL_TYPE (Ks37Book, ks37_book, AR_TYPE_BOOK)
 
 static void
 ks37_book_class_init (Ks37BookClass *klass)
@@ -26,7 +26,7 @@ ks37_book_class_init (Ks37BookClass *klass)
 static void
 ks37_book_init (Ks37Book *self)
 {
-  sc_arturia_book_set_read_ack (SC_ARTURIA_BOOK (self), true);
+  ar_book_set_read_ack (AR_BOOK (self), true);
 
   g_type_ensure (KS37_TYPE_CC_BANK_PAGE);
   g_type_ensure (KS37_TYPE_CH_ROW);
@@ -43,6 +43,6 @@ GtkWidget *
 ks37_book_new (snd_seq_t *seq, snd_seq_addr_t addr)
 {
   GtkWidget *book = g_object_new (KS37_TYPE_BOOK, NULL);
-  sc_arturia_book_set_seq (SC_ARTURIA_BOOK (book), seq, addr);
+  ar_book_set_seq (AR_BOOK (book), seq, addr);
   return book;
 }

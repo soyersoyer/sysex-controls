@@ -14,10 +14,10 @@
 
 struct _Ml2Book
 {
-  ScArturiaBook parent_instance;
+  ArBook parent_instance;
 };
 
-G_DEFINE_FINAL_TYPE (Ml2Book, ml2_book, SC_TYPE_ARTURIA_BOOK)
+G_DEFINE_FINAL_TYPE (Ml2Book, ml2_book, AR_TYPE_BOOK)
 
 static void
 ml2_book_class_init (Ml2BookClass *klass)
@@ -49,6 +49,6 @@ GtkWidget *
 ml2_book_new (snd_seq_t *seq, snd_seq_addr_t addr)
 {
   GtkWidget *book = g_object_new (ML2_TYPE_BOOK, NULL);
-  sc_arturia_book_set_seq (SC_ARTURIA_BOOK (book), seq, addr);
+  ar_book_set_seq (AR_BOOK (book), seq, addr);
   return book;
 }

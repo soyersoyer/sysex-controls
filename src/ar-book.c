@@ -1,4 +1,4 @@
-#include "sc-arturia-book.h"
+#include "ar-book.h"
 
 #include "ar-control.h"
 #include "ar-firmware-info-group.h"
@@ -21,18 +21,18 @@ typedef struct
   snd_seq_t *seq;
   snd_seq_addr_t seq_addr;
   uint8_t read_ack;
-} ScArturiaBookPrivate;
+} ArBookPrivate;
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (ScArturiaBook, sc_arturia_book, ADW_TYPE_NAVIGATION_PAGE)
+G_DEFINE_TYPE_WITH_PRIVATE (ArBook, ar_book, ADW_TYPE_NAVIGATION_PAGE)
 
 void
-sc_arturia_book_load_task (GTask *task, gpointer source_obj, gpointer task_data, GCancellable *cancellable)
+ar_book_load_task (GTask *task, gpointer source_obj, gpointer task_data, GCancellable *cancellable)
 {
   AdwNavigationPage *self = ADW_NAVIGATION_PAGE (source_obj);
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (adw_navigation_page_get_child (self));
 
-  g_debug ("sc_arturia_book_load_task start");
+  g_debug ("ar_book_load_task start");
   for(GtkWidget *page = gtk_widget_get_first_child (GTK_WIDGET (view));
       page; page = gtk_widget_get_next_sibling (page))
   {
@@ -47,11 +47,11 @@ sc_arturia_book_load_task (GTask *task, gpointer source_obj, gpointer task_data,
   }
 
   g_task_return_boolean (task, true);
-  g_debug ("sc_arturia_book_load_task end");
+  g_debug ("ar_book_load_task end");
 }
 
 void
-sc_arturia_book_load_task_finish (GObject* source_object, GAsyncResult* res, gpointer data)
+ar_book_load_task_finish (GObject* source_object, GAsyncResult* res, gpointer data)
 {
   AdwNavigationPage *self = ADW_NAVIGATION_PAGE (source_object);
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (adw_navigation_page_get_child (self));
@@ -79,36 +79,36 @@ sc_arturia_book_load_task_finish (GObject* source_object, GAsyncResult* res, gpo
 }
 
 void
-sc_arturia_book_set_seq (ScArturiaBook *self, snd_seq_t *seq, snd_seq_addr_t addr)
+ar_book_set_seq (ArBook *self, snd_seq_t *seq, snd_seq_addr_t addr)
 {
-  ScArturiaBookPrivate *priv = sc_arturia_book_get_instance_private (self);
+  ArBookPrivate *priv = ar_book_get_instance_private (self);
   priv->seq = seq;
   priv->seq_addr = addr;
 }
 
 void
-sc_arturia_book_set_read_ack (ScArturiaBook *self, uint8_t read_ack)
+ar_book_set_read_ack (ArBook *self, uint8_t read_ack)
 {
-  ScArturiaBookPrivate *priv = sc_arturia_book_get_instance_private (self);
+  ArBookPrivate *priv = ar_book_get_instance_private (self);
   priv->read_ack = read_ack;
 }
 
 snd_seq_t *
-sc_arturia_book_get_seq (ScArturiaBook *self)
+ar_book_get_seq (ArBook *self)
 {
-  ScArturiaBookPrivate *priv = sc_arturia_book_get_instance_private (self);
+  ArBookPrivate *priv = ar_book_get_instance_private (self);
   return priv->seq;
 }
 
 snd_seq_addr_t
-sc_arturia_book_get_addr (ScArturiaBook *self)
+ar_book_get_addr (ArBook *self)
 {
-  ScArturiaBookPrivate *priv = sc_arturia_book_get_instance_private (self);
+  ArBookPrivate *priv = ar_book_get_instance_private (self);
   return priv->seq_addr;
 }
 
 static void
-sc_arturia_book_class_init (ScArturiaBookClass *klass)
+ar_book_class_init (ArBookClass *klass)
 {
   klass->read_control = sc_midi_arturia_read_control;
   klass->write_control = sc_midi_arturia_write_control;
@@ -117,76 +117,76 @@ sc_arturia_book_class_init (ScArturiaBookClass *klass)
 }
 
 int
-sc_arturia_book_read_control (ScArturiaBook *self, uint32_t control_id, uint8_t *val)
+ar_book_read_control (ArBook *self, uint32_t control_id, uint8_t *val)
 {
-  ScArturiaBookClass *klass;
-  ScArturiaBookPrivate *priv;
+  ArBookClass *klass;
+  ArBookPrivate *priv;
 
-  g_return_val_if_fail (SC_IS_ARTURIA_BOOK (self), -EINVAL);
+  g_return_val_if_fail (AR_IS_BOOK (self), -EINVAL);
 
-  klass = SC_ARTURIA_BOOK_GET_CLASS (self);
-  priv = sc_arturia_book_get_instance_private (self);
+  klass = AR_BOOK_GET_CLASS (self);
+  priv = ar_book_get_instance_private (self);
 
   return klass->read_control (priv->seq, priv->seq_addr, priv->read_ack, control_id, val);
 }
 
 int
-sc_arturia_book_write_control (ScArturiaBook *self, uint32_t control_id, uint8_t val)
+ar_book_write_control (ArBook *self, uint32_t control_id, uint8_t val)
 {
-  ScArturiaBookClass *klass;
-  ScArturiaBookPrivate *priv;
+  ArBookClass *klass;
+  ArBookPrivate *priv;
 
-  g_return_val_if_fail (SC_IS_ARTURIA_BOOK (self), -EINVAL);
+  g_return_val_if_fail (AR_IS_BOOK (self), -EINVAL);
 
-  klass = SC_ARTURIA_BOOK_GET_CLASS (self);
-  priv = sc_arturia_book_get_instance_private (self);
+  klass = AR_BOOK_GET_CLASS (self);
+  priv = ar_book_get_instance_private (self);
 
   return klass->write_control (priv->seq, priv->seq_addr, control_id, val);
 }
 
 int
-sc_arturia_book_recall_preset (ScArturiaBook *self, uint8_t preset_id)
+ar_book_recall_preset (ArBook *self, uint8_t preset_id)
 {
-  ScArturiaBookClass *klass;
-  ScArturiaBookPrivate *priv;
+  ArBookClass *klass;
+  ArBookPrivate *priv;
 
-  g_return_val_if_fail (SC_IS_ARTURIA_BOOK (self), -EINVAL);
+  g_return_val_if_fail (AR_IS_BOOK (self), -EINVAL);
 
-  klass = SC_ARTURIA_BOOK_GET_CLASS (self);
-  priv = sc_arturia_book_get_instance_private (self);
+  klass = AR_BOOK_GET_CLASS (self);
+  priv = ar_book_get_instance_private (self);
 
   return klass->recall_preset (priv->seq, priv->seq_addr, preset_id);
 }
 
 
 int
-sc_arturia_book_store_preset (ScArturiaBook *self, uint8_t preset_id)
+ar_book_store_preset (ArBook *self, uint8_t preset_id)
 {
-  ScArturiaBookClass *klass;
-  ScArturiaBookPrivate *priv;
+  ArBookClass *klass;
+  ArBookPrivate *priv;
 
-  g_return_val_if_fail (SC_IS_ARTURIA_BOOK (self), -EINVAL);
+  g_return_val_if_fail (AR_IS_BOOK (self), -EINVAL);
 
-  klass = SC_ARTURIA_BOOK_GET_CLASS (self);
-  priv = sc_arturia_book_get_instance_private (self);
+  klass = AR_BOOK_GET_CLASS (self);
+  priv = ar_book_get_instance_private (self);
 
   return klass->store_preset (priv->seq, priv->seq_addr, preset_id);
 }
 
 int
-sc_arturia_book_device_inquiry (ScArturiaBook *self, uint8_t data[11])
+ar_book_device_inquiry (ArBook *self, uint8_t data[11])
 {
-  ScArturiaBookPrivate *priv;
+  ArBookPrivate *priv;
 
-  g_return_val_if_fail (SC_IS_ARTURIA_BOOK (self), -EINVAL);
+  g_return_val_if_fail (AR_IS_BOOK (self), -EINVAL);
 
-  priv = sc_arturia_book_get_instance_private (self);
+  priv = ar_book_get_instance_private (self);
 
   return sc_midi_arturia_device_inquiry (priv->seq, priv->seq_addr, data);
 }
 
 static void
-sc_arturia_book_init (ScArturiaBook *self)
+ar_book_init (ArBook *self)
 {
   g_type_ensure (AR_TYPE_CONTROL);
   g_type_ensure (AR_TYPE_FIRMWARE_INFO_GROUP);
