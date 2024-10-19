@@ -186,9 +186,8 @@ spin_row_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
 }
 
 static int
-ar_control_register (void *ac_widget)
+ar_control_register (ArControl *self)
 {
-  ArControl *self = AR_CONTROL (ac_widget);
   ScPreferencesGroup *group_widget;
   ScPreferencesPage *page_widget;
   ScNavigationPage *nav_page_widget;
@@ -313,14 +312,8 @@ ar_control_interface_init (ScControlInterface *iface)
 }
 
 static void
-ar_control_register_cb (ArControl *self)
-{
-  g_idle_add (ar_control_register, self);
-}
-
-static void
 ar_control_init (ArControl *self)
 {
   gtk_widget_set_visible (GTK_WIDGET (&self->parent_instance), false);
-  g_signal_connect (G_OBJECT (self), "notify::id", G_CALLBACK (ar_control_register_cb), NULL);
+  g_idle_add (G_SOURCE_FUNC (ar_control_register), self);
 }
