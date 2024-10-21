@@ -71,7 +71,6 @@
     <file preprocess="xml-stripblanks">minilab2/ml2-velocity-page.ui</file>
 
     <file preprocess="xml-stripblanks">minilab3/ml3-book.ui</file>
-    <file preprocess="xml-stripblanks">minilab3/ml3-ch-row.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-controller-page.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-fader.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-fader-page.ui</file>

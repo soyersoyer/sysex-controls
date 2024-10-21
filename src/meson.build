@@ -77,7 +77,6 @@ sc_sources = [
   'minilab2/ml2-velocity-page.c',
 
   'minilab3/ml3-book.c',
-  'minilab3/ml3-ch-row.c',
   'minilab3/ml3-controller-page.c',
   'minilab3/ml3-fader.c',
   'minilab3/ml3-fader-page.c',

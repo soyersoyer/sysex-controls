@@ -20,7 +20,7 @@
     </child>
 
     <child>
-      <object class="Ml3ChRow">
+      <object class="Ar3ChRow">
         <child><object class="ArControl"><property name="id">0x1000</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">

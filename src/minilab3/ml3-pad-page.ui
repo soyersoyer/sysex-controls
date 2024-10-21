@@ -9,6 +9,7 @@
         <child type="top"><object class="AdwHeaderBar"/></child>
         <property name="content">
           <object class="ScPreferencesPage">
+
             <child>
               <object class="Ml3Pad">
                 <property name="title" translatable="yes">Pad 1</property>

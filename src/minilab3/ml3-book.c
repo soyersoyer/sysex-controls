@@ -1,6 +1,5 @@
 #include "ml3-book.h"
 
-#include "ml3-ch-row.h"
 #include "ml3-controller-page.h"
 #include "ml3-fader.h"
 #include "ml3-fader-page.h"
@@ -39,7 +38,6 @@ ml3_book_init (Ml3Book *self)
   scklass->read_control = sc_midi_arturia_v3_read_control;
   scklass->write_control = sc_midi_arturia_v3_write_control;
 
-  g_type_ensure (ML3_TYPE_CH_ROW);
   g_type_ensure (ML3_TYPE_CONTROLLER_PAGE);
   g_type_ensure (ML3_TYPE_FADER);
   g_type_ensure (ML3_TYPE_FADER_PAGE);

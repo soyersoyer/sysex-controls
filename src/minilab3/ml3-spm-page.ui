@@ -40,7 +40,7 @@
               </binding>
 
                 <child>
-                  <object class="Ml3ChRow">
+                  <object class="Ar3ChRow">
                     <child><object class="ArControl"><property name="id">0x0a00</property></object></child>
                   </object>
                 </child>
@@ -89,7 +89,7 @@
               <property name="title" translatable="yes">Pitch</property>
 
                 <child>
-                  <object class="Ml3ChRow">
+                  <object class="Ar3ChRow">
                     <child><object class="ArControl"><property name="id">0x0700</property></object></child>
                   </object>
                 </child>
@@ -132,7 +132,7 @@
               <property name="title" translatable="yes">Mod</property>
 
                 <child>
-                  <object class="Ml3ChRow">
+                  <object class="Ar3ChRow">
                     <child><object class="ArControl"><property name="id">0x0000</property></object></child>
                   </object>
                 </child>

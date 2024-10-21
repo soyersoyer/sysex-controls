@@ -5,7 +5,7 @@
   <template class="Ml3Fader" parent="ScPreferencesGroup">
 
     <child>
-      <object class="Ml3ChRow">
+      <object class="Ar3ChRow">
         <child><object class="ArControl"><property name="id">0x6200</property></object></child>
       </object>
     </child>
