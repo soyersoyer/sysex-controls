@@ -6,7 +6,7 @@
 
 G_BEGIN_DECLS
 
-#define SC_TYPE_COMBO_ROW (sc_color_row_get_type ())
+#define SC_TYPE_COLOR_ROW (sc_color_row_get_type ())
 
 G_DECLARE_DERIVABLE_TYPE (ScColorRow, sc_color_row, SC, COLOR_ROW, AdwComboRow)
 

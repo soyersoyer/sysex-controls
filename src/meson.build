@@ -1,10 +1,14 @@
 sc_sources = [
+  'ar3-ch-row.c',
+  'ar3-color-row.c',
+
   'ar-book.c',
   'ar-control.c',
   'ar-firmware-info-group.c',
   'ar-preset-chooser-page.c',
   'ar-preset-chooser-row.c',
   'ar-preset-page.c',
+
   'sc-application.c',
   'sc-cc-row.c',
   'sc-color-row.c',
@@ -20,6 +24,7 @@ sc_sources = [
   'sc-preferences-page.c',
   'sc-window.c',
   'main.c',
+
   'beatstep/bs-book.c',
   'beatstep/bs-ch-row.c',
   'beatstep/bs-controller-page.c',
@@ -31,6 +36,7 @@ sc_sources = [
   'beatstep/bs-sequence-page.c',
   'beatstep/bs-transport-button.c',
   'beatstep/bs-transport-button-page.c',
+
   'keystep32/ks32-book.c',
   'keystep32/ks32-ch-row.c',
   'keystep32/ks32-controller-page.c',
@@ -40,6 +46,7 @@ sc_sources = [
   'keystep32/ks32-sequence-page.c',
   'keystep32/ks32-sustain-pedal-page.c',
   'keystep32/ks32-transport-page.c',
+
   'keystep37/ks37-book.c',
   'keystep37/ks37-cc-bank-page.c',
   'keystep37/ks37-ch-row.c',
@@ -48,12 +55,14 @@ sc_sources = [
   'keystep37/ks37-knob.c',
   'keystep37/ks37-sequence-page.c',
   'keystep37/ks37-transport-page.c',
+
   'microlab/microlab-book.c',
   'microlab/microlab-ch-row.c',
   'microlab/microlab-hold-page.c',
   'microlab/microlab-keyboard-page.c',
   'microlab/microlab-mod-page.c',
   'microlab/microlab-pitch-page.c',
+
   'minilab2/ml2-book.c',
   'minilab2/ml2-button.c',
   'minilab2/ml2-ch-row.c',
@@ -66,6 +75,7 @@ sc_sources = [
   'minilab2/ml2-pedal-page.c',
   'minilab2/ml2-pitch-mod-page.c',
   'minilab2/ml2-velocity-page.c',
+
   'minilab3/ml3-book.c',
   'minilab3/ml3-ch-row.c',
   'minilab3/ml3-controller-page.c',

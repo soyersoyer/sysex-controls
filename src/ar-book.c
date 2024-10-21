@@ -5,6 +5,8 @@
 #include "ar-preset-chooser-page.h"
 #include "ar-preset-chooser-row.h"
 #include "ar-preset-page.h"
+#include "ar3-ch-row.h"
+#include "ar3-color-row.h"
 #include "sc-cc-row.h"
 #include "sc-combo-row.h"
 #include "sc-control-value.h"
@@ -188,6 +190,8 @@ ar_book_device_inquiry (ArBook *self, uint8_t data[11])
 static void
 ar_book_init (ArBook *self)
 {
+  g_type_ensure (AR3_TYPE_CH_ROW);
+  g_type_ensure (AR3_TYPE_COLOR_ROW);
   g_type_ensure (AR_TYPE_CONTROL);
   g_type_ensure (AR_TYPE_FIRMWARE_INFO_GROUP);
   g_type_ensure (AR_TYPE_PRESET_CHOOSER_PAGE);

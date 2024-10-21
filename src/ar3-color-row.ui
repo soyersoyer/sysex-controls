@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ar3ColorRow" parent="ScColorRow">
+    <property name="model">
+      <object class="ScControlValueList">
+        <items>
+          <item>#FF0000</item>
+          <item>#FF3200</item>
+          <item>#FF6400</item>
+          <item>#FF9600</item>
+          <item>#FFC800</item>
+          <item>#FFFF00</item>
+          <item>#C8FF00</item>
+          <item>#96FE00</item>
+          <item>#01FF00</item>
+          <item>#01FF32</item>
+          <item>#01FF64</item>
+          <item>#01FF96</item>
+          <item>#01FFC8</item>
+          <item>#01FFFF</item>
+          <item>#FF0032</item>
+          <item>#FF0064</item>
+          <item>#FF0096</item>
+          <item>#FF00C8</item>
+          <item>#FF00FF</item>
+          <item>#C800FF</item>
+          <item>#9600FF</item>
+          <item>#6400FF</item>
+          <item>#3200FF</item>
+          <item>#0000FF</item>
+          <item>#0032FF</item>
+          <item>#0064FF</item>
+          <item>#0096FF</item>
+          <item>#00C8FF</item>
+          <item>#F8726E</item>
+          <item>#FCCF6E</item>
+          <item>#FFFC6E</item>
+          <item>#CDFB6F</item>
+          <item>#67FB6D</item>
+          <item>#68FBD1</item>
+          <item>#67FEFF</item>
+          <item>#6AD2FF</item>
+          <item>#6F76FF</item>
+          <item>#D377FF</item>
+          <item>#F87AFF</item>
+          <item>#F77FD3</item>
+          <item>#FFFFFF</item>
+          <item>#D0D0D0</item>
+        </items>
+      </object>
+    </property>
+  </template>
+</interface>
