@@ -2,7 +2,7 @@
 
 G_DEFINE_TYPE (ScColorRow, sc_color_row, ADW_TYPE_COMBO_ROW)
 
-G_MODULE_EXPORT gchararray
+gchararray
 cv_to_markup_color (GObject *object, ScControlValue* value)
 {
   GString *markup;
