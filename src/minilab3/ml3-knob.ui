@@ -26,7 +26,7 @@
     </child>
 
     <child>
-      <object class="ScComboRow" id="control_mode">
+      <object class="ScComboRow">
         <child><object class="ArControl"><property name="id">0x3200</property></object></child>
         <property name="title" translatable="yes">Scale</property>
         <binding name="visible">
