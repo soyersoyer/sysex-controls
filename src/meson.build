@@ -1,4 +1,6 @@
 sc_sources = [
+  'ar2-user-ch-row.c',
+
   'ar3-ch-row.c',
   'ar3-color-row.c',
 

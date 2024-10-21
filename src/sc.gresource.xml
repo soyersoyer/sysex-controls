@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/hu/irl/sysex-controls">
+    <file preprocess="xml-stripblanks">ar2-user-ch-row.ui</file>
+
     <file preprocess="xml-stripblanks">ar3-ch-row.ui</file>
     <file preprocess="xml-stripblanks">ar3-color-row.ui</file>
 
