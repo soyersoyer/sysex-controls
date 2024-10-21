@@ -22,7 +22,7 @@ get_preset_offset (ScNavigationPage *self)
 }
 
 void
-on_spm_activated (ScNavigationPage *self, AdwActionRow* row)
+ml3_preset_page_on_spm_activated (ScNavigationPage *self, AdwActionRow* row)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
   AdwNavigationPage *page = g_object_new (ML3_TYPE_SPM_PAGE, "control-id-offset", get_preset_offset (self), NULL);
@@ -31,7 +31,7 @@ on_spm_activated (ScNavigationPage *self, AdwActionRow* row)
 }
 
 void
-on_main_knob_activated (ScNavigationPage *self, AdwActionRow* row)
+ml3_preset_page_on_main_knob_activated (ScNavigationPage *self, AdwActionRow* row)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
   AdwNavigationPage *page = g_object_new (ML3_TYPE_MAIN_KNOB_PAGE, "control-id-offset", get_preset_offset (self), NULL);
@@ -40,7 +40,7 @@ on_main_knob_activated (ScNavigationPage *self, AdwActionRow* row)
 }
 
 void
-on_knob_activated (ScNavigationPage *self, AdwActionRow* row)
+ml3_preset_page_on_knob_activated (ScNavigationPage *self, AdwActionRow* row)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
   AdwNavigationPage *page = g_object_new (ML3_TYPE_KNOB_PAGE, "control-id-offset", get_preset_offset (self), NULL);
@@ -49,7 +49,7 @@ on_knob_activated (ScNavigationPage *self, AdwActionRow* row)
 }
 
 void
-on_fader_activated (ScNavigationPage *self, AdwActionRow* row)
+ml3_preset_page_on_fader_activated (ScNavigationPage *self, AdwActionRow* row)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
   AdwNavigationPage *page = g_object_new (ML3_TYPE_FADER_PAGE, "control-id-offset", get_preset_offset (self), NULL);
@@ -58,7 +58,7 @@ on_fader_activated (ScNavigationPage *self, AdwActionRow* row)
 }
 
 void
-on_pad_a_activated (ScNavigationPage *self, AdwActionRow* row)
+ml3_preset_page_on_pad_a_activated (ScNavigationPage *self, AdwActionRow* row)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
   AdwNavigationPage *page = g_object_new (ML3_TYPE_PAD_PAGE,
@@ -71,7 +71,7 @@ on_pad_a_activated (ScNavigationPage *self, AdwActionRow* row)
 }
 
 void
-on_pad_b_activated (ScNavigationPage *self, AdwActionRow* row)
+ml3_preset_page_on_pad_b_activated (ScNavigationPage *self, AdwActionRow* row)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
   AdwNavigationPage *page = g_object_new (ML3_TYPE_PAD_PAGE,
