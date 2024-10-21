@@ -7,6 +7,7 @@
     <child>
       <object class="AdwActionRow" id="firmware_version">
         <property name="title">Firmware version</property>
+        <style><class name="property"/></style>
       </object>
     </child>
 
