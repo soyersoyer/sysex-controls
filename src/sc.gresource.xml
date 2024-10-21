@@ -31,6 +31,25 @@
 
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
 
+    <file preprocess="xml-stripblanks">keylabes3/kles3-book.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/kles3-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/kles3-daw-control-row.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/kles3-pedal-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/kles3-preset-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/kles3-velocity-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/preset/kles3-button.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/preset/kles3-button-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/preset/kles3-daw-button.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/preset/kles3-fader.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/preset/kles3-fader-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/preset/kles3-knob.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/preset/kles3-knob-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/preset/kles3-led-color.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/preset/kles3-main-knob-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/preset/kles3-pad.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/preset/kles3-pad-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/preset/kles3-pitch-mod-page.ui</file>
+
     <file preprocess="xml-stripblanks">keystep32/ks32-book.ui</file>
     <file preprocess="xml-stripblanks">keystep32/ks32-ch-row.ui</file>
     <file preprocess="xml-stripblanks">keystep32/ks32-controller-page.ui</file>

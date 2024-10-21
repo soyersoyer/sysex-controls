@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kles3ButtonPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">ButtonPage</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+           <child>
+              <object class="Kles3Button">
+                <property name="title" translatable="yes">Button 1</property>
+                <property name="control-id-offset">0x0000</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3Button">
+                <property name="title" translatable="yes">Button 2</property>
+                <property name="control-id-offset">0x0100</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3Button">
+                <property name="title" translatable="yes">Button 3</property>
+                <property name="control-id-offset">0x0200</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3Button">
+                <property name="title" translatable="yes">Button 4</property>
+                <property name="control-id-offset">0x0300</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3DawButton">
+                <property name="title" translatable="yes">Redo</property>
+                <property name="control-id-offset">0x0000</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3LedColor">
+                <property name="control-id-offset">0x0300</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3DawButton">
+                <property name="title" translatable="yes">Undo</property>
+                <property name="control-id-offset">0x0700</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3LedColor">
+                <property name="control-id-offset">0x0200</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3DawButton">
+                <property name="title" translatable="yes">Quant</property>
+                <property name="control-id-offset">0x0e00</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3LedColor">
+                <property name="control-id-offset">0x0100</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3DawButton">
+                <property name="title" translatable="yes">Save</property>
+                <property name="control-id-offset">0x1500</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3LedColor">
+                <property name="control-id-offset">0x0000</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3DawButton">
+                <property name="title" translatable="yes">Metro</property>
+                <property name="control-id-offset">0x1c00</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3LedColor">
+                <property name="control-id-offset">0x0700</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3DawButton">
+                <property name="title" translatable="yes">Next</property>
+                <property name="control-id-offset">0x2300</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3LedColor">
+                <property name="control-id-offset">0x0600</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3DawButton">
+                <property name="title" translatable="yes">Prev</property>
+                <property name="control-id-offset">0x2a00</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3LedColor">
+                <property name="control-id-offset">0x0500</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3DawButton">
+                <property name="title" translatable="yes">Loop</property>
+                <property name="control-id-offset">0x3100</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3LedColor">
+                <property name="control-id-offset">0x0400</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3DawButton">
+                <property name="title" translatable="yes">Tap</property>
+                <property name="control-id-offset">0x3800</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3LedColor">
+                <property name="control-id-offset">0x0b00</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3DawButton">
+                <property name="title" translatable="yes">Play</property>
+                <property name="control-id-offset">0x3f00</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3LedColor">
+                <property name="control-id-offset">0x0900</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3DawButton">
+                <property name="title" translatable="yes">Rec</property>
+                <property name="control-id-offset">0x4600</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3LedColor">
+                <property name="control-id-offset">0x0a00</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3DawButton">
+                <property name="title" translatable="yes">Stop</property>
+                <property name="control-id-offset">0x4d00</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kles3LedColor">
+                <property name="control-id-offset">0x0800</property>
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

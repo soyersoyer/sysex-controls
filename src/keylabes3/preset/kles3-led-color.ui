@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kles3LedColor" parent="ScPreferencesGroup">
+
+    <child>
+      <object class="AdwSwitchRow" id="control_led">
+        <child><object class="ArControl"><property name="id">0x5801</property></object></child>
+        <property name="title" translatable="yes">LED</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ar3ColorRow">
+        <child><object class="ArControl"><property name="id">0x6401</property></object></child>
+        <binding name="visible">
+          <lookup type="AdwSwitchRow" name="active">control_led</lookup>
+        </binding>
+      </object>
+    </child>
+
+  </template>
+</interface>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kles3DawControlRow" parent="ScComboRow">
+    <property name="title" translatable="yes">DAWControl</property>
+    <property name="model">
+      <object class="ScControlValueList">
+        <items>
+          <item>Click</item>
+          <item>Loop</item>
+          <item>Rewind</item>
+          <item>FastForward</item>
+          <item>Stop</item>
+          <item>Play</item>
+          <item>Rec</item>
+          <item>Save</item>
+          <item>Undo</item>
+          <item>Redo</item>
+          <item>PunchIn</item>
+          <item>BankLeft</item>
+          <item>BankRight</item>
+          <item>Left</item>
+          <item>Right</item>
+        </items>
+      </object>
+    </property>
+  </template>
+</interface>

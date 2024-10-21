@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kles3PresetPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Preset</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="ScPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x1300</property></object></child>
+                    <property name="title" translatable="yes">Hide on controller</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Pitch / Mod</property>
+                    <property name="activatable">yes</property>
+                    <signal name="activated" handler="kles3_preset_page_on_pitch_mod_activated" swapped="yes"/>
+                    <child type="suffix">
+                      <object class="GtkImage">
+                        <property name="icon-name">go-next-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Main Knob</property>
+                    <property name="activatable">yes</property>
+                    <signal name="activated" handler="kles3_preset_page_on_main_knob_activated" swapped="yes"/>
+                    <child type="suffix">
+                      <object class="GtkImage">
+                        <property name="icon-name">go-next-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Knobs</property>
+                    <property name="activatable">yes</property>
+                    <signal name="activated" handler="kles3_preset_page_on_knob_activated" swapped="yes"/>
+                    <child type="suffix">
+                      <object class="GtkImage">
+                        <property name="icon-name">go-next-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Buttons</property>
+                    <property name="activatable">yes</property>
+                    <signal name="activated" handler="kles3_preset_page_on_button_activated" swapped="yes"/>
+                    <child type="suffix">
+                      <object class="GtkImage">
+                        <property name="icon-name">go-next-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Faders</property>
+                    <property name="activatable">yes</property>
+                    <signal name="activated" handler="kles3_preset_page_on_fader_activated" swapped="yes"/>
+                    <child type="suffix">
+                      <object class="GtkImage">
+                        <property name="icon-name">go-next-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Pads Bank A</property>
+                    <property name="activatable">yes</property>
+                    <signal name="activated" handler="kles3_preset_page_on_pad_a_activated" swapped="yes"/>
+                    <child type="suffix">
+                      <object class="GtkImage">
+                        <property name="icon-name">go-next-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Pads Bank B</property>
+                    <property name="activatable">yes</property>
+                    <signal name="activated" handler="kles3_preset_page_on_pad_b_activated" swapped="yes"/>
+                    <child type="suffix">
+                      <object class="GtkImage">
+                        <property name="icon-name">go-next-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

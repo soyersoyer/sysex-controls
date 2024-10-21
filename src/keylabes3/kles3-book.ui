@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kles3Book" parent="ArBook">
+
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="Kles3ControllerPage">
+            <property name="control-id-offset">0x09400000</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Kles3VelocityPage">
+            <property name="control-id-offset">0x09400000</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Kles3PedalPage">
+            <property name="control-id-offset">0x09400000</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Kles3PresetPage">
+            <property name="title" translatable="yes">Preset 1</property>
+            <property name="control-id-offset">0x09400000</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Kles3PresetPage">
+            <property name="title" translatable="yes">Preset 2</property>
+            <property name="control-id-offset">0x09400100</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Kles3PresetPage">
+            <property name="title" translatable="yes">Preset 3</property>
+            <property name="control-id-offset">0x09400200</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Kles3PresetPage">
+            <property name="title" translatable="yes">Preset 4</property>
+            <property name="control-id-offset">0x09400300</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Kles3PresetPage">
+            <property name="title" translatable="yes">Preset 5</property>
+            <property name="control-id-offset">0x09400400</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Kles3PresetPage">
+            <property name="title" translatable="yes">Preset 6</property>
+            <property name="control-id-offset">0x09400500</property>
+          </object>
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>
