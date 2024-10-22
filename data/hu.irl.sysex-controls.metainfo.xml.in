@@ -42,11 +42,20 @@ not work, in which case please let me know.
   <url type="bugtracker">https://github.com/soyersoyer/sysex-controls/issues</url>
   <screenshots>
     <screenshot type="default">
-      <image>https://github.com/soyersoyer/sysex-controls/raw/v0.2.7/data/screenshots/page_1.png</image>
+      <image>https://github.com/soyersoyer/sysex-controls/raw/v0.2.8/data/screenshots/page_1.png</image>
       <caption>KeyStep 37 Controller page</caption>
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.8" date="2024-10-22">
+      <description>
+        <ul>
+          <li>KeyLab Essential 49 / 61 / 88 support</li>
+          <li>KeyLab mkII 49 / 61 / 88 support (initial, basic)</li>
+          <li>KeyLab 49 / 61 / 88 mk3 support (initial, basic)</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.7" date="2024-10-21">
       <description>
         <ul>
