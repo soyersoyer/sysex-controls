@@ -47,7 +47,7 @@
                 </child>
 
                 <child>
-                  <object class="BsChRow">
+                  <object class="Ar2GlobChRow">
                     <child><object class="ArControl"><property name="id">0x500c</property></object></child>
                     <property name="title" translatable="yes">CV/Gate Channel</property>
                   </object>

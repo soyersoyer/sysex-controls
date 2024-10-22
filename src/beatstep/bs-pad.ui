@@ -44,7 +44,7 @@
     </child>
 
     <child>
-      <object class="BsChRow">
+      <object class="Ar2GlobChRow">
         <child><object class="ArControl"><property name="id">0x0270</property></object></child>
         <binding name="visible">
           <closure type="gboolean" function="cv_in">

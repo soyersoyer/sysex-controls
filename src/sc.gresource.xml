@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/hu/irl/sysex-controls">
+    <file preprocess="xml-stripblanks">ar2-glob-ch-row.ui</file>
     <file preprocess="xml-stripblanks">ar2-key-ch-row.ui</file>
     <file preprocess="xml-stripblanks">ar2-user-ch-row.ui</file>
 
@@ -21,7 +22,6 @@
     <file preprocess="xml-stripblanks">sc-window.ui</file>
 
     <file preprocess="xml-stripblanks">beatstep/bs-book.ui</file>
-    <file preprocess="xml-stripblanks">beatstep/bs-ch-row.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-controller-page.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-knob.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-knob-page.ui</file>

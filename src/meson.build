@@ -1,4 +1,5 @@
 sc_sources = [
+  'ar2-glob-ch-row.c',
   'ar2-key-ch-row.c',
   'ar2-user-ch-row.c',
 
@@ -29,7 +30,6 @@ sc_sources = [
   'main.c',
 
   'beatstep/bs-book.c',
-  'beatstep/bs-ch-row.c',
   'beatstep/bs-controller-page.c',
   'beatstep/bs-knob.c',
   'beatstep/bs-knob-page.c',
