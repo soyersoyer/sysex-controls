@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KlesPedalPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Pedal</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow" id="control_mode">
+                    <child><object class="ArControl"><property name="id">0x0150</property></object></child>
+                    <property name="title" translatable="yes">Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="0x00">Off</item>
+                          <item value="0x07">MIDI Note</item>
+                          <item value="0x08">Switched Control</item>
+                          <item value="0x0a">MMC</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow" id="control_option">
+                    <child><object class="ArControl"><property name="id">0x0750</property></object></child>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <constant type="GVariant">[0x07, 0x08]</constant>
+                      </closure>
+                    </binding>
+                    <property name="title" translatable="yes">Option</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Toggle</item>
+                          <item>Gate</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x0850</property></object></child>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <constant type="GVariant">[0x0a]</constant>
+                      </closure>
+                    </binding>
+                    <property name="title" translatable="yes">MMC</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="0x02">Start</item>
+                          <item>Stop</item>
+                          <item>Record</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="Ar2UserChRow">
+                    <child><object class="ArControl"><property name="id">0x0250</property></object></child>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <constant type="GVariant">[0x07, 0x08]</constant>
+                      </closure>
+                    </binding>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScCcRow">
+                    <child><object class="ArControl"><property name="id">0x0350</property></object></child>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <constant type="GVariant">[0x08]</constant>
+                      </closure>
+                    </binding>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x0450</property></object></child>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <constant type="GVariant">[0x08]</constant>
+                      </closure>
+                    </binding>
+                    <property name="title" translatable="yes">Off Value</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x0550</property></object></child>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <constant type="GVariant">[0x08]</constant>
+                      </closure>
+                    </binding>
+                    <property name="title" translatable="yes">On Value</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x0350</property></object></child>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <constant type="GVariant">[0x07]</constant>
+                      </closure>
+                    </binding>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

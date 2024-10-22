@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KlesPad" parent="ScPreferencesGroup">
+
+    <child>
+      <object class="ScComboRow" id="control_mode">
+        <child><object class="ArControl"><property name="id">0x0100</property></object></child>
+        <property name="title" translatable="yes">Mode</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item value="0x00">Off</item>
+              <item value="0x07">MIDI Note</item>
+              <item value="0x08">Switched Control</item>
+              <item value="0x09">Patch Change</item>
+              <item value="0x0a">MMC</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow" id="color_red">
+        <child><object class="ArControl"><property name="id">0x1300</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x07, 0x08, 0x09, 0x0a]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Color Red</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow" id="color_green">
+        <child><object class="ArControl"><property name="id">0x1200</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x07, 0x08, 0x09, 0x0a]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Color Green</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow" id="color_blue">
+        <child><object class="ArControl"><property name="id">0x1100</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x07, 0x08, 0x09, 0x0a]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Color Blue</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <!--child> TODO: map colors to rows and rows to colors? or check sending 3 byte to 0x1100 is ok...
+      <object class="ScColorRow" id="control_color">
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x07, 0x08, 0x09, 0x0b]</constant>
+          </closure>
+        </binding>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item>#ff0000</item>
+              <item>#ff0044</item>
+              <item>#ff5000</item>
+              <item>#ff8a00</item>
+              <item>#ffff00</item>
+              <item>#7aff00</item>
+              <item>#00ff00</item>
+              <item>#008e00</item>
+              <item>#00fe7a</item>
+              <item>#00ffff</item>
+              <item>#0084ff</item>
+              <item>#0000ff</item>
+              <item>#8400ff</item>
+              <item>#ff00ff</item>
+              <item>#ff008A</item>
+              <item>#4a0050</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child-->
+
+    <child>
+      <object class="ScComboRow">
+        <child><object class="ArControl"><property name="id">0x0700</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x07, 0x08]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Option</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item>Toggle</item>
+              <item>Gate</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ar2UserChRow">
+        <child><object class="ArControl"><property name="id">0x0200</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x07, 0x08, 0x09]</constant>
+          </closure>
+        </binding>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScComboRow">
+        <child><object class="ArControl"><property name="id">0x0800</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x0a]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">MMC</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item value="0x02">Start</item>
+              <item>Stop</item>
+              <item>Record</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScCcRow">
+        <child><object class="ArControl"><property name="id">0x0300</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x08]</constant>
+          </closure>
+        </binding>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScNoteRow">
+        <child><object class="ArControl"><property name="id">0x0300</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x07]</constant>
+          </closure>
+        </binding>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScPcRow">
+        <child><object class="ArControl"><property name="id">0x0300</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x09]</constant>
+          </closure>
+        </binding>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ArControl"><property name="id">0x0400</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x09]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Bank LSB</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ArControl"><property name="id">0x0500</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x09]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Bank MSB</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ArControl"><property name="id">0x0400</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x08]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Off Value</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ArControl"><property name="id">0x0500</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x08]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">On Value</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+  </template>
+</interface>

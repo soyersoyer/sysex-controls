@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KlesFaderPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Faders</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="KlesFader">
+                <property name="title" translatable="yes">Fader 1</property>
+                <property name="control-id-offset">0x42</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesFader">
+                <property name="title" translatable="yes">Fader 2</property>
+                <property name="control-id-offset">0x43</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesFader">
+                <property name="title" translatable="yes">Fader 3</property>
+                <property name="control-id-offset">0x44</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesFader">
+                <property name="title" translatable="yes">Fader 4</property>
+                <property name="control-id-offset">0x45</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesFader">
+                <property name="title" translatable="yes">Fader 5</property>
+                <property name="control-id-offset">0x46</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesFader">
+                <property name="title" translatable="yes">Fader 6</property>
+                <property name="control-id-offset">0x47</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesFader">
+                <property name="title" translatable="yes">Fader 7</property>
+                <property name="control-id-offset">0x48</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesFader">
+                <property name="title" translatable="yes">Fader 8</property>
+                <property name="control-id-offset">0x49</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesFader">
+                <property name="title" translatable="yes">Fader 9</property>
+                <property name="control-id-offset">0x4a</property>
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

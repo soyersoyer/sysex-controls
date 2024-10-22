@@ -33,6 +33,20 @@
 
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
 
+    <file preprocess="xml-stripblanks">keylabes/kles-book.ui</file>
+    <file preprocess="xml-stripblanks">keylabes/kles-button.ui</file>
+    <file preprocess="xml-stripblanks">keylabes/kles-button-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes/kles-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes/kles-fader.ui</file>
+    <file preprocess="xml-stripblanks">keylabes/kles-fader-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes/kles-keyboard-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes/kles-knob.ui</file>
+    <file preprocess="xml-stripblanks">keylabes/kles-knob-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes/kles-pad.ui</file>
+    <file preprocess="xml-stripblanks">keylabes/kles-pad-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes/kles-pedal-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes/kles-velocity-page.ui</file>
+
     <file preprocess="xml-stripblanks">keylabes3/kles3-book.ui</file>
     <file preprocess="xml-stripblanks">keylabes3/kles3-controller-page.ui</file>
     <file preprocess="xml-stripblanks">keylabes3/kles3-daw-control-row.ui</file>

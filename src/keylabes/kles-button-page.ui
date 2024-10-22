@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KlesButtonPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Buttons</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="KlesButton">
+                <property name="title" translatable="yes">Part 1</property>
+                <property name="control-id-offset">0x1a</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesButton">
+                <property name="title" translatable="yes">Part 2</property>
+                <property name="control-id-offset">0x1b</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesButton">
+                <property name="title" translatable="yes">Live</property>
+                <property name="control-id-offset">0x1c</property>
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

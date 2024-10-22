@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KlesBook" parent="ArBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="KlesControllerPage"/>
+        </child>
+
+        <child>
+          <object class="KlesVelocityPage"/>
+        </child>
+
+        <child>
+          <object class="KlesKeyboardPage"/>
+        </child>
+
+        <child>
+          <object class="KlesPedalPage"/>
+        </child>
+
+        <child>
+          <object class="KlesPadPage"/>
+        </child>
+
+        <child>
+          <object class="KlesButtonPage"/>
+        </child>
+
+        <child>
+          <object class="KlesKnobPage"/>
+        </child>
+
+        <child>
+          <object class="KlesFaderPage"/>
+        </child>
+
+        <child>
+          <object class="ArPresetPage">
+            <property name="presets-num">8</property>
+            <property name="readonly-num">2</property>
+          </object>
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>

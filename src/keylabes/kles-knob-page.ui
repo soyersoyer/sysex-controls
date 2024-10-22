@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KlesKnobPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Knobs</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="KlesKnob">
+                <property name="title" translatable="yes">Knob 1</property>
+                <property name="control-id-offset">0x01</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesKnob">
+                <property name="title" translatable="yes">Knob 2</property>
+                <property name="control-id-offset">0x02</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesKnob">
+                <property name="title" translatable="yes">Knob 3</property>
+                <property name="control-id-offset">0x03</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesKnob">
+                <property name="title" translatable="yes">Knob 4</property>
+                <property name="control-id-offset">0x04</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesKnob">
+                <property name="title" translatable="yes">Knob 5</property>
+                <property name="control-id-offset">0x05</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesKnob">
+                <property name="title" translatable="yes">Knob 6</property>
+                <property name="control-id-offset">0x06</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesKnob">
+                <property name="title" translatable="yes">Knob 7</property>
+                <property name="control-id-offset">0x07</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesKnob">
+                <property name="title" translatable="yes">Knob 8</property>
+                <property name="control-id-offset">0x08</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesKnob">
+                <property name="title" translatable="yes">Knob 9</property>
+                <property name="control-id-offset">0x09</property>
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

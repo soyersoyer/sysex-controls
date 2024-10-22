@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KlesPadPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Pad</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="KlesPad">
+                <property name="title" translatable="yes">Pad 1</property>
+                <property name="control-id-offset">0x70</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesPad">
+                <property name="title" translatable="yes">Pad 2</property>
+                <property name="control-id-offset">0x71</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesPad">
+                <property name="title" translatable="yes">Pad 3</property>
+                <property name="control-id-offset">0x72</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesPad">
+                <property name="title" translatable="yes">Pad 4</property>
+                <property name="control-id-offset">0x73</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesPad">
+                <property name="title" translatable="yes">Pad 5</property>
+                <property name="control-id-offset">0x74</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesPad">
+                <property name="title" translatable="yes">Pad 6</property>
+                <property name="control-id-offset">0x75</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesPad">
+                <property name="title" translatable="yes">Pad 7</property>
+                <property name="control-id-offset">0x76</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KlesPad">
+                <property name="title" translatable="yes">Pad 8</property>
+                <property name="control-id-offset">0x77</property>
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

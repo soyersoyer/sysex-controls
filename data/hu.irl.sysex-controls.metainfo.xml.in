@@ -12,8 +12,8 @@
   <description>
     <p>
 This is a Libadwaita UI that allows to configure the Arturia BeatStep,
-Keylab Essential 49 / 61 / 88 mk3, KeyStep, KeyStep 37, MicroLab,
-MiniLab mkII, MiniLab 3 MIDI keyboards.
+Keylab Essential 49 / 61 / 88, Keylab Essential 49 / 61 / 88 mk3,
+KeyStep, KeyStep 37, MicroLab, MiniLab mkII, MiniLab 3 MIDI keyboards.
     </p>
     <p>
 It currently allows for reading the controls (Buttons, Knobs, Pads, Keys, etc)
