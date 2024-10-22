@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl2ControllerPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Controller</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="ArFirmwareInfoGroup"/>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x4051</property></object></child>
+                    <property name="title" translatable="yes">Low power</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x4050</property></object></child>
+                    <property name="title" translatable="yes">Vegas mode</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x4026</property></object></child>
+                    <property name="title" translatable="yes">Octave button blink</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4052</property></object></child>
+                    <property name="title" translatable="yes">DAW Map</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="0x00">Default MCU</item>
+                          <item value="0x41">Default HUI</item>
+                          <item value="0x02">Live</item>
+                          <item value="0x03">Logic</item>
+                          <item value="0x44">Protools</item>
+                          <item value="0x05">Cubase</item>
+                          <item value="0x06">Studio One</item>
+                          <item value="0x07">Reaper</item>
+                          <item value="0x0a">MMC</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4028</property></object></child>
+                    <property name="title" translatable="yes">DAW Buttons</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>User</item>
+                          <item>DAW</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4029</property></object></child>
+                    <property name="title" translatable="yes">Track Control Buttons</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Single Track</item>
+                          <item>Multi Track</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4053</property></object></child>
+                    <property name="title" translatable="yes">DAW Fader Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Pickup</item>
+                          <item>Jump</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4054</property></object></child>
+                    <property name="title" translatable="yes">USER Fader Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Pickup</item>
+                          <item>Jump</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

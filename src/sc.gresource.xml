@@ -34,6 +34,12 @@
 
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
 
+    <file preprocess="xml-stripblanks">keylab2/kl2-book.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-controller-page.ui</file>
+
+    <file preprocess="xml-stripblanks">keylab3/kl3-book.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/kl3-controller-page.ui</file>
+
     <file preprocess="xml-stripblanks">keylabes/kles-book.ui</file>
     <file preprocess="xml-stripblanks">keylabes/kles-button.ui</file>
     <file preprocess="xml-stripblanks">keylabes/kles-button-page.ui</file>

@@ -40,6 +40,12 @@ sc_sources = [
   'beatstep/bs-transport-button.c',
   'beatstep/bs-transport-button-page.c',
 
+  'keylab2/kl2-book.c',
+  'keylab2/kl2-controller-page.c',
+
+  'keylab3/kl3-book.c',
+  'keylab3/kl3-controller-page.c',
+
   'keylabes/kles-book.c',
   'keylabes/kles-button.c',
   'keylabes/kles-button-page.c',

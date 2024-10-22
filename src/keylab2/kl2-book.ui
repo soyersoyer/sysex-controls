@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl2Book" parent="ArBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="Kl2ControllerPage"/>
+        </child>
+
+        <child>
+          <object class="ArPresetPage">
+            <property name="presets-num">12</property>
+            <property name="readonly-num">2</property>
+          </object>
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>
