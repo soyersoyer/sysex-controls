@@ -53,7 +53,7 @@
               <object class="AdwPreferencesGroup">
 
                 <child>
-                  <object class="Ks32ChRow">
+                  <object class="Ar2UserChRow">
                     <child><object class="ArControl"><property name="id">0x410a</property></object></child>
                     <property name="subtitle" translatable="yes">Fixed/follow User channel</property>
                   </object>

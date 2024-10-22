@@ -73,7 +73,6 @@ sc_sources = [
   'keylabes3/preset/kles3-pitch-mod-page.c',
 
   'keystep32/ks32-book.c',
-  'keystep32/ks32-ch-row.c',
   'keystep32/ks32-controller-page.c',
   'keystep32/ks32-cv-gate-page.c',
   'keystep32/ks32-hold-switch-page.c',
@@ -84,7 +83,6 @@ sc_sources = [
 
   'keystep37/ks37-book.c',
   'keystep37/ks37-cc-bank-page.c',
-  'keystep37/ks37-ch-row.c',
   'keystep37/ks37-controller-page.c',
   'keystep37/ks37-cv-gate-page.c',
   'keystep37/ks37-knob.c',

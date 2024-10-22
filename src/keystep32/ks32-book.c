@@ -1,6 +1,5 @@
 #include "ks32-book.h"
 
-#include "ks32-ch-row.h"
 #include "ks32-controller-page.h"
 #include "ks32-cv-gate-page.h"
 #include "ks32-hold-switch-page.h"
@@ -29,7 +28,6 @@ ks32_book_init (Ks32Book *self)
 {
   ar_book_set_read_ack (AR_BOOK (self), true);
 
-  g_type_ensure (KS32_TYPE_CH_ROW);
   g_type_ensure (KS32_TYPE_CONTROLLER_PAGE);
   g_type_ensure (KS32_TYPE_CV_GATE_PAGE);
   g_type_ensure (KS32_TYPE_HOLD_SWITCH_PAGE);

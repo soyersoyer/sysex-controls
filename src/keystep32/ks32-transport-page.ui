@@ -58,21 +58,21 @@
                 </binding>
 
                 <child>
-                  <object class="Ks32ChRow">
+                  <object class="Ar2UserChRow">
                     <child><object class="ArControl"><property name="id">0x4161</property></object></child>
                     <property name="title" translatable="yes">Stop Channel</property>
                   </object>
                 </child>
 
                 <child>
-                  <object class="Ks32ChRow">
+                  <object class="Ar2UserChRow">
                     <child><object class="ArControl"><property name="id">0x4162</property></object></child>
                     <property name="title" translatable="yes">Rec Channel</property>
                   </object>
                 </child>
 
                 <child>
-                  <object class="Ks32ChRow">
+                  <object class="Ar2UserChRow">
                     <child><object class="ArControl"><property name="id">0x4163</property></object></child>
                     <property name="title" translatable="yes">Play Channel</property>
                   </object>

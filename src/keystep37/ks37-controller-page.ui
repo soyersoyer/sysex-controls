@@ -48,7 +48,7 @@
                 </child>
 
                 <child>
-                  <object class="Ks37ChRow">
+                  <object class="Ar2UserChRow">
                     <child><object class="ArControl"><property name="id">0x4101</property></object></child>
                     <property name="title" translatable="yes">MIDI Input Channel</property>
                     <property name="subtitle" translatable="yes">USB/MIDI CV channel when Seq/Arp are stopped</property>

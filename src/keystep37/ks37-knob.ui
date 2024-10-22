@@ -43,7 +43,7 @@
     </child>
 
     <child>
-      <object class="Ks37ChRow">
+      <object class="Ar2UserChRow">
         <child><object class="ArControl"><property name="id">0x03</property></object></child>
       </object>
     </child>
