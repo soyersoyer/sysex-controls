@@ -29,7 +29,7 @@
                 </child>
 
                 <child>
-                  <object class="MicrolabChRow">
+                  <object class="Ar2KeyChRow">
                     <child><object class="ArControl"><property name="id">0x0240</property></object></child>
                     <binding name="visible">
                       <closure type="gboolean" function="cv_in">

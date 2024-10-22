@@ -1,7 +1,6 @@
 #include "ml2-book.h"
 
 #include "ml2-button.h"
-#include "ml2-ch-row.h"
 #include "ml2-controller-page.h"
 #include "ml2-knob.h"
 #include "ml2-knob-extra-page.h"
@@ -31,7 +30,6 @@ static void
 ml2_book_init (Ml2Book *self)
 {
   g_type_ensure (ML2_TYPE_BUTTON);
-  g_type_ensure (ML2_TYPE_CH_ROW);
   g_type_ensure (ML2_TYPE_CONTROLLER_PAGE);
   g_type_ensure (ML2_TYPE_KNOB);
   g_type_ensure (ML2_TYPE_KNOB_EXTRA_PAGE);

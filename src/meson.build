@@ -1,4 +1,5 @@
 sc_sources = [
+  'ar2-key-ch-row.c',
   'ar2-user-ch-row.c',
 
   'ar3-ch-row.c',
@@ -90,7 +91,6 @@ sc_sources = [
   'keystep37/ks37-transport-page.c',
 
   'microlab/microlab-book.c',
-  'microlab/microlab-ch-row.c',
   'microlab/microlab-hold-page.c',
   'microlab/microlab-keyboard-page.c',
   'microlab/microlab-mod-page.c',
@@ -98,7 +98,6 @@ sc_sources = [
 
   'minilab2/ml2-book.c',
   'minilab2/ml2-button.c',
-  'minilab2/ml2-ch-row.c',
   'minilab2/ml2-controller-page.c',
   'minilab2/ml2-knob.c',
   'minilab2/ml2-knob-extra-page.c',

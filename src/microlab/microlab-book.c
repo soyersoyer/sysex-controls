@@ -1,6 +1,5 @@
 #include "microlab-book.h"
 
-#include "microlab-ch-row.h"
 #include "microlab-hold-page.h"
 #include "microlab-keyboard-page.h"
 #include "microlab-mod-page.h"
@@ -24,7 +23,6 @@ microlab_book_class_init (MicrolabBookClass *klass)
 static void
 microlab_book_init (MicrolabBook *self)
 {
-  g_type_ensure (MICROLAB_TYPE_CH_ROW);
   g_type_ensure (MICROLAB_TYPE_HOLD_PAGE);
   g_type_ensure (MICROLAB_TYPE_KEYBOARD_PAGE);
   g_type_ensure (MICROLAB_TYPE_MOD_PAGE);
