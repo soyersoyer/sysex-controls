@@ -32,4 +32,6 @@ int ar_book_recall_preset (ArBook *self, uint8_t preset_id);
 int ar_book_store_preset (ArBook *self, uint8_t preset_id);
 int ar_book_device_inquiry (ArBook *self, uint8_t data[11]);
 
+void ar_book_use_dummy (ArBook *self);
+
 G_END_DECLS

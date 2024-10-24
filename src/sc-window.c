@@ -144,6 +144,10 @@ sc_window_midi_connect (ScWindow *self, ScControllerRow *row)
   adw_navigation_page_set_title (self->setting_page, controller->short_name);
   sc_window_set_book (self, AR_BOOK (controller->init (self->seq, ci->addr)));
 
+  #if 0
+  ar_book_use_dummy (self->book);
+  #endif
+
   adw_navigation_view_replace_with_tags (self->navigation_view, (const char * const[]){"load"}, 1);
   g_idle_add (G_SOURCE_FUNC (sc_create_load_task), self->book);
 }

@@ -29,6 +29,31 @@ typedef struct {
   };
 } ar_event_t;
 
+int
+sc_midi_arturia_dummy_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_ack, uint32_t control_id, uint8_t *val)
+{
+  *val = 0;
+  return 0;
+}
+
+int
+sc_midi_arturia_dummy_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val)
+{
+  return 0;
+}
+
+int
+sc_midi_arturia_dummy_recall_preset (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t preset_id)
+{
+  return 0;
+}
+
+int
+sc_midi_arturia_dummy_store_preset (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t preset_id)
+{
+  return 0;
+}
+
 /*
  * device inquiry response:
  *        /--- Device ID
@@ -455,6 +480,18 @@ int
 sc_midi_connect (snd_seq_t *seq, snd_seq_addr_t addr)
 {
   int err;
+
+  err = snd_seq_drop_input (seq);
+  if (err < 0) {
+    fprintf (stderr, "snd_seq_drop_input failed %d\n", err);
+    return err;
+  }
+
+  err = snd_seq_drop_output (seq);
+  if (err < 0) {
+    fprintf (stderr, "snd_seq_drop_output failed %d\n", err);
+    return err;
+  }
 
   err = snd_seq_connect_from (seq, 0, addr.client, addr.port);
   if (err < 0) {

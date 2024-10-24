@@ -192,6 +192,15 @@ ar_book_device_inquiry (ArBook *self, uint8_t data[11])
   return sc_midi_arturia_device_inquiry (priv->seq, priv->seq_addr, data);
 }
 
+void ar_book_use_dummy (ArBook *self)
+{
+  ArBookClass *klass = AR_BOOK_GET_CLASS (self);
+  klass->read_control = sc_midi_arturia_dummy_read_control;
+  klass->write_control = sc_midi_arturia_dummy_write_control;
+  klass->recall_preset = sc_midi_arturia_dummy_recall_preset;
+  klass->store_preset = sc_midi_arturia_dummy_store_preset;
+}
+
 static void
 ar_book_init (ArBook *self)
 {
