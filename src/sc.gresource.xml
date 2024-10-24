@@ -36,8 +36,25 @@
 
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
 
+    <file preprocess="xml-stripblanks">keylab2/kl2-bank-page.ui</file>
     <file preprocess="xml-stripblanks">keylab2/kl2-book.ui</file>
     <file preprocess="xml-stripblanks">keylab2/kl2-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-cv-mod.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-cv-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-daw-button.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-daw-button-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-fader.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-keyboard-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-kfs-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-knob.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-pad.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-pad-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-pedal.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-pedal-calibration.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-pedal-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-pitch-mod-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-select-button.ui</file>
+    <file preprocess="xml-stripblanks">keylab2/kl2-velocity-page.ui</file>
 
     <file preprocess="xml-stripblanks">keylab3/kl3-book.ui</file>
     <file preprocess="xml-stripblanks">keylab3/kl3-controller-page.ui</file>

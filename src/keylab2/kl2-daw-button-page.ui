@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl2DawButtonPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Daw Buttons</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="Kl2DawButton">
+                <property name="title">Solo</property>
+                <property name="control-id-offset">0x60</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2DawButton">
+                <property name="title">Mute</property>
+                <property name="control-id-offset">0x61</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2DawButton">
+                <property name="title">Rec</property>
+                <property name="control-id-offset">0x62</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2DawButton">
+                <property name="title">Read</property>
+                <property name="control-id-offset">0x63</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2DawButton">
+                <property name="title">Off</property>
+                <property name="control-id-offset">0x64</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2DawButton">
+                <property name="title">Save</property>
+                <property name="control-id-offset">0x65</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2DawButton">
+                <property name="title">In</property>
+                <property name="control-id-offset">0x66</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2DawButton">
+                <property name="title">Out</property>
+                <property name="control-id-offset">0x67</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2DawButton">
+                <property name="title">Marker</property>
+                <property name="control-id-offset">0x68</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2DawButton">
+                <property name="title">Undo</property>
+                <property name="control-id-offset">0x69</property>
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

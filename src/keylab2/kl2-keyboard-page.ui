@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl2KeyboardPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Keyboard</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title">Part 1</property>
+
+                <child>
+                  <object class="Ar2UserChRow">
+                    <child><object class="ArControl"><property name="id">0x0230</property></object></child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x1430</property></object></child>
+                    <property name="title" translatable="yes">Transpose Oct</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="61">-3</item>
+                          <item>-2</item>
+                          <item>-1</item>
+                          <item>+0</item>
+                          <item>+1</item>
+                          <item>+2</item>
+                          <item>+3</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x1530</property></object></child>
+                    <property name="title" translatable="yes">Transpose Semi</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="53">-11</item>
+                          <item>-10</item>
+                          <item>-9</item>
+                          <item>-8</item>
+                          <item>-7</item>
+                          <item>-6</item>
+                          <item>-5</item>
+                          <item>-4</item>
+                          <item>-3</item>
+                          <item>-2</item>
+                          <item>-1</item>
+                          <item>+0</item>
+                          <item>+1</item>
+                          <item>+2</item>
+                          <item>+3</item>
+                          <item>+4</item>
+                          <item>+5</item>
+                          <item>+6</item>
+                          <item>+7</item>
+                          <item>+8</item>
+                          <item>+9</item>
+                          <item>+10</item>
+                          <item>+11</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow" id="key_velocity_curve">
+                    <child><object class="ArControl"><property name="id">0x0a30</property></object></child>
+                    <property name="title" translatable="yes">Key Velocity Curve</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Logarithmic</item>
+                          <item>Exponential</item>
+                          <item value="4">Custom</item>
+                          <item>Use Global</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow" id="split_mode">
+                    <child><object class="ArControl"><property name="id">0x2130</property></object></child>
+                    <property name="title" translatable="yes">Split Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item value="0x7f">On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x2230</property></object></child>
+                    <property name="title" translatable="yes">Split Point</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">split_mode</lookup>
+                        <constant type="GVariant">[0x7f]</constant>
+                      </closure>
+                    </binding>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <binding name="visible">
+                  <closure type="gboolean" function="cv_in">
+                    <lookup type="ScComboRow" name="selected-item">split_mode</lookup>
+                    <constant type="GVariant">[0x7f]</constant>
+                  </closure>
+                </binding>
+                <property name="title">Part 2</property>
+
+                <child>
+                  <object class="Ar2UserChRow">
+                    <child><object class="ArControl"><property name="id">0x2330</property></object></child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x2430</property></object></child>
+                    <property name="title" translatable="yes">Transpose Oct</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="61">-3</item>
+                          <item>-2</item>
+                          <item>-1</item>
+                          <item>+0</item>
+                          <item>+1</item>
+                          <item>+2</item>
+                          <item>+3</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x2530</property></object></child>
+                    <property name="title" translatable="yes">Transpose Semi</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="53">-11</item>
+                          <item>-10</item>
+                          <item>-9</item>
+                          <item>-8</item>
+                          <item>-7</item>
+                          <item>-6</item>
+                          <item>-5</item>
+                          <item>-4</item>
+                          <item>-3</item>
+                          <item>-2</item>
+                          <item>-1</item>
+                          <item>+0</item>
+                          <item>+1</item>
+                          <item>+2</item>
+                          <item>+3</item>
+                          <item>+4</item>
+                          <item>+5</item>
+                          <item>+6</item>
+                          <item>+7</item>
+                          <item>+8</item>
+                          <item>+9</item>
+                          <item>+10</item>
+                          <item>+11</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <binding name="visible">
+                  <closure type="gboolean" function="cv_in">
+                    <lookup type="ScComboRow" name="selected-item">split_mode</lookup>
+                    <constant type="GVariant">[0x7f]</constant>
+                  </closure>
+                </binding>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x2730</property></object></child>
+                    <property name="title" translatable="yes">Oct buttons Assign</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="66">Part 1</item>
+                          <item>Part 2</item>
+                          <item>Both</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x2830</property></object></child>
+                    <property name="title" translatable="yes">Trans buttons Assign</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="66">Part 1</item>
+                          <item>Part 2</item>
+                          <item>Both</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x2a30</property></object></child>
+                    <property name="title" translatable="yes">Chord buttons Assign</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="66">Part 1</item>
+                          <item>Part 2</item>
+                          <item>Both</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x0b30</property></object></child>
+                    <property name="title" translatable="yes">Aftertouch Assign</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="66">Part 1</item>
+                          <item>Part 2</item>
+                          <item>Both</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

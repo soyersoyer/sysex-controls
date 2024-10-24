@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl2Pad" parent="ScPreferencesGroup">
+
+    <child>
+      <object class="ScComboRow" id="control_mode">
+        <child><object class="ArControl"><property name="id">0x0100</property></object></child>
+        <property name="title" translatable="yes">Mode</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item value="0x00">Off</item>
+              <item value="0x0b">MIDI Note</item>
+              <item value="0x08">Switched Control</item>
+              <item value="0x0c">Program Change</item>
+              <item value="0x06">Preset Change</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow" id="color_red">
+        <child><object class="ArControl"><property name="id">0x1300</property></object></child>
+        <property name="visible">no</property>
+        <property name="title" translatable="yes">Color Red</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow" id="color_green">
+        <child><object class="ArControl"><property name="id">0x1100</property></object></child>
+        <property name="visible">no</property>
+        <property name="title" translatable="yes">Color Green</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow" id="color_blue">
+        <child><object class="ArControl"><property name="id">0x1200</property></object></child>
+        <property name="visible">no</property>
+        <property name="title" translatable="yes">Color Blue</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ar2RgbColorRow">
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x06, 0x08, 0x0b, 0x0c]</constant>
+          </closure>
+        </binding>
+        <property name="r">color_red</property>
+        <property name="g">color_green</property>
+        <property name="b">color_blue</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScComboRow">
+        <child><object class="ArControl"><property name="id">0x0300</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x06]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">User Preset</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item>User 1</item>
+              <item>User 2</item>
+              <item>User 3</item>
+              <item>User 4</item>
+              <item>User 5</item>
+              <item>User 6</item>
+              <item>User 7</item>
+              <item>User 8</item>
+              <item>User 9</item>
+              <item>User 10</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScComboRow">
+        <child><object class="ArControl"><property name="id">0x0600</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x08, 0x0b]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Option</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item>Toggle</item>
+              <item>Gate</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ar2UserChRow">
+        <child><object class="ArControl"><property name="id">0x0200</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x08, 0x0b]</constant>
+          </closure>
+        </binding>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScCcRow">
+        <child><object class="ArControl"><property name="id">0x0300</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x08]</constant>
+          </closure>
+        </binding>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScNoteRow">
+        <child><object class="ArControl"><property name="id">0x0300</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x0b]</constant>
+          </closure>
+        </binding>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScPcRow">
+        <child><object class="ArControl"><property name="id">0x0300</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x0c]</constant>
+          </closure>
+        </binding>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ArControl"><property name="id">0x0400</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x0c]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Bank LSB</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ArControl"><property name="id">0x0500</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x0c]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Bank MSB</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ArControl"><property name="id">0x0400</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x08]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">Off Value</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ArControl"><property name="id">0x0500</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x08]</constant>
+          </closure>
+        </binding>
+        <property name="title" translatable="yes">On Value</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+  </template>
+</interface>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl2PitchModPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Pitch/ Mod</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Pitch Bend</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x0241</property></object></child>
+                    <property name="title" translatable="yes">Channel</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="66">Part 1</item>
+                          <item>Part 2</item>
+                          <item>Both</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Mod Wheel</property>
+
+                <child>
+                  <object class="AdwSwitchRow" id="mod_wheel">
+                    <child><object class="ArControl"><property name="id">0x0140</property></object></child>
+                    <property name="title" translatable="yes">Enabled</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x0240</property></object></child>
+                    <property name="title" translatable="yes">Channel</property>
+                    <binding name="visible">
+                      <lookup type="AdwSwitchRow" name="active">mod_wheel</lookup>
+                    </binding>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="66">Part 1</item>
+                          <item>Part 2</item>
+                          <item>Both</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScCcRow">
+                    <child><object class="ArControl"><property name="id">0x0340</property></object></child>
+                    <binding name="visible">
+                      <lookup type="AdwSwitchRow" name="active">mod_wheel</lookup>
+                    </binding>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x0440</property></object></child>
+                    <binding name="visible">
+                      <lookup type="AdwSwitchRow" name="active">mod_wheel</lookup>
+                    </binding>
+                    <property name="title" translatable="yes">Min Value</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x0540</property></object></child>
+                    <binding name="visible">
+                      <lookup type="AdwSwitchRow" name="active">mod_wheel</lookup>
+                    </binding>
+                    <property name="title" translatable="yes">Max Value</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

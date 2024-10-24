@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl2CvPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">CV</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">CV Modulation Input</property>
+
+                <child>
+                  <object class="AdwSwitchRow" id="cv_in">
+                    <child><object class="ArControl"><property name="id">0x0155</property></object></child>
+                    <property name="title" translatable="yes">Enabled</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x1d55</property></object></child>
+                    <property name="title" translatable="yes">MOD CV Max Voltage</property>
+                    <binding name="visible">
+                      <lookup type="AdwSwitchRow" name="active">cv_in</lookup>
+                    </binding>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="0x01">1V</item>
+                          <item>2V</item>
+                          <item>3V</item>
+                          <item>4V</item>
+                          <item>5V</item>
+                          <item>6V</item>
+                          <item>7V</item>
+                          <item>8V</item>
+                          <item>9V</item>
+                          <item>10V</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <binding name="visible">
+                  <lookup type="AdwSwitchRow" name="active">cv_in</lookup>
+                </binding>
+
+                <child>
+                  <object class="Ar2UserChRow">
+                    <child><object class="ArControl"><property name="id">0x0255</property></object></child>
+                    <binding name="visible">
+                      <lookup type="AdwSwitchRow" name="active">cv_in</lookup>
+                    </binding>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScCcRow">
+                    <child><object class="ArControl"><property name="id">0x0355</property></object></child>
+                    <binding name="visible">
+                      <lookup type="AdwSwitchRow" name="active">cv_in</lookup>
+                    </binding>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x0455</property></object></child>
+                    <binding name="visible">
+                      <lookup type="AdwSwitchRow" name="active">cv_in</lookup>
+                    </binding>
+                    <property name="title" translatable="yes">Min Value</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x0555</property></object></child>
+                    <binding name="visible">
+                      <lookup type="AdwSwitchRow" name="active">cv_in</lookup>
+                    </binding>
+                    <property name="title" translatable="yes">Max Value</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">CV Pitch</property>
+
+                <child>
+                  <object class="ScComboRow" id="pitch_cv_output">
+                    <child><object class="ArControl"><property name="id">0x1756</property></object></child>
+                    <property name="title" translatable="yes">PITCH CV Output</property>
+                    <property name="subtitle-lines">2</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Volts per octave</item>
+                          <item>Hertz per Volt</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x1856</property></object></child>
+                    <property name="title" translatable="yes">0V MIDI Note</property>
+                    <property name="subtitle">With Volts per Octave</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">pitch_cv_output</lookup>
+                        <constant type="GVariant">[0x00]</constant>
+                      </closure>
+                    </binding>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x1956</property></object></child>
+                    <property name="title" translatable="yes">1V MIDI Note</property>
+                    <property name="subtitle">With Hertz per Volt</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">pitch_cv_output</lookup>
+                        <constant type="GVariant">[0x01]</constant>
+                      </closure>
+                    </binding>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x1a56</property></object></child>
+                    <property name="title" translatable="yes">Note priority</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Low</item>
+                          <item>High</item>
+                          <item>Last</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x1b56</property></object></child>
+                    <property name="title" translatable="yes">Pitch Bend Range (Semi-tones)</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">24</property>
+                        <property name="value">2</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x1c56</property></object></child>
+                    <property name="title" translatable="yes">Pitch assignment</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="66">Part 1</item>
+                          <item>Part 2</item>
+                          <item>Both</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="Ar2UserChRow">
+                    <child><object class="ArControl"><property name="id">0x3556</property></object></child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2CvMod">
+                <property name="title" translatable="yes">Modulation CV 1</property>
+                <property name="control-id-offset">0x58</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2CvMod">
+                <property name="title" translatable="yes">Modulation CV 2</property>
+                <property name="control-id-offset">0x59</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">CV Gate</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x1f57</property></object></child>
+                    <property name="title" translatable="yes">Gate CV Output</property>
+                    <property name="subtitle">'Short/negative' trigger and two common types of 'Voltage/positive' triggers.</property>
+                    <property name="subtitle-lines">2</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>S-trig</item>
+                          <item>V-trig 5V</item>
+                          <item>V-trig 12V</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

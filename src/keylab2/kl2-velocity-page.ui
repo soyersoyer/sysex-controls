@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl2VelocityPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Velocity</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow" id="key_velocity_curve">
+                    <child><object class="ArControl"><property name="id">0x402a</property></object></child>
+                    <property name="title" translatable="yes">Key Velocity Curve</property>
+                    <property name="subtitle-lines">2</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Logarithmic</item>
+                          <item>Exponential</item>
+                          <item>Custom</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x402b</property></object></child>
+                    <property name="title" translatable="yes">Min Velocity</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">key_velocity_curve</lookup>
+                        <constant type="GVariant">[0x03]</constant>
+                      </closure>
+                    </binding>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">127</property>
+                        <property name="value">64</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x402c</property></object></child>
+                    <property name="title" translatable="yes">Piano Velocity</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">key_velocity_curve</lookup>
+                        <constant type="GVariant">[0x03]</constant>
+                      </closure>
+                    </binding>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">127</property>
+                        <property name="value">64</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x402d</property></object></child>
+                    <property name="title" translatable="yes">Mezzo Velocity</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">key_velocity_curve</lookup>
+                        <constant type="GVariant">[0x03]</constant>
+                      </closure>
+                    </binding>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">127</property>
+                        <property name="value">64</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x402e</property></object></child>
+                    <property name="title" translatable="yes">Forte Velocity</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">key_velocity_curve</lookup>
+                        <constant type="GVariant">[0x03]</constant>
+                      </closure>
+                    </binding>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">127</property>
+                        <property name="value">64</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x402f</property></object></child>
+                    <property name="title" translatable="yes">Max Velocity</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">key_velocity_curve</lookup>
+                        <constant type="GVariant">[0x03]</constant>
+                      </closure>
+                    </binding>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">127</property>
+                        <property name="value">64</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow" id="pad_velocity_curve">
+                    <child><object class="ArControl"><property name="id">0x401a</property></object></child>
+                    <property name="title" translatable="yes">Pad Velocity Curve</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Logarithmic</item>
+                          <item>Exponential</item>
+                          <item>Fix</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x4025</property></object></child>
+                    <property name="title" translatable="yes">Pad Fixed Velocity</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">pad_velocity_curve</lookup>
+                        <constant type="GVariant">[0x03]</constant>
+                      </closure>
+                    </binding>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">127</property>
+                        <property name="value">64</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x401d</property></object></child>
+                    <property name="title" translatable="yes">Key Aftertouch Curve</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Logarithmic</item>
+                          <item>Exponential</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x401e</property></object></child>
+                    <property name="title" translatable="yes">Key Aftertouch Min</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x401f</property></object></child>
+                    <property name="title" translatable="yes">Key Aftertouch Max</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4020</property></object></child>
+                    <property name="title" translatable="yes">Pad Aftertouch Curve</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Logarithmic</item>
+                          <item>Exponential</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x401b</property></object></child>
+                    <property name="title" translatable="yes">Pad Aftertouch Min</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x401c</property></object></child>
+                    <property name="title" translatable="yes">Pad Aftertouch Max</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

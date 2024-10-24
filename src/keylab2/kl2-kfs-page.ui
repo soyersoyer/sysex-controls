@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl2KfsPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">KfsPage</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="Kl2Knob">
+                <property name="title" translatable="yes">Knob</property>
+                <property name="control-id-offset">0x01</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Fader">
+                <property name="title" translatable="yes">Fader</property>
+                <property name="control-id-offset">0x42</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2SelectButton">
+                <property name="title" translatable="yes">Select</property>
+                <property name="control-id-offset">0x22</property>
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

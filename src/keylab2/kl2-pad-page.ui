@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl2PadPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Pads</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 1</property>
+                <property name="control-id-offset">0x70</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 2</property>
+                <property name="control-id-offset">0x71</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 3</property>
+                <property name="control-id-offset">0x72</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 4</property>
+                <property name="control-id-offset">0x73</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 5</property>
+                <property name="control-id-offset">0x74</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 6</property>
+                <property name="control-id-offset">0x75</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 7</property>
+                <property name="control-id-offset">0x76</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 8</property>
+                <property name="control-id-offset">0x77</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 9</property>
+                <property name="control-id-offset">0x78</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 10</property>
+                <property name="control-id-offset">0x79</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 11</property>
+                <property name="control-id-offset">0x7a</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 12</property>
+                <property name="control-id-offset">0x7b</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 13</property>
+                <property name="control-id-offset">0x7c</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 14</property>
+                <property name="control-id-offset">0x7d</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 15</property>
+                <property name="control-id-offset">0x7e</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl2Pad">
+                <property name="title" translatable="yes">Pad 16</property>
+                <property name="control-id-offset">0x7f</property>
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

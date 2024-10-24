@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl2CvMod" parent="ScPreferencesGroup">
+
+    <child>
+      <object class="ScComboRow" id="control_mode">
+        <child><object class="ArControl"><property name="id">0x1e00</property></object></child>
+        <property name="title" translatable="yes">MOD CV Source</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item>Mod Wheel</item>
+              <item>Velocity</item>
+              <item>Aftertouch</item>
+              <item>Encoder1</item>
+              <item>Encoder2</item>
+              <item>Encoder3</item>
+              <item>Encoder4</item>
+              <item>Encoder5</item>
+              <item>Encoder6</item>
+              <item>Encoder7</item>
+              <item>Encoder8</item>
+              <item>Encoder9</item>
+              <item>Fader1</item>
+              <item>Fader2</item>
+              <item>Fader3</item>
+              <item>Fader4</item>
+              <item>Fader5</item>
+              <item>Fader6</item>
+              <item>Fader7</item>
+              <item>Fader8</item>
+              <item>Fader9</item>
+              <item>Pedal_Sus</item>
+              <item>Pedal_Exp</item>
+              <item>Pedal_Aux1</item>
+              <item>Pedal_Aux2</item>
+              <item>Pedal_Aux3</item>
+              <item>Select1</item>
+              <item>Select2</item>
+              <item>Select3</item>
+              <item>Select4</item>
+              <item>Select5</item>
+              <item>Select6</item>
+              <item>Select7</item>
+              <item>Select8</item>
+              <item>Select9</item>
+              <item>MIDI</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScComboRow">
+        <child><object class="ArControl"><property name="id">0x1d00</property></object></child>
+        <property name="title" translatable="yes">MOD CV Max Voltage</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item value="0x01">1V</item>
+              <item>2V</item>
+              <item>3V</item>
+              <item>4V</item>
+              <item>5V</item>
+              <item>6V</item>
+              <item>7V</item>
+              <item>8V</item>
+              <item>9V</item>
+              <item>10V</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ar2UserChRow">
+        <child><object class="ArControl"><property name="id">0x3500</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x23]</constant>
+          </closure>
+        </binding>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScCcRow">
+        <child><object class="ArControl"><property name="id">0x3600</property></object></child>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x23]</constant>
+          </closure>
+        </binding>
+      </object>
+    </child>
+    <!-- TODO: default value differs by id -->
+
+  </template>
+</interface>
