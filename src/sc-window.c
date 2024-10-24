@@ -265,6 +265,7 @@ __attribute__ ((format (gnu_printf, 2, 3)))
 sc_io_problem (ScWindow *self, const char *format, ...)
 {
   char message[128];
+  AdwToast *toast;
   va_list args;
 
   va_start(args, format);
@@ -273,7 +274,10 @@ sc_io_problem (ScWindow *self, const char *format, ...)
 
   g_warning ("%s", message);
 
-  adw_toast_overlay_add_toast (self->toast_overlay, adw_toast_new (message));
+  toast = adw_toast_new (message);
+  adw_toast_set_timeout (toast, 2);
+  adw_toast_set_priority (toast, ADW_TOAST_PRIORITY_HIGH);
+  adw_toast_overlay_add_toast (self->toast_overlay, toast);
   // TODO: better error handling
   sc_midi_init (self);
 }
