@@ -1,5 +1,5 @@
 project('sysex-controls', 'c',
-          version: '0.2.8',
+          version: '0.2.9',
     meson_version: '>= 0.62.0',
   default_options: [ 'warning_level=2', 'werror=false', 'c_std=gnu11', ],
 )

@@ -21,7 +21,7 @@ It currently allows for reading the controls (Buttons, Knobs, Pads, Keys, etc)
 and changing them and writing back to the device.
 This is a Linux alternative to the Midi Control Center software.
 It doesn't support the KeyStep and BeatStep Sequencer yet.
-The KeyLab mkII 49 / 61 / 88 and KeyLab 49 / 61 / 88 mk3 support is very basic yet.
+The KeyLab 49 / 61 / 88 mk3 support is very basic yet.
     </p>
     <p>
 I do not have access to all devices, so it is possible that one of them does
@@ -47,6 +47,14 @@ not work, in which case please let me know.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.9" date="2024-10-25">
+      <description>
+        <ul>
+          <li>KeyLab mkII 49 / 61 / 88 support</li>
+          <li>RGB Color chooser</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.8" date="2024-10-22">
       <description>
         <ul>
