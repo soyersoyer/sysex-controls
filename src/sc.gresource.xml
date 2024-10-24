@@ -9,6 +9,7 @@
     <file preprocess="xml-stripblanks">ar3-ch-row.ui</file>
     <file preprocess="xml-stripblanks">ar3-color-row.ui</file>
 
+    <file preprocess="xml-stripblanks">ar-ch-row.ui</file>
     <file preprocess="xml-stripblanks">ar-firmware-info-group.ui</file>
     <file preprocess="xml-stripblanks">ar-preset-chooser-page.ui</file>
     <file preprocess="xml-stripblanks">ar-preset-chooser-row.ui</file>

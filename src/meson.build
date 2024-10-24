@@ -8,6 +8,7 @@ sc_sources = [
   'ar3-color-row.c',
 
   'ar-book.c',
+  'ar-ch-row.c',
   'ar-control.c',
   'ar-firmware-info-group.c',
   'ar-preset-chooser-page.c',
