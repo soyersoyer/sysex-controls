@@ -25,12 +25,7 @@
     <child>
       <object class="AdwSpinRow" id="color_red">
         <child><object class="ArControl"><property name="id">0x1300</property></object></child>
-        <binding name="visible">
-          <closure type="gboolean" function="cv_in">
-            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
-            <constant type="GVariant">[0x07, 0x08, 0x09, 0x0a]</constant>
-          </closure>
-        </binding>
+        <property name="visible">no</property>
         <property name="title" translatable="yes">Color Red</property>
         <property name="adjustment">
           <object class="GtkAdjustment">
@@ -46,12 +41,7 @@
     <child>
       <object class="AdwSpinRow" id="color_green">
         <child><object class="ArControl"><property name="id">0x1200</property></object></child>
-        <binding name="visible">
-          <closure type="gboolean" function="cv_in">
-            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
-            <constant type="GVariant">[0x07, 0x08, 0x09, 0x0a]</constant>
-          </closure>
-        </binding>
+        <property name="visible">no</property>
         <property name="title" translatable="yes">Color Green</property>
         <property name="adjustment">
           <object class="GtkAdjustment">
@@ -67,12 +57,7 @@
     <child>
       <object class="AdwSpinRow" id="color_blue">
         <child><object class="ArControl"><property name="id">0x1100</property></object></child>
-        <binding name="visible">
-          <closure type="gboolean" function="cv_in">
-            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
-            <constant type="GVariant">[0x07, 0x08, 0x09, 0x0a]</constant>
-          </closure>
-        </binding>
+        <property name="visible">no</property>
         <property name="title" translatable="yes">Color Blue</property>
         <property name="adjustment">
           <object class="GtkAdjustment">
@@ -85,38 +70,19 @@
       </object>
     </child>
 
-    <!--child> TODO: map colors to rows and rows to colors? or check sending 3 byte to 0x1100 is ok...
-      <object class="ScColorRow" id="control_color">
+    <child>
+      <object class="Ar2RgbColorRow">
         <binding name="visible">
           <closure type="gboolean" function="cv_in">
             <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
-            <constant type="GVariant">[0x07, 0x08, 0x09, 0x0b]</constant>
+            <constant type="GVariant">[0x07, 0x08, 0x09, 0x0a]</constant>
           </closure>
         </binding>
-        <property name="model">
-          <object class="ScControlValueList">
-            <items>
-              <item>#ff0000</item>
-              <item>#ff0044</item>
-              <item>#ff5000</item>
-              <item>#ff8a00</item>
-              <item>#ffff00</item>
-              <item>#7aff00</item>
-              <item>#00ff00</item>
-              <item>#008e00</item>
-              <item>#00fe7a</item>
-              <item>#00ffff</item>
-              <item>#0084ff</item>
-              <item>#0000ff</item>
-              <item>#8400ff</item>
-              <item>#ff00ff</item>
-              <item>#ff008A</item>
-              <item>#4a0050</item>
-            </items>
-          </object>
-        </property>
+        <property name="r">color_red</property>
+        <property name="g">color_green</property>
+        <property name="b">color_blue</property>
       </object>
-    </child-->
+    </child>
 
     <child>
       <object class="ScComboRow">

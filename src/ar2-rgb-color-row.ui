@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ar2RgbColorRow" parent="AdwActionRow">
+    <property name="title">Color</property>
+    <child>
+      <object class="GtkColorDialogButton" id="button">
+        <property name="valign">center</property>
+        <property name="dialog">
+          <object class="GtkColorDialog">
+            <property name="with-alpha">no</property>
+          </object>
+        </property>
+      </object>
+    </child>
+  </template>
+</interface>
