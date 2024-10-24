@@ -14,6 +14,7 @@
     <file preprocess="xml-stripblanks">ar-preset-chooser-row.ui</file>
     <file preprocess="xml-stripblanks">ar-preset-page.ui</file>
 
+    <file preprocess="xml-stripblanks">sc-action-row.ui</file>
     <file preprocess="xml-stripblanks">sc-cc-row.ui</file>
     <file preprocess="xml-stripblanks">sc-color-item.ui</file>
     <file preprocess="xml-stripblanks">sc-color-row.ui</file>

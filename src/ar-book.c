@@ -11,6 +11,7 @@
 #include "ar2-user-ch-row.h"
 #include "ar3-ch-row.h"
 #include "ar3-color-row.h"
+#include "sc-action-row.h"
 #include "sc-cc-row.h"
 #include "sc-combo-row.h"
 #include "sc-control-value.h"
@@ -205,6 +206,7 @@ ar_book_init (ArBook *self)
   g_type_ensure (AR_TYPE_PRESET_CHOOSER_PAGE);
   g_type_ensure (AR_TYPE_PRESET_CHOOSER_ROW);
   g_type_ensure (AR_TYPE_PRESET_PAGE);
+  g_type_ensure (SC_TYPE_ACTION_ROW);
   g_type_ensure (SC_TYPE_CC_ROW);
   g_type_ensure (SC_TYPE_COMBO_ROW);
   g_type_ensure (SC_TYPE_CONTROL_VALUE);
