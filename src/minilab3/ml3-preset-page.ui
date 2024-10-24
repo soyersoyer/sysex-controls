@@ -25,80 +25,46 @@
               <object class="AdwPreferencesGroup">
 
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="ScActionRow">
                     <property name="title" translatable="yes">Shift / Pitch / Mod</property>
-                    <property name="activatable">yes</property>
                     <signal name="activated" handler="ml3_preset_page_on_spm_activated" swapped="yes"/>
-                    <child type="suffix">
-                      <object class="GtkImage">
-                        <property name="icon-name">go-next-symbolic</property>
-                      </object>
-                    </child>
                   </object>
                 </child>
 
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="ScActionRow">
                     <property name="title" translatable="yes">Main Knob</property>
-                    <property name="activatable">yes</property>
                     <signal name="activated" handler="ml3_preset_page_on_main_knob_activated" swapped="yes"/>
-                    <child type="suffix">
-                      <object class="GtkImage">
-                        <property name="icon-name">go-next-symbolic</property>
-                      </object>
-                    </child>
                   </object>
                 </child>
 
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="ScActionRow">
                     <property name="title" translatable="yes">Knobs</property>
-                    <property name="activatable">yes</property>
                     <signal name="activated" handler="ml3_preset_page_on_knob_activated" swapped="yes"/>
-                    <child type="suffix">
-                      <object class="GtkImage">
-                        <property name="icon-name">go-next-symbolic</property>
-                      </object>
-                    </child>
                   </object>
                 </child>
 
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="ScActionRow">
                     <property name="title" translatable="yes">Faders</property>
-                    <property name="activatable">yes</property>
                     <signal name="activated" handler="ml3_preset_page_on_fader_activated" swapped="yes"/>
-                    <child type="suffix">
-                      <object class="GtkImage">
-                        <property name="icon-name">go-next-symbolic</property>
-                      </object>
-                    </child>
                   </object>
                 </child>
 
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads Bank A</property>
                     <property name="activatable">yes</property>
                     <signal name="activated" handler="ml3_preset_page_on_pad_a_activated" swapped="yes"/>
-                    <child type="suffix">
-                      <object class="GtkImage">
-                        <property name="icon-name">go-next-symbolic</property>
-                      </object>
-                    </child>
                   </object>
                 </child>
 
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads Bank B</property>
                     <property name="activatable">yes</property>
                     <signal name="activated" handler="ml3_preset_page_on_pad_b_activated" swapped="yes"/>
-                    <child type="suffix">
-                      <object class="GtkImage">
-                        <property name="icon-name">go-next-symbolic</property>
-                      </object>
-                    </child>
                   </object>
                 </child>
 
