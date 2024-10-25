@@ -76,13 +76,13 @@
 
     <file preprocess="xml-stripblanks">keylabes3/kles3-book.ui</file>
     <file preprocess="xml-stripblanks">keylabes3/kles3-controller-page.ui</file>
-    <file preprocess="xml-stripblanks">keylabes3/kles3-daw-control-row.ui</file>
     <file preprocess="xml-stripblanks">keylabes3/kles3-pedal-page.ui</file>
     <file preprocess="xml-stripblanks">keylabes3/kles3-preset-page.ui</file>
     <file preprocess="xml-stripblanks">keylabes3/kles3-velocity-page.ui</file>
     <file preprocess="xml-stripblanks">keylabes3/preset/kles3-button.ui</file>
     <file preprocess="xml-stripblanks">keylabes3/preset/kles3-button-page.ui</file>
     <file preprocess="xml-stripblanks">keylabes3/preset/kles3-daw-button.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/preset/kles3-daw-control-row.ui</file>
     <file preprocess="xml-stripblanks">keylabes3/preset/kles3-fader.ui</file>
     <file preprocess="xml-stripblanks">keylabes3/preset/kles3-fader-page.ui</file>
     <file preprocess="xml-stripblanks">keylabes3/preset/kles3-knob.ui</file>

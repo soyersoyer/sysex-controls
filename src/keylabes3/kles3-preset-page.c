@@ -3,6 +3,7 @@
 #include "preset/kles3-button.h"
 #include "preset/kles3-button-page.h"
 #include "preset/kles3-daw-button.h"
+#include "preset/kles3-daw-control-row.h"
 #include "preset/kles3-fader.h"
 #include "preset/kles3-fader-page.h"
 #include "preset/kles3-knob.h"
@@ -114,6 +115,7 @@ kles3_preset_page_init (Kles3PresetPage *self)
   g_type_ensure (KLES3_TYPE_BUTTON);
   g_type_ensure (KLES3_TYPE_BUTTON_PAGE);
   g_type_ensure (KLES3_TYPE_DAW_BUTTON);
+  g_type_ensure (KLES3_TYPE_DAW_CONTROL_ROW);
   g_type_ensure (KLES3_TYPE_FADER);
   g_type_ensure (KLES3_TYPE_FADER_PAGE);
   g_type_ensure (KLES3_TYPE_KNOB);
