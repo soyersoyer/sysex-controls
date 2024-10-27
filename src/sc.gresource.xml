@@ -6,6 +6,7 @@
     <file preprocess="xml-stripblanks">ar2-rgb-color-row.ui</file>
     <file preprocess="xml-stripblanks">ar2-user-ch-row.ui</file>
 
+    <file preprocess="xml-stripblanks">ar3-active-ch-row.ui</file>
     <file preprocess="xml-stripblanks">ar3-ch-row.ui</file>
     <file preprocess="xml-stripblanks">ar3-color-row.ui</file>
 

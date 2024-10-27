@@ -10,6 +10,7 @@
 #include "ar2-key-ch-row.h"
 #include "ar2-rgb-color-row.h"
 #include "ar2-user-ch-row.h"
+#include "ar3-active-ch-row.h"
 #include "ar3-ch-row.h"
 #include "ar3-color-row.h"
 #include "sc-action-row.h"
@@ -209,6 +210,7 @@ ar_book_init (ArBook *self)
   g_type_ensure (AR2_TYPE_KEY_CH_ROW);
   g_type_ensure (AR2_TYPE_RGB_COLOR_ROW);
   g_type_ensure (AR2_TYPE_USER_CH_ROW);
+  g_type_ensure (AR3_TYPE_ACTIVE_CH_ROW);
   g_type_ensure (AR3_TYPE_CH_ROW);
   g_type_ensure (AR3_TYPE_COLOR_ROW);
   g_type_ensure (AR_TYPE_CH_ROW);
