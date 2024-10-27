@@ -32,6 +32,7 @@ typedef struct {
 int
 sc_midi_arturia_dummy_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_ack, uint32_t control_id, uint8_t *val)
 {
+  fprintf(stderr, "%s(%08x)\n", __func__, control_id);
   *val = 0;
   return 0;
 }
@@ -39,18 +40,21 @@ sc_midi_arturia_dummy_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t
 int
 sc_midi_arturia_dummy_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val)
 {
+  fprintf(stderr, "%s(%08x, %d)\n", __func__, control_id, val);
   return 0;
 }
 
 int
 sc_midi_arturia_dummy_recall_preset (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t preset_id)
 {
+  fprintf(stderr, "%s(%d)\n", __func__, preset_id);
   return 0;
 }
 
 int
 sc_midi_arturia_dummy_store_preset (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t preset_id)
 {
+  fprintf(stderr, "%s(%d)\n", __func__, preset_id);
   return 0;
 }
 
