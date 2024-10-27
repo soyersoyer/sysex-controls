@@ -11,10 +11,20 @@
   <project_license>GPL-3.0-or-later</project_license>
   <description>
     <p>
-This is a Libadwaita UI that allows to configure the Arturia BeatStep,
-KeyLab mkII 49 / 61 / 88, KeyLab 49 / 61 / 88 mk3,
-KeyLab Essential 49 / 61 / 88, KeyLab Essential 49 / 61 / 88 mk3,
-KeyStep, KeyStep 37, MicroLab, MiniLab mkII, MiniLab 3 MIDI keyboards.
+This is a Libadwaita UI that allows to configure the Arturia
+<ul>
+<li>BeatStep</li>
+<li>KeyLab mkII 49 / 61 / 88</li>
+<li>KeyLab 49 / 61 / 88 mk3</li>
+<li>KeyLab Essential 49 / 61 / 88</li>
+<li>KeyLab Essential 49 / 61 / 88 mk3</li>
+<li>KeyStep</li>
+<li>KeyStep 37</li>
+<li>MicroLab</li>
+<li>MiniLab mkII</li>
+<li>MiniLab 3</li>
+</ul>
+MIDI keyboards.
     </p>
     <p>
 It currently allows for reading the controls (Buttons, Knobs, Pads, Keys, etc)
@@ -46,6 +56,13 @@ not work, in which case please let me know.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.10" date="2024-10-28">
+      <description>
+        <ul>
+          <li>KeyLab 49 / 61 / 88 mk3 support</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.9" date="2024-10-25">
       <description>
         <ul>
