@@ -12,6 +12,30 @@
           </object>
         </child>
 
+        <child>
+          <object class="Kl3VelocityPage">
+            <property name="control-id-offset">0x09400000</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Kl3PartsPage">
+            <property name="control-id-offset">0x09400000</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Kl3PedalPage">
+            <property name="control-id-offset">0x09400000</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Kl3PresetsPage">
+            <property name="control-id-offset">0x09400000</property>
+          </object>
+        </child>
+
       </object>
     </property>
   </template>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl3DisplayButtonPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Display Buttons</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="Kl3DisplayButton">
+                <property name="title" translatable="yes">Display Button 5</property>
+                <property name="control-id-offset">0x0000</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl3DisplayButton">
+                <property name="title" translatable="yes">Display Button 6</property>
+                <property name="control-id-offset">0x0a00</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl3DisplayButton">
+                <property name="title" translatable="yes">Display Button 7</property>
+                <property name="control-id-offset">0x1400</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl3DisplayButton">
+                <property name="title" translatable="yes">Display Button 8</property>
+                <property name="control-id-offset">0x1e00</property>
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

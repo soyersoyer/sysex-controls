@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl3SeaPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Sustain / Expression / Aux</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="Kl3Pedal">
+                <property name="title" translatable="yes">Sustain</property>
+                <property name="control-id-offset">0x0000</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl3Pedal">
+                <property name="title" translatable="yes">Expression</property>
+                <property name="control-id-offset">0x0d00</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Kl3Pedal">
+                <property name="title" translatable="yes">AUX</property>
+                <property name="control-id-offset">0x1a00</property>
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

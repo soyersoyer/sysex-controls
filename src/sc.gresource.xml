@@ -60,6 +60,26 @@
 
     <file preprocess="xml-stripblanks">keylab3/kl3-book.ui</file>
     <file preprocess="xml-stripblanks">keylab3/kl3-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/kl3-part-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/kl3-parts-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/kl3-pedal-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/kl3-preset-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/kl3-presets-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/kl3-velocity-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/preset/kl3-display-button.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/preset/kl3-display-button-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/preset/kl3-encoder.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/preset/kl3-encoder-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/preset/kl3-fader.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/preset/kl3-fader-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/preset/kl3-keyboard-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/preset/kl3-main-encoder-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/preset/kl3-pad.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/preset/kl3-pad-bank-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/preset/kl3-pad-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/preset/kl3-pedal.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/preset/kl3-pitch-mod-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab3/preset/kl3-sea-page.ui</file>
 
     <file preprocess="xml-stripblanks">keylabes/kles-book.ui</file>
     <file preprocess="xml-stripblanks">keylabes/kles-button.ui</file>

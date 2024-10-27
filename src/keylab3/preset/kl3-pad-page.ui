@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl3PadPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Pads</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow" id="velocity_curve">
+                    <child><object class="ArControl"><property name="id">0x5d01</property></object></child>
+                    <property name="title" translatable="yes">Velocity Curve</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Logarithmic</item>
+                          <item>Exponential</item>
+                          <item>Fixed</item>
+                          <item>Custom</item>
+                          <item>Global</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x5e01</property></object></child>
+                    <property name="title" translatable="yes">Fixed Velocity</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">velocity_curve</lookup>
+                        <constant type="GVariant">[0x03]</constant>
+                      </closure>
+                    </binding>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x5f01</property></object></child>
+                    <property name="title" translatable="yes">Aftertouch Curve</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Logarithmic</item>
+                          <item>Exponential</item>
+                          <item>Custom</item>
+                          <item>Global</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x6001</property></object></child>
+                    <property name="title" translatable="yes">Aftertouch Min</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x6101</property></object></child>
+                    <property name="title" translatable="yes">Aftertouch Max</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pads Bank A</property>
+                    <property name="control-id-offset">0x00000000</property>
+                    <property name="control-cc-offset">0x00000000</property>
+                    <signal name="activated" handler="kl3_pad_page_on_pad_bank_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pads Bank B</property>
+                    <property name="control-id-offset">0x00000c00</property>
+                    <property name="control-cc-offset">0x00000100</property>
+                    <signal name="activated" handler="kl3_pad_page_on_pad_bank_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pads Bank C</property>
+                    <property name="control-id-offset">0x00001800</property>
+                    <property name="control-cc-offset">0x00000200</property>
+                    <signal name="activated" handler="kl3_pad_page_on_pad_bank_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pads Bank D</property>
+                    <property name="control-id-offset">0x00002400</property>
+                    <property name="control-cc-offset">0x00000300</property>
+                    <signal name="activated" handler="kl3_pad_page_on_pad_bank_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

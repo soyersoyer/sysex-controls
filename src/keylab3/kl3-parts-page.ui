@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl3PartsPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Parts</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x3a00</property></object></child>
+                    <property name="title" translatable="yes">Part Type</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Split</item>
+                          <item>Layer</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Part 1</property>
+                    <property name="control-id-offset">0x00000000</property>
+                    <signal name="activated" handler="kl3_parts_page_on_part_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Part 2</property>
+                    <property name="control-id-offset">0x00000f00</property>
+                    <signal name="activated" handler="kl3_parts_page_on_part_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

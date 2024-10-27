@@ -1,6 +1,12 @@
 #include "kl3-book.h"
 
 #include "kl3-controller-page.h"
+#include "kl3-part-page.h"
+#include "kl3-parts-page.h"
+#include "kl3-pedal-page.h"
+#include "kl3-preset-page.h"
+#include "kl3-presets-page.h"
+#include "kl3-velocity-page.h"
 
 struct _Kl3Book
 {
@@ -25,6 +31,12 @@ kl3_book_init (Kl3Book *self)
   scklass->write_control = sc_midi_arturia_v3_write_control;
 
   g_type_ensure (KL3_TYPE_CONTROLLER_PAGE);
+  g_type_ensure (KL3_TYPE_PART_PAGE);
+  g_type_ensure (KL3_TYPE_PARTS_PAGE);
+  g_type_ensure (KL3_TYPE_PEDAL_PAGE);
+  g_type_ensure (KL3_TYPE_PRESET_PAGE);
+  g_type_ensure (KL3_TYPE_PRESETS_PAGE);
+  g_type_ensure (KL3_TYPE_VELOCITY_PAGE);
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }

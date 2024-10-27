@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl3PartPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Part</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x1c00</property></object></child>
+                    <property name="title" translatable="yes">Lowest Key</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x1d00</property></object></child>
+                    <property name="title" translatable="yes">Highest Key</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ArChRow">
+                    <child><object class="ArControl"><property name="id">0x1e00</property></object></child>
+                    <property name="title" translatable="yes">MIDI Channel</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x1f00</property></object></child>
+                    <property name="title" translatable="yes">Transpose Oct</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="61">-3</item>
+                          <item>-2</item>
+                          <item>-1</item>
+                          <item>+0</item>
+                          <item>+1</item>
+                          <item>+2</item>
+                          <item>+3</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x2000</property></object></child>
+                    <property name="title" translatable="yes">Transpose Semi</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="53">-11</item>
+                          <item>-10</item>
+                          <item>-9</item>
+                          <item>-8</item>
+                          <item>-7</item>
+                          <item>-6</item>
+                          <item>-5</item>
+                          <item>-4</item>
+                          <item>-3</item>
+                          <item>-2</item>
+                          <item>-1</item>
+                          <item>+0</item>
+                          <item>+1</item>
+                          <item>+2</item>
+                          <item>+3</item>
+                          <item>+4</item>
+                          <item>+5</item>
+                          <item>+6</item>
+                          <item>+7</item>
+                          <item>+8</item>
+                          <item>+9</item>
+                          <item>+10</item>
+                          <item>+11</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x2100</property></object></child>
+                    <property name="title" translatable="yes">Pitch Wheel</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x2200</property></object></child>
+                    <property name="title" translatable="yes">Mod Wheel</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x2300</property></object></child>
+                    <property name="title" translatable="yes">Aftertouch</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x2400</property></object></child>
+                    <property name="title" translatable="yes">Sustain Pedal</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x2500</property></object></child>
+                    <property name="title" translatable="yes">Expression Pedal</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x2600</property></object></child>
+                    <property name="title" translatable="yes">Auxiliary Pedal</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x2700</property></object></child>
+                    <property name="title" translatable="yes">Hold</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x2800</property></object></child>
+                    <property name="title" translatable="yes">Chord</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x2900</property></object></child>
+                    <property name="title" translatable="yes">Arp</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x2a00</property></object></child>
+                    <property name="title" translatable="yes">Scale</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>
