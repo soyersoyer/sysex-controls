@@ -3,6 +3,10 @@
 <img align="left" height="80" src="https://github.com/soyersoyer/sysex-controls/raw/main/data/icons/hicolor/scalable/apps/hu.irl.sysex-controls.svg">
 
 This is a Libadwaita UI that allows you to configure certain Arturia devices.
+It currently allows for reading the controls (Buttons, Knobs, Pads, Keys, etc)
+and changing them and writing back to the device.
+
+This is a Linux alternative to the Midi Control Center software.
 
 These devices are supported and tested:
 - KeyStep 37
@@ -18,9 +22,6 @@ These might also work, but have not been tested yet:
 - KeyStep
 - MicroLab
 
-It currently allows for reading the controls (Buttons, Knobs, Pads, Keys, etc)
-and changing them and writing back to the device.
-This is a Linux alternative to the Midi Control Center software.
 It doesn't support the KeyStep and BeatStep Sequencer yet.
 
 If you think some untested devices work well, please let us know.

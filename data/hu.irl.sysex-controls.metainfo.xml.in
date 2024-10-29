@@ -12,6 +12,11 @@
   <description>
 <p>
 This is a Libadwaita UI that allows you to configure certain Arturia devices.
+It currently allows for reading the controls (Buttons, Knobs, Pads, Keys, etc)
+and changing them and writing back to the device.
+</p>
+<p>
+This is a Linux alternative to the Midi Control Center software.
 </p>
 <p>These devices are supported and tested:</p>
 <ul>
@@ -30,9 +35,6 @@ This is a Libadwaita UI that allows you to configure certain Arturia devices.
 <li>MicroLab</li>
 </ul>
 <p>
-It currently allows for reading the controls (Buttons, Knobs, Pads, Keys, etc)
-and changing them and writing back to the device.
-This is a Linux alternative to the Midi Control Center software.
 It doesn't support the KeyStep and BeatStep Sequencer yet.
 </p>
 <p>
