@@ -2,26 +2,29 @@
 
 <img align="left" height="80" src="https://github.com/soyersoyer/sysex-controls/raw/main/data/icons/hicolor/scalable/apps/hu.irl.sysex-controls.svg">
 
-This is a Libadwaita UI that allows to configure the Arturia
-- BeatStep,
-- KeyLab mkII 49 / 61 / 88,
-- KeyLab 49 / 61 / 88 mk3,
-- KeyLab Essential 49 / 61 / 88,
-- KeyLab Essential 49 / 61 / 88 mk3,
-- KeyStep,
-- KeyStep 37,
-- MicroLab,
-- MiniLab mkII,
+This is a Libadwaita UI that allows you to configure certain Arturia devices.
+
+These devices are supported and tested:
+- KeyStep 37
+- MiniLab mkII
 - MiniLab 3
-MIDI keyboards.
+
+These might also work, but have not been tested yet:
+- BeatStep
+- KeyLab mkII 49 / 61 / 88
+- KeyLab 49 / 61 / 88 mk3
+- KeyLab Essential 49 / 61 / 88
+- KeyLab Essential 49 / 61 / 88 mk3
+- KeyStep
+- MicroLab
 
 It currently allows for reading the controls (Buttons, Knobs, Pads, Keys, etc)
 and changing them and writing back to the device.
 This is a Linux alternative to the Midi Control Center software.
 It doesn't support the KeyStep and BeatStep Sequencer yet.
 
-I do not have access to all devices, so it is possible that one of them does
-not work, in which case please let me know.
+If you think some untested devices work well, please let us know.
+If not, let us know as well.
 
 ## Installation
 

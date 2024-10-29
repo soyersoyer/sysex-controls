@@ -11,8 +11,15 @@
   <project_license>GPL-3.0-or-later</project_license>
   <description>
 <p>
-This is a Libadwaita UI that allows to configure Arturia MIDI keyboards.
+This is a Libadwaita UI that allows you to configure certain Arturia devices.
 </p>
+<p>These devices are supported and tested:</p>
+<ul>
+<li>KeyStep 37</li>
+<li>MiniLab mkII</li>
+<li>MiniLab 3</li>
+</ul>
+<p>These might also work, but have not been tested yet:</p>
 <ul>
 <li>BeatStep</li>
 <li>KeyLab mkII 49 / 61 / 88</li>
@@ -20,10 +27,7 @@ This is a Libadwaita UI that allows to configure Arturia MIDI keyboards.
 <li>KeyLab Essential 49 / 61 / 88</li>
 <li>KeyLab Essential 49 / 61 / 88 mk3</li>
 <li>KeyStep</li>
-<li>KeyStep 37</li>
 <li>MicroLab</li>
-<li>MiniLab mkII</li>
-<li>MiniLab 3</li>
 </ul>
 <p>
 It currently allows for reading the controls (Buttons, Knobs, Pads, Keys, etc)
@@ -32,8 +36,8 @@ This is a Linux alternative to the Midi Control Center software.
 It doesn't support the KeyStep and BeatStep Sequencer yet.
 </p>
 <p>
-I do not have access to all devices, so it is possible that one of them does
-not work, in which case please let me know.
+If you think some untested devices work well, please let us know.
+If not, let us know as well.
 </p>
   </description>
   <supports>
