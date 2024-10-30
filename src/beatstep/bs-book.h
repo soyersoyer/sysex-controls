@@ -13,6 +13,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (BsBook, bs_book, BS, BOOK, ArBook)
 
-GtkWidget * bs_book_new (snd_seq_t *seq, snd_seq_addr_t addr);
+GtkWidget * bs_book_new (void);
 
 G_END_DECLS

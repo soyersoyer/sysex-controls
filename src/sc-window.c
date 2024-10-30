@@ -19,7 +19,7 @@
 #include "minilab2/ml2-book.h"
 #include "minilab3/ml3-book.h"
 
-typedef GtkWidget * (*book_init_func)(snd_seq_t*, snd_seq_addr_t);
+typedef GtkWidget * (*book_init_func)(void);
 
 typedef const struct {
   const char *midi_name;
@@ -111,6 +111,7 @@ sc_window_set_book (ScWindow *self, ScBook *book)
 static void
 sc_window_midi_connect (ScWindow *self, ScControllerRow *row)
 {
+  ScBook *book;
   controller_t *controller = NULL;
   sc_midi_info_t *ci = sc_controller_row_get_info (row);
 
@@ -134,10 +135,15 @@ sc_window_midi_connect (ScWindow *self, ScControllerRow *row)
   }
 
   adw_navigation_page_set_title (self->setting_page, controller->short_name);
-  sc_window_set_book (self, SC_BOOK (controller->init (self->seq, ci->addr)));
+
+  book = SC_BOOK (controller->init ());
+
+  sc_book_set_seq (book, self->seq, ci->addr);
 
   if (controller->use_dummy)
     sc_book_use_dummy (self->book);
+
+  sc_window_set_book (self, book);
 
   adw_navigation_view_replace_with_tags (self->navigation_view, (const char * const[]){"load"}, 1);
   g_idle_add (G_SOURCE_FUNC (sc_book_load), self->book);

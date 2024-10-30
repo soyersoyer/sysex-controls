@@ -13,5 +13,5 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (Ml2Book, ml2_book, ML2, BOOK, ArBook)
 
-GtkWidget * ml2_book_new (snd_seq_t *seq, snd_seq_addr_t addr);
+GtkWidget * ml2_book_new (void);
 G_END_DECLS

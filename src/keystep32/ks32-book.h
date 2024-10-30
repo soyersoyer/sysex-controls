@@ -13,6 +13,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (Ks32Book, ks32_book, KS32, BOOK, ArBook)
 
-GtkWidget * ks32_book_new (snd_seq_t *seq, snd_seq_addr_t addr);
+GtkWidget * ks32_book_new (void);
 
 G_END_DECLS

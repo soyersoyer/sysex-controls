@@ -42,9 +42,7 @@ kl3_book_init (Kl3Book *self)
 }
 
 GtkWidget *
-kl3_book_new (snd_seq_t *seq, snd_seq_addr_t addr)
+kl3_book_new (void)
 {
-  GtkWidget *book = g_object_new (KL3_TYPE_BOOK, NULL);
-  sc_book_set_seq (SC_BOOK (book), seq, addr);
-  return book;
+  return g_object_new (KL3_TYPE_BOOK, NULL);
 }

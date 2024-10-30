@@ -58,9 +58,7 @@ ml3_book_init (Ml3Book *self)
 }
 
 GtkWidget *
-ml3_book_new (snd_seq_t *seq, snd_seq_addr_t addr)
+ml3_book_new (void)
 {
-  GtkWidget *book = g_object_new (ML3_TYPE_BOOK, NULL);
-  sc_book_set_seq (SC_BOOK (book), seq, addr);
-  return book;
+  return g_object_new (ML3_TYPE_BOOK, NULL);
 }

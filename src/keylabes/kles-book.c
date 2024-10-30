@@ -48,9 +48,7 @@ kles_book_init (KlesBook *self)
 }
 
 GtkWidget *
-kles_book_new (snd_seq_t *seq, snd_seq_addr_t addr)
+kles_book_new (void)
 {
-  GtkWidget *book = g_object_new (KLES_TYPE_BOOK, NULL);
-  sc_book_set_seq (SC_BOOK (book), seq, addr);
-  return book;
+  return g_object_new (KLES_TYPE_BOOK, NULL);
 }

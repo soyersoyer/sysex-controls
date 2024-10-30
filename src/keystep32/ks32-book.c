@@ -40,9 +40,7 @@ ks32_book_init (Ks32Book *self)
 }
 
 GtkWidget *
-ks32_book_new (snd_seq_t *seq, snd_seq_addr_t addr)
+ks32_book_new (void)
 {
-  GtkWidget *book = g_object_new (KS32_TYPE_BOOK, NULL);
-  sc_book_set_seq (SC_BOOK (book), seq, addr);
-  return book;
+  return g_object_new (KS32_TYPE_BOOK, NULL);
 }

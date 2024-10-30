@@ -19,6 +19,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (Kl3Book, kl3_book, KL3, BOOK, ArBook)
 
-GtkWidget * kl3_book_new (snd_seq_t *seq, snd_seq_addr_t addr);
+GtkWidget * kl3_book_new (void);
 
 G_END_DECLS
