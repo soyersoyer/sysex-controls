@@ -41,6 +41,6 @@ GtkWidget *
 ks37_book_new (snd_seq_t *seq, snd_seq_addr_t addr)
 {
   GtkWidget *book = g_object_new (KS37_TYPE_BOOK, NULL);
-  ar_book_set_seq (AR_BOOK (book), seq, addr);
+  sc_book_set_seq (SC_BOOK (book), seq, addr);
   return book;
 }

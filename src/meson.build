@@ -18,6 +18,7 @@ sc_sources = [
 
   'sc-action-row.c',
   'sc-application.c',
+  'sc-book.c',
   'sc-cc-row.c',
   'sc-color-row.c',
   'sc-combo-row.c',

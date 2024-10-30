@@ -64,19 +64,10 @@ struct _ScWindow
   AdwNavigationPage  *setting_page;
   AdwNavigationView  *navigation_view;
   AdwNavigationSplitView *split_view;
-  ArBook *book;
+  ScBook *book;
 };
 
 G_DEFINE_FINAL_TYPE (ScWindow, sc_window, ADW_TYPE_APPLICATION_WINDOW)
-
-static int
-sc_create_load_task (ArBook *book)
-{
-  GTask *task = g_task_new (book, NULL, ar_book_load_task_finish, NULL);
-  g_task_run_in_thread (task, ar_book_load_task);
-  g_object_unref (task);
-  return false;
-}
 
 static void
 on_sidebar_row_activated_cb (GtkListBox* list, GtkListBoxRow *row, ScWindow *self)
@@ -103,7 +94,7 @@ sidebar_row_new (AdwNavigationPage *page, AdwNavigationView *self)
 }
 
 static void
-sc_window_set_book (ScWindow *self, ArBook *book)
+sc_window_set_book (ScWindow *self, ScBook *book)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (adw_navigation_page_get_child (ADW_NAVIGATION_PAGE (book)));
   adw_navigation_split_view_set_content(self->split_view, ADW_NAVIGATION_PAGE (book));
@@ -143,13 +134,13 @@ sc_window_midi_connect (ScWindow *self, ScControllerRow *row)
   }
 
   adw_navigation_page_set_title (self->setting_page, controller->short_name);
-  sc_window_set_book (self, AR_BOOK (controller->init (self->seq, ci->addr)));
+  sc_window_set_book (self, SC_BOOK (controller->init (self->seq, ci->addr)));
 
   if (controller->use_dummy)
-    ar_book_use_dummy (self->book);
+    sc_book_use_dummy (self->book);
 
   adw_navigation_view_replace_with_tags (self->navigation_view, (const char * const[]){"load"}, 1);
-  g_idle_add (G_SOURCE_FUNC (sc_create_load_task), self->book);
+  g_idle_add (G_SOURCE_FUNC (sc_book_load), self->book);
 }
 
 static void
@@ -223,7 +214,7 @@ refresh_button_click_cb (ScWindow *self)
 static void
 setting_hidden_cb (ScWindow *self)
 {
-  sc_midi_disconnect (self->seq, ar_book_get_addr (self->book));
+  sc_midi_disconnect (self->seq, sc_book_get_addr (self->book));
 }
 
 void
