@@ -3,7 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
   <template class="Amm3ProgramPage" parent="AkProgramPage">
-    <property name="title" translatable="yes">ProgramPage</property>
+    <property name="title" translatable="yes">Program</property>
     <property name="child">
       <object class="AdwToolbarView">
         <child type="top"><object class="AdwHeaderBar"/></child>

@@ -89,11 +89,7 @@
 
                 <child>
                   <object class="AdwSpinRow">
-                    <child>
-                      <object class="AkControl">
-                        <property name="id">0x1a</property>
-                      </object>
-                    </child>
+                    <child><object class="AkControl"><property name="id">0x1a</property></object></child>
                     <property name="title" translatable="yes">Tempo taps</property>
                     <property name="adjustment">
                       <object class="GtkAdjustment">
