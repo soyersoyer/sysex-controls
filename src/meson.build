@@ -1,4 +1,8 @@
 sc_sources = [
+  'ak-book.c',
+  'ak-control.c',
+  'ak-program-page.c',
+
   'ar2-glob-ch-row.c',
   'ar2-key-ch-row.c',
   'ar2-rgb-color-row.c',
@@ -172,6 +176,17 @@ sc_sources = [
   'minilab3/ml3-preset-page.c',
   'minilab3/ml3-spm-page.c',
   'minilab3/ml3-velocity-page.c',
+
+  'mpkmini3/amm3-arpeggiator-page.c',
+  'mpkmini3/amm3-book.c',
+  'mpkmini3/amm3-joystick-page.c',
+  'mpkmini3/amm3-keybed-page.c',
+  'mpkmini3/amm3-knob.c',
+  'mpkmini3/amm3-knob-page.c',
+  'mpkmini3/amm3-pad.c',
+  'mpkmini3/amm3-pad-bank-page.c',
+  'mpkmini3/amm3-pad-page.c',
+  'mpkmini3/amm3-program-page.c',
 ]
 
 sc_deps = [

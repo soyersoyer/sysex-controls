@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Amm3Book" parent="AkBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="Amm3ProgramPage">
+            <property name="title">RAM</property>
+            <property name="prog-id">0</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Amm3ProgramPage">
+            <property name="title">Program 1</property>
+            <property name="prog-id">1</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Amm3ProgramPage">
+            <property name="title">Program 2</property>
+            <property name="prog-id">2</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Amm3ProgramPage">
+            <property name="title">Program 3</property>
+            <property name="prog-id">3</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Amm3ProgramPage">
+            <property name="title">Program 4</property>
+            <property name="prog-id">4</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Amm3ProgramPage">
+            <property name="title">Program 5</property>
+            <property name="prog-id">5</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Amm3ProgramPage">
+            <property name="title">Program 6</property>
+            <property name="prog-id">6</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Amm3ProgramPage">
+            <property name="title">Program 7</property>
+            <property name="prog-id">7</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Amm3ProgramPage">
+            <property name="title">Program 8</property>
+            <property name="prog-id">8</property>
+          </object>
+        </child>
+
+      </object>
+    </property>
+
+  </template>
+</interface>

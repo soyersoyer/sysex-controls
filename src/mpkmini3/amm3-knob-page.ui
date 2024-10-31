@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Amm3KnobPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Knobs</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="Amm3Knob">
+                <property name="title">Knob 1</property>
+                <property name="control-id-offset">0x54</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Amm3Knob">
+                <property name="title">Knob 2</property>
+                <property name="control-id-offset">0x68</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Amm3Knob">
+                <property name="title">Knob 3</property>
+                <property name="control-id-offset">0x7c</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Amm3Knob">
+                <property name="title">Knob 4</property>
+                <property name="control-id-offset">0x90</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Amm3Knob">
+                <property name="title">Knob 5</property>
+                <property name="control-id-offset">0xa4</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Amm3Knob">
+                <property name="title">Knob 6</property>
+                <property name="control-id-offset">0xb8</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Amm3Knob">
+                <property name="title">Knob 7</property>
+                <property name="control-id-offset">0xcc</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Amm3Knob">
+                <property name="title">Knob 8</property>
+                <property name="control-id-offset">0xe0</property>
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

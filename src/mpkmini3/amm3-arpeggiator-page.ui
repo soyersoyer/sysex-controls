@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Amm3ArpeggiatorPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Arpeggiator</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="AkControl"><property name="id">0x14</property></object></child>
+                    <property name="title" translatable="yes">Enabled</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="AkControl"><property name="id">0x18</property></object></child>
+                    <property name="title" translatable="yes">Latch</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow" id="control_mode">
+                    <child><object class="AkControl"><property name="id">0x15</property></object></child>
+                    <property name="title" translatable="yes">Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Up</item>
+                          <item>Down</item>
+                          <item>Excl</item>
+                          <item>Incl</item>
+                          <item>Order</item>
+                          <item>Random</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="AkControl"><property name="id">0x16</property></object></child>
+                    <property name="title" translatable="yes">Division</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1/4</item>
+                          <item>1/4T</item>
+                          <item>1/8</item>
+                          <item>1/8T</item>
+                          <item>1/16</item>
+                          <item>1/16T</item>
+                          <item>1/32</item>
+                          <item>1/32T</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child>
+                      <object class="AkControl">
+                        <property name="id">0x19</property>
+                        <property name="value-offset">50</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Swing (Percent)</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">50</property>
+                        <property name="upper">75</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child>
+                      <object class="AkControl">
+                        <property name="id">0x1a</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Tempo taps</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">2</property>
+                        <property name="upper">4</property>
+                        <property name="page-increment">2</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child>
+                      <object class="AkControl">
+                        <property name="id">0x1b</property>
+                        <property name="size">2</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Tempo (BPM)</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">60</property>
+                        <property name="upper">240</property>
+                        <property name="page-increment">60</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child>
+                      <object class="AkControl">
+                        <property name="id">0x1d</property>
+                        <property name="value-offset">1</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Octave</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">4</property>
+                        <property name="page-increment">2</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="AkControl"><property name="id">0x17</property></object></child>
+                    <property name="title" translatable="yes">Clock Source</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Internal</item>
+                          <item>External</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

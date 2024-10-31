@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Amm3PadPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Pads</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+           <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScChRow">
+                    <child><object class="AkControl"><property name="id">0x10</property></object></child>
+                    <property name="title" translatable="yes">Pads MIDI Channel</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="AkControl"><property name="id">0x11</property></object></child>
+                    <property name="title" translatable="yes">Pad Aftertouch Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>Channel</item>
+                          <item>Polyphonic</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad Bank A</property>
+                    <property name="control-id-offset" translatable="yes">0x24</property>
+                    <signal name="activated" handler="amm3_book_on_pad_bank_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad Bank B</property>
+                    <property name="control-id-offset" translatable="yes">0x3c</property>
+                    <signal name="activated" handler="amm3_book_on_pad_bank_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

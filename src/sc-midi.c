@@ -8,6 +8,166 @@
                       SND_SEQ_PORT_CAP_WRITE | SND_SEQ_PORT_CAP_SUBS_WRITE)
 
 
+int
+sc_midi_akai_dummy_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id, uint8_t *data, uint16_t *size)
+{
+  fprintf(stderr, "%s(%08x)\n", __func__, prog_id);
+  return 0;
+}
+
+int
+sc_midi_akai_dummy_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id, uint8_t *data, uint16_t size)
+{
+  fprintf(stderr, "%s(%08x)\n", __func__, prog_id);
+  return 0;
+}
+
+int
+sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id, uint8_t *data, uint16_t *size)
+{
+  //                                                           prog_id
+  //                                                           ||||
+  char req_data[] = {0xf0, 0x47, 0x7f, 0x49, 0x66, 0x00, 0x01, 0x00, 0xf7};
+  struct pollfd pfds[1] = {};
+  snd_seq_event_t ev;
+  int err, pfds_n = 0;
+
+  snd_seq_ev_clear (&ev);
+  snd_seq_ev_set_source (&ev, 0);
+  snd_seq_ev_set_dest (&ev, addr.client, addr.port);
+  snd_seq_ev_set_direct (&ev);
+  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (req_data), req_data);
+
+  req_data[7] = (uint8_t)(prog_id);
+
+  err = snd_seq_event_output (seq, &ev);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%02x): snd_seq_event_output failed %d\n", __func__, prog_id, err);
+    return err;
+  }
+
+  err = snd_seq_drain_output(seq);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%02x): snd_seq_drain_output failed %d\n", __func__, prog_id, err);
+    return err;
+  }
+
+
+  pfds_n = snd_seq_poll_descriptors(seq, pfds, 1, POLLIN);
+
+  while (1)
+  {
+    err = poll (pfds, pfds_n, 20);
+    if (err < 0)
+    {
+      fprintf (stderr, "%s(%02x) poll failed %d\n", __func__, prog_id, err);
+      return err;
+    }
+    if (err == 0)
+    {
+      fprintf (stderr, "%s(%02x) poll timeout %d\n", __func__, prog_id, err);
+      return -ETIMEDOUT;
+    }
+
+    while (1)
+    {
+      static const char akai_prog[] = {0xf0, 0x47, 0x00, 0x49, 0x67, 0x01, 0x76};
+      snd_seq_event_t *ev_in;
+      unsigned int len;
+      char* input;
+
+      err = snd_seq_event_input (seq, &ev_in);
+
+      if (err == -EAGAIN)
+        break;
+
+      if (err < 0) {
+        fprintf (stderr, "%s(%02x) snd_seq_event_input failed %d\n", __func__, prog_id, err);
+        return err;
+      }
+
+      len = ev_in->data.ext.len;
+      input = ev_in->data.ext.ptr;
+
+      if (len >= ARRAY_SIZE (akai_prog) + 1 + 1 &&
+          memcmp (input, akai_prog, ARRAY_SIZE (akai_prog)) == 0 &&
+          input[ARRAY_SIZE (akai_prog)] == prog_id)
+      {
+        unsigned int payload_size = len - ARRAY_SIZE (akai_prog) - 1 - 1;
+        if (*size < payload_size) {
+          fprintf (stderr, "%s(%02x): buffer too short %d < %d\n", __func__, prog_id, *size, payload_size);
+          return -EINVAL;
+        }
+
+        memcpy (data, input + ARRAY_SIZE (akai_prog) + 1, payload_size);
+        *size = payload_size;
+
+        fprintf (stderr, "%s(%02x): program received: size %d \n", __func__, prog_id, payload_size);
+
+        return 0;
+      }
+      else
+      {
+        fprintf (stderr, "%s(%02x): unexpected message: len %d: ", __func__, prog_id, len);
+        for (int i=0; i < len; ++i)
+          fprintf(stderr, "%02x ", (uint8_t)input[i]);
+        fprintf(stderr, "\n");
+      }
+
+    }
+  }
+  return 0;
+}
+
+int
+sc_midi_akai_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id, uint8_t *data, uint16_t size)
+{
+  //                                                   size size  prog_id
+  //                                                  ||||  ||||  ||||
+  char req_data[512] = {0xf0, 0x47, 0x7f, 0x49, 0x64, 0x00, 0x00, 0x00};
+
+  snd_seq_event_t ev;
+  int err;
+
+  uint16_t wsize = size + 1;
+
+  req_data[5] = (wsize >> 7) & 0x7f;
+  req_data[6] = wsize & 0x7f;
+  req_data[7] = prog_id;
+
+  if (size > 512 - 9)
+    return -EINVAL;
+
+  memcpy (&req_data[8], data, size);
+  req_data[8 + size] = 0xf7;
+
+  snd_seq_ev_clear (&ev);
+  snd_seq_ev_set_source (&ev, 0);
+  snd_seq_ev_set_dest (&ev, addr.client, addr.port);
+  snd_seq_ev_set_direct (&ev);
+  snd_seq_ev_set_sysex (&ev, 8 + size + 1, req_data);
+
+  fprintf (stderr, "%s(%02x) %d\n", __func__, prog_id, size);
+
+  err = snd_seq_event_output (seq, &ev);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%02x): snd_seq_event_output failed %d\n", __func__, prog_id, err);
+    return err;
+  }
+
+  err = snd_seq_drain_output(seq);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%02x): snd_seq_drain_output failed %d\n", __func__, prog_id, err);
+    return err;
+  }
+
+  return 0;
+}
+
 enum ar_msg_type {
   AR_UNKNOWN,
   AR_DEVICE_INQUIRY,

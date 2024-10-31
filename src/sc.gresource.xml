@@ -165,5 +165,16 @@
     <file preprocess="xml-stripblanks">minilab3/ml3-preset-page.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-spm-page.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-velocity-page.ui</file>
+
+    <file preprocess="xml-stripblanks">mpkmini3/amm3-arpeggiator-page.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini3/amm3-book.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini3/amm3-joystick-page.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini3/amm3-keybed-page.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini3/amm3-knob.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini3/amm3-knob-page.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini3/amm3-pad.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini3/amm3-pad-bank-page.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini3/amm3-pad-page.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini3/amm3-program-page.ui</file>
   </gresource>
 </gresources>

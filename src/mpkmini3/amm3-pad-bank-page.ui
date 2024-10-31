@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Amm3PadBankPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Pad Bank</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="Amm3Pad">
+                <property name="title">Pad 5</property>
+                <property name="control-id-offset">0x0c</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Amm3Pad">
+                <property name="title">Pad 6</property>
+                <property name="control-id-offset">0x0f</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Amm3Pad">
+                <property name="title">Pad 7</property>
+                <property name="control-id-offset">0x12</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Amm3Pad">
+                <property name="title">Pad 8</property>
+                <property name="control-id-offset">0x15</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Amm3Pad">
+                <property name="title">Pad 1</property>
+                <property name="control-id-offset">0x00</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Amm3Pad">
+                <property name="title">Pad 2</property>
+                <property name="control-id-offset">0x03</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Amm3Pad">
+                <property name="title">Pad 3</property>
+                <property name="control-id-offset">0x06</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Amm3Pad">
+                <property name="title">Pad 4</property>
+                <property name="control-id-offset">0x09</property>
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>
