@@ -177,6 +177,17 @@ sc_sources = [
   'minilab3/ml3-spm-page.c',
   'minilab3/ml3-velocity-page.c',
 
+  'mpkmini2/amm2-arpeggiator-page.c',
+  'mpkmini2/amm2-book.c',
+  'mpkmini2/amm2-joystick-page.c',
+  'mpkmini2/amm2-keybed-page.c',
+  'mpkmini2/amm2-knob.c',
+  'mpkmini2/amm2-knob-page.c',
+  'mpkmini2/amm2-pad.c',
+  'mpkmini2/amm2-pad-bank-page.c',
+  'mpkmini2/amm2-pad-page.c',
+  'mpkmini2/amm2-program-page.c',
+
   'mpkmini3/amm3-arpeggiator-page.c',
   'mpkmini3/amm3-book.c',
   'mpkmini3/amm3-joystick-page.c',

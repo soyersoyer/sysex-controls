@@ -18,6 +18,7 @@
 #include "microlab/microlab-book.h"
 #include "minilab2/ml2-book.h"
 #include "minilab3/ml3-book.h"
+#include "mpkmini2/amm2-book.h"
 #include "mpkmini3/amm3-book.h"
 
 typedef GtkWidget * (*book_init_func)(void);
@@ -48,6 +49,7 @@ static controller_t controllers[] = {
   {MICROLAB_MIDI_NAME, MICROLAB_SHORT_NAME, microlab_book_new},
   {ML2_MIDI_NAME, ML2_SHORT_NAME, ml2_book_new},
   {ML3_MIDI_NAME, ML3_SHORT_NAME, ml3_book_new},
+  {AMM2_MIDI_NAME, AMM2_SHORT_NAME, amm2_book_new},
   {AMM3_MIDI_NAME, AMM3_SHORT_NAME, amm3_book_new},
 };
 
