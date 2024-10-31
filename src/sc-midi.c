@@ -7,6 +7,17 @@
 #define DESIRED_CAPS (SND_SEQ_PORT_CAP_READ | SND_SEQ_PORT_CAP_SUBS_READ | \
                       SND_SEQ_PORT_CAP_WRITE | SND_SEQ_PORT_CAP_SUBS_WRITE)
 
+#define AKAI_MANUF_ID 0x47
+
+#define AKAI_RECV 0x00
+#define AKAI_SEND 0x7f
+
+#define AKAI_MPK2_ID 0x26
+#define AKAI_MPK3_ID 0x49
+
+#define AKAI_CMD_SEND 0x64
+#define AKAI_CMD_QUERY 0x66
+#define AKAI_CMD_RECEIVE 0x67
 
 int
 sc_midi_akai_dummy_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id, uint8_t *data, uint16_t *size)
@@ -25,9 +36,9 @@ sc_midi_akai_dummy_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t p
 int
 sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id, uint8_t *data, uint16_t *size)
 {
-  //                                                           prog_id
-  //                                                           ||||
-  char req_data[] = {0xf0, 0x47, 0x7f, 0x49, 0x66, 0x00, 0x01, 0x00, 0xf7};
+  //                                                                               size  size
+  //                                                                               ||||  ||||
+  char req_data[] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, AKAI_MPK3_ID, AKAI_CMD_QUERY, 0x00, 0x01, prog_id, 0xf7};
   struct pollfd pfds[1] = {};
   snd_seq_event_t ev;
   int err, pfds_n = 0;
@@ -37,8 +48,6 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id,
   snd_seq_ev_set_dest (&ev, addr.client, addr.port);
   snd_seq_ev_set_direct (&ev);
   snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (req_data), req_data);
-
-  req_data[7] = (uint8_t)(prog_id);
 
   err = snd_seq_event_output (seq, &ev);
   if (err < 0)
@@ -73,7 +82,7 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id,
 
     while (1)
     {
-      static const char akai_prog[] = {0xf0, 0x47, 0x00, 0x49, 0x67, 0x01, 0x76};
+      static const char akai_prog[] = {0xf0, AKAI_MANUF_ID, AKAI_RECV, AKAI_MPK3_ID, AKAI_CMD_RECEIVE};
       snd_seq_event_t *ev_in;
       unsigned int len;
       char* input;
@@ -91,17 +100,17 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id,
       len = ev_in->data.ext.len;
       input = ev_in->data.ext.ptr;
 
-      if (len >= ARRAY_SIZE (akai_prog) + 1 + 1 &&
+      if (len >= ARRAY_SIZE (akai_prog) + 3 + 1 &&
           memcmp (input, akai_prog, ARRAY_SIZE (akai_prog)) == 0 &&
-          input[ARRAY_SIZE (akai_prog)] == prog_id)
+          input[ARRAY_SIZE (akai_prog) + 2] == prog_id)
       {
-        unsigned int payload_size = len - ARRAY_SIZE (akai_prog) - 1 - 1;
+        unsigned int payload_size = len - ARRAY_SIZE (akai_prog) - 3 - 1;
         if (*size < payload_size) {
           fprintf (stderr, "%s(%02x): buffer too short %d < %d\n", __func__, prog_id, *size, payload_size);
           return -EINVAL;
         }
 
-        memcpy (data, input + ARRAY_SIZE (akai_prog) + 1, payload_size);
+        memcpy (data, input + ARRAY_SIZE (akai_prog) + 3, payload_size);
         *size = payload_size;
 
         fprintf (stderr, "%s(%02x): program received: size %d \n", __func__, prog_id, payload_size);
@@ -124,9 +133,7 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id,
 int
 sc_midi_akai_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id, uint8_t *data, uint16_t size)
 {
-  //                                                   size size  prog_id
-  //                                                  ||||  ||||  ||||
-  char req_data[512] = {0xf0, 0x47, 0x7f, 0x49, 0x64, 0x00, 0x00, 0x00};
+  char req_data[512] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, AKAI_MPK3_ID, AKAI_CMD_SEND, 0x00, 0x00, prog_id};
 
   snd_seq_event_t ev;
   int err;
@@ -135,7 +142,6 @@ sc_midi_akai_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id
 
   req_data[5] = (wsize >> 7) & 0x7f;
   req_data[6] = wsize & 0x7f;
-  req_data[7] = prog_id;
 
   if (size > 512 - 9)
     return -EINVAL;
