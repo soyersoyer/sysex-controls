@@ -2,6 +2,7 @@
 
 #include "sc-action-row.h"
 #include "sc-cc-row.h"
+#include "sc-ch-row.h"
 #include "sc-combo-row.h"
 #include "sc-control-value.h"
 #include "sc-navigation-page.h"
@@ -126,6 +127,7 @@ sc_book_init (ScBook *self)
 {
   g_type_ensure (SC_TYPE_ACTION_ROW);
   g_type_ensure (SC_TYPE_CC_ROW);
+  g_type_ensure (SC_TYPE_CH_ROW);
   g_type_ensure (SC_TYPE_COMBO_ROW);
   g_type_ensure (SC_TYPE_CONTROL_VALUE);
   g_type_ensure (SC_TYPE_CONTROL_VALUE_LIST);

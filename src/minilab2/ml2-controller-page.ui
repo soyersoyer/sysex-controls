@@ -18,7 +18,7 @@
               <object class="AdwPreferencesGroup">
 
                 <child>
-                  <object class="ArChRow">
+                  <object class="ScChRow">
                     <child><object class="ArControl"><property name="id">0x4006</property></object></child>
                     <property name="title" translatable="yes">Keyboard channel</property>
                     <property name="subtitle" translatable="yes">MIDI channel on which the keyboard transmits data</property>

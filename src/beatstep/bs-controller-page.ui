@@ -18,7 +18,7 @@
               <object class="AdwPreferencesGroup">
 
                 <child>
-                  <object class="ArChRow">
+                  <object class="ScChRow">
                     <child><object class="ArControl"><property name="id">0x4006</property></object></child>
                     <property name="title" translatable="yes">Global Channel</property>
                   </object>

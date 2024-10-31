@@ -9,7 +9,6 @@ sc_sources = [
   'ar3-color-row.c',
 
   'ar-book.c',
-  'ar-ch-row.c',
   'ar-control.c',
   'ar-firmware-info-group.c',
   'ar-preset-chooser-page.c',
@@ -20,6 +19,7 @@ sc_sources = [
   'sc-application.c',
   'sc-book.c',
   'sc-cc-row.c',
+  'sc-ch-row.c',
   'sc-color-row.c',
   'sc-combo-row.c',
   'sc-controller-row.c',

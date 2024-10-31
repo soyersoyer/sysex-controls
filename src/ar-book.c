@@ -1,6 +1,5 @@
 #include "ar-book.h"
 
-#include "ar-ch-row.h"
 #include "ar-control.h"
 #include "ar-firmware-info-group.h"
 #include "ar-preset-chooser-page.h"
@@ -130,7 +129,6 @@ ar_book_init (ArBook *self)
   g_type_ensure (AR3_TYPE_ACTIVE_CH_ROW);
   g_type_ensure (AR3_TYPE_CH_ROW);
   g_type_ensure (AR3_TYPE_COLOR_ROW);
-  g_type_ensure (AR_TYPE_CH_ROW);
   g_type_ensure (AR_TYPE_CONTROL);
   g_type_ensure (AR_TYPE_FIRMWARE_INFO_GROUP);
   g_type_ensure (AR_TYPE_PRESET_CHOOSER_PAGE);
