@@ -3,7 +3,19 @@
 #include "ak-control.h"
 #include "ak-program-page.h"
 
-G_DEFINE_TYPE (AkBook, ak_book, SC_TYPE_BOOK)
+typedef struct
+{
+  uint8_t dev_id;
+} AkBookPrivate;
+
+G_DEFINE_TYPE_WITH_PRIVATE (AkBook, ak_book, SC_TYPE_BOOK)
+
+void
+ak_book_set_dev_id (AkBook *self, uint8_t dev_id)
+{
+  AkBookPrivate *priv = ak_book_get_instance_private (self);
+  priv->dev_id = dev_id;
+}
 
 static void
 ak_book_class_init (AkBookClass *klass)
@@ -18,29 +30,34 @@ ak_book_class_init (AkBookClass *klass)
 int
 ak_book_read_program (AkBook *self, uint8_t prog_id, uint8_t *data, uint16_t *size)
 {
+  AkBookPrivate *priv;
   AkBookClass *klass;
   ScBook *sc_book;
 
   g_return_val_if_fail (AK_IS_BOOK (self), -EINVAL);
 
+  priv = ak_book_get_instance_private (self);
   klass = AK_BOOK_GET_CLASS (self);
   sc_book = SC_BOOK (self);
 
-  return klass->read_program (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), prog_id, data, size);
+
+  return klass->read_program (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->dev_id, prog_id, data, size);
 }
 
 int
 ak_book_write_program (AkBook *self, uint8_t prog_id, uint8_t *data, uint16_t size)
 {
+  AkBookPrivate *priv;
   AkBookClass *klass;
   ScBook *sc_book;
 
   g_return_val_if_fail (AK_IS_BOOK (self), -EINVAL);
 
+  priv = ak_book_get_instance_private (self);
   klass = AK_BOOK_GET_CLASS (self);
   sc_book = SC_BOOK (self);
 
-  return klass->write_program (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), prog_id, data, size);
+  return klass->write_program (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->dev_id, prog_id, data, size);
 }
 
 void ak_book_use_dummy (ScBook *self)

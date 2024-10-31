@@ -20,25 +20,25 @@
 #define AKAI_CMD_RECEIVE 0x67
 
 int
-sc_midi_akai_dummy_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id, uint8_t *data, uint16_t *size)
+sc_midi_akai_dummy_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id, uint8_t *data, uint16_t *size)
 {
-  fprintf(stderr, "%s(%08x)\n", __func__, prog_id);
+  fprintf(stderr, "%s(%02x, %02x, %02x, %02x)\n", __func__, dev_id, prog_id, data[0], *size);
   return 0;
 }
 
 int
-sc_midi_akai_dummy_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id, uint8_t *data, uint16_t size)
+sc_midi_akai_dummy_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id, uint8_t *data, uint16_t size)
 {
-  fprintf(stderr, "%s(%08x)\n", __func__, prog_id);
+  fprintf(stderr, "%s(%02x, %02x, %02x, %02x)\n", __func__, dev_id, prog_id, data[0], size);
   return 0;
 }
 
 int
-sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id, uint8_t *data, uint16_t *size)
+sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id, uint8_t *data, uint16_t *size)
 {
   //                                                                               size  size
   //                                                                               ||||  ||||
-  char req_data[] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, AKAI_MPK3_ID, AKAI_CMD_QUERY, 0x00, 0x01, prog_id, 0xf7};
+  char req_data[] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, dev_id, AKAI_CMD_QUERY, 0x00, 0x01, prog_id, 0xf7};
   struct pollfd pfds[1] = {};
   snd_seq_event_t ev;
   int err, pfds_n = 0;
@@ -82,7 +82,7 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id,
 
     while (1)
     {
-      static const char akai_prog[] = {0xf0, AKAI_MANUF_ID, AKAI_RECV, AKAI_MPK3_ID, AKAI_CMD_RECEIVE};
+      char akai_prog[] = {0xf0, AKAI_MANUF_ID, AKAI_RECV, dev_id, AKAI_CMD_RECEIVE};
       snd_seq_event_t *ev_in;
       unsigned int len;
       char* input;
@@ -131,9 +131,9 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id,
 }
 
 int
-sc_midi_akai_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id, uint8_t *data, uint16_t size)
+sc_midi_akai_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id, uint8_t *data, uint16_t size)
 {
-  char req_data[512] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, AKAI_MPK3_ID, AKAI_CMD_SEND, 0x00, 0x00, prog_id};
+  char req_data[512] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, dev_id, AKAI_CMD_SEND, 0x00, 0x00, prog_id};
 
   snd_seq_event_t ev;
   int err;

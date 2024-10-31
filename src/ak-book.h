@@ -13,9 +13,11 @@ struct _AkBookClass
 {
   ScBookClass parent_class;
 
-  int (*read_program) (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id, uint8_t *data, uint16_t *size);
-  int (*write_program) (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prog_id, uint8_t *data, uint16_t size);
+  int (*read_program) (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id, uint8_t *data, uint16_t *size);
+  int (*write_program) (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id, uint8_t *data, uint16_t size);
 };
+
+void ak_book_set_dev_id (AkBook *self, uint8_t dev_id);
 
 int ak_book_read_program (AkBook *self, uint8_t prog_id, uint8_t *dat, uint16_t *size);
 int ak_book_write_program (AkBook *self, uint8_t prog_id, uint8_t *data, uint16_t size);
