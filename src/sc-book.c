@@ -114,6 +114,8 @@ sc_book_use_dummy (ScBook *self)
 
   klass = SC_BOOK_GET_CLASS (self);
 
+  g_return_if_fail (klass->use_dummy != NULL);
+
   return klass->use_dummy (self);
 }
 

@@ -8,6 +8,9 @@ G_DEFINE_TYPE (AkBook, ak_book, SC_TYPE_BOOK)
 static void
 ak_book_class_init (AkBookClass *klass)
 {
+  ScBookClass *sc_klass = SC_BOOK_CLASS (klass);
+  sc_klass->use_dummy = ak_book_use_dummy;
+
   klass->read_program = sc_midi_akai_read_program;
   klass->write_program = sc_midi_akai_write_program;
 }
@@ -50,9 +53,6 @@ void ak_book_use_dummy (ScBook *self)
 static void
 ak_book_init (AkBook *self)
 {
-  ScBookClass *sc_klass = SC_BOOK_GET_CLASS (self);
-  sc_klass->use_dummy = ak_book_use_dummy;
-
   g_type_ensure (AK_TYPE_CONTROL);
   g_type_ensure (AK_TYPE_PROGRAM_PAGE);
 }

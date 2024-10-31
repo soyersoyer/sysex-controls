@@ -143,7 +143,7 @@ sc_window_midi_connect (ScWindow *self, ScControllerRow *row)
   sc_book_set_seq (book, self->seq, ci->addr);
 
   if (controller->use_dummy)
-    sc_book_use_dummy (self->book);
+    sc_book_use_dummy (book);
 
   sc_window_set_book (self, book);
 

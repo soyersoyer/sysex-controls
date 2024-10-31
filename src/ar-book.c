@@ -30,6 +30,9 @@ ar_book_set_read_ack (ArBook *self, uint8_t read_ack)
 static void
 ar_book_class_init (ArBookClass *klass)
 {
+  ScBookClass *sc_klass = SC_BOOK_CLASS (klass);
+  sc_klass->use_dummy = ar_book_use_dummy;
+
   klass->read_control = sc_midi_arturia_read_control;
   klass->write_control = sc_midi_arturia_write_control;
   klass->recall_preset = sc_midi_arturia_recall_preset;
@@ -119,9 +122,6 @@ void ar_book_use_dummy (ScBook *self)
 static void
 ar_book_init (ArBook *self)
 {
-  ScBookClass *sc_klass = SC_BOOK_GET_CLASS (self);
-  sc_klass->use_dummy = ar_book_use_dummy;
-
   g_type_ensure (AR2_TYPE_GLOB_CH_ROW);
   g_type_ensure (AR2_TYPE_KEY_CH_ROW);
   g_type_ensure (AR2_TYPE_RGB_COLOR_ROW);
