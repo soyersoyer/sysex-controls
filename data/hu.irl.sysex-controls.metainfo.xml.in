@@ -62,6 +62,13 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.11" date="2024-10-31">
+      <description>
+        <ul>
+          <li>Akai MPK Mini mk3 support</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.10" date="2024-10-28">
       <description>
         <ul>
