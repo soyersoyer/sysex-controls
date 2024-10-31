@@ -55,7 +55,6 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads Bank A</property>
-                    <property name="activatable">yes</property>
                     <signal name="activated" handler="ml3_preset_page_on_pad_a_activated" swapped="yes"/>
                   </object>
                 </child>
@@ -63,7 +62,6 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads Bank B</property>
-                    <property name="activatable">yes</property>
                     <signal name="activated" handler="ml3_preset_page_on_pad_b_activated" swapped="yes"/>
                   </object>
                 </child>
