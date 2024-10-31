@@ -36,8 +36,6 @@ sc_midi_akai_dummy_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t d
 int
 sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id, uint8_t *data, uint16_t *size)
 {
-  //                                                                               size  size
-  //                                                                               ||||  ||||
   char req_data[] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, dev_id, AKAI_CMD_QUERY, 0x00, 0x01, prog_id, 0xf7};
   struct pollfd pfds[1] = {};
   snd_seq_event_t ev;
