@@ -62,4 +62,5 @@ sudo ninja uninstall -C builddir
 <img alt="SysEX Controls KeyStep 37 CC Bank 1 page" src="https://github.com/soyersoyer/sysex-controls/raw/main/data/screenshots/page_5.png" width="410">
 <img alt="SysEX Controls MiniLab 3 Preset page" src="https://github.com/soyersoyer/sysex-controls/raw/main/data/screenshots/page_6.png" width="410">
 <img alt="SysEX Controls MiniLab 3 Preset 1 Pad Bank A page" src="https://github.com/soyersoyer/sysex-controls/raw/main/data/screenshots/page_7.png" width="410">
+<img alt="SysEX Controls MPK Mini mk3 Preset page" src="https://github.com/soyersoyer/sysex-controls/raw/main/data/screenshots/page_8.png" width="410">
 </div>
