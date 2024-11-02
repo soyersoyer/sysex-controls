@@ -129,9 +129,7 @@ ak_program_page_write_control (AkProgramPage *self, uint32_t control_id, uint8_t
 
   g_debug("%s (%02x::%02x) <- %s", __func__, priv->prog_id, control_id, values_to_buf (buf, value, size));
 
-  ak_book_write_program (book, priv->prog_id, priv->data, priv->size);
-
-  return 0;
+  return ak_book_write_program (book, priv->prog_id, priv->data, priv->size);
 }
 
 static void
