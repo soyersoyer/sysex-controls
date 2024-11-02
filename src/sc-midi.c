@@ -12,9 +12,17 @@
 #define AKAI_RECV 0x00
 #define AKAI_SEND 0x7f
 
+#define AKAI_MPK1_ID 0x7c
 #define AKAI_MPK2_ID 0x26
 #define AKAI_MPK3_ID 0x49
 
+// From: https://github.com/gljubojevic/akai-mpk-mini-editor
+// https://github.com/rubimat/akai_mpk_mini_flasher
+// https://github.com/carlosedp/Reason-MPKMini-Remote/blob/master/Remote/Codecs/Lua%20Codecs/Akai/AkaiMPKmini.lua
+#define AKAI_CMD_V1_SEND 0x61
+#define AKAI_CMD_V1_QUERY 0x63
+
+#define AKAI_CMD_SELECT 0x62
 #define AKAI_CMD_SEND 0x64
 #define AKAI_CMD_QUERY 0x66
 #define AKAI_CMD_RECEIVE 0x67
@@ -30,6 +38,13 @@ int
 sc_midi_akai_dummy_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id, uint8_t *data, uint16_t size)
 {
   fprintf(stderr, "%s(%02x, %02x, %02x, %02x)\n", __func__, dev_id, prog_id, data[0], size);
+  return 0;
+}
+
+int
+sc_midi_akai_dummy_select_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id)
+{
+  fprintf(stderr, "%s(%02x, %02x)\n", __func__, dev_id, prog_id);
   return 0;
 }
 
@@ -171,6 +186,41 @@ sc_midi_akai_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id,
 
   return 0;
 }
+
+int
+sc_midi_akai_select_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id)
+{
+  char req_data[] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, dev_id, AKAI_CMD_SELECT, 0x00, 0x01, prog_id, 0xf7};
+
+  snd_seq_event_t ev;
+  int err;
+
+  snd_seq_ev_clear (&ev);
+  snd_seq_ev_set_source (&ev, 0);
+  snd_seq_ev_set_dest (&ev, addr.client, addr.port);
+  snd_seq_ev_set_direct (&ev);
+  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (req_data), req_data);
+
+  fprintf (stderr, "%s(%02x)\n", __func__, prog_id);
+
+  err = snd_seq_event_output (seq, &ev);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%02x): snd_seq_event_output failed %d\n", __func__, prog_id, err);
+    return err;
+  }
+
+  err = snd_seq_drain_output(seq);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%02x): snd_seq_drain_output failed %d\n", __func__, prog_id, err);
+    return err;
+  }
+
+  return 0;
+}
+
+
 
 enum ar_msg_type {
   AR_UNKNOWN,

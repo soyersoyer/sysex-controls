@@ -2,6 +2,7 @@ sc_sources = [
   'ak-book.c',
   'ak-control.c',
   'ak-program-page.c',
+  'ak-program-select.c',
 
   'ar2-glob-ch-row.c',
   'ar2-key-ch-row.c',

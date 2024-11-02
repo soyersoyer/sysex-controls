@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="AkProgramSelect" parent="GtkButton">
+    <property name="label" translatable="yes">Select</property>
+    <property name="tooltip-text" translatable="yes">Change program to this</property>
+    <signal name="clicked" handler="ak_program_select_clicked"/>
+  </template>
+</interface>

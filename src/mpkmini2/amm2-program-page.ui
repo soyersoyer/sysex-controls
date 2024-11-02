@@ -6,7 +6,11 @@
     <property name="title" translatable="yes">Program</property>
     <property name="child">
       <object class="AdwToolbarView">
-        <child type="top"><object class="AdwHeaderBar"/></child>
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <child><object class="AkProgramSelect"/></child>
+          </object>
+        </child>
         <property name="content">
           <object class="ScPreferencesPage">
 
