@@ -47,7 +47,10 @@
                       <object class="GtkButton">
                         <property name="label" translatable="yes">Refresh</property>
                         <property name="halign">center</property>
-                        <style><class name="pill"/></style>
+                        <style>
+                          <class name="pill"/>
+                          <class name="suggested-action"/>
+                        </style>
                         <signal name="clicked" handler="refresh_button_click_cb" swapped="yes"/>
                       </object>
                     </child>
