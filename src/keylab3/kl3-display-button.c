@@ -12,7 +12,7 @@ kl3_display_button_class_init (Kl3DisplayButtonClass *klass)
 {
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-  gtk_widget_class_set_template_from_resource (widget_class, "/hu/irl/sysex-controls/keylab3/preset/kl3-display-button.ui");
+  gtk_widget_class_set_template_from_resource (widget_class, "/hu/irl/sysex-controls/keylab3/kl3-display-button.ui");
 }
 
 static void
