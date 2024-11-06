@@ -63,6 +63,15 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.12" date="2024-11-06">
+      <description>
+        <ul>
+          <li>Akai MPK Mini mk2 support</li>
+          <li>MPK Mini program selector</li>
+          <li>Presets Page for MiniLab 3 and KeyLab 3 Essential</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.11" date="2024-10-31">
       <description>
         <ul>
