@@ -21,6 +21,7 @@ typename_big = f'{prefix.upper()}_TYPE_{name.upper()}'
 typename_low = f'{prefix.lower()}_{name.lower()}'
 typename_low_dash = typename_low.replace("_", "-");
 name_capitalized = "".join([a.capitalize() for a in name.split('_')])
+name_capitalized_wo_suffix = "".join([a.capitalize() for a in name.split('_')[:-1]])
 full_name_capitalized = prefix.capitalize() + name_capitalized
 name_upper = name.upper()
 prefix_upper = prefix.upper()
@@ -83,7 +84,7 @@ sc_navigation_page_ui = f"""<?xml version="1.0" encoding="UTF-8"?>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
   <template class="{full_name_capitalized}" parent="{parent_capitalized}">
-    <property name="title" translatable="yes">{name_capitalized}</property>
+    <property name="title" translatable="yes">{name_capitalized_wo_suffix}</property>
     <property name="child">
       <object class="AdwToolbarView">
         <child type="top"><object class="AdwHeaderBar"/></child>
