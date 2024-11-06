@@ -3,7 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
   <template class="Kl2KfsPage" parent="ScNavigationPage">
-    <property name="title" translatable="yes">KfsPage</property>
+    <property name="title" translatable="yes">Knob / Fader / Select</property>
     <property name="child">
       <object class="AdwToolbarView">
         <child type="top"><object class="AdwHeaderBar"/></child>

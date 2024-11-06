@@ -3,7 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
   <template class="Kles3FaderPage" parent="ScNavigationPage">
-    <property name="title" translatable="yes">FaderPage</property>
+    <property name="title" translatable="yes">Faders</property>
     <property name="child">
       <object class="AdwToolbarView">
         <child type="top"><object class="AdwHeaderBar"/></child>

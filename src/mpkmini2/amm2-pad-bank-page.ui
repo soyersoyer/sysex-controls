@@ -3,7 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
   <template class="Amm2PadBankPage" parent="ScNavigationPage">
-    <property name="title" translatable="yes">PadBankPage</property>
+    <property name="title" translatable="yes">Pads</property>
     <property name="child">
       <object class="AdwToolbarView">
         <child type="top"><object class="AdwHeaderBar"/></child>

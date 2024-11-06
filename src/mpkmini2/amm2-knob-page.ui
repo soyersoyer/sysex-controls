@@ -3,7 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
   <template class="Amm2KnobPage" parent="ScNavigationPage">
-    <property name="title" translatable="yes">KnobPage</property>
+    <property name="title" translatable="yes">Knobs</property>
     <property name="child">
       <object class="AdwToolbarView">
         <child type="top"><object class="AdwHeaderBar"/></child>
