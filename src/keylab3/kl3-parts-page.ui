@@ -38,7 +38,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Part 1</property>
                     <property name="control-id-offset">0x00000000</property>
-                    <signal name="activated" handler="kl3_parts_page_on_part_activated" swapped="yes"/>
+                    <signal name="activated" handler="kl3_book_on_parts_part_activated" swapped="yes"/>
                   </object>
                 </child>
 
@@ -46,7 +46,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Part 2</property>
                     <property name="control-id-offset">0x00000f00</property>
-                    <signal name="activated" handler="kl3_parts_page_on_part_activated" swapped="yes"/>
+                    <signal name="activated" handler="kl3_book_on_parts_part_activated" swapped="yes"/>
                   </object>
                 </child>
 

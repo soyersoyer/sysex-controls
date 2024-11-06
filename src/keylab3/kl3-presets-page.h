@@ -11,6 +11,4 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (Kl3PresetsPage, kl3_presets_page, KL3, PRESETS_PAGE, ScNavigationPage)
 
-void kl3_presets_page_on_preset_activated (Kl3PresetsPage *self, ScActionRow *row);
-
 G_END_DECLS

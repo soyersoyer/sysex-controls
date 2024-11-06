@@ -118,7 +118,7 @@
                     <property name="title" translatable="yes">Pads Bank A</property>
                     <property name="control-id-offset">0x00000000</property>
                     <property name="control-cc-offset">0x00000000</property>
-                    <signal name="activated" handler="kl3_pad_page_on_pad_bank_activated" swapped="yes"/>
+                    <signal name="activated" handler="kl3_book_on_preset_pad_pad_bank_activated" swapped="yes"/>
                   </object>
                 </child>
 
@@ -127,7 +127,7 @@
                     <property name="title" translatable="yes">Pads Bank B</property>
                     <property name="control-id-offset">0x00000c00</property>
                     <property name="control-cc-offset">0x00000100</property>
-                    <signal name="activated" handler="kl3_pad_page_on_pad_bank_activated" swapped="yes"/>
+                    <signal name="activated" handler="kl3_book_on_preset_pad_pad_bank_activated" swapped="yes"/>
                   </object>
                 </child>
 
@@ -136,7 +136,7 @@
                     <property name="title" translatable="yes">Pads Bank C</property>
                     <property name="control-id-offset">0x00001800</property>
                     <property name="control-cc-offset">0x00000200</property>
-                    <signal name="activated" handler="kl3_pad_page_on_pad_bank_activated" swapped="yes"/>
+                    <signal name="activated" handler="kl3_book_on_preset_pad_pad_bank_activated" swapped="yes"/>
                   </object>
                 </child>
 
@@ -145,7 +145,7 @@
                     <property name="title" translatable="yes">Pads Bank D</property>
                     <property name="control-id-offset">0x00002400</property>
                     <property name="control-cc-offset">0x00000300</property>
-                    <signal name="activated" handler="kl3_pad_page_on_pad_bank_activated" swapped="yes"/>
+                    <signal name="activated" handler="kl3_book_on_preset_pad_pad_bank_activated" swapped="yes"/>
                   </object>
                 </child>
 
