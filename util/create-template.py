@@ -3,7 +3,9 @@
 import argparse
 import os
 
-parser = argparse.ArgumentParser("create-template")
+parser = argparse.ArgumentParser("create-template",
+                                description="Generate GTK template classes",
+                                epilog="example: create-template ml3 preset_page adw navigation_page")
 parser.add_argument("prefix")
 parser.add_argument("name")
 parser.add_argument("parent_prefix")
