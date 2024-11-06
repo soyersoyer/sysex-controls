@@ -29,53 +29,51 @@ get_preset_offset (ScNavigationPage *self)
   return 0x03400000 + (offset << 16);
 }
 
-void
-kles3_preset_page_on_pitch_mod_activated (ScNavigationPage *self, AdwActionRow* row)
+static void
+open_page (ScNavigationPage *self, ScActionRow *row, GType type)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
-  AdwNavigationPage *page = g_object_new (KLES3_TYPE_PITCH_MOD_PAGE, "control-id-offset", get_preset_offset (self), NULL);
+  AdwNavigationPage *page = g_object_new (type,
+                                          "title", adw_preferences_row_get_title (ADW_PREFERENCES_ROW (row)),
+                                          "control-id-offset", get_preset_offset (self),
+                                          "control-cc-offset", get_preset_offset (self),
+                                          NULL);
   adw_navigation_view_push (view, page);
   g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), page);
 }
 
 void
-kles3_preset_page_on_main_knob_activated (ScNavigationPage *self, AdwActionRow* row)
+kles3_preset_page_on_pitch_mod_activated (ScNavigationPage *self, ScActionRow* row)
 {
-  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
-  AdwNavigationPage *page = g_object_new (KLES3_TYPE_MAIN_KNOB_PAGE, "control-id-offset", get_preset_offset (self), NULL);
-  adw_navigation_view_push (view, page);
-  g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), page);
+  open_page (self, row, KLES3_TYPE_PITCH_MOD_PAGE);
 }
 
 void
-kles3_preset_page_on_knob_activated (ScNavigationPage *self, AdwActionRow* row)
+kles3_preset_page_on_main_knob_activated (ScNavigationPage *self, ScActionRow* row)
 {
-  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
-  AdwNavigationPage *page = g_object_new (KLES3_TYPE_KNOB_PAGE, "control-id-offset", get_preset_offset (self), NULL);
-  adw_navigation_view_push (view, page);
-  g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), page);
+  open_page (self, row, KLES3_TYPE_MAIN_KNOB_PAGE);
 }
 
 void
-kles3_preset_page_on_button_activated (ScNavigationPage *self, AdwActionRow* row)
+kles3_preset_page_on_knob_activated (ScNavigationPage *self, ScActionRow* row)
 {
-  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
-  AdwNavigationPage *page = g_object_new (KLES3_TYPE_BUTTON_PAGE, "control-id-offset", get_preset_offset (self), NULL);
-  adw_navigation_view_push (view, page);
-  g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), page);
+  open_page (self, row, KLES3_TYPE_KNOB_PAGE);
 }
 
 void
-kles3_preset_page_on_fader_activated (ScNavigationPage *self, AdwActionRow* row)
+kles3_preset_page_on_button_activated (ScNavigationPage *self, ScActionRow* row)
 {
-  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
-  AdwNavigationPage *page = g_object_new (KLES3_TYPE_FADER_PAGE, "control-id-offset", get_preset_offset (self), NULL);
-  adw_navigation_view_push (view, page);
-  g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), page);
+  open_page (self, row, KLES3_TYPE_BUTTON_PAGE);
 }
 
 void
-kles3_preset_page_on_pad_a_activated (ScNavigationPage *self, AdwActionRow* row)
+kles3_preset_page_on_fader_activated (ScNavigationPage *self, ScActionRow* row)
+{
+  open_page (self, row, KLES3_TYPE_FADER_PAGE);
+}
+
+void
+kles3_preset_page_on_pad_a_activated (ScNavigationPage *self, ScActionRow* row)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
   AdwNavigationPage *page = g_object_new (KLES3_TYPE_PAD_PAGE,
@@ -88,7 +86,7 @@ kles3_preset_page_on_pad_a_activated (ScNavigationPage *self, AdwActionRow* row)
 }
 
 void
-kles3_preset_page_on_pad_b_activated (ScNavigationPage *self, AdwActionRow* row)
+kles3_preset_page_on_pad_b_activated (ScNavigationPage *self, ScActionRow* row)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
   AdwNavigationPage *page = g_object_new (KLES3_TYPE_PAD_PAGE,
