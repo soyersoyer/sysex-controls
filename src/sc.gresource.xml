@@ -115,6 +115,7 @@
     <file preprocess="xml-stripblanks">keylabes3/kles3-pedal-page.ui</file>
     <file preprocess="xml-stripblanks">keylabes3/kles3-pitch-mod-page.ui</file>
     <file preprocess="xml-stripblanks">keylabes3/kles3-preset-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes3/kles3-presets-page.ui</file>
     <file preprocess="xml-stripblanks">keylabes3/kles3-velocity-page.ui</file>
 
     <file preprocess="xml-stripblanks">keystep32/ks32-book.ui</file>

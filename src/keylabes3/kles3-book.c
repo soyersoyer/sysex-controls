@@ -16,6 +16,7 @@
 #include "kles3-pedal-page.h"
 #include "kles3-pitch-mod-page.h"
 #include "kles3-preset-page.h"
+#include "kles3-presets-page.h"
 #include "kles3-velocity-page.h"
 
 struct _Kles3Book
@@ -56,6 +57,7 @@ kles3_book_init (Kles3Book *self)
   g_type_ensure (KLES3_TYPE_PEDAL_PAGE);
   g_type_ensure (KLES3_TYPE_PITCH_MOD_PAGE);
   g_type_ensure (KLES3_TYPE_PRESET_PAGE);
+  g_type_ensure (KLES3_TYPE_PRESETS_PAGE);
   g_type_ensure (KLES3_TYPE_VELOCITY_PAGE);
 
   gtk_widget_init_template (GTK_WIDGET (self));
@@ -65,6 +67,21 @@ GtkWidget *
 kles3_book_new (void)
 {
   return g_object_new (KLES3_TYPE_BOOK, NULL);
+}
+
+void
+kles3_book_on_presets_preset_activated (ScNavigationPage *page, ScActionRow *row)
+{
+  uint32_t control_id_offset = sc_action_row_get_control_id_offset (row);
+  uint32_t control_cc_offset = sc_action_row_get_control_cc_offset (row);
+  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (page), ADW_TYPE_NAVIGATION_VIEW));
+  AdwNavigationPage *nav_page = g_object_new (KLES3_TYPE_PRESET_PAGE,
+                                          "title", adw_preferences_row_get_title (ADW_PREFERENCES_ROW (row)),
+                                          "control-id-offset", control_id_offset,
+                                          "control-cc-offset", control_cc_offset,
+                                          NULL);
+  adw_navigation_view_push (view, nav_page);
+  g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), nav_page);
 }
 
 static uint32_t

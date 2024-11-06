@@ -124,6 +124,7 @@ sc_sources = [
   'keylabes3/kles3-pedal-page.c',
   'keylabes3/kles3-pitch-mod-page.c',
   'keylabes3/kles3-preset-page.c',
+  'keylabes3/kles3-presets-page.c',
   'keylabes3/kles3-velocity-page.c',
 
   'keystep32/ks32-book.c',
