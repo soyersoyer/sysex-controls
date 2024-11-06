@@ -31,38 +31,7 @@
         </child>
 
         <child>
-          <object class="Ml3PresetPage">
-            <property name="title" translatable="yes">Preset 1</property>
-            <property name="control-id-offset">0x08400000</property>
-          </object>
-        </child>
-
-        <child>
-          <object class="Ml3PresetPage">
-            <property name="title" translatable="yes">Preset 2</property>
-            <property name="control-id-offset">0x08400100</property>
-          </object>
-        </child>
-
-        <child>
-          <object class="Ml3PresetPage">
-            <property name="title" translatable="yes">Preset 3</property>
-            <property name="control-id-offset">0x08400200</property>
-          </object>
-        </child>
-
-        <child>
-          <object class="Ml3PresetPage">
-            <property name="title" translatable="yes">Preset 4</property>
-            <property name="control-id-offset">0x08400300</property>
-          </object>
-        </child>
-
-        <child>
-          <object class="Ml3PresetPage">
-            <property name="title" translatable="yes">Preset 5</property>
-            <property name="control-id-offset">0x08400400</property>
-          </object>
+          <object class="Ml3PresetsPage"/>
         </child>
 
       </object>

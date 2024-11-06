@@ -167,6 +167,7 @@
     <file preprocess="xml-stripblanks">minilab3/ml3-pedal-page.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-pitch-mod-page.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-preset-page.ui</file>
+    <file preprocess="xml-stripblanks">minilab3/ml3-presets-page.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-spm-page.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-velocity-page.ui</file>
 
