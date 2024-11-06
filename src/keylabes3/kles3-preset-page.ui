@@ -29,49 +29,49 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pitch / Mod</property>
-                    <signal name="activated" handler="kles3_preset_page_on_pitch_mod_activated" swapped="yes"/>
+                    <signal name="activated" handler="kles3_book_on_preset_pitch_mod_activated" swapped="yes"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Main Knob</property>
-                    <signal name="activated" handler="kles3_preset_page_on_main_knob_activated" swapped="yes"/>
+                    <signal name="activated" handler="kles3_book_on_preset_main_knob_activated" swapped="yes"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Knobs</property>
-                    <signal name="activated" handler="kles3_preset_page_on_knob_activated" swapped="yes"/>
+                    <signal name="activated" handler="kles3_book_on_preset_knob_activated" swapped="yes"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Buttons</property>
-                    <signal name="activated" handler="kles3_preset_page_on_button_activated" swapped="yes"/>
+                    <signal name="activated" handler="kles3_book_on_preset_button_activated" swapped="yes"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Faders</property>
-                    <signal name="activated" handler="kles3_preset_page_on_fader_activated" swapped="yes"/>
+                    <signal name="activated" handler="kles3_book_on_preset_fader_activated" swapped="yes"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads Bank A</property>
-                    <signal name="activated" handler="kles3_preset_page_on_pad_a_activated" swapped="yes"/>
+                    <signal name="activated" handler="kles3_book_on_preset_pad_a_activated" swapped="yes"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads Bank B</property>
-                    <signal name="activated" handler="kles3_preset_page_on_pad_b_activated" swapped="yes"/>
+                    <signal name="activated" handler="kles3_book_on_preset_pad_b_activated" swapped="yes"/>
                   </object>
                 </child>
 
