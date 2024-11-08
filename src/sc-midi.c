@@ -2,8 +2,6 @@
 
 #include "sc-midi.h"
 
-#include "sc-util.h"
-
 #define DESIRED_CAPS (SND_SEQ_PORT_CAP_READ | SND_SEQ_PORT_CAP_SUBS_READ | \
                       SND_SEQ_PORT_CAP_WRITE | SND_SEQ_PORT_CAP_SUBS_WRITE)
 
@@ -60,7 +58,7 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
   snd_seq_ev_set_source (&ev, 0);
   snd_seq_ev_set_dest (&ev, addr.client, addr.port);
   snd_seq_ev_set_direct (&ev);
-  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (req_data), req_data);
+  snd_seq_ev_set_sysex (&ev, sizeof req_data, req_data);
 
   err = snd_seq_event_output (seq, &ev);
   if (err < 0)
@@ -113,17 +111,17 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
       len = ev_in->data.ext.len;
       input = ev_in->data.ext.ptr;
 
-      if (len >= ARRAY_SIZE (akai_prog) + 3 + 1 &&
-          memcmp (input, akai_prog, ARRAY_SIZE (akai_prog)) == 0 &&
-          input[ARRAY_SIZE (akai_prog) + 2] == prog_id)
+      if (len >= sizeof akai_prog + 3 + 1 &&
+          memcmp (input, akai_prog, sizeof akai_prog) == 0 &&
+          input[sizeof akai_prog + 2] == prog_id)
       {
-        unsigned int payload_size = len - ARRAY_SIZE (akai_prog) - 3 - 1;
+        unsigned int payload_size = len - sizeof akai_prog - 3 - 1;
         if (*size < payload_size) {
           fprintf (stderr, "%s(%02x): buffer too short %d < %d\n", __func__, prog_id, *size, payload_size);
           return -EINVAL;
         }
 
-        memcpy (data, input + ARRAY_SIZE (akai_prog) + 3, payload_size);
+        memcpy (data, input + sizeof akai_prog + 3, payload_size);
         *size = payload_size;
 
         fprintf (stderr, "%s(%02x): program received: size %d \n", __func__, prog_id, payload_size);
@@ -199,7 +197,7 @@ sc_midi_akai_select_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id
   snd_seq_ev_set_source (&ev, 0);
   snd_seq_ev_set_dest (&ev, addr.client, addr.port);
   snd_seq_ev_set_direct (&ev);
-  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (req_data), req_data);
+  snd_seq_ev_set_sysex (&ev, sizeof req_data, req_data);
 
   fprintf (stderr, "%s(%02x)\n", __func__, prog_id);
 
@@ -295,27 +293,27 @@ process_arturia_message (snd_seq_event_t *ev, ar_event_t *ar_ev)
   unsigned int len = ev->data.ext.len;
   char* input = ev->data.ext.ptr;
 
-  if (len == ARRAY_SIZE (arturia_value) + 4 &&
-      memcmp (input, arturia_value, ARRAY_SIZE (arturia_value)) == 0)
+  if (len == sizeof arturia_value + 4 &&
+      memcmp (input, arturia_value, sizeof arturia_value) == 0)
   {
     ar_ev->control.id = (input[8] << 8) | input[9];
     ar_ev->control.value = input[10];
     ar_ev->type = AR_CONTROL_WRITE;
   }
-  else if (len == ARRAY_SIZE (arturia_v3_value) + 6 &&
-      memcmp (input, arturia_v3_value, ARRAY_SIZE (arturia_v3_value)) == 0)
+  else if (len == sizeof arturia_v3_value + 6 &&
+      memcmp (input, arturia_v3_value, sizeof arturia_v3_value) == 0)
   {
     ar_ev->control.id = (input[7] << 24) | (input[8] << 16) | (input[9] << 8) | input[10];
     ar_ev->control.value = input[11];
     ar_ev->type = AR_CONTROL_WRITE;
   }
-  else if (len == ARRAY_SIZE (arturia_ack) &&
-           memcmp (input, arturia_ack, ARRAY_SIZE (arturia_ack)) == 0)
+  else if (len == sizeof arturia_ack &&
+           memcmp (input, arturia_ack, sizeof arturia_ack) == 0)
   {
     ar_ev->type = AR_ACK;
   }
-  else if (len == ARRAY_SIZE (device_inquiry) + 15 &&
-           memcmp (input, device_inquiry, ARRAY_SIZE (device_inquiry)) == 0 &&
+  else if (len == sizeof device_inquiry + 15 &&
+           memcmp (input, device_inquiry, sizeof device_inquiry) == 0 &&
            input[3] == 6 && input[4] == 2)
   {
     ar_ev->type = AR_DEVICE_INQUIRY;
@@ -401,7 +399,7 @@ sc_midi_arturia_v3_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t 
   snd_seq_ev_set_source (&ev, 0);
   snd_seq_ev_set_dest (&ev, addr.client, addr.port);
   snd_seq_ev_set_direct (&ev);
-  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (data), data);
+  snd_seq_ev_set_sysex (&ev, sizeof data, data);
 
   data[7] = (uint8_t)(control_id >> 24); // pr_id
   data[8] = (uint8_t)(control_id >> 16); // p_id
@@ -444,7 +442,7 @@ sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t re
   snd_seq_ev_set_source (&ev, 0);
   snd_seq_ev_set_dest (&ev, addr.client, addr.port);
   snd_seq_ev_set_direct (&ev);
-  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (data), data);
+  snd_seq_ev_set_sysex (&ev, sizeof data, data);
 
   data[7] = (uint8_t)(control_id >> 24); // pr_id
   data[8] = (uint8_t)(control_id >> 16); // p_id
@@ -487,7 +485,7 @@ sc_midi_arturia_recall_preset (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t pres
   snd_seq_ev_set_source (&ev, 0);
   snd_seq_ev_set_dest (&ev, addr.client, addr.port);
   snd_seq_ev_set_direct (&ev);
-  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (data), data);
+  snd_seq_ev_set_sysex (&ev, sizeof data, data);
 
   data[7] = preset_id;
 
@@ -523,7 +521,7 @@ sc_midi_arturia_store_preset (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prese
   snd_seq_ev_set_source (&ev, 0);
   snd_seq_ev_set_dest (&ev, addr.client, addr.port);
   snd_seq_ev_set_direct (&ev);
-  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (data), data);
+  snd_seq_ev_set_sysex (&ev, sizeof data, data);
 
   data[7] = preset_id;
 
@@ -561,7 +559,7 @@ sc_midi_arturia_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t con
   snd_seq_ev_set_source (&ev, 0);
   snd_seq_ev_set_dest (&ev, addr.client, addr.port);
   snd_seq_ev_set_direct (&ev);
-  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (data), data);
+  snd_seq_ev_set_sysex (&ev, sizeof data, data);
 
   data[8] = (uint8_t)(control_id >> 8); // p_id
   data[9] = (uint8_t)control_id; // c_id
@@ -600,7 +598,7 @@ sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_
   snd_seq_ev_set_source (&ev, 0);
   snd_seq_ev_set_dest (&ev, addr.client, addr.port);
   snd_seq_ev_set_direct (&ev);
-  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (data), data);
+  snd_seq_ev_set_sysex (&ev, sizeof data, data);
 
   data[8] = (uint8_t)(control_id >> 8); // p_id
   data[9] = (uint8_t)control_id; // c_id
@@ -646,7 +644,7 @@ sc_midi_arturia_device_inquiry (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dat
   snd_seq_ev_set_source (&ev, 0);
   snd_seq_ev_set_dest (&ev, addr.client, addr.port);
   snd_seq_ev_set_direct (&ev);
-  snd_seq_ev_set_sysex (&ev, ARRAY_SIZE (inq_data), inq_data);
+  snd_seq_ev_set_sysex (&ev, sizeof inq_data, inq_data);
 
   err = snd_seq_event_output (seq, &ev);
   if (err < 0)

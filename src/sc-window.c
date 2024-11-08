@@ -5,7 +5,6 @@
 #include "sc-controller-row.h"
 #include "sc-control-value.h"
 #include "sc-midi.h"
-#include "sc-util.h"
 #include "sc-window.h"
 
 #include "beatstep/bs-book.h"
@@ -119,7 +118,7 @@ sc_window_midi_connect (ScWindow *self, ScControllerRow *row)
   controller_t *controller = NULL;
   sc_midi_info_t *ci = sc_controller_row_get_info (row);
 
-  for (int i = 0; i < ARRAY_SIZE(controllers); ++i) {
+  for (int i = 0; i < sizeof controllers / sizeof controllers[0]; ++i) {
     if (strcmp(controllers[i].midi_name, ci->client_name) == 0)
     {
       controller = &controllers[i];
