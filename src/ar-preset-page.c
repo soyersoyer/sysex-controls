@@ -74,6 +74,7 @@ void on_recall_activated (ArPresetPage *self, AdwActionRow* row)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
   AdwNavigationPage *preset_list = ADW_NAVIGATION_PAGE (ar_preset_chooser_page_new (self->presets_num, 0, on_selected_recall, self));
+  adw_navigation_page_set_title (preset_list, "Recall preset from");
   adw_navigation_view_push (view, preset_list);
 }
 
@@ -81,6 +82,7 @@ void on_store_activated (ArPresetPage *self, AdwActionRow* row)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
   AdwNavigationPage *preset_list = ADW_NAVIGATION_PAGE (ar_preset_chooser_page_new (self->presets_num, self->readonly_num, on_selected_store, self));
+  adw_navigation_page_set_title (preset_list, "Store preset on");
   adw_navigation_view_push (view, preset_list);
 }
 
