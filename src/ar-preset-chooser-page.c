@@ -34,7 +34,7 @@ ar_preset_chooser_page_new (int presets_num, int inactive_num, preset_chooser_fu
     GtkWidget* row = ar_preset_chooser_row_new (i + 1);
 
     if (i < inactive_num)
-      gtk_widget_set_sensitive (row, FALSE);
+      gtk_widget_set_visible (row, FALSE);
 
     g_signal_connect_swapped (row, "activated", G_CALLBACK (activate_cb), preset_page);
 
