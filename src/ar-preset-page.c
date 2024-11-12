@@ -39,20 +39,18 @@ static void on_selected_recall (ArPresetPage *self, ArPresetChooserRow *row)
 {
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_NAVIGATION_VIEW));
   ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self), AR_TYPE_BOOK));
+  AdwNavigationView *book_view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (book), ADW_TYPE_NAVIGATION_VIEW));
   ScWindow *window = SC_WINDOW (gtk_widget_get_ancestor (GTK_WIDGET (self), SC_TYPE_WINDOW));
   uint8_t preset_id = ar_preset_chooser_row_get_preset_id (row);
   g_debug ("on_selected_recall selected preset_id: %d", preset_id);
-  if (ar_book_recall_preset (book, preset_id) == 0)
-  {
-    adw_navigation_view_pop (view);
-    sc_window_load_page (window, "list");
-    return;
-  }
-  else
+  if (ar_book_recall_preset (book, preset_id) != 0)
   {
     sc_io_problem (window, "Preset recall failed");
     return;
   }
+  adw_navigation_view_push_by_tag (book_view, "load");
+  adw_navigation_view_pop (view);
+  g_idle_add (G_SOURCE_FUNC (sc_book_load), book);
 }
 
 static void on_selected_store (ArPresetPage *self, ArPresetChooserRow *row)

@@ -65,6 +65,7 @@
           <object class="AdwNavigationPage">
             <property name="title" translatable="yes">SysEx Controls</property>
             <property name="tag">list</property>
+            <signal name="shown" handler="list_shown_cb" swapped="yes"/>
             <property name="child">
               <object class="AdwToolbarView">
                 <child type="top">
@@ -130,7 +131,6 @@
         <child>
           <object class="AdwNavigationPage">
             <property name="tag">setting</property>
-            <signal name="hidden" handler="setting_hidden_cb" swapped="yes"/>
             <property name="child">
               <object class="AdwNavigationSplitView" id="split_view">
                 <property name="min-sidebar-width">200</property>

@@ -71,7 +71,7 @@ sc_book_load_task_finish (GObject* source_object, GAsyncResult* res, gpointer da
   }
 
   /* TODO: use signals or something better for this */
-  sc_window_load_page (window, "setting");
+  sc_window_pop_page (window);
 }
 
 int

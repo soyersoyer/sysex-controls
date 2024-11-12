@@ -148,7 +148,7 @@ sc_window_midi_connect (ScWindow *self, ScControllerRow *row)
 
   sc_window_set_book (self, book);
 
-  adw_navigation_view_replace_with_tags (self->navigation_view, (const char * const[]){"load"}, 1);
+  adw_navigation_view_replace_with_tags (self->navigation_view, (const char * const[]){"setting", "load"}, 2);
   g_idle_add (G_SOURCE_FUNC (sc_book_load), self->book);
 }
 
@@ -221,15 +221,16 @@ refresh_button_click_cb (ScWindow *self)
 }
 
 static void
-setting_hidden_cb (ScWindow *self)
+list_shown_cb (ScWindow *self)
 {
-  sc_midi_disconnect (self->seq, sc_book_get_addr (self->book));
+  if (self->book)
+    sc_midi_disconnect (self->seq, sc_book_get_addr (self->book));
 }
 
 void
-sc_window_load_page (ScWindow *self, const char *name)
+sc_window_pop_page (ScWindow *self)
 {
-  adw_navigation_view_replace_with_tags (self->navigation_view, (const char * const[]){name}, 1);
+  adw_navigation_view_pop (self->navigation_view);
 }
 
 static void
@@ -247,7 +248,7 @@ sc_window_class_init (ScWindowClass *klass)
   gtk_widget_class_bind_template_callback (widget_class, refresh_button_click_cb);
   gtk_widget_class_bind_template_callback (widget_class, controller_select_cb);
   gtk_widget_class_bind_template_callback (widget_class, show_list_click_cb);
-  gtk_widget_class_bind_template_callback (widget_class, setting_hidden_cb);
+  gtk_widget_class_bind_template_callback (widget_class, list_shown_cb);
 }
 
 static void
