@@ -47,7 +47,7 @@
         <child>
           <object class="ArPresetPage">
             <property name="presets-num">8</property>
-            <property name="readonly-num">2</property>
+            <property name="readonly-num">1</property>
           </object>
         </child>
 
