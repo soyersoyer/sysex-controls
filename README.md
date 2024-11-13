@@ -10,13 +10,13 @@ This is a Linux alternative to the Midi Control Center software.
 
 These devices are supported and tested:
 - Akai MPK Mini mk3
+- Arturia BeatStep
 - Arturia KeyStep 37
 - Arturia MiniLab mkII
 - Arturia MiniLab 3
 
 These might also work, but have not been tested yet:
 - Akai MPK Mini mk2
-- Arturia BeatStep
 - Arturia KeyLab mkII 49 / 61 / 88
 - Arturia KeyLab 49 / 61 / 88 mk3
 - Arturia KeyLab Essential 49 / 61 / 88
