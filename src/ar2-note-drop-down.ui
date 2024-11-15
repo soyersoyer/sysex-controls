@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ar2NoteDropDown" parent="GtkBox">
+    <child>
+      <object class="GtkDropDown">
+        <style><class name="image-button"/></style>
+        <property name="show-arrow">no</property>
+        <property name="expression">
+          <lookup type="ScControlValue" name="name"></lookup>
+        </property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item value="0x24">C1</item>
+              <item>C#1</item>
+              <item>D1</item>
+              <item>D#1</item>
+              <item>E1</item>
+              <item>F1</item>
+              <item>F#1</item>
+              <item>G1</item>
+              <item>G#1</item>
+              <item>A1</item>
+              <item>A#1</item>
+              <item>B1</item>
+
+              <item>C2</item>
+              <item>C#2</item>
+              <item>D2</item>
+              <item>D#2</item>
+              <item>E2</item>
+              <item>F2</item>
+              <item>F#2</item>
+              <item>G2</item>
+              <item>G#2</item>
+              <item>A2</item>
+              <item>A#2</item>
+              <item>B2</item>
+
+              <item>C3</item>
+              <item>C#3</item>
+              <item>D3</item>
+              <item>D#3</item>
+              <item>E3</item>
+              <item>F3</item>
+              <item>F#3</item>
+              <item>G3</item>
+              <item>G#3</item>
+              <item>A3</item>
+              <item>A#3</item>
+              <item>B3</item>
+
+              <item>C4</item>
+              <item>C#4</item>
+              <item>D4</item>
+              <item>D#4</item>
+              <item>E4</item>
+              <item>F4</item>
+              <item>F#4</item>
+              <item>G4</item>
+              <item>G#4</item>
+              <item>A4</item>
+              <item>A#4</item>
+              <item>B4</item>
+
+              <item>C5</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+  </template>
+</interface>

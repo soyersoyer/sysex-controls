@@ -1,6 +1,7 @@
 #include "ar-control.h"
 
 #include "ar-book.h"
+#include "ar2-user-scale.h"
 #include "sc-control.h"
 #include "sc-control-value.h"
 #include "sc-navigation-page.h"
@@ -185,6 +186,69 @@ spin_row_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
   self->value = val;
 }
 
+static void
+toggle_button_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
+{
+  ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (self->widget)));
+  ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), AR_TYPE_BOOK));
+  GtkToggleButton *b = GTK_TOGGLE_BUTTON (widget);
+  uint8_t val = gtk_toggle_button_get_active (b) ? 0x7F : 00;
+
+  if (self->value == val)
+    return;
+
+  g_debug ("toggle button change %08x: %02x -> %02x", self->real_id, self->value, val);
+  if (ar_book_write_control (book, self->real_id, val) < 0)
+  {
+    sc_io_problem (window, "Control change failed");
+    return;
+  }
+
+  self->value = val;
+}
+
+static void
+drop_down_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
+{
+  ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (self->widget)));
+  ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), AR_TYPE_BOOK));
+  ScControlValue *item = SC_CONTROL_VALUE (gtk_drop_down_get_selected_item (GTK_DROP_DOWN (widget)));
+  uint8_t val = sc_control_value_get_value (item);
+
+  if (self->value == val)
+    return;
+
+  g_debug ("drop down change %08x: %02x -> %02x %s", self->real_id, self->value, val, sc_control_value_get_name (item));
+  if (ar_book_write_control (book, self->real_id, val) < 0)
+  {
+    sc_io_problem (window, "Control change failed");
+    return;
+  }
+
+  self->value = val;
+}
+
+static void
+user_scale_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
+{
+  ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (self->widget)));
+  ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), AR_TYPE_BOOK));
+  Ar2UserScale *w = AR2_USER_SCALE (widget);
+  uint8_t val = ar2_user_scale_get_value (w);
+
+  if (self->value == val)
+    return;
+
+  g_debug ("user scale part change %08x: %02x -> %02x (part %d)", self->real_id, self->value, val, ar2_user_scale_get_part (w));
+  if (ar_book_write_control (book, self->real_id, val) < 0)
+  {
+    sc_io_problem (window, "Control change failed");
+    return;
+  }
+
+  self->value = val;
+}
+
 static int
 ar_control_register (ArControl *self)
 {
@@ -195,16 +259,16 @@ ar_control_register (ArControl *self)
   uint8_t *rid = (uint8_t*)&(self->real_id);
   self->real_id = self->id;
 
-  widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), ADW_TYPE_COMBO_ROW);
+  widget = gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_COMBO_ROW);
 
   if (!widget)
-    widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), GTK_TYPE_DROP_DOWN);
+    widget = gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_SPIN_ROW);
 
   if (!widget)
-    widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), ADW_TYPE_SPIN_ROW);
+    widget = gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_SWITCH_ROW);
 
-  if (!widget)
-    widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), ADW_TYPE_SWITCH_ROW);
+  if (!widget && GTK_IS_BOX (gtk_widget_get_parent (GTK_WIDGET (self))))
+    widget = gtk_widget_get_next_sibling (GTK_WIDGET (self));
 
   nav_page_widget = SC_NAVIGATION_PAGE (gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), SC_TYPE_NAVIGATION_PAGE));
   if (nav_page_widget) {
@@ -243,6 +307,12 @@ ar_control_register (ArControl *self)
     g_signal_connect (G_OBJECT (widget), "notify::active", G_CALLBACK (switch_row_change_cb), self);
   else if (ADW_IS_SPIN_ROW (widget))
     g_signal_connect (G_OBJECT (widget), "notify::value", G_CALLBACK (spin_row_change_cb), self);
+  else if (GTK_IS_TOGGLE_BUTTON (widget))
+    g_signal_connect (G_OBJECT (widget), "notify::active", G_CALLBACK (toggle_button_change_cb), self);
+  else if (GTK_IS_DROP_DOWN (widget))
+    g_signal_connect (G_OBJECT (widget), "notify::selected", G_CALLBACK (drop_down_change_cb), self);
+  else if (AR2_IS_USER_SCALE (widget))
+    g_signal_connect (G_OBJECT (widget), "notify::value", G_CALLBACK (user_scale_change_cb), self);
   else
     g_error("Unsupported control type: %s id: %08x",
             gtk_widget_get_name (GTK_WIDGET (widget)),
@@ -274,9 +344,9 @@ ar_control_update_gui (ScControl *control)
     if (pos != GTK_INVALID_LIST_POSITION)
       adw_combo_row_set_selected (combo_row, pos);
     else
-      g_warning("Set combo row id %02x to invalid pos %02x", self->real_id, pos);
+      g_warning("Set combo row id %02x to invalid pos %02x (value: %d)", self->real_id, pos, self->value);
 
-    g_debug("Set combo row id %02x to pos %02x", self->real_id, pos);
+    g_debug("Set combo row id %02x to pos %02x (value: %d)", self->real_id, pos, self->value);
   }
   else if (ADW_IS_SWITCH_ROW (self->widget))
   {
@@ -289,11 +359,47 @@ ar_control_update_gui (ScControl *control)
     AdwSpinRow *spin_row = ADW_SPIN_ROW (self->widget);
     adw_spin_row_set_value (spin_row, self->value);
     g_debug ("Set spin row with id %02x to %02x", self->real_id, self->value);
-  } else {
+  }
+  else if (GTK_IS_TOGGLE_BUTTON (self->widget))
+  {
+    GtkToggleButton *b = GTK_TOGGLE_BUTTON (self->widget);
+    gtk_toggle_button_set_active (b, self->value);
+    g_debug ("Set toggle button with id %02x to %02x", self->real_id, self->value);
+  }
+  else if (GTK_IS_DROP_DOWN (self->widget))
+  {
+    guint pos = GTK_INVALID_LIST_POSITION;
+    GtkDropDown *dd = GTK_DROP_DOWN (self->widget);
+    GListModel* list = gtk_drop_down_get_model (dd);
+    for(int i = 0; i < g_list_model_get_n_items (list); ++i)
+    {
+      ScControlValue *kv = SC_CONTROL_VALUE (g_list_model_get_item (list, i));
+      if (sc_control_value_get_value (kv) == self->value)
+      {
+        pos = i;
+        break;
+      }
+    }
+
+    if (pos != GTK_INVALID_LIST_POSITION)
+      gtk_drop_down_set_selected (dd, pos);
+    else
+      g_warning("Set drop down id %02x to invalid pos %02x (value %d not found)", self->real_id, pos, self->value);
+
+    g_debug("Set dop_down id %02x to pos %02x (value: %d)", self->real_id, pos, self->value);
+  }
+  else if (AR2_IS_USER_SCALE (self->widget))
+  {
+    Ar2UserScale *w = AR2_USER_SCALE (self->widget);
+    ar2_user_scale_set_value (w, self->value);
+    g_debug ("Set user scale part with id %02x to %02x (part %d)", self->real_id, self->value, ar2_user_scale_get_part (w));
+  }
+  else
+  {
     g_error ("Unsupported control type: %s id: 0x%02x",
               gtk_widget_get_name (GTK_WIDGET (self->widget)),
               self->real_id);
-    }
+  }
 }
 
 static int

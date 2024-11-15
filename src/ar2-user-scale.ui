@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ar2UserScale" parent="GtkBox">
+    <style><class name="linked"/></style>
+    <property name="homogeneous">yes</property>
+    <child>
+      <object class="GtkToggleButton" id="b0">
+        <signal name="toggled" handler="ar2_user_scale_toggle_cb" swapped="yes"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkToggleButton" id="b1">
+        <signal name="toggled" handler="ar2_user_scale_toggle_cb" swapped="yes"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkToggleButton" id="b2">
+        <signal name="toggled" handler="ar2_user_scale_toggle_cb" swapped="yes"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkToggleButton" id="b3">
+        <signal name="toggled" handler="ar2_user_scale_toggle_cb" swapped="yes"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkToggleButton" id="b4">
+        <signal name="toggled" handler="ar2_user_scale_toggle_cb" swapped="yes"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkToggleButton" id="b5">
+        <signal name="toggled" handler="ar2_user_scale_toggle_cb" swapped="yes"/>
+      </object>
+    </child>
+  </template>
+</interface>

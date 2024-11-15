@@ -24,7 +24,7 @@ These might also work, but have not been tested yet:
 - Arturia KeyStep
 - Arturia MicroLab
 
-It doesn't support the KeyStep and BeatStep Sequencer yet.
+It doesn't support the KeyStep sequencer controls yet.
 
 If you think some untested devices work well, please let us know.
 If not, let us know as well.

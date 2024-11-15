@@ -62,6 +62,276 @@
               </object>
             </child>
 
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Steps Pitch</property>
+
+                <child>
+                  <object class="GtkBox">
+                    <property name="margin-bottom">8</property>
+                    <style><class name="linked"/></style>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x5200</property></object></child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x5201</property></object></child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x5202</property></object></child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x5203</property></object></child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x5204</property></object></child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x5205</property></object></child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x5206</property></object></child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x5207</property></object></child>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkBox">
+                    <style><class name="linked"/></style>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x5208</property></object></child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x5209</property></object></child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x520a</property></object></child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x520b</property></object></child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x520c</property></object></child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x520d</property></object></child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x520e</property></object></child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="Ar2NoteDropDown">
+                        <child><object class="ArControl"><property name="id">0x520f</property></object></child>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Steps Enabled</property>
+
+                <child>
+                  <object class="GtkBox">
+                    <property name="margin-bottom">8</property>
+                    <property name="homogeneous">yes</property>
+                    <style><class name="linked"/></style>
+
+                    <child><object class="ArControl"><property name="id">0x5300</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">1</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x5301</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">2</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x5302</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">3</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x5303</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">4</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x5304</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">5</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x5305</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">6</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x5306</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">7</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x5307</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">8</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkBox">
+                    <style><class name="linked"/></style>
+                    <property name="homogeneous">yes</property>
+
+                    <child><object class="ArControl"><property name="id">0x5308</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">9</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x5309</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">10</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x530a</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">11</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x530b</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">12</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x530c</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">13</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x530d</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">14</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x530e</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">15</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x530f</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">16</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
           </object>
         </property>
       </object>

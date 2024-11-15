@@ -150,6 +150,33 @@
               </object>
             </child>
 
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">User Scale</property>
+
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <child><object class="ArControl"><property name="id">0x500a</property></object></child>
+                    <child>
+                      <object class="Ar2UserScale">
+                        <property name="part">0</property>
+                        <property name="margin-bottom">8</property>
+                      </object>
+                    </child>
+                    <child><object class="ArControl"><property name="id">0x500b</property></object></child>
+                    <child>
+                      <object class="Ar2UserScale">
+                        <property name="part">1</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+
 
           </object>
         </property>

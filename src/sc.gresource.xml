@@ -5,8 +5,10 @@
 
     <file preprocess="xml-stripblanks">ar2-glob-ch-row.ui</file>
     <file preprocess="xml-stripblanks">ar2-key-ch-row.ui</file>
+    <file preprocess="xml-stripblanks">ar2-note-drop-down.ui</file>
     <file preprocess="xml-stripblanks">ar2-rgb-color-row.ui</file>
     <file preprocess="xml-stripblanks">ar2-user-ch-row.ui</file>
+    <file preprocess="xml-stripblanks">ar2-user-scale.ui</file>
 
     <file preprocess="xml-stripblanks">ar3-active-ch-row.ui</file>
     <file preprocess="xml-stripblanks">ar3-ch-row.ui</file>
