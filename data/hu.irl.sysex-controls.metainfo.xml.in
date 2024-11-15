@@ -21,6 +21,7 @@ This is a Linux alternative to the Midi Control Center software.
 <p>These devices are supported and tested:</p>
 <ul>
 <li>Akai MPK Mini mk3</li>
+<li>Arturia BeatStep</li>
 <li>Arturia KeyStep 37</li>
 <li>Arturia MiniLab mkII</li>
 <li>Arturia MiniLab 3</li>
@@ -28,7 +29,6 @@ This is a Linux alternative to the Midi Control Center software.
 <p>These might also work, but have not been tested yet:</p>
 <ul>
 <li>Akai MPK Mini mk2</li>
-<li>Arturia BeatStep</li>
 <li>Arturia KeyLab mkII 49 / 61 / 88</li>
 <li>Arturia KeyLab 49 / 61 / 88 mk3</li>
 <li>Arturia KeyLab Essential 49 / 61 / 88</li>
@@ -63,6 +63,15 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.13" date="2024-11-15">
+      <description>
+        <ul>
+          <li>BeatStep sequencer controls</li>
+          <li>Reload controls after preset reload</li>
+          <li>Allow edit the preset 2 on Minilab 2</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.12" date="2024-11-06">
       <description>
         <ul>
