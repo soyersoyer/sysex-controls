@@ -27,7 +27,7 @@
             <child>
               <object class="Ml2Knob">
                 <property name="title" translatable="yes">Knob 3</property>
-                <property name="control-id-offset">0x03</property>
+                <property name="control-id-offset">0x02</property>
               </object>
             </child>
 
