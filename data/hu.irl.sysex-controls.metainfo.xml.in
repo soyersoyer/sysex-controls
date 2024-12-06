@@ -63,6 +63,13 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.14" date="2024-12-06">
+      <description>
+        <ul>
+          <li>Fix the ID of MiniLab mkII's Knob 3 (thx rdbende)</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.13" date="2024-11-15">
       <description>
         <ul>
