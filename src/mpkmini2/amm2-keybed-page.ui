@@ -49,7 +49,7 @@
                   <object class="AdwSpinRow">
                     <child>
                       <object class="AkControl">
-                        <property name="id">0x6c</property>
+                        <property name="id">0x6b</property>
                         <property name="value-offset">-12</property>
                       </object>
                     </child>
