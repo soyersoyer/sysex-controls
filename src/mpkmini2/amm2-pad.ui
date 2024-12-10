@@ -29,8 +29,8 @@
         <property name="model">
           <object class="ScControlValueList">
             <items>
-              <item>Toggle</item>
               <item>Momentary</item>
+              <item>Toggle</item>
             </items>
           </object>
         </property>
