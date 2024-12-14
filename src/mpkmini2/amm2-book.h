@@ -7,6 +7,7 @@
 #include "sc-action-row.h"
 
 #define AMM2_MIDI_NAME "MPKmini2"
+#define AMM2_MIDI_NAME_2 "MPK Mini Mk II"
 #define AMM2_SHORT_NAME "MPK mini 2"
 
 G_BEGIN_DECLS

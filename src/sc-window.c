@@ -49,6 +49,7 @@ static controller_t controllers[] = {
   {ML2_MIDI_NAME, ML2_SHORT_NAME, ml2_book_new},
   {ML3_MIDI_NAME, ML3_SHORT_NAME, ml3_book_new},
   {AMM2_MIDI_NAME, AMM2_SHORT_NAME, amm2_book_new},
+  {AMM2_MIDI_NAME_2, AMM2_SHORT_NAME, amm2_book_new},
   {AMM3_MIDI_NAME, AMM3_SHORT_NAME, amm3_book_new},
 };
 
