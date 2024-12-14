@@ -63,6 +63,13 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.16" date="2024-12-14">
+      <description>
+        <ul>
+          <li>add another MPK Mini mk2 MIDI ID (thx guidokon)</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.15" date="2024-12-11">
       <description>
         <ul>
