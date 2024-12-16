@@ -41,35 +41,35 @@
             <child>
               <object class="Kles3Fader">
                 <property name="title" translatable="yes">Fader 5</property>
-                <property name="control-id-offset">0x0500</property>
+                <property name="control-id-offset">0x0400</property>
               </object>
             </child>
 
             <child>
               <object class="Kles3Fader">
                 <property name="title" translatable="yes">Fader 6</property>
-                <property name="control-id-offset">0x0600</property>
+                <property name="control-id-offset">0x0500</property>
               </object>
             </child>
 
             <child>
               <object class="Kles3Fader">
                 <property name="title" translatable="yes">Fader 7</property>
-                <property name="control-id-offset">0x0700</property>
+                <property name="control-id-offset">0x0600</property>
               </object>
             </child>
 
             <child>
               <object class="Kles3Fader">
                 <property name="title" translatable="yes">Fader 8</property>
-                <property name="control-id-offset">0x0800</property>
+                <property name="control-id-offset">0x0700</property>
               </object>
             </child>
 
             <child>
               <object class="Kles3Fader">
                 <property name="title" translatable="yes">Fader 9</property>
-                <property name="control-id-offset">0x0900</property>
+                <property name="control-id-offset">0x0800</property>
               </object>
             </child>
 
