@@ -5,6 +5,8 @@
 #define DESIRED_CAPS (SND_SEQ_PORT_CAP_READ | SND_SEQ_PORT_CAP_SUBS_READ | \
                       SND_SEQ_PORT_CAP_WRITE | SND_SEQ_PORT_CAP_SUBS_WRITE)
 
+#define READ_TIMEOUT_MS 1000
+
 #define AKAI_MANUF_ID 0x47
 
 #define AKAI_RECV 0x00
@@ -79,7 +81,7 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
 
   while (1)
   {
-    err = poll (pfds, pfds_n, 20);
+    err = poll (pfds, pfds_n, READ_TIMEOUT_MS);
     if (err < 0)
     {
       fprintf (stderr, "%s(%02x) poll failed %d\n", __func__, prog_id, err);
@@ -342,7 +344,7 @@ sc_midi_arturia_read_next (snd_seq_t *seq, ar_event_t *ar_ev)
 
   while (1)
   {
-    ret = poll (pfds, pfds_n, 20);
+    ret = poll (pfds, pfds_n, READ_TIMEOUT_MS);
     if (ret < 0)
     {
       fprintf (stderr, "%s(%02d, %08x) poll failed %d\n", __func__, ar_ev->type, ar_ev->control.id, ret);
