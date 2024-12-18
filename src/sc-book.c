@@ -32,12 +32,16 @@ sc_book_load_task (GTask *task, gpointer source_obj, gpointer task_data, GCancel
   for(GtkWidget *page = gtk_widget_get_first_child (GTK_WIDGET (view));
       page; page = gtk_widget_get_next_sibling (page))
   {
+    int ret;
     if (!SC_IS_NAVIGATION_PAGE (page))
       continue;
 
-    if (sc_navigation_page_load_controls (SC_NAVIGATION_PAGE (page)) < 0)
+    ret = sc_navigation_page_load_controls (SC_NAVIGATION_PAGE (page));
+    if (ret < 0)
     {
-      g_task_return_new_error_literal (task, G_IO_ERROR, G_IO_ERROR_FAILED, "control value read failed");
+      char err[128];
+      snprintf(err, 128, "Failed to read control value: %d (%s)", ret, strerror(-ret));
+      g_task_return_new_error_literal (task, G_IO_ERROR, G_IO_ERROR_FAILED, err);
       return;
     }
   }
