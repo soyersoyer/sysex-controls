@@ -64,6 +64,16 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.17" date="2024-12-20">
+      <description>
+        <ul>
+          <li>KeyStep Pro support</li>
+          <li>Improved error reporting</li>
+          <li>Fixed KeyLab Essential mk3 fader IDs</li>
+          <li>Increased timeout to fix connection problems in virtual machines</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.16" date="2024-12-14">
       <description>
         <ul>
