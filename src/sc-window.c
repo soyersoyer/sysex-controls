@@ -14,6 +14,7 @@
 #include "keylabes3/kles3-book.h"
 #include "keystep32/ks32-book.h"
 #include "keystep37/ks37-book.h"
+#include "keysteppro/ksp-book.h"
 #include "microlab/microlab-book.h"
 #include "minilab2/ml2-book.h"
 #include "minilab3/ml3-book.h"
@@ -45,6 +46,7 @@ static controller_t controllers[] = {
   {KLES3_88_MIDI_NAME, KLES3_88_SHORT_NAME, kles3_book_new},
   {KS32_MIDI_NAME, KS32_SHORT_NAME, ks32_book_new},
   {KS37_MIDI_NAME, KS37_SHORT_NAME, ks37_book_new},
+  {KSP_MIDI_NAME, KSP_SHORT_NAME, ksp_book_new},
   {MICROLAB_MIDI_NAME, MICROLAB_SHORT_NAME, microlab_book_new},
   {ML2_MIDI_NAME, ML2_SHORT_NAME, ml2_book_new},
   {ML3_MIDI_NAME, ML3_SHORT_NAME, ml3_book_new},

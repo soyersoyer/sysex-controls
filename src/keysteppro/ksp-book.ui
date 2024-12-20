@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KspBook" parent="ArBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="KspControllerPage" />
+        </child>
+
+        <child>
+          <object class="KspTrackChannelPage" />
+        </child>
+
+        <child>
+          <object class="KspSyncPage" />
+        </child>
+
+        <child>
+          <object class="KspMetronomePage" />
+        </child>
+
+        <child>
+          <object class="KspLaunchQuantizePage" />
+        </child>
+
+        <child>
+          <object class="KspCvGatePage" />
+        </child>
+
+        <child>
+          <object class="KspKnobPage" />
+        </child>
+
+        <child>
+          <object class="KspTouchStripPage" />
+        </child>
+
+        <child>
+          <object class="KspDrumMapPage" />
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>

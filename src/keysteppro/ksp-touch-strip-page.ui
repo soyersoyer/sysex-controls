@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KspTouchStripPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Touch Strip</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x416b</property></object></child>
+                    <property name="title" translatable="yes">Enabled</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>On</item>
+                          <item>Off</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4143</property></object></child>
+                    <property name="title" translatable="yes">MIDI send/receive</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>Send</item>
+                          <item>Receive</item>
+                          <item>Both</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScCcRow">
+                    <child><object class="ArControl"><property name="id">0x4144</property></object></child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

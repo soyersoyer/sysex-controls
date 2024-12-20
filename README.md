@@ -13,6 +13,7 @@ These devices are supported and tested:
 - Akai MPK Mini mk3
 - Arturia BeatStep
 - Arturia KeyStep 37
+- Arturia KeyStep Pro
 - Arturia MiniLab mkII
 - Arturia MiniLab 3
 

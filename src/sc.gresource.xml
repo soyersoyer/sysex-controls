@@ -139,6 +139,20 @@
     <file preprocess="xml-stripblanks">keystep37/ks37-sequence-page.ui</file>
     <file preprocess="xml-stripblanks">keystep37/ks37-transport-page.ui</file>
 
+    <file preprocess="xml-stripblanks">keysteppro/ksp-book.ui</file>
+    <file preprocess="xml-stripblanks">keysteppro/ksp-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">keysteppro/ksp-cv-drum-gate.ui</file>
+    <file preprocess="xml-stripblanks">keysteppro/ksp-cv-gate-page.ui</file>
+    <file preprocess="xml-stripblanks">keysteppro/ksp-cv-voice.ui</file>
+    <file preprocess="xml-stripblanks">keysteppro/ksp-drum-map-page.ui</file>
+    <file preprocess="xml-stripblanks">keysteppro/ksp-knob.ui</file>
+    <file preprocess="xml-stripblanks">keysteppro/ksp-knob-page.ui</file>
+    <file preprocess="xml-stripblanks">keysteppro/ksp-launch-quantize-page.ui</file>
+    <file preprocess="xml-stripblanks">keysteppro/ksp-metronome-page.ui</file>
+    <file preprocess="xml-stripblanks">keysteppro/ksp-sync-page.ui</file>
+    <file preprocess="xml-stripblanks">keysteppro/ksp-touch-strip-page.ui</file>
+    <file preprocess="xml-stripblanks">keysteppro/ksp-track-channel-page.ui</file>
+
     <file preprocess="xml-stripblanks">microlab/microlab-book.ui</file>
     <file preprocess="xml-stripblanks">microlab/microlab-hold-page.ui</file>
     <file preprocess="xml-stripblanks">microlab/microlab-keyboard-page.ui</file>

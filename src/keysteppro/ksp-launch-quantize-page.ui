@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KspLaunchQuantizePage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Launch Quantize</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4103</property></object></child>
+                    <property name="title" translatable="yes">Wait to Load Project</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>1 bar</item>
+                          <item>2 bars</item>
+                          <item>4 bars</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4102</property></object></child>
+                    <property name="title" translatable="yes">Wait to Load Scene</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1 beat</item>
+                          <item>1 bar</item>
+                          <item>2 bars</item>
+                          <item>4 bars</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4104</property></object></child>
+                    <property name="title" translatable="yes">Wait to Load Pattern</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="0x01">At end</item>
+                          <item>1 bar</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

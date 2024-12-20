@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KspCvDrumGate" parent="ScComboRow">
+    <property name="title" translatable="yes">Drum Gate</property>
+    <property name="model">
+      <object class="ScControlValueList">
+        <items>
+          <item>V-Trig 5 V</item>
+          <item>V-Trig 12 V</item>
+          <item>S-Trig</item>
+        </items>
+      </object>
+    </property>
+  </template>
+</interface>

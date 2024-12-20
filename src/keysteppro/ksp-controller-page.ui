@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KspControllerPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Controller</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="ArFirmwareInfoGroup"/>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x416c</property></object></child>
+                    <property name="title" translatable="yes">Vegas mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>5 min</item>
+                          <item>10 min</item>
+                          <item>Never</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x416d</property></object></child>
+                    <property name="title" translatable="yes">Screen saver</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>2 min</item>
+                          <item>10 min</item>
+                          <item>30 min</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x416d</property></object></child>
+                    <property name="title" translatable="yes">Step listen</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x413b</property></object></child>
+                    <property name="title" translatable="yes">Knob Acceleration</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Slow</item>
+                          <item>Medium</item>
+                          <item>Fast</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x413c</property></object></child>
+                    <property name="title" translatable="yes">Aftertouch curve</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Exponential</item>
+                          <item>Logarithmic</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x413d</property></object></child>
+                    <property name="title" translatable="yes">Velocity curve</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Exponential</item>
+                          <item>Logarithmic</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x413e</property></object></child>
+                    <property name="title" translatable="yes">Transport send</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>MMC</item>
+                          <item>Real Time</item>
+                          <item>Both</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x413f</property></object></child>
+                    <property name="title" translatable="yes">Transport receive</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>MMC</item>
+                          <item>Real Time</item>
+                          <item>Both</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4140</property></object></child>
+                    <property name="title" translatable="yes">Clock send</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4141</property></object></child>
+                    <property name="title" translatable="yes">Clock receive</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4188</property></object></child>
+                    <property name="title" translatable="yes">MIDI Out 2</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Out</item>
+                          <item>Thru</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KspCvGatePage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">CV/Gate</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="KspCvVoice">
+                <property name="title" translatable="yes">Voice 1</property>
+                <property name="control-id-offset">0x00</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KspCvVoice">
+                <property name="title" translatable="yes">Voice 2</property>
+                <property name="control-id-offset">0x01</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KspCvVoice">
+                <property name="title" translatable="yes">Voice 3</property>
+                <property name="control-id-offset">0x02</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="KspCvVoice">
+                <property name="title" translatable="yes">Voice 4</property>
+                <property name="control-id-offset">0x03</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="KspCvDrumGate">
+                    <child><object class="ArControl"><property name="id">0x4180</property></object></child>
+                    <property name="title" translatable="yes">Drum Gate 1</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KspCvDrumGate">
+                    <child><object class="ArControl"><property name="id">0x4181</property></object></child>
+                    <property name="title" translatable="yes">Drum Gate 2</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KspCvDrumGate">
+                    <child><object class="ArControl"><property name="id">0x4182</property></object></child>
+                    <property name="title" translatable="yes">Drum Gate 3</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KspCvDrumGate">
+                    <child><object class="ArControl"><property name="id">0x4183</property></object></child>
+                    <property name="title" translatable="yes">Drum Gate 4</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KspCvDrumGate">
+                    <child><object class="ArControl"><property name="id">0x4184</property></object></child>
+                    <property name="title" translatable="yes">Drum Gate 5</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KspCvDrumGate">
+                    <child><object class="ArControl"><property name="id">0x4185</property></object></child>
+                    <property name="title" translatable="yes">Drum Gate 6</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KspCvDrumGate">
+                    <child><object class="ArControl"><property name="id">0x4186</property></object></child>
+                    <property name="title" translatable="yes">Drum Gate 7</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KspCvDrumGate">
+                    <child><object class="ArControl"><property name="id">0x4187</property></object></child>
+                    <property name="title" translatable="yes">Drum Gate 8</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

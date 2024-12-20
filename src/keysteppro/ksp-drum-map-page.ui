@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KspDrumMapPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Drum Map</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow" id="control_mode">
+                    <child><object class="ArControl"><property name="id">0x4151</property></object></child>
+                    <property name="title" translatable="yes">Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Chromatic</item>
+                          <item>Custom</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <binding name="visible">
+                  <closure type="gboolean" function="cv_in">
+                    <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                    <constant type="GVariant">[0x00]</constant>
+                  </closure>
+                </binding>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4152</property></object></child>
+                    <property name="title" translatable="yes">Low note</property>
+                    <property name="max-value">103</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <binding name="visible">
+                  <closure type="gboolean" function="cv_in">
+                    <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                    <constant type="GVariant">[0x01]</constant>
+                  </closure>
+                </binding>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4153</property></object></child>
+                    <property name="title" translatable="yes">Note 1</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4154</property></object></child>
+                    <property name="title" translatable="yes">Note 2</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4155</property></object></child>
+                    <property name="title" translatable="yes">Note 3</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4156</property></object></child>
+                    <property name="title" translatable="yes">Note 4</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4157</property></object></child>
+                    <property name="title" translatable="yes">Note 5</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4158</property></object></child>
+                    <property name="title" translatable="yes">Note 6</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4159</property></object></child>
+                    <property name="title" translatable="yes">Note 7</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x415a</property></object></child>
+                    <property name="title" translatable="yes">Note 8</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x415b</property></object></child>
+                    <property name="title" translatable="yes">Note 9</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x415c</property></object></child>
+                    <property name="title" translatable="yes">Note 10</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x415d</property></object></child>
+                    <property name="title" translatable="yes">Note 11</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x415e</property></object></child>
+                    <property name="title" translatable="yes">Note 12</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x415f</property></object></child>
+                    <property name="title" translatable="yes">Note 13</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4160</property></object></child>
+                    <property name="title" translatable="yes">Note 14</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4161</property></object></child>
+                    <property name="title" translatable="yes">Note 15</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4162</property></object></child>
+                    <property name="title" translatable="yes">Note 16</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4163</property></object></child>
+                    <property name="title" translatable="yes">Note 17</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4164</property></object></child>
+                    <property name="title" translatable="yes">Note 18</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4165</property></object></child>
+                    <property name="title" translatable="yes">Note 19</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4166</property></object></child>
+                    <property name="title" translatable="yes">Note 20</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4167</property></object></child>
+                    <property name="title" translatable="yes">Note 21</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4168</property></object></child>
+                    <property name="title" translatable="yes">Note 22</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4169</property></object></child>
+                    <property name="title" translatable="yes">Note 23</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x416a</property></object></child>
+                    <property name="title" translatable="yes">Note 24</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

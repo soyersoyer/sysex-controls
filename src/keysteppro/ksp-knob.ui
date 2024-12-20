@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KspKnob" parent="ScPreferencesGroup">
+
+    <child>
+      <object class="ScCcRow">
+        <child><object class="ArControl"><property name="id">0x411c</property></object></child>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScComboRow">
+        <child><object class="ArControl"><property name="id">0x4121</property></object></child>
+        <property name="title" translatable="yes">Port</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item>USB</item>
+              <item>MIDI 1</item>
+              <item>MIDI 2</item>
+              <item>All</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ar2Glob2ChRow">
+        <child><object class="ArControl"><property name="id">0x4126</property></object></child>
+      </object>
+    </child>
+
+    <!-- This is not working
+    <child>
+      <object class="ScComboRow">
+        <child><object class="ArControl"><property name="id">0x412b</property></object></child>
+        <property name="title" translatable="yes">Mode</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item>Absolute</item>
+              <item>Relative 1</item>
+              <item>Relative 2</item>
+              <item>Relative 3</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+    -->
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ArControl"><property name="id">0x4130</property></object></child>
+        <property name="title" translatable="yes">Min</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwSpinRow">
+        <child><object class="ArControl"><property name="id">0x4135</property></object></child>
+        <property name="title" translatable="yes">Max</property>
+        <property name="adjustment">
+          <object class="GtkAdjustment">
+            <property name="lower">0</property>
+            <property name="upper">127</property>
+            <property name="page-increment">10</property>
+            <property name="step-increment">1</property>
+          </object>
+        </property>
+      </object>
+    </child>
+
+  </template>
+</interface>
