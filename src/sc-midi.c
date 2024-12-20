@@ -289,6 +289,7 @@ process_arturia_message (snd_seq_event_t *ev, ar_event_t *ar_ev)
 {
   static const uint8_t arturia_ack[] =      {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x1c, 0x00, 0xf7};
   static const uint8_t arturia_value[] =    {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00};
+  static const uint8_t arturia_value_p2[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x32, 0x00};
   static const uint8_t arturia_v3_value[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x21};
   static const uint8_t device_inquiry[] =   {0xf0, 0x7e};
 
@@ -299,6 +300,13 @@ process_arturia_message (snd_seq_event_t *ev, ar_event_t *ar_ev)
       memcmp (input, arturia_value, sizeof arturia_value) == 0)
   {
     ar_ev->control.id = (input[8] << 8) | input[9];
+    ar_ev->control.value = input[10];
+    ar_ev->type = AR_CONTROL_WRITE;
+  }
+  else if (len == sizeof arturia_value_p2 + 4 &&
+      memcmp (input, arturia_value_p2, sizeof arturia_value_p2) == 0)
+  {
+    ar_ev->control.id = ((input[8] << 8) | input[9]) + 0x80; // convert back the ID
     ar_ev->control.value = input[10];
     ar_ev->type = AR_CONTROL_WRITE;
   }
@@ -567,6 +575,13 @@ sc_midi_arturia_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t con
   data[9] = (uint8_t)control_id; // c_id
   data[10] = val;
 
+  // The protocol uses the 0x32 query for controls where the ID >= 0x80
+  if (data[9] >= 0x80)
+  {
+    data[6] += 0x30;
+    data[9] -= 0x80;
+  }
+
   err = snd_seq_event_output (seq, &ev);
   if (err < 0)
   {
@@ -604,6 +619,13 @@ sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_
 
   data[8] = (uint8_t)(control_id >> 8); // p_id
   data[9] = (uint8_t)control_id; // c_id
+
+  // The protocol uses the 0x31 query for controls where the ID >= 0x80
+  if (data[9] >= 0x80)
+  {
+    data[6] += 0x30;
+    data[9] -= 0x80;
+  }
 
   err = snd_seq_event_output (seq, &ev);
   if (err < 0)
