@@ -289,10 +289,12 @@ ar_control_register (ArControl *self)
   }
 
   /* normalize
+   * after adding the offsets, it is possible that cid >= 0x80
    * sysex bytes are < 0x80
+   * arturia v3 uses the last byte of the ID (rid) for storing the overflow bit
    * */
 
-  while (rid[1] >= 0x80) {
+  if (rid[1] >= 0x80) {
     rid[0]++;
     rid[1] -= 0x80;
   }
