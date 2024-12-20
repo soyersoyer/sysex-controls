@@ -24,7 +24,8 @@ void sc_control_value_list_append (ScControlValueList *self, const ScControlValu
 void sc_control_value_list_take (ScControlValueList *self, char *string);
 void sc_control_value_list_remove (ScControlValueList *self, guint position);
 void sc_control_value_list_splice (ScControlValueList *self, guint position,
-			           guint n_removals, const ScControlValue * const *additions);
+                                   guint n_removals, const ScControlValue * const *additions,
+                                   guint n_additions);
 const ScControlValue * sc_control_value_list_get_cv (ScControlValueList *self, guint position);
 
 G_END_DECLS

@@ -168,6 +168,15 @@ sc_control_value_list_get_item (GListModel *list, guint position)
   return g_list_model_get_item (G_LIST_MODEL (self->store), position);
 }
 
+void
+sc_control_value_list_splice (ScControlValueList *self, guint position,
+                              guint n_removals, const ScControlValue * const *additions,
+                              guint n_additions)
+{
+  g_list_store_splice (G_LIST_STORE (self->store), position, n_removals, (gpointer*)additions, n_additions);
+  g_list_model_items_changed (G_LIST_MODEL (self), position, n_removals, n_additions);
+}
+
 static void
 sc_control_value_list_model_init (GListModelInterface *iface)
 {
