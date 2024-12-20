@@ -152,7 +152,7 @@ combo_row_change_cb (GObject * widget, GParamSpec *pspec, AkControl *self)
   if (self->value[0] == val)
     return;
 
-  g_debug ("combo control change %08x: %02x -> %02x %s", self->real_id, self->value[0], val, sc_control_value_get_name (item));
+  g_debug ("combo control change 0x%08x: 0x%02x -> 0x%02x %s", self->real_id, self->value[0], val, sc_control_value_get_name (item));
   if (ak_program_page_write_control (ppage, self->real_id, &val, 1) < 0)
   {
     sc_io_problem (window, "Control change failed");
@@ -173,7 +173,7 @@ switch_row_change_cb (GObject * widget, GParamSpec *pspec, AkControl *self)
   if (self->value[0] == val)
     return;
 
-  g_debug ("switch control change %08x: %02x -> %02x", self->real_id, self->value[0], val);
+  g_debug ("switch control change 0x%08x: 0x%02x -> 0x%02x", self->real_id, self->value[0], val);
   if (ak_program_page_write_control (ppage, self->real_id, &val, 1) < 0)
   {
     sc_io_problem (window, "Control change failed");
@@ -203,7 +203,7 @@ spin_row_change_cb (GObject * widget, GParamSpec *pspec, AkControl *self)
   if (dvalue == val)
     return;
 
-  g_debug("spin control change %08x: %02x -> %02x", self->real_id, dvalue, val);
+  g_debug("spin control change 0x%08x: 0x%02x -> 0x%02x", self->real_id, dvalue, val);
 
   self->value[0] = val & 0x7f;
 
@@ -244,7 +244,7 @@ entry_row_change_cb (AdwEntryRow* widget, AkControl *self)
   if (strncmp((char*)self->value, new_text, 16) == 0)
     return;
 
-  g_debug("entry control change %08x: %s -> %s", self->real_id, self->value, new_text);
+  g_debug("entry control change 0x%08x: %s -> %s", self->real_id, self->value, new_text);
 
   strncpy((char*)self->value, new_text, 16);
   self->value[15] = 0;
@@ -307,7 +307,7 @@ ak_control_register (AkControl *self)
   else if (ADW_IS_ENTRY_ROW (widget))
     g_signal_connect (G_OBJECT (widget), "apply", G_CALLBACK (entry_row_change_cb), self);
   else
-    g_error("Unsupported control type: %s id: %08x",
+    g_error("Unsupported control type: %s id: 0x%08x",
             gtk_widget_get_name (GTK_WIDGET (widget)),
             self->real_id);
 
@@ -337,31 +337,31 @@ ak_control_update_gui (ScControl *control)
     if (pos != GTK_INVALID_LIST_POSITION)
       adw_combo_row_set_selected (combo_row, pos);
     else
-      g_warning("Set combo row id %02x to invalid pos %02x", self->real_id, pos);
+      g_warning("Set combo row id 0x%02x to invalid pos 0x%02x", self->real_id, pos);
 
-    g_debug("Set combo row id %02x to pos %02x", self->real_id, pos);
+    g_debug("Set combo row id 0x%02x to pos 0x%02x", self->real_id, pos);
   }
   else if (ADW_IS_SWITCH_ROW (self->widget))
   {
     AdwSwitchRow *switch_row = ADW_SWITCH_ROW (self->widget);
     adw_switch_row_set_active (switch_row, self->value[0]);
-    g_debug ("Set switch row with id %02x to %02x", self->real_id, self->value[0]);
+    g_debug ("Set switch row with id 0x%02x to 0x%02x", self->real_id, self->value[0]);
   }
   else if (ADW_IS_SPIN_ROW (self->widget))
   {
     AdwSpinRow *spin_row = ADW_SPIN_ROW (self->widget);
     uint16_t dvalue = get_dvalue(self->value, self->size);
     adw_spin_row_set_value (spin_row, dvalue + self->value_offset);
-    g_debug ("Set spin row with id %02x to %02x (%+02d)", self->real_id, dvalue, self->value_offset);
+    g_debug ("Set spin row with id 0x%02x to 0x%02x (%+02d)", self->real_id, dvalue, self->value_offset);
   }
   else if (ADW_IS_ENTRY_ROW (self->widget))
   {
     GtkEditable *editable = GTK_EDITABLE (self->widget);
     gtk_editable_set_text (editable, (char*)self->value);
-    g_debug ("Set entry row with id %02x to %s", self->real_id, self->value);
+    g_debug ("Set entry row with id 0x%02x to %s", self->real_id, self->value);
   }
   else {
-    g_error ("Unsupported control type: %s id: %02x",
+    g_error ("Unsupported control type: %s id: 0x%02x",
               gtk_widget_get_name (GTK_WIDGET (self->widget)),
               self->real_id);
     }
