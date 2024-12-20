@@ -4,8 +4,10 @@
     <file preprocess="xml-stripblanks">ak-program-select.ui</file>
 
     <file preprocess="xml-stripblanks">ar2-glob-ch-row.ui</file>
+    <file preprocess="xml-stripblanks">ar2-glob2-ch-row.ui</file>
     <file preprocess="xml-stripblanks">ar2-key-ch-row.ui</file>
     <file preprocess="xml-stripblanks">ar2-note-drop-down.ui</file>
+    <file preprocess="xml-stripblanks">ar2-off-ch-row.ui</file>
     <file preprocess="xml-stripblanks">ar2-rgb-color-row.ui</file>
     <file preprocess="xml-stripblanks">ar2-user-ch-row.ui</file>
     <file preprocess="xml-stripblanks">ar2-user-scale.ui</file>

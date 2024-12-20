@@ -5,8 +5,10 @@ sc_sources = [
   'ak-program-select.c',
 
   'ar2-glob-ch-row.c',
+  'ar2-glob2-ch-row.c',
   'ar2-key-ch-row.c',
   'ar2-note-drop-down.c',
+  'ar2-off-ch-row.c',
   'ar2-rgb-color-row.c',
   'ar2-user-ch-row.c',
   'ar2-user-scale.c',
