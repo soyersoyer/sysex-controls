@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="DbiGlobalPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Global</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4110</property></object></child>
+                    <property name="title" translatable="yes">Clock In/Out Settings</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1pulse</item>
+                          <item>2pulse (Korg)</item>
+                          <item>24PPQ</item>
+                          <item>48PPQ</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x4111</property></object></child>
+                    <property name="title" translatable="yes">Auto-sync</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4112</property></object></child>
+                    <property name="title" translatable="yes">Tap Tempo</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="2">2</item>
+                          <item>3</item>
+                          <item>4</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x4113</property></object></child>
+                    <property name="title" translatable="yes">Global BPM</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x4116</property></object></child>
+                    <property name="title" translatable="yes">Wait to Load Pattern</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x4120</property></object></child>
+                    <property name="title" translatable="yes">Accent Velocity Threshold</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4122</property></object></child>
+                    <property name="title" translatable="yes">Metronome</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1/4</item>
+                          <item>1/4T</item>
+                          <item>1/8</item>
+                          <item>1/8T</item>
+                          <item>1/16</item>
+                          <item>1/16T</item>
+                          <item>1/32</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x4151</property></object></child>
+                    <property name="title" translatable="yes">Step Repeat Randomizer</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x4152</property></object></child>
+                    <property name="title" translatable="yes">Step Repeat Probability</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">100</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4123</property></object></child>
+                    <property name="title" translatable="yes">Pause mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>From current</item>
+                          <item>From beginning</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4124</property></object></child>
+                    <property name="title" translatable="yes">Next bank</property>
+                    <property name="subtitle" translatable="yes">Click on bank</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Then pattern</item>
+                          <item>Switches instantly</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x412c</property></object></child>
+                    <property name="title" translatable="yes">Solo / Mute mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Toggle</item>
+                          <item>Latch</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

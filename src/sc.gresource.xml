@@ -42,6 +42,13 @@
     <file preprocess="xml-stripblanks">beatstep/bs-transport-button.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-transport-button-page.ui</file>
 
+    <file preprocess="xml-stripblanks">drumbruteimpact/dbi-book.ui</file>
+    <file preprocess="xml-stripblanks">drumbruteimpact/dbi-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">drumbruteimpact/dbi-drum-map-page.ui</file>
+    <file preprocess="xml-stripblanks">drumbruteimpact/dbi-global-page.ui</file>
+    <file preprocess="xml-stripblanks">drumbruteimpact/dbi-roller-page.ui</file>
+    <file preprocess="xml-stripblanks">drumbruteimpact/dbi-transport-page.ui</file>
+
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
 
     <file preprocess="xml-stripblanks">keylab2/kl2-bank-page.ui</file>

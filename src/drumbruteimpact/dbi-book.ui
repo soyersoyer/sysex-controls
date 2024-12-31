@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="DbiBook" parent="ArBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="DbiControllerPage" />
+        </child>
+
+        <child>
+          <object class="DbiGlobalPage" />
+        </child>
+
+        <child>
+          <object class="DbiRollerPage" />
+        </child>
+
+        <child>
+          <object class="DbiTransportPage" />
+        </child>
+
+        <child>
+          <object class="DbiDrumMapPage" />
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>
