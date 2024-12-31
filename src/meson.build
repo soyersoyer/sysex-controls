@@ -54,6 +54,13 @@ sc_sources = [
   'beatstep/bs-transport-button.c',
   'beatstep/bs-transport-button-page.c',
 
+  'drumbrute/db-book.c',
+  'drumbrute/db-controller-page.c',
+  'drumbrute/db-drum-map-page.c',
+  'drumbrute/db-global-page.c',
+  'drumbrute/db-roller-page.c',
+  'drumbrute/db-transport-page.c',
+
   'drumbruteimpact/dbi-book.c',
   'drumbruteimpact/dbi-controller-page.c',
   'drumbruteimpact/dbi-drum-map-page.c',

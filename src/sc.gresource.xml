@@ -42,6 +42,13 @@
     <file preprocess="xml-stripblanks">beatstep/bs-transport-button.ui</file>
     <file preprocess="xml-stripblanks">beatstep/bs-transport-button-page.ui</file>
 
+    <file preprocess="xml-stripblanks">drumbrute/db-book.ui</file>
+    <file preprocess="xml-stripblanks">drumbrute/db-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">drumbrute/db-drum-map-page.ui</file>
+    <file preprocess="xml-stripblanks">drumbrute/db-global-page.ui</file>
+    <file preprocess="xml-stripblanks">drumbrute/db-roller-page.ui</file>
+    <file preprocess="xml-stripblanks">drumbrute/db-transport-page.ui</file>
+
     <file preprocess="xml-stripblanks">drumbruteimpact/dbi-book.ui</file>
     <file preprocess="xml-stripblanks">drumbruteimpact/dbi-controller-page.ui</file>
     <file preprocess="xml-stripblanks">drumbruteimpact/dbi-drum-map-page.ui</file>

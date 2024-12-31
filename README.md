@@ -18,6 +18,8 @@ These devices are supported and tested:
 - Arturia MiniLab 3
 
 These might also work, but have not been tested yet:
+- Arturia DrumBrute
+- Arturia DrumBrute Impact
 - Arturia KeyLab mkII 49 / 61 / 88
 - Arturia KeyLab 49 / 61 / 88 mk3
 - Arturia KeyLab Essential 49 / 61 / 88

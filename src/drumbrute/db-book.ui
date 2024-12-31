@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="DbBook" parent="ArBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="DbControllerPage" />
+        </child>
+
+        <child>
+          <object class="DbGlobalPage" />
+        </child>
+
+        <child>
+          <object class="DbRollerPage" />
+        </child>
+
+        <child>
+          <object class="DbTransportPage" />
+        </child>
+
+        <child>
+          <object class="DbDrumMapPage" />
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>

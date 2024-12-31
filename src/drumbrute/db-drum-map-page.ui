@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="DbDrumMapPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Drum Map</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4130</property></object></child>
+                    <property name="title" translatable="yes">Kick1</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4131</property></object></child>
+                    <property name="title" translatable="yes">Kick 2</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4132</property></object></child>
+                    <property name="title" translatable="yes">Snare</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4133</property></object></child>
+                    <property name="title" translatable="yes">Clap</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4134</property></object></child>
+                    <property name="title" translatable="yes">Rim</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4135</property></object></child>
+                    <property name="title" translatable="yes">Claves</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4136</property></object></child>
+                    <property name="title" translatable="yes">Cl Hat</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4137</property></object></child>
+                    <property name="title" translatable="yes">Op Hat</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4138</property></object></child>
+                    <property name="title" translatable="yes">Conga H</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4139</property></object></child>
+                    <property name="title" translatable="yes">Tom H</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x413a</property></object></child>
+                    <property name="title" translatable="yes">Conga L</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x413b</property></object></child>
+                    <property name="title" translatable="yes">Tom L</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x413c</property></object></child>
+                    <property name="title" translatable="yes">Cymbal</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x413d</property></object></child>
+                    <property name="title" translatable="yes">Rev Cymb</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x413e</property></object></child>
+                    <property name="title" translatable="yes">Maracas</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x413f</property></object></child>
+                    <property name="title" translatable="yes">Tamb</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4140</property></object></child>
+                    <property name="title" translatable="yes">Zap</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>
