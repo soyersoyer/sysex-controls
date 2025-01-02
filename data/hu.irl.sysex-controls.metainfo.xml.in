@@ -40,7 +40,7 @@ This is a Linux alternative to the Midi Control Center software.
 <li>Arturia MicroLab</li>
 </ul>
 <p>
-It doesn't support the KeyStep sequencer controls yet.
+It doesn't support the KeyStep sequencer banks and the DrumBrute banks yet.
 </p>
 <p>
 If you think some untested devices work well, please let us know.
@@ -66,6 +66,13 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.18" date="2024-01-02">
+      <description>
+        <ul>
+          <li>DrumBrute / DrumBrute Impact support</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.17" date="2024-12-20">
       <description>
         <ul>
