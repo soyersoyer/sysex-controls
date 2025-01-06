@@ -12,6 +12,8 @@ These devices are supported and tested:
 - Akai MPK Mini mk2
 - Akai MPK Mini mk3
 - Arturia BeatStep
+- Arturia DrumBrute Impact
+- Arturia KeyStep
 - Arturia KeyStep 37
 - Arturia KeyStep Pro
 - Arturia MiniLab mkII
@@ -19,12 +21,10 @@ These devices are supported and tested:
 
 These might also work, but have not been tested yet:
 - Arturia DrumBrute
-- Arturia DrumBrute Impact
 - Arturia KeyLab mkII 49 / 61 / 88
 - Arturia KeyLab 49 / 61 / 88 mk3
 - Arturia KeyLab Essential 49 / 61 / 88
 - Arturia KeyLab Essential 49 / 61 / 88 mk3
-- Arturia KeyStep
 - Arturia MicroLab
 
 It doesn't support the KeyStep sequencer banks and the DrumBrute banks yet.
