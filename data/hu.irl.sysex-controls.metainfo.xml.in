@@ -16,7 +16,7 @@ It currently allows for reading the controls (Buttons, Knobs, Pads, Keys, etc)
 and changing them and writing back to the device.
 </p>
 <p>
-This is a Linux alternative to the Midi Control Center software.
+This is a Linux alternative to the MIDI Control Center software.
 </p>
 <p>These devices are supported and tested:</p>
 <ul>

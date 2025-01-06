@@ -6,7 +6,7 @@ This is a Libadwaita UI that allows you to configure certain Akai and Arturia de
 It currently allows for reading the controls (Buttons, Knobs, Pads, Keys, etc)
 and changing them and writing back to the device.
 
-This is a Linux alternative to the Midi Control Center software.
+This is a Linux alternative to the MIDI Control Center software.
 
 These devices are supported and tested:
 - Akai MPK Mini mk2
