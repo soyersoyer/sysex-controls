@@ -68,6 +68,13 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.19" date="2025-01-07">
+      <description>
+        <ul>
+          <li>MiniBrute 2 / MiniBrute 2s support</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.18" date="2025-01-02">
       <description>
         <ul>
