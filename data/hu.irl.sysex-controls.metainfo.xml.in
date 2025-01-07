@@ -39,7 +39,7 @@ This is a Linux alternative to the MIDI Control Center software.
 <li>Arturia KeyLab Essential 49 / 61 / 88 mk3</li>
 <li>Arturia MicroLab</li>
 <li>Arturia MiniBrute 2</li>
-<li>Arturia Minibrute 2s</li>
+<li>Arturia Minibrute 2S</li>
 </ul>
 <p>
 It doesn't support the KeyStep sequencer banks and the DrumBrute/MiniBrute banks yet.
@@ -71,7 +71,7 @@ If not, let us know as well.
     <release version="0.2.19" date="2025-01-07">
       <description>
         <ul>
-          <li>MiniBrute 2 / MiniBrute 2s support</li>
+          <li>MiniBrute 2 / MiniBrute 2S support</li>
         </ul>
       </description>
     </release>

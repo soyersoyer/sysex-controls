@@ -27,7 +27,7 @@ These might also work, but have not been tested yet:
 - Arturia KeyLab Essential 49 / 61 / 88 mk3
 - Arturia MicroLab
 - Arturia MiniBrute 2
-- Arturia MiniBrute 2s
+- Arturia MiniBrute 2S
 
 It doesn't support the KeyStep sequencer banks and the DrumBrute/MiniBrute banks yet.
 
