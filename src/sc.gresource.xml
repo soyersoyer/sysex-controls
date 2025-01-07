@@ -173,6 +173,23 @@
     <file preprocess="xml-stripblanks">microlab/microlab-mod-page.ui</file>
     <file preprocess="xml-stripblanks">microlab/microlab-pitch-page.ui</file>
 
+    <file preprocess="xml-stripblanks">minibrute2/mb2-book.ui</file>
+    <file preprocess="xml-stripblanks">minibrute2/mb2-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">minibrute2/mb2-cv-gate-page.ui</file>
+    <file preprocess="xml-stripblanks">minibrute2/mb2-mod-pitch-page.ui</file>
+    <file preprocess="xml-stripblanks">minibrute2/mb2-sequence-page.ui</file>
+    <file preprocess="xml-stripblanks">minibrute2/mb2-transport-page.ui</file>
+    <file preprocess="xml-stripblanks">minibrute2/mb2-transposition-page.ui</file>
+
+    <file preprocess="xml-stripblanks">minibrute2s/mb2s-book.ui</file>
+    <file preprocess="xml-stripblanks">minibrute2s/mb2s-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">minibrute2s/mb2s-cv-gate-page.ui</file>
+    <file preprocess="xml-stripblanks">minibrute2s/mb2s-mod-pitch-page.ui</file>
+    <file preprocess="xml-stripblanks">minibrute2s/mb2s-sequence-page.ui</file>
+    <file preprocess="xml-stripblanks">minibrute2s/mb2s-transport-page.ui</file>
+    <file preprocess="xml-stripblanks">minibrute2s/mb2s-transposition-page.ui</file>
+    <file preprocess="xml-stripblanks">minibrute2s/mb2s-user-scale-page.ui</file>
+
     <file preprocess="xml-stripblanks">minilab2/ml2-book.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-button.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-controller-page.ui</file>

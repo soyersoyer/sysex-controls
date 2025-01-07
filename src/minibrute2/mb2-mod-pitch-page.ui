@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Mb2ModPitchPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Mod / Pitch</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Mod Wheel</property>
+
+                <child>
+                  <object class="Ar2UserChRow">
+                    <child><object class="ArControl"><property name="id">0x4113</property></object></child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScCcRow">
+                    <child><object class="ArControl"><property name="id">0x4114</property></object></child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Pitch Bend</property>
+
+                <child>
+                  <object class="Ar2UserChRow">
+                    <child><object class="ArControl"><property name="id">0x4115</property></object></child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

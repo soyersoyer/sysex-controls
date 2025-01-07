@@ -5,5 +5,5 @@ Icon=hu.irl.sysex-controls
 Terminal=false
 Type=Application
 Categories=Settings;AudioVideo;Utility;GNOME;GTK;
-Keywords=MIDI;Akai;MPK;Mini;Arturia;KeyLab;Essential;KeyStep;MiniLab;MicroLab;BeatStep;DrumBrute;Impact;Keyboard
+Keywords=MIDI;Akai;MPK;Mini;Arturia;KeyLab;Essential;KeyStep;MiniLab;MiniBrute;MicroLab;BeatStep;DrumBrute;Impact;Keyboard
 StartupNotify=true

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Mb2sControllerPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Controller</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="ArFirmwareInfoGroup"/>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScChRow">
+                    <child><object class="ArControl"><property name="id">0x4106</property></object></child>
+                    <property name="title" translatable="yes">User Channel</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="Ar2UserChRow">
+                    <child><object class="ArControl"><property name="id">0x4107</property></object></child>
+                    <property name="title" translatable="yes">MIDI Input Channel</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x4108</property></object></child>
+                    <property name="title" translatable="yes">MIDI Thru</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Pad</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4117</property></object></child>
+                    <property name="title" translatable="yes">Velocity Curve</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Lin</item>
+                          <item>Log</item>
+                          <item>AntiLog</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4119</property></object></child>
+                    <property name="title" translatable="yes">Aftertouch Curve</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Lin</item>
+                          <item>Log</item>
+                          <item>AntiLog</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x411a</property></object></child>
+                    <property name="title" translatable="yes">Poly Aftertouch</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item value="0x7f">On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x411b</property></object></child>
+                    <property name="title" translatable="yes">Pad MIDI Out Port</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="1">USB</item>
+                          <item>MIDI</item>
+                          <item>USB &amp; MIDI</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x411c</property></object></child>
+                    <property name="title" translatable="yes">Seq MIDI Out Port</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="1">USB</item>
+                          <item>MIDI</item>
+                          <item>USB &amp; MIDI</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

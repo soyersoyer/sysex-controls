@@ -182,6 +182,23 @@ sc_sources = [
   'microlab/microlab-mod-page.c',
   'microlab/microlab-pitch-page.c',
 
+  'minibrute2/mb2-book.c',
+  'minibrute2/mb2-controller-page.c',
+  'minibrute2/mb2-cv-gate-page.c',
+  'minibrute2/mb2-mod-pitch-page.c',
+  'minibrute2/mb2-sequence-page.c',
+  'minibrute2/mb2-transport-page.c',
+  'minibrute2/mb2-transposition-page.c',
+
+  'minibrute2s/mb2s-book.c',
+  'minibrute2s/mb2s-controller-page.c',
+  'minibrute2s/mb2s-cv-gate-page.c',
+  'minibrute2s/mb2s-mod-pitch-page.c',
+  'minibrute2s/mb2s-sequence-page.c',
+  'minibrute2s/mb2s-transport-page.c',
+  'minibrute2s/mb2s-transposition-page.c',
+  'minibrute2s/mb2s-user-scale-page.c',
+
   'minilab2/ml2-book.c',
   'minilab2/ml2-button.c',
   'minilab2/ml2-controller-page.c',

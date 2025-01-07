@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Mb2sBook" parent="ArBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="Mb2sControllerPage"/>
+        </child>
+
+        <child>
+          <object class="Mb2sModPitchPage"/>
+        </child>
+
+        <child>
+          <object class="Mb2sSequencePage"/>
+        </child>
+
+        <child>
+          <object class="Mb2sTranspositionPage"/>
+        </child>
+
+        <child>
+          <object class="Mb2sCvGatePage"/>
+        </child>
+
+        <child>
+          <object class="Mb2sTransportPage"/>
+        </child>
+
+        <child>
+          <object class="Mb2sUserScalePage"/>
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>

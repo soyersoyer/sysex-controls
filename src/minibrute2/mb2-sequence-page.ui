@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Mb2SequencePage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Sequence</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4137</property></object></child>
+                    <property name="title" translatable="yes">Metronome Resolution</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1/4</item>
+                          <item>1/8</item>
+                          <item>1/16</item>
+                          <item>1/32</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4120</property></object></child>
+                    <property name="title" translatable="yes">Sync Clock In/Out Settings</property>
+                    <property name="subtitle-lines">3</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1 Step (Gate)</item>
+                          <item>1 Step (Clock)</item>
+                          <item>1 Pulse (Korg)</item>
+                          <item>24 ppq</item>
+                          <item>48 ppq</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4123</property></object></child>
+                    <property name="title" translatable="yes">Next Seq</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Wait To Load</item>
+                          <item>Instant Change</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4126</property></object></child>
+                    <property name="title" translatable="yes">Fixed Velocity Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item value="0x7f">On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x4127</property></object></child>
+                    <property name="title" translatable="yes">Fixed Velocity Value</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4122</property></object></child>
+                    <property name="title" translatable="yes">Tap Tempo</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="0x02">2</item>
+                          <item>3</item>
+                          <item>4</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4154</property></object></child>
+                    <property name="title" translatable="yes">LFO1 Key Retrig</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Disable</item>
+                          <item value="0x7f">Enable</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4155</property></object></child>
+                    <property name="title" translatable="yes">LFO2 Key Retrig</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Disable</item>
+                          <item value="0x7f">Enable</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4136</property></object></child>
+                    <property name="title" translatable="yes">Master Swing</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1/8</item>
+                          <item>1/16</item>
+                          <item>1/32</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>
