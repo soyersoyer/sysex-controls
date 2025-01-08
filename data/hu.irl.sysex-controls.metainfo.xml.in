@@ -69,6 +69,13 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.20" date="2025-01-08">
+      <description>
+        <ul>
+          <li>BeatStep Pro support (partial)</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.19" date="2025-01-07">
       <description>
         <ul>
