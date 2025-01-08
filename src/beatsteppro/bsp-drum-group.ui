@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="BspDrumGroup" parent="ScPreferencesGroup">
+
+    <child>
+      <object class="ScNoteRow">
+        <child><object class="ArControl"><property name="id">0x4130</property></object></child>
+        <property name="title" translatable="yes">Note</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="Ar2DrumChRow">
+        <child><object class="ArControl"><property name="id">0x416d</property><property name="use-cc-offset">yes</property></object></child>
+        <property name="title" translatable="yes">Channel</property>
+      </object>
+    </child>
+
+  </template>
+</interface>

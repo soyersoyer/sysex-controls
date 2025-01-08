@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="BspSyncPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Sync</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4110</property></object></child>
+                    <property name="title" translatable="yes">Clock In/Out Settings</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1step</item>
+                          <item>24PPQ</item>
+                          <item>48PPQ</item>
+                          <item>2PPQ (Korg)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4112</property></object></child>
+                    <property name="title" translatable="yes">Tap Tempo</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="2">2</item>
+                          <item>3</item>
+                          <item>4</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4114</property></object></child>
+                    <property name="title" translatable="yes">Tempo</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Global</item>
+                          <item>Project</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x4115</property></object></child>
+                    <property name="title" translatable="yes">Wait to Load Project</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x4116</property></object></child>
+                    <property name="title" translatable="yes">Wait to Load Pattern</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

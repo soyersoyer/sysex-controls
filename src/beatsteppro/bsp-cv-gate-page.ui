@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="BspCvGatePage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">CV / Gate</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Seq1 Pitch</property>
+
+                <child>
+                  <object class="ScComboRow" id="seq1_mode">
+                    <child><object class="ArControl"><property name="id">0x4146</property></object></child>
+                    <property name="title" translatable="yes">Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>V/Oct</item>
+                          <item>Hz/Volt</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">seq1_mode</lookup>
+                        <constant type="GVariant">[0x00]</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="ArControl"><property name="id">0x414a</property></object></child>
+                    <property name="title" translatable="yes">0V MIDI Note</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">seq1_mode</lookup>
+                        <constant type="GVariant">[0x01]</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="ArControl"><property name="id">0x414c</property></object></child>
+                    <property name="title" translatable="yes">1V MIDI Note</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Seq2 Pitch</property>
+
+                <child>
+                  <object class="ScComboRow" id="seq2_mode">
+                    <child><object class="ArControl"><property name="id">0x4148</property></object></child>
+                    <property name="title" translatable="yes">Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>V/Oct</item>
+                          <item>Hz/Volt</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">seq2_mode</lookup>
+                        <constant type="GVariant">[0x00]</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="ArControl"><property name="id">0x414c</property></object></child>
+                    <property name="title" translatable="yes">0V MIDI Note</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">seq2_mode</lookup>
+                        <constant type="GVariant">[0x01]</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="ArControl"><property name="id">0x414d</property></object></child>
+                    <property name="title" translatable="yes">1V MIDI Note</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Gate</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4147</property></object></child>
+                    <property name="title" translatable="yes">Seq1</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>V-trig</item>
+                          <item>S-trig</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4149</property></object></child>
+                    <property name="title" translatable="yes">Seq2</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>V-trig</item>
+                          <item>S-trig</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4126</property></object></child>
+                    <property name="title" translatable="yes">Drum Gate Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Positive</item>
+                          <item>Negative</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

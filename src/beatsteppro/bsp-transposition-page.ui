@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="BspTranspositionPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Transposition</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x4107</property></object></child>
+                    <property name="title" translatable="yes">Transposition Latch</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x410a</property></object></child>
+                    <property name="title" translatable="yes">Seq Transpose Center Pitch</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Seq Transposition Input</property>
+
+                <child>
+                  <object class="Ar2UserAllChRow">
+                    <child><object class="ArControl"><property name="id">0x4108</property></object></child>
+                    <property name="title" translatable="yes">Channel</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4109</property></object></child>
+                    <property name="title" translatable="yes">Port</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="0x01">USB</item>
+                          <item>MIDI</item>
+                          <item>USB &amp; MIDI</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

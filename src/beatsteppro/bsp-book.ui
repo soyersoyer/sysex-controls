@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="BspBook" parent="ArBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="BspControllerPage"/>
+        </child>
+
+        <child>
+          <object class="BspTouchStripPage"/>
+        </child>
+
+        <child>
+          <object class="BspTranspositionPage"/>
+        </child>
+
+        <child>
+          <object class="BspCvGatePage"/>
+        </child>
+
+        <child>
+          <object class="BspSyncPage"/>
+        </child>
+
+        <child>
+          <object class="BspMetronomePage"/>
+        </child>
+
+        <child>
+          <object class="BspTransportPage"/>
+        </child>
+
+        <child>
+          <object class="BspDrumMapPage"/>
+        </child>
+
+        <child>
+          <object class="BspUserScalePage"/>
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>

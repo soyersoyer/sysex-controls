@@ -32,6 +32,7 @@ This is a Linux alternative to the MIDI Control Center software.
 </ul>
 <p>These might also work, but have not been tested yet:</p>
 <ul>
+<li>Arturia BeatStep Pro</li>
 <li>Arturia DrumBrute</li>
 <li>Arturia KeyLab mkII 49 / 61 / 88</li>
 <li>Arturia KeyLab 49 / 61 / 88 mk3</li>
@@ -42,7 +43,7 @@ This is a Linux alternative to the MIDI Control Center software.
 <li>Arturia Minibrute 2S</li>
 </ul>
 <p>
-It doesn't support the KeyStep sequencer banks and the DrumBrute/MiniBrute banks yet.
+It doesn't support the KeyStep / BeatStep Pro sequencer banks, BeatStep Pro presets and the DrumBrute/MiniBrute banks yet.
 </p>
 <p>
 If you think some untested devices work well, please let us know.

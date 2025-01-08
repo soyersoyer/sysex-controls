@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="BspControllerPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Controller</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x410c</property></object></child>
+                    <property name="title" translatable="yes">MCU/HUI</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>MCU</item>
+                          <item>HUI</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScChRow">
+                    <child><object class="ArControl"><property name="id">0x4106</property></object></child>
+                    <property name="title" translatable="yes">User MIDI channel</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Seq1 MIDI</property>
+
+                <child>
+                  <object class="ScChRow">
+                    <child><object class="ArControl"><property name="id">0x4140</property></object></child>
+                    <property name="title" translatable="yes">Send channel</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="Ar2UserAllChRow">
+                    <child><object class="ArControl"><property name="id">0x4141</property></object></child>
+                    <property name="title" translatable="yes">Recv channel</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Seq2 MIDI</property>
+
+                <child>
+                  <object class="ScChRow">
+                    <child><object class="ArControl"><property name="id">0x4142</property></object></child>
+                    <property name="title" translatable="yes">Send channel</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="Ar2UserAllChRow">
+                    <child><object class="ArControl"><property name="id">0x4143</property></object></child>
+                    <property name="title" translatable="yes">Recv channel</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Drum MIDI</property>
+
+                <child>
+                  <object class="ScChRow">
+                    <child><object class="ArControl"><property name="id">0x4144</property></object></child>
+                    <property name="title" translatable="yes">Send channel</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="Ar2UserAllChRow">
+                    <child><object class="ArControl"><property name="id">0x4145</property></object></child>
+                    <property name="title" translatable="yes">Recv channel</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x410b</property></object></child>
+                    <property name="title" translatable="yes">Pattern Link</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Absolute</item>
+                          <item>Relative</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4104</property></object></child>
+                    <property name="title" translatable="yes">Knob Acceleration</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Slow (Off)</item>
+                          <item>Medium</item>
+                          <item>Fast</item>
+                          <item>Very Fast</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x4102</property></object></child>
+                    <property name="title" translatable="yes">Pad Poly Aftertouch</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x410d</property></object></child>
+                    <property name="title" translatable="yes">Scene Mode</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x414e</property></object></child>
+                    <property name="title" translatable="yes">Seq1 Max Velo CV Voltage</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>2V</item>
+                          <item>3V</item>
+                          <item>4V</item>
+                          <item>5V</item>
+                          <item>6V</item>
+                          <item>7V</item>
+                          <item>8V</item>
+                          <item>9V</item>
+                          <item>10V</item>
+                          <item>11V</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x414f</property></object></child>
+                    <property name="title" translatable="yes">Seq2 Max Velo CV Voltage</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>2V</item>
+                          <item>3V</item>
+                          <item>4V</item>
+                          <item>5V</item>
+                          <item>6V</item>
+                          <item>7V</item>
+                          <item>8V</item>
+                          <item>9V</item>
+                          <item>10V</item>
+                          <item>11V</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x415c</property></object></child>
+                    <property name="title" translatable="yes">Seq1 Randomize Octave</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x415d</property></object></child>
+                    <property name="title" translatable="yes">Seq2 Randomize Octave</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x4111</property></object></child>
+                    <property name="title" translatable="yes">Auto-Sync</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

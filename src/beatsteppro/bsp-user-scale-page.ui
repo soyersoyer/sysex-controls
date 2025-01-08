@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="BspUserScalePage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">User Scale</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">horizontal</property>
+                    <property name="margin-bottom">8</property>
+                    <property name="margin-start">16</property>
+                    <property name="margin-end">16</property>
+
+                    <child>
+                      <object class="GtkBox">
+                        <property name="homogeneous">yes</property>
+                        <property name="hexpand">yes</property>
+                        <style><class name="linked"/></style>
+                        <property name="margin-end">32</property>
+
+                        <child><object class="ArControl"><property name="id">0x4151</property></object></child>
+                        <child>
+                          <object class="GtkToggleButton">
+                            <property name="label">C#</property>
+                            <style><class name="image-button"/></style>
+                          </object>
+                        </child>
+
+                        <child><object class="ArControl"><property name="id">0x4153</property></object></child>
+                        <child>
+                          <object class="GtkToggleButton">
+                            <property name="label">D#</property>
+                            <style><class name="image-button"/></style>
+                          </object>
+                        </child>
+
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="GtkBox">
+                        <property name="homogeneous">yes</property>
+                        <property name="hexpand">yes</property>
+                        <style><class name="linked"/></style>
+
+                        <child><object class="ArControl"><property name="id">0x4156</property></object></child>
+                        <child>
+                          <object class="GtkToggleButton">
+                            <property name="label">F#</property>
+                            <style><class name="image-button"/></style>
+                          </object>
+                        </child>
+
+                        <child><object class="ArControl"><property name="id">0x4158</property></object></child>
+                        <child>
+                          <object class="GtkToggleButton">
+                            <property name="label">G#</property>
+                            <style><class name="image-button"/></style>
+                          </object>
+                        </child>
+
+                        <child><object class="ArControl"><property name="id">0x415a</property></object></child>
+                        <child>
+                          <object class="GtkToggleButton">
+                            <property name="label">A#</property>
+                            <style><class name="image-button"/></style>
+                          </object>
+                        </child>
+
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkBox">
+                    <property name="homogeneous">yes</property>
+                    <style><class name="linked"/></style>
+
+                    <child><object class="ArControl"><property name="id">0x4150</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">C</property>
+                        <property name="sensitive">false</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x4152</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">D</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x4154</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">E</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x4155</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">F</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x4157</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">G</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x4159</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">A</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                    <child><object class="ArControl"><property name="id">0x415b</property></object></child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="label">B</property>
+                        <style><class name="image-button"/></style>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

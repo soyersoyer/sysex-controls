@@ -4,12 +4,14 @@ sc_sources = [
   'ak-program-page.c',
   'ak-program-select.c',
 
+  'ar2-drum-ch-row.c',
   'ar2-glob-ch-row.c',
   'ar2-glob2-ch-row.c',
   'ar2-key-ch-row.c',
   'ar2-note-drop-down.c',
   'ar2-off-ch-row.c',
   'ar2-rgb-color-row.c',
+  'ar2-user-all-ch-row.c',
   'ar2-user-ch-row.c',
   'ar2-user-scale.c',
 
@@ -53,6 +55,18 @@ sc_sources = [
   'beatstep/bs-sequence-page.c',
   'beatstep/bs-transport-button.c',
   'beatstep/bs-transport-button-page.c',
+
+  'beatsteppro/bsp-book.c',
+  'beatsteppro/bsp-controller-page.c',
+  'beatsteppro/bsp-cv-gate-page.c',
+  'beatsteppro/bsp-drum-group.c',
+  'beatsteppro/bsp-drum-map-page.c',
+  'beatsteppro/bsp-metronome-page.c',
+  'beatsteppro/bsp-sync-page.c',
+  'beatsteppro/bsp-touch-strip-page.c',
+  'beatsteppro/bsp-transport-page.c',
+  'beatsteppro/bsp-transposition-page.c',
+  'beatsteppro/bsp-user-scale-page.c',
 
   'drumbrute/db-book.c',
   'drumbrute/db-controller-page.c',

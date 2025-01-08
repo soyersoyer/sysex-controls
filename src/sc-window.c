@@ -8,6 +8,7 @@
 #include "sc-window.h"
 
 #include "beatstep/bs-book.h"
+#include "beatsteppro/bsp-book.h"
 #include "drumbrute/db-book.h"
 #include "drumbruteimpact/dbi-book.h"
 #include "keylab2/kl2-book.h"
@@ -36,6 +37,7 @@ typedef const struct {
 
 static controller_t controllers[] = {
   {BS_MIDI_NAME, BS_SHORT_NAME, bs_book_new},
+  {BSP_MIDI_NAME, BSP_SHORT_NAME, bsp_book_new},
   {DB_MIDI_NAME, DB_SHORT_NAME, db_book_new},
   {DBI_MIDI_NAME, DBI_SHORT_NAME, dbi_book_new},
   {KL2_49_MIDI_NAME, KL2_49_SHORT_NAME, kl2_book_new},

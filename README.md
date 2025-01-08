@@ -20,6 +20,7 @@ These devices are supported and tested:
 - Arturia MiniLab 3
 
 These might also work, but have not been tested yet:
+- Arturia BeatStep Pro
 - Arturia DrumBrute
 - Arturia KeyLab mkII 49 / 61 / 88
 - Arturia KeyLab 49 / 61 / 88 mk3
@@ -29,7 +30,7 @@ These might also work, but have not been tested yet:
 - Arturia MiniBrute 2
 - Arturia MiniBrute 2S
 
-It doesn't support the KeyStep sequencer banks and the DrumBrute/MiniBrute banks yet.
+It doesn't support the KeyStep / BeatStep Pro sequencer banks, BeatStep Pro presets and the DrumBrute/MiniBrute banks yet.
 
 If you think some untested devices work well, please let us know.
 If not, let us know as well.
