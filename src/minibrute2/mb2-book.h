@@ -13,6 +13,4 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (Mb2Book, mb2_book, MB2, BOOK, ArBook)
 
-GtkWidget * mb2_book_new (void);
-
 G_END_DECLS

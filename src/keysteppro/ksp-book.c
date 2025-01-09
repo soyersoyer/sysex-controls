@@ -48,9 +48,3 @@ ksp_book_init (KspBook *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-
-GtkWidget *
-ksp_book_new (void)
-{
-  return g_object_new (KSP_TYPE_BOOK, NULL);
-}

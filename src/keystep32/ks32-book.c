@@ -38,9 +38,3 @@ ks32_book_init (Ks32Book *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-
-GtkWidget *
-ks32_book_new (void)
-{
-  return g_object_new (KS32_TYPE_BOOK, NULL);
-}

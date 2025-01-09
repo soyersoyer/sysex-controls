@@ -58,9 +58,3 @@ kl2_book_init (Kl2Book *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-
-GtkWidget *
-kl2_book_new (void)
-{
-  return g_object_new (KL2_TYPE_BOOK, NULL);
-}

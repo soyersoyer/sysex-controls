@@ -59,12 +59,6 @@ ml3_book_init (Ml3Book *self)
   gtk_widget_init_template (GTK_WIDGET (self));
 }
 
-GtkWidget *
-ml3_book_new (void)
-{
-  return g_object_new (ML3_TYPE_BOOK, NULL);
-}
-
 void
 ml3_book_on_presets_preset_activated (ScNavigationPage *page, ScActionRow *row)
 {

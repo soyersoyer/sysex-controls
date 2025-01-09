@@ -13,6 +13,4 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (TlBook, tl_book, TL, BOOK, ArBook)
 
-GtkWidget * tl_book_new (void);
-
 G_END_DECLS

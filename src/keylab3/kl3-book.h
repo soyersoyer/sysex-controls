@@ -21,8 +21,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (Kl3Book, kl3_book, KL3, BOOK, ArBook)
 
-GtkWidget * kl3_book_new (void);
-
 void kl3_book_on_parts_part_activated (ScNavigationPage *page, ScActionRow *row);
 
 void kl3_book_on_presets_preset_activated (ScNavigationPage *self, ScActionRow *row);

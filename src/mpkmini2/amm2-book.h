@@ -16,8 +16,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (Amm2Book, amm2_book, AMM2, BOOK, AkBook)
 
-GtkWidget * amm2_book_new (void);
-
 void amm2_book_on_arpeggiator_activated (ScNavigationPage *self, ScActionRow* row);
 void amm2_book_on_joystick_activated (ScNavigationPage *self, ScActionRow* row);
 void amm2_book_on_keybed_activated (ScNavigationPage *self, ScActionRow* row);

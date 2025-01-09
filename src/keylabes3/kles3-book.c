@@ -63,12 +63,6 @@ kles3_book_init (Kles3Book *self)
   gtk_widget_init_template (GTK_WIDGET (self));
 }
 
-GtkWidget *
-kles3_book_new (void)
-{
-  return g_object_new (KLES3_TYPE_BOOK, NULL);
-}
-
 void
 kles3_book_on_presets_preset_activated (ScNavigationPage *page, ScActionRow *row)
 {

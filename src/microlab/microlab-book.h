@@ -13,6 +13,4 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (MicrolabBook, microlab_book, MICROLAB, BOOK, ArBook)
 
-GtkWidget * microlab_book_new (void);
-
 G_END_DECLS

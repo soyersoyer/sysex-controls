@@ -27,44 +27,42 @@
 #include "mpkmini3/amm3-book.h"
 #include "thelaboratory/tl-book.h"
 
-typedef GtkWidget * (*book_init_func)(void);
-
 typedef const struct {
   const char *midi_name;
   const char *short_name;
-  book_init_func init;
+  GType (*type)(void);
   bool use_dummy;
 } controller_t;
 
 static controller_t controllers[] = {
-  {BS_MIDI_NAME, BS_SHORT_NAME, bs_book_new},
-  {BSP_MIDI_NAME, BSP_SHORT_NAME, bsp_book_new},
-  {DB_MIDI_NAME, DB_SHORT_NAME, db_book_new},
-  {DBI_MIDI_NAME, DBI_SHORT_NAME, dbi_book_new},
-  {KL2_49_MIDI_NAME, KL2_49_SHORT_NAME, kl2_book_new},
-  {KL2_61_MIDI_NAME, KL2_61_SHORT_NAME, kl2_book_new},
-  {KL2_88_MIDI_NAME, KL2_88_SHORT_NAME, kl2_book_new},
-  {KL3_49_MIDI_NAME, KL3_49_SHORT_NAME, kl3_book_new},
-  {KL3_61_MIDI_NAME, KL3_61_SHORT_NAME, kl3_book_new},
-  {KL3_88_MIDI_NAME, KL3_88_SHORT_NAME, kl3_book_new},
-  {KLES_49_MIDI_NAME, KLES_49_SHORT_NAME, kles_book_new},
-  {KLES_61_MIDI_NAME, KLES_61_SHORT_NAME, kles_book_new},
-  {KLES_88_MIDI_NAME, KLES_88_SHORT_NAME, kles_book_new},
-  {KLES3_49_MIDI_NAME, KLES3_49_SHORT_NAME, kles3_book_new},
-  {KLES3_61_MIDI_NAME, KLES3_61_SHORT_NAME, kles3_book_new},
-  {KLES3_88_MIDI_NAME, KLES3_88_SHORT_NAME, kles3_book_new},
-  {KS32_MIDI_NAME, KS32_SHORT_NAME, ks32_book_new},
-  {KS37_MIDI_NAME, KS37_SHORT_NAME, ks37_book_new},
-  {KSP_MIDI_NAME, KSP_SHORT_NAME, ksp_book_new},
-  {MICROLAB_MIDI_NAME, MICROLAB_SHORT_NAME, microlab_book_new},
-  {MB2_MIDI_NAME, MB2_SHORT_NAME, mb2_book_new},
-  {MB2S_MIDI_NAME, MB2S_SHORT_NAME, mb2s_book_new},
-  {ML2_MIDI_NAME, ML2_SHORT_NAME, ml2_book_new},
-  {ML3_MIDI_NAME, ML3_SHORT_NAME, ml3_book_new},
-  {AMM2_MIDI_NAME, AMM2_SHORT_NAME, amm2_book_new},
-  {AMM2_MIDI_NAME_2, AMM2_SHORT_NAME, amm2_book_new},
-  {AMM3_MIDI_NAME, AMM3_SHORT_NAME, amm3_book_new},
-  {TL_MIDI_NAME, TL_SHORT_NAME, tl_book_new},
+  {BS_MIDI_NAME, BS_SHORT_NAME, bs_book_get_type},
+  {BSP_MIDI_NAME, BSP_SHORT_NAME, bsp_book_get_type},
+  {DB_MIDI_NAME, DB_SHORT_NAME, db_book_get_type},
+  {DBI_MIDI_NAME, DBI_SHORT_NAME, dbi_book_get_type},
+  {KL2_49_MIDI_NAME, KL2_49_SHORT_NAME, kl2_book_get_type},
+  {KL2_61_MIDI_NAME, KL2_61_SHORT_NAME, kl2_book_get_type},
+  {KL2_88_MIDI_NAME, KL2_88_SHORT_NAME, kl2_book_get_type},
+  {KL3_49_MIDI_NAME, KL3_49_SHORT_NAME, kl3_book_get_type},
+  {KL3_61_MIDI_NAME, KL3_61_SHORT_NAME, kl3_book_get_type},
+  {KL3_88_MIDI_NAME, KL3_88_SHORT_NAME, kl3_book_get_type},
+  {KLES_49_MIDI_NAME, KLES_49_SHORT_NAME, kles_book_get_type},
+  {KLES_61_MIDI_NAME, KLES_61_SHORT_NAME, kles_book_get_type},
+  {KLES_88_MIDI_NAME, KLES_88_SHORT_NAME, kles_book_get_type},
+  {KLES3_49_MIDI_NAME, KLES3_49_SHORT_NAME, kles3_book_get_type},
+  {KLES3_61_MIDI_NAME, KLES3_61_SHORT_NAME, kles3_book_get_type},
+  {KLES3_88_MIDI_NAME, KLES3_88_SHORT_NAME, kles3_book_get_type},
+  {KS32_MIDI_NAME, KS32_SHORT_NAME, ks32_book_get_type},
+  {KS37_MIDI_NAME, KS37_SHORT_NAME, ks37_book_get_type},
+  {KSP_MIDI_NAME, KSP_SHORT_NAME, ksp_book_get_type},
+  {MICROLAB_MIDI_NAME, MICROLAB_SHORT_NAME, microlab_book_get_type},
+  {MB2_MIDI_NAME, MB2_SHORT_NAME, mb2_book_get_type},
+  {MB2S_MIDI_NAME, MB2S_SHORT_NAME, mb2s_book_get_type},
+  {ML2_MIDI_NAME, ML2_SHORT_NAME, ml2_book_get_type},
+  {ML3_MIDI_NAME, ML3_SHORT_NAME, ml3_book_get_type},
+  {AMM2_MIDI_NAME, AMM2_SHORT_NAME, amm2_book_get_type},
+  {AMM2_MIDI_NAME_2, AMM2_SHORT_NAME, amm2_book_get_type},
+  {AMM3_MIDI_NAME, AMM3_SHORT_NAME, amm3_book_get_type},
+  {TL_MIDI_NAME, TL_SHORT_NAME, tl_book_get_type},
 };
 
 struct _ScWindow
@@ -154,7 +152,7 @@ sc_window_midi_connect (ScWindow *self, ScControllerRow *row)
 
   adw_navigation_page_set_title (self->setting_page, controller->short_name);
 
-  book = SC_BOOK (controller->init ());
+  book = SC_BOOK (g_object_new (controller->type (), NULL));
 
   sc_book_set_seq (book, self->seq, ci->addr);
 

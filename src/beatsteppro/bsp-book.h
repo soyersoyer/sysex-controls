@@ -13,6 +13,4 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (BspBook, bsp_book, BSP, BOOK, ArBook)
 
-GtkWidget * bsp_book_new (void);
-
 G_END_DECLS

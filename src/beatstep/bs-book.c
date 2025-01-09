@@ -40,9 +40,3 @@ bs_book_init (BsBook *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-
-GtkWidget *
-bs_book_new (void)
-{
-  return g_object_new (BS_TYPE_BOOK, NULL);
-}

@@ -36,9 +36,3 @@ mb2s_book_init (Mb2sBook *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-
-GtkWidget *
-mb2s_book_new (void)
-{
-  return g_object_new (MB2S_TYPE_BOOK, NULL);
-}

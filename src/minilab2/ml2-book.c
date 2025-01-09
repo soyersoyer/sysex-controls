@@ -42,9 +42,3 @@ ml2_book_init (Ml2Book *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-
-GtkWidget *
-ml2_book_new (void)
-{
-  return g_object_new (ML2_TYPE_BOOK, NULL);
-}

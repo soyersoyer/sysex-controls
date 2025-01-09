@@ -46,9 +46,3 @@ kles_book_init (KlesBook *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-
-GtkWidget *
-kles_book_new (void)
-{
-  return g_object_new (KLES_TYPE_BOOK, NULL);
-}

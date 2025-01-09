@@ -30,9 +30,3 @@ microlab_book_init (MicrolabBook *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-
-GtkWidget *
-microlab_book_new (void)
-{
-  return g_object_new (MICROLAB_TYPE_BOOK, NULL);
-}

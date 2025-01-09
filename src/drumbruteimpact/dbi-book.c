@@ -32,9 +32,3 @@ dbi_book_init (DbiBook *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-
-GtkWidget *
-dbi_book_new (void)
-{
-  return g_object_new (DBI_TYPE_BOOK, NULL);
-}

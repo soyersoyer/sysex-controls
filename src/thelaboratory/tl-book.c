@@ -28,9 +28,3 @@ tl_book_init (TlBook *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-
-GtkWidget *
-tl_book_new (void)
-{
-  return g_object_new (TL_TYPE_BOOK, NULL);
-}

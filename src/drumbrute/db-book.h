@@ -13,6 +13,4 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (DbBook, db_book, DB, BOOK, ArBook)
 
-GtkWidget * db_book_new (void);
-
 G_END_DECLS

@@ -45,12 +45,6 @@ amm2_book_init (Amm2Book *self)
   gtk_widget_init_template (GTK_WIDGET (self));
 }
 
-GtkWidget *
-amm2_book_new (void)
-{
-  return g_object_new(AMM2_TYPE_BOOK, NULL);
-}
-
 void
 amm2_book_on_arpeggiator_activated (ScNavigationPage *self, ScActionRow* row)
 {

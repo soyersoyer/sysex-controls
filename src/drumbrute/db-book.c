@@ -32,9 +32,3 @@ db_book_init (DbBook *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-
-GtkWidget *
-db_book_new (void)
-{
-  return g_object_new (DB_TYPE_BOOK, NULL);
-}

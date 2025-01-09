@@ -69,12 +69,6 @@ kl3_book_init (Kl3Book *self)
   gtk_widget_init_template (GTK_WIDGET (self));
 }
 
-GtkWidget *
-kl3_book_new (void)
-{
-  return g_object_new (KL3_TYPE_BOOK, NULL);
-}
-
 static void
 open_page (ScNavigationPage *page, ScActionRow *row, GType type)
 {

@@ -13,6 +13,4 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (KspBook, ksp_book, KSP, BOOK, ArBook)
 
-GtkWidget * ksp_book_new (void);
-
 G_END_DECLS

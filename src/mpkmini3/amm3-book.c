@@ -45,12 +45,6 @@ amm3_book_init (Amm3Book *self)
   gtk_widget_init_template (GTK_WIDGET (self));
 }
 
-GtkWidget *
-amm3_book_new (void)
-{
-  return g_object_new(AMM3_TYPE_BOOK, NULL);
-}
-
 void
 amm3_book_on_arpeggiator_activated (ScNavigationPage *self, ScActionRow* row)
 {

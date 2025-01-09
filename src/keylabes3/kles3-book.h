@@ -21,8 +21,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (Kles3Book, kles3_book, KLES3, BOOK, ArBook)
 
-GtkWidget * kles3_book_new (void);
-
 void kles3_book_on_presets_preset_activated (ScNavigationPage *page, ScActionRow *row);
 
 void kles3_book_on_preset_pitch_mod_activated (ScNavigationPage *page, ScActionRow* row);
