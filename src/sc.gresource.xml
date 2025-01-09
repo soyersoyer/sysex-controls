@@ -255,5 +255,10 @@
     <file preprocess="xml-stripblanks">mpkmini3/amm3-pad-bank-page.ui</file>
     <file preprocess="xml-stripblanks">mpkmini3/amm3-pad-page.ui</file>
     <file preprocess="xml-stripblanks">mpkmini3/amm3-program-page.ui</file>
+
+    <file preprocess="xml-stripblanks">thelaboratory/tl-aftertouch-page.ui</file>
+    <file preprocess="xml-stripblanks">thelaboratory/tl-book.ui</file>
+    <file preprocess="xml-stripblanks">thelaboratory/tl-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">thelaboratory/tl-curve-page.ui</file>
   </gresource>
 </gresources>

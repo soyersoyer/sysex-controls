@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="TlBook" parent="ArBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="TlControllerPage"/>
+        </child>
+
+        <child>
+          <object class="TlCurvePage"/>
+        </child>
+
+        <child>
+          <object class="TlAftertouchPage"/>
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>

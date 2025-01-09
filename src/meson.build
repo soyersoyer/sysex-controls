@@ -264,6 +264,11 @@ sc_sources = [
   'mpkmini3/amm3-pad-bank-page.c',
   'mpkmini3/amm3-pad-page.c',
   'mpkmini3/amm3-program-page.c',
+
+  'thelaboratory/tl-aftertouch-page.c',
+  'thelaboratory/tl-book.c',
+  'thelaboratory/tl-controller-page.c',
+  'thelaboratory/tl-curve-page.c',
 ]
 
 sc_deps = [

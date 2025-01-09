@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="TlCurvePage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Curve Settings</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Key</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4101</property></object></child>
+                    <property name="title" translatable="yes">Velocity</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Exponential #1</item>
+                          <item>Exponential #2</item>
+                          <item>Exponential #3</item>
+                          <item>Logarithmic #1</item>
+                          <item>Logarithmic #2</item>
+                          <item>Logarithmic #3</item>
+                          <item>S-Curve</item>
+                          <item>Inverted S-Curve</item>
+                          <item>Constant</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4102</property></object></child>
+                    <property name="title" translatable="yes">Aftertouch</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Exponential #1</item>
+                          <item>Exponential #2</item>
+                          <item>Exponential #3</item>
+                          <item>Logarithmic #1</item>
+                          <item>Logarithmic #2</item>
+                          <item>Logarithmic #3</item>
+                          <item>S-Curve</item>
+                          <item>Inverted S-Curve</item>
+                          <item>Constant</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Pad</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4103</property></object></child>
+                    <property name="title" translatable="yes">Velocity</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Linear</item>
+                          <item>Exponential #1</item>
+                          <item>Exponential #2</item>
+                          <item>Exponential #3</item>
+                          <item>Logarithmic #1</item>
+                          <item>Logarithmic #2</item>
+                          <item>Logarithmic #3</item>
+                          <item>S-Curve</item>
+                          <item>Inverted S-Curve</item>
+                          <item>Constant</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Knob</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4104</property></object></child>
+                    <property name="title" translatable="yes">Acceleration</property>
+                    <property name="subtitle-lines">2</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>x1 (Slow)</item>
+                          <item>x2</item>
+                          <item>x3</item>
+                          <item>x4</item>
+                          <item>x6</item>
+                          <item>x8</item>
+                          <item>x10</item>
+                          <item>x12</item>
+                          <item>x14</item>
+                          <item>x17 (Fast)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

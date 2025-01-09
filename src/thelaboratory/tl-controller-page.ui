@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="TlControllerPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Controller</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="ArFirmwareInfoGroup"/>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4002</property></object></child>
+                    <property name="title" translatable="yes">Knob Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="0x01">Absolute</item>
+                          <item value="0x7f">Relative</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4001</property></object></child>
+                    <property name="title" translatable="yes">Fader Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="0x01">Normal</item>
+                          <item value="0x7f">Drawbar</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4007</property></object></child>
+                    <property name="title" translatable="yes">Split Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="0x01">Off</item>
+                          <item value="0x7f">On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="ArControl"><property name="id">0x4008</property></object></child>
+                    <property name="title" translatable="yes">Split Point</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScChRow">
+                    <child><object class="ArControl"><property name="id">0x4006</property></object></child>
+                    <property name="title" translatable="yes">Upper channel</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScChRow">
+                    <child><object class="ArControl"><property name="id">0x4005</property></object></child>
+                    <property name="title" translatable="yes">Lower channel</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

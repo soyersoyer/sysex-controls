@@ -25,6 +25,7 @@
 #include "minilab3/ml3-book.h"
 #include "mpkmini2/amm2-book.h"
 #include "mpkmini3/amm3-book.h"
+#include "thelaboratory/tl-book.h"
 
 typedef GtkWidget * (*book_init_func)(void);
 
@@ -63,6 +64,7 @@ static controller_t controllers[] = {
   {AMM2_MIDI_NAME, AMM2_SHORT_NAME, amm2_book_new},
   {AMM2_MIDI_NAME_2, AMM2_SHORT_NAME, amm2_book_new},
   {AMM3_MIDI_NAME, AMM3_SHORT_NAME, amm3_book_new},
+  {TL_MIDI_NAME, TL_SHORT_NAME, tl_book_new},
 };
 
 struct _ScWindow
