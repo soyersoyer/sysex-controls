@@ -48,11 +48,14 @@ ar_firmware_info_group_update_gui (ScControl *control)
   ArFirmwareInfoGroup *self = AR_FIRMWARE_INFO_GROUP (control);
 
   char version[12];
+  char version_full[16];
   uint8_t *d = self->data;
 
   sprintf(version, "%d.%d.%d", d[10], d[9], d[8]);
+  sprintf(version_full, "%d.%d.%d.%d", d[10], d[9], d[8], d[7]);
 
   adw_action_row_set_subtitle (self->firmware_version, version);
+  gtk_widget_set_tooltip_text (GTK_WIDGET (self->firmware_version), version_full);
 }
 
 static int
