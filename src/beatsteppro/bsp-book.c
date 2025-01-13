@@ -29,6 +29,8 @@ bsp_book_class_init (BspBookClass *klass)
 static void
 bsp_book_init (BspBook *self)
 {
+  ar_book_set_read_ack (AR_BOOK (self), true);
+
   g_type_ensure(BSP_TYPE_CONTROLLER_PAGE);
   g_type_ensure(BSP_TYPE_CV_GATE_PAGE);
   g_type_ensure(BSP_TYPE_DRUM_GROUP);
