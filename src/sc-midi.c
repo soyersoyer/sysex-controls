@@ -389,6 +389,10 @@ sc_midi_arturia_read_next (snd_seq_t *seq, ar_event_t *ar_ev)
         *ar_ev = ar_ev_in;
         return 0;
       }
+      else
+      {
+        fprintf (stderr, "%s(%02d, %08x): unexpected message: type %02x\n", __func__, ar_ev->type, ar_ev->control.id, ar_ev_in.type);
+      }
 
     }
   }
