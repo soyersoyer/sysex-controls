@@ -42,6 +42,10 @@
           <object class="BspUserScalePage"/>
         </child>
 
+        <child>
+          <object class="BspProjectPage"/>
+        </child>
+
       </object>
     </property>
   </template>

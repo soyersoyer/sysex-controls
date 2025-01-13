@@ -49,7 +49,15 @@
     <file preprocess="xml-stripblanks">beatsteppro/bsp-cv-gate-page.ui</file>
     <file preprocess="xml-stripblanks">beatsteppro/bsp-drum-group.ui</file>
     <file preprocess="xml-stripblanks">beatsteppro/bsp-drum-map-page.ui</file>
+    <file preprocess="xml-stripblanks">beatsteppro/bsp-knob.ui</file>
+    <file preprocess="xml-stripblanks">beatsteppro/bsp-knob-page.ui</file>
     <file preprocess="xml-stripblanks">beatsteppro/bsp-metronome-page.ui</file>
+    <file preprocess="xml-stripblanks">beatsteppro/bsp-pad.ui</file>
+    <file preprocess="xml-stripblanks">beatsteppro/bsp-pad-page.ui</file>
+    <file preprocess="xml-stripblanks">beatsteppro/bsp-project-page.ui</file>
+    <file preprocess="xml-stripblanks">beatsteppro/bsp-project-setting-page.ui</file>
+    <file preprocess="xml-stripblanks">beatsteppro/bsp-step.ui</file>
+    <file preprocess="xml-stripblanks">beatsteppro/bsp-step-page.ui</file>
     <file preprocess="xml-stripblanks">beatsteppro/bsp-sync-page.ui</file>
     <file preprocess="xml-stripblanks">beatsteppro/bsp-touch-strip-page.ui</file>
     <file preprocess="xml-stripblanks">beatsteppro/bsp-transport-page.ui</file>
