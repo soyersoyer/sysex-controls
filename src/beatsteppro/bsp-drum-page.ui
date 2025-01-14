@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="BspDrumPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Drum</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x6100</property></object></child>
+                    <property name="title" translatable="yes">Playback Direction</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Forward</item>
+                          <item>Reverse</item>
+                          <item>Back &amp; Forth</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x6200</property></object></child>
+                    <property name="title" translatable="yes">Time Division</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1 / 4</item>
+                          <item>1 / 8</item>
+                          <item>1 / 16</item>
+                          <item>1 / 32</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x6400</property></object></child>
+                    <property name="title" translatable="yes">Swing (%)</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">50</property>
+                        <property name="upper">75</property>
+                        <property name="page-increment">5</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x6600</property></object></child>
+                    <property name="title" translatable="yes">Randomness (%)</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">100</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="ArControl"><property name="id">0x6700</property></object></child>
+                    <property name="title" translatable="yes">Probability (%)</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">100</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x6500</property></object></child>
+                    <property name="title" translatable="yes">Triplet</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x5000</property></object></child>
+                    <property name="title" translatable="yes">Polyrhythm</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

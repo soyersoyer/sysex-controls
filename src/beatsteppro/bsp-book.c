@@ -4,6 +4,7 @@
 #include "bsp-cv-gate-page.h"
 #include "bsp-drum-group.h"
 #include "bsp-drum-map-page.h"
+#include "bsp-drum-page.h"
 #include "bsp-knob.h"
 #include "bsp-knob-page.h"
 #include "bsp-metronome-page.h"
@@ -11,6 +12,7 @@
 #include "bsp-pad-page.h"
 #include "bsp-project-page.h"
 #include "bsp-project-setting-page.h"
+#include "bsp-sequencer-page.h"
 #include "bsp-step.h"
 #include "bsp-step-page.h"
 #include "bsp-sync-page.h"
@@ -43,6 +45,7 @@ bsp_book_init (BspBook *self)
   g_type_ensure(BSP_TYPE_CV_GATE_PAGE);
   g_type_ensure(BSP_TYPE_DRUM_GROUP);
   g_type_ensure(BSP_TYPE_DRUM_MAP_PAGE);
+  g_type_ensure(BSP_TYPE_DRUM_PAGE);
   g_type_ensure(BSP_TYPE_KNOB);
   g_type_ensure(BSP_TYPE_KNOB_PAGE);
   g_type_ensure(BSP_TYPE_METRONOME_PAGE);
@@ -50,6 +53,7 @@ bsp_book_init (BspBook *self)
   g_type_ensure(BSP_TYPE_PAD_PAGE);
   g_type_ensure(BSP_TYPE_PROJECT_PAGE);
   g_type_ensure(BSP_TYPE_PROJECT_SETTING_PAGE);
+  g_type_ensure(BSP_TYPE_SEQUENCER_PAGE);
   g_type_ensure(BSP_TYPE_STEP);
   g_type_ensure(BSP_TYPE_STEP_PAGE);
   g_type_ensure(BSP_TYPE_SYNC_PAGE);
@@ -67,6 +71,7 @@ open_project_page (ScNavigationPage *page, ScActionRow *row, GType type)
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (page), ADW_TYPE_NAVIGATION_VIEW));
   AdwNavigationPage *nav_page = g_object_new (type,
                                           "title", adw_preferences_row_get_title (ADW_PREFERENCES_ROW (row)),
+                                          "control-id-offset", sc_action_row_get_control_id_offset (row),
                                           NULL);
   adw_navigation_view_push (view, nav_page);
   g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), nav_page);
@@ -94,4 +99,16 @@ void
 bsp_book_on_project_pads_activated (ScNavigationPage *page, ScActionRow* row)
 {
   open_project_page (page, row, BSP_TYPE_PAD_PAGE);
+}
+
+void
+bsp_book_on_project_sequencer_activated (ScNavigationPage *page, ScActionRow* row)
+{
+  open_project_page (page, row, BSP_TYPE_SEQUENCER_PAGE);
+}
+
+void
+bsp_book_on_project_drum_activated (ScNavigationPage *page, ScActionRow* row)
+{
+  open_project_page (page, row, BSP_TYPE_DRUM_PAGE);
 }

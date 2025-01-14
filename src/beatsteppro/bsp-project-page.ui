@@ -50,6 +50,37 @@
               </object>
             </child>
 
+            <!--these don't work in this way -->
+            <!--child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Sequencer 1</property>
+                    <property name="control-id-offset">0x10</property>
+                    <signal name="activated" handler="bsp_book_on_project_sequencer_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Sequencer 2</property>
+                    <property name="control-id-offset">0x15</property>
+                    <signal name="activated" handler="bsp_book_on_project_sequencer_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Drum</property>
+                    <property name="control-id-offset">0x1a</property>
+                    <signal name="activated" handler="bsp_book_on_project_drum_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+              </object>
+            </child-->
+
           </object>
         </property>
       </object>
