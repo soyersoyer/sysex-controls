@@ -20,6 +20,12 @@
                   </object>
                 </child>
 
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Knobs</property>

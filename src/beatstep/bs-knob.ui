@@ -175,6 +175,7 @@
         </property>
       </object>
     </child>
+
     <child>
       <object class="AdwSpinRow">
         <child><object class="ArControl"><property name="id">0x0520</property></object></child>

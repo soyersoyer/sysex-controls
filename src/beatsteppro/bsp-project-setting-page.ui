@@ -58,7 +58,28 @@
                   </object>
                 </child>
 
-                <!-- TODO: tempo on 0x6d5a (MSB) 0x6e5a (MID) 0x6f5a (LSB)-->
+                <child>
+                  <object class="AdwSpinRow">
+                    <child>
+                      <object class="ArControl">
+                        <property name="id">0x6f5a</property>
+                        <property name="id2">0x6e5a</property>
+                        <property name="id3">0x6d5a</property>
+                        <property name="multiply">100</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Tempo</property>
+                    <property name="digits">2</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">30</property>
+                        <property name="upper">300</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
               </object>
             </child>
