@@ -12,7 +12,10 @@
 enum {
   PROP_0,
   PROP_ID,
+  PROP_ID2,
+  PROP_ID3,
   PROP_USE_CC_OFFSET,
+  PROP_MULTIPLY,
   LAST_PROP,
 };
 
@@ -20,9 +23,14 @@ struct _ArControl
 {
   AdwBin parent_instance;
   uint32_t id;
+  uint32_t id2;
+  uint32_t id3;
   gboolean use_cc_offset;
+  double multiply;
   uint32_t real_id;
-  uint8_t value;
+  uint32_t real_id2;
+  uint32_t real_id3;
+  uint32_t value;
   GtkWidget *widget;
 };
 
@@ -40,12 +48,34 @@ ar_control_get_id (ArControl *self)
   return self->id;
 }
 
+uint32_t
+ar_control_get_id2 (ArControl *self)
+{
+  g_return_val_if_fail (AR_IS_CONTROL (self), 0);
+  return self->id2;
+}
+
+uint32_t
+ar_control_get_id3 (ArControl *self)
+{
+  g_return_val_if_fail (AR_IS_CONTROL (self), 0);
+  return self->id3;
+}
+
 gboolean
 ar_control_get_use_cc_offset (ArControl *self)
 {
   g_return_val_if_fail (AR_IS_CONTROL (self), 0);
   return self->use_cc_offset;
 }
+
+double
+ar_control_get_multiply (ArControl *self)
+{
+  g_return_val_if_fail (AR_IS_CONTROL (self), 0);
+  return self->multiply;
+}
+
 
 static void
 ar_control_get_property (GObject    *object,
@@ -60,8 +90,17 @@ ar_control_get_property (GObject    *object,
     case PROP_ID:
       g_value_set_uint (value, ar_control_get_id (self));
     break;
+    case PROP_ID2:
+      g_value_set_uint (value, ar_control_get_id2 (self));
+    break;
+    case PROP_ID3:
+      g_value_set_uint (value, ar_control_get_id3 (self));
+    break;
     case PROP_USE_CC_OFFSET:
       g_value_set_uint (value, ar_control_get_use_cc_offset (self));
+    break;
+    case PROP_MULTIPLY:
+      g_value_set_double (value, ar_control_get_multiply (self));
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -82,8 +121,17 @@ ar_control_set_property (GObject      *object,
     case PROP_ID:
       self->id = g_value_get_uint (value);
     break;
+    case PROP_ID2:
+      self->id2 = g_value_get_uint (value);
+    break;
+    case PROP_ID3:
+      self->id3 = g_value_get_uint (value);
+    break;
     case PROP_USE_CC_OFFSET:
       self->use_cc_offset = g_value_get_boolean (value);
+    break;
+    case PROP_MULTIPLY:
+      self->multiply = g_value_get_double (value);
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -102,9 +150,21 @@ ar_control_class_init (ArControlClass *klass)
                                             0, G_MAXUINT32, 0,
                                             G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
+  value_props[PROP_ID2] = g_param_spec_uint ("id2", NULL, NULL,
+                                             0, G_MAXUINT32, 0,
+                                             G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+
+  value_props[PROP_ID3] = g_param_spec_uint ("id3", NULL, NULL,
+                                             0, G_MAXUINT32, 0,
+                                             G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+
   value_props[PROP_USE_CC_OFFSET] = g_param_spec_boolean ("use-cc-offset", NULL, NULL,
                                                           0,
                                                           G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+
+  value_props[PROP_MULTIPLY] = g_param_spec_double ("multiply", NULL, NULL,
+                                                    0, G_MAXDOUBLE, 1,
+                                                    G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   g_object_class_install_properties (object_class, LAST_PROP, value_props);
 }
@@ -157,14 +217,16 @@ spin_row_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
   ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (self->widget)));
   ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), AR_TYPE_BOOK));
   AdwSpinRow *w = ADW_SPIN_ROW (self->widget);
-  uint8_t val = (uint8_t)adw_spin_row_get_value (w);
+  uint32_t val = (uint32_t)(adw_spin_row_get_value (w) * self->multiply);
 
   if (self->value == val)
     return;
 
-  g_debug("spin control change 0x%08x: 0x%02x -> 0x%02x", self->real_id, self->value, val);
+  g_debug("spin control change 0x%08x: 0x%02x -> 0x%02x (x%2.0f)", self->real_id, self->value, val, self->multiply);
 
-  if (ar_book_write_control (book, self->real_id, val) < 0)
+  if (ar_book_write_control (book, self->real_id, val & 0x7f) < 0 ||
+      (self->real_id2 && ar_book_write_control (book, self->real_id2, (val >> 7) & 0x7f) < 0) ||
+      (self->real_id3 && ar_book_write_control (book, self->real_id3, (val >> 14) & 0x7f) < 0))
   {
     sc_io_problem (window, "Control change failed");
 
@@ -249,6 +311,22 @@ user_scale_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
   self->value = val;
 }
 
+static void ar_control_normalize_id (uint32_t *id)
+{
+  uint8_t *rid = (uint8_t*)id;
+
+  /* normalize
+   * after adding the offsets, it is possible that cid >= 0x80
+   * sysex bytes are < 0x80
+   * arturia v3 uses the last byte of the ID (rid) for storing the overflow bit
+   * */
+
+  if (rid[1] >= 0x80) {
+    rid[0]++;
+    rid[1] -= 0x80;
+  }
+}
+
 static int
 ar_control_register (ArControl *self)
 {
@@ -256,8 +334,7 @@ ar_control_register (ArControl *self)
   ScPreferencesPage *page_widget;
   ScNavigationPage *nav_page_widget;
   GtkWidget *widget;
-  uint8_t *rid = (uint8_t*)&(self->real_id);
-  self->real_id = self->id;
+  uint32_t offset = 0;
 
   widget = gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_COMBO_ROW);
 
@@ -273,31 +350,28 @@ ar_control_register (ArControl *self)
   nav_page_widget = SC_NAVIGATION_PAGE (gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), SC_TYPE_NAVIGATION_PAGE));
   if (nav_page_widget) {
     uint32_t cc_offset = sc_navigation_page_get_control_cc_offset (nav_page_widget);
-    self->real_id += self->use_cc_offset && cc_offset ? cc_offset : sc_navigation_page_get_control_id_offset (nav_page_widget);
+    offset += self->use_cc_offset && cc_offset ? cc_offset : sc_navigation_page_get_control_id_offset (nav_page_widget);
   }
 
   page_widget = SC_PREFERENCES_PAGE (gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), SC_TYPE_PREFERENCES_PAGE));
   if (page_widget) {
     uint32_t cc_offset = sc_preferences_page_get_control_cc_offset (page_widget);
-    self->real_id += self->use_cc_offset && cc_offset ? cc_offset : sc_preferences_page_get_control_id_offset (page_widget);
+    offset += self->use_cc_offset && cc_offset ? cc_offset : sc_preferences_page_get_control_id_offset (page_widget);
   }
 
   group_widget = SC_PREFERENCES_GROUP (gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), SC_TYPE_PREFERENCES_GROUP));
   if (group_widget) {
     uint32_t cc_offset = sc_preferences_group_get_control_cc_offset (group_widget);
-    self->real_id += self->use_cc_offset && cc_offset ? cc_offset : sc_preferences_group_get_control_id_offset (group_widget);
+    offset += self->use_cc_offset && cc_offset ? cc_offset : sc_preferences_group_get_control_id_offset (group_widget);
   }
 
-  /* normalize
-   * after adding the offsets, it is possible that cid >= 0x80
-   * sysex bytes are < 0x80
-   * arturia v3 uses the last byte of the ID (rid) for storing the overflow bit
-   * */
+  self->real_id = self->id + offset;
+  self->real_id2 = self->id2 ? self->id2 + offset : 0;
+  self->real_id3 = self->id3 ? self->id3 + offset : 0;
 
-  if (rid[1] >= 0x80) {
-    rid[0]++;
-    rid[1] -= 0x80;
-  }
+  ar_control_normalize_id (&self->real_id);
+  ar_control_normalize_id (&self->real_id2);
+  ar_control_normalize_id (&self->real_id3);
 
   self->value = 0;
   self->widget = widget;
@@ -359,7 +433,7 @@ ar_control_update_gui (ScControl *control)
   else if (ADW_IS_SPIN_ROW (self->widget))
   {
     AdwSpinRow *spin_row = ADW_SPIN_ROW (self->widget);
-    adw_spin_row_set_value (spin_row, self->value);
+    adw_spin_row_set_value (spin_row, self->value / self->multiply);
     g_debug ("Set spin row with id 0x%02x to 0x%02x", self->real_id, self->value);
   }
   else if (GTK_IS_TOGGLE_BUTTON (self->widget))
@@ -409,7 +483,35 @@ ar_control_read_value (ScControl *control)
 {
   ArControl *self = AR_CONTROL (control);
   ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), AR_TYPE_BOOK));
-  return ar_book_read_control (book, self->real_id, &self->value);
+  uint8_t value;
+  int ret;
+
+  ret = ar_book_read_control (book, self->real_id, &value);
+  if (ret)
+    return ret;
+  self->value = value;
+
+  if (!self->real_id2)
+    return ret;
+
+  ret = ar_book_read_control (book, self->real_id2, &value);
+  if (ret)
+    return ret;
+  self->value |= ((uint32_t)value & 0x7F) << 7;
+
+  g_debug ("id2 (0x%02x) read: 0x%02x (0x%02x)", self->real_id2, value, self->value);
+
+  if (!self->real_id3)
+    return ret;
+
+  ret = ar_book_read_control (book, self->real_id3, &value);
+  if (ret)
+    return ret;
+  self->value |= ((uint32_t)value & 0x7F) << 14;
+
+  g_debug ("id3 (0x%02x) read: 0x%02x (0x%02x)", self->real_id3, value, self->value);
+
+  return ret;
 }
 
 static void
@@ -422,6 +524,7 @@ ar_control_interface_init (ScControlInterface *iface)
 static void
 ar_control_init (ArControl *self)
 {
+  self->multiply = 1;
   gtk_widget_set_visible (GTK_WIDGET (&self->parent_instance), false);
   g_idle_add (G_SOURCE_FUNC (ar_control_register), self);
 }

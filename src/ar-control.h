@@ -9,6 +9,9 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (ArControl, ar_control, AR, CONTROL, AdwBin)
 
 uint32_t ar_control_get_id (ArControl *self);
+uint32_t ar_control_get_id2 (ArControl *self);
+uint32_t ar_control_get_id3 (ArControl *self);
 gboolean ar_control_get_use_cc_offset (ArControl *self);
+double ar_control_get_multiply (ArControl *self);
 
 G_END_DECLS
