@@ -107,8 +107,11 @@ sc_sources = [
   'keylab2/kl2-pad-page.c',
   'keylab2/kl2-pedal.c',
   'keylab2/kl2-pedal-calibration.c',
+  'keylab2/kl2-pedal-calibration-page.c',
   'keylab2/kl2-pedal-page.c',
   'keylab2/kl2-pitch-mod-page.c',
+  'keylab2/kl2-preset-page.c',
+  'keylab2/kl2-presets-page.c',
   'keylab2/kl2-select-button.c',
   'keylab2/kl2-velocity-page.c',
 

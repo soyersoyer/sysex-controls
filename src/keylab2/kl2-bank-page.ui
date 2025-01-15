@@ -17,7 +17,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Column 1</property>
                     <property name="control-id-offset">0x00</property>
-                    <signal name="activated" handler="kl2_bank_page_on_row_activated" swapped="yes"/>
+                    <signal name="activated" handler="kl2_book_on_preset_bank_column_activated" swapped="yes"/>
                   </object>
                 </child>
 
@@ -25,7 +25,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Column 2</property>
                     <property name="control-id-offset">0x01</property>
-                    <signal name="activated" handler="kl2_bank_page_on_row_activated" swapped="yes"/>
+                    <signal name="activated" handler="kl2_book_on_preset_bank_column_activated" swapped="yes"/>
                   </object>
                 </child>
 
@@ -33,7 +33,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Column 3</property>
                     <property name="control-id-offset">0x02</property>
-                    <signal name="activated" handler="kl2_bank_page_on_row_activated" swapped="yes"/>
+                    <signal name="activated" handler="kl2_book_on_preset_bank_column_activated" swapped="yes"/>
                   </object>
                 </child>
 
@@ -41,7 +41,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Column 4</property>
                     <property name="control-id-offset">0x03</property>
-                    <signal name="activated" handler="kl2_bank_page_on_row_activated" swapped="yes"/>
+                    <signal name="activated" handler="kl2_book_on_preset_bank_column_activated" swapped="yes"/>
                   </object>
                 </child>
 
@@ -49,7 +49,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Column 5</property>
                     <property name="control-id-offset">0x04</property>
-                    <signal name="activated" handler="kl2_bank_page_on_row_activated" swapped="yes"/>
+                    <signal name="activated" handler="kl2_book_on_preset_bank_column_activated" swapped="yes"/>
                   </object>
                 </child>
 
@@ -57,7 +57,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Column 6</property>
                     <property name="control-id-offset">0x05</property>
-                    <signal name="activated" handler="kl2_bank_page_on_row_activated" swapped="yes"/>
+                    <signal name="activated" handler="kl2_book_on_preset_bank_column_activated" swapped="yes"/>
                   </object>
                 </child>
 
@@ -65,7 +65,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Column 7</property>
                     <property name="control-id-offset">0x06</property>
-                    <signal name="activated" handler="kl2_bank_page_on_row_activated" swapped="yes"/>
+                    <signal name="activated" handler="kl2_book_on_preset_bank_column_activated" swapped="yes"/>
                   </object>
                 </child>
 
@@ -73,7 +73,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Column 8</property>
                     <property name="control-id-offset">0x07</property>
-                    <signal name="activated" handler="kl2_bank_page_on_row_activated" swapped="yes"/>
+                    <signal name="activated" handler="kl2_book_on_preset_bank_column_activated" swapped="yes"/>
                   </object>
                 </child>
 
@@ -81,7 +81,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Column 9</property>
                     <property name="control-id-offset">0x08</property>
-                    <signal name="activated" handler="kl2_bank_page_on_row_activated" swapped="yes"/>
+                    <signal name="activated" handler="kl2_book_on_preset_bank_column_activated" swapped="yes"/>
                   </object>
                 </child>
 

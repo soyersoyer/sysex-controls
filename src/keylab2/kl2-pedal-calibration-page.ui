@@ -2,8 +2,8 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="Kl2PedalPage" parent="ScNavigationPage">
-    <property name="title" translatable="yes">Pedal</property>
+  <template class="Kl2PedalCalibrationPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Pedal Calibration</property>
     <property name="child">
       <object class="AdwToolbarView">
         <child type="top"><object class="AdwHeaderBar"/></child>
@@ -11,37 +11,37 @@
           <object class="ScPreferencesPage">
 
             <child>
-              <object class="Kl2Pedal">
+              <object class="Kl2PedalCalibration">
                 <property name="title" translatable="yes">Sustain Pedal</property>
-                <property name="control-id-offset">0x50</property>
+                <property name="control-id-offset">0x00</property>
               </object>
             </child>
 
             <child>
-              <object class="Kl2Pedal">
+              <object class="Kl2PedalCalibration">
                 <property name="title" translatable="yes">Expression Pedal</property>
-                <property name="control-id-offset">0x51</property>
+                <property name="control-id-offset">0x02</property>
               </object>
             </child>
 
             <child>
-              <object class="Kl2Pedal">
+              <object class="Kl2PedalCalibration">
                 <property name="title" translatable="yes">AUX 1 Pedal</property>
-                <property name="control-id-offset">0x52</property>
+                <property name="control-id-offset">0x04</property>
               </object>
             </child>
 
             <child>
-              <object class="Kl2Pedal">
+              <object class="Kl2PedalCalibration">
                 <property name="title" translatable="yes">AUX 2 Pedal</property>
-                <property name="control-id-offset">0x53</property>
+                <property name="control-id-offset">0x06</property>
               </object>
             </child>
 
             <child>
-              <object class="Kl2Pedal">
+              <object class="Kl2PedalCalibration">
                 <property name="title" translatable="yes">AUX 3 Pedal</property>
-                <property name="control-id-offset">0x54</property>
+                <property name="control-id-offset">0x08</property>
               </object>
             </child>
 

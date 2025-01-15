@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl2PresetPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Preset</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Keyboard</property>
+                    <signal name="activated" handler="kl2_book_on_preset_keyboard_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pitch / Mod</property>
+                    <signal name="activated" handler="kl2_book_on_preset_pitch_mod_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pedals</property>
+                    <signal name="activated" handler="kl2_book_on_preset_pedal_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">CV</property>
+                    <signal name="activated" handler="kl2_book_on_preset_cv_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Bank 1</property>
+                    <signal name="activated" handler="kl2_book_on_preset_bank_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Bank 2</property>
+                    <property name="control-id-offset">0x80</property>
+                    <signal name="activated" handler="kl2_book_on_preset_bank_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <!--the ID-s will be bigger than 0xff, so disable them while figuring out the format-->
+                <!--child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Bank 3</property>
+                    <signal name="activated" handler="kl2_book_on_preset_bank_activated" swapped="yes"/>
+                  </object>
+                </child-->
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pads</property>
+                    <signal name="activated" handler="kl2_book_on_preset_pad_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">DAW Buttons</property>
+                    <signal name="activated" handler="kl2_book_on_preset_daw_buttons_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

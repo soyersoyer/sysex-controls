@@ -15,55 +15,11 @@
         </child>
 
         <child>
-          <object class="Kl2PedalPage"/>
+          <object class="Kl2PedalCalibrationPage"/>
         </child>
 
         <child>
-          <object class="Kl2KeyboardPage"/>
-        </child>
-
-        <child>
-          <object class="Kl2PitchModPage"/>
-        </child>
-
-        <child>
-          <object class="Kl2CvPage"/>
-        </child>
-
-        <child>
-          <object class="Kl2BankPage">
-            <property name="title">Bank 1</property>
-          </object>
-        </child>
-
-        <!--
-        the ID-s will be bigger than 0x7f, so disable them while figuring out the format
-        <child>
-          <object class="Kl2BankPage">
-            <property name="title">Bank 2</property>
-          </object>
-        </child>
-
-        <child>
-          <object class="Kl2BankPage">
-            <property name="title">Bank 3</property>
-          </object>
-        </child>
-        -->
-
-        <child>
-          <object class="Kl2PadPage"/>
-        </child>
-
-        <child>
-          <object class="Kl2DawButtonPage"/>
-        </child>
-
-        <child>
-          <object class="ArPresetPage">
-            <property name="presets-num">12</property>
-            <property name="readonly-num">2</property>
-          </object>
+          <object class="Kl2PresetsPage"/>
         </child>
 
       </object>
