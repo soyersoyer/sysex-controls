@@ -236,6 +236,8 @@ sc_sources = [
   'minilab2/ml2-pad-page.c',
   'minilab2/ml2-pedal-page.c',
   'minilab2/ml2-pitch-mod-page.c',
+  'minilab2/ml2-preset-page.c',
+  'minilab2/ml2-presets-page.c',
   'minilab2/ml2-velocity-page.c',
 
   'minilab3/ml3-book.c',

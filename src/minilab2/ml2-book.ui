@@ -15,40 +15,7 @@
         </child>
 
         <child>
-          <object class="Ml2PitchModPage"/>
-        </child>
-
-        <child>
-          <object class="Ml2PedalPage"/>
-        </child>
-
-        <child>
-          <object class="Ml2KnobPage"/>
-        </child>
-
-        <child>
-          <object class="Ml2KnobExtraPage"/>
-        </child>
-
-        <child>
-          <object class="Ml2PadPage">
-            <property name="title" translatable="yes">Pads 1-8</property>
-            <property name="control-id-offset">0x00</property>
-          </object>
-        </child>
-
-        <child>
-          <object class="Ml2PadPage">
-            <property name="title" translatable="yes">Pads 9-16</property>
-            <property name="control-id-offset">0x08</property>
-          </object>
-        </child>
-
-        <child>
-          <object class="ArPresetPage">
-            <property name="presets-num">8</property>
-            <property name="readonly-num">1</property>
-          </object>
+          <object class="Ml2PresetsPage"/>
         </child>
 
       </object>
