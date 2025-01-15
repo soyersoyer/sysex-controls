@@ -222,7 +222,7 @@ spin_row_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
   if (self->value == val)
     return;
 
-  g_debug("spin control change 0x%08x: 0x%02x -> 0x%02x (x%2.0f)", self->real_id, self->value, val, self->multiply);
+  g_debug("spin control change 0x%08x: 0x%02x -> 0x%02x (x%.0f)", self->real_id, self->value, val, self->multiply);
 
   if (ar_book_write_control (book, self->real_id, val & 0x7f) < 0 ||
       (self->real_id2 && ar_book_write_control (book, self->real_id2, (val >> 7) & 0x7f) < 0) ||
@@ -420,27 +420,27 @@ ar_control_update_gui (ScControl *control)
     if (pos != GTK_INVALID_LIST_POSITION)
       adw_combo_row_set_selected (combo_row, pos);
     else
-      g_warning("Set combo row id 0x%02x to invalid pos 0x%02x (value: 0x%02x)", self->real_id, pos, self->value);
+      g_warning("Set combo row id 0x%08x to invalid pos 0x%02x (value: 0x%02x)", self->real_id, pos, self->value);
 
-    g_debug("Set combo row id 0x%02x to pos 0x%02x (value: 0x%02x)", self->real_id, pos, self->value);
+    g_debug("Set combo row id 0x%08x to pos 0x%02x (value: 0x%02x)", self->real_id, pos, self->value);
   }
   else if (ADW_IS_SWITCH_ROW (self->widget))
   {
     AdwSwitchRow *switch_row = ADW_SWITCH_ROW (self->widget);
     adw_switch_row_set_active (switch_row, self->value);
-    g_debug ("Set switch row with id 0x%02x to 0x%02x", self->real_id, self->value);
+    g_debug ("Set switch row with id 0x%08x to 0x%02x", self->real_id, self->value);
   }
   else if (ADW_IS_SPIN_ROW (self->widget))
   {
     AdwSpinRow *spin_row = ADW_SPIN_ROW (self->widget);
     adw_spin_row_set_value (spin_row, self->value / self->multiply);
-    g_debug ("Set spin row with id 0x%02x to 0x%02x", self->real_id, self->value);
+    g_debug ("Set spin row with id 0x%08x to 0x%02x", self->real_id, self->value);
   }
   else if (GTK_IS_TOGGLE_BUTTON (self->widget))
   {
     GtkToggleButton *b = GTK_TOGGLE_BUTTON (self->widget);
     gtk_toggle_button_set_active (b, self->value);
-    g_debug ("Set toggle button with id 0x%02x to 0x%02x", self->real_id, self->value);
+    g_debug ("Set toggle button with id 0x%08x to 0x%02x", self->real_id, self->value);
   }
   else if (GTK_IS_DROP_DOWN (self->widget))
   {
@@ -460,19 +460,19 @@ ar_control_update_gui (ScControl *control)
     if (pos != GTK_INVALID_LIST_POSITION)
       gtk_drop_down_set_selected (dd, pos);
     else
-      g_warning("Set drop down id 0x%02x to invalid pos 0x%02x (value 0x%02x not found)", self->real_id, pos, self->value);
+      g_warning("Set drop down id 0x%08x to invalid pos 0x%02x (value 0x%02x not found)", self->real_id, pos, self->value);
 
-    g_debug("Set dop_down id 0x%02x to pos 0x%02x (value: 0x%02x)", self->real_id, pos, self->value);
+    g_debug("Set dop_down id 0x%08x to pos 0x%02x (value: 0x%02x)", self->real_id, pos, self->value);
   }
   else if (AR2_IS_USER_SCALE (self->widget))
   {
     Ar2UserScale *w = AR2_USER_SCALE (self->widget);
     ar2_user_scale_set_value (w, self->value);
-    g_debug ("Set user scale part with id 0x%02x to 0x%02x (part %d)", self->real_id, self->value, ar2_user_scale_get_part (w));
+    g_debug ("Set user scale part with id 0x%08x to 0x%02x (part %d)", self->real_id, self->value, ar2_user_scale_get_part (w));
   }
   else
   {
-    g_error ("Unsupported control type: %s id: 0x%02x",
+    g_error ("Unsupported control type: %s id: 0x%08x",
               gtk_widget_get_name (GTK_WIDGET (self->widget)),
               self->real_id);
   }
@@ -499,7 +499,7 @@ ar_control_read_value (ScControl *control)
     return ret;
   self->value |= ((uint32_t)value & 0x7F) << 7;
 
-  g_debug ("id2 (0x%02x) read: 0x%02x (0x%02x)", self->real_id2, value, self->value);
+  g_debug ("id2 (0x%08x) read: 0x%02x (0x%02x)", self->real_id2, value, self->value);
 
   if (!self->real_id3)
     return ret;
@@ -509,7 +509,7 @@ ar_control_read_value (ScControl *control)
     return ret;
   self->value |= ((uint32_t)value & 0x7F) << 14;
 
-  g_debug ("id3 (0x%02x) read: 0x%02x (0x%02x)", self->real_id3, value, self->value);
+  g_debug ("id3 (0x%08x) read: 0x%02x (0x%02x)", self->real_id3, value, self->value);
 
   return ret;
 }
