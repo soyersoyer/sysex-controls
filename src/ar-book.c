@@ -22,6 +22,7 @@
 typedef struct
 {
   uint8_t read_ack;
+  uint8_t preset_sync;
 } ArBookPrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (ArBook, ar_book, SC_TYPE_BOOK)
@@ -32,6 +33,14 @@ ar_book_set_read_ack (ArBook *self, uint8_t read_ack)
   ArBookPrivate *priv = ar_book_get_instance_private (self);
   priv->read_ack = read_ack;
 }
+
+void
+ar_book_set_preset_sync (ArBook *self, uint8_t preset_sync)
+{
+  ArBookPrivate *priv = ar_book_get_instance_private (self);
+  priv->preset_sync = preset_sync;
+}
+
 
 static void
 ar_book_class_init (ArBookClass *klass)
@@ -66,13 +75,29 @@ ar_book_write_control (ArBook *self, uint32_t control_id, uint8_t val)
 {
   ArBookClass *klass;
   ScBook *sc_book;
+  ArBookPrivate *priv;
+  int ret, preset_id;
 
   g_return_val_if_fail (AR_IS_BOOK (self), -EINVAL);
 
   klass = AR_BOOK_GET_CLASS (self);
+  priv = ar_book_get_instance_private (self);
   sc_book = SC_BOOK (self);
 
-  return klass->write_control (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), control_id, val);
+  ret = klass->write_control (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), control_id, val);
+  if (ret)
+    return ret;
+
+  if (!priv->preset_sync)
+    return ret;
+  
+  preset_id = control_id >> 16 & 0x7F;
+
+  if (!preset_id)
+    return ret;
+
+  g_debug ("store preset: %d", preset_id);
+  return klass->store_preset (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), preset_id);
 }
 
 int

@@ -20,6 +20,7 @@ struct _ArBookClass
 };
 
 void ar_book_set_read_ack (ArBook *self, uint8_t read_ack);
+void ar_book_set_preset_sync (ArBook *self, uint8_t preset_sync);
 
 int ar_book_read_control (ArBook *self, uint32_t control_id, uint8_t *val);
 int ar_book_write_control (ArBook *self, uint32_t control_id, uint8_t val);
