@@ -36,7 +36,7 @@
                 <child>
                   <object class="AdwActionRow">
                     <property name="title" translatable="yes">Store</property>
-                    <property name="subtitle" translatable="yes">Store preset on the controller</property>
+                    <property name="subtitle" translatable="yes">Store actual preset on the controller</property>
                     <property name="activatable">yes</property>
                     <signal name="activated" handler="on_store_activated" swapped="yes"/>
                     <child type="suffix">
