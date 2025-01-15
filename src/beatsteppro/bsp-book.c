@@ -68,13 +68,22 @@ bsp_book_init (BspBook *self)
 static void
 open_project_page (ScNavigationPage *page, ScActionRow *row, GType type)
 {
+  uint32_t control_id_offset = sc_navigation_page_get_control_id_offset (page) + sc_action_row_get_control_id_offset (row);
+  uint32_t control_cc_offset = sc_navigation_page_get_control_cc_offset (page) + sc_action_row_get_control_cc_offset (row);
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (page), ADW_TYPE_NAVIGATION_VIEW));
   AdwNavigationPage *nav_page = g_object_new (type,
                                           "title", adw_preferences_row_get_title (ADW_PREFERENCES_ROW (row)),
-                                          "control-id-offset", sc_action_row_get_control_id_offset (row),
+                                          "control-id-offset", control_id_offset,
+                                          "control-cc-offset", control_cc_offset,
                                           NULL);
   adw_navigation_view_push (view, nav_page);
   g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), nav_page);
+}
+
+void
+bsp_book_on_presets_preset_activated (ScNavigationPage *page, ScActionRow *row)
+{
+  open_project_page (page, row, BSP_TYPE_PROJECT_PAGE);
 }
 
 void

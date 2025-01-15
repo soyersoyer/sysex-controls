@@ -43,7 +43,7 @@
         </child>
 
         <child>
-          <object class="BspProjectPage"/>
+          <object class="BspProjectsPage"/>
         </child>
 
       </object>

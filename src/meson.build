@@ -69,6 +69,7 @@ sc_sources = [
   'beatsteppro/bsp-pad-page.c',
   'beatsteppro/bsp-project-page.c',
   'beatsteppro/bsp-project-setting-page.c',
+  'beatsteppro/bsp-projects-page.c',
   'beatsteppro/bsp-sequencer-page.c',
   'beatsteppro/bsp-step.c',
   'beatsteppro/bsp-step-page.c',

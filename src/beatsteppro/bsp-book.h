@@ -15,6 +15,8 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (BspBook, bsp_book, BSP, BOOK, ArBook)
 
+void bsp_book_on_presets_preset_activated (ScNavigationPage *page, ScActionRow *row);
+
 void bsp_book_on_project_settings_activated (ScNavigationPage *page, ScActionRow* row);
 void bsp_book_on_project_knobs_activated (ScNavigationPage *page, ScActionRow* row);
 void bsp_book_on_project_steps_activated (ScNavigationPage *page, ScActionRow* row);
