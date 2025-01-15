@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="KlesPresetsPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Presets</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">User 1</property>
+                    <property name="control-id-offset">0x030000</property>
+                    <signal name="activated" handler="kles_book_on_presets_preset_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">User 2</property>
+                    <property name="control-id-offset">0x040000</property>
+                    <signal name="activated" handler="kles_book_on_presets_preset_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">User 3</property>
+                    <property name="control-id-offset">0x050000</property>
+                    <signal name="activated" handler="kles_book_on_presets_preset_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">User 4</property>
+                    <property name="control-id-offset">0x060000</property>
+                    <signal name="activated" handler="kles_book_on_presets_preset_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">User 5</property>
+                    <property name="control-id-offset">0x070000</property>
+                    <signal name="activated" handler="kles_book_on_presets_preset_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">User 6</property>
+                    <property name="control-id-offset">0x080000</property>
+                    <signal name="activated" handler="kles_book_on_presets_preset_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

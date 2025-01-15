@@ -15,34 +15,7 @@
         </child>
 
         <child>
-          <object class="KlesKeyboardPage"/>
-        </child>
-
-        <child>
-          <object class="KlesPedalPage"/>
-        </child>
-
-        <child>
-          <object class="KlesPadPage"/>
-        </child>
-
-        <child>
-          <object class="KlesButtonPage"/>
-        </child>
-
-        <child>
-          <object class="KlesKnobPage"/>
-        </child>
-
-        <child>
-          <object class="KlesFaderPage"/>
-        </child>
-
-        <child>
-          <object class="ArPresetPage">
-            <property name="presets-num">8</property>
-            <property name="readonly-num">2</property>
-          </object>
+          <object class="KlesPresetsPage"/>
         </child>
 
       </object>

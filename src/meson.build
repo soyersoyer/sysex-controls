@@ -151,6 +151,8 @@ sc_sources = [
   'keylabes/kles-pad.c',
   'keylabes/kles-pad-page.c',
   'keylabes/kles-pedal-page.c',
+  'keylabes/kles-preset-page.c',
+  'keylabes/kles-presets-page.c',
   'keylabes/kles-velocity-page.c',
 
   'keylabes3/kles3-book.c',

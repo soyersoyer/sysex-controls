@@ -142,6 +142,8 @@
     <file preprocess="xml-stripblanks">keylabes/kles-pad.ui</file>
     <file preprocess="xml-stripblanks">keylabes/kles-pad-page.ui</file>
     <file preprocess="xml-stripblanks">keylabes/kles-pedal-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes/kles-preset-page.ui</file>
+    <file preprocess="xml-stripblanks">keylabes/kles-presets-page.ui</file>
     <file preprocess="xml-stripblanks">keylabes/kles-velocity-page.ui</file>
 
     <file preprocess="xml-stripblanks">keylabes3/kles3-book.ui</file>
