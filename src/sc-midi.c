@@ -27,6 +27,13 @@
 #define AKAI_CMD_QUERY 0x66
 #define AKAI_CMD_RECEIVE 0x67
 
+#define min(a,b)             \
+({                           \
+    __typeof__ (a) _a = (a); \
+    __typeof__ (b) _b = (b); \
+    _a < _b ? _a : _b;       \
+})
+
 int
 sc_midi_akai_dummy_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id, uint8_t *data, uint16_t *size)
 {
@@ -226,6 +233,7 @@ enum ar_msg_type {
   AR_UNKNOWN,
   AR_DEVICE_INQUIRY,
   AR_CONTROL_WRITE,
+  AR_STRING_WRITE,
   AR_ACK,
 };
 
@@ -240,6 +248,10 @@ typedef struct {
       uint8_t device_id;
       uint8_t data[11];
     } inquiry;
+    struct {
+      uint8_t id;
+      uint8_t data[16];
+    } string;
   };
 } ar_event_t;
 
@@ -255,6 +267,21 @@ int
 sc_midi_arturia_dummy_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val)
 {
   fprintf(stderr, "%s(%08x, %d)\n", __func__, control_id, val);
+  return 0;
+}
+
+int
+sc_midi_arturia_dummy_read_string (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_ack, uint32_t control_id, char val[17])
+{
+  fprintf(stderr, "%s(%08x)\n", __func__, control_id);
+  memset (val, 0, 16);
+  return 0;
+}
+
+int
+sc_midi_arturia_dummy_write_string (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, char val[17])
+{
+  fprintf(stderr, "%s(%08x, %s)\n", __func__, control_id, val);
   return 0;
 }
 
@@ -287,12 +314,15 @@ sc_midi_arturia_dummy_store_preset (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t
 static void
 process_arturia_message (snd_seq_event_t *ev, ar_event_t *ar_ev)
 {
-  static const uint8_t arturia_ack[] =      {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x1c, 0x00, 0xf7};
-  static const uint8_t arturia_value[] =    {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02};
-  static const uint8_t arturia_value_p2[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x32};
-  static const uint8_t arturia_value_p3[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x42};
-  static const uint8_t arturia_v3_value[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x21};
-  static const uint8_t device_inquiry[] =   {0xf0, 0x7e};
+  static const uint8_t arturia_ack[] =          {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x1c, 0x00, 0xf7};
+  static const uint8_t arturia_value[] =        {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02};
+  static const uint8_t arturia_value_p2[] =     {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x32};
+  static const uint8_t arturia_value_p3[] =     {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x42};
+  static const uint8_t arturia_v2_string[] =    {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x04};
+  static const uint8_t arturia_v2_string_p2[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x34};
+  static const uint8_t arturia_v2_string_p3[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x44};
+  static const uint8_t arturia_v3_value[] =     {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x21};
+  static const uint8_t device_inquiry[] =       {0xf0, 0x7e};
 
   unsigned int len = ev->data.ext.len;
   uint8_t* input = ev->data.ext.ptr;
@@ -317,6 +347,27 @@ process_arturia_message (snd_seq_event_t *ev, ar_event_t *ar_ev)
     ar_ev->control.id = ((2 << 24) | (input[7] << 16) | (input[8] << 8) | input[9]);
     ar_ev->control.value = input[10];
     ar_ev->type = AR_CONTROL_WRITE;
+  }
+  else if (len > sizeof arturia_v2_string + 5 &&
+      memcmp (input, arturia_v2_string, sizeof arturia_v2_string) == 0)
+  {
+    ar_ev->string.id = (input[7] << 16) | (input[8] << 8) | input[9];
+    memcpy (ar_ev->string.data, &input[10], min (len-10-1, 16));
+    ar_ev->type = AR_STRING_WRITE;
+  }
+  else if (len > sizeof arturia_v2_string_p2 + 5 &&
+      memcmp (input, arturia_v2_string_p2, sizeof arturia_v2_string_p2) == 0)
+  {
+    ar_ev->string.id = ((1 << 24) | input[7] << 16) | (input[8] << 8) | input[9];
+    memcpy (ar_ev->string.data, &input[10], min (len-10-1, 16));
+    ar_ev->type = AR_STRING_WRITE;
+  }
+  else if (len > sizeof arturia_v2_string_p3 + 5 &&
+      memcmp (input, arturia_v2_string_p3, sizeof arturia_v2_string_p3) == 0)
+  {
+    ar_ev->string.id = ((2 << 24) | input[7] << 16) | (input[8] << 8) | input[9];
+    memcpy (ar_ev->string.data, &input[10], min (len-10-1, 16));
+    ar_ev->type = AR_STRING_WRITE;
   }
   else if (len == sizeof arturia_v3_value + 6 &&
       memcmp (input, arturia_v3_value, sizeof arturia_v3_value) == 0)
@@ -566,6 +617,22 @@ sc_midi_arturia_store_preset (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t prese
   return 0;
 }
 
+static void
+set_control_id (uint8_t *data, uint32_t control_id)
+{
+  uint8_t r_id = (uint8_t)(control_id >> 24);
+  data[7] = (uint8_t)(control_id >> 16); // pr_id
+  data[8] = (uint8_t)(control_id >> 8); // p_id
+  data[9] = (uint8_t)control_id; // c_id
+
+  switch (r_id)
+  {
+    case 1: data[6] += 0x30; break;
+    case 2: data[6] += 0x40; break;
+    default: break;
+  }
+}
+
 int
 sc_midi_arturia_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val)
 {
@@ -574,7 +641,6 @@ sc_midi_arturia_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t con
   uint8_t data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00, 0x00, 0x00, 0x00, 0xf7};
   snd_seq_event_t ev;
   int err;
-  uint8_t r_id;
 
   //printf ("write_control_value %02x value to %02x\n", control_id, val);
 
@@ -584,18 +650,8 @@ sc_midi_arturia_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t con
   snd_seq_ev_set_direct (&ev);
   snd_seq_ev_set_sysex (&ev, sizeof data, data);
 
-  r_id = (uint8_t)(control_id >> 24);
-  data[7] = (uint8_t)(control_id >> 16); // pr_id
-  data[8] = (uint8_t)(control_id >> 8); // p_id
-  data[9] = (uint8_t)control_id; // c_id
+  set_control_id (data, control_id);
   data[10] = val;
-
-  switch (r_id)
-  {
-    case 1: data[6] += 0x30; break;
-    case 2: data[6] += 0x40; break;
-    default: break;
-  }
 
   err = snd_seq_event_output (seq, &ev);
   if (err < 0)
@@ -623,7 +679,6 @@ sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_
   ar_event_t ar_ev = {.type = AR_CONTROL_WRITE, .control.id = control_id};
   snd_seq_event_t ev;
   int err;
-  uint8_t r_id;
 
   //printf ("read_control_value %02x\n", control_id);
 
@@ -633,17 +688,7 @@ sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_
   snd_seq_ev_set_direct (&ev);
   snd_seq_ev_set_sysex (&ev, sizeof data, data);
 
-  r_id = (uint8_t)(control_id >> 24);
-  data[7] = (uint8_t)(control_id >> 16); // pr_id
-  data[8] = (uint8_t)(control_id >> 8); // p_id
-  data[9] = (uint8_t)control_id; // c_id
-
-  switch (r_id)
-  {
-    case 1: data[6] += 0x30; break;
-    case 2: data[6] += 0x40; break;
-    default: break;
-  }
+  set_control_id (data, control_id);
 
   err = snd_seq_event_output (seq, &ev);
   if (err < 0)
@@ -664,6 +709,98 @@ sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_
     return err;
 
   *val = ar_ev.control.value;
+
+  if (read_ack)
+    sc_midi_arturia_read_next (seq, &(ar_event_t){.type = AR_ACK, .control.id = control_id});
+    // some controllers do not send ack, so not checking this is not an error
+    // waiting for an ack makes the communication slow, so in this case we
+    // can set read_ack to false
+
+  return 0;
+}
+
+int
+sc_midi_arturia_write_string (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, char val[17])
+{
+  //                                                           pr_id  p_id  c_id  value
+  //                                                            ||||  ||||  ||||  ||||
+  uint8_t data[28] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x04, 0x00, 0x00, 0x00};
+  snd_seq_event_t ev;
+  int err, len;
+
+  memcpy (&data[10], val, 17);
+  len = 10 + strlen (val);
+  data[len++] = 0x00;
+  data[len++] = 0xf7;
+
+  //printf ("sc_midi_arturia_write_string %08x str ", control_id);
+  //for (int i=10; i<len; ++i)
+  //  printf ("%02x", data[i]);
+  //printf ("\n");
+
+  snd_seq_ev_clear (&ev);
+  snd_seq_ev_set_source (&ev, 0);
+  snd_seq_ev_set_dest (&ev, addr.client, addr.port);
+  snd_seq_ev_set_direct (&ev);
+  snd_seq_ev_set_sysex (&ev, len, data);
+
+  set_control_id (data, control_id);
+
+  err = snd_seq_event_output (seq, &ev);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%08x): snd_seq_event_output failed %d\n", __func__, control_id, err);
+    return err;
+  }
+
+  err = snd_seq_drain_output (seq);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%08x): snd_seq_drain_output failed %d\n", __func__, control_id, err);
+    return err;
+  }
+
+  return 0; 
+}
+
+int
+sc_midi_arturia_read_string (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_ack, uint32_t control_id, char val[17])
+{
+  //                                                         pr_id  p_id  c_id
+  //                                                          ||||  ||||  ||||
+  uint8_t data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x03, 0x00, 0x00, 0x00, 0xf7};
+  ar_event_t ar_ev = {.type = AR_STRING_WRITE, .control.id = control_id};
+  snd_seq_event_t ev;
+  int err;
+
+  snd_seq_ev_clear (&ev);
+  snd_seq_ev_set_source (&ev, 0);
+  snd_seq_ev_set_dest (&ev, addr.client, addr.port);
+  snd_seq_ev_set_direct (&ev);
+  snd_seq_ev_set_sysex (&ev, sizeof data, data);
+
+  set_control_id (data, control_id);
+
+  err = snd_seq_event_output (seq, &ev);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%04x) snd_seq_event_output failed %d\n", __func__, control_id, err);
+    return err;
+  }
+
+  err = snd_seq_drain_output(seq);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%04x) snd_seq_drain_output failed %d\n", __func__, control_id, err);
+    return err;
+  }
+
+  err = sc_midi_arturia_read_next (seq, &ar_ev);
+  if (err < 0)
+    return err;
+
+  memcpy (val, ar_ev.string.data, 16);
+  val[16] = 0;
 
   if (read_ack)
     sc_midi_arturia_read_next (seq, &(ar_event_t){.type = AR_ACK, .control.id = control_id});

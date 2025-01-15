@@ -50,6 +50,8 @@ ar_book_class_init (ArBookClass *klass)
 
   klass->read_control = sc_midi_arturia_read_control;
   klass->write_control = sc_midi_arturia_write_control;
+  klass->read_string = sc_midi_arturia_read_string;
+  klass->write_string = sc_midi_arturia_write_string;
   klass->recall_preset = sc_midi_arturia_recall_preset;
   klass->store_preset = sc_midi_arturia_store_preset;
 }
@@ -70,13 +72,27 @@ ar_book_read_control (ArBook *self, uint32_t control_id, uint8_t *val)
   return klass->read_control (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->read_ack, control_id, val);
 }
 
+static int
+sync_preset (ArBookClass *klass, ScBook *sc_book, uint32_t control_id)
+{
+  int preset_id = control_id >> 16 & 0x7F;
+
+  if (!preset_id)
+    return 0;
+
+  /* it needs some time */
+  usleep (20*1000);
+  g_debug ("store preset: %d", preset_id);
+  return klass->store_preset (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), preset_id);
+}
+
 int
 ar_book_write_control (ArBook *self, uint32_t control_id, uint8_t val)
 {
   ArBookClass *klass;
   ScBook *sc_book;
   ArBookPrivate *priv;
-  int ret, preset_id;
+  int ret;
 
   g_return_val_if_fail (AR_IS_BOOK (self), -EINVAL);
 
@@ -89,15 +105,49 @@ ar_book_write_control (ArBook *self, uint32_t control_id, uint8_t val)
     return ret;
 
   if (!priv->preset_sync)
-    return ret;
+    return 0;
   
-  preset_id = control_id >> 16 & 0x7F;
+  return sync_preset (klass, sc_book, control_id);
+}
 
-  if (!preset_id)
+int
+ar_book_read_string (ArBook *self, uint32_t control_id, char val[17])
+{
+  ArBookClass *klass;
+  ArBookPrivate *priv;
+  ScBook *sc_book;
+
+  g_return_val_if_fail (AR_IS_BOOK (self), -EINVAL);
+
+  klass = AR_BOOK_GET_CLASS (self);
+  priv = ar_book_get_instance_private (self);
+  sc_book = SC_BOOK (self);
+
+  return klass->read_string (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->read_ack, control_id, val);
+}
+
+int
+ar_book_write_string (ArBook *self, uint32_t control_id, char val[17])
+{
+  ArBookClass *klass;
+  ScBook *sc_book;
+  ArBookPrivate *priv;
+  int ret;
+
+  g_return_val_if_fail (AR_IS_BOOK (self), -EINVAL);
+
+  klass = AR_BOOK_GET_CLASS (self);
+  priv = ar_book_get_instance_private (self);
+  sc_book = SC_BOOK (self);
+
+  ret = klass->write_string (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), control_id, val);
+  if (ret)
     return ret;
 
-  g_debug ("store preset: %d", preset_id);
-  return klass->store_preset (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), preset_id);
+  if (!priv->preset_sync)
+    return 0;
+
+  return sync_preset (klass, sc_book, control_id);
 }
 
 int
@@ -146,6 +196,8 @@ void ar_book_use_dummy (ScBook *self)
   ArBookClass *klass = AR_BOOK_GET_CLASS (self);
   klass->read_control = sc_midi_arturia_dummy_read_control;
   klass->write_control = sc_midi_arturia_dummy_write_control;
+  klass->read_string = sc_midi_arturia_dummy_read_string;
+  klass->write_string = sc_midi_arturia_dummy_write_string;
   klass->recall_preset = sc_midi_arturia_dummy_recall_preset;
   klass->store_preset = sc_midi_arturia_dummy_store_preset;
 }

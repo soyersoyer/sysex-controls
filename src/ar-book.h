@@ -15,6 +15,8 @@ struct _ArBookClass
 
   int (*read_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_ack, uint32_t control_id, uint8_t *val);
   int (*write_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val);
+  int (*read_string) (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_ack, uint32_t control_id, char val[17]);
+  int (*write_string) (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, char val[17]);
   int (*recall_preset) (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t preset_id);
   int (*store_preset) (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t preset_id);
 };
@@ -24,6 +26,8 @@ void ar_book_set_preset_sync (ArBook *self, uint8_t preset_sync);
 
 int ar_book_read_control (ArBook *self, uint32_t control_id, uint8_t *val);
 int ar_book_write_control (ArBook *self, uint32_t control_id, uint8_t val);
+int ar_book_read_string (ArBook *self, uint32_t control_id, char val[17]);
+int ar_book_write_string (ArBook *self, uint32_t control_id, char val[17]);
 int ar_book_recall_preset (ArBook *self, uint8_t preset_id);
 int ar_book_store_preset (ArBook *self, uint8_t preset_id);
 int ar_book_device_inquiry (ArBook *self, uint8_t data[11]);

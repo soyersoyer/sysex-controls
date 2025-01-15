@@ -16,6 +16,7 @@ enum {
   PROP_ID3,
   PROP_USE_CC_OFFSET,
   PROP_MULTIPLY,
+  PROP_MAXLEN,
   LAST_PROP,
 };
 
@@ -31,6 +32,9 @@ struct _ArControl
   uint32_t real_id2;
   uint32_t real_id3;
   uint32_t value;
+  gboolean is_string;
+  uint8_t maxlen;
+  char data[17];
   GtkWidget *widget;
 };
 
@@ -76,6 +80,12 @@ ar_control_get_multiply (ArControl *self)
   return self->multiply;
 }
 
+uint8_t
+ar_control_get_maxlen (ArControl *self)
+{
+  g_return_val_if_fail (AR_IS_CONTROL (self), 0);
+  return self->maxlen;
+}
 
 static void
 ar_control_get_property (GObject    *object,
@@ -101,6 +111,9 @@ ar_control_get_property (GObject    *object,
     break;
     case PROP_MULTIPLY:
       g_value_set_double (value, ar_control_get_multiply (self));
+    break;
+    case PROP_MAXLEN:
+      g_value_set_uint (value, ar_control_get_maxlen (self));
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -132,6 +145,9 @@ ar_control_set_property (GObject      *object,
     break;
     case PROP_MULTIPLY:
       self->multiply = g_value_get_double (value);
+    break;
+    case PROP_MAXLEN:
+      self->maxlen = g_value_get_uint (value);
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -165,6 +181,10 @@ ar_control_class_init (ArControlClass *klass)
   value_props[PROP_MULTIPLY] = g_param_spec_double ("multiply", NULL, NULL,
                                                     0, G_MAXDOUBLE, 1,
                                                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+
+  value_props[PROP_MAXLEN] = g_param_spec_uint ("maxlen", NULL, NULL,
+                                             0, 16, 16,
+                                             G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   g_object_class_install_properties (object_class, LAST_PROP, value_props);
 }
@@ -311,6 +331,27 @@ user_scale_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
   self->value = val;
 }
 
+static void
+entry_row_apply_cb (GObject * widget, ArControl *self)
+{
+  ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (self->widget)));
+  ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), AR_TYPE_BOOK));
+  const char* text = gtk_editable_get_text (GTK_EDITABLE (widget));
+
+  if (strncmp (self->data, text, self->maxlen) == 0)
+    return;
+
+  g_debug ("entry row change 0x%08x: %s -> %s", self->real_id, self->data, text);
+
+  strncpy (self->data, text, self->maxlen);
+
+  if (ar_book_write_string (book, self->real_id, self->data) < 0)
+  {
+    sc_io_problem (window, "Control change failed");
+    return;
+  }
+}
+
 static void ar_control_normalize_id (uint32_t *id)
 {
   uint8_t *rid = (uint8_t*)id;
@@ -343,6 +384,9 @@ ar_control_register (ArControl *self)
 
   if (!widget)
     widget = gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_SWITCH_ROW);
+
+  if (!widget)
+    widget = gtk_widget_get_ancestor (GTK_WIDGET (self), ADW_TYPE_ENTRY_ROW);
 
   if (!widget && GTK_IS_BOX (gtk_widget_get_parent (GTK_WIDGET (self))))
     widget = gtk_widget_get_next_sibling (GTK_WIDGET (self));
@@ -389,6 +433,11 @@ ar_control_register (ArControl *self)
     g_signal_connect (G_OBJECT (widget), "notify::selected", G_CALLBACK (drop_down_change_cb), self);
   else if (AR2_IS_USER_SCALE (widget))
     g_signal_connect (G_OBJECT (widget), "notify::value", G_CALLBACK (user_scale_change_cb), self);
+  else if (ADW_IS_ENTRY_ROW (widget))
+  {
+    self->is_string = true;
+    g_signal_connect (G_OBJECT (widget), "apply", G_CALLBACK (entry_row_apply_cb), self);
+  }
   else
     g_error("Unsupported control type: %s id: 0x%08x",
             gtk_widget_get_name (GTK_WIDGET (widget)),
@@ -470,6 +519,14 @@ ar_control_update_gui (ScControl *control)
     ar2_user_scale_set_value (w, self->value);
     g_debug ("Set user scale part with id 0x%08x to 0x%02x (part %d)", self->real_id, self->value, ar2_user_scale_get_part (w));
   }
+  else if (ADW_IS_ENTRY_ROW (self->widget))
+  {
+    AdwEntryRow *row = ADW_ENTRY_ROW (self->widget);
+    gtk_editable_set_text (GTK_EDITABLE (self->widget), self->data);
+    // set it here, not to get the focus at load
+    adw_entry_row_set_show_apply_button (row, true);
+    g_debug ("Set AdwEntryRow with id 0x%08x to %s", self->real_id, self->data);
+  }
   else
   {
     g_error ("Unsupported control type: %s id: 0x%08x",
@@ -485,6 +542,10 @@ ar_control_read_value (ScControl *control)
   ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), AR_TYPE_BOOK));
   uint8_t value;
   int ret;
+
+  if (self->is_string) {
+    return ar_book_read_string (book, self->real_id, self->data);
+  }
 
   ret = ar_book_read_control (book, self->real_id, &value);
   if (ret)
@@ -525,6 +586,9 @@ static void
 ar_control_init (ArControl *self)
 {
   self->multiply = 1;
+  self->is_string = false;
+  self->maxlen = 16;
+  memset (self->data, 0, sizeof self->data);
   gtk_widget_set_visible (GTK_WIDGET (&self->parent_instance), false);
   g_idle_add (G_SOURCE_FUNC (ar_control_register), self);
 }

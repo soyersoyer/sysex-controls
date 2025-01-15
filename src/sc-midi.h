@@ -22,6 +22,9 @@ int sc_midi_akai_select_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t de
 
 int sc_midi_arturia_dummy_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_ack, uint32_t control_id, uint8_t *val);
 int sc_midi_arturia_dummy_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val);
+int sc_midi_arturia_dummy_read_string (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_ack, uint32_t control_id, char val[17]);
+int sc_midi_arturia_dummy_write_string (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, char val[17]);
+
 int sc_midi_arturia_dummy_recall_preset (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t preset_id);
 int sc_midi_arturia_dummy_store_preset (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t preset_id);
 
@@ -32,6 +35,8 @@ int sc_midi_arturia_store_preset (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t p
 int sc_midi_arturia_device_inquiry (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t data[11]);
 int sc_midi_arturia_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_ack, uint32_t control_id, uint8_t *val);
 int sc_midi_arturia_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val);
+int sc_midi_arturia_read_string (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_ack, uint32_t control_id, char val[17]);
+int sc_midi_arturia_write_string (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, char val[17]);
 
 int sc_midi_disconnect (snd_seq_t *seq, snd_seq_addr_t addr);
 int sc_midi_connect (snd_seq_t *seq, snd_seq_addr_t addr);
