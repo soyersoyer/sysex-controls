@@ -84,7 +84,7 @@
 
     <child>
       <object class="ScComboRow">
-        <child><object class="ArControl"><property name="id">0x418a</property></object></child>
+        <child><object class="ArControl"><property name="id">0x0100410a</property></object></child>
         <property name="title" translatable="yes">Pitch Bend range</property>
         <property name="model">
           <object class="ScControlValueList">

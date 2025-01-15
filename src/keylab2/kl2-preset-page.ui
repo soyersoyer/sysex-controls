@@ -51,18 +51,18 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Bank 2</property>
-                    <property name="control-id-offset">0x80</property>
+                    <property name="control-id-offset">0x01000000</property>
                     <signal name="activated" handler="kl2_book_on_preset_bank_activated" swapped="yes"/>
                   </object>
                 </child>
 
-                <!--the ID-s will be bigger than 0xff, so disable them while figuring out the format-->
-                <!--child>
+                <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Bank 3</property>
+                    <property name="control-id-offset">0x02000000</property>
                     <signal name="activated" handler="kl2_book_on_preset_bank_activated" swapped="yes"/>
                   </object>
-                </child-->
+                </child>
 
                 <child>
                   <object class="ScActionRow">

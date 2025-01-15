@@ -43,56 +43,56 @@
 
                 <child>
                   <object class="KspCvDrumGate">
-                    <child><object class="ArControl"><property name="id">0x4180</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x01004100</property></object></child>
                     <property name="title" translatable="yes">Drum Gate 1</property>
                   </object>
                 </child>
 
                 <child>
                   <object class="KspCvDrumGate">
-                    <child><object class="ArControl"><property name="id">0x4181</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x01004101</property></object></child>
                     <property name="title" translatable="yes">Drum Gate 2</property>
                   </object>
                 </child>
 
                 <child>
                   <object class="KspCvDrumGate">
-                    <child><object class="ArControl"><property name="id">0x4182</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x01004102</property></object></child>
                     <property name="title" translatable="yes">Drum Gate 3</property>
                   </object>
                 </child>
 
                 <child>
                   <object class="KspCvDrumGate">
-                    <child><object class="ArControl"><property name="id">0x4183</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x01004103</property></object></child>
                     <property name="title" translatable="yes">Drum Gate 4</property>
                   </object>
                 </child>
 
                 <child>
                   <object class="KspCvDrumGate">
-                    <child><object class="ArControl"><property name="id">0x4184</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x01004104</property></object></child>
                     <property name="title" translatable="yes">Drum Gate 5</property>
                   </object>
                 </child>
 
                 <child>
                   <object class="KspCvDrumGate">
-                    <child><object class="ArControl"><property name="id">0x4185</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x01004105</property></object></child>
                     <property name="title" translatable="yes">Drum Gate 6</property>
                   </object>
                 </child>
 
                 <child>
                   <object class="KspCvDrumGate">
-                    <child><object class="ArControl"><property name="id">0x4186</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x01004106</property></object></child>
                     <property name="title" translatable="yes">Drum Gate 7</property>
                   </object>
                 </child>
 
                 <child>
                   <object class="KspCvDrumGate">
-                    <child><object class="ArControl"><property name="id">0x4187</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x01004107</property></object></child>
                     <property name="title" translatable="yes">Drum Gate 8</property>
                   </object>
                 </child>

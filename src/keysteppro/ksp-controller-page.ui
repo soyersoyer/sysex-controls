@@ -208,7 +208,7 @@
 
                 <child>
                   <object class="ScComboRow">
-                    <child><object class="ArControl"><property name="id">0x4188</property></object></child>
+                    <child><object class="ArControl"><property name="id">0x01004108</property></object></child>
                     <property name="title" translatable="yes">MIDI Out 2</property>
                     <property name="model">
                       <object class="ScControlValueList">
