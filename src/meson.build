@@ -93,6 +93,11 @@ sc_sources = [
   'drumbruteimpact/dbi-roller-page.c',
   'drumbruteimpact/dbi-transport-page.c',
 
+  'keylab/kl-aftertouch-page.c',
+  'keylab/kl-book.c',
+  'keylab/kl-controller-page.c',
+  'keylab/kl-curve-page.c',
+
   'keylab2/kl2-bank-page.c',
   'keylab2/kl2-book.c',
   'keylab2/kl2-controller-page.c',
