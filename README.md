@@ -33,6 +33,7 @@ These might also work, but have not been tested yet:
 - Arturia The Laboratory
 
 It doesn't support the KeyStep / BeatStep Pro sequencer banks, BeatStep Pro presets and the DrumBrute/MiniBrute banks yet.
+
 It only supports the global controls from KeyLab 88 and The Laboratory.
 
 If you think some untested devices work well, please let us know.
