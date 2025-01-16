@@ -23,7 +23,9 @@ This is a Linux alternative to the MIDI Control Center software.
 <li>Akai MPK Mini mk2</li>
 <li>Akai MPK Mini mk3</li>
 <li>Arturia BeatStep</li>
+<li>Arturia BeatStep Pro</li>
 <li>Arturia DrumBrute Impact</li>
+<li>Arturia KeyLab mkII 49 / 61 / 88</li>
 <li>Arturia KeyStep</li>
 <li>Arturia KeyStep 37</li>
 <li>Arturia KeyStep Pro</li>
@@ -32,9 +34,7 @@ This is a Linux alternative to the MIDI Control Center software.
 </ul>
 <p>These might also work, but have not been tested yet:</p>
 <ul>
-<li>Arturia BeatStep Pro</li>
 <li>Arturia DrumBrute</li>
-<li>Arturia KeyLab mkII 49 / 61 / 88</li>
 <li>Arturia KeyLab 49 / 61 / 88 mk3</li>
 <li>Arturia KeyLab Essential 49 / 61 / 88</li>
 <li>Arturia KeyLab Essential 49 / 61 / 88 mk3</li>
@@ -70,6 +70,20 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.21" date="2025-01-16">
+      <description>
+        <ul>
+          <li>KeyLab Essential presets</li>
+          <li>MiniLab mkII presets</li>
+          <li>KeyLab mkII knob / fader / preset name handling</li>
+          <li>KeyLab mkII bank2 / bank 3 handling</li>
+          <li>KeyLab mkII presets</li>
+          <li>BeatStep Pro project controls</li>
+          <li>Show BeatStep Pro firmware info also</li>
+          <li>The Laboratory global controls</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.20" date="2025-01-08">
       <description>
         <ul>
