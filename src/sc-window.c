@@ -28,6 +28,7 @@
 #include "minilab3/ml3-book.h"
 #include "mpkmini2/amm2-book.h"
 #include "mpkmini3/amm3-book.h"
+#include "sparkle/sple-book.h"
 #include "thelaboratory/tl-book.h"
 
 typedef const struct {
@@ -69,6 +70,7 @@ static controller_t controllers[] = {
   {AMM2_MIDI_NAME, AMM2_SHORT_NAME, amm2_book_get_type},
   {AMM2_MIDI_NAME_2, AMM2_SHORT_NAME, amm2_book_get_type},
   {AMM3_MIDI_NAME, AMM3_SHORT_NAME, amm3_book_get_type},
+  {SPLE_MIDI_NAME, SPLE_SHORT_NAME, sple_book_get_type},
   {TL_MIDI_NAME, TL_SHORT_NAME, tl_book_get_type},
 };
 

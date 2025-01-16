@@ -298,6 +298,10 @@ sc_sources = [
   'mpkmini3/amm3-pad-page.c',
   'mpkmini3/amm3-program-page.c',
 
+  'sparkle/sple-book.c',
+  'sparkle/sple-controller-page.c',
+  'sparkle/sple-velocity-page.c',
+
   'thelaboratory/tl-aftertouch-page.c',
   'thelaboratory/tl-book.c',
   'thelaboratory/tl-controller-page.c',

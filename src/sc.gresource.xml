@@ -289,6 +289,10 @@
     <file preprocess="xml-stripblanks">mpkmini3/amm3-pad-page.ui</file>
     <file preprocess="xml-stripblanks">mpkmini3/amm3-program-page.ui</file>
 
+    <file preprocess="xml-stripblanks">sparkle/sple-book.ui</file>
+    <file preprocess="xml-stripblanks">sparkle/sple-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">sparkle/sple-velocity-page.ui</file>
+
     <file preprocess="xml-stripblanks">thelaboratory/tl-aftertouch-page.ui</file>
     <file preprocess="xml-stripblanks">thelaboratory/tl-book.ui</file>
     <file preprocess="xml-stripblanks">thelaboratory/tl-controller-page.ui</file>
