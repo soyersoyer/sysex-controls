@@ -101,7 +101,6 @@
                   <object class="ScComboRow">
                     <child><object class="ArControl"><property name="id">0x4104</property></object></child>
                     <property name="title" translatable="yes">Acceleration</property>
-                    <property name="subtitle-lines">2</property>
                     <property name="model">
                       <object class="ScControlValueList">
                         <items>

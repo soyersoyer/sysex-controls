@@ -52,6 +52,7 @@
 
             <child>
               <object class="AdwPreferencesGroup">
+
                 <child>
                   <object class="ScComboRow">
                     <child><object class="ArControl"><property name="id">0x4007</property></object></child>
