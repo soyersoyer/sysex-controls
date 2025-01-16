@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl88TranspositionPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Transposition</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4012</property></object></child>
+                    <property name="title" translatable="yes">Octave buttons assignment</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Part 1</item>
+                          <item>Part 2</item>
+                          <item>Both</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Part 1 transposition</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4003</property></object></child>
+                    <property name="title" translatable="yes">Octave</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="66">-2</item>
+                          <item value="65">-1</item>
+                          <item value="0">+0</item>
+                          <item>+1</item>
+                          <item>+2</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4004</property></object></child>
+                    <property name="title" translatable="yes">Chromatic</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="76">-12</item>
+                          <item value="75">-11</item>
+                          <item value="74">-10</item>
+                          <item value="73">-9</item>
+                          <item value="72">-8</item>
+                          <item value="71">-7</item>
+                          <item value="70">-6</item>
+                          <item value="69">-5</item>
+                          <item value="68">-4</item>
+                          <item value="67">-3</item>
+                          <item value="66">-2</item>
+                          <item value="65">-1</item>
+                          <item value="0">+0</item>
+                          <item>+1</item>
+                          <item>+2</item>
+                          <item>+3</item>
+                          <item>+4</item>
+                          <item>+5</item>
+                          <item>+6</item>
+                          <item>+7</item>
+                          <item>+8</item>
+                          <item>+9</item>
+                          <item>+10</item>
+                          <item>+11</item>
+                          <item>+12</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+              <property name="title" translatable="yes">Part 2 transposition</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4010</property></object></child>
+                    <property name="title" translatable="yes">Octave</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="66">-2</item>
+                          <item value="65">-1</item>
+                          <item value="0">+0</item>
+                          <item>+1</item>
+                          <item>+2</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x4011</property></object></child>
+                    <property name="title" translatable="yes">Chromatic</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="76">-12</item>
+                          <item value="75">-11</item>
+                          <item value="74">-10</item>
+                          <item value="73">-9</item>
+                          <item value="72">-8</item>
+                          <item value="71">-7</item>
+                          <item value="70">-6</item>
+                          <item value="69">-5</item>
+                          <item value="68">-4</item>
+                          <item value="67">-3</item>
+                          <item value="66">-2</item>
+                          <item value="65">-1</item>
+                          <item value="0">+0</item>
+                          <item>+1</item>
+                          <item>+2</item>
+                          <item>+3</item>
+                          <item>+4</item>
+                          <item>+5</item>
+                          <item>+6</item>
+                          <item>+7</item>
+                          <item>+8</item>
+                          <item>+9</item>
+                          <item>+10</item>
+                          <item>+11</item>
+                          <item>+12</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+              <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Both transposition</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x400e</property></object></child>
+                    <property name="title" translatable="yes">Octave</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="66">-2</item>
+                          <item value="65">-1</item>
+                          <item value="0">+0</item>
+                          <item>+1</item>
+                          <item>+2</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="ArControl"><property name="id">0x400f</property></object></child>
+                    <property name="title" translatable="yes">Chromatic</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="76">-12</item>
+                          <item value="75">-11</item>
+                          <item value="74">-10</item>
+                          <item value="73">-9</item>
+                          <item value="72">-8</item>
+                          <item value="71">-7</item>
+                          <item value="70">-6</item>
+                          <item value="69">-5</item>
+                          <item value="68">-4</item>
+                          <item value="67">-3</item>
+                          <item value="66">-2</item>
+                          <item value="65">-1</item>
+                          <item value="0">+0</item>
+                          <item>+1</item>
+                          <item>+2</item>
+                          <item>+3</item>
+                          <item>+4</item>
+                          <item>+5</item>
+                          <item>+6</item>
+                          <item>+7</item>
+                          <item>+8</item>
+                          <item>+9</item>
+                          <item>+10</item>
+                          <item>+11</item>
+                          <item>+12</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

@@ -139,6 +139,12 @@ sc_sources = [
   'keylab3/kl3-sea-page.c',
   'keylab3/kl3-velocity-page.c',
 
+  'keylab88/kl88-aftertouch-page.c',
+  'keylab88/kl88-book.c',
+  'keylab88/kl88-controller-page.c',
+  'keylab88/kl88-curve-page.c',
+  'keylab88/kl88-transposition-page.c',
+
   'keylabes/kles-book.c',
   'keylabes/kles-button.c',
   'keylabes/kles-button-page.c',

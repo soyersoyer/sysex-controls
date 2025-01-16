@@ -130,6 +130,12 @@
     <file preprocess="xml-stripblanks">keylab3/kl3-sea-page.ui</file>
     <file preprocess="xml-stripblanks">keylab3/kl3-velocity-page.ui</file>
 
+    <file preprocess="xml-stripblanks">keylab88/kl88-aftertouch-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab88/kl88-book.ui</file>
+    <file preprocess="xml-stripblanks">keylab88/kl88-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab88/kl88-curve-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab88/kl88-transposition-page.ui</file>
+
     <file preprocess="xml-stripblanks">keylabes/kles-book.ui</file>
     <file preprocess="xml-stripblanks">keylabes/kles-button.ui</file>
     <file preprocess="xml-stripblanks">keylabes/kles-button-page.ui</file>

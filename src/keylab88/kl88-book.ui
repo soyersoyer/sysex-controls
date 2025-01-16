@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl88Book" parent="ArBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="Kl88ControllerPage"/>
+        </child>
+
+        <child>
+          <object class="Kl88TranspositionPage"/>
+        </child>
+
+        <child>
+          <object class="Kl88CurvePage"/>
+        </child>
+
+        <child>
+          <object class="Kl88AftertouchPage"/>
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>
