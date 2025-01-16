@@ -240,6 +240,10 @@ sc_sources = [
   'minibrute2s/mb2s-transposition-page.c',
   'minibrute2s/mb2s-user-scale-page.c',
 
+  'minilab/ml-book.c',
+  'minilab/ml-controller-page.c',
+  'minilab/ml-velocity-page.c',
+
   'minilab2/ml2-book.c',
   'minilab2/ml2-button.c',
   'minilab2/ml2-controller-page.c',

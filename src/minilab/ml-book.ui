@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="MlBook" parent="ArBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="MlControllerPage"/>
+        </child>
+
+        <child>
+          <object class="MlVelocityPage"/>
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>

@@ -231,6 +231,10 @@
     <file preprocess="xml-stripblanks">minibrute2s/mb2s-transposition-page.ui</file>
     <file preprocess="xml-stripblanks">minibrute2s/mb2s-user-scale-page.ui</file>
 
+    <file preprocess="xml-stripblanks">minilab/ml-book.ui</file>
+    <file preprocess="xml-stripblanks">minilab/ml-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">minilab/ml-velocity-page.ui</file>
+
     <file preprocess="xml-stripblanks">minilab2/ml2-book.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-button.ui</file>
     <file preprocess="xml-stripblanks">minilab2/ml2-controller-page.ui</file>

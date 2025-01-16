@@ -42,13 +42,14 @@ This is a Linux alternative to the MIDI Control Center software.
 <li>Arturia MicroLab</li>
 <li>Arturia MiniBrute 2</li>
 <li>Arturia Minibrute 2S</li>
+<li>Arturia MiniLab</li>
 <li>Arturia The Laboratory</li>
 </ul>
 <p>
 It doesn't support the KeyStep / BeatStep Pro sequencer banks, BeatStep Pro presets and the DrumBrute/MiniBrute banks yet.
 </p>
 <p>
-It only supports the global controls from KeyLab 49 / 61 / 88 and The Laboratory.
+It only supports the global controls from KeyLab 49 / 61 / 88 and MiniLab / The Laboratory.
 </p>
 <p>
 If you think some untested devices work well, please let us know.
