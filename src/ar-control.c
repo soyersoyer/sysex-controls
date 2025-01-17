@@ -17,6 +17,7 @@ enum {
   PROP_USE_CC_OFFSET,
   PROP_MULTIPLY,
   PROP_MAXLEN,
+  PROP_WRITE_ONLY,
   LAST_PROP,
 };
 
@@ -34,6 +35,7 @@ struct _ArControl
   uint32_t value;
   gboolean is_string;
   uint8_t maxlen;
+  gboolean write_only;
   char data[17];
   GtkWidget *widget;
 };
@@ -87,6 +89,13 @@ ar_control_get_maxlen (ArControl *self)
   return self->maxlen;
 }
 
+gboolean
+ar_control_get_write_only (ArControl *self)
+{
+  g_return_val_if_fail (AR_IS_CONTROL (self), 0);
+  return self->write_only;
+}
+
 static void
 ar_control_get_property (GObject    *object,
                          guint       prop_id,
@@ -114,6 +123,9 @@ ar_control_get_property (GObject    *object,
     break;
     case PROP_MAXLEN:
       g_value_set_uint (value, ar_control_get_maxlen (self));
+    break;
+    case PROP_WRITE_ONLY:
+      g_value_set_boolean (value, ar_control_get_write_only (self));
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -148,6 +160,9 @@ ar_control_set_property (GObject      *object,
     break;
     case PROP_MAXLEN:
       self->maxlen = g_value_get_uint (value);
+    break;
+    case PROP_WRITE_ONLY:
+      self->write_only = g_value_get_boolean (value);
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -185,6 +200,10 @@ ar_control_class_init (ArControlClass *klass)
   value_props[PROP_MAXLEN] = g_param_spec_uint ("maxlen", NULL, NULL,
                                              0, 16, 16,
                                              G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+
+  value_props[PROP_WRITE_ONLY] = g_param_spec_boolean ("write-only", NULL, NULL,
+                                                          0,
+                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   g_object_class_install_properties (object_class, LAST_PROP, value_props);
 }
@@ -543,9 +562,11 @@ ar_control_read_value (ScControl *control)
   uint8_t value;
   int ret;
 
-  if (self->is_string) {
+  if (self->write_only)
+    return 0;
+
+  if (self->is_string)
     return ar_book_read_string (book, self->real_id, self->data);
-  }
 
   ret = ar_book_read_control (book, self->real_id, &value);
   if (ret)
@@ -588,6 +609,7 @@ ar_control_init (ArControl *self)
   self->multiply = 1;
   self->is_string = false;
   self->maxlen = 16;
+  self->write_only = false;
   memset (self->data, 0, sizeof self->data);
   gtk_widget_set_visible (GTK_WIDGET (&self->parent_instance), false);
   g_idle_add (G_SOURCE_FUNC (ar_control_register), self);
