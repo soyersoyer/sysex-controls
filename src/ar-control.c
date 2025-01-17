@@ -116,7 +116,7 @@ ar_control_get_property (GObject    *object,
       g_value_set_uint (value, ar_control_get_id3 (self));
     break;
     case PROP_USE_CC_OFFSET:
-      g_value_set_uint (value, ar_control_get_use_cc_offset (self));
+      g_value_set_boolean (value, ar_control_get_use_cc_offset (self));
     break;
     case PROP_MULTIPLY:
       g_value_set_double (value, ar_control_get_multiply (self));
