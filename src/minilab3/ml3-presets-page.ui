@@ -15,7 +15,7 @@
 
                 <child>
                   <object class="ScActionRow">
-                    <property name="title" translatable="yes">Selected Preset</property>
+                    <property name="title" translatable="yes">Selected Preset Name</property>
                     <signal name="activated" handler="ml3_book_on_presets_preset_selected_activated" swapped="yes"/>
                   </object>
                 </child>
