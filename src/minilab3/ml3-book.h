@@ -16,6 +16,7 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (Ml3Book, ml3_book, ML3, BOOK, ArBook)
 
 void ml3_book_on_presets_preset_activated (ScNavigationPage *page, ScActionRow *row);
+void ml3_book_on_presets_preset_selected_activated (ScNavigationPage *page, ScActionRow *row);
 
 void ml3_book_on_preset_spm_activated (ScNavigationPage *page, ScActionRow* row);
 void ml3_book_on_preset_main_knob_activated (ScNavigationPage *page, ScActionRow* row);

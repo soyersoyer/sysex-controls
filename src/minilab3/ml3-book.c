@@ -13,6 +13,7 @@
 #include "ml3-pedal-page.h"
 #include "ml3-pitch-mod-page.h"
 #include "ml3-preset-page.h"
+#include "ml3-preset-selected-page.h"
 #include "ml3-presets-page.h"
 #include "ml3-spm-page.h"
 #include "ml3-velocity-page.h"
@@ -53,6 +54,7 @@ ml3_book_init (Ml3Book *self)
   g_type_ensure (ML3_TYPE_PEDAL_PAGE);
   g_type_ensure (ML3_TYPE_PITCH_MOD_PAGE);
   g_type_ensure (ML3_TYPE_PRESET_PAGE);
+  g_type_ensure (ML3_TYPE_PRESET_SELECTED_PAGE);
   g_type_ensure (ML3_TYPE_PRESETS_PAGE);
   g_type_ensure (ML3_TYPE_SPM_PAGE);
   g_type_ensure (ML3_TYPE_VELOCITY_PAGE);
@@ -70,6 +72,17 @@ ml3_book_on_presets_preset_activated (ScNavigationPage *page, ScActionRow *row)
                                           "title", adw_preferences_row_get_title (ADW_PREFERENCES_ROW (row)),
                                           "control-id-offset", control_id_offset,
                                           "control-cc-offset", control_cc_offset,
+                                          NULL);
+  adw_navigation_view_push (view, nav_page);
+  g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), nav_page);
+}
+
+void
+ml3_book_on_presets_preset_selected_activated (ScNavigationPage *page, ScActionRow *row)
+{
+  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (page), ADW_TYPE_NAVIGATION_VIEW));
+  AdwNavigationPage *nav_page = g_object_new (ML3_TYPE_PRESET_SELECTED_PAGE,
+                                          "title", adw_preferences_row_get_title (ADW_PREFERENCES_ROW (row)),
                                           NULL);
   adw_navigation_view_push (view, nav_page);
   g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), nav_page);

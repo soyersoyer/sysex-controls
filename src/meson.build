@@ -272,6 +272,7 @@ sc_sources = [
   'minilab3/ml3-pedal-page.c',
   'minilab3/ml3-pitch-mod-page.c',
   'minilab3/ml3-preset-page.c',
+  'minilab3/ml3-preset-selected-page.c',
   'minilab3/ml3-presets-page.c',
   'minilab3/ml3-spm-page.c',
   'minilab3/ml3-velocity-page.c',

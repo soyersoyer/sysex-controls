@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Ml3PresetSelectedPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">PresetSelected</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="ScPreferencesGroup">
+
+                <child>
+                  <object class="AdwEntryRow">
+                    <child>
+                      <object class="ArControl">
+                        <property name="id">0x203f</property>
+                        <property name="maxlen">16</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Name (write-only)</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>
