@@ -76,6 +76,17 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.22" date="2025-01-17">
+      <description>
+        <ul>
+          <li>Minilab 3 preset name write (thx zonaj)</li>
+          <li>SparkLE global controls</li>
+          <li>Minilab global controls</li>
+          <li>Keylab 49 / 61 / 88 global controls</li>
+          <li>Name control for KeyLab Essential Preset</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.21" date="2025-01-16">
       <description>
         <ul>
