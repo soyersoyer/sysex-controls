@@ -39,7 +39,6 @@ ml3_book_init (Ml3Book *self)
   ArBookClass *scklass = AR_BOOK_GET_CLASS (self);
   scklass->read_control = sc_midi_arturia_v3_read_control;
   scklass->write_control = sc_midi_arturia_v3_write_control;
-  scklass->read_string = sc_midi_arturia_dummy_read_string;
 
   g_type_ensure (ML3_TYPE_CONTROLLER_PAGE);
   g_type_ensure (ML3_TYPE_FADER);
