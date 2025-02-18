@@ -65,14 +65,29 @@ sudo dnf install meson gcc gtk4-devel libadwaita-devel alsa-lib-devel
 sudo apt install meson gettext libgtk-4-dev libadwaita-1-dev libasound2-dev
 ```
 
+#### Get the source
+
+```
+git clone https://github.com/soyersoyer/sysex-controls
+```
+
 #### Build
 
 ```
+cd sysex-controls
 meson setup builddir
 meson compile -C builddir
-meson install -C builddir
 ```
+
+#### Install
+
 The resulting binary doesn't need to be installed, `./builddir/src/sysex-controls` works also.
+
+```
+sudo meson install -C builddir
+```
+
+#### Uninstall
 
 You can uninstall the program later by running
 
