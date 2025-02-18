@@ -87,6 +87,14 @@ The resulting binary doesn't need to be installed, `./builddir/src/sysex-control
 sudo meson install -C builddir
 ```
 
+#### Run
+
+Run `sysex-controls` from your application launcher or from terminal: 
+
+```
+sysex-controls
+```
+
 #### Uninstall
 
 You can uninstall the program later by running
