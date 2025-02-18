@@ -56,13 +56,13 @@ flatpak install flathub hu.irl.sysex-controls
 #### Install dependencies on Fedora variants
 
 ```
-sudo dnf install meson gcc gtk4-devel libadwaita-devel alsa-lib-devel
+sudo dnf install meson gcc gtk4-devel libadwaita-devel alsa-lib-devel git
 ```
 
 #### Install dependencies on Debian variants
 
 ```
-sudo apt install meson gettext libgtk-4-dev libadwaita-1-dev libasound2-dev
+sudo apt install meson gettext libgtk-4-dev libadwaita-1-dev libasound2-dev git
 ```
 
 #### Get the source
