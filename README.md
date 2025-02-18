@@ -84,7 +84,7 @@ meson compile -C builddir
 The resulting binary doesn't need to be installed, `./builddir/src/sysex-controls` works also.
 
 ```
-sudo meson install -C builddir
+meson install -C builddir
 ```
 
 #### Run
