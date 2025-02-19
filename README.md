@@ -62,7 +62,7 @@ sudo dnf install meson gcc gtk4-devel libadwaita-devel alsa-lib-devel git
 #### Install dependencies on Debian variants
 
 ```
-sudo apt install meson gettext libgtk-4-dev libadwaita-1-dev libasound2-dev git
+sudo apt install meson gettext libgtk-4-dev libadwaita-1-dev libasound2-dev libxml2-utils git
 ```
 
 #### Get the source
