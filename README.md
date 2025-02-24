@@ -14,6 +14,7 @@ These devices are supported and tested:
 - Arturia BeatStep
 - Arturia BeatStep Pro
 - Arturia DrumBrute Impact
+- Arturia KeyLab Essential 49 / 61 / 88 mk3
 - Arturia KeyLab mkII 49 / 61 / 88
 - Arturia KeyStep
 - Arturia KeyStep 37
@@ -26,7 +27,6 @@ These might also work, but have not been tested yet:
 - Arturia KeyLab 49 / 61 / 88
 - Arturia KeyLab 49 / 61 / 88 mk3
 - Arturia KeyLab Essential 49 / 61 / 88
-- Arturia KeyLab Essential 49 / 61 / 88 mk3
 - Arturia MicroLab
 - Arturia MiniBrute 2
 - Arturia MiniBrute 2S
