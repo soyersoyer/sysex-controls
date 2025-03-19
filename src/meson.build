@@ -242,6 +242,14 @@ sc_sources = [
 
   'minilab/ml-book.c',
   'minilab/ml-controller-page.c',
+  'minilab/ml-knob.c',
+  'minilab/ml-knob-page.c',
+  'minilab/ml-pad.c',
+  'minilab/ml-pad-page.c',
+  'minilab/ml-pedal-page.c',
+  'minilab/ml-pitch-mod-page.c',
+  'minilab/ml-preset-page.c',
+  'minilab/ml-presets-page.c',
   'minilab/ml-velocity-page.c',
 
   'minilab2/ml2-book.c',

@@ -233,6 +233,14 @@
 
     <file preprocess="xml-stripblanks">minilab/ml-book.ui</file>
     <file preprocess="xml-stripblanks">minilab/ml-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">minilab/ml-knob.ui</file>
+    <file preprocess="xml-stripblanks">minilab/ml-knob-page.ui</file>
+    <file preprocess="xml-stripblanks">minilab/ml-pad.ui</file>
+    <file preprocess="xml-stripblanks">minilab/ml-pad-page.ui</file>
+    <file preprocess="xml-stripblanks">minilab/ml-pedal-page.ui</file>
+    <file preprocess="xml-stripblanks">minilab/ml-pitch-mod-page.ui</file>
+    <file preprocess="xml-stripblanks">minilab/ml-preset-page.ui</file>
+    <file preprocess="xml-stripblanks">minilab/ml-presets-page.ui</file>
     <file preprocess="xml-stripblanks">minilab/ml-velocity-page.ui</file>
 
     <file preprocess="xml-stripblanks">minilab2/ml2-book.ui</file>

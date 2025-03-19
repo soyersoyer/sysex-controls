@@ -19,6 +19,7 @@ These devices are supported and tested:
 - Arturia KeyStep
 - Arturia KeyStep 37
 - Arturia KeyStep Pro
+- Arturia MiniLab
 - Arturia MiniLab mkII
 - Arturia MiniLab 3
 
@@ -30,13 +31,12 @@ These might also work, but have not been tested yet:
 - Arturia MicroLab
 - Arturia MiniBrute 2
 - Arturia MiniBrute 2S
-- Arturia MiniLab
 - Arturia SparkLE
 - Arturia The Laboratory
 
 It doesn't support the KeyStep / BeatStep Pro sequencer banks, BeatStep Pro presets and the DrumBrute/MiniBrute banks yet.
 
-It only supports the global controls from KeyLab 49 / 61 / 88 and MiniLab / SparkLE / The Laboratory.
+It only supports the global controls from KeyLab 49 / 61 / 88 and SparkLE / The Laboratory.
 
 If you think some untested devices work well, please let us know.
 If not, let us know as well.
