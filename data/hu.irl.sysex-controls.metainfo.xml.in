@@ -76,6 +76,13 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.23" date="2025-03-19">
+      <description>
+        <ul>
+          <li>Minilab presets</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.22" date="2025-01-17">
       <description>
         <ul>
