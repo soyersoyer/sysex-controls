@@ -105,15 +105,10 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
       len = ev_in->data.ext.len;
       input = ev_in->data.ext.ptr;
 
-      if (len < sizeof akai_prog + 3 + 1) {
-        fprintf (stderr, "%s(%02x): header too short %d < %lu\n", __func__, prog_id, len, sizeof akai_prog + 3 + 1);
-        return -EINVAL;
-      }
-
-      // do not check AKAI_RECV or AKAI_SEND because we do not know all the details yet
-      akai_prog[2] = input[2];
-
-      if (memcmp (input, akai_prog, sizeof akai_prog) == 0 &&
+      if (len >= sizeof akai_prog + 3 + 1 &&
+          memcmp (input, akai_prog, 2) == 0 &&
+          // do not check AKAI_RECV or AKAI_SEND because we do not know all the details yet
+          memcmp (input + 3, akai_prog + 3, 2) == 0 &&
           input[sizeof akai_prog + 2] == prog_id)
       {
         unsigned int payload_size = len - sizeof akai_prog - 3 - 1;
