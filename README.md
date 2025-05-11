@@ -9,6 +9,7 @@ and changing them and writing back to the device.
 This is a Linux alternative to the MIDI Control Center software.
 
 These devices are supported and tested:
+- Akai MPK Mini
 - Akai MPK Mini mk2
 - Akai MPK Mini mk3
 - Arturia BeatStep
@@ -24,7 +25,6 @@ These devices are supported and tested:
 - Arturia MiniLab 3
 
 These might also work, but have not been tested yet:
-- Akai MPK Mini
 - Arturia DrumBrute
 - Arturia KeyLab 49 / 61 / 88
 - Arturia KeyLab 49 / 61 / 88 mk3

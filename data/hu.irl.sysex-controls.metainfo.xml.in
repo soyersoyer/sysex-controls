@@ -20,6 +20,7 @@ This is a Linux alternative to the MIDI Control Center software.
 </p>
 <p>These devices are supported and tested:</p>
 <ul>
+<li>Akai MPK Mini</li>
 <li>Akai MPK Mini mk2</li>
 <li>Akai MPK Mini mk3</li>
 <li>Arturia BeatStep</li>
@@ -36,7 +37,6 @@ This is a Linux alternative to the MIDI Control Center software.
 </ul>
 <p>These might also work, but have not been tested yet:</p>
 <ul>
-<li>Akai MPK Mini</li>
 <li>Arturia DrumBrute</li>
 <li>Arturia KeyLab 49 / 61 / 88</li>
 <li>Arturia KeyLab 49 / 61 / 88 mk3</li>
