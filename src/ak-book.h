@@ -12,7 +12,7 @@
 // https://github.com/carlosedp/Reason-MPKMini-Remote/blob/master/Remote/Codecs/Lua%20Codecs/Akai/AkaiMPKmini.lua
 #define AKAI_CMD_V1_SEND 0x61
 #define AKAI_CMD_V1_QUERY 0x63
-#define AKAI_CMD_V1_RECEIVE 0x66
+#define AKAI_CMD_V1_RECEIVE 0x63
 
 #define AKAI_CMD_SELECT 0x62
 #define AKAI_CMD_SEND 0x64
