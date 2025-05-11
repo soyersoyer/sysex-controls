@@ -77,6 +77,14 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.24" date="2025-05-11">
+      <description>
+        <ul>
+          <li>Akai MPK Mini support (thx taewyth for testing)</li>
+          <li>KeyLab2: only show vegas mode if low power is not enabled</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.23" date="2025-03-19">
       <description>
         <ul>
