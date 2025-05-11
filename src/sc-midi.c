@@ -12,21 +12,6 @@
 #define AKAI_RECV 0x00
 #define AKAI_SEND 0x7f
 
-#define AKAI_MPK1_ID 0x7c
-#define AKAI_MPK2_ID 0x26
-#define AKAI_MPK3_ID 0x49
-
-// From: https://github.com/gljubojevic/akai-mpk-mini-editor
-// https://github.com/rubimat/akai_mpk_mini_flasher
-// https://github.com/carlosedp/Reason-MPKMini-Remote/blob/master/Remote/Codecs/Lua%20Codecs/Akai/AkaiMPKmini.lua
-#define AKAI_CMD_V1_SEND 0x61
-#define AKAI_CMD_V1_QUERY 0x63
-
-#define AKAI_CMD_SELECT 0x62
-#define AKAI_CMD_SEND 0x64
-#define AKAI_CMD_QUERY 0x66
-#define AKAI_CMD_RECEIVE 0x67
-
 #define min(a,b)             \
 ({                           \
     __typeof__ (a) _a = (a); \
@@ -35,30 +20,30 @@
 })
 
 int
-sc_midi_akai_dummy_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id, uint8_t *data, uint16_t *size)
+sc_midi_akai_dummy_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t query_cmd, uint8_t recv_cmd, uint8_t prog_id, uint8_t *data, uint16_t *size)
 {
-  fprintf(stderr, "%s(%02x, %02x, %02x, %02x)\n", __func__, dev_id, prog_id, data[0], *size);
+  fprintf(stderr, "%s(%02x, %02x, %02x, %02x, %02x, %02x)\n", __func__, dev_id, query_cmd, recv_cmd, prog_id, data[0], *size);
   return 0;
 }
 
 int
-sc_midi_akai_dummy_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id, uint8_t *data, uint16_t size)
+sc_midi_akai_dummy_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t send_cmd, uint8_t prog_id, uint8_t *data, uint16_t size)
 {
-  fprintf(stderr, "%s(%02x, %02x, %02x, %02x)\n", __func__, dev_id, prog_id, data[0], size);
+  fprintf(stderr, "%s(%02x, %02x, %02x, %02x, %02x)\n", __func__, dev_id, send_cmd, prog_id, data[0], size);
   return 0;
 }
 
 int
-sc_midi_akai_dummy_select_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id)
+sc_midi_akai_dummy_select_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t sel_cmd, uint8_t prog_id)
 {
-  fprintf(stderr, "%s(%02x, %02x)\n", __func__, dev_id, prog_id);
+  fprintf(stderr, "%s(%02x, %02x, %02x)\n", __func__, dev_id, sel_cmd, prog_id);
   return 0;
 }
 
 int
-sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id, uint8_t *data, uint16_t *size)
+sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t query_cmd, uint8_t recv_cmd, uint8_t prog_id, uint8_t *data, uint16_t *size)
 {
-  uint8_t req_data[] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, dev_id, AKAI_CMD_QUERY, 0x00, 0x01, prog_id, 0xf7};
+  uint8_t req_data[] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, dev_id, query_cmd, 0x00, 0x01, prog_id, 0xf7};
   struct pollfd pfds[1] = {};
   snd_seq_event_t ev;
   int err, pfds_n = 0;
@@ -102,7 +87,7 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
 
     while (1)
     {
-      uint8_t akai_prog[] = {0xf0, AKAI_MANUF_ID, AKAI_RECV, dev_id, AKAI_CMD_RECEIVE};
+      uint8_t akai_prog[] = {0xf0, AKAI_MANUF_ID, AKAI_RECV, dev_id, recv_cmd};
       snd_seq_event_t *ev_in;
       unsigned int len;
       uint8_t* input;
@@ -151,9 +136,9 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
 }
 
 int
-sc_midi_akai_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id, uint8_t *data, uint16_t size)
+sc_midi_akai_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t send_cmd, uint8_t prog_id, uint8_t *data, uint16_t size)
 {
-  uint8_t req_data[512] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, dev_id, AKAI_CMD_SEND, 0x00, 0x00, prog_id};
+  uint8_t req_data[512] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, dev_id, send_cmd, 0x00, 0x00, prog_id};
 
   snd_seq_event_t ev;
   int err;
@@ -195,9 +180,9 @@ sc_midi_akai_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id,
 }
 
 int
-sc_midi_akai_select_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t prog_id)
+sc_midi_akai_select_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t sel_cmd, uint8_t prog_id)
 {
-  uint8_t req_data[] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, dev_id, AKAI_CMD_SELECT, 0x00, 0x01, prog_id, 0xf7};
+  uint8_t req_data[] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, dev_id, sel_cmd, 0x00, 0x01, prog_id, 0xf7};
 
   snd_seq_event_t ev;
   int err;

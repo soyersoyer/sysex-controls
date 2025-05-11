@@ -10,8 +10,6 @@
 #include "amm3-pad-page.h"
 #include "amm3-program-page.h"
 
-#define AKAI_MPK3_ID 0x49
-
 struct _Amm3Book
 {
   AkBook parent_instance;
@@ -31,6 +29,10 @@ static void
 amm3_book_init (Amm3Book *self)
 {
   ak_book_set_dev_id (AK_BOOK (self), AKAI_MPK3_ID);
+  ak_book_set_query_cmd (AK_BOOK (self), AKAI_CMD_QUERY);
+  ak_book_set_recv_cmd (AK_BOOK (self), AKAI_CMD_RECEIVE);
+  ak_book_set_send_cmd (AK_BOOK (self), AKAI_CMD_SEND);
+  ak_book_set_sel_cmd (AK_BOOK (self), AKAI_CMD_SELECT);
 
   g_type_ensure (AMM3_TYPE_ARPEGGIATOR_PAGE);
   g_type_ensure (AMM3_TYPE_JOYSTICK_PAGE);

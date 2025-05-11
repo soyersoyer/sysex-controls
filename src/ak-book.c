@@ -7,6 +7,10 @@
 typedef struct
 {
   uint8_t dev_id;
+  uint8_t query_cmd;
+  uint8_t recv_cmd;
+  uint8_t send_cmd;
+  uint8_t sel_cmd;
 } AkBookPrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (AkBook, ak_book, SC_TYPE_BOOK)
@@ -16,6 +20,34 @@ ak_book_set_dev_id (AkBook *self, uint8_t dev_id)
 {
   AkBookPrivate *priv = ak_book_get_instance_private (self);
   priv->dev_id = dev_id;
+}
+
+void
+ak_book_set_query_cmd (AkBook *self, uint8_t query_cmd)
+{
+  AkBookPrivate *priv = ak_book_get_instance_private (self);
+  priv->query_cmd = query_cmd;
+}
+
+void
+ak_book_set_recv_cmd (AkBook *self, uint8_t recv_cmd)
+{
+  AkBookPrivate *priv = ak_book_get_instance_private (self);
+  priv->recv_cmd = recv_cmd;
+}
+
+void
+ak_book_set_send_cmd (AkBook *self, uint8_t send_cmd)
+{
+  AkBookPrivate *priv = ak_book_get_instance_private (self);
+  priv->send_cmd = send_cmd;
+}
+
+void
+ak_book_set_sel_cmd (AkBook *self, uint8_t sel_cmd)
+{
+  AkBookPrivate *priv = ak_book_get_instance_private (self);
+  priv->sel_cmd = sel_cmd;
 }
 
 static void
@@ -43,7 +75,7 @@ ak_book_read_program (AkBook *self, uint8_t prog_id, uint8_t *data, uint16_t *si
   sc_book = SC_BOOK (self);
 
 
-  return klass->read_program (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->dev_id, prog_id, data, size);
+  return klass->read_program (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->dev_id, priv->query_cmd, priv->recv_cmd, prog_id, data, size);
 }
 
 int
@@ -59,7 +91,7 @@ ak_book_write_program (AkBook *self, uint8_t prog_id, uint8_t *data, uint16_t si
   klass = AK_BOOK_GET_CLASS (self);
   sc_book = SC_BOOK (self);
 
-  return klass->write_program (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->dev_id, prog_id, data, size);
+  return klass->write_program (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->dev_id, priv->send_cmd, prog_id, data, size);
 }
 
 int
@@ -75,7 +107,7 @@ ak_book_select_program (AkBook *self, uint8_t prog_id)
   klass = AK_BOOK_GET_CLASS (self);
   sc_book = SC_BOOK (self);
 
-  return klass->select_program (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->dev_id, prog_id);
+  return klass->select_program (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->dev_id, priv->sel_cmd, prog_id);
 }
 
 void
