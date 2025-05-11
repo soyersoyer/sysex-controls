@@ -32,6 +32,13 @@
 
                 <child>
                   <object class="AdwSwitchRow">
+                    <child><object class="ArControl"><property name="id">0x4027</property></object></child>
+                    <property name="title" translatable="yes">Pads backlight</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow" id="low_power">
                     <child><object class="ArControl"><property name="id">0x4051</property></object></child>
                     <property name="title" translatable="yes">Low power</property>
                   </object>
@@ -39,13 +46,10 @@
 
                 <child>
                   <object class="AdwSwitchRow">
-                    <child><object class="ArControl"><property name="id">0x4027</property></object></child>
-                    <property name="title" translatable="yes">Pads backlight</property>
-                  </object>
-                </child>
-
-                <child>
-                  <object class="AdwSwitchRow">
+                    <property name="visible"
+                      bind-source="low_power"
+                      bind-property="active"
+                      bind-flags="sync-create|invert-boolean"/>
                     <child><object class="ArControl"><property name="id">0x4050</property></object></child>
                     <property name="title" translatable="yes">Vegas mode</property>
                   </object>
