@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="AmmArpeggiatorPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Arpeggiator</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="AkControl"><property name="id">0x04</property></object></child>
+                    <property name="title" translatable="yes">Enabled</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="AkControl"><property name="id">0x08</property></object></child>
+                    <property name="title" translatable="yes">Latch</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow" id="control_mode">
+                    <child><object class="AkControl"><property name="id">0x05</property></object></child>
+                    <property name="title" translatable="yes">Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Up</item>
+                          <item>Down</item>
+                          <item>Incl</item>
+                          <item>Excl</item>
+                          <item>Random</item>
+                          <item>Order</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="AkControl"><property name="id">0x06</property></object></child>
+                    <property name="title" translatable="yes">Division</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1/4</item>
+                          <item>1/4T</item>
+                          <item>1/8</item>
+                          <item>1/8T</item>
+                          <item>1/16</item>
+                          <item>1/16T</item>
+                          <item>1/32</item>
+                          <item>1/32T</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="AkControl"><property name="id">0x09</property></object></child>
+                    <property name="title" translatable="yes">Tempo taps</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">2</property>
+                        <property name="upper">4</property>
+                        <property name="page-increment">2</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child>
+                      <object class="AkControl">
+                        <property name="id">0x0a</property>
+                        <property name="size">2</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Tempo (BPM)</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">30</property>
+                        <property name="upper">240</property>
+                        <property name="page-increment">60</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child>
+                      <object class="AkControl">
+                        <property name="id">0x0c</property>
+                        <property name="value-offset">1</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Octave</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">4</property>
+                        <property name="page-increment">2</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="AkControl"><property name="id">0x07</property></object></child>
+                    <property name="title" translatable="yes">Clock Source</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Internal</item>
+                          <item>External</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

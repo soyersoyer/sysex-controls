@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="AmmBook" parent="AkBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="AmmProgramPage">
+            <property name="title">RAM</property>
+            <property name="prog-id">0</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="AmmProgramPage">
+            <property name="title">Program 1</property>
+            <property name="prog-id">1</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="AmmProgramPage">
+            <property name="title">Program 2</property>
+            <property name="prog-id">2</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="AmmProgramPage">
+            <property name="title">Program 3</property>
+            <property name="prog-id">3</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="AmmProgramPage">
+            <property name="title">Program 4</property>
+            <property name="prog-id">4</property>
+          </object>
+        </child>
+
+      </object>
+    </property>
+
+  </template>
+</interface>

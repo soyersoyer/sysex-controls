@@ -26,6 +26,7 @@
 #include "minilab/ml-book.h"
 #include "minilab2/ml2-book.h"
 #include "minilab3/ml3-book.h"
+#include "mpkmini/amm-book.h"
 #include "mpkmini2/amm2-book.h"
 #include "mpkmini3/amm3-book.h"
 #include "sparkle/sple-book.h"
@@ -67,6 +68,7 @@ static controller_t controllers[] = {
   {ML_MIDI_NAME, ML_SHORT_NAME, ml_book_get_type},
   {ML2_MIDI_NAME, ML2_SHORT_NAME, ml2_book_get_type},
   {ML3_MIDI_NAME, ML3_SHORT_NAME, ml3_book_get_type},
+  {AMM_MIDI_NAME, AMM_SHORT_NAME, amm_book_get_type},
   {AMM2_MIDI_NAME, AMM2_SHORT_NAME, amm2_book_get_type},
   {AMM2_MIDI_NAME_2, AMM2_SHORT_NAME, amm2_book_get_type},
   {AMM3_MIDI_NAME, AMM3_SHORT_NAME, amm3_book_get_type},

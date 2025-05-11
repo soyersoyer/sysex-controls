@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="AmmProgramPage" parent="AkProgramPage">
+    <property name="title" translatable="yes">Program</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <child><object class="AkProgramSelect"/></child>
+          </object>
+        </child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Keybed</property>
+                    <signal name="activated" handler="amm_book_on_keybed_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pads</property>
+                    <signal name="activated" handler="amm_book_on_pad_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Knobs</property>
+                    <signal name="activated" handler="amm_book_on_knob_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Arpeggiator</property>
+                    <signal name="activated" handler="amm_book_on_arpeggiator_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

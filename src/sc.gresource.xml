@@ -276,6 +276,16 @@
     <file preprocess="xml-stripblanks">minilab3/ml3-spm-page.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-velocity-page.ui</file>
 
+    <file preprocess="xml-stripblanks">mpkmini/amm-arpeggiator-page.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini/amm-book.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini/amm-keybed-page.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini/amm-knob.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini/amm-knob-page.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini/amm-pad.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini/amm-pad-bank-page.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini/amm-pad-page.ui</file>
+    <file preprocess="xml-stripblanks">mpkmini/amm-program-page.ui</file>
+
     <file preprocess="xml-stripblanks">mpkmini2/amm2-arpeggiator-page.ui</file>
     <file preprocess="xml-stripblanks">mpkmini2/amm2-book.ui</file>
     <file preprocess="xml-stripblanks">mpkmini2/amm2-joystick-page.ui</file>
