@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Kl25Book" parent="ArBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="Kl25ControllerPage"/>
+        </child>
+
+        <child>
+          <object class="Kl25CurvePage"/>
+        </child>
+
+        <child>
+          <object class="Kl25AftertouchPage"/>
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>

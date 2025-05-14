@@ -14,6 +14,7 @@
 #include "keylab2/kl2-book.h"
 #include "keylab3/kl3-book.h"
 #include "keylab/kl-book.h"
+#include "keylab25/kl25-book.h"
 #include "keylab88/kl88-book.h"
 #include "keylabes/kles-book.h"
 #include "keylabes3/kles3-book.h"
@@ -50,6 +51,7 @@ static controller_t controllers[] = {
   {KL3_49_MIDI_NAME, KL3_49_SHORT_NAME, kl3_book_get_type},
   {KL3_61_MIDI_NAME, KL3_61_SHORT_NAME, kl3_book_get_type},
   {KL3_88_MIDI_NAME, KL3_88_SHORT_NAME, kl3_book_get_type},
+  {KL25_MIDI_NAME, KL25_SHORT_NAME, kl25_book_get_type},
   {KL49_MIDI_NAME, KL49_SHORT_NAME, kl_book_get_type},
   {KL61_MIDI_NAME, KL61_SHORT_NAME, kl_book_get_type},
   {KL88_MIDI_NAME, KL88_SHORT_NAME, kl88_book_get_type},

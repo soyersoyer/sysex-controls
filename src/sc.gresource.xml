@@ -88,6 +88,11 @@
     <file preprocess="xml-stripblanks">keylab/kl-controller-page.ui</file>
     <file preprocess="xml-stripblanks">keylab/kl-curve-page.ui</file>
 
+    <file preprocess="xml-stripblanks">keylab25/kl25-aftertouch-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab25/kl25-book.ui</file>
+    <file preprocess="xml-stripblanks">keylab25/kl25-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">keylab25/kl25-curve-page.ui</file>
+
     <file preprocess="xml-stripblanks">keylab2/kl2-bank-page.ui</file>
     <file preprocess="xml-stripblanks">keylab2/kl2-book.ui</file>
     <file preprocess="xml-stripblanks">keylab2/kl2-controller-page.ui</file>

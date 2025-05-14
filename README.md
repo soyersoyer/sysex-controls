@@ -26,7 +26,7 @@ These devices are supported and tested:
 
 These might also work, but have not been tested yet:
 - Arturia DrumBrute
-- Arturia KeyLab 49 / 61 / 88
+- Arturia KeyLab 25 / 49 / 61 / 88
 - Arturia KeyLab 49 / 61 / 88 mk3
 - Arturia KeyLab Essential 49 / 61 / 88
 - Arturia MicroLab
@@ -37,7 +37,7 @@ These might also work, but have not been tested yet:
 
 It doesn't support the KeyStep / BeatStep Pro sequencer banks, BeatStep Pro presets and the DrumBrute/MiniBrute banks yet.
 
-It only supports the global controls from KeyLab 49 / 61 / 88 and SparkLE / The Laboratory.
+It only supports the global controls from KeyLab 25 / 49 / 61 / 88 and SparkLE / The Laboratory.
 
 If you think some untested devices work well, please let us know.
 If not, let us know as well.
