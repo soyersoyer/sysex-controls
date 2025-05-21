@@ -228,6 +228,12 @@ sc_sources = [
   'microlab/microlab-mod-page.c',
   'microlab/microlab-pitch-page.c',
 
+  'microlab3/microlab3-book.c',
+  'microlab3/microlab3-controller-page.c',
+  'microlab3/microlab3-keyboard-page.c',
+  'microlab3/microlab3-pedal-page.c',
+  'microlab3/microlab3-pitch-mod-page.c',
+
   'minibrute2/mb2-book.c',
   'minibrute2/mb2-controller-page.c',
   'minibrute2/mb2-cv-gate-page.c',

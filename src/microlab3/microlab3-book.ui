@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Microlab3Book" parent="ArBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="Microlab3ControllerPage"/>
+        </child>
+
+        <child>
+          <object class="Microlab3KeyboardPage"/>
+        </child>
+
+        <child>
+          <object class="Microlab3PedalPage"/>
+        </child>
+
+        <child>
+          <object class="Microlab3PitchModPage"/>
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>

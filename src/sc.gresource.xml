@@ -219,6 +219,12 @@
     <file preprocess="xml-stripblanks">microlab/microlab-mod-page.ui</file>
     <file preprocess="xml-stripblanks">microlab/microlab-pitch-page.ui</file>
 
+    <file preprocess="xml-stripblanks">microlab3/microlab3-book.ui</file>
+    <file preprocess="xml-stripblanks">microlab3/microlab3-controller-page.ui</file>
+    <file preprocess="xml-stripblanks">microlab3/microlab3-keyboard-page.ui</file>
+    <file preprocess="xml-stripblanks">microlab3/microlab3-pedal-page.ui</file>
+    <file preprocess="xml-stripblanks">microlab3/microlab3-pitch-mod-page.ui</file>
+
     <file preprocess="xml-stripblanks">minibrute2/mb2-book.ui</file>
     <file preprocess="xml-stripblanks">minibrute2/mb2-controller-page.ui</file>
     <file preprocess="xml-stripblanks">minibrute2/mb2-cv-gate-page.ui</file>

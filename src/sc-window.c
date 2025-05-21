@@ -22,6 +22,7 @@
 #include "keystep37/ks37-book.h"
 #include "keysteppro/ksp-book.h"
 #include "microlab/microlab-book.h"
+#include "microlab3/microlab3-book.h"
 #include "minibrute2/mb2-book.h"
 #include "minibrute2s/mb2s-book.h"
 #include "minilab/ml-book.h"
@@ -65,6 +66,7 @@ static controller_t controllers[] = {
   {KS37_MIDI_NAME, KS37_SHORT_NAME, ks37_book_get_type},
   {KSP_MIDI_NAME, KSP_SHORT_NAME, ksp_book_get_type},
   {MICROLAB_MIDI_NAME, MICROLAB_SHORT_NAME, microlab_book_get_type},
+  {MICROLAB3_MIDI_NAME, MICROLAB3_SHORT_NAME, microlab3_book_get_type},
   {MB2_MIDI_NAME, MB2_SHORT_NAME, mb2_book_get_type},
   {MB2S_MIDI_NAME, MB2S_SHORT_NAME, mb2s_book_get_type},
   {ML_MIDI_NAME, ML_SHORT_NAME, ml_book_get_type},
