@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Nk2GlobalPage" parent="KorgScenePage">
+    <property name="title" translatable="yes">Global</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="KorgFirmwareInfoGroup"/>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScChRow">
+                    <child><object class="MmControl"><property name="id">0x00</property></object></child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pitch Bend</property>
+                    <signal name="activated" handler="nk2_book_on_pitch_bend_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Keyboard</property>
+                    <signal name="activated" handler="nk2_book_on_keyboard_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Mod</property>
+                    <property name="control-id-offset">0x10</property>
+                    <signal name="activated" handler="nk2_book_on_button_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Sustain</property>
+                    <property name="control-id-offset">0x18</property>
+                    <signal name="activated" handler="nk2_book_on_button_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+</interface>

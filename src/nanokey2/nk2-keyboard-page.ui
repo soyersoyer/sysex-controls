@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Nk2KeyboardPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Keyboard</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="MmControl"><property name="id">0x08</property></object></child>
+                    <property name="title" translatable="yes">Transpose</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="52">-12</item>
+                          <item>-11</item>
+                          <item>-10</item>
+                          <item>-9</item>
+                          <item>-8</item>
+                          <item>-7</item>
+                          <item>-6</item>
+                          <item>-5</item>
+                          <item>-4</item>
+                          <item>-3</item>
+                          <item>-2</item>
+                          <item>-1</item>
+                          <item>+0</item>
+                          <item>+1</item>
+                          <item>+2</item>
+                          <item>+3</item>
+                          <item>+4</item>
+                          <item>+5</item>
+                          <item>+6</item>
+                          <item>+7</item>
+                          <item>+8</item>
+                          <item>+9</item>
+                          <item>+10</item>
+                          <item>+11</item>
+                          <item>+12</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow" id="keyboard_velocity">
+                    <child><object class="MmControl"><property name="id">0x09</property></object></child>
+                    <property name="title" translatable="yes">Velocity curve</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Light</item>
+                          <item>Normal</item>
+                          <item>Heavy</item>
+                          <item>Const</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow" >
+                    <child><object class="MmControl"><property name="id">0x0a</property></object></child>
+                    <property name="title" translatable="yes">Value</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">keyboard_velocity</lookup>
+                        <constant type="GVariant">[0x03]</constant>
+                      </closure>
+                    </binding>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

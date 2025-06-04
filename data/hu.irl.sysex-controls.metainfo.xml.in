@@ -11,7 +11,7 @@
   <project_license>GPL-3.0-or-later</project_license>
   <description>
 <p>
-This is a Libadwaita UI that allows you to configure certain Akai and Arturia devices.
+This is a Libadwaita UI that allows you to configure certain Akai, Arturia and Korg devices.
 It currently allows for reading the controls (Buttons, Knobs, Pads, Keys, etc)
 and changing them and writing back to the device.
 </p>
@@ -34,6 +34,7 @@ This is a Linux alternative to the MIDI Control Center software.
 <li>Arturia MiniLab</li>
 <li>Arturia MiniLab mkII</li>
 <li>Arturia MiniLab 3</li>
+<li>Korg nanoKEY2</li>
 </ul>
 <p>These might also work, but have not been tested yet:</p>
 <ul>

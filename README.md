@@ -2,7 +2,7 @@
 
 <img align="left" height="80" src="https://github.com/soyersoyer/sysex-controls/raw/main/data/icons/hicolor/scalable/apps/hu.irl.sysex-controls.svg">
 
-This is a Libadwaita UI that allows you to configure certain Akai and Arturia devices.
+This is a Libadwaita UI that allows you to configure certain Akai, Arturia and Korg devices.
 It currently allows for reading the controls (Buttons, Knobs, Pads, Keys, etc)
 and changing them and writing back to the device.
 
@@ -23,6 +23,7 @@ These devices are supported and tested:
 - Arturia MiniLab
 - Arturia MiniLab mkII
 - Arturia MiniLab 3
+- Korg nanoKEY2
 
 These might also work, but have not been tested yet:
 - Arturia DrumBrute

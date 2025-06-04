@@ -24,6 +24,11 @@ sc_sources = [
   'ar-preset-chooser-page.c',
   'ar-preset-chooser-row.c',
   'ar-preset-page.c',
+
+  'korg-book.c',
+  'korg-firmware-info-group.c',
+  'korg-scene-page.c',
+
   'mm-control.c',
   'mm-page.c',
 
@@ -328,6 +333,12 @@ sc_sources = [
   'mpkmini3/amm3-pad-bank-page.c',
   'mpkmini3/amm3-pad-page.c',
   'mpkmini3/amm3-program-page.c',
+
+  'nanokey2/nk2-book.c',
+  'nanokey2/nk2-button-page.c',
+  'nanokey2/nk2-global-page.c',
+  'nanokey2/nk2-keyboard-page.c',
+  'nanokey2/nk2-pitch-bend-page.c',
 
   'sparkle/sple-book.c',
   'sparkle/sple-controller-page.c',

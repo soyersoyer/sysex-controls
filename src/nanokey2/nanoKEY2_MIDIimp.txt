@@ -1,0 +1,396 @@
+
+        nanoKEY2 MIDI Implementation                    Version 1.00 (2010.12.14)
+
+1. Transmitted Data ------------------------------------------------------------
+
+1-1 Channel Messages            [H]:Hex,  [D]:Decimal
++--------+----------+----------+-----------------------------------------------+
+| Status |  Second  |  Third   | Description         (Transmitted by )         |
+|  [Hex] | [H]  [D] | [H]  [D] |                                               |
++--------+----------+----------+-----------------------------------------------+
+|   8n   | kk  (kk) | 40  (64) | Note Off          (Keyboard)                  |
+|   9n   | kk  (kk) | VV  (VV) | Note On           (Keyboard)                  |
+|   Bn   | cc  (cc) | vv  (vv) | Control Change    (Mod button, Sustain button)|
+|   En   | bb  (bb) | bb  (bb) | Pitch Bend Change (Pitch button)              |
++--------+----------+----------+-----------------------------------------------+
+ n  : MIDI Channel = 0~15
+ cc : Control Change# = 0~127
+ vv : Value = 0~127
+ VV : Velocity = 1~127
+ kk : Note Number = 0~127 (25 Keys + OctaveShift + Transpose)
+
+
+1-2 Universal System Exclusive Message ( Non Realtime )
+
+ Device Inquiry Reply
++---------+-----------------------------------------------+
+| Byte[H] |                Description                    |
++---------+-----------------------------------------------+
+|   F0    | Exclusive Status                              |
+|   7E    | Non Realtime Message                          |
+|   0g    | Global MIDI Channel  ( Device ID )            |
+|   06    | General Information                           |
+|   02    | Identity Reply                                |
+|   42    | KORG ID              ( Manufacturers ID )     |
+|   11    | Software Project     ( Family ID   (LSB))     |
+|   01    |                      ( Family ID   (MSB))     |
+|   01    |                      ( Member ID   (LSB))     |
+|   00    |                      ( Member ID   (MSB))     |
+|   xx    |                      ( Minor Ver.  (LSB))     |
+|   xx    |                      ( Minor Ver.  (MSB))     |
+|   xx    |                      ( Major Ver.  (LSB))     |
+|   xx    |                      ( Major Ver.  (MSB))     |
+|   F7    | End Of Exclusive                              |
++---------+-----------------------------------------------+
+
+  This message is transmitted whenever an Inquiry Message Request is received.
+
+
+1-3 System Exclusive Message Transmitted Command List
+
+ Structure of nanoKEY2 System Exclusive Messages
+
+ 1st Byte = F0 : Exclusive Status
+ 2nd Byte = 42 : KORG
+ 3rd Byte = 4g : g : Global MIDI Channel
+ 4th Byte = 00 : Software Project (nanoKEY2: 000111H)
+ 5th Byte = 01 : 
+ 6th Byte = 11 : 
+ 7th Byte = 01 : Sub ID
+ 8th Byte = cd : 0dvmmmmm  d     (1: Controller->Host)
+                           v     (0: 2 Bytes Data Format, 1: Variable)
+                           mmmmm (Command Number)
+ 9th Byte = nn : 2 Bytes Format: Function ID, Variable: Num of Data
+10th Byte = dd : Data
+  :
+ LastByte = F7 : End of Exclusive
+
++-----------------+---------------------------------------+
+|8th Byte command#| Description/Command                   |
+|   [Bin (Hex)]   |                                       |
++-----------------+---------------------------------------+
+|  010 11111 (5F) | Packet Communication                *1|
+|  011 11111 (7F) | Data Dump                           *1|
++-----------------+---------------------------------------+
+
+ *1 :Function ID Code List
++-------------+-----------------------------------+-----+
+| Function ID | Description/Function              |     |
+|    [Hex]    |                                   |     |
++-------------+-----------------------------------+-----+
+|     40      | Scene Data Dump                   |  R  |
+|     23      | Data Load Completed               |  E  |
+|     24      | Data Load Error                   |  E  |
+|     21      | Write Completed                   |  E  |
+|     22      | Write Error                       |  E  |
++-------------+-----------------------------------+-----+
+Transmitted when
+      R  : Request Message is received.
+      E  : Exclusive Message is received.
+
+
+1-4 Search Device Message
+
+ Search Device Reply
++---------+------------------------------------------------+
+| Byte[H] |                Description                     |
++---------+------------------------------------------------+
+|   F0    | Exclusive Status                               |
+|   42    | KORG ID              ( Manufacturers ID )      |
+|   50    | Search Device                                  |
+|   01    | Reply                                          |
+|   0g    | g: MIDI Global Channel  ( Device ID )          |
+|   dd    | Echo Back ID                                   |
+|   11    | nanoKEY2 ID          ( Family ID   (LSB))      |
+|   01    | nanoKEY2 ID          ( Family ID   (MSB))      |
+|   01    |                      ( Member ID   (LSB))      |
+|   00    |                      ( Member ID   (MSB))      |
+|   xx    |                      ( Minor Ver.  (LSB))      |
+|   xx    |                      ( Minor Ver.  (MSB))      |
+|   xx    |                      ( Major Ver.  (LSB))      |
+|   xx    |                      ( Major Ver.  (MSB))      |
+|   F7    | End Of Exclusive                               |
++---------+------------------------------------------------+
+
+  g  : MIDI Global Channel = 0 ~ F
+  dd : Echo Back ID = copy from SEARCH DEVICE REQUEST message.
+
+  This message is transmitted whenever a SEARCH DEVICE REQUEST is received.
+
+
+
+2. Recognized Receive Data -----------------------------------------------------
+
+2-1 Universal System Exclusive Message (Non Realtime)
+
+ Inquiry Message Request
++---------+-----------------------------------------------+
+| Byte[H] |                Description                    |
++---------+-----------------------------------------------+
+|   F0    | Exclusive Status                              |
+|   7E    | Non Realtime Message                          |
+|   gg    | Global MIDI Channel                           |
+|   06    | General Information                           |
+|   01    | Identity Request                              |
+|   F7    | End Of Exclusive                              |
++---------+-----------------------------------------------+
+ gg = 00~0F :Received if Global Channel
+      7F    :Received on any Channel
+
+
+2-2 System Exclusive Message Received Command List
+
+ Structure of nanoKEY2 System Exclusive Messages
+
+ 1st Byte = F0 : Exclusive Status
+ 2nd Byte = 42 : KORG
+ 3rd Byte = 4g : g : Global MIDI Channel
+ 4th Byte = 00 : Software Project (nanoKEY2: 000111H)
+ 5th Byte = 01 : 
+ 6th Byte = 11 : 
+ 7th Byte = 01 : Sub ID
+ 8th Byte = cd : 0dvmmmmm  d     (0: Host->Controller)
+                           v     (0: 2 Bytes Data Format, 1: Variable)
+                           mmmmm (Command Number)
+ 9th Byte = nn : 2 Bytes Format: Function ID, Variable: Num of Data
+10th Byte = dd : Data
+  :
+ LastByte = F7 : End of Exclusive
+
++-----------------+---------------------------------------+
+|8th Byte command#| Description/Command                   |
+|   [Bin (Hex)]   |                                       |
++-----------------+---------------------------------------+
+|  000 11111 (1F) | Data Dump Request                   *2|
+|  011 11111 (7F) | Data Dump                           *2|
++-----------------+---------------------------------------+
+
+ *2 :Function ID Code List
++-------------+-----------------------------------+
+| Function ID | Description/Function              |
+|    [Hex]    |                                   |
++-------------+-----------------------------------+
+|     14      | Scene Change Request              |
+|     10      | Scene Data Dump Request           |
+|     40      | Scene Data Dump                   |
+|     11      | Scene Data Write Request          |
++-------------+-----------------------------------+
+
+
+2-3 Search Device Message
+
+ Search Device Request
++---------+------------------------------------------------+
+| Byte[H] |                Description                     |
++---------+------------------------------------------------+
+|   F0    | Exclusive Status                               |
+|   42    | KORG ID              ( Manufacturers ID )      |
+|   50    | Search Device                                  |
+|   00    | Request                                        |
+|   dd    | Echo Back ID                                   |
+|   F7    | END OF EXCLUSIVE                               |
++---------+------------------------------------------------+
+ Receive this message, and transmits SEARCH DEVICE REPLY message
+ including copied Echo Back ID.
+
+
+
+3. MIDI Exclusive Format   (R:Receive, T:Transmit) -----------------------------
+
+3-1 Standard Messages
+
+ (1) Scene Data Dump Request                                                      R,-
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,11,01,   | Software Project (nanoKEY2: 000111H, Sub ID: 01)                 |
+| 0001 1111 (1F) | Data Dump Command  (Host->Controller, 2Bytes Format)             |
+| 0001 0000 (10) | Scene Data Dump Request                                          |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When this message was received, the nanoKEY2 transmits a Func=40(Scene Data Dump) or
+ a Func=24(NAK) message.
+
+ (2) Scene Data Write Request                                                     R,-
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,11,01,   | Software Project (nanoKEY2: 000111H, Sub ID: 01)                 |
+| 0001 1111 (1F) | Data Dump Command  (Host->Controller, 2Bytes Format)             |
+| 0001 0000 (11) | Scene Data Write Request                                         |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When this message was received, the nanoKEY2 writes the current scene data to the
+ internal memory and transmits a Func=21(Write Complete) or a Func=22(Write Error)
+ message.
+
+ (3) Scene Change Request                                                        R,-
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,11,01,   | Software Project (nanoKEY2: 000111H, Sub ID: 01)                 |
+| 0001 1111 (1F) | Data Dump Command  (Host->Controller, 2Bytes Format)             |
+| 0001 0100 (14) | Scene Change Request                                             |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When this message was received, the nanoKEY2 loads the current scene from the
+ internal memory, and Func=23(ACK) messages or a Func=24(NAK) message.
+
+ (4) Scene Data Dump                                                              R,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,11,01,   | Software Project (nanoKEY2: 000111H, Sub ID: 01)                 |
+| 0111 1111 (7F) | Data Dump Command  (Host<->Controller, Variable Format)          |
+| 0100 1011 (4B) | Num of Data (1+74 Bytes : 1001011)                               |
+| 0100 0000 (40) | Scene Data Dump                                                  |
+| 0ddd dddd (dd) | Data                                                  (NOTE 1,2) |
+|     :          |  :                                                               |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When this message was received, the nanoKEY2 saves them to the current scene data
+ and transmits a Func=23(ACK) or a Func=24(NAK) message.
+ When a Func=10(Scene Data Dump Request) message was received, the nanoKEY2
+ transmits this message with the current scene data.
+
+ (5) Data Load Completed (ACK)                                                    -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,11,01,   | Software Project (nanoKEY2: 000111H, Sub ID: 01)                 |
+| 0101 1111 (5F) | Data Dump Command  (Host<-Controller, 2Bytes Format)             |
+| 0010 0011 (23) | Data Load Completed                                              |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When the operation was completed, the nanoKEY2 transmits this message.
+
+ (6) Data Load Error (NAK)                                                        -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,11,01,   | Software Project (nanoKEY2: 000111H, Sub ID: 01)                 |
+| 0101 1111 (5F) | Data Dump Command  (Host<-Controller, 2Bytes Format)             |
+| 0010 0100 (24) | Data Load Error                                                  |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When the operation was not completed, the nanoKEY2 transmits this message.
+
+ (7) Write Completed                                                             -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,11,01,   | Software Project (nanoKEY2: 000111H, Sub ID: 01)                 |
+| 0101 1111 (5F) | Data Dump Command  (Host<-Controller, 2Bytes Format)             |
+| 0010 0001 (21) | Write Completed                                                  |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When the writing operation was completed, the nanoKEY2 transmits this message.
+
+ (8) Write Error                                                                 -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,11,01,   | Software Project (nanoKEY2: 000111H, Sub ID: 01)                 |
+| 0101 1111 (5F) | Data Dump Command  (Host<-Controller, 2Bytes Format)             |
+| 0010 0010 (22) | Write Error                                                      |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When the writing operation was not completed, the nanoKEY2 transmits this message.
+
+
+ NOTE 1: Scene Data Dump Format
+         64 bytes = 7*9+1 -> 8*9+(1+1) => 74 bytes
+         (TABLE 1)
+
+ NOTE 2: The Dump Data Conversion
+
+   Data (1set = 8bit x 7Byte)
+   b7     ~      b0   b7     ~      b0   b7   ~~    b0   b7     ~      b0
+   +-+-+-+-+-+-+-+-+  +-+-+-+-+-+-+-+-+  +-+-+-~~-+-+-+  +-+-+-+-+-+-+-+-+
+   | | | | | | | | |  | | | | | | | | |  | | |    | | |  | | | | | | | | |
+   +-+-+-+-+-+-+-+-+  +-+-+-+-+-+-+-+-+  +-+-+-~~-+-+-+  +-+-+-+-+-+-+-+-+
+         7n+0               7n+1          7n+2 ~~ 7n+5         7n+6
+
+    MIDI Data (1set = 7bit x 8Byte)
+      b7b7b7b7b7b7b7     b6    ~     b0     b6 ~~    b0     b6    ~     b0
+   +-+-+-+-+-+-+-+-+  +-+-+-+-+-+-+-+-+  +-+-+-~~-+-+-+  +-+-+-+-+-+-+-+-+
+   |0| | | | | | | |  |0| | | | | | | |  |0| |    | | |  |0| | | | | | | |
+   +-+-+-+-+-+-+-+-+  +-+-+-+-+-+-+-+-+  +-+-+-~~-+-+-+  +-+-+-+-+-+-+-+-+
+   7n+6,5,4,3,2,1,0         7n+0          7n+1 ~~ 7n+5         7n+6
+
+
+ TABLE 1 : Scene Parameter
++--------+-------------------------+---------------------------------------+
+|        |     PARAMETER           |                VALUE                  |
++--------+-------------------------+---------------------------------------+
+| Common Parameters                                                        |
++--------+-------------------------+---------------------------------------+
+| 0      | Global MIDI Ch.         | 0~15                                  |
+|        +-------------------------+---------------------------------------+
+| 1      | Reserved                | 0xFF                                  |
+|        +-------------------------+---------------------------------------+
+| 2      | Pitch Bend Response     | 0~3=Immediate/Fast/Normal/Slow        |
+|        +-------------------------+---------------------------------------+
+| 3~7    | Reserved                | 0xFF                                  |
++--------+-------------------------+---------------------------------------+
+| Keyboard Parameters                                                      |
++--------+-------------------------+---------------------------------------+
+| 8      | Transpose               | 64+/-12=-12~+12                       |
+|        +-------------------------+---------------------------------------+
+| 9      | Velocity Curve          | 0~3=Light/Normal/Heavy/Const          |
+|        +-------------------------+---------------------------------------+
+| 10     | Constant Velocity Value | 1~127                                 |
+|        +-------------------------+---------------------------------------+
+| 11~15  | Reserved                | 0xFF                                  |
++--------+-------------------------+---------------------------------------+
+| Mod button Parameters                                                    |
++--------+-------------------------+---------------------------------------+
+| 16     | Button Enable           | 0/1=Disable/Enable                    |
+|        +-------------------------+---------------------------------------+
+| 17     | CC Number               | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 18     | Button Behavior         | 0/1=Momentary/Toggle                  |
+|        +-------------------------+---------------------------------------+
+| 19     | Off Value               | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 20     | On Value                | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 21     | Switch Speed            | 0~3=Immediate/Fast/Normal/Slow        |
+|        +-------------------------+---------------------------------------+
+| 22~23  | Reserved                | 0xFF                                  |
++--------+-------------------------+---------------------------------------+
+| Sustain button Parameters                                                |
++--------+-------------------------+---------------------------------------+
+| 24     | Button Enable           | 0/1=Disable/Enable                    |
+|        +-------------------------+---------------------------------------+
+| 25     | CC Number               | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 26     | Button Behavior         | 0/1=Momentary/Toggle                  |
+|        +-------------------------+---------------------------------------+
+| 27     | Off Value               | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 28     | On Value                | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 29     | Switch Speed            | 0~3=Immediate/Fast/Normal/Slow        |
+|        +-------------------------+---------------------------------------+
+| 30~31  | Reserved                | 0xFF                                  |
++--------+-------------------------+---------------------------------------+
+| 32~63  | Reserved                  0xFF                                  |
++--------+-------------------------+---------------------------------------+
+Total 64 Bytes
+
