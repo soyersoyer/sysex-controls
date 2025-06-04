@@ -28,6 +28,7 @@
     <file preprocess="xml-stripblanks">sc-action-row.ui</file>
     <file preprocess="xml-stripblanks">sc-cc-row.ui</file>
     <file preprocess="xml-stripblanks">sc-ch-row.ui</file>
+    <file preprocess="xml-stripblanks">sc-ch-row-glob.ui</file>
     <file preprocess="xml-stripblanks">sc-color-item.ui</file>
     <file preprocess="xml-stripblanks">sc-color-row.ui</file>
     <file preprocess="xml-stripblanks">sc-controller-row.ui</file>

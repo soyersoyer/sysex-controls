@@ -37,6 +37,7 @@ sc_sources = [
   'sc-book.c',
   'sc-cc-row.c',
   'sc-ch-row.c',
+  'sc-ch-row-glob.c',
   'sc-color-row.c',
   'sc-combo-row.c',
   'sc-controller-row.c',
