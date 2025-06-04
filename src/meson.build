@@ -25,6 +25,8 @@ sc_sources = [
   'ar-preset-chooser-page.c',
   'ar-preset-chooser-row.c',
   'ar-preset-page.c',
+  'mm-control.c',
+  'mm-page.c',
 
   'sc-action-row.c',
   'sc-application.c',
