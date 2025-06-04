@@ -7,7 +7,7 @@
 #include "sc-action-row.h"
 
 #define NK2_MIDI_NAME "nanoKEY2"
-#define NK2_SHORT_NAME "NanoKey2"
+#define NK2_SHORT_NAME "nanoKEY2"
 
 G_BEGIN_DECLS
 
