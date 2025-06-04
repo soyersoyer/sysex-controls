@@ -31,7 +31,7 @@ korg_book_class_init (KorgBookClass *klass)
 }
 
 int
-korg_book_read_scene (KorgBook *self, uint8_t scene_id, uint8_t data[256], uint8_t *size)
+korg_book_read_scene (KorgBook *self, uint8_t scene_id, uint8_t data[512], uint16_t *size)
 {
   KorgBookPrivate *priv;
   KorgBookClass *klass;
@@ -48,7 +48,7 @@ korg_book_read_scene (KorgBook *self, uint8_t scene_id, uint8_t data[256], uint8
 }
 
 int
-korg_book_write_scene (KorgBook *self, uint8_t scene_id, uint8_t data[256], uint8_t size)
+korg_book_write_scene (KorgBook *self, uint8_t scene_id, uint8_t data[512], uint16_t size)
 {
   KorgBookPrivate *priv;
   KorgBookClass *klass;

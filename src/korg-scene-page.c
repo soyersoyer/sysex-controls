@@ -14,8 +14,8 @@ static GParamSpec *value_props[LAST_PROP];
 typedef struct
 {
   uint8_t scene_id;
-  uint8_t data[256];
-  uint8_t size;
+  uint8_t data[512];
+  uint16_t size;
 } KorgScenePagePrivate;
 
 static void sc_control_interface_init (ScControlInterface *iface);
@@ -179,7 +179,7 @@ static void
 korg_scene_page_init (KorgScenePage *self)
 {
   KorgScenePagePrivate *priv = korg_scene_page_get_instance_private (self);
-  priv->size = 255;
+  priv->size = 512;
 
   g_idle_add (G_SOURCE_FUNC (korg_scene_page_add_self), self);
 }
