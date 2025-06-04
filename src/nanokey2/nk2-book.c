@@ -23,6 +23,9 @@ nk2_book_class_init (Nk2BookClass *klass)
 static void
 nk2_book_init (Nk2Book *self)
 {
+  const uint8_t nk2_dev_id[4] ={0x00, 0x01, 0x11, 0x01};
+  korg_book_set_dev_id (KORG_BOOK (self), nk2_dev_id);
+
   g_type_ensure (NK2_TYPE_BUTTON_PAGE);
   g_type_ensure (NK2_TYPE_GLOBAL_PAGE);
   g_type_ensure (NK2_TYPE_KEYBOARD_PAGE);

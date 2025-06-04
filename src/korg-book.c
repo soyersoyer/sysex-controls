@@ -7,10 +7,17 @@
 
 typedef struct
 {
-  uint8_t dev_id;
+  uint8_t dev_id[4];
 } KorgBookPrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (KorgBook, korg_book, SC_TYPE_BOOK)
+
+void
+korg_book_set_dev_id (KorgBook *self, const uint8_t dev_id[4])
+{
+  KorgBookPrivate *priv = korg_book_get_instance_private (self);
+  memcpy(priv->dev_id, dev_id, 4);
+}
 
 static void
 korg_book_class_init (KorgBookClass *klass)
