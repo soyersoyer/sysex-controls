@@ -20,7 +20,7 @@
                 <child>
                   <object class="AdwEntryRow">
                     <child>
-                      <object class="AkControl">
+                      <object class="MmControl">
                         <property name="id">0x00</property>
                         <property name="size">16</property>
                       </object>

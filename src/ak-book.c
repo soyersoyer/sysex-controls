@@ -1,6 +1,6 @@
 #include "ak-book.h"
 
-#include "ak-control.h"
+#include "mm-control.h"
 #include "ak-program-page.h"
 #include "ak-program-select.h"
 
@@ -141,7 +141,7 @@ void ak_book_use_dummy (ScBook *self)
 static void
 ak_book_init (AkBook *self)
 {
-  g_type_ensure (AK_TYPE_CONTROL);
+  g_type_ensure (MM_TYPE_CONTROL);
   g_type_ensure (AK_TYPE_PROGRAM_PAGE);
   g_type_ensure (AK_TYPE_PROGRAM_SELECT);
 }

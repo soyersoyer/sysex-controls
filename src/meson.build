@@ -1,6 +1,5 @@
 sc_sources = [
   'ak-book.c',
-  'ak-control.c',
   'ak-program-page.c',
   'ak-program-select.c',
 

@@ -16,7 +16,5 @@ struct _AkProgramPageClass
 };
 
 uint8_t ak_program_page_get_prog_id (AkProgramPage *self);
-int ak_program_page_read_control (AkProgramPage *self, uint32_t control_id, uint8_t *value, uint8_t size);
-int ak_program_page_write_control (AkProgramPage *self, uint32_t control_id, uint8_t *value, uint8_t size);
 
 G_END_DECLS

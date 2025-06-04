@@ -6,19 +6,19 @@
 
     <child>
       <object class="ScNoteRow">
-        <child><object class="AkControl"><property name="id">0x00</property></object></child>
+        <child><object class="MmControl"><property name="id">0x00</property></object></child>
       </object>
     </child>
 
     <child>
       <object class="ScCcRow">
-        <child><object class="AkControl"><property name="id">0x02</property></object></child>
+        <child><object class="MmControl"><property name="id">0x02</property></object></child>
       </object>
     </child>
 
     <child>
       <object class="ScPcRow">
-        <child><object class="AkControl"><property name="id">0x01</property></object></child>
+        <child><object class="MmControl"><property name="id">0x01</property></object></child>
       </object>
     </child>
 

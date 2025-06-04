@@ -15,21 +15,21 @@
 
                 <child>
                   <object class="AdwSwitchRow">
-                    <child><object class="AkControl"><property name="id">0x14</property></object></child>
+                    <child><object class="MmControl"><property name="id">0x14</property></object></child>
                     <property name="title" translatable="yes">Enabled</property>
                   </object>
                 </child>
 
                 <child>
                   <object class="AdwSwitchRow">
-                    <child><object class="AkControl"><property name="id">0x18</property></object></child>
+                    <child><object class="MmControl"><property name="id">0x18</property></object></child>
                     <property name="title" translatable="yes">Latch</property>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScComboRow" id="control_mode">
-                    <child><object class="AkControl"><property name="id">0x15</property></object></child>
+                    <child><object class="MmControl"><property name="id">0x15</property></object></child>
                     <property name="title" translatable="yes">Mode</property>
                     <property name="model">
                       <object class="ScControlValueList">
@@ -48,7 +48,7 @@
 
                 <child>
                   <object class="ScComboRow">
-                    <child><object class="AkControl"><property name="id">0x16</property></object></child>
+                    <child><object class="MmControl"><property name="id">0x16</property></object></child>
                     <property name="title" translatable="yes">Division</property>
                     <property name="model">
                       <object class="ScControlValueList">
@@ -70,7 +70,7 @@
                 <child>
                   <object class="AdwSpinRow">
                     <child>
-                      <object class="AkControl">
+                      <object class="MmControl">
                         <property name="id">0x19</property>
                         <property name="value-offset">50</property>
                       </object>
@@ -89,7 +89,7 @@
 
                 <child>
                   <object class="AdwSpinRow">
-                    <child><object class="AkControl"><property name="id">0x1a</property></object></child>
+                    <child><object class="MmControl"><property name="id">0x1a</property></object></child>
                     <property name="title" translatable="yes">Tempo taps</property>
                     <property name="adjustment">
                       <object class="GtkAdjustment">
@@ -105,7 +105,7 @@
                 <child>
                   <object class="AdwSpinRow">
                     <child>
-                      <object class="AkControl">
+                      <object class="MmControl">
                         <property name="id">0x1b</property>
                         <property name="size">2</property>
                       </object>
@@ -125,7 +125,7 @@
                 <child>
                   <object class="AdwSpinRow">
                     <child>
-                      <object class="AkControl">
+                      <object class="MmControl">
                         <property name="id">0x1d</property>
                         <property name="value-offset">1</property>
                       </object>
@@ -144,7 +144,7 @@
 
                 <child>
                   <object class="ScComboRow">
-                    <child><object class="AkControl"><property name="id">0x17</property></object></child>
+                    <child><object class="MmControl"><property name="id">0x17</property></object></child>
                     <property name="title" translatable="yes">Clock Source</property>
                     <property name="model">
                       <object class="ScControlValueList">

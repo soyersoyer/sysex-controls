@@ -1,4 +1,5 @@
 #include "ak-program-page.h"
+#include "mm-page.h"
 
 #include "ak-book.h"
 
@@ -17,11 +18,13 @@ typedef struct
   uint16_t size;
 } AkProgramPagePrivate;
 
-static void ak_program_page_interface_init (ScControlInterface *iface);
+static void sc_control_interface_init (ScControlInterface *iface);
+static void mm_page_interface_init (MmPageInterface *iface);
 
 G_DEFINE_TYPE_WITH_CODE (AkProgramPage, ak_program_page, SC_TYPE_NAVIGATION_PAGE,
                          G_ADD_PRIVATE (AkProgramPage)
-                         G_IMPLEMENT_INTERFACE (SC_TYPE_CONTROL, ak_program_page_interface_init))
+                         G_IMPLEMENT_INTERFACE (SC_TYPE_CONTROL, sc_control_interface_init)
+                         G_IMPLEMENT_INTERFACE (MM_TYPE_PAGE, mm_page_interface_init))
 
 uint8_t
 ak_program_page_get_prog_id (AkProgramPage *self)
@@ -91,14 +94,14 @@ values_to_buf (char buf[80], uint8_t *value, uint8_t size)
   return buf;
 }
 
-int
-ak_program_page_read_control (AkProgramPage *self, uint32_t control_id, uint8_t *value, uint8_t size)
+static int
+ak_program_page_read_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size)
 {
   AkProgramPagePrivate *priv;
   char buf[80];
   g_return_val_if_fail (AK_IS_PROGRAM_PAGE (self), -EINVAL);
 
-  priv = ak_program_page_get_instance_private (self);
+  priv = ak_program_page_get_instance_private (AK_PROGRAM_PAGE (self));
 
   if (control_id >= priv->size || control_id + size > priv->size)
     return -EINVAL;
@@ -110,8 +113,8 @@ ak_program_page_read_control (AkProgramPage *self, uint32_t control_id, uint8_t 
   return 0;
 }
 
-int
-ak_program_page_write_control (AkProgramPage *self, uint32_t control_id, uint8_t *value, uint8_t size)
+static int
+ak_program_page_write_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size)
 {
   AkBook *book;
   AkProgramPagePrivate *priv;
@@ -120,7 +123,7 @@ ak_program_page_write_control (AkProgramPage *self, uint32_t control_id, uint8_t
   g_return_val_if_fail (AK_IS_PROGRAM_PAGE (self), -EINVAL);
 
   book = AK_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self), AK_TYPE_BOOK));
-  priv = ak_program_page_get_instance_private (self);
+  priv = ak_program_page_get_instance_private (AK_PROGRAM_PAGE (self));
 
   if (control_id >= priv->size || control_id + size > priv->size)
     return -EINVAL;
@@ -152,11 +155,19 @@ ak_program_page_read_program (ScControl *control)
 }
 
 static void
-ak_program_page_interface_init (ScControlInterface *iface)
+sc_control_interface_init (ScControlInterface *iface)
 {
   iface->update_gui = ak_program_page_update_gui;
   iface->read_value = ak_program_page_read_program;
 }
+
+static void
+mm_page_interface_init (MmPageInterface *iface)
+{
+  iface->read_control = ak_program_page_read_control;
+  iface->write_control = ak_program_page_write_control;
+}
+
 
 static int
 ak_program_page_add_self (AkProgramPage *self)
