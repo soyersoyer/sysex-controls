@@ -7,7 +7,9 @@
       <object class="AdwNavigationView">
         
         <child>
-          <object class="Nk2GlobalPage"/>
+          <object class="Nk2ScenePage">
+              <property name="title" translatable="yes">Main Scene</property>
+          </object>
         </child>
 
       </object>

@@ -1,9 +1,9 @@
 #include "nk2-book.h"
 
 #include "nk2-button-page.h"
-#include "nk2-global-page.h"
 #include "nk2-keyboard-page.h"
 #include "nk2-pitch-bend-page.h"
+#include "nk2-scene-page.h"
 
 struct _Nk2Book
 {
@@ -27,9 +27,9 @@ nk2_book_init (Nk2Book *self)
   korg_book_set_dev_id (KORG_BOOK (self), nk2_dev_id);
 
   g_type_ensure (NK2_TYPE_BUTTON_PAGE);
-  g_type_ensure (NK2_TYPE_GLOBAL_PAGE);
   g_type_ensure (NK2_TYPE_KEYBOARD_PAGE);
   g_type_ensure (NK2_TYPE_PITCH_BEND_PAGE);
+  g_type_ensure (NK2_TYPE_SCENE_PAGE);
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }

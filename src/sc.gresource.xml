@@ -323,9 +323,9 @@
 
     <file preprocess="xml-stripblanks">nanokey2/nk2-book.ui</file>
     <file preprocess="xml-stripblanks">nanokey2/nk2-button-page.ui</file>
-    <file preprocess="xml-stripblanks">nanokey2/nk2-global-page.ui</file>
     <file preprocess="xml-stripblanks">nanokey2/nk2-keyboard-page.ui</file>
     <file preprocess="xml-stripblanks">nanokey2/nk2-pitch-bend-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokey2/nk2-scene-page.ui</file>
 
     <file preprocess="xml-stripblanks">sparkle/sple-book.ui</file>
     <file preprocess="xml-stripblanks">sparkle/sple-controller-page.ui</file>

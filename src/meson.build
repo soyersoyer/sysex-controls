@@ -336,9 +336,9 @@ sc_sources = [
 
   'nanokey2/nk2-book.c',
   'nanokey2/nk2-button-page.c',
-  'nanokey2/nk2-global-page.c',
   'nanokey2/nk2-keyboard-page.c',
   'nanokey2/nk2-pitch-bend-page.c',
+  'nanokey2/nk2-scene-page.c',
 
   'sparkle/sple-book.c',
   'sparkle/sple-controller-page.c',

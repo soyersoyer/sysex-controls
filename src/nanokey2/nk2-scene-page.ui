@@ -2,8 +2,8 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="Nk2GlobalPage" parent="KorgScenePage">
-    <property name="title" translatable="yes">Global</property>
+  <template class="Nk2ScenePage" parent="KorgScenePage">
+    <property name="title" translatable="yes">Scene</property>
     <property name="child">
       <object class="AdwToolbarView">
         <child type="top"><object class="AdwHeaderBar"/></child>
