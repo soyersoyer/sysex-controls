@@ -1178,10 +1178,10 @@ sc_midi_korg_save_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4],
 int
 sc_midi_korg_write_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4], uint8_t scene_id, uint8_t data[256], uint8_t size)
 {
-  uint8_t query[85] = {0xf0, 0x42, 0x40, dev_id[0], dev_id[1], dev_id[2], dev_id[3], 0x7f, 0x4b, 0x40};
+  uint8_t query[512] = {0xf0, 0x42, 0x40, dev_id[0], dev_id[1], dev_id[2], dev_id[3], 0x7f, 0x4b, 0x40};
   snd_seq_event_t seq_ev;
   korg_event_t ack_ev = {.type=KORG_SCENE_DUMP_ACK};
-  int err, len = 85;
+  int err, cur = 10;
   uint8_t channel;
 
   err = sc_midi_korg_read_channel(seq, addr, &channel);
@@ -1190,19 +1190,14 @@ sc_midi_korg_write_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4]
 
   query[2] |= channel;
 
-  // TODO: use variable data
-  if (size != 64)
-  {
-    fprintf (stderr, "%s(%04x) invalid data size %d\n", __func__, scene_id, size);
-    return -EINVAL;
-  }
-
-  for (int i = 0; i * 7 < size; i++)
+  for (int i = 0; i * 7 < size; i++) {
+    cur++; // skip first byte as we only have 7bit values yet
     for (int j = 0; j < 7; ++j)
       if (i * 7 + j < size)
-        query[10 + i * 8 + 1 + j] = data[i * 7 + j];
+        query[cur++] = data[i * 7 + j];
+  }
 
-  query[len - 1] = 0xf7;
+  query[cur++] = 0xf7;
 
   /*fprintf (stderr, "%s(%04x)", __func__, scene_id);
   for (int i=0; i<len; ++i)
@@ -1213,7 +1208,7 @@ sc_midi_korg_write_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4]
   snd_seq_ev_set_source (&seq_ev, 0);
   snd_seq_ev_set_dest (&seq_ev, addr.client, addr.port);
   snd_seq_ev_set_direct (&seq_ev);
-  snd_seq_ev_set_sysex (&seq_ev, len, query);
+  snd_seq_ev_set_sysex (&seq_ev, cur, query);
 
   err = snd_seq_event_output (seq, &seq_ev);
   if (err < 0)
