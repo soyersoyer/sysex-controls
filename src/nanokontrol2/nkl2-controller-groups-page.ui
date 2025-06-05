@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Nkl2ControllerGroupsPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Controller Groups</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 1</property>
+                    <property name="control-id-offset">0x03</property>
+                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 2</property>
+                    <property name="control-id-offset">0x22</property>
+                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 3</property>
+                    <property name="control-id-offset">0x41</property>
+                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 4</property>
+                    <property name="control-id-offset">0x60</property>
+                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 5</property>
+                    <property name="control-id-offset">0x7f</property>
+                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 6</property>
+                    <property name="control-id-offset">0x9e</property>
+                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 7</property>
+                    <property name="control-id-offset">0xbd</property>
+                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 8</property>
+                    <property name="control-id-offset">0xdc</property>
+                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

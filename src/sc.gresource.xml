@@ -328,6 +328,16 @@
     <file preprocess="xml-stripblanks">nanokey2/nk2-pitch-bend-page.ui</file>
     <file preprocess="xml-stripblanks">nanokey2/nk2-scene-page.ui</file>
 
+    <file preprocess="xml-stripblanks">nanokontrol2/nkl2-book.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol2/nkl2-button-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol2/nkl2-controller-group-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol2/nkl2-controller-groups-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol2/nkl2-function-button-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol2/nkl2-knob-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol2/nkl2-scene-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol2/nkl2-slider-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol2/nkl2-transport-buttons-page.ui</file>
+
     <file preprocess="xml-stripblanks">sparkle/sple-book.ui</file>
     <file preprocess="xml-stripblanks">sparkle/sple-controller-page.ui</file>
     <file preprocess="xml-stripblanks">sparkle/sple-velocity-page.ui</file>

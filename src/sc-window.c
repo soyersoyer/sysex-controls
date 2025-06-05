@@ -32,6 +32,7 @@
 #include "mpkmini2/amm2-book.h"
 #include "mpkmini3/amm3-book.h"
 #include "nanokey2/nk2-book.h"
+#include "nanokontrol2/nkl2-book.h"
 #include "sparkle/sple-book.h"
 #include "thelaboratory/tl-book.h"
 
@@ -74,6 +75,7 @@ static controller_t controllers[] = {
   {ML2_MIDI_NAME, ML2_SHORT_NAME, ml2_book_get_type},
   {ML3_MIDI_NAME, ML3_SHORT_NAME, ml3_book_get_type},
   {NK2_MIDI_NAME, NK2_SHORT_NAME, nk2_book_get_type},
+  {NKL2_MIDI_NAME, NKL2_SHORT_NAME, nkl2_book_get_type},
   {AMM_MIDI_NAME, AMM_SHORT_NAME, amm_book_get_type},
   {AMM2_MIDI_NAME, AMM2_SHORT_NAME, amm2_book_get_type},
   {AMM2_MIDI_NAME_2, AMM2_SHORT_NAME, amm2_book_get_type},

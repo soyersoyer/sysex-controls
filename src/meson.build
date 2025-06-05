@@ -341,6 +341,16 @@ sc_sources = [
   'nanokey2/nk2-pitch-bend-page.c',
   'nanokey2/nk2-scene-page.c',
 
+  'nanokontrol2/nkl2-book.c',
+  'nanokontrol2/nkl2-button-page.c',
+  'nanokontrol2/nkl2-controller-group-page.c',
+  'nanokontrol2/nkl2-controller-groups-page.c',
+  'nanokontrol2/nkl2-function-button-page.c',
+  'nanokontrol2/nkl2-knob-page.c',
+  'nanokontrol2/nkl2-scene-page.c',
+  'nanokontrol2/nkl2-slider-page.c',
+  'nanokontrol2/nkl2-transport-buttons-page.c',
+
   'sparkle/sple-book.c',
   'sparkle/sple-controller-page.c',
   'sparkle/sple-velocity-page.c',

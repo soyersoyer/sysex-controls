@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Nkl2TransportButtonsPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Transport Buttons</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScChRowGlob">
+                    <child><object class="MmControl"><property name="id">0xfb</property></object></child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Prev Track</property>
+                    <property name="control-id-offset">0xfc</property>
+                    <property name="control-cc-offset">0x13e</property>
+                    <signal name="activated" handler="nkl2_book_on_function_button_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Next Track</property>
+                    <property name="control-id-offset">0x102</property>
+                    <property name="control-cc-offset">0x13f</property>
+                    <signal name="activated" handler="nkl2_book_on_function_button_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Cycle</property>
+                    <property name="control-id-offset">0x108</property>
+                    <signal name="activated" handler="nkl2_book_on_button_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Marker set</property>
+                    <property name="control-id-offset">0x10e</property>
+                    <property name="control-cc-offset">0x140</property>
+                    <signal name="activated" handler="nkl2_book_on_function_button_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Prev Marker</property>
+                    <property name="control-id-offset">0x114</property>
+                    <property name="control-cc-offset">0x141</property>
+                    <signal name="activated" handler="nkl2_book_on_function_button_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Next Marker</property>
+                    <property name="control-id-offset">0x11a</property>
+                    <property name="control-cc-offset">0x142</property>
+                    <signal name="activated" handler="nkl2_book_on_function_button_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">REW</property>
+                    <property name="control-id-offset">0x120</property>
+                    <signal name="activated" handler="nkl2_book_on_button_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">FF</property>
+                    <property name="control-id-offset">0x126</property>
+                    <signal name="activated" handler="nkl2_book_on_button_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">STOP</property>
+                    <property name="control-id-offset">0x12c</property>
+                    <signal name="activated" handler="nkl2_book_on_button_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">PLAY</property>
+                    <property name="control-id-offset">0x132</property>
+                    <signal name="activated" handler="nkl2_book_on_button_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">REC</property>
+                    <property name="control-id-offset">0x138</property>
+                    <signal name="activated" handler="nkl2_book_on_button_activated" swapped="yes"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

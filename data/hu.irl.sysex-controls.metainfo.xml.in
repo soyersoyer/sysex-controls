@@ -48,6 +48,7 @@ This is a Linux alternative to the MIDI Control Center software.
 <li>Arturia Minibrute 2S</li>
 <li>Arturia SparkLE</li>
 <li>Arturia The Laboratory</li>
+<li>Korg nanoKONTROL2</li>
 </ul>
 <p>
 It doesn't support the KeyStep / BeatStep Pro sequencer banks, BeatStep Pro presets and the DrumBrute/MiniBrute banks yet.
