@@ -80,6 +80,16 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.25" date="2025-06-05">
+      <description>
+        <ul>
+          <li>Korg nanoKEY2 support</li>
+          <li>Korg nanoKONTROL2 support</li>
+          <li>Arturia MicroLab mk3 support</li>
+          <li>Arturia KeyLab 25 global controls support</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.24" date="2025-05-11">
       <description>
         <ul>
