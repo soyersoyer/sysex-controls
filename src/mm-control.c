@@ -11,6 +11,7 @@
 enum {
   PROP_0,
   PROP_ID,
+  PROP_USE_CC_OFFSET,
   PROP_VALUE_OFFSET,
   PROP_SIZE,
   LAST_PROP,
@@ -22,6 +23,7 @@ struct _MmControl
 {
   AdwBin parent_instance;
   uint32_t id;
+  gboolean use_cc_offset;
   uint32_t real_id;
   uint8_t size;
   uint8_t value[16];
@@ -39,6 +41,13 @@ mm_control_get_id (MmControl *self)
 {
   g_return_val_if_fail (MM_IS_CONTROL (self), 0);
   return self->id;
+}
+
+gboolean
+mm_control_get_use_cc_offset (MmControl *self)
+{
+  g_return_val_if_fail (MM_IS_CONTROL (self), 0);
+  return self->use_cc_offset;
 }
 
 int8_t
@@ -68,6 +77,9 @@ mm_control_get_property (GObject    *object,
     case PROP_ID:
       g_value_set_uint (value, mm_control_get_id (self));
     break;
+    case PROP_USE_CC_OFFSET:
+      g_value_set_boolean (value, mm_control_get_use_cc_offset (self));
+    break;
     case PROP_VALUE_OFFSET:
       g_value_set_int (value, mm_control_get_value_offset (self));
     break;
@@ -92,6 +104,9 @@ mm_control_set_property (GObject      *object,
     case PROP_ID:
       self->id = g_value_get_uint (value);
     break;
+    case PROP_USE_CC_OFFSET:
+      self->use_cc_offset = g_value_get_boolean (value);
+    break;
     case PROP_VALUE_OFFSET:
       self->value_offset = g_value_get_int (value);
     break;
@@ -115,6 +130,10 @@ mm_control_class_init (MmControlClass *klass)
   value_props[PROP_ID] = g_param_spec_uint ("id", NULL, NULL,
                                             0, G_MAXUINT32, 0,
                                             G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+
+  value_props[PROP_USE_CC_OFFSET] = g_param_spec_boolean ("use-cc-offset", NULL, NULL,
+                                                          0,
+                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   value_props[PROP_VALUE_OFFSET] = g_param_spec_int ("value-offset", NULL, NULL,
                                                      G_MININT8, G_MAXINT8, 0,
@@ -265,7 +284,7 @@ mm_control_register (MmControl *self)
   ScPreferencesPage *page_widget;
   ScNavigationPage *nav_page_widget;
   GtkWidget *widget;
-  self->real_id = self->id;
+  uint32_t offset = 0;
 
   widget = gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), ADW_TYPE_COMBO_ROW);
 
@@ -283,19 +302,23 @@ mm_control_register (MmControl *self)
 
   nav_page_widget = SC_NAVIGATION_PAGE (gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), SC_TYPE_NAVIGATION_PAGE));
   if (nav_page_widget) {
-    self->real_id += sc_navigation_page_get_control_id_offset (nav_page_widget);
+    uint32_t cc_offset = sc_navigation_page_get_control_cc_offset (nav_page_widget);
+    offset += self->use_cc_offset && cc_offset ? cc_offset : sc_navigation_page_get_control_id_offset (nav_page_widget);
   }
 
   page_widget = SC_PREFERENCES_PAGE (gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), SC_TYPE_PREFERENCES_PAGE));
   if (page_widget) {
-    self->real_id += sc_preferences_page_get_control_id_offset (page_widget);
+    uint32_t cc_offset = sc_preferences_page_get_control_cc_offset (page_widget);
+    offset += self->use_cc_offset && cc_offset ? cc_offset : sc_preferences_page_get_control_id_offset (page_widget);
   }
 
   group_widget = SC_PREFERENCES_GROUP (gtk_widget_get_ancestor (GTK_WIDGET (&self->parent_instance), SC_TYPE_PREFERENCES_GROUP));
   if (group_widget) {
-    self->real_id += sc_preferences_group_get_control_id_offset (group_widget);
+    uint32_t cc_offset = sc_preferences_group_get_control_cc_offset (group_widget);
+    offset += self->use_cc_offset && cc_offset ? cc_offset : sc_preferences_group_get_control_id_offset (group_widget);
   }
 
+  self->real_id = self->id + offset;
   self->value[0] = 0;
   self->widget = widget;
   sc_navigation_page_register_control (nav_page_widget, SC_CONTROL (self));
