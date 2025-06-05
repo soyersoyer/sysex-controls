@@ -138,6 +138,8 @@ get_mm_page (MmControl *self)
     page = adw_navigation_view_get_previous_page (view, page);
   if (!MM_IS_PAGE (page))
     page = adw_navigation_view_get_previous_page (view, page);
+  if (!MM_IS_PAGE (page))
+    page = adw_navigation_view_get_previous_page (view, page);
   return MM_PAGE (page);
 }
 
