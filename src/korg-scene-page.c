@@ -103,12 +103,14 @@ korg_scene_page_read_control (MmPage *self, uint32_t control_id, uint8_t *value,
 
   priv = korg_scene_page_get_instance_private (KORG_SCENE_PAGE (self));
 
-  if (control_id >= priv->size || control_id + size > priv->size)
+  if (control_id >= priv->size || control_id + size > priv->size) {
+    g_error ("%s (%02x::%02x) %02x+%02x exceeds internal buffer size %02x", __func__, priv->scene_id, control_id, control_id, size, priv->size);
     return -EINVAL;
+  }
 
   memcpy (value, &priv->data[control_id], size);
 
-  g_debug("%s (%02d::%02x) -> %s", __func__, priv->scene_id, control_id, values_to_buf (buf, value, size));
+  g_debug("%s (%02x::%02x) -> %s", __func__, priv->scene_id, control_id, values_to_buf (buf, value, size));
 
   return 0;
 }
@@ -147,7 +149,7 @@ korg_scene_page_read_scene (ScControl *control)
   KorgScenePagePrivate *priv = korg_scene_page_get_instance_private (self);
   KorgBook *book = KORG_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self), KORG_TYPE_BOOK));
   int err;
-  g_debug("%s (%d)", __func__, priv->scene_id);
+  g_debug("%s (%02x)", __func__, priv->scene_id);
   err = korg_book_read_scene (book, priv->scene_id, priv->data, &priv->size);
   if (err < 0)
     g_debug("korg_book_read_scene failed %d", err);

@@ -108,7 +108,7 @@ ak_program_page_read_control (MmPage *self, uint32_t control_id, uint8_t *value,
 
   memcpy (value, &priv->data[control_id], size);
 
-  g_debug("%s (%02d::%02x) -> %s", __func__, priv->prog_id, control_id, values_to_buf (buf, value, size));
+  g_debug("%s (%02x::%02x) -> %s", __func__, priv->prog_id, control_id, values_to_buf (buf, value, size));
 
   return 0;
 }
@@ -125,8 +125,10 @@ ak_program_page_write_control (MmPage *self, uint32_t control_id, uint8_t *value
   book = AK_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self), AK_TYPE_BOOK));
   priv = ak_program_page_get_instance_private (AK_PROGRAM_PAGE (self));
 
-  if (control_id >= priv->size || control_id + size > priv->size)
+  if (control_id >= priv->size || control_id + size > priv->size) {
+    g_error ("%s (%02x::%02x) %02x+%02x exceeds internal buffer size %02x", __func__, priv->prog_id, control_id, control_id, size, priv->size);
     return -EINVAL;
+  }
 
   memcpy (&priv->data[control_id], value, size);
 
@@ -147,7 +149,7 @@ ak_program_page_read_program (ScControl *control)
   AkProgramPagePrivate *priv = ak_program_page_get_instance_private (self);
   AkBook *book = AK_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self), AK_TYPE_BOOK));
   int err;
-  g_debug("%s (%d)", __func__, priv->prog_id);
+  g_debug("%s (%02x)", __func__, priv->prog_id);
   err = ak_book_read_program (book, priv->prog_id, priv->data, &priv->size);
   if (err < 0)
     g_debug("ak_book_read_program failed %d", err);
