@@ -231,7 +231,7 @@ sc_midi_init (ScWindow *self)
 
   fc = sc_midi_get_controllers (self->seq, cc, 10, filter_supported);
 
-  g_debug ("found %d controller:", fc);
+  g_debug ("found %d controllers:", fc);
 
   controller_list = adw_preferences_group_new ();
   adw_preferences_group_set_title (ADW_PREFERENCES_GROUP (controller_list), "Controllers");
