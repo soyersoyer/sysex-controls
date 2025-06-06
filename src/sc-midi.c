@@ -1306,7 +1306,7 @@ sc_midi_connect (snd_seq_t *seq, snd_seq_addr_t addr)
 }
 
 int
-sc_midi_get_controllers (snd_seq_t *seq, sc_midi_info_t *controllers, int n)
+sc_midi_get_controllers (snd_seq_t *seq, sc_midi_info_t *controllers, int n, bool (filter)(sc_midi_info_t *))
 {
   snd_seq_client_info_t *cinfo;
   snd_seq_port_info_t *pinfo;
@@ -1336,6 +1336,9 @@ sc_midi_get_controllers (snd_seq_t *seq, sc_midi_info_t *controllers, int n)
       strncpy(controllers[i].port_name, snd_seq_port_info_get_name (pinfo), NAME_SIZE);
       controllers[i].addr.client = snd_seq_client_info_get_client (cinfo);
       controllers[i].addr.port = snd_seq_port_info_get_port (pinfo);
+
+      if (filter && !filter(&controllers[i]))
+        continue;
 
       i++;
     }

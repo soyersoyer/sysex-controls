@@ -207,6 +207,12 @@ show_list_click_cb (ScWindow *self, GtkButton *btn)
   adw_navigation_view_replace_with_tags (self->navigation_view, (const char * const[]){"list"}, 1);
 }
 
+static bool
+filter_supported (sc_midi_info_t *c)
+{
+  return find_controller (c->client_name);
+}
+
 static void
 sc_midi_init (ScWindow *self)
 {
@@ -223,7 +229,7 @@ sc_midi_init (ScWindow *self)
     return;
   }
 
-  fc = sc_midi_get_controllers (self->seq, cc, 10);
+  fc = sc_midi_get_controllers (self->seq, cc, 10, filter_supported);
 
   g_debug ("found %d controller:", fc);
 
