@@ -1329,8 +1329,10 @@ sc_midi_get_controllers (snd_seq_t *seq, sc_midi_info_t *controllers, int n, boo
       if (!(snd_seq_port_info_get_type (pinfo) & SND_SEQ_PORT_TYPE_HARDWARE))
         continue;
 
-      if (i == n)
+      if (i == n) {
+        fprintf(stderr, "%s: truncated list at %d, some controllers may not appear\n", __func__, n);
         return i;
+      }
 
       strncpy(controllers[i].client_name, snd_seq_client_info_get_name (cinfo), NAME_SIZE);
       strncpy(controllers[i].port_name, snd_seq_port_info_get_name (pinfo), NAME_SIZE);
