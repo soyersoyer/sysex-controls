@@ -217,8 +217,8 @@ static void
 sc_midi_init (ScWindow *self)
 {
   const uint8_t list_size = 64;
-  sc_midi_info_t cc[list_size];
-  GtkWidget *controller_list;
+  sc_midi_info_t controller_list[list_size];
+  GtkWidget *controller_group;
   int fc;
 
   if (self->seq)
@@ -230,23 +230,24 @@ sc_midi_init (ScWindow *self)
     return;
   }
 
-  fc = sc_midi_get_controllers (self->seq, cc, list_size, filter_supported);
+  fc = sc_midi_get_controllers (self->seq, controller_list, list_size, filter_supported);
 
   g_debug ("found %d controllers:", fc);
 
-  controller_list = adw_preferences_group_new ();
-  adw_preferences_group_set_title (ADW_PREFERENCES_GROUP (controller_list), "Controllers");
+  controller_group = adw_preferences_group_new ();
+  adw_preferences_group_set_title (ADW_PREFERENCES_GROUP (controller_group), "Controllers");
 
   for (int i = 0; i < fc; ++i)
   {
-    GtkWidget *row = sc_controller_row_new (&cc[i]);
+    sc_midi_info_t *c = &controller_list[i];
+    GtkWidget *row = sc_controller_row_new (c);
     g_signal_connect_swapped (G_OBJECT (row), "activated", G_CALLBACK (controller_select_cb), self);
-    adw_preferences_group_add (ADW_PREFERENCES_GROUP (controller_list), row);
+    adw_preferences_group_add (ADW_PREFERENCES_GROUP (controller_group), row);
 
-    g_debug ("%s %d:%d", cc[i].port_name, cc[i].addr.client, cc[i].addr.port);
+    g_debug ("%s %d:%d", c->port_name, c->addr.client, c->addr.port);
   }
 
-  adw_clamp_set_child (self->controller_list_clamp, controller_list);
+  adw_clamp_set_child (self->controller_list_clamp, controller_group);
 
   if (fc == 0)
     adw_navigation_view_replace_with_tags (self->navigation_view, (const char * const[]){"search"}, 1);
