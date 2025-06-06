@@ -143,20 +143,21 @@ sc_window_set_book (ScWindow *self, ScBook *book)
       g_list_store_append (self->page_list, page);
 }
 
+static const controller_t *
+find_controller (const char* midi_name)
+{
+  for (int i = 0; i < sizeof controllers / sizeof controllers[0]; ++i)
+    if (strcmp (controllers[i].midi_name, midi_name) == 0)
+      return &controllers[i];
+  return NULL;
+}
+
 static void
 sc_window_midi_connect (ScWindow *self, ScControllerRow *row)
 {
   ScBook *book;
-  controller_t *controller = NULL;
   sc_midi_info_t *ci = sc_controller_row_get_info (row);
-
-  for (int i = 0; i < sizeof controllers / sizeof controllers[0]; ++i) {
-    if (strcmp(controllers[i].midi_name, ci->client_name) == 0)
-    {
-      controller = &controllers[i];
-      break;
-    }
-  }
+  controller_t *controller = find_controller (ci->client_name);
 
   if (controller == NULL) {
     sc_io_problem (self, "%s is not supported yet. Please open an issue.", ci->client_name);
