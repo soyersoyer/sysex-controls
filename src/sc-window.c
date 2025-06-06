@@ -216,7 +216,7 @@ filter_supported (sc_midi_info_t *c)
 static void
 sc_midi_init (ScWindow *self)
 {
-  sc_midi_info_t cc[10];
+  sc_midi_info_t cc[64];
   GtkWidget *controller_list;
   int fc;
 
@@ -229,7 +229,7 @@ sc_midi_init (ScWindow *self)
     return;
   }
 
-  fc = sc_midi_get_controllers (self->seq, cc, 10, filter_supported);
+  fc = sc_midi_get_controllers (self->seq, cc, 64, filter_supported);
 
   g_debug ("found %d controllers:", fc);
 
