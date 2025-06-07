@@ -18,7 +18,8 @@
                     <property name="title" translatable="yes">Preset 1</property>
                     <property name="control-id-offset">0x03400000</property>
                     <property name="control-cc-offset">0x03400000</property>
-                    <signal name="activated" handler="kl3_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">Kl3PresetPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -27,7 +28,8 @@
                     <property name="title" translatable="yes">Preset 2</property>
                     <property name="control-id-offset">0x04400000</property>
                     <property name="control-cc-offset">0x04400000</property>
-                    <signal name="activated" handler="kl3_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">Kl3PresetPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -36,7 +38,8 @@
                     <property name="title" translatable="yes">Preset 3</property>
                     <property name="control-id-offset">0x05400000</property>
                     <property name="control-cc-offset">0x05400000</property>
-                    <signal name="activated" handler="kl3_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">Kl3PresetPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -45,7 +48,8 @@
                     <property name="title" translatable="yes">Preset 4</property>
                     <property name="control-id-offset">0x06400000</property>
                     <property name="control-cc-offset">0x06400000</property>
-                    <signal name="activated" handler="kl3_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">Kl3PresetPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -54,7 +58,8 @@
                     <property name="title" translatable="yes">Preset 5</property>
                     <property name="control-id-offset">0x07400000</property>
                     <property name="control-cc-offset">0x07400000</property>
-                    <signal name="activated" handler="kl3_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">Kl3PresetPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -63,7 +68,8 @@
                     <property name="title" translatable="yes">Preset 6</property>
                     <property name="control-id-offset">0x08400000</property>
                     <property name="control-cc-offset">0x08400000</property>
-                    <signal name="activated" handler="kl3_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">Kl3PresetPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 

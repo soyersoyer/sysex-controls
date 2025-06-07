@@ -16,56 +16,64 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Keyboard</property>
-                    <signal name="activated" handler="kl3_book_on_preset_keyboard_activated" swapped="yes"/>
+                    <property name="target-page">Kl3KeyboardPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pitch / Mod</property>
-                    <signal name="activated" handler="kl3_book_on_preset_pitch_mod_activated" swapped="yes"/>
+                    <property name="target-page">Kl3PitchModPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Sustain / Expression / AUX</property>
-                    <signal name="activated" handler="kl3_book_on_preset_sea_activated" swapped="yes"/>
+                    <property name="target-page">Kl3SeaPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Main Encoder</property>
-                    <signal name="activated" handler="kl3_book_on_preset_main_encoder_activated" swapped="yes"/>
+                    <property name="target-page">Kl3MainEncoderPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Encoders</property>
-                    <signal name="activated" handler="kl3_book_on_preset_encoder_activated" swapped="yes"/>
+                    <property name="target-page">Kl3EncoderPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Faders</property>
-                    <signal name="activated" handler="kl3_book_on_preset_fader_activated" swapped="yes"/>
+                    <property name="target-page">Kl3FaderPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads</property>
-                    <signal name="activated" handler="kl3_book_on_preset_pad_activated" swapped="yes"/>
+                    <property name="target-page">Kl3PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Display Buttons</property>
-                    <signal name="activated" handler="kl3_book_on_preset_display_button_activated" swapped="yes"/>
+                    <property name="target-page">Kl3DisplayButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
