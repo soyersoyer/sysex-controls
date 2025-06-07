@@ -34,35 +34,40 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Keyboard</property>
-                    <signal name="activated" handler="kl2_book_on_preset_keyboard_activated" swapped="yes"/>
+                    <property name="target-page">Kl2KeyboardPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pitch / Mod</property>
-                    <signal name="activated" handler="kl2_book_on_preset_pitch_mod_activated" swapped="yes"/>
+                    <property name="target-page">Kl2PitchModPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pedals</property>
-                    <signal name="activated" handler="kl2_book_on_preset_pedal_activated" swapped="yes"/>
+                    <property name="target-page">Kl2PedalPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">CV</property>
-                    <signal name="activated" handler="kl2_book_on_preset_cv_activated" swapped="yes"/>
+                    <property name="target-page">Kl2CvPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Bank 1</property>
-                    <signal name="activated" handler="kl2_book_on_preset_bank_activated" swapped="yes"/>
+                    <property name="target-page">Kl2BankPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -70,7 +75,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Bank 2</property>
                     <property name="control-id-offset">0x01000000</property>
-                    <signal name="activated" handler="kl2_book_on_preset_bank_activated" swapped="yes"/>
+                    <property name="target-page">Kl2BankPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -78,21 +84,24 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Bank 3</property>
                     <property name="control-id-offset">0x02000000</property>
-                    <signal name="activated" handler="kl2_book_on_preset_bank_activated" swapped="yes"/>
+                    <property name="target-page">Kl2BankPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads</property>
-                    <signal name="activated" handler="kl2_book_on_preset_pad_activated" swapped="yes"/>
+                    <property name="target-page">Kl2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">DAW Buttons</property>
-                    <signal name="activated" handler="kl2_book_on_preset_daw_buttons_activated" swapped="yes"/>
+                    <property name="target-page">Kl2DawButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
