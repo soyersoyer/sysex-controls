@@ -28,16 +28,18 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Bank A</property>
-                    <property name="control-id-offset" translatable="yes">0x13</property>
-                    <signal name="activated" handler="amm2_book_on_pad_bank_activated" swapped="yes"/>
+                    <property name="control-id-offset">0x13</property>
+                    <property name="target-page">Amm2PadBankPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Bank B</property>
-                    <property name="control-id-offset" translatable="yes">0x33</property>
-                    <signal name="activated" handler="amm2_book_on_pad_bank_activated" swapped="yes"/>
+                    <property name="control-id-offset">0x33</property>
+                    <property name="target-page">Amm2PadBankPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
