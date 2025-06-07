@@ -21,13 +21,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (Kles3Book, kles3_book, KLES3, BOOK, ArBook)
 
-void kles3_book_on_presets_preset_activated (ScNavigationPage *page, ScActionRow *row);
-
-void kles3_book_on_preset_pitch_mod_activated (ScNavigationPage *page, ScActionRow* row);
-void kles3_book_on_preset_main_knob_activated (ScNavigationPage *page, ScActionRow* row);
-void kles3_book_on_preset_knob_activated (ScNavigationPage *page, ScActionRow* row);
-void kles3_book_on_preset_button_activated (ScNavigationPage *page, ScActionRow* row);
-void kles3_book_on_preset_fader_activated (ScNavigationPage *page, ScActionRow* row);
-void kles3_book_on_preset_pad_activated (ScNavigationPage *page, ScActionRow* row);
+void sc_action_kles3_preset_nav_push (ScActionRow *row, ScNavigationPage *page);
 
 G_END_DECLS
