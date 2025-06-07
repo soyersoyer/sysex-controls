@@ -15,12 +15,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (MlBook, ml_book, ML, BOOK, ArBook)
 
-void ml_book_on_presets_preset_activated (ScNavigationPage *page, ScActionRow *row);
 void ml_book_on_presets_ar_presets_activated (ScNavigationPage *page, ScActionRow *row);
-
-void ml_book_on_preset_pitch_mod_activated (ScNavigationPage *page, ScActionRow* row);
-void ml_book_on_preset_pedal_activated (ScNavigationPage *page, ScActionRow* row);
-void ml_book_on_preset_knob_activated (ScNavigationPage *page, ScActionRow* row);
-void ml_book_on_preset_pad_activated (ScNavigationPage *page, ScActionRow* row);
 
 G_END_DECLS
