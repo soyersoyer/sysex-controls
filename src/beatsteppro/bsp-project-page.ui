@@ -16,7 +16,8 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Settings</property>
-                    <signal name="activated" handler="bsp_book_on_project_settings_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectSettingPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -29,21 +30,24 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Knobs</property>
-                    <signal name="activated" handler="bsp_book_on_project_knobs_activated" swapped="yes"/>
+                    <property name="target-page">BspKnobPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Steps</property>
-                    <signal name="activated" handler="bsp_book_on_project_steps_activated" swapped="yes"/>
+                    <property name="target-page">BspStepPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads</property>
-                    <signal name="activated" handler="bsp_book_on_project_pads_activated" swapped="yes"/>
+                    <property name="target-page">BspPadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -58,7 +62,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Sequencer 1</property>
                     <property name="control-id-offset">0x10</property>
-                    <signal name="activated" handler="bsp_book_on_project_sequencer_activated" swapped="yes"/>
+                    <property name="target-page">BspSequencerPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -66,7 +71,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Sequencer 2</property>
                     <property name="control-id-offset">0x15</property>
-                    <signal name="activated" handler="bsp_book_on_project_sequencer_activated" swapped="yes"/>
+                    <property name="target-page">BspSequencerPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -74,7 +80,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Drum</property>
                     <property name="control-id-offset">0x1a</property>
-                    <signal name="activated" handler="bsp_book_on_project_drum_activated" swapped="yes"/>
+                    <property name="target-page">BspDrumPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 

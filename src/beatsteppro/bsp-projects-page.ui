@@ -17,7 +17,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 1</property>
                     <property name="control-id-offset">0x010000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -25,7 +26,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 2</property>
                     <property name="control-id-offset">0x020000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -33,7 +35,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 3</property>
                     <property name="control-id-offset">0x030000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -41,7 +44,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 4</property>
                     <property name="control-id-offset">0x040000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -49,7 +53,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 5</property>
                     <property name="control-id-offset">0x050000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -57,7 +62,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 6</property>
                     <property name="control-id-offset">0x060000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -65,7 +71,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 7</property>
                     <property name="control-id-offset">0x070000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -73,7 +80,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 8</property>
                     <property name="control-id-offset">0x080000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -81,7 +89,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 9</property>
                     <property name="control-id-offset">0x090000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -89,7 +98,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 10</property>
                     <property name="control-id-offset">0x0a0000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -97,7 +107,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 11</property>
                     <property name="control-id-offset">0x0b0000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -105,7 +116,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 12</property>
                     <property name="control-id-offset">0x0c0000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -113,7 +125,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 13</property>
                     <property name="control-id-offset">0x0d0000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -121,7 +134,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 14</property>
                     <property name="control-id-offset">0x0e0000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -129,7 +143,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 15</property>
                     <property name="control-id-offset">0x0f0000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -137,7 +152,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Project 16</property>
                     <property name="control-id-offset">0x100000</property>
-                    <signal name="activated" handler="bsp_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">BspProjectPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
