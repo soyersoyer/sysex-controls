@@ -30,7 +30,8 @@
                     <property name="title" translatable="yes">Prev Track</property>
                     <property name="control-id-offset">0xfc</property>
                     <property name="control-cc-offset">0x13e</property>
-                    <signal name="activated" handler="nkl2_book_on_function_button_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2FunctionButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -39,7 +40,8 @@
                     <property name="title" translatable="yes">Next Track</property>
                     <property name="control-id-offset">0x102</property>
                     <property name="control-cc-offset">0x13f</property>
-                    <signal name="activated" handler="nkl2_book_on_function_button_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2FunctionButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -53,7 +55,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Cycle</property>
                     <property name="control-id-offset">0x108</property>
-                    <signal name="activated" handler="nkl2_book_on_button_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -68,7 +71,8 @@
                     <property name="title" translatable="yes">Marker set</property>
                     <property name="control-id-offset">0x10e</property>
                     <property name="control-cc-offset">0x140</property>
-                    <signal name="activated" handler="nkl2_book_on_function_button_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2FunctionButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -77,7 +81,8 @@
                     <property name="title" translatable="yes">Prev Marker</property>
                     <property name="control-id-offset">0x114</property>
                     <property name="control-cc-offset">0x141</property>
-                    <signal name="activated" handler="nkl2_book_on_function_button_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2FunctionButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -86,7 +91,8 @@
                     <property name="title" translatable="yes">Next Marker</property>
                     <property name="control-id-offset">0x11a</property>
                     <property name="control-cc-offset">0x142</property>
-                    <signal name="activated" handler="nkl2_book_on_function_button_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2FunctionButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -100,7 +106,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">REW</property>
                     <property name="control-id-offset">0x120</property>
-                    <signal name="activated" handler="nkl2_book_on_button_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -108,7 +115,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">FF</property>
                     <property name="control-id-offset">0x126</property>
-                    <signal name="activated" handler="nkl2_book_on_button_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -116,7 +124,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">STOP</property>
                     <property name="control-id-offset">0x12c</property>
-                    <signal name="activated" handler="nkl2_book_on_button_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -124,7 +133,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">PLAY</property>
                     <property name="control-id-offset">0x132</property>
-                    <signal name="activated" handler="nkl2_book_on_button_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -132,7 +142,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">REC</property>
                     <property name="control-id-offset">0x138</property>
-                    <signal name="activated" handler="nkl2_book_on_button_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 

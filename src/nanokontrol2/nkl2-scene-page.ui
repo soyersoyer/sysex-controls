@@ -66,14 +66,16 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Controller Groups</property>
-                    <signal name="activated" handler="nkl2_book_on_controller_groups_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ControllerGroupsPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Transport Buttons</property>
-                    <signal name="activated" handler="nkl2_book_on_transport_buttons_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2TransportButtonsPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 

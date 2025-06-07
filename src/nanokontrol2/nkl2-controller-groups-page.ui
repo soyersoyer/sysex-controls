@@ -17,7 +17,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Group 1</property>
                     <property name="control-id-offset">0x03</property>
-                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -25,7 +26,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Group 2</property>
                     <property name="control-id-offset">0x22</property>
-                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -33,7 +35,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Group 3</property>
                     <property name="control-id-offset">0x41</property>
-                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -41,7 +44,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Group 4</property>
                     <property name="control-id-offset">0x60</property>
-                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -49,7 +53,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Group 5</property>
                     <property name="control-id-offset">0x7f</property>
-                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -57,7 +62,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Group 6</property>
                     <property name="control-id-offset">0x9e</property>
-                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -65,7 +71,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Group 7</property>
                     <property name="control-id-offset">0xbd</property>
-                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -73,7 +80,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Group 8</property>
                     <property name="control-id-offset">0xdc</property>
-                    <signal name="activated" handler="nkl2_book_on_controller_group_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 

@@ -29,7 +29,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Slider</property>
                     <property name="control-id-offset">0x01</property>
-                    <signal name="activated" handler="nkl2_book_on_slider_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2SliderPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -37,7 +38,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Knob</property>
                     <property name="control-id-offset">0x07</property>
-                    <signal name="activated" handler="nkl2_book_on_knob_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2KnobPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -51,7 +53,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Solo</property>
                     <property name="control-id-offset">0x0d</property>
-                    <signal name="activated" handler="nkl2_book_on_button_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -59,7 +62,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Mute</property>
                     <property name="control-id-offset">0x13</property>
-                    <signal name="activated" handler="nkl2_book_on_button_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -67,7 +71,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Rec</property>
                     <property name="control-id-offset">0x19</property>
-                    <signal name="activated" handler="nkl2_book_on_button_activated" swapped="yes"/>
+                    <property name="target-page">Nkl2ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
