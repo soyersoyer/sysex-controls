@@ -6,9 +6,6 @@
 #include "sc-action-row.h"
 #include "sc-navigation-page.h"
 
-#define ML_MIDI_NAME "Arturia MINILAB"
-#define ML_SHORT_NAME "MiniLab"
-
 G_BEGIN_DECLS
 
 #define ML_TYPE_BOOK (ml_book_get_type ())

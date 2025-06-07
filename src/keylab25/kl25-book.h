@@ -4,9 +4,6 @@
 
 #include "ar-book.h"
 
-#define KL25_MIDI_NAME "KeyLab 25"
-#define KL25_SHORT_NAME "KeyLab 25"
-
 G_BEGIN_DECLS
 
 #define KL25_TYPE_BOOK (kl25_book_get_type ())

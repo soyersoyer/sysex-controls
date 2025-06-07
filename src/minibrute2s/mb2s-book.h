@@ -4,9 +4,6 @@
 
 #include "ar-book.h"
 
-#define MB2S_MIDI_NAME "Arturia MiniBrute 2S"
-#define MB2S_SHORT_NAME "MiniBrute 2S"
-
 G_BEGIN_DECLS
 
 #define MB2S_TYPE_BOOK (mb2s_book_get_type ())

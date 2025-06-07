@@ -4,9 +4,6 @@
 
 #include "ar-book.h"
 
-#define TL_MIDI_NAME "The Laboratory"
-#define TL_SHORT_NAME "Laboratory"
-
 G_BEGIN_DECLS
 
 #define TL_TYPE_BOOK (tl_book_get_type ())

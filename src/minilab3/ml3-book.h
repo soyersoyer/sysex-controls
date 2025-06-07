@@ -6,9 +6,6 @@
 #include "sc-action-row.h"
 #include "sc-navigation-page.h"
 
-#define ML3_MIDI_NAME "Minilab3"
-#define ML3_SHORT_NAME "MiniLab 3"
-
 G_BEGIN_DECLS
 
 #define ML3_TYPE_BOOK (ml3_book_get_type ())

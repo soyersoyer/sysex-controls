@@ -4,9 +4,6 @@
 
 #include "ar-book.h"
 
-#define BSP_MIDI_NAME "Arturia BeatStep Pro"
-#define BSP_SHORT_NAME "BS Pro"
-
 G_BEGIN_DECLS
 
 #define BSP_TYPE_BOOK (bsp_book_get_type ())

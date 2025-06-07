@@ -4,15 +4,6 @@
 
 #include "ar-book.h"
 
-#define KLES_49_MIDI_NAME "Arturia KeyLab Essential 49"
-#define KLES_49_SHORT_NAME "KeyLab ES 49"
-
-#define KLES_61_MIDI_NAME "Arturia KeyLab Essential 61"
-#define KLES_61_SHORT_NAME "KeyLab ES 61"
-
-#define KLES_88_MIDI_NAME "Arturia KeyLab Essential 88"
-#define KLES_88_SHORT_NAME "KeyLab ES 88"
-
 G_BEGIN_DECLS
 
 #define KLES_TYPE_BOOK (kles_book_get_type ())

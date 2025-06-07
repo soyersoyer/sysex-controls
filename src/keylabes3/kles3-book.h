@@ -6,15 +6,6 @@
 #include "sc-navigation-page.h"
 #include "sc-action-row.h"
 
-#define KLES3_49_MIDI_NAME "KL Essential 49 mk3"
-#define KLES3_49_SHORT_NAME "KeyLab ES 49 mk3"
-
-#define KLES3_61_MIDI_NAME "KL Essential 61 mk3"
-#define KLES3_61_SHORT_NAME "KeyLab ES 61 mk3"
-
-#define KLES3_88_MIDI_NAME "KL Essential 88 mk3"
-#define KLES3_88_SHORT_NAME "KeyLab ES 88 mk3"
-
 G_BEGIN_DECLS
 
 #define KLES3_TYPE_BOOK (kles3_book_get_type ())

@@ -4,9 +4,6 @@
 
 #include "ar-book.h"
 
-#define DB_MIDI_NAME "Arturia DrumBrute"
-#define DB_SHORT_NAME "DrumBrute"
-
 G_BEGIN_DECLS
 
 #define DB_TYPE_BOOK (db_book_get_type ())

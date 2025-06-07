@@ -4,9 +4,6 @@
 
 #include "ak-book.h"
 
-#define AMM_MIDI_NAME "MPK mini"
-#define AMM_SHORT_NAME "MPK mini"
-
 G_BEGIN_DECLS
 
 #define AMM_TYPE_BOOK (amm_book_get_type ())

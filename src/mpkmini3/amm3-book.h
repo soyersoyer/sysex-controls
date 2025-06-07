@@ -4,9 +4,6 @@
 
 #include "ak-book.h"
 
-#define AMM3_MIDI_NAME "MPK mini 3"
-#define AMM3_SHORT_NAME "MPK mini 3"
-
 G_BEGIN_DECLS
 
 #define AMM3_TYPE_BOOK (amm3_book_get_type ())

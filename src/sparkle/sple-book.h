@@ -4,9 +4,6 @@
 
 #include "ar-book.h"
 
-#define SPLE_MIDI_NAME "SparkLE"
-#define SPLE_SHORT_NAME "SparkLE"
-
 G_BEGIN_DECLS
 
 #define SPLE_TYPE_BOOK (sple_book_get_type ())

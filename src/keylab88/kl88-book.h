@@ -4,9 +4,6 @@
 
 #include "ar-book.h"
 
-#define KL88_MIDI_NAME "KeyLab 88"
-#define KL88_SHORT_NAME "KeyLab 88"
-
 G_BEGIN_DECLS
 
 #define KL88_TYPE_BOOK (kl88_book_get_type ())

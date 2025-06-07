@@ -4,15 +4,6 @@
 
 #include "ar-book.h"
 
-#define KL2_49_MIDI_NAME "KeyLab mkII 49"
-#define KL2_49_SHORT_NAME "KL mkII 49"
-
-#define KL2_61_MIDI_NAME "KeyLab mkII 61"
-#define KL2_61_SHORT_NAME "KL mkII 61"
-
-#define KL2_88_MIDI_NAME "KeyLab mkII 88"
-#define KL2_88_SHORT_NAME "KL mkII 88"
-
 G_BEGIN_DECLS
 
 #define KL2_TYPE_BOOK (kl2_book_get_type ())
