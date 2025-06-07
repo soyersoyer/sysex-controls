@@ -16,28 +16,32 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pitch / Mod</property>
-                    <signal name="activated" handler="ml2_book_on_preset_pitch_mod_activated" swapped="yes"/>
+                    <property name="target-page">Ml2PitchModPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pedal</property>
-                    <signal name="activated" handler="ml2_book_on_preset_pedal_activated" swapped="yes"/>
+                    <property name="target-page">Ml2PedalPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Knobs</property>
-                    <signal name="activated" handler="ml2_book_on_preset_knob_activated" swapped="yes"/>
+                    <property name="target-page">Ml2KnobPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Knobs Extra</property>
-                    <signal name="activated" handler="ml2_book_on_preset_knob_extra_activated" swapped="yes"/>
+                    <property name="target-page">Ml2KnobExtraPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -45,7 +49,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads 1-8</property>
                     <property name="control-id-offset">0x00</property>
-                    <signal name="activated" handler="ml2_book_on_preset_pad_activated" swapped="yes"/>
+                    <property name="target-page">Ml2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -53,7 +58,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads 9-16</property>
                     <property name="control-id-offset">0x08</property>
-                    <signal name="activated" handler="ml2_book_on_preset_pad_activated" swapped="yes"/>
+                    <property name="target-page">Ml2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
