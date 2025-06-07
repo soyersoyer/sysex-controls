@@ -27,35 +27,40 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Shift / Pitch / Mod</property>
-                    <signal name="activated" handler="ml3_book_on_preset_spm_activated" swapped="yes"/>
+                    <property name="target-page">Ml3SpmPage</property>
+                    <signal name="activated" handler="sc_action_ml3_preset_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Main Knob</property>
-                    <signal name="activated" handler="ml3_book_on_preset_main_knob_activated" swapped="yes"/>
+                    <property name="target-page">Ml3MainKnobPage</property>
+                    <signal name="activated" handler="sc_action_ml3_preset_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Knobs</property>
-                    <signal name="activated" handler="ml3_book_on_preset_knob_activated" swapped="yes"/>
+                    <property name="target-page">Ml3KnobPage</property>
+                    <signal name="activated" handler="sc_action_ml3_preset_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Faders</property>
-                    <signal name="activated" handler="ml3_book_on_preset_fader_activated" swapped="yes"/>
+                    <property name="target-page">Ml3FaderPage</property>
+                    <signal name="activated" handler="sc_action_ml3_preset_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads Bank A</property>
-                    <signal name="activated" handler="ml3_book_on_preset_pad_activated" swapped="yes"/>
+                    <property name="target-page">Ml3PadPage</property>
+                    <signal name="activated" handler="sc_action_ml3_preset_nav_push"/>
                   </object>
                 </child>
 
@@ -64,7 +69,8 @@
                     <property name="title" translatable="yes">Pads Bank B</property>
                     <property name="control-id-offset">0x0800</property>
                     <property name="control-cc-offset">0x0100</property>
-                    <signal name="activated" handler="ml3_book_on_preset_pad_activated" swapped="yes"/>
+                    <property name="target-page">Ml3PadPage</property>
+                    <signal name="activated" handler="sc_action_ml3_preset_nav_push"/>
                   </object>
                 </child>
 
