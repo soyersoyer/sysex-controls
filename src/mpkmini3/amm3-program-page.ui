@@ -39,35 +39,40 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Keybed</property>
-                    <signal name="activated" handler="amm3_book_on_keybed_activated" swapped="yes"/>
+                    <property name="target-page">Amm3KeybedPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads</property>
-                    <signal name="activated" handler="amm3_book_on_pad_activated" swapped="yes"/>
+                    <property name="target-page">Amm3PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Knobs</property>
-                    <signal name="activated" handler="amm3_book_on_knob_activated" swapped="yes"/>
+                    <property name="target-page">Amm3KnobPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Arpeggiator</property>
-                    <signal name="activated" handler="amm3_book_on_arpeggiator_activated" swapped="yes"/>
+                    <property name="target-page">Amm3ArpeggiatorPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Joystick</property>
-                    <signal name="activated" handler="amm3_book_on_joystick_activated" swapped="yes"/>
+                    <property name="target-page">Amm3JoystickPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
