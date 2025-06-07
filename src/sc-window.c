@@ -37,7 +37,7 @@
 #include "thelaboratory/tl-book.h"
 
 typedef const struct {
-  const char *midi_name;
+  const char *client_name;
   const char *short_name;
   GType (*type)(void);
   bool use_dummy;
@@ -144,10 +144,10 @@ sc_window_set_book (ScWindow *self, ScBook *book)
 }
 
 static const controller_t *
-find_controller (const char* midi_name)
+find_controller (const char* client_name)
 {
   for (int i = 0; i < sizeof controllers / sizeof controllers[0]; ++i)
-    if (strcmp (controllers[i].midi_name, midi_name) == 0)
+    if (strcmp (controllers[i].client_name, client_name) == 0)
       return &controllers[i];
   return NULL;
 }
