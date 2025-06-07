@@ -20,28 +20,32 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Keybed</property>
-                    <signal name="activated" handler="amm_book_on_keybed_activated" swapped="yes"/>
+                    <property name="target-page">AmmKeybedPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads</property>
-                    <signal name="activated" handler="amm_book_on_pad_activated" swapped="yes"/>
+                    <property name="target-page">AmmPadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Knobs</property>
-                    <signal name="activated" handler="amm_book_on_knob_activated" swapped="yes"/>
+                    <property name="target-page">AmmKnobPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Arpeggiator</property>
-                    <signal name="activated" handler="amm_book_on_arpeggiator_activated" swapped="yes"/>
+                    <property name="target-page">AmmArpeggiatorPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
