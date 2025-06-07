@@ -33,34 +33,3 @@ nk2_book_init (Nk2Book *self)
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-
-void
-nk2_book_on_button_activated (ScNavigationPage *page, ScActionRow* row)
-{
-  uint32_t control_id_offset = sc_navigation_page_get_control_id_offset (page) + sc_action_row_get_control_id_offset (row);
-  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (page), ADW_TYPE_NAVIGATION_VIEW));
-  AdwNavigationPage *nav_page = g_object_new (NK2_TYPE_BUTTON_PAGE,
-                                          "title", adw_preferences_row_get_title (ADW_PREFERENCES_ROW (row)),
-                                          "control-id-offset", control_id_offset,
-                                          NULL);
-  adw_navigation_view_push (view, nav_page);
-  g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), nav_page);
-};
-
-void
-nk2_book_on_keyboard_activated (ScNavigationPage *page, ScActionRow* row)
-{
-  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (page), ADW_TYPE_NAVIGATION_VIEW));
-  AdwNavigationPage *nav_page = g_object_new (NK2_TYPE_KEYBOARD_PAGE, NULL);
-  adw_navigation_view_push (view, nav_page);
-  g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), nav_page);
-}
-
-void
-nk2_book_on_pitch_bend_activated (ScNavigationPage *page, ScActionRow* row)
-{
-  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (page), ADW_TYPE_NAVIGATION_VIEW));
-  AdwNavigationPage *nav_page = g_object_new (NK2_TYPE_PITCH_BEND_PAGE, NULL);
-  adw_navigation_view_push (view, nav_page);
-  g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), nav_page);
-}

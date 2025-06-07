@@ -32,14 +32,16 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pitch Bend</property>
-                    <signal name="activated" handler="nk2_book_on_pitch_bend_activated" swapped="yes"/>
+                    <property name="target-page">Nk2PitchBendPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Keyboard</property>
-                    <signal name="activated" handler="nk2_book_on_keyboard_activated" swapped="yes"/>
+                    <property name="target-page">Nk2KeyboardPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -47,7 +49,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Mod</property>
                     <property name="control-id-offset">0x10</property>
-                    <signal name="activated" handler="nk2_book_on_button_activated" swapped="yes"/>
+                    <property name="target-page">Nk2ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -55,7 +58,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Sustain</property>
                     <property name="control-id-offset">0x18</property>
-                    <signal name="activated" handler="nk2_book_on_button_activated" swapped="yes"/>
+                    <property name="target-page">Nk2ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
