@@ -28,7 +28,6 @@ void kles3_book_on_preset_main_knob_activated (ScNavigationPage *page, ScActionR
 void kles3_book_on_preset_knob_activated (ScNavigationPage *page, ScActionRow* row);
 void kles3_book_on_preset_button_activated (ScNavigationPage *page, ScActionRow* row);
 void kles3_book_on_preset_fader_activated (ScNavigationPage *page, ScActionRow* row);
-void kles3_book_on_preset_pad_a_activated (ScNavigationPage *page, ScActionRow* row);
-void kles3_book_on_preset_pad_b_activated (ScNavigationPage *page, ScActionRow* row);
+void kles3_book_on_preset_pad_activated (ScNavigationPage *page, ScActionRow* row);
 
 G_END_DECLS

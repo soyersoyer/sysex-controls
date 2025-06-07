@@ -89,11 +89,14 @@ get_preset_offset (ScNavigationPage *page)
 static void
 open_preset_page (ScNavigationPage *page, ScActionRow *row, GType type)
 {
+  const char* title = adw_preferences_row_get_title (ADW_PREFERENCES_ROW (row));
+  uint32_t control_id_offset = get_preset_offset (page) + sc_action_row_get_control_id_offset (row);
+  uint32_t control_cc_offset = get_preset_offset (page) + sc_action_row_get_control_cc_offset (row);
   AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (page), ADW_TYPE_NAVIGATION_VIEW));
   AdwNavigationPage *nav_page = g_object_new (type,
-                                          "title", adw_preferences_row_get_title (ADW_PREFERENCES_ROW (row)),
-                                          "control-id-offset", get_preset_offset (page),
-                                          "control-cc-offset", get_preset_offset (page),
+                                          "title", title,
+                                          "control-id-offset", control_id_offset,
+                                          "control-cc-offset", control_cc_offset,
                                           NULL);
   adw_navigation_view_push (view, nav_page);
   g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), nav_page);
@@ -130,27 +133,7 @@ kles3_book_on_preset_fader_activated (ScNavigationPage *page, ScActionRow* row)
 }
 
 void
-kles3_book_on_preset_pad_a_activated (ScNavigationPage *page, ScActionRow* row)
+kles3_book_on_preset_pad_activated (ScNavigationPage *page, ScActionRow* row)
 {
-  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (page), ADW_TYPE_NAVIGATION_VIEW));
-  AdwNavigationPage *nav_page = g_object_new (KLES3_TYPE_PAD_PAGE,
-                                          "control-id-offset", get_preset_offset (page),
-                                          "control-cc-offset", get_preset_offset (page),
-                                          "title", "Pads Bank A",
-                                          NULL);
-  adw_navigation_view_push (view, nav_page);
-  g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), nav_page);
-}
-
-void
-kles3_book_on_preset_pad_b_activated (ScNavigationPage *page, ScActionRow* row)
-{
-  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (page), ADW_TYPE_NAVIGATION_VIEW));
-  AdwNavigationPage *nav_page = g_object_new (KLES3_TYPE_PAD_PAGE,
-                                          "control-id-offset", get_preset_offset (page) + 0x0800,
-                                          "control-cc-offset", get_preset_offset (page) + 0x0100,
-                                          "title", "Pads Bank B",
-                                          NULL);
-  adw_navigation_view_push (view, nav_page);
-  g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), nav_page);
+  open_preset_page (page, row, KLES3_TYPE_PAD_PAGE);
 }

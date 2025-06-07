@@ -64,14 +64,16 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads Bank A</property>
-                    <signal name="activated" handler="kles3_book_on_preset_pad_a_activated" swapped="yes"/>
+                    <signal name="activated" handler="kles3_book_on_preset_pad_activated" swapped="yes"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads Bank B</property>
-                    <signal name="activated" handler="kles3_book_on_preset_pad_b_activated" swapped="yes"/>
+                    <property name="control-id-offset">0x0800</property>
+                    <property name="control-cc-offset">0x0100</property>
+                    <signal name="activated" handler="kles3_book_on_preset_pad_activated" swapped="yes"/>
                   </object>
                 </child>
 
