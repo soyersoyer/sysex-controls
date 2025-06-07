@@ -34,42 +34,48 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Keyboard</property>
-                    <signal name="activated" handler="kles_book_on_preset_keyboard_activated" swapped="yes"/>
+                    <property name="target-page">KlesKeyboardPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pedal</property>
-                    <signal name="activated" handler="kles_book_on_preset_pedal_activated" swapped="yes"/>
+                    <property name="target-page">KlesPedalPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads</property>
-                    <signal name="activated" handler="kles_book_on_preset_pad_activated" swapped="yes"/>
+                    <property name="target-page">KlesPadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Buttons</property>
-                    <signal name="activated" handler="kles_book_on_preset_button_activated" swapped="yes"/>
+                    <property name="target-page">KlesButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Knobs</property>
-                    <signal name="activated" handler="kles_book_on_preset_knob_activated" swapped="yes"/>
+                    <property name="target-page">KlesKnobPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Faders</property>
-                    <signal name="activated" handler="kles_book_on_preset_fader_activated" swapped="yes"/>
+                    <property name="target-page">KlesFaderPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 

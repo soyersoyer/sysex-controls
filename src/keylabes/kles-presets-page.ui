@@ -17,7 +17,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">User 1</property>
                     <property name="control-id-offset">0x030000</property>
-                    <signal name="activated" handler="kles_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">KlesPresetPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -25,7 +26,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">User 2</property>
                     <property name="control-id-offset">0x040000</property>
-                    <signal name="activated" handler="kles_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">KlesPresetPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -33,7 +35,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">User 3</property>
                     <property name="control-id-offset">0x050000</property>
-                    <signal name="activated" handler="kles_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">KlesPresetPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -41,7 +44,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">User 4</property>
                     <property name="control-id-offset">0x060000</property>
-                    <signal name="activated" handler="kles_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">KlesPresetPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -49,7 +53,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">User 5</property>
                     <property name="control-id-offset">0x070000</property>
-                    <signal name="activated" handler="kles_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">KlesPresetPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -57,7 +62,8 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">User 6</property>
                     <property name="control-id-offset">0x080000</property>
-                    <signal name="activated" handler="kles_book_on_presets_preset_activated" swapped="yes"/>
+                    <property name="target-page">KlesPresetPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
