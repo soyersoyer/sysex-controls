@@ -31,9 +31,7 @@
         </child>
 
         <child>
-          <object class="Kl3PresetsPage">
-            <property name="control-id-offset">0x09400000</property>
-          </object>
+          <object class="Kl3PresetsPage"/>
         </child>
 
       </object>
