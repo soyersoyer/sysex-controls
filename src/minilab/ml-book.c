@@ -1,7 +1,5 @@
 #include "ml-book.h"
 
-#include "ar-preset-page.h"
-
 #include "ml-controller-page.h"
 #include "ml-knob.h"
 #include "ml-knob-page.h"
@@ -43,17 +41,4 @@ ml_book_init (MlBook *self)
   g_type_ensure (ML_TYPE_VELOCITY_PAGE);
 
   gtk_widget_init_template (GTK_WIDGET (self));
-}
-
-void
-ml_book_on_presets_ar_presets_activated (ScNavigationPage *page, ScActionRow *row)
-{
-  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (page), ADW_TYPE_NAVIGATION_VIEW));
-  AdwNavigationPage *nav_page = g_object_new (AR_TYPE_PRESET_PAGE,
-                                          "title", adw_preferences_row_get_title (ADW_PREFERENCES_ROW (row)),
-                                          "presets-num", 8,
-                                          "readonly-num", 1,
-                                          NULL);
-  adw_navigation_view_push (view, nav_page);
-  g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), nav_page);
 }

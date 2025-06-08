@@ -6,6 +6,7 @@
 #include "bs-pad.h"
 #include "bs-pad-page.h"
 #include "bs-performance-page.h"
+#include "bs-preset-page.h"
 #include "bs-sequence-page.h"
 #include "bs-transport-button.h"
 #include "bs-transport-button-page.h"
@@ -34,6 +35,7 @@ bs_book_init (BsBook *self)
   g_type_ensure(BS_TYPE_PAD);
   g_type_ensure(BS_TYPE_PAD_PAGE);
   g_type_ensure(BS_TYPE_PERFORMANCE_PAGE);
+  g_type_ensure(BS_TYPE_PRESET_PAGE);
   g_type_ensure(BS_TYPE_SEQUENCE_PAGE);
   g_type_ensure(BS_TYPE_TRANSPORT_BUTTON);
   g_type_ensure(BS_TYPE_TRANSPORT_BUTTON_PAGE);

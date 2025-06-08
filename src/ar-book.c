@@ -4,7 +4,7 @@
 #include "ar-firmware-info-group.h"
 #include "ar-preset-chooser-page.h"
 #include "ar-preset-chooser-row.h"
-#include "ar-preset-page.h"
+#include "ar-preset-group.h"
 #include "ar2-drum-ch-row.h"
 #include "ar2-glob-ch-row.h"
 #include "ar2-glob2-ch-row.h"
@@ -222,5 +222,5 @@ ar_book_init (ArBook *self)
   g_type_ensure (AR_TYPE_FIRMWARE_INFO_GROUP);
   g_type_ensure (AR_TYPE_PRESET_CHOOSER_PAGE);
   g_type_ensure (AR_TYPE_PRESET_CHOOSER_ROW);
-  g_type_ensure (AR_TYPE_PRESET_PAGE);
+  g_type_ensure (AR_TYPE_PRESET_GROUP);
 }

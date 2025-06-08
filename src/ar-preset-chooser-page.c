@@ -24,7 +24,7 @@ ar_preset_chooser_page_init (ArPresetChooserPage *self)
 }
 
 GtkWidget *
-ar_preset_chooser_page_new (int presets_num, int inactive_num, preset_chooser_func activate_cb, ArPresetPage* preset_page)
+ar_preset_chooser_page_new (int presets_num, int inactive_num, preset_chooser_func activate_cb)
 {
   GtkWidget *page = g_object_new (AR_TYPE_PRESET_CHOOSER_PAGE, NULL);
   ArPresetChooserPage *pc_page = AR_PRESET_CHOOSER_PAGE (page);
@@ -36,7 +36,7 @@ ar_preset_chooser_page_new (int presets_num, int inactive_num, preset_chooser_fu
     if (i < inactive_num)
       gtk_widget_set_sensitive (row, FALSE);
 
-    g_signal_connect_swapped (row, "activated", G_CALLBACK (activate_cb), preset_page);
+    g_signal_connect (row, "activated", G_CALLBACK (activate_cb), NULL);
 
     adw_preferences_group_add (pc_page->preset_group, row);
   }

@@ -15,28 +15,6 @@
 
                <child>
                   <object class="ScActionRow">
-                    <property name="title" translatable="yes">Edit only in memory</property>
-                    <property name="control-id-offset">0x000000</property>
-                    <property name="target-page">Ml2PresetPage</property>
-                    <signal name="activated" handler="sc_action_nav_push"/>
-                  </object>
-                </child>
-
-                <child>
-                  <object class="ScActionRow">
-                    <property name="title" translatable="yes">Load / Store</property>
-                    <signal name="activated" handler="ml2_book_on_presets_ar_presets_activated" swapped="yes"/>
-                  </object>
-                </child>
-
-              </object>
-            </child>
-
-            <child>
-              <object class="AdwPreferencesGroup">
-
-               <child>
-                  <object class="ScActionRow">
                     <property name="title" translatable="yes">Preset 2</property>
                     <property name="control-id-offset">0x020000</property>
                     <property name="target-page">Ml2PresetPage</property>
@@ -98,6 +76,28 @@
                   </object>
                 </child>
 
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+               <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Edit only in memory</property>
+                    <property name="control-id-offset">0x000000</property>
+                    <property name="target-page">Ml2PresetPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="ArPresetGroup">
+                <property name="presets-num">8</property>
+                <property name="readonly-num">1</property>
               </object>
             </child>
 

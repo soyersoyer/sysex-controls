@@ -5,7 +5,6 @@
 #include "sc-navigation-page.h"
 
 #include "ar-preset-chooser-row.h"
-#include "ar-preset-page.h"
 
 G_BEGIN_DECLS
 
@@ -13,8 +12,8 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (ArPresetChooserPage, ar_preset_chooser_page, AR, PRESET_CHOOSER_PAGE, ScNavigationPage)
 
-typedef void (* preset_chooser_func) (ArPresetPage *, ArPresetChooserRow *);
+typedef void (* preset_chooser_func) (ArPresetChooserRow *);
 
-GtkWidget * ar_preset_chooser_page_new (int presets_num, int inactive_num, preset_chooser_func activate_cb, ArPresetPage *preset_page);
+GtkWidget * ar_preset_chooser_page_new (int presets_num, int inactive_num, preset_chooser_func activate_cb);
 
 G_END_DECLS

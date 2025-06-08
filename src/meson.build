@@ -23,7 +23,7 @@ sc_sources = [
   'ar-firmware-info-group.c',
   'ar-preset-chooser-page.c',
   'ar-preset-chooser-row.c',
-  'ar-preset-page.c',
+  'ar-preset-group.c',
 
   'korg-book.c',
   'korg-firmware-info-group.c',
@@ -59,6 +59,7 @@ sc_sources = [
   'beatstep/bs-pad.c',
   'beatstep/bs-pad-page.c',
   'beatstep/bs-performance-page.c',
+  'beatstep/bs-preset-page.c',
   'beatstep/bs-sequence-page.c',
   'beatstep/bs-transport-button.c',
   'beatstep/bs-transport-button-page.c',
