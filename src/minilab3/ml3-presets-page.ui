@@ -30,7 +30,8 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Preset 1</property>
-                    <property name="control-id-offset">0x08400000</property>
+                    <property name="control-id-offset">0x03400000</property>
+                    <property name="control-cc-offset">0x03400000</property>
                     <property name="target-page">Ml3PresetPage</property>
                     <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
@@ -39,7 +40,8 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Preset 2</property>
-                    <property name="control-id-offset">0x08400100</property>
+                    <property name="control-id-offset">0x04400000</property>
+                    <property name="control-cc-offset">0x04400000</property>
                     <property name="target-page">Ml3PresetPage</property>
                     <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
@@ -48,7 +50,8 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Preset 3</property>
-                    <property name="control-id-offset">0x08400200</property>
+                    <property name="control-id-offset">0x05400000</property>
+                    <property name="control-cc-offset">0x05400000</property>
                     <property name="target-page">Ml3PresetPage</property>
                     <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
@@ -57,7 +60,8 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Preset 4</property>
-                    <property name="control-id-offset">0x08400300</property>
+                    <property name="control-id-offset">0x06400000</property>
+                    <property name="control-cc-offset">0x06400000</property>
                     <property name="target-page">Ml3PresetPage</property>
                     <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
@@ -66,7 +70,8 @@
                 <child>
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Preset 5</property>
-                    <property name="control-id-offset">0x08400400</property>
+                    <property name="control-id-offset">0x07400000</property>
+                    <property name="control-cc-offset">0x07400000</property>
                     <property name="target-page">Ml3PresetPage</property>
                     <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
