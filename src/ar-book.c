@@ -23,6 +23,7 @@ typedef struct
 {
   uint8_t read_ack;
   uint8_t preset_sync;
+  const remap_t *remap;
 } ArBookPrivate;
 
 G_DEFINE_TYPE_WITH_PRIVATE (ArBook, ar_book, SC_TYPE_BOOK)
@@ -41,6 +42,25 @@ ar_book_set_preset_sync (ArBook *self, uint8_t preset_sync)
   priv->preset_sync = preset_sync;
 }
 
+
+void
+ar_book_set_remap (ArBook *self, const remap_t *remap)
+{
+  ArBookPrivate *priv = ar_book_get_instance_private (self);
+  priv->remap = remap;
+}
+
+static uint32_t get_remap_addr (const remap_t *remap, uint32_t control_id)
+{
+  if (!remap)
+    return control_id;
+
+  for (const remap_t *r = remap; r->addr; ++r)
+    if (r->addr == control_id)
+      return r->target;
+
+  return control_id;
+}
 
 static void
 ar_book_class_init (ArBookClass *klass)
@@ -68,6 +88,8 @@ ar_book_read_control (ArBook *self, uint32_t control_id, uint8_t *val)
   klass = AR_BOOK_GET_CLASS (self);
   priv = ar_book_get_instance_private (self);
   sc_book = SC_BOOK (self);
+
+  control_id = get_remap_addr (priv->remap, control_id);
 
   return klass->read_control (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->read_ack, control_id, val);
 }
@@ -100,6 +122,8 @@ ar_book_write_control (ArBook *self, uint32_t control_id, uint8_t val)
   priv = ar_book_get_instance_private (self);
   sc_book = SC_BOOK (self);
 
+  control_id = get_remap_addr (priv->remap, control_id);
+
   ret = klass->write_control (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), control_id, val);
   if (ret)
     return ret;
@@ -123,6 +147,8 @@ ar_book_read_string (ArBook *self, uint32_t control_id, char val[17])
   priv = ar_book_get_instance_private (self);
   sc_book = SC_BOOK (self);
 
+  control_id = get_remap_addr (priv->remap, control_id);
+
   return klass->read_string (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->read_ack, control_id, val);
 }
 
@@ -139,6 +165,8 @@ ar_book_write_string (ArBook *self, uint32_t control_id, char val[17])
   klass = AR_BOOK_GET_CLASS (self);
   priv = ar_book_get_instance_private (self);
   sc_book = SC_BOOK (self);
+
+  control_id = get_remap_addr (priv->remap, control_id);
 
   ret = klass->write_string (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), control_id, val);
   if (ret)

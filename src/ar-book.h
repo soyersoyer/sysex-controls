@@ -24,6 +24,14 @@ struct _ArBookClass
 void ar_book_set_read_ack (ArBook *self, uint8_t read_ack);
 void ar_book_set_preset_sync (ArBook *self, uint8_t preset_sync);
 
+typedef struct
+{
+  uint32_t addr;
+  uint32_t target;
+} remap_t;
+
+void ar_book_set_remap (ArBook *self, const remap_t *remap);
+
 int ar_book_read_control (ArBook *self, uint32_t control_id, uint8_t *val);
 int ar_book_write_control (ArBook *self, uint32_t control_id, uint8_t val);
 int ar_book_read_string (ArBook *self, uint32_t control_id, char val[17]);
