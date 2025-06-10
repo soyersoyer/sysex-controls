@@ -16,6 +16,7 @@ enum {
   PROP_ID3,
   PROP_USE_CC_OFFSET,
   PROP_MULTIPLY,
+  PROP_INVERTED,
   PROP_MAXLEN,
   PROP_WRITE_ONLY,
   LAST_PROP,
@@ -29,6 +30,7 @@ struct _ArControl
   uint32_t id3;
   gboolean use_cc_offset;
   double multiply;
+  gboolean inverted;
   uint32_t real_id;
   uint32_t real_id2;
   uint32_t real_id3;
@@ -82,6 +84,13 @@ ar_control_get_multiply (ArControl *self)
   return self->multiply;
 }
 
+gboolean
+ar_control_get_inverted (ArControl *self)
+{
+  g_return_val_if_fail (AR_IS_CONTROL (self), 0);
+  return self->inverted;
+}
+
 uint8_t
 ar_control_get_maxlen (ArControl *self)
 {
@@ -121,6 +130,9 @@ ar_control_get_property (GObject    *object,
     case PROP_MULTIPLY:
       g_value_set_double (value, ar_control_get_multiply (self));
     break;
+    case PROP_INVERTED:
+      g_value_set_boolean (value, ar_control_get_inverted (self));
+    break;
     case PROP_MAXLEN:
       g_value_set_uint (value, ar_control_get_maxlen (self));
     break;
@@ -157,6 +169,9 @@ ar_control_set_property (GObject      *object,
     break;
     case PROP_MULTIPLY:
       self->multiply = g_value_get_double (value);
+    break;
+    case PROP_INVERTED:
+      self->inverted = g_value_get_boolean (value);
     break;
     case PROP_MAXLEN:
       self->maxlen = g_value_get_uint (value);
@@ -197,6 +212,10 @@ ar_control_class_init (ArControlClass *klass)
                                                     0, G_MAXDOUBLE, 1,
                                                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
+  value_props[PROP_INVERTED] = g_param_spec_boolean ("inverted", NULL, NULL,
+                                                  0,
+                                                  G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+
   value_props[PROP_MAXLEN] = g_param_spec_uint ("maxlen", NULL, NULL,
                                              0, 16, 16,
                                              G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
@@ -236,6 +255,9 @@ switch_row_change_cb (GObject * widget, GParamSpec *pspec, ArControl *self)
   ArBook *book = AR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), AR_TYPE_BOOK));
   AdwSwitchRow *w = ADW_SWITCH_ROW (widget);
   uint8_t val = adw_switch_row_get_active (w);
+
+  if (self->inverted)
+    val = !val;
 
   if (self->value == val)
     return;
@@ -495,7 +517,7 @@ ar_control_update_gui (ScControl *control)
   else if (ADW_IS_SWITCH_ROW (self->widget))
   {
     AdwSwitchRow *switch_row = ADW_SWITCH_ROW (self->widget);
-    adw_switch_row_set_active (switch_row, self->value);
+    adw_switch_row_set_active (switch_row, self->inverted ? !self->value : self->value);
     g_debug ("Set switch row with id 0x%08x to 0x%02x", self->real_id, self->value);
   }
   else if (ADW_IS_SPIN_ROW (self->widget))
