@@ -12,6 +12,4 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (Kles3Book, kles3_book, KLES3, BOOK, ArBook)
 
-void sc_action_kles3_preset_nav_push (ScActionRow *row, ScNavigationPage *page);
-
 G_END_DECLS

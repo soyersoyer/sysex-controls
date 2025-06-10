@@ -34,12 +34,25 @@ kles3_book_class_init (Kles3BookClass *klass)
   gtk_widget_class_set_template_from_resource (widget_class, "/hu/irl/sysex-controls/keylabes3/kles3-book.ui");
 }
 
+// map 'show preset' into the preset space, for easy display on the preset page 
+const remap_t kles3_remap[] = {
+  {0x03407f7f, 0x09401300},
+  {0x04407f7f, 0x09401400},
+  {0x05407f7f, 0x09401500},
+  {0x06407f7f, 0x09401600},
+  {0x07407f7f, 0x09401700},
+  {0x08407f7f, 0x09401800},
+  {0x0, 0x0}, // sentinel
+};
+
 static void
 kles3_book_init (Kles3Book *self)
 {
   ArBookClass *scklass = AR_BOOK_GET_CLASS (self);
   scklass->read_control = sc_midi_arturia_v3_read_control;
   scklass->write_control = sc_midi_arturia_v3_write_control;
+
+  ar_book_set_remap (AR_BOOK (self), kles3_remap);
 
   g_type_ensure (KLES3_TYPE_BUTTON);
   g_type_ensure (KLES3_TYPE_BUTTON_PAGE);
@@ -61,29 +74,4 @@ kles3_book_init (Kles3Book *self)
   g_type_ensure (KLES3_TYPE_VELOCITY_PAGE);
 
   gtk_widget_init_template (GTK_WIDGET (self));
-}
-
-static uint32_t
-get_preset_offset (ScNavigationPage *page)
-{
-  // 0x09400100 -> 0x04400000
-  uint32_t offset = sc_navigation_page_get_control_id_offset (page);
-  return 0x03400000 + (offset << 16);
-}
-
-void
-sc_action_kles3_preset_nav_push (ScActionRow *row, ScNavigationPage *page)
-{
-  GType target_page = sc_action_row_get_target_page (row);
-  const char* title = adw_preferences_row_get_title (ADW_PREFERENCES_ROW (row));
-  uint32_t control_id_offset = get_preset_offset (page) + sc_action_row_get_control_id_offset (row);
-  uint32_t control_cc_offset = get_preset_offset (page) + sc_action_row_get_control_cc_offset (row);
-  AdwNavigationView *view = ADW_NAVIGATION_VIEW (gtk_widget_get_ancestor (GTK_WIDGET (page), ADW_TYPE_NAVIGATION_VIEW));
-  AdwNavigationPage *nav_page = g_object_new (target_page,
-                                              "title", title,
-                                              "control-id-offset", control_id_offset,
-                                              "control-cc-offset", control_cc_offset,
-                                              NULL);
-  adw_navigation_view_push (view, nav_page);
-  g_idle_add (G_SOURCE_FUNC (sc_navigation_page_load_controls_and_update_bg), nav_page);
 }

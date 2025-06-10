@@ -15,7 +15,10 @@
 
                 <child>
                   <object class="AdwSwitchRow">
-                    <child><object class="ArControl"><property name="id">0x1300</property></object></child>
+                    <child><object class="ArControl">
+                      <!-- remapped address-->
+                      <property name="id">0x7f7f</property>
+                    </object></child>
                     <property name="title" translatable="yes">Hide on controller</property>
                   </object>
                 </child>
@@ -30,7 +33,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pitch / Mod</property>
                     <property name="target-page">Kles3PitchModPage</property>
-                    <signal name="activated" handler="sc_action_kles3_preset_nav_push"/>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -38,7 +41,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Main Knob</property>
                     <property name="target-page">Kles3MainKnobPage</property>
-                    <signal name="activated" handler="sc_action_kles3_preset_nav_push"/>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -46,7 +49,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Knobs</property>
                     <property name="target-page">Kles3KnobPage</property>
-                    <signal name="activated" handler="sc_action_kles3_preset_nav_push"/>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -54,7 +57,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Buttons</property>
                     <property name="target-page">Kles3ButtonPage</property>
-                    <signal name="activated" handler="sc_action_kles3_preset_nav_push"/>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -62,7 +65,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Faders</property>
                     <property name="target-page">Kles3FaderPage</property>
-                    <signal name="activated" handler="sc_action_kles3_preset_nav_push"/>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -70,7 +73,7 @@
                   <object class="ScActionRow">
                     <property name="title" translatable="yes">Pads Bank A</property>
                     <property name="target-page">Kles3PadPage</property>
-                    <signal name="activated" handler="sc_action_kles3_preset_nav_push"/>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
@@ -80,7 +83,7 @@
                     <property name="control-id-offset">0x0800</property>
                     <property name="control-cc-offset">0x0100</property>
                     <property name="target-page">Kles3PadPage</property>
-                    <signal name="activated" handler="sc_action_kles3_preset_nav_push"/>
+                    <signal name="activated" handler="sc_action_nav_push"/>
                   </object>
                 </child>
 
