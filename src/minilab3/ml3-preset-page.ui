@@ -14,8 +14,12 @@
               <object class="ScPreferencesGroup">
                 <child>
                   <object class="AdwSwitchRow">
-                    <child><object class="ArControl"><property name="id">0x7f7f</property><!-- remapped address--></object></child>
-                    <property name="title" translatable="yes">Hide on controller</property>
+                    <child><object class="ArControl">
+                      <!-- remapped address-->
+                      <property name="id">0x7f7f</property>
+                      <property name="inverted">yes</property>
+                    </object></child>
+                    <property name="title" translatable="yes">Show on controller</property>
                   </object>
                 </child>
               </object>
