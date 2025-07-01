@@ -73,6 +73,7 @@ If not, let us know as well.
   <content_rating type="oars-1.1"/>
   <url type="homepage">https://github.com/soyersoyer/sysex-controls</url>
   <url type="bugtracker">https://github.com/soyersoyer/sysex-controls/issues</url>
+  <url type="donation">https://www.paypal.com/donate/?business=HMRQ9TJLGQQ3W&amp;no_recurring=0&amp;item_name=This+software+is+free,+MIDI+controllers+are+not.+Support+for+additional+controllers&amp;currency_code=EUR</url>
   <screenshots>
     <screenshot type="default">
       <image>https://github.com/soyersoyer/sysex-controls/raw/v0.2.8/data/screenshots/page_1.png</image>
