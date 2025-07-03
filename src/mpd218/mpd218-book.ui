@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Mpd218Book" parent="AkBook">
+
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">RAM</property>
+            <property name="prog-id">0</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 1</property>
+            <property name="prog-id">1</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 2</property>
+            <property name="prog-id">2</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 3</property>
+            <property name="prog-id">3</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 4</property>
+            <property name="prog-id">4</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 5</property>
+            <property name="prog-id">5</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 6</property>
+            <property name="prog-id">6</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 7</property>
+            <property name="prog-id">7</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 8</property>
+            <property name="prog-id">8</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 9</property>
+            <property name="prog-id">9</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 10</property>
+            <property name="prog-id">10</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 11</property>
+            <property name="prog-id">11</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 12</property>
+            <property name="prog-id">12</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 13</property>
+            <property name="prog-id">13</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 14</property>
+            <property name="prog-id">14</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 15</property>
+            <property name="prog-id">15</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Mpd218ProgramPage">
+            <property name="title">Program 16</property>
+            <property name="prog-id">16</property>
+          </object>
+        </child>
+
+      </object>
+    </property>
+
+  </template>
+</interface>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Mpd218KnobPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Knob</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow" id="control_mode">
+                    <child><object class="MmControl"><property name="id">0x00</property></object></child>
+                    <property name="title" translatable="yes">Type</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>CC</item>
+                          <item>Aftertouch</item>
+                          <item>Inc/Dec 1</item>
+                          <item>Inc/Dec 2</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScChRow">
+                    <child><object class="MmControl"><property name="id">0x01</property></object></child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <binding name="visible">
+                  <closure type="gboolean" function="cv_in">
+                    <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                    <constant type="GVariant">[0x00, 0x03]</constant>
+                  </closure>
+                </binding>
+
+                <child>
+                  <object class="ScCcRow">
+                    <child><object class="MmControl"><property name="id">0x02</property></object></child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <binding name="visible">
+                  <closure type="gboolean" function="cv_in">
+                    <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                    <constant type="GVariant">[0x00, 0x01]</constant>
+                  </closure>
+                </binding>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="MmControl"><property name="id">0x03</property></object></child>
+                    <property name="title" translatable="yes">Min Value</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="MmControl"><property name="id">0x04</property></object></child>
+                    <property name="title" translatable="yes">Max Value</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <binding name="visible">
+                  <closure type="gboolean" function="cv_in">
+                    <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                    <constant type="GVariant">[0x02]</constant>
+                  </closure>
+                </binding>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="MmControl"><property name="id">0x05</property></object></child>
+                    <property name="title" translatable="yes">MSB</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="MmControl"><property name="id">0x06</property></object></child>
+                    <property name="title" translatable="yes">LSB</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="MmControl"><property name="id">0x07</property></object></child>
+                    <property name="title" translatable="yes">Value</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

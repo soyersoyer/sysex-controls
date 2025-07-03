@@ -304,6 +304,14 @@ sc_sources = [
   'minilab3/ml3-spm-page.c',
   'minilab3/ml3-velocity-page.c',
 
+  'mpd218/mpd218-book.c',
+  'mpd218/mpd218-knob-bank-page.c',
+  'mpd218/mpd218-knob-page.c',
+  'mpd218/mpd218-note-repeat-page.c',
+  'mpd218/mpd218-pad-bank-page.c',
+  'mpd218/mpd218-pad-page.c',
+  'mpd218/mpd218-program-page.c',
+
   'mpkmini/amm-arpeggiator-page.c',
   'mpkmini/amm-book.c',
   'mpkmini/amm-keybed-page.c',

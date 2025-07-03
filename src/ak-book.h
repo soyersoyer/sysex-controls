@@ -19,6 +19,14 @@
 #define AKAI_CMD_QUERY 0x66
 #define AKAI_CMD_RECEIVE 0x67
 
+// From: https://github.com/mungewell/mpd-utils
+#define AKAI_MPD218_ID 0x34
+
+#define AKAI_MPD218_CMD_SEND 0x10
+#define AKAI_MPD218_CMD_QUERY 0x12
+#define AKAI_MPD218_CMD_RECEIVE 0x10
+
+
 G_BEGIN_DECLS
 
 #define AK_TYPE_BOOK (ak_book_get_type ())

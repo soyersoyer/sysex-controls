@@ -291,6 +291,14 @@
     <file preprocess="xml-stripblanks">minilab3/ml3-spm-page.ui</file>
     <file preprocess="xml-stripblanks">minilab3/ml3-velocity-page.ui</file>
 
+    <file preprocess="xml-stripblanks">mpd218/mpd218-book.ui</file>
+    <file preprocess="xml-stripblanks">mpd218/mpd218-knob-bank-page.ui</file>
+    <file preprocess="xml-stripblanks">mpd218/mpd218-knob-page.ui</file>
+    <file preprocess="xml-stripblanks">mpd218/mpd218-note-repeat-page.ui</file>
+    <file preprocess="xml-stripblanks">mpd218/mpd218-pad-bank-page.ui</file>
+    <file preprocess="xml-stripblanks">mpd218/mpd218-pad-page.ui</file>
+    <file preprocess="xml-stripblanks">mpd218/mpd218-program-page.ui</file>
+
     <file preprocess="xml-stripblanks">mpkmini/amm-arpeggiator-page.ui</file>
     <file preprocess="xml-stripblanks">mpkmini/amm-book.ui</file>
     <file preprocess="xml-stripblanks">mpkmini/amm-keybed-page.ui</file>
