@@ -14,7 +14,7 @@ static GParamSpec *value_props[LAST_PROP];
 typedef struct
 {
   uint8_t prog_id;
-  uint8_t data[512];
+  uint8_t data[1024];
   uint16_t size;
 } AkProgramPagePrivate;
 
@@ -182,7 +182,7 @@ static void
 ak_program_page_init (AkProgramPage *self)
 {
   AkProgramPagePrivate *priv = ak_program_page_get_instance_private (self);
-  priv->size = 512;
+  priv->size = sizeof(priv->data);
 
   g_idle_add (G_SOURCE_FUNC (ak_program_page_add_self), self);
 }

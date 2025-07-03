@@ -140,7 +140,7 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
 int
 sc_midi_akai_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t send_cmd, uint8_t prog_id, uint8_t *data, uint16_t size)
 {
-  uint8_t req_data[512] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, dev_id, send_cmd, 0x00, 0x00, prog_id};
+  uint8_t req_data[1024] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, dev_id, send_cmd, 0x00, 0x00, prog_id};
 
   snd_seq_event_t ev;
   int err;
@@ -150,7 +150,7 @@ sc_midi_akai_write_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id,
   req_data[5] = (wsize >> 7) & 0x7f;
   req_data[6] = wsize & 0x7f;
 
-  if (size > 512 - 9)
+  if (size > 1024 - 9)
     return -EINVAL;
 
   memcpy (&req_data[8], data, size);
