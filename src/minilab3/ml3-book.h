@@ -3,8 +3,6 @@
 #include <adwaita.h>
 
 #include "ar-book.h"
-#include "sc-action-row.h"
-#include "sc-navigation-page.h"
 
 G_BEGIN_DECLS
 

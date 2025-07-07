@@ -4,8 +4,6 @@
 #include "sc-control.h"
 #include "sc-navigation-page.h"
 
-#include "ar-firmware-info-group.h"
-
 struct _KorgFirmwareInfoGroup
 {
   AdwPreferencesGroup parent_instance;
