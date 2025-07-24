@@ -81,6 +81,17 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.26" date="2025-07-24">
+      <description>
+        <ul>
+          <li>AKAI MPD218 support</li>
+          <li>Disabled the broken Arturia KeyLab mk3 support</li>
+          <li>The preset hide control is now inverted, so it is now preset show (Minilab 3, Keylab ES mk3)</li>
+          <li>Unsupported controllers will no longer appear on the home screen</li>
+          <li>Code cleanups</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.25" date="2025-06-05">
       <description>
         <ul>
