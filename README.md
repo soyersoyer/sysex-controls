@@ -29,7 +29,6 @@ These might also work, but have not been tested yet:
 - Akai MPD218
 - Arturia DrumBrute
 - Arturia KeyLab 25 / 49 / 61 / 88
-- Arturia KeyLab 49 / 61 / 88 mk3
 - Arturia KeyLab Essential 49 / 61 / 88
 - Arturia MicroLab
 - Arturia MicroLab mk3
