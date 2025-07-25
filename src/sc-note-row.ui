@@ -7,144 +7,144 @@
     <property name="model">
       <object class="ScControlValueList">
         <items>
-          <item>C-2</item>
-          <item>C#-2</item>
-          <item>D-2</item>
-          <item>D#-2</item>
-          <item>E-2</item>
-          <item>F-2</item>
-          <item>F#-2</item>
-          <item>G-2</item>
-          <item>G#-2</item>
-          <item>A-2</item>
-          <item>A#-2</item>
-          <item>B-2</item>
+          <item>0 C-2</item>
+          <item>1 C#-2</item>
+          <item>2 D-2</item>
+          <item>3 D#-2</item>
+          <item>4 E-2</item>
+          <item>5 F-2</item>
+          <item>6 F#-2</item>
+          <item>7 G-2</item>
+          <item>8 G#-2</item>
+          <item>9 A-2</item>
+          <item>10 A#-2</item>
+          <item>11 B-2</item>
 
-          <item>C-1</item>
-          <item>C#-1</item>
-          <item>D-1</item>
-          <item>D#-1</item>
-          <item>E-1</item>
-          <item>F-1</item>
-          <item>F#-1</item>
-          <item>G-1</item>
-          <item>G#-1</item>
-          <item>A-1</item>
-          <item>A#-1</item>
-          <item>B-1</item>
+          <item>12 C-1</item>
+          <item>13 C#-1</item>
+          <item>14 D-1</item>
+          <item>15 D#-1</item>
+          <item>16 E-1</item>
+          <item>17 F-1</item>
+          <item>18 F#-1</item>
+          <item>19 G-1</item>
+          <item>20 G#-1</item>
+          <item>21 A-1</item>
+          <item>22 A#-1</item>
+          <item>23 B-1</item>
 
-          <item>C0</item>
-          <item>C#0</item>
-          <item>D0</item>
-          <item>D#0</item>
-          <item>E0</item>
-          <item>F0</item>
-          <item>F#0</item>
-          <item>G0</item>
-          <item>G#0</item>
-          <item>A0</item>
-          <item>A#0</item>
-          <item>B0</item>
+          <item>24 C0</item>
+          <item>25 C#0</item>
+          <item>26 D0</item>
+          <item>27 D#0</item>
+          <item>28 E0</item>
+          <item>29 F0</item>
+          <item>30 F#0</item>
+          <item>31 G0</item>
+          <item>32 G#0</item>
+          <item>33 A0</item>
+          <item>34 A#0</item>
+          <item>35 B0</item>
 
-          <item>C1</item>
-          <item>C#1</item>
-          <item>D1</item>
-          <item>D#1</item>
-          <item>E1</item>
-          <item>F1</item>
-          <item>F#1</item>
-          <item>G1</item>
-          <item>G#1</item>
-          <item>A1</item>
-          <item>A#1</item>
-          <item>B1</item>
+          <item>36 C1</item>
+          <item>37 C#1</item>
+          <item>38 D1</item>
+          <item>39 D#1</item>
+          <item>40 E1</item>
+          <item>41 F1</item>
+          <item>42 F#1</item>
+          <item>43 G1</item>
+          <item>44 G#1</item>
+          <item>45 A1</item>
+          <item>46 A#1</item>
+          <item>47 B1</item>
 
-          <item>C2</item>
-          <item>C#2</item>
-          <item>D2</item>
-          <item>D#2</item>
-          <item>E2</item>
-          <item>F2</item>
-          <item>F#2</item>
-          <item>G2</item>
-          <item>G#2</item>
-          <item>A2</item>
-          <item>A#2</item>
-          <item>B2</item>
+          <item>48 C2</item>
+          <item>49 C#2</item>
+          <item>50 D2</item>
+          <item>51 D#2</item>
+          <item>52 E2</item>
+          <item>53 F2</item>
+          <item>54 F#2</item>
+          <item>55 G2</item>
+          <item>56 G#2</item>
+          <item>57 A2</item>
+          <item>58 A#2</item>
+          <item>59 B2</item>
 
-          <item>C3</item>
-          <item>C#3</item>
-          <item>D3</item>
-          <item>D#3</item>
-          <item>E3</item>
-          <item>F3</item>
-          <item>F#3</item>
-          <item>G3</item>
-          <item>G#3</item>
-          <item>A3</item>
-          <item>A#3</item>
-          <item>B3</item>
+          <item>60 C3</item>
+          <item>61 C#3</item>
+          <item>62 D3</item>
+          <item>63 D#3</item>
+          <item>64 E3</item>
+          <item>65 F3</item>
+          <item>66 F#3</item>
+          <item>67 G3</item>
+          <item>68 G#3</item>
+          <item>69 A3</item>
+          <item>70 A#3</item>
+          <item>71 B3</item>
 
-          <item>C4</item>
-          <item>C#4</item>
-          <item>D4</item>
-          <item>D#4</item>
-          <item>E4</item>
-          <item>F4</item>
-          <item>F#4</item>
-          <item>G4</item>
-          <item>G#4</item>
-          <item>A4</item>
-          <item>A#4</item>
-          <item>B4</item>
+          <item>C4 72</item>
+          <item>C#4 73</item>
+          <item>D4 74</item>
+          <item>D#4 75</item>
+          <item>E4 76</item>
+          <item>F4 77</item>
+          <item>F#4 78</item>
+          <item>G4 79</item>
+          <item>G#4 80</item>
+          <item>A4 81</item>
+          <item>A#4 82</item>
+          <item>B4 83</item>
 
-          <item>C5</item>
-          <item>C#5</item>
-          <item>D5</item>
-          <item>D#5</item>
-          <item>E5</item>
-          <item>F5</item>
-          <item>F#5</item>
-          <item>G5</item>
-          <item>G#5</item>
-          <item>A5</item>
-          <item>A#5</item>
-          <item>B5</item>
+          <item>84 C5</item>
+          <item>85 C#5</item>
+          <item>86 D5</item>
+          <item>87 D#5</item>
+          <item>88 E5</item>
+          <item>89 F5</item>
+          <item>90 F#5</item>
+          <item>91 G5</item>
+          <item>92 G#5</item>
+          <item>93 A5</item>
+          <item>94 A#5</item>
+          <item>95 B5</item>
 
-          <item>C6</item>
-          <item>C#6</item>
-          <item>D6</item>
-          <item>D#6</item>
-          <item>E6</item>
-          <item>F6</item>
-          <item>F#6</item>
-          <item>G6</item>
-          <item>G#6</item>
-          <item>A6</item>
-          <item>A#6</item>
-          <item>B6</item>
+          <item>96 C6</item>
+          <item>97 C#6</item>
+          <item>98 D6</item>
+          <item>99 D#6</item>
+          <item>100 E6</item>
+          <item>101 F6</item>
+          <item>102 F#6</item>
+          <item>103 G6</item>
+          <item>104 G#6</item>
+          <item>105 A6</item>
+          <item>106 A#6</item>
+          <item>107 B6</item>
 
-          <item>C7</item>
-          <item>C#7</item>
-          <item>D7</item>
-          <item>D#7</item>
-          <item>E7</item>
-          <item>F7</item>
-          <item>F#7</item>
-          <item>G7</item>
-          <item>G#7</item>
-          <item>A7</item>
-          <item>A#7</item>
-          <item>B7</item>
+          <item>108 C7</item>
+          <item>109 C#7</item>
+          <item>110 D7</item>
+          <item>111 D#7</item>
+          <item>112 E7</item>
+          <item>113 F7</item>
+          <item>114 F#7</item>
+          <item>115 G7</item>
+          <item>116 G#7</item>
+          <item>117 A7</item>
+          <item>118 A#7</item>
+          <item>119 B7</item>
 
-          <item>C8</item>
-          <item>C#8</item>
-          <item>D8</item>
-          <item>D#8</item>
-          <item>E8</item>
-          <item>F8</item>
-          <item>F#8</item>
-          <item>G8</item>
+          <item>120 C8</item>
+          <item>121 C#8</item>
+          <item>122 D8</item>
+          <item>123 D#8</item>
+          <item>124 E8</item>
+          <item>125 F8</item>
+          <item>126 F#8</item>
+          <item>127 G8</item>
         </items>
       </object>
     </property>
