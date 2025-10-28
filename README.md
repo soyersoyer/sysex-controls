@@ -45,6 +45,16 @@ It only supports the global controls from KeyLab 25 / 49 / 61 / 88 and SparkLE /
 If you think some untested devices work well, please let us know.
 If not, let us know as well.
 
+## Sponsorship
+
+It's easier to develop with real hardware. If you have the opportunity, please sponsor this project to support more MIDI controllers.
+
+### Planned controllers
+
+- Akai MPK Mini mk4 (donation amount: 0%)
+- Korg NanoPad (donation amount: 0%)
+- Novation Launchkey mk4 (donation amount: 0%)
+
 ## Installation
 
 ### From Flathub
