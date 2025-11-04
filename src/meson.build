@@ -372,7 +372,7 @@ sc_sources = [
 
 sc_deps = [
   dependency('gtk4'),
-  dependency('libadwaita-1', version: '>= 1.4'),
+  dependency('libadwaita-1', version: '>= 1.5'),
   dependency('alsa'),
   dependency('gmodule-export-2.0'),
 ]
