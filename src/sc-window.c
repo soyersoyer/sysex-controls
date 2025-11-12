@@ -69,7 +69,7 @@ static controller_t controllers[] = {
   {"Arturia KeyStep 37", "KeyStep 37", ks37_book_get_type},
   {"KeyStep Pro", "KeyStep Pro", ksp_book_get_type},
   {"Arturia MicroLab", "MicroLab", microlab_book_get_type},
-  {"MicroLab mk3", "MicroLab3", microlab3_book_get_type},
+  //{"MicroLab mk3", "MicroLab3", microlab3_book_get_type},
   {"Arturia MiniBrute 2", "MiniBrute 2", mb2_book_get_type},
   {"Arturia MiniBrute 2S", "MiniBrute 2S", mb2s_book_get_type},
   {"Arturia MINILAB", "MiniLab", ml_book_get_type},

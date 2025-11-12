@@ -31,7 +31,6 @@ These might also work, but have not been tested yet:
 - Arturia KeyLab 25 / 49 / 61 / 88
 - Arturia KeyLab Essential 49 / 61 / 88
 - Arturia MicroLab
-- Arturia MicroLab mk3
 - Arturia MiniBrute 2
 - Arturia MiniBrute 2S
 - Arturia SparkLE
