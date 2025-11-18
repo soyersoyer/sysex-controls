@@ -48,7 +48,7 @@ If not, let us know as well.
 
 ### From Flathub
 
-<a href="https://flathub.org/apps/details/hu.irl.sysex-controls"><img width="240" alt="Download on Flathub" src="https://flathub.org/assets/badges/flathub-badge-en.png"/></a>
+<a href="https://flathub.org/apps/details/hu.irl.sysex-controls"><img width="240" alt="Download on Flathub" src="https://flathub.org/api/badge?locale=en"/></a>
 
 #### Install
 
