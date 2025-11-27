@@ -14,6 +14,7 @@ These devices are supported and tested:
 - Akai MPK Mini mk3
 - Arturia BeatStep
 - Arturia BeatStep Pro
+- Arturia DrumBrute
 - Arturia DrumBrute Impact
 - Arturia KeyLab Essential 49 / 61 / 88 mk3
 - Arturia KeyLab mkII 49 / 61 / 88
@@ -27,7 +28,6 @@ These devices are supported and tested:
 
 These might also work, but have not been tested yet:
 - Akai MPD218
-- Arturia DrumBrute
 - Arturia KeyLab 25 / 49 / 61 / 88
 - Arturia KeyLab Essential 49 / 61 / 88
 - Arturia MicroLab
