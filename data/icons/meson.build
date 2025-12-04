@@ -6,6 +6,6 @@ install_data(
   install_dir: get_option('datadir') / 'icons' / scalable_dir
 )
 install_data(
-  scalable_dir / ('@0@-midi-controller-symbolic.svg').format(application_id),
+  scalable_dir / ('@0@-controller.svg').format(application_id),
   install_dir: get_option('datadir') / 'icons' / scalable_dir
 )

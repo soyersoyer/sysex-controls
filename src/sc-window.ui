@@ -88,7 +88,7 @@
                 </child>
                 <property name="content">
                   <object class="AdwStatusPage" >
-                    <property name="icon-name">hu.irl.sysex-controls-midi-controller-symbolic</property>
+                    <property name="icon-name">hu.irl.sysex-controls-controller</property>
                     <child>
                       <object class="AdwClamp" id="controller_list_clamp"/>
                     </child>
