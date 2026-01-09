@@ -1,9 +1,11 @@
 #include "korg-book.h"
 #include "sc-navigation-page.h"
 #include "mm-control.h"
-#include "korg-scene-page.h"
 
+#include "korg-cc-na-row.h"
 #include "korg-firmware-info-group.h"
+#include "korg-note-na-row.h"
+#include "korg-scene-page.h"
 
 typedef struct
 {
@@ -91,6 +93,8 @@ static void
 korg_book_init (KorgBook *self)
 {
   g_type_ensure (MM_TYPE_CONTROL);
-  g_type_ensure (KORG_TYPE_SCENE_PAGE);
+  g_type_ensure (KORG_TYPE_CC_NA_ROW);
   g_type_ensure (KORG_TYPE_FIRMWARE_INFO_GROUP);
+  g_type_ensure (KORG_TYPE_NOTE_NA_ROW);
+  g_type_ensure (KORG_TYPE_SCENE_PAGE);
 }

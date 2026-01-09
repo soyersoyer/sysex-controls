@@ -26,7 +26,9 @@ sc_sources = [
   'ar-preset-group.c',
 
   'korg-book.c',
+  'korg-cc-na-row.c',
   'korg-firmware-info-group.c',
+  'korg-note-na-row.c',
   'korg-scene-page.c',
 
   'mm-control.c',
