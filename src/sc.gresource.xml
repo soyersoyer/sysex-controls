@@ -23,7 +23,9 @@
     <file preprocess="xml-stripblanks">ar-preset-chooser-row.ui</file>
     <file preprocess="xml-stripblanks">ar-preset-group.ui</file>
 
+    <file preprocess="xml-stripblanks">korg-cc-na-row.ui</file>
     <file preprocess="xml-stripblanks">korg-firmware-info-group.ui</file>
+    <file preprocess="xml-stripblanks">korg-note-na-row.ui</file>
 
     <file preprocess="xml-stripblanks">sc-action-row.ui</file>
     <file preprocess="xml-stripblanks">sc-cc-row.ui</file>
