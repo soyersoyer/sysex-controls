@@ -34,6 +34,7 @@
 #include "mpkmini3/amm3-book.h"
 #include "nanokey2/nk2-book.h"
 #include "nanokontrol2/nkl2-book.h"
+#include "nanopad2/np2-book.h"
 #include "sparkle/sple-book.h"
 #include "thelaboratory/tl-book.h"
 
@@ -77,6 +78,7 @@ static controller_t controllers[] = {
   {"Minilab3", "MiniLab 3", ml3_book_get_type},
   {"nanoKEY2", "nanoKEY2", nk2_book_get_type},
   {"nanoKONTROL2", "nanoKONTROL2", nkl2_book_get_type},
+  {"nanoPAD2", "nanoPAD2", np2_book_get_type},
   {"MPD218", "MPD218", mpd218_book_get_type},
   {"MPK mini", "MPK mini", amm_book_get_type},
   {"MPKmini2", "MPK mini 2", amm2_book_get_type},
