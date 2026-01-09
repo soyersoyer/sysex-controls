@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Np2ScenePage" parent="KorgScenePage">
+    <property name="title" translatable="yes">Scene</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="KorgFirmwareInfoGroup"/>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 1</property>
+                    <property name="control-id-offset">0x00</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 2</property>
+                    <property name="control-id-offset">0x06</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 3</property>
+                    <property name="control-id-offset">0x0c</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 4</property>
+                    <property name="control-id-offset">0x12</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 5</property>
+                    <property name="control-id-offset">0x18</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 6</property>
+                    <property name="control-id-offset">0x1e</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 7</property>
+                    <property name="control-id-offset">0x24</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 8</property>
+                    <property name="control-id-offset">0x2a</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 9</property>
+                    <property name="control-id-offset">0x30</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 10</property>
+                    <property name="control-id-offset">0x36</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 11</property>
+                    <property name="control-id-offset">0x3c</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 12</property>
+                    <property name="control-id-offset">0x42</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 13</property>
+                    <property name="control-id-offset">0x48</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 14</property>
+                    <property name="control-id-offset">0x4e</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 15</property>
+                    <property name="control-id-offset">0x54</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Pad 16</property>
+                    <property name="control-id-offset">0x5a</property>
+                    <property name="target-page">Np2PadPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+</interface>

@@ -349,6 +349,10 @@
     <file preprocess="xml-stripblanks">nanokontrol2/nkl2-slider-page.ui</file>
     <file preprocess="xml-stripblanks">nanokontrol2/nkl2-transport-buttons-page.ui</file>
 
+    <file preprocess="xml-stripblanks">nanopad2/np2-book.ui</file>
+    <file preprocess="xml-stripblanks">nanopad2/np2-pad-page.ui</file>
+    <file preprocess="xml-stripblanks">nanopad2/np2-scene-page.ui</file>
+
     <file preprocess="xml-stripblanks">sparkle/sple-book.ui</file>
     <file preprocess="xml-stripblanks">sparkle/sple-controller-page.ui</file>
     <file preprocess="xml-stripblanks">sparkle/sple-velocity-page.ui</file>

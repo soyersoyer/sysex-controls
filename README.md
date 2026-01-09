@@ -25,6 +25,7 @@ These devices are supported and tested:
 - Arturia MiniLab mkII
 - Arturia MiniLab 3
 - Korg nanoKEY2
+- Korg nanoPAD2
 
 These might also work, but have not been tested yet:
 - Akai MPD218
