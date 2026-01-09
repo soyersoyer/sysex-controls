@@ -1,3 +1,5 @@
+#include <stdbit.h>
+
 #include "korg-scene-page.h"
 
 #include "mm-page.h"
@@ -95,7 +97,7 @@ values_to_buf (char buf[80], uint8_t *value, uint8_t size)
 }
 
 static int
-korg_scene_page_read_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size)
+korg_scene_page_read_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size, uint8_t mask)
 {
   KorgScenePagePrivate *priv;
   char buf[80];
@@ -108,7 +110,10 @@ korg_scene_page_read_control (MmPage *self, uint32_t control_id, uint8_t *value,
     return -EINVAL;
   }
 
-  memcpy (value, &priv->data[control_id], size);
+  if (size == 1)
+    *value = (priv->data[control_id] & mask) >> stdc_trailing_zeros(mask);
+  else
+    memcpy (value, &priv->data[control_id], size);
 
   g_debug("%s (%02x::%02x) -> %s", __func__, priv->scene_id, control_id, values_to_buf (buf, value, size));
 
@@ -116,11 +121,12 @@ korg_scene_page_read_control (MmPage *self, uint32_t control_id, uint8_t *value,
 }
 
 static int
-korg_scene_page_write_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size)
+korg_scene_page_write_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size, uint8_t mask)
 {
   KorgBook *book;
   KorgScenePagePrivate *priv;
-  char buf[80];
+  char dbuf[80];
+  char vbuf[80];
 
   g_return_val_if_fail (KORG_IS_SCENE_PAGE (self), -EINVAL);
 
@@ -130,9 +136,12 @@ korg_scene_page_write_control (MmPage *self, uint32_t control_id, uint8_t *value
   if (control_id >= priv->size || control_id + size > priv->size)
     return -EINVAL;
 
-  memcpy (&priv->data[control_id], value, size);
+  if (size == 1)
+    priv->data[control_id] = (priv->data[control_id] & ~mask) | (*value << stdc_trailing_zeros(mask) & mask);
+  else
+    memcpy (&priv->data[control_id], value, size);
 
-  g_debug("%s (%02x::%02x) <- %s", __func__, priv->scene_id, control_id, values_to_buf (buf, value, size));
+  g_debug("%s (%02x::%02x) <- %s (%s mask: %02x)", __func__, priv->scene_id, control_id, values_to_buf (dbuf, &priv->data[control_id], size), values_to_buf (vbuf, value, size), mask);
 
   return korg_book_write_scene (book, priv->scene_id, priv->data, priv->size);
 }
