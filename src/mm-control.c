@@ -14,6 +14,7 @@ enum {
   PROP_USE_CC_OFFSET,
   PROP_VALUE_OFFSET,
   PROP_SIZE,
+  PROP_MASK,
   LAST_PROP,
 };
 
@@ -26,6 +27,7 @@ struct _MmControl
   gboolean use_cc_offset;
   uint32_t real_id;
   uint8_t size;
+  uint8_t mask;
   uint8_t value[16];
   int8_t value_offset;
   GtkWidget *widget;
@@ -64,6 +66,13 @@ mm_control_get_size (MmControl *self)
   return self->size;
 }
 
+uint8_t
+mm_control_get_mask (MmControl *self)
+{
+  g_return_val_if_fail (MM_IS_CONTROL (self), 0);
+  return self->mask;
+}
+
 static void
 mm_control_get_property (GObject    *object,
                          guint       prop_id,
@@ -85,6 +94,9 @@ mm_control_get_property (GObject    *object,
     break;
     case PROP_SIZE:
       g_value_set_uint (value, mm_control_get_size (self));
+    break;
+    case PROP_MASK:
+      g_value_set_uint (value, mm_control_get_mask (self));
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -112,6 +124,9 @@ mm_control_set_property (GObject      *object,
     break;
     case PROP_SIZE:
       self->size = g_value_get_uint (value);
+    break;
+    case PROP_MASK:
+      self->mask = g_value_get_uint (value);
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -141,6 +156,10 @@ mm_control_class_init (MmControlClass *klass)
 
   value_props[PROP_SIZE] = g_param_spec_uint ("size", NULL, NULL,
                                                      0, 16, 1,
+                                                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+
+  value_props[PROP_MASK] = g_param_spec_uint ("mask", NULL, NULL,
+                                                     0, 0xff, 0xff,
                                                      G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   g_object_class_install_properties (object_class, LAST_PROP, value_props);
@@ -174,7 +193,7 @@ combo_row_change_cb (GObject * widget, GParamSpec *pspec, MmControl *self)
     return;
 
   g_debug ("combo control change 0x%08x: 0x%02x -> 0x%02x %s", self->real_id, self->value[0], val, sc_control_value_get_name (item));
-  if (mm_page_write_control (page, self->real_id, &val, 1) < 0)
+  if (mm_page_write_control (page, self->real_id, &val, 1, self->mask) < 0)
   {
     sc_io_problem (window, "Control change failed");
     return;
@@ -195,7 +214,7 @@ switch_row_change_cb (GObject * widget, GParamSpec *pspec, MmControl *self)
     return;
 
   g_debug ("switch control change 0x%08x: 0x%02x -> 0x%02x", self->real_id, self->value[0], val);
-  if (mm_page_write_control (page, self->real_id, &val, 1) < 0)
+  if (mm_page_write_control (page, self->real_id, &val, 1, self->mask) < 0)
   {
     sc_io_problem (window, "Control change failed");
     return;
@@ -233,7 +252,7 @@ spin_row_change_cb (GObject * widget, GParamSpec *pspec, MmControl *self)
     self->value[1] = val & 0x7f;
   }
 
-  if (mm_page_write_control (page, self->real_id, self->value, self->size) < 0)
+  if (mm_page_write_control (page, self->real_id, self->value, self->size, self->mask) < 0)
   {
     sc_io_problem (window, "Control change failed");
 
@@ -270,7 +289,7 @@ entry_row_change_cb (AdwEntryRow* widget, MmControl *self)
   strncpy((char*)self->value, new_text, 16);
   self->value[15] = 0;
 
-  if (mm_page_write_control (page, self->real_id, self->value, self->size) < 0)
+  if (mm_page_write_control (page, self->real_id, self->value, self->size, self->mask) < 0)
   {
     sc_io_problem (window, "Control change failed");
     return;
@@ -398,7 +417,7 @@ mm_control_read_value (ScControl *control)
   MmControl *self = MM_CONTROL (control);
   MmPage *page = get_mm_page (self);
 
-  return mm_page_read_control (page, self->real_id, self->value, self->size);
+  return mm_page_read_control (page, self->real_id, self->value, self->size, self->mask);
 }
 
 static void
@@ -411,6 +430,7 @@ mm_control_interface_init (ScControlInterface *iface)
 static void
 mm_control_init (MmControl *self)
 {
+  self->mask = 0xff;
   gtk_widget_set_visible (GTK_WIDGET (&self->parent_instance), false);
   g_idle_add (G_SOURCE_FUNC (mm_control_register), self);
 }

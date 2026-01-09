@@ -8,7 +8,7 @@ mm_page_default_init (MmPageInterface *iface)
 }
 
 int
-mm_page_read_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size)
+mm_page_read_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size, uint8_t mask)
 {
   MmPageInterface *iface;
 
@@ -17,11 +17,11 @@ mm_page_read_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t
   iface = MM_PAGE_GET_IFACE (self);
   g_return_val_if_fail (iface->read_control != NULL, -EINVAL);
 
-  return iface->read_control (self, control_id, value, size);
+  return iface->read_control (self, control_id, value, size, mask);
 }
 
 int
-mm_page_write_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size)
+mm_page_write_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size, uint8_t mask)
 {
   MmPageInterface *iface;
 
@@ -30,5 +30,5 @@ mm_page_write_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_
   iface = MM_PAGE_GET_IFACE (self);
   g_return_val_if_fail (iface->write_control != NULL, -EINVAL);
 
-  return iface->write_control (self, control_id, value, size);
+  return iface->write_control (self, control_id, value, size, mask);
 }

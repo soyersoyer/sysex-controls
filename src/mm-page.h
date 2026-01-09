@@ -13,11 +13,11 @@ struct _MmPageInterface
 {
   GTypeInterface parent_iface;
 
-  int (*read_control) (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size);
-  int (*write_control) (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size);
+  int (*read_control) (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size, uint8_t mask);
+  int (*write_control) (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size, uint8_t mask);
 };
 
-int mm_page_read_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size);
-int mm_page_write_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size);
+int mm_page_read_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size, uint8_t mask);
+int mm_page_write_control (MmPage *self, uint32_t control_id, uint8_t *value, uint8_t size, uint8_t mask);
 
 G_END_DECLS
