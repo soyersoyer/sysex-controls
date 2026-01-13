@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Np2XyPadCcPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">XY Pad CC Mode</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScChRowGlob">
+                    <child><object class="MmControl"><property name="id">0x0e</property></object></child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="Np2XyAxis">
+                <property name="title" translatable="yes">X-axis</property>
+                <property name="control-id-offset">0x07</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="Np2XyAxis">
+                <property name="title" translatable="yes">Y-axis</property>
+                <property name="control-id-offset">0x0b</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Touch</property>
+
+                <child>
+                  <object class="AdwSwitchRow" id="touch">
+                    <child><object class="MmControl"><property name="id">0x0f</property></object></child>
+                    <property name="title" translatable="yes">Enable</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScCcRow">
+                    <child><object class="MmControl"><property name="id">0x10</property></object></child>
+                    <property name="title" translatable="yes">CC</property>
+                    <binding name="visible">
+                      <lookup type="AdwSwitchRow" name="active">touch</lookup>
+                    </binding>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="MmControl"><property name="id">0x11</property></object></child>
+                    <binding name="visible">
+                      <lookup type="AdwSwitchRow" name="active">touch</lookup>
+                    </binding>
+                    <property name="title" translatable="yes">Off Value</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="MmControl"><property name="id">0x12</property></object></child>
+                    <binding name="visible">
+                      <lookup type="AdwSwitchRow" name="active">touch</lookup>
+                    </binding>
+                    <property name="title" translatable="yes">On Value</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">0</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

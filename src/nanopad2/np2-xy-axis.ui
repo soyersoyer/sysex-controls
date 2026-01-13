@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Np2XyAxis" parent="ScPreferencesGroup">
+
+    <child>
+      <object class="ScComboRow" id="control_mode">
+        <child><object class="MmControl"><property name="id">0x00</property></object></child>
+        <property name="title" translatable="yes">Type</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item>No Assign</item>
+              <item>CC</item>
+              <item>Pitch Bend</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScCcRow">
+        <child><object class="MmControl"><property name="id">0x01</property></object></child>
+        <property name="title" translatable="yes">CC</property>
+        <binding name="visible">
+          <closure type="gboolean" function="cv_in">
+            <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+            <constant type="GVariant">[0x01]</constant>
+          </closure>
+        </binding>
+      </object>
+    </child>
+
+    <child>
+      <object class="ScComboRow">
+        <child><object class="MmControl"><property name="id">0x02</property></object></child>
+        <property name="title" translatable="yes">Polarity</property>
+        <property name="model">
+          <object class="ScControlValueList">
+            <items>
+              <item>Normal</item>
+              <item>Reverse</item>
+            </items>
+          </object>
+        </property>
+      </object>
+    </child>
+
+  </template>
+</interface>

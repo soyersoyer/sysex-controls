@@ -364,8 +364,12 @@ sc_sources = [
   'nanokontrol2/nkl2-transport-buttons-page.c',
 
   'nanopad2/np2-book.c',
+  'nanopad2/np2-global-page.c',
   'nanopad2/np2-pad-page.c',
   'nanopad2/np2-scene-page.c',
+  'nanopad2/np2-xy-axis.c',
+  'nanopad2/np2-xy-pad-cc-page.c',
+  'nanopad2/np2-xy-pad-ts-page.c',
 
   'sparkle/sple-book.c',
   'sparkle/sple-controller-page.c',
