@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Np2XyPadTsPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">XY Pad Touch Scale mode</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScChRowGlob">
+                    <child><object class="MmControl"><property name="id">0x19</property></object></child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">X-axis</property>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child><object class="MmControl"><property name="id">0x15</property></object></child>
+                    <property name="title" translatable="yes">Note On velocity</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Y-axis</property>
+
+                <child>
+                  <object class="AdwSwitchRow" id="yaxiscc">
+                    <child><object class="MmControl"><property name="id">0x16</property></object></child>
+                    <property name="title" translatable="yes">CC Enable</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScCcRow">
+                    <child><object class="MmControl"><property name="id">0x17</property></object></child>
+                    <property name="title" translatable="yes">CC</property>
+                    <binding name="visible">
+                      <lookup type="AdwSwitchRow" name="active">yaxiscc</lookup>
+                    </binding>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="MmControl"><property name="id">0x18</property></object></child>
+                    <property name="title" translatable="yes">Polarity</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Normal</item>
+                          <item>Reverse</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="MmControl"><property name="id">0x1b</property></object></child>
+                    <property name="title" translatable="yes">Gate Speed</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1/48</item>
+                          <item>1/32</item>
+                          <item>1/16</item>
+                          <item>1/12</item>
+                          <item>1/8</item>
+                          <item>1/6</item>
+                          <item>3/16</item>
+                          <item>1/4</item>
+                          <item>1/3</item>
+                          <item>3/8</item>
+                          <item>1/2</item>
+                         </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">User Scale</property>
+
+                <child>
+                  <object class="ScComboRow" id="scale_length">
+                    <child><object class="MmControl"><property name="id">0x1e</property></object></child>
+                    <property name="title" translatable="yes">Length</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item value="1">1</item>
+                          <item>2</item>
+                          <item>3</item>
+                          <item>4</item>
+                          <item>5</item>
+                          <item>6</item>
+                          <item>7</item>
+                          <item>8</item>
+                          <item>9</item>
+                          <item>10</item>
+                          <item>11</item>
+                          <item>12</item>
+                         </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgNoteOffsetRow">
+                    <child><object class="MmControl"><property name="id">0x1f</property></object></child>
+                    <property name="title" translatable="yes">Note Offset 1</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgNoteOffsetRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_gte">
+                        <lookup type="ScComboRow" name="selected-item">scale_length</lookup>
+                        <constant type="guint">2</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="MmControl"><property name="id">0x20</property></object></child>
+                    <property name="title" translatable="yes">Note Offset 2</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgNoteOffsetRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_gte">
+                        <lookup type="ScComboRow" name="selected-item">scale_length</lookup>
+                        <constant type="guint">3</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="MmControl"><property name="id">0x21</property></object></child>
+                    <property name="title" translatable="yes">Note Offset 3</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgNoteOffsetRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_gte">
+                        <lookup type="ScComboRow" name="selected-item">scale_length</lookup>
+                        <constant type="guint">4</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="MmControl"><property name="id">0x22</property></object></child>
+                    <property name="title" translatable="yes">Note Offset 4</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgNoteOffsetRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_gte">
+                        <lookup type="ScComboRow" name="selected-item">scale_length</lookup>
+                        <constant type="guint">5</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="MmControl"><property name="id">0x23</property></object></child>
+                    <property name="title" translatable="yes">Note Offset 5</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgNoteOffsetRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_gte">
+                        <lookup type="ScComboRow" name="selected-item">scale_length</lookup>
+                        <constant type="guint">6</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="MmControl"><property name="id">0x24</property></object></child>
+                    <property name="title" translatable="yes">Note Offset 6</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgNoteOffsetRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_gte">
+                        <lookup type="ScComboRow" name="selected-item">scale_length</lookup>
+                        <constant type="guint">7</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="MmControl"><property name="id">0x25</property></object></child>
+                    <property name="title" translatable="yes">Note Offset 7</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgNoteOffsetRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_gte">
+                        <lookup type="ScComboRow" name="selected-item">scale_length</lookup>
+                        <constant type="guint">8</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="MmControl"><property name="id">0x26</property></object></child>
+                    <property name="title" translatable="yes">Note Offset 8</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgNoteOffsetRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_gte">
+                        <lookup type="ScComboRow" name="selected-item">scale_length</lookup>
+                        <constant type="guint">9</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="MmControl"><property name="id">0x27</property></object></child>
+                    <property name="title" translatable="yes">Note Offset 9</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgNoteOffsetRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_gte">
+                        <lookup type="ScComboRow" name="selected-item">scale_length</lookup>
+                        <constant type="guint">10</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="MmControl"><property name="id">0x28</property></object></child>
+                    <property name="title" translatable="yes">Note Offset 10</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgNoteOffsetRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_gte">
+                        <lookup type="ScComboRow" name="selected-item">scale_length</lookup>
+                        <constant type="guint">11</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="MmControl"><property name="id">0x29</property></object></child>
+                    <property name="title" translatable="yes">Note Offset 11</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgNoteOffsetRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_gte">
+                        <lookup type="ScComboRow" name="selected-item">scale_length</lookup>
+                        <constant type="guint">12</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="MmControl"><property name="id">0x2a</property></object></child>
+                    <property name="title" translatable="yes">Note Offset 12</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

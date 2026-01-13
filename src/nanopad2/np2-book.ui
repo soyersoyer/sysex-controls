@@ -5,7 +5,14 @@
   <template class="Np2Book" parent="KorgBook">
     <property name="child">
       <object class="AdwNavigationView">
-        
+
+        <child>
+          <object class="Np2GlobalPage">
+            <property name="title" translatable="yes">Global</property>
+            <property name="scene-id">0xFF</property>
+          </object>
+        </child>
+
         <child>
           <object class="Np2ScenePage">
             <property name="title" translatable="yes">Scene</property>
