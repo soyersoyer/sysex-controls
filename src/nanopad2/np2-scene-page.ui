@@ -11,10 +11,6 @@
           <object class="ScPreferencesPage">
 
             <child>
-              <object class="KorgFirmwareInfoGroup"/>
-            </child>
-
-            <child>
               <object class="AdwPreferencesGroup">
 
                 <child>
