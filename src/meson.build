@@ -29,6 +29,7 @@ sc_sources = [
   'korg-cc-na-row.c',
   'korg-firmware-info-group.c',
   'korg-note-na-row.c',
+  'korg-note-offset-row.c',
   'korg-scene-page.c',
 
   'mm-control.c',
