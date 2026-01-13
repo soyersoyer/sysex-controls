@@ -452,6 +452,15 @@ cv_in_2 (GObject *object, ScControlValue* value, GVariant* variant, ScControlVal
   return cv_in (object, value, variant) && cv_in (object, value2, variant2);
 }
 
+gboolean
+cv_gte (GObject *object, ScControlValue* value, guint value2)
+{
+  uint8_t selected = sc_control_value_get_value (value);
+
+  return selected >= value2;
+}
+
+
 static void
 sc_control_value_list_init (ScControlValueList *self)
 {

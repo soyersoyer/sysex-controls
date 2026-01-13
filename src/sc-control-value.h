@@ -13,6 +13,7 @@ int sc_control_value_get_value (ScControlValue *self);
 const char* sc_control_value_get_name (ScControlValue *self);
 gboolean cv_in (GObject *object, ScControlValue* value, GVariant* variant);
 gboolean cv_in_2 (GObject *object, ScControlValue* value, GVariant* variant, ScControlValue* value2, GVariant* variant2);
+gboolean cv_gte (GObject *object, ScControlValue* value, guint variant);
 
 #define SC_TYPE_CONTROL_VALUE_LIST (sc_control_value_list_get_type ())
 
