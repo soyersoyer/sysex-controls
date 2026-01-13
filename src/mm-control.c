@@ -15,6 +15,7 @@ enum {
   PROP_VALUE_OFFSET,
   PROP_SIZE,
   PROP_MASK,
+  PROP_MULTIPLY,
   LAST_PROP,
 };
 
@@ -28,6 +29,7 @@ struct _MmControl
   uint32_t real_id;
   uint8_t size;
   uint8_t mask;
+  double multiply;
   uint8_t value[16];
   int8_t value_offset;
   GtkWidget *widget;
@@ -73,6 +75,13 @@ mm_control_get_mask (MmControl *self)
   return self->mask;
 }
 
+double
+mm_control_get_multiply (MmControl *self)
+{
+  g_return_val_if_fail (MM_IS_CONTROL (self), 0);
+  return self->multiply;
+}
+
 static void
 mm_control_get_property (GObject    *object,
                          guint       prop_id,
@@ -97,6 +106,9 @@ mm_control_get_property (GObject    *object,
     break;
     case PROP_MASK:
       g_value_set_uint (value, mm_control_get_mask (self));
+    break;
+    case PROP_MULTIPLY:
+      g_value_set_double (value, mm_control_get_multiply (self));
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -127,6 +139,9 @@ mm_control_set_property (GObject      *object,
     break;
     case PROP_MASK:
       self->mask = g_value_get_uint (value);
+    break;
+    case PROP_MULTIPLY:
+      self->multiply = g_value_get_double (value);
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -161,6 +176,10 @@ mm_control_class_init (MmControlClass *klass)
   value_props[PROP_MASK] = g_param_spec_uint ("mask", NULL, NULL,
                                                      0, 0xff, 0xff,
                                                      G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+
+  value_props[PROP_MULTIPLY] = g_param_spec_double ("multiply", NULL, NULL,
+                                                    0, G_MAXDOUBLE, 1,
+                                                    G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   g_object_class_install_properties (object_class, LAST_PROP, value_props);
 }
@@ -237,13 +256,13 @@ spin_row_change_cb (GObject * widget, GParamSpec *pspec, MmControl *self)
   ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (self->widget)));
   MmPage *page = get_mm_page (self);
   AdwSpinRow *w = ADW_SPIN_ROW (self->widget);
-  uint16_t val = (uint8_t)adw_spin_row_get_value (w) - self->value_offset;
+  uint16_t val = (uint16_t)((adw_spin_row_get_value (w) - self->value_offset) * self->multiply);
   uint16_t dvalue = get_dvalue (self->value, self->size);
 
   if (dvalue == val)
     return;
 
-  g_debug("spin control change 0x%08x: 0x%02x -> 0x%02x", self->real_id, dvalue, val);
+  g_debug("spin control change 0x%08x: 0x%02x -> 0x%02x (x%.0f)", self->real_id, dvalue, val, self->multiply);
 
   self->value[0] = val & 0x7f;
 
@@ -395,7 +414,7 @@ mm_control_update_gui (ScControl *control)
   {
     AdwSpinRow *spin_row = ADW_SPIN_ROW (self->widget);
     uint16_t dvalue = get_dvalue(self->value, self->size);
-    adw_spin_row_set_value (spin_row, dvalue + self->value_offset);
+    adw_spin_row_set_value (spin_row, (dvalue / self->multiply) + self->value_offset);
     g_debug ("Set spin row with id 0x%02x to 0x%02x (%+02d)", self->real_id, dvalue, self->value_offset);
   }
   else if (ADW_IS_ENTRY_ROW (self->widget))
@@ -431,6 +450,7 @@ static void
 mm_control_init (MmControl *self)
 {
   self->mask = 0xff;
+  self->multiply = 1.0f;
   gtk_widget_set_visible (GTK_WIDGET (&self->parent_instance), false);
   g_idle_add (G_SOURCE_FUNC (mm_control_register), self);
 }
