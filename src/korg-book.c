@@ -5,6 +5,7 @@
 #include "korg-cc-na-row.h"
 #include "korg-firmware-info-group.h"
 #include "korg-note-na-row.h"
+#include "korg-note-offset-row.h"
 #include "korg-scene-page.h"
 
 typedef struct
@@ -96,5 +97,6 @@ korg_book_init (KorgBook *self)
   g_type_ensure (KORG_TYPE_CC_NA_ROW);
   g_type_ensure (KORG_TYPE_FIRMWARE_INFO_GROUP);
   g_type_ensure (KORG_TYPE_NOTE_NA_ROW);
+  g_type_ensure (KORG_TYPE_NOTE_OFFSET_ROW);
   g_type_ensure (KORG_TYPE_SCENE_PAGE);
 }
