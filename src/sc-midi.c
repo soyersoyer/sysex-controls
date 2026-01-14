@@ -41,9 +41,6 @@ static int sc_midi_read_sysex(snd_seq_t *seq, uint8_t *sysex, unsigned int *syse
     input = seq_ev->data.ext.ptr;
     len = seq_ev->data.ext.len;
 
-    if (len == 0)
-      return -ENODATA;
-
     if (*sysex_len + len > SYSEX_BUFFER_SIZE)
       return -EMSGSIZE;
 
