@@ -5,6 +5,8 @@
 #define DESIRED_CAPS (SND_SEQ_PORT_CAP_READ | SND_SEQ_PORT_CAP_SUBS_READ | \
                       SND_SEQ_PORT_CAP_WRITE | SND_SEQ_PORT_CAP_SUBS_WRITE)
 
+#define MINIMUM_MIDI_BUFFER_SIZE 2048
+
 #define READ_TIMEOUT_MS 1000
 
 #define AKAI_MANUF_ID 0x47
@@ -1352,6 +1354,8 @@ int
 sc_midi_open (snd_seq_t **seq)
 {
   int err;
+  size_t input_buffer_size;
+  size_t output_buffer_size;
 
   err = snd_seq_open (seq, "default", SND_SEQ_OPEN_DUPLEX, SND_SEQ_NONBLOCK);
   if (err < 0)
@@ -1371,6 +1375,22 @@ sc_midi_open (snd_seq_t **seq)
 
   snd_seq_set_client_event_filter (*seq, SND_SEQ_EVENT_SYSEX);
   //snd_seq_set_client_event_filter (seq, SND_SEQ_EVENT_PORT_UNSUBSCRIBED);
+
+  input_buffer_size = snd_seq_get_input_buffer_size (*seq);
+  if (input_buffer_size < MINIMUM_MIDI_BUFFER_SIZE)
+  {
+    int ret = snd_seq_set_input_buffer_size (*seq, MINIMUM_MIDI_BUFFER_SIZE);
+    if (ret < 0)
+      fprintf (stderr, "snd_seq_set_input_buffer_size (MINIMUM_MIDI_BUFFER_SIZE) failed %d, using default: %ld\n", ret, input_buffer_size);
+  }
+
+  output_buffer_size = snd_seq_get_output_buffer_size (*seq);
+  if (output_buffer_size < MINIMUM_MIDI_BUFFER_SIZE)
+  {
+    int ret = snd_seq_set_output_buffer_size (*seq, MINIMUM_MIDI_BUFFER_SIZE);
+    if (ret < 0)
+      fprintf (stderr, "snd_seq_set_output_buffer_size (MINIMUM_MIDI_BUFFER_SIZE) failed %d, using default: %ld", ret, output_buffer_size);
+  }
 
   return err;
 }
