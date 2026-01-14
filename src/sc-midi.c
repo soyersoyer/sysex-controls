@@ -895,7 +895,7 @@ process_korg_message (snd_seq_event_t *seq_ev, korg_event_t *ev)
             memcmp (input, scene_dump, sizeof scene_dump) == 0 &&
             input[7] == 0x7F && (
               input[8] + 10 == len || (
-              input[8] == 0x7f && input[9] == 0x02 && (input[10]<<7 | input[11]) + 10 == len))
+              input[8] == 0x7f && input[9] == 0x02 && (input[10]<<7 | input[11]) + 13 == len))
         )
   {
     uint16_t idx = 0;
