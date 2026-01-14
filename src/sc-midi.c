@@ -5,6 +5,8 @@
 #define DESIRED_CAPS (SND_SEQ_PORT_CAP_READ | SND_SEQ_PORT_CAP_SUBS_READ | \
                       SND_SEQ_PORT_CAP_WRITE | SND_SEQ_PORT_CAP_SUBS_WRITE)
 
+#define SYSEX_BUFFER_SIZE 2048
+
 #define READ_TIMEOUT_MS 1000
 
 #define AKAI_MANUF_ID 0x47
@@ -18,6 +20,41 @@
     __typeof__ (b) _b = (b); \
     _a < _b ? _a : _b;       \
 })
+
+// ALSA sequencer has a maximum buffer size for MIDI SysEx
+// events of 256 bytes. We need to concatenate them.
+static int sc_midi_read_sysex(snd_seq_t *seq, uint8_t *sysex, unsigned int *sysex_len)
+{
+  snd_seq_event_t *seq_ev;
+  *sysex_len = 0;
+
+  while (1)
+  {
+    uint8_t *input;
+    unsigned int len;
+
+    int ret = snd_seq_event_input (seq, &seq_ev);
+
+    if (ret < 0)
+      return ret;
+
+    input = seq_ev->data.ext.ptr;
+    len = seq_ev->data.ext.len;
+
+    if (len == 0)
+      return -ENODATA;
+
+    if (*sysex_len + len > SYSEX_BUFFER_SIZE)
+      return -EMSGSIZE;
+
+    memcpy (sysex + *sysex_len, input, len);
+    *sysex_len += len;
+
+    if (input[len - 1] == 0xF7) break;
+  }
+
+  return 0;
+}
 
 int
 sc_midi_akai_dummy_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t query_cmd, uint8_t recv_cmd, uint8_t prog_id, uint8_t *data, uint16_t *size)
@@ -88,36 +125,32 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
     while (1)
     {
       uint8_t akai_prog[] = {0xf0, AKAI_MANUF_ID, AKAI_RECV, dev_id, recv_cmd};
-      snd_seq_event_t *ev_in;
-      unsigned int len;
-      uint8_t* input;
+      uint8_t sysex[SYSEX_BUFFER_SIZE];
+      unsigned int sysex_len;
 
-      err = snd_seq_event_input (seq, &ev_in);
+      err = sc_midi_read_sysex (seq, sysex, &sysex_len);
 
       if (err == -EAGAIN)
         break;
 
       if (err < 0) {
-        fprintf (stderr, "%s(%02x) snd_seq_event_input failed %d\n", __func__, prog_id, err);
+        fprintf (stderr, "%s(%02x) sc_midi_read_sysex failed %d\n", __func__, prog_id, err);
         return err;
       }
 
-      len = ev_in->data.ext.len;
-      input = ev_in->data.ext.ptr;
-
-      if (len >= sizeof akai_prog + 3 + 1 &&
-          memcmp (input, akai_prog, 2) == 0 &&
+      if (sysex_len >= sizeof akai_prog + 3 + 1 &&
+          memcmp (sysex, akai_prog, 2) == 0 &&
           // do not check AKAI_RECV or AKAI_SEND because we do not know all the details yet
-          memcmp (input + 3, akai_prog + 3, 2) == 0 &&
-          input[sizeof akai_prog + 2] == prog_id)
+          memcmp (sysex + 3, akai_prog + 3, 2) == 0 &&
+          sysex[sizeof akai_prog + 2] == prog_id)
       {
-        unsigned int payload_size = len - sizeof akai_prog - 3 - 1;
+        unsigned int payload_size = sysex_len - sizeof akai_prog - 3 - 1;
         if (*size < payload_size) {
           fprintf (stderr, "%s(%02x): buffer too short %d < %d\n", __func__, prog_id, *size, payload_size);
           return -EINVAL;
         }
 
-        memcpy (data, input + sizeof akai_prog + 3, payload_size);
+        memcpy (data, sysex + sizeof akai_prog + 3, payload_size);
         *size = payload_size;
 
         fprintf (stderr, "%s(%02x): program received: size %d \n", __func__, prog_id, payload_size);
@@ -126,9 +159,9 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
       }
       else
       {
-        fprintf (stderr, "%s(%02x): unexpected message: len %d: ", __func__, prog_id, len);
-        for (int i=0; i < len; ++i)
-          fprintf(stderr, "%02x ", (uint8_t)input[i]);
+        fprintf (stderr, "%s(%02x): unexpected message: len %d: ", __func__, prog_id, sysex_len);
+        for (int i=0; i < sysex_len; ++i)
+          fprintf(stderr, "%02x ", (uint8_t)sysex[i]);
         fprintf(stderr, "\n");
       }
 
@@ -868,14 +901,11 @@ typedef struct {
 } korg_event_t;
 
 static void
-process_korg_message (snd_seq_event_t *seq_ev, korg_event_t *ev)
+process_korg_message (uint8_t *input, unsigned int len, korg_event_t *ev)
 {
   const uint8_t device_inquiry[] = {0xf0, 0x7e};
   const uint8_t search_reply[] = {0xf0, 0x42, 0x50, 0x01};
   const uint8_t scene_dump[] = {0xf0, 0x42};
-
-  unsigned int len = seq_ev->data.ext.len;
-  uint8_t* input = seq_ev->data.ext.ptr;
 
   if (len == 15 &&
            memcmp (input, device_inquiry, sizeof device_inquiry) == 0 &&
@@ -945,7 +975,6 @@ sc_midi_korg_read_next (snd_seq_t *seq, korg_event_t *ev)
 {
   struct pollfd pfds[1] = {};
   korg_event_t tmp_ev = {0};
-  snd_seq_event_t *seq_ev;
   int ret, pfds_n = 0;
 
   pfds_n = snd_seq_poll_descriptors(seq, pfds, 1, POLLIN);
@@ -966,17 +995,20 @@ sc_midi_korg_read_next (snd_seq_t *seq, korg_event_t *ev)
 
     while (1)
     {
-      ret = snd_seq_event_input (seq, &seq_ev);
+      uint8_t sysex[SYSEX_BUFFER_SIZE];
+      unsigned int sysex_len;
+
+      ret = sc_midi_read_sysex (seq, sysex, &sysex_len);
 
       if (ret == -EAGAIN)
         break;
 
       if (ret < 0) {
-        fprintf (stderr, "%s(%02d) snd_seq_event_input failed %d\n", __func__, ev->type, ret);
+        fprintf (stderr, "%s(%02d) sc_midi_read_sysex failed %d\n", __func__, ev->type, ret);
         return ret;
       }
 
-      process_korg_message (seq_ev, &tmp_ev);
+      process_korg_message (sysex, sysex_len, &tmp_ev);
 
       if (ev->type == tmp_ev.type)
       {
