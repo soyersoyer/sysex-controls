@@ -14,7 +14,7 @@
               <object class="AdwPreferencesGroup">
 
                 <child>
-                  <object class="ScComboRow">
+                  <object class="ScComboRow" id="control_mode">
                     <child><object class="MmControl"><property name="id">0x00</property></object></child>
                     <property name="title" translatable="yes">Mode</property>
                     <property name="model">
@@ -37,6 +37,12 @@
 
                 <child>
                   <object class="ScComboRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <constant type="GVariant">[0x01, 0x02]</constant>
+                      </closure>
+                    </binding>
                     <child><object class="MmControl"><property name="id">0x01</property></object></child>
                     <property name="title" translatable="yes">Behavior</property>
                     <property name="model">
@@ -50,14 +56,26 @@
                   </object>
                 </child>
 
-              </object>
-            </child>
-
-            <child>
-              <object class="AdwPreferencesGroup">
-
                 <child>
                   <object class="ScCcRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <constant type="GVariant">[0x01]</constant>
+                      </closure>
+                    </binding>
+                    <child><object class="MmControl"><property name="id">0x02</property></object></child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <constant type="GVariant">[0x02]</constant>
+                      </closure>
+                    </binding>
                     <child><object class="MmControl"><property name="id">0x02</property></object></child>
                   </object>
                 </child>
@@ -70,6 +88,12 @@
 
                 <child>
                   <object class="AdwSpinRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <constant type="GVariant">[0x01]</constant>
+                      </closure>
+                    </binding>
                     <child><object class="MmControl"><property name="id">0x03</property></object></child>
                     <property name="title" translatable="yes">Off</property>
                     <property name="adjustment">
@@ -85,6 +109,12 @@
 
                 <child>
                   <object class="AdwSpinRow">
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                        <constant type="GVariant">[0x01, 0x02]</constant>
+                      </closure>
+                    </binding>
                     <child><object class="MmControl"><property name="id">0x04</property></object></child>
                     <property name="title" translatable="yes">On</property>
                     <property name="adjustment">
