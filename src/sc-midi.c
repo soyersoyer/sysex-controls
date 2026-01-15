@@ -114,8 +114,8 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
       err = poll (pfds, pfds_n, READ_TIMEOUT_MS);
       if (err < 0)
       {
-        fprintf (stderr, "%s(%02x) poll failed %d\n", __func__, prog_id, err);
-        return err;
+        fprintf (stderr, "%s(%02x) poll failed %d (%s)\n", __func__, prog_id, -errno, strerror(errno));
+        return -errno;
       }
       if (err == 0)
       {
@@ -436,8 +436,8 @@ sc_midi_arturia_read_next (snd_seq_t *seq, ar_event_t *ar_ev)
       ret = poll (pfds, pfds_n, READ_TIMEOUT_MS);
       if (ret < 0)
       {
-        fprintf (stderr, "%s(%02d, %08x) poll failed %d\n", __func__, ar_ev->type, ar_ev->control.id, ret);
-        return ret;
+        fprintf (stderr, "%s(%02d, %08x) poll failed %d (%s)\n", __func__, ar_ev->type, ar_ev->control.id, -errno, strerror(errno));
+        return -errno;
       }
       if (ret == 0)
       {
@@ -1009,8 +1009,8 @@ sc_midi_korg_read_next (snd_seq_t *seq, korg_event_t *ev)
       ret = poll (pfds, pfds_n, READ_TIMEOUT_MS);
       if (ret < 0)
       {
-        fprintf (stderr, "%s(%02d) poll failed %d\n", __func__, ev->type, ret);
-        return ret;
+        fprintf (stderr, "%s(%02d) poll failed %d (%s)\n", __func__, ev->type, -errno, strerror(errno));
+        return -errno;
       }
       if (ret == 0)
       {
