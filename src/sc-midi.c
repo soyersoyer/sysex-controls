@@ -26,7 +26,6 @@
 static int sc_midi_read_sysex(snd_seq_t *seq, uint8_t *sysex, unsigned int *sysex_len)
 {
   snd_seq_event_t *seq_ev;
-  *sysex_len = 0;
 
   while (1)
   {
@@ -83,7 +82,7 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
   int err, pfds_n = 0;
 
   uint8_t sysex[SYSEX_BUFFER_SIZE];
-  unsigned int sysex_len;
+  unsigned int sysex_len = 0;
 
   snd_seq_ev_clear (&ev);
   snd_seq_ev_set_source (&ev, 0);
@@ -976,7 +975,7 @@ sc_midi_korg_read_next (snd_seq_t *seq, korg_event_t *ev)
   int ret, pfds_n = 0;
 
   uint8_t sysex[SYSEX_BUFFER_SIZE];
-  unsigned int sysex_len;
+  unsigned int sysex_len = 0;
 
   pfds_n = snd_seq_poll_descriptors(seq, pfds, 1, POLLIN);
 
