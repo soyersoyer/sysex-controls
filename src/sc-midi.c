@@ -109,16 +109,19 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
 
   while (1)
   {
-    err = poll (pfds, pfds_n, READ_TIMEOUT_MS);
-    if (err < 0)
+    if (snd_seq_event_input_pending (seq, 0) == 0)
     {
-      fprintf (stderr, "%s(%02x) poll failed %d\n", __func__, prog_id, err);
-      return err;
-    }
-    if (err == 0)
-    {
-      fprintf (stderr, "%s(%02x) poll timeout %d\n", __func__, prog_id, err);
-      return -ETIMEDOUT;
+      err = poll (pfds, pfds_n, READ_TIMEOUT_MS);
+      if (err < 0)
+      {
+        fprintf (stderr, "%s(%02x) poll failed %d\n", __func__, prog_id, err);
+        return err;
+      }
+      if (err == 0)
+      {
+        fprintf (stderr, "%s(%02x) poll timeout %d\n", __func__, prog_id, err);
+        return -ETIMEDOUT;
+      }
     }
 
     while (1)
@@ -428,16 +431,19 @@ sc_midi_arturia_read_next (snd_seq_t *seq, ar_event_t *ar_ev)
 
   while (1)
   {
-    ret = poll (pfds, pfds_n, READ_TIMEOUT_MS);
-    if (ret < 0)
+    if (snd_seq_event_input_pending (seq, 0) == 0)
     {
-      fprintf (stderr, "%s(%02d, %08x) poll failed %d\n", __func__, ar_ev->type, ar_ev->control.id, ret);
-      return ret;
-    }
-    if (ret == 0)
-    {
-      fprintf (stderr, "%s(%02d, %08x) poll timeout %d\n", __func__, ar_ev->type, ar_ev->control.id, ret);
-      return -ETIMEDOUT;
+      ret = poll (pfds, pfds_n, READ_TIMEOUT_MS);
+      if (ret < 0)
+      {
+        fprintf (stderr, "%s(%02d, %08x) poll failed %d\n", __func__, ar_ev->type, ar_ev->control.id, ret);
+        return ret;
+      }
+      if (ret == 0)
+      {
+        fprintf (stderr, "%s(%02d, %08x) poll timeout %d\n", __func__, ar_ev->type, ar_ev->control.id, ret);
+        return -ETIMEDOUT;
+      }
     }
 
     while (1)
@@ -998,16 +1004,19 @@ sc_midi_korg_read_next (snd_seq_t *seq, korg_event_t *ev)
 
   while (1)
   {
-    ret = poll (pfds, pfds_n, READ_TIMEOUT_MS);
-    if (ret < 0)
+    if (snd_seq_event_input_pending (seq, 0) == 0)
     {
-      fprintf (stderr, "%s(%02d) poll failed %d\n", __func__, ev->type, ret);
-      return ret;
-    }
-    if (ret == 0)
-    {
-      fprintf (stderr, "%s(%02d) poll timeout %d\n", __func__, ev->type, ret);
-      return -ETIMEDOUT;
+      ret = poll (pfds, pfds_n, READ_TIMEOUT_MS);
+      if (ret < 0)
+      {
+        fprintf (stderr, "%s(%02d) poll failed %d\n", __func__, ev->type, ret);
+        return ret;
+      }
+      if (ret == 0)
+      {
+        fprintf (stderr, "%s(%02d) poll timeout %d\n", __func__, ev->type, ret);
+        return -ETIMEDOUT;
+      }
     }
 
     while (1)
