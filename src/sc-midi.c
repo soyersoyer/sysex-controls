@@ -874,10 +874,11 @@ enum korg_msg_type {
   KORG_SEARCH_REPLY,
   KORG_SCENE_DUMP,
   KORG_GLOBAL_DUMP,
-  KORG_DUMP_ACK,
-  KORG_DUMP_NAK,
+  KORG_ACK,
+  KORG_NAK,
   KORG_WRITE_COMPLETE,
   KORG_WRITE_ERROR,
+  KORG_SCENE_CHANGE,
 };
 
 static const uint8_t KORG_GLOBAL_SCENE_ID = 0xff;
@@ -897,6 +898,9 @@ typedef struct {
       uint16_t size;
       uint8_t data[512];
     } dump;
+    struct {
+      uint8_t scene_id;
+    } scene;
   };
 } korg_event_t;
 
@@ -947,12 +951,12 @@ process_korg_message (uint8_t *input, unsigned int len, korg_event_t *ev)
   else if (len == 11 && memcmp (input, dump, sizeof dump) == 0 &&
             input[7] == 0x5F && input[8] == 0x23)
   {
-    ev->type = KORG_DUMP_ACK;
+    ev->type = KORG_ACK;
   }
   else if (len == 11 && memcmp (input, dump, sizeof dump) == 0 &&
             input[7] == 0x5F && input[8] == 0x24)
   {
-    ev->type = KORG_DUMP_NAK;
+    ev->type = KORG_NAK;
   }
   else if (len == 11 && memcmp (input, dump, sizeof dump) == 0 &&
             input[7] == 0x5F && input[8] == 0x21)
@@ -963,6 +967,12 @@ process_korg_message (uint8_t *input, unsigned int len, korg_event_t *ev)
             input[7] == 0x5F && input[8] == 0x22)
   {
     ev->type = KORG_WRITE_ERROR;
+  }
+  else if (len == 11 && memcmp (input, dump, sizeof dump) == 0 &&
+            input[7] == 0x5F && input[8] == 0x4F)
+  {
+    ev->type = KORG_SCENE_CHANGE;
+    ev->scene.scene_id = input[9];
   }
   else
   {
@@ -1026,6 +1036,12 @@ sc_midi_korg_read_next (snd_seq_t *seq, korg_event_t *ev)
 
     }
   }
+}
+
+int
+sc_midi_korg_dummy_change_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4], uint8_t scene_id)
+{
+  return 0;
 }
 
 int
@@ -1124,6 +1140,53 @@ sc_midi_korg_read_channel (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t *channel
 }
 
 int
+sc_midi_korg_change_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4], uint8_t scene_id)
+{
+  uint8_t query[] = {0xf0, 0x42, 0x40, dev_id[0], dev_id[1], dev_id[2], dev_id[3], 0x1f, 0x14, scene_id, 0xf7};
+  korg_event_t ev1 = {.type = KORG_SCENE_CHANGE};
+  korg_event_t ev2 = {.type = KORG_ACK};
+  snd_seq_event_t seq_ev;
+  int err;
+  uint8_t channel;
+
+  err = sc_midi_korg_read_channel(seq, addr, &channel);
+  if (err < 0)
+    return err;
+
+  query[2] |= channel;
+
+  snd_seq_ev_clear (&seq_ev);
+  snd_seq_ev_set_source (&seq_ev, 0);
+  snd_seq_ev_set_dest (&seq_ev, addr.client, addr.port);
+  snd_seq_ev_set_direct (&seq_ev);
+  snd_seq_ev_set_sysex (&seq_ev, sizeof query, query);
+
+  err = snd_seq_event_output (seq, &seq_ev);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%04x) snd_seq_event_output failed %d\n", __func__, scene_id, err);
+    return err;
+  }
+
+  err = snd_seq_drain_output(seq);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%04x) snd_seq_drain_output failed %d\n", __func__, scene_id, err);
+    return err;
+  }
+
+  err = sc_midi_korg_read_next (seq, &ev1);
+  if (err < 0)
+    return err;
+
+  err = sc_midi_korg_read_next (seq, &ev2);
+  if (err < 0)
+    return err;
+
+  return 0;
+}
+
+int
 sc_midi_korg_read_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4], uint8_t scene_id, uint8_t data[512], uint16_t *size)
 {
   uint8_t typeid = scene_id == KORG_GLOBAL_SCENE_ID ? 0x0e : 0x10;
@@ -1172,7 +1235,7 @@ sc_midi_korg_read_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4],
 int
 sc_midi_korg_save_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4], uint8_t scene_id)
 {
-  uint8_t query[] = {0xf0, 0x42, 0x40, dev_id[0], dev_id[1], dev_id[2], dev_id[3], 0x1f, 0x11, 0x00, 0xf7};
+  uint8_t query[] = {0xf0, 0x42, 0x40, dev_id[0], dev_id[1], dev_id[2], dev_id[3], 0x1f, 0x11, scene_id, 0xf7};
   snd_seq_event_t seq_ev;
   korg_event_t ack_ev = {.type=KORG_WRITE_COMPLETE};
   int err;
@@ -1221,7 +1284,7 @@ sc_midi_korg_write_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4]
 {
   uint8_t query[1024] = {0xf0, 0x42, 0x40, dev_id[0], dev_id[1], dev_id[2], dev_id[3], 0x7f};
   snd_seq_event_t seq_ev;
-  korg_event_t ack_ev = {.type=KORG_DUMP_ACK};
+  korg_event_t ack_ev = {.type=KORG_ACK};
   int err, cur = 8;
   uint16_t encoded_size = size / 7 * 8 + size % 7 + (size % 7 ? 1 : 0) + 1;
   uint8_t channel;

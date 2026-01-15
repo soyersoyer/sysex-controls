@@ -8,6 +8,7 @@
 enum {
   PROP_0,
   PROP_SCENE_ID,
+  PROP_SCENE_CHANGE,
   LAST_PROP,
 };
 
@@ -18,6 +19,7 @@ typedef struct
   uint8_t scene_id;
   uint8_t data[512];
   uint16_t size;
+  gboolean scene_change;
 } KorgScenePagePrivate;
 
 static void sc_control_interface_init (ScControlInterface *iface);
@@ -35,6 +37,14 @@ korg_scene_page_get_scene_id (KorgScenePage *self)
   return priv->scene_id;
 }
 
+gboolean
+korg_scene_page_get_scene_change (KorgScenePage *self)
+{
+  KorgScenePagePrivate *priv = korg_scene_page_get_instance_private (self);
+  return priv->scene_change;
+}
+
+
 static void
 korg_scene_page_get_property (GObject    *object,
                               guint       prop_id,
@@ -47,6 +57,9 @@ korg_scene_page_get_property (GObject    *object,
     {
     case PROP_SCENE_ID:
       g_value_set_uint (value, korg_scene_page_get_scene_id (self));
+    break;
+    case PROP_SCENE_CHANGE:
+      g_value_set_boolean (value, korg_scene_page_get_scene_change (self));
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -68,6 +81,9 @@ korg_scene_page_set_property (GObject      *object,
     case PROP_SCENE_ID:
       priv->scene_id = g_value_get_uint (value);
     break;
+    case PROP_SCENE_CHANGE:
+      priv->scene_change = g_value_get_boolean (value);
+    break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
     }
@@ -84,6 +100,10 @@ korg_scene_page_class_init (KorgScenePageClass *klass)
   value_props[PROP_SCENE_ID] = g_param_spec_uint ("scene-id", NULL, NULL,
                                                  0, G_MAXUINT8, 0,
                                                  G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+
+  value_props[PROP_SCENE_CHANGE] = g_param_spec_boolean ("scene-change", NULL, NULL,
+                                                          0,
+                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   g_object_class_install_properties (object_class, LAST_PROP, value_props);
 }
@@ -158,10 +178,20 @@ korg_scene_page_read_scene (ScControl *control)
   KorgScenePagePrivate *priv = korg_scene_page_get_instance_private (self);
   KorgBook *book = KORG_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self), KORG_TYPE_BOOK));
   int err;
-  g_debug("%s (%02x)", __func__, priv->scene_id);
+  g_debug("%s (%02x) scene_change: (%x)", __func__, priv->scene_id, priv->scene_change);
+
+  if (priv->scene_change) {
+    err = korg_book_change_scene (book, priv->scene_id);
+    if (err < 0)
+    {
+      g_warning("korg_book_change_scene failed %d", err);
+      return err;
+    }
+  }
+
   err = korg_book_read_scene (book, priv->scene_id, priv->data, &priv->size);
   if (err < 0)
-    g_debug("korg_book_read_scene failed %d", err);
+    g_warning("korg_book_read_scene failed %d", err);
   return err;
 }
 
@@ -191,6 +221,8 @@ korg_scene_page_init (KorgScenePage *self)
 {
   KorgScenePagePrivate *priv = korg_scene_page_get_instance_private (self);
   priv->size = 512;
+  priv->scene_id = 0;
+  priv->scene_change = false;
 
   g_idle_add (G_SOURCE_FUNC (korg_scene_page_add_self), self);
 }
