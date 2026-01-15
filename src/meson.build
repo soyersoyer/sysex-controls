@@ -368,6 +368,7 @@ sc_sources = [
   'nanopad2/np2-global-page.c',
   'nanopad2/np2-pad-page.c',
   'nanopad2/np2-scene-page.c',
+  'nanopad2/np2-scenes-page.c',
   'nanopad2/np2-xy-axis.c',
   'nanopad2/np2-xy-pad-cc-page.c',
   'nanopad2/np2-xy-pad-ts-page.c',

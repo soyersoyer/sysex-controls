@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Np2ScenesPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Scenes</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="KorgSceneRow">
+                    <property name="title" translatable="yes">Scene 1</property>
+                    <property name="scene-id">0</property>
+                    <property name="scene-change">yes</property>
+                    <property name="target-page">Np2ScenePage</property>
+                    <signal name="activated" handler="korg_scene_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgSceneRow">
+                    <property name="title" translatable="yes">Scene 2</property>
+                    <property name="scene-id">1</property>
+                    <property name="scene-change">yes</property>
+                    <property name="target-page">Np2ScenePage</property>
+                    <signal name="activated" handler="korg_scene_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgSceneRow">
+                    <property name="title" translatable="yes">Scene 3</property>
+                    <property name="scene-id">2</property>
+                    <property name="scene-change">yes</property>
+                    <property name="target-page">Np2ScenePage</property>
+                    <signal name="activated" handler="korg_scene_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgSceneRow">
+                    <property name="title" translatable="yes">Scene 4</property>
+                    <property name="scene-id">3</property>
+                    <property name="scene-change">yes</property>
+                    <property name="target-page">Np2ScenePage</property>
+                    <signal name="activated" handler="korg_scene_nav_push"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

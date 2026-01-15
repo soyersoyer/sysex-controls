@@ -3,6 +3,7 @@
 #include "np2-global-page.h"
 #include "np2-pad-page.h"
 #include "np2-scene-page.h"
+#include "np2-scenes-page.h"
 #include "np2-xy-axis.h"
 #include "np2-xy-pad-cc-page.h"
 #include "np2-xy-pad-ts-page.h"
@@ -31,6 +32,7 @@ np2_book_init (Np2Book *self)
   g_type_ensure (NP2_TYPE_GLOBAL_PAGE);
   g_type_ensure (NP2_TYPE_PAD_PAGE);
   g_type_ensure (NP2_TYPE_SCENE_PAGE);
+  g_type_ensure (NP2_TYPE_SCENES_PAGE);
   g_type_ensure (NP2_TYPE_XY_AXIS);
   g_type_ensure (NP2_TYPE_XY_PAD_CC_PAGE);
   g_type_ensure (NP2_TYPE_XY_PAD_TS_PAGE);
