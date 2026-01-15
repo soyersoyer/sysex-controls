@@ -15,7 +15,33 @@
 
         <child>
           <object class="Np2ScenePage">
-            <property name="title" translatable="yes">Scene</property>
+            <property name="title" translatable="yes">Scene 1</property>
+            <property name="scene-id">0</property>
+            <property name="scene-change">yes</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Np2ScenePage">
+            <property name="title" translatable="yes">Scene 2</property>
+            <property name="scene-id">1</property>
+            <property name="scene-change">yes</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Np2ScenePage">
+            <property name="title" translatable="yes">Scene 3</property>
+            <property name="scene-id">2</property>
+            <property name="scene-change">yes</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Np2ScenePage">
+            <property name="title" translatable="yes">Scene 4</property>
+            <property name="scene-id">3</property>
+            <property name="scene-change">yes</property>
           </object>
         </child>
 
