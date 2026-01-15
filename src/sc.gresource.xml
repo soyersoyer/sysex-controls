@@ -355,6 +355,7 @@
     <file preprocess="xml-stripblanks">nanopad2/np2-global-page.ui</file>
     <file preprocess="xml-stripblanks">nanopad2/np2-pad-page.ui</file>
     <file preprocess="xml-stripblanks">nanopad2/np2-scene-page.ui</file>
+    <file preprocess="xml-stripblanks">nanopad2/np2-scenes-page.ui</file>
     <file preprocess="xml-stripblanks">nanopad2/np2-xy-axis.ui</file>
     <file preprocess="xml-stripblanks">nanopad2/np2-xy-pad-cc-page.ui</file>
     <file preprocess="xml-stripblanks">nanopad2/np2-xy-pad-ts-page.ui</file>
