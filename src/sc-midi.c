@@ -82,6 +82,9 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
   snd_seq_event_t ev;
   int err, pfds_n = 0;
 
+  uint8_t sysex[SYSEX_BUFFER_SIZE];
+  unsigned int sysex_len;
+
   snd_seq_ev_clear (&ev);
   snd_seq_ev_set_source (&ev, 0);
   snd_seq_ev_set_dest (&ev, addr.client, addr.port);
@@ -122,8 +125,6 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
     while (1)
     {
       uint8_t akai_prog[] = {0xf0, AKAI_MANUF_ID, AKAI_RECV, dev_id, recv_cmd};
-      uint8_t sysex[SYSEX_BUFFER_SIZE];
-      unsigned int sysex_len;
 
       err = sc_midi_read_sysex (seq, sysex, &sysex_len);
 
@@ -974,6 +975,9 @@ sc_midi_korg_read_next (snd_seq_t *seq, korg_event_t *ev)
   korg_event_t tmp_ev = {0};
   int ret, pfds_n = 0;
 
+  uint8_t sysex[SYSEX_BUFFER_SIZE];
+  unsigned int sysex_len;
+
   pfds_n = snd_seq_poll_descriptors(seq, pfds, 1, POLLIN);
 
   while (1)
@@ -992,9 +996,6 @@ sc_midi_korg_read_next (snd_seq_t *seq, korg_event_t *ev)
 
     while (1)
     {
-      uint8_t sysex[SYSEX_BUFFER_SIZE];
-      unsigned int sysex_len;
-
       ret = sc_midi_read_sysex (seq, sysex, &sysex_len);
 
       if (ret == -EAGAIN)
