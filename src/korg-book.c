@@ -28,9 +28,26 @@ korg_book_class_init (KorgBookClass *klass)
   ScBookClass *sc_klass = SC_BOOK_CLASS (klass);
   sc_klass->use_dummy = korg_book_use_dummy;
 
+  klass->change_scene = sc_midi_korg_change_scene;
   klass->read_scene = sc_midi_korg_read_scene;
   klass->write_scene = sc_midi_korg_write_scene;
   klass->save_scene = sc_midi_korg_save_scene;
+}
+
+int
+korg_book_change_scene (KorgBook *self, uint8_t scene_id)
+{
+  KorgBookPrivate *priv;
+  KorgBookClass *klass;
+  ScBook *sc_book;
+
+  g_return_val_if_fail (KORG_IS_BOOK (self), -EINVAL);
+
+  priv = korg_book_get_instance_private (self);
+  klass = KORG_BOOK_GET_CLASS (self);
+  sc_book = SC_BOOK (self);
+
+  return klass->change_scene (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->dev_id, scene_id);
 }
 
 int
@@ -85,6 +102,7 @@ korg_book_device_inquiry (KorgBook *self, uint8_t data[9])
 void korg_book_use_dummy (ScBook *self)
 {
   KorgBookClass *klass = KORG_BOOK_GET_CLASS (self);
+  klass->change_scene = sc_midi_korg_dummy_change_scene;
   klass->read_scene = sc_midi_korg_dummy_read_scene;
   klass->write_scene = sc_midi_korg_dummy_write_scene;
   klass->save_scene = sc_midi_korg_dummy_save_scene;

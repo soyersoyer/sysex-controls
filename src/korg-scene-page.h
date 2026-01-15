@@ -16,5 +16,6 @@ struct _KorgScenePageClass
 };
 
 uint8_t korg_scene_page_get_scene_id (KorgScenePage *self);
+gboolean korg_scene_page_get_scene_change (KorgScenePage *self);
 
 G_END_DECLS
