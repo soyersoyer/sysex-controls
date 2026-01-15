@@ -969,16 +969,19 @@ sc_midi_korg_read_next (snd_seq_t *seq, korg_event_t *ev)
 
   while (1)
   {
-    ret = poll (pfds, pfds_n, READ_TIMEOUT_MS);
-    if (ret < 0)
+    if (snd_seq_event_input_pending (seq, 0) == 0)
     {
-      fprintf (stderr, "%s(%02d) poll failed %d\n", __func__, ev->type, ret);
-      return ret;
-    }
-    if (ret == 0)
-    {
-      fprintf (stderr, "%s(%02d) poll timeout %d\n", __func__, ev->type, ret);
-      return -ETIMEDOUT;
+      ret = poll (pfds, pfds_n, READ_TIMEOUT_MS);
+      if (ret < 0)
+      {
+        fprintf (stderr, "%s(%02d) poll failed %d\n", __func__, ev->type, ret);
+        return ret;
+      }
+      if (ret == 0)
+      {
+        fprintf (stderr, "%s(%02d) poll timeout %d\n", __func__, ev->type, ret);
+        return -ETIMEDOUT;
+      }
     }
 
     while (1)
