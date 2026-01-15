@@ -31,6 +31,7 @@ sc_sources = [
   'korg-note-na-row.c',
   'korg-note-offset-row.c',
   'korg-scene-page.c',
+  'korg-scene-row.c',
 
   'mm-control.c',
   'mm-page.c',
