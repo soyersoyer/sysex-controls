@@ -24,15 +24,15 @@ sc_controller_row_init (ScControllerRow *self)
 
 GtkWidget * sc_controller_row_new (sc_midi_info_t *info)
 {
-  char sub[32];
+  char sub[141];
   GtkWidget *row = g_object_new (SC_TYPE_CONTROLLER_ROW, NULL);
   ScControllerRow *self = SC_CONTROLLER_ROW (row);
 
   self->info = *info;
 
-  adw_preferences_row_set_title (ADW_PREFERENCES_ROW (row), info->port_name);
+  adw_preferences_row_set_title (ADW_PREFERENCES_ROW (row), info->client_name);
 
-  snprintf(sub, 32, "Port %d:%d", info->addr.client, info->addr.port);
+  snprintf(sub, 141, "Port %d:%d %s", info->addr.client, info->addr.port, info->port_name);
   adw_action_row_set_subtitle (ADW_ACTION_ROW (row), sub);
 
   return row;
