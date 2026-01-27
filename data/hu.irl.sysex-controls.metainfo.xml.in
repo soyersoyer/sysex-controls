@@ -36,6 +36,7 @@ This is a Linux alternative to the MIDI Control Center software.
 <li>Arturia MiniLab mkII</li>
 <li>Arturia MiniLab 3</li>
 <li>Korg nanoKEY2</li>
+<li>Korg nanoKONTROL2</li>
 <li>Korg nanoPAD2</li>
 </ul>
 <p>These might also work, but have not been tested yet:</p>
@@ -48,7 +49,6 @@ This is a Linux alternative to the MIDI Control Center software.
 <li>Arturia Minibrute 2S</li>
 <li>Arturia SparkLE</li>
 <li>Arturia The Laboratory</li>
-<li>Korg nanoKONTROL2</li>
 </ul>
 <p>
 It doesn't support the KeyStep / BeatStep Pro sequencer banks, BeatStep Pro presets and the DrumBrute/MiniBrute banks yet.
@@ -81,6 +81,18 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.27" date="2026-01-27">
+      <description>
+        <ul>
+          <li>Korg nanoPAD2 support (thx tjhietala for testing)</li>
+          <li>Korg nanoKONTROL2 fixes (thx jxctn0 for reporting and testing)</li>
+          <li>Move DrumBrute to the tested list (thx sirivias for testing)</li>
+          <li>Support for long SysEX messages</li>
+          <li>Show client name as title, port name as subtitle in the Controller selector</li>
+          <li>Disable the broken Microlab Mk3 support</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.26" date="2025-07-24">
       <description>
         <ul>
