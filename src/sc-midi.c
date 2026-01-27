@@ -77,6 +77,7 @@ int
 sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, uint8_t query_cmd, uint8_t recv_cmd, uint8_t prog_id, uint8_t *data, uint16_t *size)
 {
   uint8_t req_data[] = {0xf0, AKAI_MANUF_ID, AKAI_SEND, dev_id, query_cmd, 0x00, 0x01, prog_id, 0xf7};
+  uint8_t akai_prog[] = {0xf0, AKAI_MANUF_ID, AKAI_RECV, dev_id, recv_cmd};
   struct pollfd pfds[1] = {};
   snd_seq_event_t ev;
   int err, pfds_n = 0;
@@ -124,50 +125,46 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
       }
     }
 
-    while (1)
+    err = sc_midi_read_sysex (seq, sysex, &sysex_len);
+
+    if (err == -EAGAIN)
+      continue;
+
+    if (err < 0)
     {
-      uint8_t akai_prog[] = {0xf0, AKAI_MANUF_ID, AKAI_RECV, dev_id, recv_cmd};
-
-      err = sc_midi_read_sysex (seq, sysex, &sysex_len);
-
-      if (err == -EAGAIN)
-        break;
-
-      if (err < 0) {
-        fprintf (stderr, "%s(%02x) sc_midi_read_sysex failed %d\n", __func__, prog_id, err);
-        return err;
-      }
-
-      if (sysex_len >= sizeof akai_prog + 3 + 1 &&
-          memcmp (sysex, akai_prog, 2) == 0 &&
-          // do not check AKAI_RECV or AKAI_SEND because we do not know all the details yet
-          memcmp (sysex + 3, akai_prog + 3, 2) == 0 &&
-          sysex[sizeof akai_prog + 2] == prog_id)
-      {
-        unsigned int payload_size = sysex_len - sizeof akai_prog - 3 - 1;
-        if (*size < payload_size) {
-          fprintf (stderr, "%s(%02x): buffer too short %d < %d\n", __func__, prog_id, *size, payload_size);
-          return -EINVAL;
-        }
-
-        memcpy (data, sysex + sizeof akai_prog + 3, payload_size);
-        *size = payload_size;
-
-        fprintf (stderr, "%s(%02x): program received: size %d \n", __func__, prog_id, payload_size);
-
-        return 0;
-      }
-      else
-      {
-        fprintf (stderr, "%s(%02x): unexpected message: len %d: ", __func__, prog_id, sysex_len);
-        for (int i=0; i < sysex_len; ++i)
-          fprintf(stderr, "%02x ", (uint8_t)sysex[i]);
-        fprintf(stderr, "\n");
-      }
-
+      fprintf (stderr, "%s(%02x) sc_midi_read_sysex failed %d\n", __func__, prog_id, err);
+      return err;
     }
+
+    if (sysex_len >= sizeof akai_prog + 3 + 1 &&
+        memcmp (sysex, akai_prog, 2) == 0 &&
+        // do not check AKAI_RECV or AKAI_SEND because we do not know all the details yet
+        memcmp (sysex + 3, akai_prog + 3, 2) == 0 &&
+        sysex[sizeof akai_prog + 2] == prog_id)
+    {
+      unsigned int payload_size = sysex_len - sizeof akai_prog - 3 - 1;
+      if (*size < payload_size)
+      {
+        fprintf (stderr, "%s(%02x): buffer too short %d < %d\n", __func__, prog_id, *size, payload_size);
+        return -EINVAL;
+      }
+
+      memcpy (data, sysex + sizeof akai_prog + 3, payload_size);
+      *size = payload_size;
+
+      fprintf (stderr, "%s(%02x): program received: size %d \n", __func__, prog_id, payload_size);
+
+      return 0;
+    }
+    else
+    {
+      fprintf (stderr, "%s(%02x): unexpected message: len %d: ", __func__, prog_id, sysex_len);
+      for (int i=0; i < sysex_len; ++i)
+        fprintf(stderr, "%02x ", (uint8_t)sysex[i]);
+      fprintf(stderr, "\n");
+    }
+
   }
-  return 0;
 }
 
 int
@@ -446,37 +443,34 @@ sc_midi_arturia_read_next (snd_seq_t *seq, ar_event_t *ar_ev)
       }
     }
 
-    while (1)
+    ret = snd_seq_event_input (seq, &ev);
+
+    if (ret == -EAGAIN)
+      continue;
+
+    if (ret < 0)
     {
-      ret = snd_seq_event_input (seq, &ev);
-
-      if (ret == -EAGAIN)
-        break;
-
-      if (ret < 0) {
-        fprintf (stderr, "%s(%02d, %08x) snd_seq_event_input failed %d\n", __func__, ar_ev->type, ar_ev->control.id, ret);
-        return ret;
-      }
-
-      process_arturia_message (ev, &ar_ev_in);
-
-      if (ar_ev->type == ar_ev_in.type)
-      {
-        if (ar_ev->type == AR_CONTROL_WRITE && ar_ev->control.id && ar_ev->control.id != ar_ev_in.control.id)
-        {
-          fprintf (stderr, "%s(%02d, %08x): unexpected control %08x with value %02x\n", __func__, ar_ev->type, ar_ev->control.id, ar_ev_in.control.id, ar_ev_in.control.value);
-          continue;
-        }
-
-        *ar_ev = ar_ev_in;
-        return 0;
-      }
-      else
-      {
-        fprintf (stderr, "%s(%02d, %08x): unexpected message: type %02x\n", __func__, ar_ev->type, ar_ev->control.id, ar_ev_in.type);
-      }
-
+      fprintf (stderr, "%s(%02d, %08x) snd_seq_event_input failed %d\n", __func__, ar_ev->type, ar_ev->control.id, ret);
+      return ret;
     }
+
+    process_arturia_message (ev, &ar_ev_in);
+
+    if (ar_ev->type != ar_ev_in.type)
+    {
+      fprintf (stderr, "%s(%02d, %08x): unexpected message: type %02x\n", __func__, ar_ev->type, ar_ev->control.id, ar_ev_in.type);
+      continue;
+    }
+
+    if (ar_ev->type == AR_CONTROL_WRITE && ar_ev->control.id && ar_ev->control.id != ar_ev_in.control.id)
+    {
+      fprintf (stderr, "%s(%02d, %08x): unexpected control %08x with value %02x\n", __func__, ar_ev->type, ar_ev->control.id, ar_ev_in.control.id, ar_ev_in.control.value);
+      continue;
+    }
+
+    *ar_ev = ar_ev_in;
+    return 0;
+
   }
 }
 
@@ -1019,31 +1013,28 @@ sc_midi_korg_read_next (snd_seq_t *seq, korg_event_t *ev)
       }
     }
 
-    while (1)
+    ret = sc_midi_read_sysex (seq, sysex, &sysex_len);
+
+    if (ret == -EAGAIN)
+      continue;
+
+    if (ret < 0)
     {
-      ret = sc_midi_read_sysex (seq, sysex, &sysex_len);
-
-      if (ret == -EAGAIN)
-        break;
-
-      if (ret < 0) {
-        fprintf (stderr, "%s(%02d) sc_midi_read_sysex failed %d\n", __func__, ev->type, ret);
-        return ret;
-      }
-
-      process_korg_message (sysex, sysex_len, &tmp_ev);
-
-      if (ev->type == tmp_ev.type)
-      {
-        *ev = tmp_ev;
-        return 0;
-      }
-      else
-      {
-        fprintf (stderr, "%s(%02d): unexpected message: type %02x\n", __func__, ev->type, tmp_ev.type);
-      }
-
+      fprintf (stderr, "%s(%02d) sc_midi_read_sysex failed %d\n", __func__, ev->type, ret);
+      return ret;
     }
+
+    process_korg_message (sysex, sysex_len, &tmp_ev);
+
+    if (ev->type != tmp_ev.type)
+    {
+      fprintf (stderr, "%s(%02d): unexpected message: type %02x\n", __func__, ev->type, tmp_ev.type);
+      continue;
+    }
+
+    *ev = tmp_ev;
+    return 0;
+
   }
 }
 
