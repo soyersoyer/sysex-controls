@@ -142,6 +142,8 @@
                       <object class="AdwToolbarView">
                         <child type="top">
                           <object class="AdwHeaderBar">
+                            <property name="show-start-title-buttons">false</property>
+                            <property name="show-end-title-buttons">false</property>
                             <child type="start">
                               <object class="GtkButton">
                                 <property name="icon-name">go-previous-symbolic</property>
