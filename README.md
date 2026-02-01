@@ -21,6 +21,7 @@ These devices are supported and tested:
 - Arturia KeyStep
 - Arturia KeyStep 37
 - Arturia KeyStep Pro
+- Arturia MicroLab
 - Arturia MiniLab
 - Arturia MiniLab mkII
 - Arturia MiniLab 3
@@ -32,7 +33,6 @@ These might also work, but have not been tested yet:
 - Akai MPD218
 - Arturia KeyLab 25 / 49 / 61 / 88
 - Arturia KeyLab Essential 49 / 61 / 88
-- Arturia MicroLab
 - Arturia MiniBrute 2
 - Arturia MiniBrute 2S
 - Arturia SparkLE
