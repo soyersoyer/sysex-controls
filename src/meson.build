@@ -354,6 +354,17 @@ sc_sources = [
   'nanokey2/nk2-pitch-bend-page.c',
   'nanokey2/nk2-scene-page.c',
 
+  'nanokontrol1/nkl1-book.c',
+  'nanokontrol1/nkl1-button-page.c',
+  'nanokontrol1/nkl1-controller-group-page.c',
+  'nanokontrol1/nkl1-controller-groups-page.c',
+  'nanokontrol1/nkl1-knob-page.c',
+  'nanokontrol1/nkl1-scene-page.c',
+  'nanokontrol1/nkl1-scenes-page.c',
+  'nanokontrol1/nkl1-slider-page.c',
+  'nanokontrol1/nkl1-transport-button-page.c',
+  'nanokontrol1/nkl1-transport-buttons-page.c',
+
   'nanokontrol2/nkl2-book.c',
   'nanokontrol2/nkl2-button-page.c',
   'nanokontrol2/nkl2-controller-group-page.c',
