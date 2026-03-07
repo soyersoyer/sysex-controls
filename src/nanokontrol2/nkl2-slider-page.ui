@@ -15,7 +15,7 @@
 
                 <child>
                   <object class="AdwSwitchRow">
-                    <child><object class="MmControl"><property name="id">0x01</property></object></child>
+                    <child><object class="MmControl"><property name="id">0x00</property></object></child>
                     <property name="title" translatable="yes">Enabled</property>
                   </object>
                 </child>
@@ -28,7 +28,7 @@
 
                 <child>
                   <object class="ScCcRow">
-                    <child><object class="MmControl"><property name="id">0x03</property></object></child>
+                    <child><object class="MmControl"><property name="id">0x02</property></object></child>
                   </object>
                 </child>
 
@@ -40,8 +40,8 @@
 
                 <child>
                   <object class="AdwSpinRow">
-                    <child><object class="MmControl"><property name="id">0x04</property></object></child>
-                    <property name="title" translatable="yes">Off</property>
+                    <child><object class="MmControl"><property name="id">0x03</property></object></child>
+                    <property name="title" translatable="yes">Min</property>
                     <property name="adjustment">
                       <object class="GtkAdjustment">
                         <property name="lower">0</property>
@@ -55,8 +55,8 @@
 
                 <child>
                   <object class="AdwSpinRow">
-                    <child><object class="MmControl"><property name="id">0x05</property></object></child>
-                    <property name="title" translatable="yes">On</property>
+                    <child><object class="MmControl"><property name="id">0x04</property></object></child>
+                    <property name="title" translatable="yes">Max</property>
                     <property name="adjustment">
                       <object class="GtkAdjustment">
                         <property name="lower">0</property>
