@@ -341,6 +341,17 @@
     <file preprocess="xml-stripblanks">nanokey2/nk2-pitch-bend-page.ui</file>
     <file preprocess="xml-stripblanks">nanokey2/nk2-scene-page.ui</file>
 
+    <file preprocess="xml-stripblanks">nanokontrol1/nkl1-book.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol1/nkl1-button-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol1/nkl1-controller-group-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol1/nkl1-controller-groups-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol1/nkl1-knob-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol1/nkl1-scene-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol1/nkl1-scenes-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol1/nkl1-slider-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol1/nkl1-transport-button-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrol1/nkl1-transport-buttons-page.ui</file>
+
     <file preprocess="xml-stripblanks">nanokontrol2/nkl2-book.ui</file>
     <file preprocess="xml-stripblanks">nanokontrol2/nkl2-button-page.ui</file>
     <file preprocess="xml-stripblanks">nanokontrol2/nkl2-controller-group-page.ui</file>

@@ -37,6 +37,7 @@ These might also work, but have not been tested yet:
 - Arturia MiniBrute 2S
 - Arturia SparkLE
 - Arturia The Laboratory
+- Korg nanoKONTROL
 
 It doesn't support the KeyStep / BeatStep Pro sequencer banks, BeatStep Pro presets and the DrumBrute/MiniBrute banks yet.
 
