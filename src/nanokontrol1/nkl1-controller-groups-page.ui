@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Nkl1ControllerGroupsPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Controller Groups</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 1</property>
+                    <property name="control-id-offset">0x10</property>
+                    <property name="target-page">Nkl1ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 2</property>
+                    <property name="control-id-offset">0x27</property>
+                    <property name="target-page">Nkl1ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 3</property>
+                    <property name="control-id-offset">0x3e</property>
+                    <property name="target-page">Nkl1ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 4</property>
+                    <property name="control-id-offset">0x55</property>
+                    <property name="target-page">Nkl1ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 5</property>
+                    <property name="control-id-offset">0x6c</property>
+                    <property name="target-page">Nkl1ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 6</property>
+                    <property name="control-id-offset">0x83</property>
+                    <property name="target-page">Nkl1ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 7</property>
+                    <property name="control-id-offset">0x9a</property>
+                    <property name="target-page">Nkl1ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 8</property>
+                    <property name="control-id-offset">0xb1</property>
+                    <property name="target-page">Nkl1ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Group 9</property>
+                    <property name="control-id-offset">0xc8</property>
+                    <property name="target-page">Nkl1ControllerGroupPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

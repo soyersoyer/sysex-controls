@@ -1,0 +1,13 @@
+#pragma once
+
+#include <adwaita.h>
+
+#include "sc-navigation-page.h"
+
+G_BEGIN_DECLS
+
+#define NKL1_TYPE_TRANSPORT_BUTTON_PAGE (nkl1_transport_button_page_get_type ())
+
+G_DECLARE_FINAL_TYPE (Nkl1TransportButtonPage, nkl1_transport_button_page, NKL1, TRANSPORT_BUTTON_PAGE, ScNavigationPage)
+
+G_END_DECLS
