@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Np1Book" parent="KorgBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="Np1GlobalPage">
+            <property name="title" translatable="yes">Global</property>
+            <property name="scene-id">0xFF</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="Np1ScenesPage">
+            <property name="title" translatable="yes">Scenes</property>
+          </object>
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>

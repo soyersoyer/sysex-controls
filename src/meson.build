@@ -375,6 +375,14 @@ sc_sources = [
   'nanokontrol2/nkl2-slider-page.c',
   'nanokontrol2/nkl2-transport-buttons-page.c',
 
+  'nanopad1/np1-book.c',
+  'nanopad1/np1-global-page.c',
+  'nanopad1/np1-pad-page.c',
+  'nanopad1/np1-scene-page.c',
+  'nanopad1/np1-scenes-page.c',
+  'nanopad1/np1-xy-axis.c',
+  'nanopad1/np1-xy-pad-page.c',
+
   'nanopad2/np2-book.c',
   'nanopad2/np2-global-page.c',
   'nanopad2/np2-pad-page.c',
