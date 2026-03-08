@@ -351,6 +351,14 @@
     <file preprocess="xml-stripblanks">nanokontrol2/nkl2-slider-page.ui</file>
     <file preprocess="xml-stripblanks">nanokontrol2/nkl2-transport-buttons-page.ui</file>
 
+    <file preprocess="xml-stripblanks">nanopad1/np1-book.ui</file>
+    <file preprocess="xml-stripblanks">nanopad1/np1-global-page.ui</file>
+    <file preprocess="xml-stripblanks">nanopad1/np1-pad-page.ui</file>
+    <file preprocess="xml-stripblanks">nanopad1/np1-scene-page.ui</file>
+    <file preprocess="xml-stripblanks">nanopad1/np1-scenes-page.ui</file>
+    <file preprocess="xml-stripblanks">nanopad1/np1-xy-axis.ui</file>
+    <file preprocess="xml-stripblanks">nanopad1/np1-xy-pad-page.ui</file>
+
     <file preprocess="xml-stripblanks">nanopad2/np2-book.ui</file>
     <file preprocess="xml-stripblanks">nanopad2/np2-global-page.ui</file>
     <file preprocess="xml-stripblanks">nanopad2/np2-pad-page.ui</file>
