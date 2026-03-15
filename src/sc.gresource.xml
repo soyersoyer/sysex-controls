@@ -368,5 +368,8 @@
     <file preprocess="xml-stripblanks">thelaboratory/tl-book.ui</file>
     <file preprocess="xml-stripblanks">thelaboratory/tl-controller-page.ui</file>
     <file preprocess="xml-stripblanks">thelaboratory/tl-curve-page.ui</file>
+
+    <file preprocess="xml-stripblanks">matriarch/matr-book.ui</file>
+    <file preprocess="xml-stripblanks">matriarch/matr-channels-page.ui</file>
   </gresource>
 </gresources>

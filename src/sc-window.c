@@ -37,6 +37,7 @@
 #include "nanopad2/np2-book.h"
 #include "sparkle/sple-book.h"
 #include "thelaboratory/tl-book.h"
+#include "matriarch/matr-book.h"
 
 typedef const struct {
   const char *client_name;
@@ -86,6 +87,7 @@ static controller_t controllers[] = {
   {"MPK mini 3", "MPK mini 3", amm3_book_get_type},
   {"SparkLE", "SparkLE", sple_book_get_type},
   {"The Laboratory", "Laboratory", tl_book_get_type},
+  {"Moog Matriarch", "Matriarch", matr_book_get_type},
 };
 
 struct _ScWindow

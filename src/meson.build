@@ -381,6 +381,9 @@ sc_sources = [
   'thelaboratory/tl-book.c',
   'thelaboratory/tl-controller-page.c',
   'thelaboratory/tl-curve-page.c',
+
+  'matriarch/matr-book.c',
+  'matriarch/matr-channels-page.c'
 ]
 
 sc_deps = [
