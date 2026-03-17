@@ -20,4 +20,3 @@ matr_channels_page_init (MatrChannelsPage *self)
 {
   gtk_widget_init_template (GTK_WIDGET (self));
 }
-<

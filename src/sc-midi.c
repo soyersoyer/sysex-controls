@@ -1353,6 +1353,88 @@ sc_midi_korg_write_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4]
   return 0; 
 }
 
+
+int
+sc_midi_matriarch_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t *val)
+{
+  //                                                         pr_id  p_id  c_id
+  //                                                          ||||  ||||  ||||
+  uint8_t data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x01, 0x00, 0x00, 0x00, 0xf7};
+  ar_event_t ar_ev = {.type = AR_CONTROL_WRITE, .control.id = control_id};
+  snd_seq_event_t ev;
+  int err;
+
+  //printf ("read_control_value %02x\n", control_id);
+
+  snd_seq_ev_clear (&ev);
+  snd_seq_ev_set_source (&ev, 0);
+  snd_seq_ev_set_dest (&ev, addr.client, addr.port);
+  snd_seq_ev_set_direct (&ev);
+  snd_seq_ev_set_sysex (&ev, sizeof data, data);
+
+  set_control_id (data, control_id);
+
+  err = snd_seq_event_output (seq, &ev);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%04x) snd_seq_event_output failed %d\n", __func__, control_id, err);
+    return err;
+  }
+
+  err = snd_seq_drain_output(seq);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%04x) snd_seq_drain_output failed %d\n", __func__, control_id, err);
+    return err;
+  }
+
+  err = sc_midi_arturia_read_next (seq, &ar_ev);
+  if (err < 0)
+    return err;
+
+  *val = ar_ev.control.value;
+
+  return 0;
+}
+
+
+int
+sc_midi_matriarch_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val)
+{
+  //                                                         pr_id  p_id  c_id  value
+  //                                                          ||||  ||||  ||||  ||||
+  uint8_t data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00, 0x00, 0x00, 0x00, 0xf7};
+  snd_seq_event_t ev;
+  int err;
+
+  //printf ("write_control_value %02x value to %02x\n", control_id, val);
+
+  snd_seq_ev_clear (&ev);
+  snd_seq_ev_set_source (&ev, 0);
+  snd_seq_ev_set_dest (&ev, addr.client, addr.port);
+  snd_seq_ev_set_direct (&ev);
+  snd_seq_ev_set_sysex (&ev, sizeof data, data);
+
+  set_control_id (data, control_id);
+  data[10] = val;
+
+  err = snd_seq_event_output (seq, &ev);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%08x): snd_seq_event_output failed %d\n", __func__, control_id, err);
+    return err;
+  }
+
+  err = snd_seq_drain_output (seq);
+  if (err < 0)
+  {
+    fprintf (stderr, "%s(%08x): snd_seq_drain_output failed %d\n", __func__, control_id, err);
+    return err;
+  }
+
+  return 0;
+}
+
 int
 sc_midi_disconnect (snd_seq_t *seq, snd_seq_addr_t addr)
 {
