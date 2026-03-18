@@ -6,7 +6,7 @@
         <property name="child">
             <object class="AdwNavigationView">
                 <child>
-                    <object class="MatrChannelsPage"/>
+                    <object class="MatrMidiPage"/>
                 </child>
                 <child>
                     <object class="MatrCvPage"/>

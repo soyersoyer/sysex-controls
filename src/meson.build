@@ -383,7 +383,7 @@ sc_sources = [
   'thelaboratory/tl-curve-page.c',
 
   'matriarch/matr-book.c',
-  'matriarch/matr-channels-page.c',
+  'matriarch/matr-midi-page.c',
   'matriarch/matr-cv-page.c',
   'matriarch/matr-delay-page.c',
   'matriarch/matr-arp-seq-page.c',

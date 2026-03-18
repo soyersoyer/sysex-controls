@@ -2,7 +2,7 @@
 <interface>
     <requires lib="gtk" version="4.0"/>
     <requires lib="libadwaita" version="1.0"/>
-    <template class="MatrChannelsPage" parent="ScNavigationPage">
+    <template class="MatrMidiPage" parent="ScNavigationPage">
         <property name="title" translatable="yes">MIDI Settings</property>
         <property name="child">
             <object class="AdwToolbarView">

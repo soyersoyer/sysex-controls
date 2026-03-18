@@ -1,6 +1,6 @@
 #include "matr-book.h"
 
-#include "matr-channels-page.h"
+#include "matr-midi-page.h"
 
 struct _MatrBook
 {
@@ -27,7 +27,7 @@ matr_book_init (MatrBook *self)
   self->read_control = sc_midi_matriarch_read_control;
   self->write_control = sc_midi_matriarch_write_control;
 
-  g_type_ensure (MATR_TYPE_CHANNELS_PAGE);
+  g_type_ensure (MATR_TYPE_MIDI_PAGE);
 
   gtk_widget_init_template (GTK_WIDGET (self));
 }
