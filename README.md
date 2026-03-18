@@ -37,6 +37,7 @@ These might also work, but have not been tested yet:
 - Arturia MiniBrute 2S
 - Arturia SparkLE
 - Arturia The Laboratory
+- Korg nanoKEY
 - Korg nanoKONTROL
 - Korg nanoPAD
 

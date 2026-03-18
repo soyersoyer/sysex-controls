@@ -348,6 +348,13 @@ sc_sources = [
   'mpkmini3/amm3-pad-page.c',
   'mpkmini3/amm3-program-page.c',
 
+  'nanokey1/nk1-book.c',
+  'nanokey1/nk1-button-page.c',
+  'nanokey1/nk1-cc-mode-page.c',
+  'nanokey1/nk1-keyboard-page.c',
+  'nanokey1/nk1-pitch-bend-page.c',
+  'nanokey1/nk1-scene-page.c',
+
   'nanokey2/nk2-book.c',
   'nanokey2/nk2-button-page.c',
   'nanokey2/nk2-keyboard-page.c',

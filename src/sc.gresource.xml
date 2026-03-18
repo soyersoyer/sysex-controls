@@ -335,6 +335,13 @@
     <file preprocess="xml-stripblanks">mpkmini3/amm3-pad-page.ui</file>
     <file preprocess="xml-stripblanks">mpkmini3/amm3-program-page.ui</file>
 
+    <file preprocess="xml-stripblanks">nanokey1/nk1-book.ui</file>
+    <file preprocess="xml-stripblanks">nanokey1/nk1-button-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokey1/nk1-cc-mode-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokey1/nk1-keyboard-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokey1/nk1-pitch-bend-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokey1/nk1-scene-page.ui</file>
+
     <file preprocess="xml-stripblanks">nanokey2/nk2-book.ui</file>
     <file preprocess="xml-stripblanks">nanokey2/nk2-button-page.ui</file>
     <file preprocess="xml-stripblanks">nanokey2/nk2-keyboard-page.ui</file>
