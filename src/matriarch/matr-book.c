@@ -6,8 +6,8 @@ struct _MatrBook
 {
   ScBookClass parent_instance;
 
-  int (*read_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t *val);
-  int (*write_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val);
+  int (*read_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint16_t *val);
+  int (*write_control) (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint16_t val);
 };
 
 G_DEFINE_FINAL_TYPE (MatrBook, matr_book, AR_TYPE_BOOK)
@@ -34,15 +34,9 @@ matr_book_init (MatrBook *self)
 
 
 int
-matr_book_read_control (MatrBook *self, uint32_t control_id, uint8_t *val)
+matr_book_read_control (MatrBook *self, uint8_t control_id, uint16_t *val)
 {
-  return 0;
-  // MatrBookClass *klass;
-  // ScBook *sc_book;
-  //
-  // g_return_val_if_fail (AR_IS_BOOK (self), -EINVAL);
-  //
-  // klass = MATR_BOOK_GET_CLASS (self);
-  //
-  // return klass->read_control (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), control_id, val);
+  ScBook *sc_book = SC_BOOK (self);
+
+  return self->read_control (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), control_id, val);
 }

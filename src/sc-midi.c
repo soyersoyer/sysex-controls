@@ -1354,13 +1354,90 @@ sc_midi_korg_write_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4]
 }
 
 
-int
-sc_midi_matriarch_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t *val)
+typedef struct {
+  uint8_t id;
+  uint16_t value;
+} matriarch_message;
+
+static void
+process_matriarch_message (snd_seq_event_t *ev, matriarch_message *ar_ev)
 {
-  //                                                         pr_id  p_id  c_id
-  //                                                          ||||  ||||  ||||
-  uint8_t data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x01, 0x00, 0x00, 0x00, 0xf7};
-  ar_event_t ar_ev = {.type = AR_CONTROL_WRITE, .control.id = control_id};
+  static const uint8_t matriarch_response[] = {0xf0,0x04,0x17,0x23,0x0a,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x01,0xf7};
+
+  unsigned int len = ev->data.ext.len;
+  uint8_t* input = ev->data.ext.ptr;
+
+  if (len == sizeof matriarch_response &&
+      memcmp (input, matriarch_response, sizeof matriarch_response) == 0)
+  {
+    ar_ev->id = input[7];
+    ar_ev->value = (input[7] << 16) | (input[8] << 8) | input[9];
+  }
+  else
+  {
+    fprintf (stderr, "%s): unexpected message: len %d: ", __func__,len);
+    for (int i=0; i < len; ++i)
+      fprintf(stderr, "%02x ", (uint8_t)input[i]);
+    fprintf(stderr, "\n");
+  }
+}
+
+static int
+sc_midi_matriarch_read_next (snd_seq_t *seq, matriarch_message *ar_ev)
+{
+  struct pollfd pfds[1] = {};
+  matriarch_message ar_ev_in = {0};
+  snd_seq_event_t *ev;
+  int ret, pfds_n = 0;
+
+  pfds_n = snd_seq_poll_descriptors(seq, pfds, 1, POLLIN);
+
+  while (1)
+  {
+    if (snd_seq_event_input_pending (seq, 0) == 0)
+    {
+      ret = poll (pfds, pfds_n, READ_TIMEOUT_MS);
+      if (ret < 0)
+      {
+        fprintf (stderr, "%s(%08x) poll failed %d (%s)\n", __func__, ar_ev->id, -errno, strerror(errno));
+        return -errno;
+      }
+      if (ret == 0)
+      {
+        fprintf (stderr, "%s(%08x) poll timeout %d\n", __func__, ar_ev->id, ret);
+        return -ETIMEDOUT;
+      }
+    }
+
+    ret = snd_seq_event_input (seq, &ev);
+
+    if (ret == -EAGAIN)
+      continue;
+
+    if (ret < 0)
+    {
+      fprintf (stderr, "%s(%08x) snd_seq_event_input failed %d\n", __func__, ar_ev->id, ret);
+      return ret;
+    }
+
+    process_matriarch_message (ev, &ar_ev_in);
+
+    *ar_ev = ar_ev_in;
+    return 0;
+
+  }
+}
+
+int
+sc_midi_matriarch_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint16_t *val)
+{
+  // uint8_t msb = (uint8_t) *val & 0xFF00 >> 8;
+  // uint8_t lsb = (uint8_t) *val & 0x00FF;
+  uint8_t msb = 0x00;
+  uint8_t lsb = 0x00;
+
+  uint8_t data[] = {0xf0, 0x04, 0x17, 0x3e, control_id, msb, lsb, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7f, 0xf7};
+  matriarch_message matriarch_msg;
   snd_seq_event_t ev;
   int err;
 
@@ -1372,7 +1449,6 @@ sc_midi_matriarch_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t co
   snd_seq_ev_set_direct (&ev);
   snd_seq_ev_set_sysex (&ev, sizeof data, data);
 
-  set_control_id (data, control_id);
 
   err = snd_seq_event_output (seq, &ev);
   if (err < 0)
@@ -1388,11 +1464,11 @@ sc_midi_matriarch_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t co
     return err;
   }
 
-  err = sc_midi_arturia_read_next (seq, &ar_ev);
+  err = sc_midi_matriarch_read_next (seq, &matriarch_msg);
   if (err < 0)
     return err;
 
-  *val = ar_ev.control.value;
+  *val = matriarch_msg.value;
 
   return 0;
 }
