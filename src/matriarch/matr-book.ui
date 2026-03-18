@@ -11,6 +11,9 @@
                 <child>
                     <object class="MatrCvPage"/>
                 </child>
+                <child>
+                    <object class="MatrDelayPage"/>
+                </child>
             </object>
         </property>
     </template>

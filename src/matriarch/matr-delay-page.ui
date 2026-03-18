@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="MatrDelayPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Delay Settings</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar"/>
+        </child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">50</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Delay Ping Pong</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off (default)</item>
+                          <item>On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">51</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Delay Sync</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off (default)</item>
+                          <item>On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">52</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Delay Filter Brightness</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Dark</item>
+                          <item>Bright (default)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>
