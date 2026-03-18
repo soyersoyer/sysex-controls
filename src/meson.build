@@ -384,6 +384,7 @@ sc_sources = [
 
   'matriarch/matr-book.c',
   'matriarch/matr-channels-page.c',
+  'matriarch/matr-cv-page.c',
   'matriarch/matr-control.c'
 ]
 

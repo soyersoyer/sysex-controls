@@ -371,5 +371,6 @@
 
     <file preprocess="xml-stripblanks">matriarch/matr-book.ui</file>
     <file preprocess="xml-stripblanks">matriarch/matr-channels-page.ui</file>
+    <file preprocess="xml-stripblanks">matriarch/matr-cv-page.ui</file>
   </gresource>
 </gresources>

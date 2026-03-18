@@ -1,7 +1,5 @@
 #pragma once
 
-#include "ar-book.h"
-
 #include <adwaita.h>
 
 #include "sc-navigation-page.h"
