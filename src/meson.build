@@ -387,6 +387,7 @@ sc_sources = [
   'matriarch/matr-cv-page.c',
   'matriarch/matr-delay-page.c',
   'matriarch/matr-arp-seq-page.c',
+  'matriarch/matr-general-page.c',
   'matriarch/matr-control.c'
 ]
 

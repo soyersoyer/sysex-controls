@@ -17,6 +17,9 @@
                 <child>
                     <object class="MatrArpSeqPage"/>
                 </child>
+                <child>
+                    <object class="MatrGeneralPage"/>
+                </child>
             </object>
         </property>
     </template>

@@ -374,5 +374,6 @@
     <file preprocess="xml-stripblanks">matriarch/matr-cv-page.ui</file>
     <file preprocess="xml-stripblanks">matriarch/matr-delay-page.ui</file>
     <file preprocess="xml-stripblanks">matriarch/matr-arp-seq-page.ui</file>
+    <file preprocess="xml-stripblanks">matriarch/matr-general-page.ui</file>
   </gresource>
 </gresources>
