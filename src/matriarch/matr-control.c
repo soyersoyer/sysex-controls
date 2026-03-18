@@ -1,5 +1,7 @@
 #include "matr-control.h"
 
+#include <sc-window.h>
+
 #include "matr-book.h"
 #include "sc-control-value.h"
 #include "sc-navigation-page.h"
@@ -133,6 +135,28 @@ matr_control_interface_init(ScControlInterface *iface) {
     iface->read_value = matr_control_read_value;
 }
 
+
+static void
+combo_row_change_cb (GObject * widget, GParamSpec *pspec, MatrControl *self)
+{
+    ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (self->widget)));
+    MatrBook *book = MATR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), MATR_TYPE_BOOK));
+    ScControlValue *item = SC_CONTROL_VALUE (adw_combo_row_get_selected_item (ADW_COMBO_ROW (widget)));
+    uint16_t val = sc_control_value_get_value (item);
+
+    if (self->value == val)
+        return;
+
+    g_debug ("Matriarch parameter change 0x%02x: 0x%04x -> 0x%04x %s", self->id, self->value, val, sc_control_value_get_name (item));
+    if (matr_book_write_control (book, self->id, val) < 0)
+    {
+        sc_io_problem (window, "Matriarch parameter change");
+        return;
+    }
+
+    self->value = val;
+}
+
 static int
 matr_control_register(MatrControl *self) {
     ScPreferencesGroup *group_widget;
@@ -157,28 +181,9 @@ matr_control_register(MatrControl *self) {
 
     nav_page_widget = SC_NAVIGATION_PAGE(
         gtk_widget_get_ancestor(GTK_WIDGET(&self->parent_instance), SC_TYPE_NAVIGATION_PAGE));
-    // if (nav_page_widget) {
-    //     uint32_t cc_offset = sc_navigation_page_get_control_cc_offset(nav_page_widget);
-    //     offset += self->use_cc_offset && cc_offset
-    //                   ? cc_offset
-    //                   : sc_navigation_page_get_control_id_offset(nav_page_widget);
-    // }
-    //
-    // page_widget = SC_PREFERENCES_PAGE(
-    //     gtk_widget_get_ancestor(GTK_WIDGET(&self->parent_instance), SC_TYPE_PREFERENCES_PAGE));
-    // if (page_widget) {
-    //     uint32_t cc_offset = sc_preferences_page_get_control_cc_offset(page_widget);
-    //     offset += self->use_cc_offset && cc_offset ? cc_offset : sc_preferences_page_get_control_id_offset(page_widget);
-    // }
-    //
-    // group_widget = SC_PREFERENCES_GROUP(
-    //     gtk_widget_get_ancestor(GTK_WIDGET(&self->parent_instance), SC_TYPE_PREFERENCES_GROUP));
-    // if (group_widget) {
-    //     uint32_t cc_offset = sc_preferences_group_get_control_cc_offset(group_widget);
-    //     offset += self->use_cc_offset && cc_offset
-    //                   ? cc_offset
-    //                   : sc_preferences_group_get_control_id_offset(group_widget);
-    // }
+
+    if (ADW_IS_COMBO_ROW (widget))
+        g_signal_connect (G_OBJECT (widget), "notify::selected-item", G_CALLBACK (combo_row_change_cb), self);
 
     sc_navigation_page_register_control(nav_page_widget, SC_CONTROL(self));
     self->widget = widget;

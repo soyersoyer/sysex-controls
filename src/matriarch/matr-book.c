@@ -25,7 +25,7 @@ static void
 matr_book_init (MatrBook *self)
 {
   self->read_control = sc_midi_matriarch_read_control;
-  // self->write_control = sc_midi_matriarch_write_control;
+  self->write_control = sc_midi_matriarch_write_control;
 
   g_type_ensure (MATR_TYPE_CHANNELS_PAGE);
 
@@ -37,6 +37,13 @@ int
 matr_book_read_control (MatrBook *self, uint8_t control_id, uint16_t *val)
 {
   ScBook *sc_book = SC_BOOK (self);
-
   return self->read_control (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), control_id, val);
+}
+
+
+int
+matr_book_write_control (MatrBook *self, uint8_t control_id, uint16_t val)
+{
+  ScBook *sc_book = SC_BOOK (self);
+  return self->write_control (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), control_id, val);
 }

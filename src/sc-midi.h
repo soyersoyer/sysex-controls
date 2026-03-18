@@ -51,7 +51,7 @@ int sc_midi_korg_write_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_i
 int sc_midi_korg_save_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4], uint8_t scene_id);
 
 int sc_midi_matriarch_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint16_t *val);
-int sc_midi_matriarch_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val);
+int sc_midi_matriarch_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint16_t val);
 
 int sc_midi_disconnect (snd_seq_t *seq, snd_seq_addr_t addr);
 int sc_midi_connect (snd_seq_t *seq, snd_seq_addr_t addr);

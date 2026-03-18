@@ -1362,16 +1362,14 @@ typedef struct {
 static void
 process_matriarch_message (snd_seq_event_t *ev, matriarch_message *ar_ev)
 {
-  static const uint8_t matriarch_response[] = {0xf0,0x04,0x17,0x23,0x0a,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x01,0xf7};
-
   unsigned int len = ev->data.ext.len;
   uint8_t* input = ev->data.ext.ptr;
 
-  if (len == sizeof matriarch_response &&
-      memcmp (input, matriarch_response, sizeof matriarch_response) == 0)
+  if (len == 16)
   {
-    ar_ev->id = input[7];
-    ar_ev->value = (input[7] << 16) | (input[8] << 8) | input[9];
+    ar_ev->id = input[4];
+    ar_ev->value = (u_int16_t) input[5] << 8 | input[6];
+    fprintf(stderr, "%d\n", ar_ev->value);
   }
   else
   {
@@ -1475,11 +1473,12 @@ sc_midi_matriarch_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t co
 
 
 int
-sc_midi_matriarch_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint8_t val)
+sc_midi_matriarch_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint16_t val)
 {
-  //                                                         pr_id  p_id  c_id  value
-  //                                                          ||||  ||||  ||||  ||||
-  uint8_t data[] = {0xf0, 0x00, 0x20, 0x6b, 0x7f, 0x42, 0x02, 0x00, 0x00, 0x00, 0x00, 0xf7};
+  uint8_t msb = (uint8_t) ((val & 0xFF00) >> 8);
+  uint8_t lsb = (uint8_t) (val & 0x00FF);
+
+  uint8_t data[] = {0xf0, 0x04, 0x17, 0x23, control_id, msb, lsb, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7f, 0xf7};
   snd_seq_event_t ev;
   int err;
 
@@ -1490,9 +1489,6 @@ sc_midi_matriarch_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t c
   snd_seq_ev_set_dest (&ev, addr.client, addr.port);
   snd_seq_ev_set_direct (&ev);
   snd_seq_ev_set_sysex (&ev, sizeof data, data);
-
-  set_control_id (data, control_id);
-  data[10] = val;
 
   err = snd_seq_event_output (seq, &ev);
   if (err < 0)
