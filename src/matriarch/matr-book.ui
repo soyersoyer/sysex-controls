@@ -14,6 +14,9 @@
                 <child>
                     <object class="MatrDelayPage"/>
                 </child>
+                <child>
+                    <object class="MatrArpSeqPage"/>
+                </child>
             </object>
         </property>
     </template>

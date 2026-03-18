@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="MatrArpSeqPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Arp/Seq Settings</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar"/>
+        </child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">20</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Sequence Transpose Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Relative to First Note (default)</item>
+                          <item>Relative to Middle C</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">21</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Arp/Seq Keyed Timing Reset</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off (default)</item>
+                          <item>On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">22</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Arp FW/BW Repeats</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Don’t Repeat end notes</item>
+                          <item>Repeat end notes (default)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScChRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">23</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Arp/Seq Swing</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">24</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Sequence Keyboard Control</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>On (default)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">25</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Delay Sequence Change</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off (default)</item>
+                          <item>On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">26</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Sequence Latch Restart</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off (default)</item>
+                          <item>On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">27</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Arp/Seq Clock Input Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Clock (default)</item>
+                          <item>Step-Advance Trigger</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">28</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Arp/Seq Clock Output</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Always</item>
+                          <item>Only When Playing (default)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">72</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Arp/Seq Random Repeats</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>no repeating notes/steps in RND direction</item>
+                          <item>allow repeating notes (true random) (default)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>
