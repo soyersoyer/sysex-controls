@@ -51,19 +51,13 @@ If not, let us know as well.
 
 <a href="https://flathub.org/apps/details/hu.irl.sysex-controls"><img width="240" alt="Download on Flathub" src="https://flathub.org/api/badge?locale=en"/></a>
 
-#### Install
-
 ```
 flatpak install flathub hu.irl.sysex-controls
 ```
 
-#### Run
+### From Arch User repository
 
-Run `sysex-controls` from your application launcher or from terminal: 
-
-```
-flatpak run hu.irl.sysex-controls
-```
+https://aur.archlinux.org/packages/sysex-controls
 
 ### From source
 

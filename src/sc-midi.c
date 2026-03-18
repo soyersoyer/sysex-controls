@@ -163,6 +163,7 @@ sc_midi_akai_read_program (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id, 
         fprintf(stderr, "%02x ", (uint8_t)sysex[i]);
       fprintf(stderr, "\n");
     }
+    sysex_len = 0;
 
   }
 }
@@ -1025,6 +1026,7 @@ sc_midi_korg_read_next (snd_seq_t *seq, korg_event_t *ev)
     }
 
     process_korg_message (sysex, sysex_len, &tmp_ev);
+    sysex_len = 0;
 
     if (ev->type != tmp_ev.type)
     {
