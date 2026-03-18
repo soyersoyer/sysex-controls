@@ -41,7 +41,7 @@
                                     <object class="ScComboRow">
                                         <child>
                                             <object class="MatrControl">
-                                                <property name="id">0x8</property>
+                                                <property name="id">8</property>
                                             </object>
                                         </child>
                                         <property name="title" translatable="yes">MIDI Echo (USB)</property>
@@ -62,7 +62,7 @@
                                     <object class="ScComboRow">
                                         <child>
                                             <object class="MatrControl">
-                                                <property name="id">0x9</property>
+                                                <property name="id">9</property>
                                             </object>
                                         </child>
                                         <property name="title" translatable="yes">MIDI Echo (DIN)</property>
@@ -234,6 +234,1057 @@
                                         </property>
                                     </object>
                                 </child>
+<!--    TODO: from 0 to 31 values  -->
+<!--                                <child>-->
+<!--                                    <object class="ScComboRow">-->
+<!--                                        <child>-->
+<!--                                            <object class="MatrControl">-->
+<!--                                                <property name="id">1</property>-->
+<!--                                            </object>-->
+<!--                                        </child>-->
+<!--                                        <property name="title" translatable="yes">Tuning Scale</property>-->
+<!--                                    </object>-->
+<!--                                </child>-->
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">2</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Knob Mode</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Snap</item>
+                                                    <item>Pass-Thru</item>
+                                                    <item>Relative (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">3</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Note Priority</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Low</item>
+                                                    <item>High</item>
+                                                    <item>Last Note (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">16</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Local Control: Keys</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off</item>
+                                                    <item>On (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">17</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Local Control: Wheels</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off</item>
+                                                    <item>On (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">18</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Local Control: Panel</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off</item>
+                                                    <item>On (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">19</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Local Control: Arp/Seq</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off</item>
+                                                    <item>On (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">20</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Sequence Transpose Mode</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Relative to First Note (default)</item>
+                                                    <item>Relative to Middle C</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">21</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Arp/Seq Keyed Timing Reset</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">22</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Arp FW/BW Repeats</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Don’t Repeat end notes</item>
+                                                    <item>Repeat end notes (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScChRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">23</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Arp/Seq Swing</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">24</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Sequence Keyboard Control</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off</item>
+                                                    <item>On (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">25</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Delay Sequence Change</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">26</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Sequence Latch Restart</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">27</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Arp/Seq Clock Input Mode</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Clock (default)</item>
+                                                    <item>Step-Advance Trigger</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">28</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Arp/Seq Clock Output</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Always</item>
+                                                    <item>Only When Playing (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">29</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Arp MIDI Output</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off</item>
+                                                    <item>On (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">30</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Send MIDI Clock</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>Only When Playing</item>
+                                                    <item>Always</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">31</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Send MIDI Start/Stop</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">32</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Follow MIDI Clock</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off</item>
+                                                    <item>On (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">33</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Follow MIDI Start/Stop</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off</item>
+                                                    <item>On (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">34</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Follow Song Position Pointer</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off</item>
+                                                    <item>On (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScChRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">35</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Clock Input PPQN Index</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScChRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">36</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Clock Output PPQN Index</property>
+                                    </object>
+                                </child>
+<!--    TODO                            -->
+<!--                                <child>-->
+<!--                                    <object class="ScChRow">-->
+<!--                                        <child>-->
+<!--                                            <object class="MatrControl">-->
+<!--                                                <property name="id">37</property>-->
+<!--                                            </object>-->
+<!--                                        </child>-->
+<!--                                        <property name="title" translatable="yes">Pitch Bend Range (Semitones)</property>-->
+<!--                                    </object>-->
+<!--                                </child>-->
+                                <child>
+                                    <object class="ScChRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">38</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Keyboard Octave Transpose</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>-2</item>
+                                                    <item>-1</item>
+                                                    <item>0 (default)</item>
+                                                    <item>+1</item>
+                                                    <item>+2</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">39</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Delayed KB Octave Transpose</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off</item>
+                                                    <item>On (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">40</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Glide Type</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Linear Constant Rate (default)</item>
+                                                    <item>Linear Constant Time</item>
+                                                    <item>Exponential</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">41</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Gated Glide</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off</item>
+                                                    <item>On (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">42</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Legato Glide</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off</item>
+                                                    <item>On (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+<!--    TODO                            -->
+<!--                                <child>-->
+<!--                                    <object class="ScChRow">-->
+<!--                                        <child>-->
+<!--                                            <object class="MatrControl">-->
+<!--                                                <property name="id">43</property>-->
+<!--                                            </object>-->
+<!--                                        </child>-->
+<!--                                        <property name="title" translatable="yes">Osc 2 Freq Knob Range</property>-->
+<!--                                    </object>-->
+<!--                                </child>-->
+<!--                                <child>-->
+<!--                                    <object class="ScChRow">-->
+<!--                                        <child>-->
+<!--                                            <object class="MatrControl">-->
+<!--                                                <property name="id">44</property>-->
+<!--                                            </object>-->
+<!--                                        </child>-->
+<!--                                        <property name="title" translatable="yes">Osc 3 Freq Knob Range</property>-->
+<!--                                    </object>-->
+<!--                                </child>-->
+<!--                                <child>-->
+<!--                                    <object class="ScChRow">-->
+<!--                                        <child>-->
+<!--                                            <object class="MatrControl">-->
+<!--                                                <property name="id">45</property>-->
+<!--                                            </object>-->
+<!--                                        </child>-->
+<!--                                        <property name="title" translatable="yes">Osc 4 Freq Knob Range</property>-->
+<!--                                    </object>-->
+<!--                                </child>-->
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">46</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Hard Sync Enable</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">47</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Osc 2 Hard Sync</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">48</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Osc 3 Hard Sync</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">49</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Osc 4 Hard Sync</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">50</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Delay Ping Pong</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">51</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Delay Sync</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">52</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Delay Filter Brightness</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Dark</item>
+                                                    <item>Bright (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">53</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Delay CV Sync-Bend</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">54</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Tap-Tempo Clock Division Persistence</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">55</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Paraphony Mode</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Mono (default)</item>
+                                                    <item>Duo</item>
+                                                    <item>Quad</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">56</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Paraphonic Unison</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">57</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Multi Trig</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+<!--    TODO                            -->
+<!--                                <child>-->
+<!--                                    <object class="ScChRow">-->
+<!--                                        <child>-->
+<!--                                            <object class="MatrControl">-->
+<!--                                                <property name="id">58</property>-->
+<!--                                            </object>-->
+<!--                                        </child>-->
+<!--                                        <property name="title" translatable="yes">Pitch Variance</property>-->
+<!--                                    </object>-->
+<!--                                </child>-->
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">59</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">KB CV OUT Range</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>-5V to +5V (default)</item>
+                                                    <item>0V to 10V</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">60</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Arp/Seq CV OUT Range</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>-5V to +5V (default)</item>
+                                                    <item>0V to 10V</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">61</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">KB VEL OUT Range</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>-5V to +5V (default)</item>
+                                                    <item>0V to 10V</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">62</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Arp/Seq VEL OUT Range</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>-5V to +5V (default)</item>
+                                                    <item>0V to 10V</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">63</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">KB AT OUT Range</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>-5V to +5V (default)</item>
+                                                    <item>0V to 10V</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">64</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">MOD WHL OUT Range</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>-5V to +5V (default)</item>
+                                                    <item>0V to 10V</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">65</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">KB GATE OUT Range</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>-5V to +5V (default)</item>
+                                                    <item>0V to 10V</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">66</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Arp/Seq GATE OUT Range</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>-5V to +5V (default)</item>
+                                                    <item>0V to 10V</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">67</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Round-Robin Mode</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off</item>
+                                                    <item>First-Note Reset (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">68</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Restore Stolen Voices</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">69</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Update Unison on Note-Off</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">70</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Mod Oscillator Square Wave Polarity</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Unipolar</item>
+                                                    <item>Bipolar (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+<!--    TODO                            -->
+<!--                                <child>-->
+<!--                                    <object class="ScChRow">-->
+<!--                                        <child>-->
+<!--                                            <object class="MatrControl">-->
+<!--                                                <property name="id">71</property>-->
+<!--                                            </object>-->
+<!--                                        </child>-->
+<!--                                        <property name="title" translatable="yes">Noise Filter Cutoff</property>-->
+<!--                                    </object>-->
+<!--                                </child>-->
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">72</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">Arp/Seq Random Repeats</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>no repeating notes/steps in RND direction</item>
+                                                    <item>allow repeating notes (true random) (default)</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">73</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">ARP/SEQ CV OUT Mirrors KB CV</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="ScComboRow">
+                                        <child>
+                                            <object class="MatrControl">
+                                                <property name="id">74</property>
+                                            </object>
+                                        </child>
+                                        <property name="title" translatable="yes">KB CV OUT Mirrors ARP/SEQ CV</property>
+                                        <property name="model">
+                                            <object class="ScControlValueList">
+                                                <items>
+                                                    <item>Off (default)</item>
+                                                    <item>On</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+
 
                             </object>
                         </child>
