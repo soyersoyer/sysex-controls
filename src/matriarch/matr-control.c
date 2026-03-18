@@ -5,8 +5,6 @@
 #include "matr-book.h"
 #include "sc-control-value.h"
 #include "sc-navigation-page.h"
-#include "sc-preferences-group.h"
-#include "sc-preferences-page.h"
 #include "../sc-control.h"
 
 enum {
@@ -104,23 +102,20 @@ static void
 matr_control_update_gui(ScControl *control) {
     MatrControl *self = MATR_CONTROL(control);
 
-    if (ADW_IS_COMBO_ROW (self->widget))
-    {
+    if (ADW_IS_COMBO_ROW(self->widget)) {
         guint pos = GTK_INVALID_LIST_POSITION;
-        AdwComboRow* combo_row = ADW_COMBO_ROW (self->widget);
-        GListModel* list = adw_combo_row_get_model (combo_row);
-        for(int i = 0; i < g_list_model_get_n_items (list); ++i)
-        {
-            ScControlValue *kv = SC_CONTROL_VALUE (g_list_model_get_item (list, i));
-            if (sc_control_value_get_value (kv) == self->value)
-            {
+        AdwComboRow *combo_row = ADW_COMBO_ROW(self->widget);
+        GListModel *list = adw_combo_row_get_model(combo_row);
+        for (int i = 0; i < g_list_model_get_n_items(list); ++i) {
+            ScControlValue *kv = SC_CONTROL_VALUE(g_list_model_get_item(list, i));
+            if (sc_control_value_get_value(kv) == self->value) {
                 pos = i;
                 break;
             }
         }
 
         if (pos != GTK_INVALID_LIST_POSITION)
-            adw_combo_row_set_selected (combo_row, pos);
+            adw_combo_row_set_selected(combo_row, pos);
         else
             g_warning("Set combo row id 0x%08x to invalid pos 0x%02x (value: 0x%02x)", self->id, pos, self->value);
 
@@ -137,20 +132,19 @@ matr_control_interface_init(ScControlInterface *iface) {
 
 
 static void
-combo_row_change_cb (GObject * widget, GParamSpec *pspec, MatrControl *self)
-{
-    ScWindow *window = SC_WINDOW (gtk_widget_get_root (GTK_WIDGET (self->widget)));
-    MatrBook *book = MATR_BOOK (gtk_widget_get_ancestor (GTK_WIDGET (self->widget), MATR_TYPE_BOOK));
-    ScControlValue *item = SC_CONTROL_VALUE (adw_combo_row_get_selected_item (ADW_COMBO_ROW (widget)));
-    uint16_t val = sc_control_value_get_value (item);
+combo_row_change_cb(GObject *widget, GParamSpec *pspec, MatrControl *self) {
+    ScWindow *window = SC_WINDOW(gtk_widget_get_root(GTK_WIDGET(self->widget)));
+    MatrBook *book = MATR_BOOK(gtk_widget_get_ancestor(GTK_WIDGET(self->widget), MATR_TYPE_BOOK));
+    ScControlValue *item = SC_CONTROL_VALUE(adw_combo_row_get_selected_item(ADW_COMBO_ROW(widget)));
+    uint16_t val = sc_control_value_get_value(item);
 
     if (self->value == val)
         return;
 
-    g_debug ("Matriarch parameter change 0x%02x: 0x%04x -> 0x%04x %s", self->id, self->value, val, sc_control_value_get_name (item));
-    if (matr_book_write_control (book, self->id, val) < 0)
-    {
-        sc_io_problem (window, "Matriarch parameter change");
+    g_debug("Matriarch parameter change 0x%02x: 0x%04x -> 0x%04x %s", self->id, self->value, val,
+            sc_control_value_get_name (item));
+    if (matr_book_write_control(book, self->id, val) < 0) {
+        sc_io_problem(window, "Matriarch parameter change");
         return;
     }
 
@@ -159,35 +153,14 @@ combo_row_change_cb (GObject * widget, GParamSpec *pspec, MatrControl *self)
 
 static int
 matr_control_register(MatrControl *self) {
-    ScPreferencesGroup *group_widget;
-    ScPreferencesPage *page_widget;
-    ScNavigationPage *nav_page_widget;
-    GtkWidget *widget;
-    uint32_t offset = 0;
-
-    widget = gtk_widget_get_ancestor(GTK_WIDGET(self), ADW_TYPE_COMBO_ROW);
-
-    if (!widget)
-        widget = gtk_widget_get_ancestor(GTK_WIDGET(self), ADW_TYPE_SPIN_ROW);
-
-    if (!widget)
-        widget = gtk_widget_get_ancestor(GTK_WIDGET(self), ADW_TYPE_SWITCH_ROW);
-
-    if (!widget)
-        widget = gtk_widget_get_ancestor(GTK_WIDGET(self), ADW_TYPE_ENTRY_ROW);
-
-    if (!widget && GTK_IS_BOX(gtk_widget_get_parent (GTK_WIDGET (self))))
-        widget = gtk_widget_get_next_sibling(GTK_WIDGET(self));
-
-    nav_page_widget = SC_NAVIGATION_PAGE(
+    GtkWidget *widget = gtk_widget_get_ancestor(GTK_WIDGET(self), ADW_TYPE_COMBO_ROW);
+    ScNavigationPage *nav_page_widget = SC_NAVIGATION_PAGE(
         gtk_widget_get_ancestor(GTK_WIDGET(&self->parent_instance), SC_TYPE_NAVIGATION_PAGE));
 
-    if (ADW_IS_COMBO_ROW (widget))
-        g_signal_connect (G_OBJECT (widget), "notify::selected-item", G_CALLBACK (combo_row_change_cb), self);
+    g_signal_connect(G_OBJECT (widget), "notify::selected-item", G_CALLBACK (combo_row_change_cb), self);
 
     sc_navigation_page_register_control(nav_page_widget, SC_CONTROL(self));
     self->widget = widget;
-
 
     return false;
 }

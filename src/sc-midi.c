@@ -1369,7 +1369,6 @@ process_matriarch_message (snd_seq_event_t *ev, matriarch_message *ar_ev)
   {
     ar_ev->id = input[4];
     ar_ev->value = (u_int16_t) input[5] << 8 | input[6];
-    fprintf(stderr, "%d\n", ar_ev->value);
   }
   else
   {
