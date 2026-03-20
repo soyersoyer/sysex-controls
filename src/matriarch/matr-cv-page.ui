@@ -1,224 +1,224 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-    <requires lib="gtk" version="4.0"/>
-    <requires lib="libadwaita" version="1.0"/>
-    <template class="MatrCvPage" parent="ScNavigationPage">
-        <property name="title" translatable="yes">CV Parameters</property>
-        <property name="child">
-            <object class="AdwToolbarView">
-                <child type="top">
-                    <object class="AdwHeaderBar"/>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="MatrCvPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">CV Parameters</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar"/>
+        </child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+            <child>
+              <object class="AdwPreferencesGroup">
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">53</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Delay CV Sync-Bend</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off (default)</item>
+                          <item>On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
                 </child>
-                <property name="content">
-                    <object class="ScPreferencesPage">
-                        <child>
-                            <object class="AdwPreferencesGroup">
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">53</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">Delay CV Sync-Bend</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off (default)</item>
-                                                    <item>On</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">59</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">KB CV OUT Range</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>-5V to +5V (default)</item>
-                                                    <item>0V to 10V</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">60</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">Arp/Seq CV OUT Range</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>-5V to +5V (default)</item>
-                                                    <item>0V to 10V</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">61</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">KB VEL OUT Range</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>-5V to +5V (default)</item>
-                                                    <item>0V to 10V</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">62</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">Arp/Seq VEL OUT Range</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>-5V to +5V (default)</item>
-                                                    <item>0V to 10V</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">63</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">KB AT OUT Range</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>-5V to +5V (default)</item>
-                                                    <item>0V to 10V</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">64</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">MOD WHL OUT Range</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>-5V to +5V (default)</item>
-                                                    <item>0V to 10V</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">65</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">KB GATE OUT Range</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>-5V to +5V (default)</item>
-                                                    <item>0V to 10V</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">66</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">Arp/Seq GATE OUT Range</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>-5V to +5V (default)</item>
-                                                    <item>0V to 10V</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">73</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">ARP/SEQ CV OUT Mirrors KB CV
-                                        </property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off (default)</item>
-                                                    <item>On</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">74</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">KB CV OUT Mirrors ARP/SEQ CV
-                                        </property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off (default)</item>
-                                                    <item>On</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
-                    </object>
-                </property>
-            </object>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">59</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">KB CV OUT Range</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>-5V to +5V (default)</item>
+                          <item>0V to 10V</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">60</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Arp/Seq CV OUT Range</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>-5V to +5V (default)</item>
+                          <item>0V to 10V</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">61</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">KB VEL OUT Range</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>-5V to +5V (default)</item>
+                          <item>0V to 10V</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">62</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Arp/Seq VEL OUT Range</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>-5V to +5V (default)</item>
+                          <item>0V to 10V</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">63</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">KB AT OUT Range</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>-5V to +5V (default)</item>
+                          <item>0V to 10V</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">64</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">MOD WHL OUT Range</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>-5V to +5V (default)</item>
+                          <item>0V to 10V</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">65</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">KB GATE OUT Range</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>-5V to +5V (default)</item>
+                          <item>0V to 10V</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">66</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Arp/Seq GATE OUT Range</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>-5V to +5V (default)</item>
+                          <item>0V to 10V</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">73</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">ARP/SEQ CV OUT Mirrors KB CV
+                    </property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off (default)</item>
+                          <item>On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">74</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">KB CV OUT Mirrors ARP/SEQ CV
+                    </property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off (default)</item>
+                          <item>On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
         </property>
+      </object>
+    </property>
 
-    </template>
+  </template>
 </interface>

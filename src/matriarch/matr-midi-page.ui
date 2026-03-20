@@ -1,383 +1,383 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-    <requires lib="gtk" version="4.0"/>
-    <requires lib="libadwaita" version="1.0"/>
-    <template class="MatrMidiPage" parent="ScNavigationPage">
-        <property name="title" translatable="yes">MIDI Settings</property>
-        <property name="child">
-            <object class="AdwToolbarView">
-                <child type="top">
-                    <object class="AdwHeaderBar"/>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="MatrMidiPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">MIDI Settings</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar"/>
+        </child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScChRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">10</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">MIDI Input Channel</property>
+                  </object>
                 </child>
-                <property name="content">
-                    <object class="ScPreferencesPage">
 
-                        <child>
-                            <object class="AdwPreferencesGroup">
+                <child>
+                  <object class="ScChRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">11</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">MIDI Output Channel</property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScChRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">10</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">MIDI Input Channel</property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">8</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">MIDI Echo (USB)</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off (default)</item>
+                          <item>Echo USB In to DIN Out</item>
+                          <item>Echo USB In to USB Out</item>
+                          <item>Echo USB In to Both DIN and USB Out</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScChRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">11</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">MIDI Output Channel</property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">9</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">MIDI Echo (DIN)</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off (default)</item>
+                          <item>Echo DIN In to DIN</item>
+                          <item>Echo DIN In to USB Out</item>
+                          <item>Echo DIN In to Both DIN and USB Out</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">8</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">MIDI Echo (USB)</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off (default)</item>
-                                                    <item>Echo USB In to DIN Out</item>
-                                                    <item>Echo USB In to USB Out</item>
-                                                    <item>Echo USB In to Both DIN and USB Out</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">6</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">MIDI Input Ports</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>none</item>
+                          <item>DIN only</item>
+                          <item>USB only</item>
+                          <item>both (default)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">9</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">MIDI Echo (DIN)</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off (default)</item>
-                                                    <item>Echo DIN In to DIN</item>
-                                                    <item>Echo DIN In to USB Out</item>
-                                                    <item>Echo DIN In to Both DIN and USB Out</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">7</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">MIDI Output Ports</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>none</item>
+                          <item>DIN only</item>
+                          <item>USB only</item>
+                          <item>both (default)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">6</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">MIDI Input Ports</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>none</item>
-                                                    <item>DIN only</item>
-                                                    <item>USB only</item>
-                                                    <item>both (default)</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">4</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Transmit Program Change</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off (default)</item>
+                          <item>On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">7</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">MIDI Output Ports</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>none</item>
-                                                    <item>DIN only</item>
-                                                    <item>USB only</item>
-                                                    <item>both (default)</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">4</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Receive Program Change</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>On (default)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">4</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">Transmit Program Change</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off (default)</item>
-                                                    <item>On</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">12</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">MIDI Out Filter - Keys</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>On (default)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">4</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">Receive Program Change</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off</item>
-                                                    <item>On (default)</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">13</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">MIDI Out Filter - Wheels</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>On (default)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">12</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">MIDI Out Filter - Keys</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off</item>
-                                                    <item>On (default)</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">14</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">MIDI Out FIlter - Panel</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>On (default)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">13</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">MIDI Out Filter - Wheels</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off</item>
-                                                    <item>On (default)</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">15</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Output 14-bit MIDI CCs</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off (default)</item>
+                          <item>On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">14</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">MIDI Out FIlter - Panel</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off</item>
-                                                    <item>On (default)</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">29</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Arp MIDI Output</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>On (default)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">15</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">Output 14-bit MIDI CCs</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off (default)</item>
-                                                    <item>On</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">30</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Send MIDI Clock</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off (default)</item>
+                          <item>Only When Playing</item>
+                          <item>Always</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">29</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">Arp MIDI Output</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off</item>
-                                                    <item>On (default)</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">31</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Send MIDI Start/Stop</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off (default)</item>
+                          <item>On</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">30</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">Send MIDI Clock</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off (default)</item>
-                                                    <item>Only When Playing</item>
-                                                    <item>Always</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">32</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Follow MIDI Clock</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>On (default)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">31</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">Send MIDI Start/Stop</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off (default)</item>
-                                                    <item>On</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">33</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Follow MIDI Start/Stop</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>On (default)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">32</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">Follow MIDI Clock</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off</item>
-                                                    <item>On (default)</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScComboRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">34</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Follow Song Position Pointer</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Off</item>
+                          <item>On (default)</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">33</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">Follow MIDI Start/Stop</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off</item>
-                                                    <item>On (default)</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScChRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">35</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Clock Input PPQN Index</property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScComboRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">34</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">Follow Song Position Pointer</property>
-                                        <property name="model">
-                                            <object class="ScControlValueList">
-                                                <items>
-                                                    <item>Off</item>
-                                                    <item>On (default)</item>
-                                                </items>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
+                <child>
+                  <object class="ScChRow">
+                    <child>
+                      <object class="MatrControl">
+                        <property name="id">36</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Clock Output PPQN Index</property>
+                  </object>
+                </child>
 
-                                <child>
-                                    <object class="ScChRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">35</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">Clock Input PPQN Index</property>
-                                    </object>
-                                </child>
-
-                                <child>
-                                    <object class="ScChRow">
-                                        <child>
-                                            <object class="MatrControl">
-                                                <property name="id">36</property>
-                                            </object>
-                                        </child>
-                                        <property name="title" translatable="yes">Clock Output PPQN Index</property>
-                                    </object>
-                                </child>
-
-                            </object>
-                        </child>
-                    </object>
-                </property>
-            </object>
+              </object>
+            </child>
+          </object>
         </property>
+      </object>
+    </property>
 
-    </template>
+  </template>
 </interface>

@@ -16,17 +16,18 @@
               <object class="AdwPreferencesGroup">
 
 
-                <!-- TODO  -->
-                <!--                                <child>-->
-                <!--                                    <object class="ScComboRow">-->
-                <!--                                        <child>-->
-                <!--                                            <object class="MatrControl">-->
-                <!--                                                <property name="id">1</property>-->
-                <!--                                            </object>-->
-                <!--                                        </child>-->
-                <!--                                        <property name="title" translatable="yes">Tuning Scale</property>-->
-                <!--                                    </object>-->
-                <!--                                </child>-->
+<!--                TODO-->
+<!--                <child>-->
+<!--                  <object class="ScComboRow">-->
+<!--                    <child>-->
+<!--                      <object class="MatrControl">-->
+<!--                        <property name="id">1</property>-->
+<!--                      </object>-->
+<!--                    </child>-->
+<!--                    <property name="title" translatable="yes">Tuning Scale</property>-->
+<!--                  </object>-->
+<!--                </child>-->
+
                 <child>
                   <object class="ScComboRow">
                     <child>
@@ -138,17 +139,17 @@
                   </object>
                 </child>
 
-                <!--    TODO                            -->
-                <!--                                <child>-->
-                <!--                                    <object class="ScChRow">-->
-                <!--                                        <child>-->
-                <!--                                            <object class="MatrControl">-->
-                <!--                                                <property name="id">37</property>-->
-                <!--                                            </object>-->
-                <!--                                        </child>-->
-                <!--                                        <property name="title" translatable="yes">Pitch Bend Range (Semitones)</property>-->
-                <!--                                    </object>-->
-                <!--                                </child>-->
+<!--                TODO-->
+<!--                <child>-->
+<!--                  <object class="ScChRow">-->
+<!--                    <child>-->
+<!--                      <object class="MatrControl">-->
+<!--                        <property name="id">37</property>-->
+<!--                      </object>-->
+<!--                    </child>-->
+<!--                    <property name="title" translatable="yes">Pitch Bend Range (Semitones)</property>-->
+<!--                  </object>-->
+<!--                </child>-->
 
                 <child>
                   <object class="ScChRow">
@@ -249,37 +250,37 @@
                   </object>
                 </child>
 
-                <!--    TODO                            -->
-                <!--                                <child>-->
-                <!--                                    <object class="ScChRow">-->
-                <!--                                        <child>-->
-                <!--                                            <object class="MatrControl">-->
-                <!--                                                <property name="id">43</property>-->
-                <!--                                            </object>-->
-                <!--                                        </child>-->
-                <!--                                        <property name="title" translatable="yes">Osc 2 Freq Knob Range</property>-->
-                <!--                                    </object>-->
-                <!--                                </child>-->
-                <!--                                <child>-->
-                <!--                                    <object class="ScChRow">-->
-                <!--                                        <child>-->
-                <!--                                            <object class="MatrControl">-->
-                <!--                                                <property name="id">44</property>-->
-                <!--                                            </object>-->
-                <!--                                        </child>-->
-                <!--                                        <property name="title" translatable="yes">Osc 3 Freq Knob Range</property>-->
-                <!--                                    </object>-->
-                <!--                                </child>-->
-                <!--                                <child>-->
-                <!--                                    <object class="ScChRow">-->
-                <!--                                        <child>-->
-                <!--                                            <object class="MatrControl">-->
-                <!--                                                <property name="id">45</property>-->
-                <!--                                            </object>-->
-                <!--                                        </child>-->
-                <!--                                        <property name="title" translatable="yes">Osc 4 Freq Knob Range</property>-->
-                <!--                                    </object>-->
-                <!--                                </child>-->
+<!--                TODO-->
+<!--                <child>-->
+<!--                  <object class="ScChRow">-->
+<!--                    <child>-->
+<!--                      <object class="MatrControl">-->
+<!--                        <property name="id">43</property>-->
+<!--                      </object>-->
+<!--                    </child>-->
+<!--                    <property name="title" translatable="yes">Osc 2 Freq Knob Range</property>-->
+<!--                  </object>-->
+<!--                </child>-->
+<!--                <child>-->
+<!--                  <object class="ScChRow">-->
+<!--                    <child>-->
+<!--                      <object class="MatrControl">-->
+<!--                        <property name="id">44</property>-->
+<!--                      </object>-->
+<!--                    </child>-->
+<!--                    <property name="title" translatable="yes">Osc 3 Freq Knob Range</property>-->
+<!--                  </object>-->
+<!--                </child>-->
+<!--                <child>-->
+<!--                  <object class="ScChRow">-->
+<!--                    <child>-->
+<!--                      <object class="MatrControl">-->
+<!--                        <property name="id">45</property>-->
+<!--                      </object>-->
+<!--                    </child>-->
+<!--                    <property name="title" translatable="yes">Osc 4 Freq Knob Range</property>-->
+<!--                  </object>-->
+<!--                </child>-->
 
                 <child>
                   <object class="ScComboRow">
@@ -434,17 +435,17 @@
                   </object>
                 </child>
 
-                <!--    TODO                            -->
-                <!--                                <child>-->
-                <!--                                    <object class="ScChRow">-->
-                <!--                                        <child>-->
-                <!--                                            <object class="MatrControl">-->
-                <!--                                                <property name="id">58</property>-->
-                <!--                                            </object>-->
-                <!--                                        </child>-->
-                <!--                                        <property name="title" translatable="yes">Pitch Variance</property>-->
-                <!--                                    </object>-->
-                <!--                                </child>-->
+<!--                TODO-->
+<!--                <child>-->
+<!--                  <object class="ScChRow">-->
+<!--                    <child>-->
+<!--                      <object class="MatrControl">-->
+<!--                        <property name="id">58</property>-->
+<!--                      </object>-->
+<!--                    </child>-->
+<!--                    <property name="title" translatable="yes">Pitch Variance</property>-->
+<!--                  </object>-->
+<!--                </child>-->
 
                 <child>
                   <object class="ScComboRow">
@@ -523,17 +524,17 @@
                   </object>
                 </child>
 
-                <!--    TODO: This would need a slider UI element, as the value range is 0-16383  -->
-                <!--                                <child>-->
-                <!--                                    <object class="ScChRow">-->
-                <!--                                        <child>-->
-                <!--                                            <object class="MatrControl">-->
-                <!--                                                <property name="id">71</property>-->
-                <!--                                            </object>-->
-                <!--                                        </child>-->
-                <!--                                        <property name="title" translatable="yes">Noise Filter Cutoff</property>-->
-                <!--                                    </object>-->
-                <!--                                </child>-->
+<!--                TODO: This would need a slider UI element, as the value range is 0-16383-->
+<!--                <child>-->
+<!--                  <object class="ScChRow">-->
+<!--                    <child>-->
+<!--                      <object class="MatrControl">-->
+<!--                        <property name="id">71</property>-->
+<!--                      </object>-->
+<!--                    </child>-->
+<!--                    <property name="title" translatable="yes">Noise Filter Cutoff</property>-->
+<!--                  </object>-->
+<!--                </child>-->
 
               </object>
             </child>
