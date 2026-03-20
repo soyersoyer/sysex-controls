@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-    <requires lib="gtk" version="4.0"/>
-    <requires lib="libadwaita" version="1.0"/>
-    <template class="MatrBook" parent="ArBook">
-        <property name="child">
-            <object class="AdwNavigationView">
-                <child>
-                    <object class="MatrMidiPage"/>
-                </child>
-                <child>
-                    <object class="MatrCvPage"/>
-                </child>
-                <child>
-                    <object class="MatrDelayPage"/>
-                </child>
-                <child>
-                    <object class="MatrArpSeqPage"/>
-                </child>
-                <child>
-                    <object class="MatrGeneralPage"/>
-                </child>
-            </object>
-        </property>
-    </template>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="MatrBook" parent="ArBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+        <child>
+          <object class="MatrMidiPage"/>
+        </child>
+        <child>
+          <object class="MatrCvPage"/>
+        </child>
+        <child>
+          <object class="MatrDelayPage"/>
+        </child>
+        <child>
+          <object class="MatrArpSeqPage"/>
+        </child>
+        <child>
+          <object class="MatrGeneralPage"/>
+        </child>
+      </object>
+    </property>
+  </template>
 </interface>

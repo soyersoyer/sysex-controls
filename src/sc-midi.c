@@ -1362,15 +1362,15 @@ typedef struct {
 } matriarch_message;
 
 static void
-process_matriarch_message (snd_seq_event_t *ev, matriarch_message *ar_ev)
+process_matriarch_message (snd_seq_event_t *ev, matriarch_message *matr_msg)
 {
-  unsigned int len = ev->data.ext.len;
-  uint8_t* input = ev->data.ext.ptr;
+  const unsigned int len = ev->data.ext.len;
+  const uint8_t* input = ev->data.ext.ptr;
 
   if (len == 16)
   {
-    ar_ev->id = input[4];
-    ar_ev->value = (u_int16_t) input[5] << 8 | input[6];
+    matr_msg->id = input[4];
+    matr_msg->value = (u_int16_t) input[5] << 8 | input[6];
   }
   else
   {
@@ -1382,10 +1382,10 @@ process_matriarch_message (snd_seq_event_t *ev, matriarch_message *ar_ev)
 }
 
 static int
-sc_midi_matriarch_read_next (snd_seq_t *seq, matriarch_message *ar_ev)
+sc_midi_matriarch_read_next (snd_seq_t *seq, matriarch_message *matr_msg)
 {
   struct pollfd pfds[1] = {};
-  matriarch_message ar_ev_in = {0};
+  matriarch_message matr_msg_in = {0};
   snd_seq_event_t *ev;
   int ret, pfds_n = 0;
 
@@ -1398,12 +1398,12 @@ sc_midi_matriarch_read_next (snd_seq_t *seq, matriarch_message *ar_ev)
       ret = poll (pfds, pfds_n, READ_TIMEOUT_MS);
       if (ret < 0)
       {
-        fprintf (stderr, "%s(%08x) poll failed %d (%s)\n", __func__, ar_ev->id, -errno, strerror(errno));
+        fprintf (stderr, "%s(%08x) poll failed %d (%s)\n", __func__, matr_msg->id, -errno, strerror(errno));
         return -errno;
       }
       if (ret == 0)
       {
-        fprintf (stderr, "%s(%08x) poll timeout %d\n", __func__, ar_ev->id, ret);
+        fprintf (stderr, "%s(%08x) poll timeout %d\n", __func__, matr_msg->id, ret);
         return -ETIMEDOUT;
       }
     }
@@ -1415,27 +1415,21 @@ sc_midi_matriarch_read_next (snd_seq_t *seq, matriarch_message *ar_ev)
 
     if (ret < 0)
     {
-      fprintf (stderr, "%s(%08x) snd_seq_event_input failed %d\n", __func__, ar_ev->id, ret);
+      fprintf (stderr, "%s(%08x) snd_seq_event_input failed %d\n", __func__, matr_msg->id, ret);
       return ret;
     }
 
-    process_matriarch_message (ev, &ar_ev_in);
+    process_matriarch_message (ev, &matr_msg_in);
 
-    *ar_ev = ar_ev_in;
+    *matr_msg = matr_msg_in;
     return 0;
-
   }
 }
 
 int
 sc_midi_matriarch_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint16_t *val)
 {
-  // uint8_t msb = (uint8_t) *val & 0xFF00 >> 8;
-  // uint8_t lsb = (uint8_t) *val & 0x00FF;
-  uint8_t msb = 0x00;
-  uint8_t lsb = 0x00;
-
-  uint8_t data[] = {0xf0, 0x04, 0x17, 0x3e, control_id, msb, lsb, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7f, 0xf7};
+  uint8_t data[] = {0xf0, 0x04, 0x17, 0x3e, control_id, 0x00, 0x00, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7f, 0xf7};
   matriarch_message matriarch_msg;
   snd_seq_event_t ev;
   int err;
@@ -1476,14 +1470,12 @@ sc_midi_matriarch_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t co
 int
 sc_midi_matriarch_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint16_t val)
 {
-  uint8_t msb = (uint8_t) ((val & 0xFF00) >> 8);
-  uint8_t lsb = (uint8_t) (val & 0x00FF);
+  uint8_t value_left_byte = (uint8_t) ((val & 0xFF00) >> 8);
+  uint8_t value_right_byte = (uint8_t) (val & 0x00FF);
 
-  uint8_t data[] = {0xf0, 0x04, 0x17, 0x23, control_id, msb, lsb, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7f, 0xf7};
+  uint8_t data[] = {0xf0, 0x04, 0x17, 0x23, control_id, value_left_byte, value_right_byte, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7f, 0xf7};
   snd_seq_event_t ev;
   int err;
-
-  //printf ("write_control_value %02x value to %02x\n", control_id, val);
 
   snd_seq_ev_clear (&ev);
   snd_seq_ev_set_source (&ev, 0);

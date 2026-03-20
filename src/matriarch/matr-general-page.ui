@@ -16,7 +16,7 @@
               <object class="AdwPreferencesGroup">
 
 
-                <!--    TODO: from 0 to 31 values  -->
+                <!-- TODO  -->
                 <!--                                <child>-->
                 <!--                                    <object class="ScComboRow">-->
                 <!--                                        <child>-->
@@ -523,7 +523,7 @@
                   </object>
                 </child>
 
-                <!--    TODO                            -->
+                <!--    TODO: This would need a slider UI element, as the value range is 0-16383  -->
                 <!--                                <child>-->
                 <!--                                    <object class="ScChRow">-->
                 <!--                                        <child>-->
