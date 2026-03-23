@@ -8,6 +8,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (MatrControl, matr_control, MATR, CONTROL, AdwBin)
 
-uint32_t matr_control_get_id (MatrControl *self);
+uint8_t matr_control_get_id (MatrControl *self);
 
 G_END_DECLS

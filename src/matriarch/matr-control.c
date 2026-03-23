@@ -28,7 +28,7 @@ G_DEFINE_FINAL_TYPE_WITH_CODE(MatrControl, matr_control, ADW_TYPE_BIN,
                               G_IMPLEMENT_INTERFACE (SC_TYPE_CONTROL, matr_control_interface_init))
 
 
-uint32_t
+uint8_t
 matr_control_get_id(MatrControl *self) {
   g_return_val_if_fail(MATR_IS_CONTROL (self), 0);
   return self->id;
@@ -77,7 +77,7 @@ matr_control_class_init(MatrControlClass *klass) {
   object_class->set_property = matr_control_set_property;
 
   value_props[PROP_ID] = g_param_spec_uint("id", NULL, NULL,
-                                           0, G_MAXUINT32, 0,
+                                           0, G_MAXUINT8, 0,
                                            G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
 

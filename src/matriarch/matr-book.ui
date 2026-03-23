@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="MatrBook" parent="ArBook">
+  <template class="MatrBook" parent="ScBook">
     <property name="child">
       <object class="AdwNavigationView">
         <child>
