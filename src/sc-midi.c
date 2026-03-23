@@ -986,7 +986,7 @@ process_korg_message (uint8_t *input, unsigned int len, korg_event_t *ev)
 }
 
 static int
-sc_midi_korg_read_next (snd_seq_t *seq, korg_event_t *ev)
+sc_midi_korg_read_next (snd_seq_t *seq, korg_event_t *ev, korg_event_t *opt_ev)
 {
   struct pollfd pfds[1] = {};
   korg_event_t tmp_ev = {0};
@@ -1030,6 +1030,8 @@ sc_midi_korg_read_next (snd_seq_t *seq, korg_event_t *ev)
 
     if (ev->type != tmp_ev.type)
     {
+      if (opt_ev && opt_ev->type == tmp_ev.type) continue;
+
       fprintf (stderr, "%s(%02d): unexpected message: type %02x\n", __func__, ev->type, tmp_ev.type);
       continue;
     }
@@ -1092,7 +1094,7 @@ sc_midi_korg_device_inquiry (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t data[9
     return err;
   }
 
-  err = sc_midi_korg_read_next (seq, &ev);
+  err = sc_midi_korg_read_next (seq, &ev, NULL);
   if (err < 0)
   {
     fprintf (stderr, "%s(): sc_midi_korg_read_next failed %d\n", __func__, err);
@@ -1132,7 +1134,7 @@ sc_midi_korg_read_channel (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t *channel
     return err;
   }
 
-  err = sc_midi_korg_read_next (seq, &ev);
+  err = sc_midi_korg_read_next (seq, &ev, NULL);
   if (err < 0)
     return err;
 
@@ -1177,11 +1179,11 @@ sc_midi_korg_change_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4
     return err;
   }
 
-  err = sc_midi_korg_read_next (seq, &ev1);
+  err = sc_midi_korg_read_next (seq, &ev1, NULL);
   if (err < 0)
     return err;
 
-  err = sc_midi_korg_read_next (seq, &ev2);
+  err = sc_midi_korg_read_next (seq, &ev2, NULL);
   if (err < 0)
     return err;
 
@@ -1224,7 +1226,7 @@ sc_midi_korg_read_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4],
     return err;
   }
 
-  err = sc_midi_korg_read_next (seq, &ev);
+  err = sc_midi_korg_read_next (seq, &ev, NULL);
   if (err < 0)
     return err;
 
@@ -1239,6 +1241,7 @@ sc_midi_korg_save_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4],
 {
   uint8_t query[] = {0xf0, 0x42, 0x40, dev_id[0], dev_id[1], dev_id[2], dev_id[3], 0x1f, 0x11, scene_id, 0xf7};
   snd_seq_event_t seq_ev;
+  korg_event_t scene_change_ev = {.type=KORG_SCENE_CHANGE};
   korg_event_t ack_ev = {.type=KORG_WRITE_COMPLETE};
   int err;
   uint8_t channel;
@@ -1271,7 +1274,7 @@ sc_midi_korg_save_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4],
     return err;
   }
 
-  err = sc_midi_korg_read_next (seq, &ack_ev);
+  err = sc_midi_korg_read_next (seq, &ack_ev, &scene_change_ev);
   if (err < 0)
   {
     fprintf (stderr, "%s(%04x): sc_midi_korg_read_next failed %d\n", __func__, scene_id, err);
@@ -1345,7 +1348,7 @@ sc_midi_korg_write_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4]
     return err;
   }
 
-  err = sc_midi_korg_read_next (seq, &ack_ev);
+  err = sc_midi_korg_read_next (seq, &ack_ev, NULL);
   if (err < 0)
   {
     fprintf (stderr, "%s(%04x): sc_midi_korg_read_next failed %d\n", __func__, scene_id, err);

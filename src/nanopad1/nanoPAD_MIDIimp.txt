@@ -1,0 +1,550 @@
+
+        nanoPAD MIDI Implementation                   Revision 1.00 (2008.12.04)
+
+1.Transmitted Data -------------------------------------------------------------
+
+1-1 Channel Messages            [H]:Hex,  [D]:Decimal
++--------+----------+----------+-----------------------------------------------+
+| Status |  Second  |  Third   | Description         (Transmitted by )         |
+|  [Hex] | [H]  [D] | [H]  [D] |                                               |
++--------+----------+----------+-----------------------------------------------+
+|   8n   | kk  (kk) | 40  (64) | Note Off            (Trigger Pad)             |
+|   9n   | kk  (kk) | VV  (VV) | Note On             (Trigger Pad)             |
+|   Bn   | cc  (cc) | vv  (vv) | Control Change      (Trigger Pad),(X-Y Pad)   |
+|   En   | bb  (bb) | bb  (bb) | Pitch Bend Change   (X-Y Pad)                 |
++--------+----------+----------+-----------------------------------------------+
+ n  : MIDI Channel = 0~15
+ kk : Note# 0~127
+ VV : Velocity = 1~127
+ cc : Control Change# = 0~127
+ vv : Value = 0~127
+
+
+1-2 Universal System Exclusive Message ( Non Realtime )
+
+ Device Inquiry Reply
++---------+-----------------------------------------------+
+| Byte[H] |                Description                    |
++---------+-----------------------------------------------+
+|   F0    | Exclusive Status                              |
+|   7E    | Non Realtime Message                          |
+|   0g    | Global MIDI Channel  ( Device ID )            |
+|   06    | General Information                           |
+|   02    | Identity Reply                                |
+|   42    | KORG ID              ( Manufacturers ID )     |
+|   03    | Software Project     ( Family ID   (LSB))     |
+|   01    |                      ( Family ID   (MSB))     |
+|   00    |                      ( Member ID   (LSB))     |
+|   00    |                      ( Member ID   (MSB))     |
+|   xx    |                      ( Minor Ver.  (LSB))     |
+|   xx    |                      ( Minor Ver.  (MSB))     |
+|   xx    |                      ( Major Ver.  (LSB))     |
+|   xx    |                      ( Major Ver.  (MSB))     |
+|   F7    | End Of Exclusive                              |
++---------+-----------------------------------------------+
+
+  This message is transmitted whenever an INQUIRY MESSAGE REQUEST is received.
+
+
+1-3 System Exclusive Message Transmitted Command List
+
+ Structure of nanoPAD System Exclusive Messages
+
+ 1st Byte = F0 : Exclusive Status
+ 2nd Byte = 42 : KORG
+ 3rd Byte = 4g : g : Global MIDI Channel
+ 4th Byte = 00 : Software Project (nanoPAD: 000103H)
+ 5th Byte = 01 : 
+ 6th Byte = 03 : 
+ 7th Byte = 00 : Sub ID
+ 8th Byte = cd : 0dvmmmmm  d     (1: Controller->Host)
+                           v     (0: 2 Bytes Data Format, 1: Variable)
+                           mmmmm (Command Number)
+ 9th Byte = nn : 2 Bytes Format: Operation Number, Variable: Num of Data
+10th Byte = dd : Data
+  :
+ LastByte = F7 : End of Exclusive
+
+
++-----------------+---------------------------------------+
+|9th Byte command#| Description/Command                   |
+|   [Bin (Hex)]   |                                       |
++-----------------+---------------------------------------+
+|  010 11111 (5F) | Packet Communication               *1 |
+|  011 11110 (7E) | Port Detect                           |
+|  011 11111 (7F) | Data Dump                          *1 |
++-----------------+---------------------------------------+
+
+ *1 :Function ID Code List
++-------------+-----------------------------------+-----+
+| Function ID | Description/Function              |     |
+|    [Hex]    |                                   |     |
++-------------+-----------------------------------+-----+
+|     40      | Current Scene Data Dump           |  R  |
+|     51      | Global Data Dump                  |  R  |
+|     4F      | Scene Change                      | R,C |
+|     23      | Data Load Completed (ACK)         |  E  |
+|     24      | Data Load Error (NAK)             |  E  |
+|     21      | Write Completed                   |  E  |
+|     22      | Write Error                       |  E  |
++-------------+-----------------------------------+-----+
+Transmitted when
+      R  : Request Message is received.
+      C  : Change Scene.
+      E  : Exclusive Message is received.
+
+
+1-4 Search Device Message
+
+ Search Device Reply
++---------+------------------------------------------------+
+| Byte[H] |                Description                     |
++---------+------------------------------------------------+
+|   F0    | Exclusive Status                               |
+|   42    | KORG ID              ( Manufacturers ID )      |
+|   50    | Search Device                                  |
+|   01    | Reply                                          |
+|   0g    | gggg: MIDI Global Channel  ( Device ID )       |
+|   dd    | Echo Back ID                                   |
+|   03    | nanoPAD ID           ( Family ID   (LSB))      |
+|   01    | nanoPAD ID           ( Family ID   (MSB))      |
+|   00    |                      ( Member ID   (LSB))      |
+|   00    |                      ( Member ID   (MSB))      |
+|   xx    |                      ( Minor Ver.  (LSB))      |
+|   xx    |                      ( Minor Ver.  (MSB))      |
+|   xx    |                      ( Major Ver.  (LSB))      |
+|   xx    |                      ( Major Ver.  (MSB))      |
+|   F7    | End Of Exclusive                              |
++---------+------------------------------------------------+
+
+  g  : MIDI Global Channel = 0 ~ F
+  dd : Echo Back ID = copy from SEARCH DEVICE REQUEST message.
+
+  This message is transmitted whenever a SEARCH DEVICE REQUEST is received.
+
+
+
+
+2.Recognized Receive Data --------------------------------------------------
+
+2-1 Universal System Exclusive Message (Non Realtime)
+
+ Inquiry Message Request
++---------+-----------------------------------------------+
+| Byte[H] |                Description                    |
++---------+-----------------------------------------------+
+|   F0    | Exclusive Status                              |
+|   7E    | Non Realtime Message                          |
+|   gg    | Global MIDI Channel                           |
+|   06    | General Information                           |
+|   01    | Identity Request                              |
+|   F7    | End Of Exclusive                              |
++---------+-----------------------------------------------+
+ gg = 00~0F :Received if Global Channel
+      7F    :Received on any Channel
+
+
+2-2 System Exclusive Message Received Command List
+ Structure of nanoPAD System Exclusive Messages
+
+ 1st Byte = F0 : Exclusive Status
+ 2nd Byte = 42 : KORG
+ 3rd Byte = 4g : g : Global MIDI Channel
+ 4th Byte = 00 : Software Project (nanoPAD: 000103H)
+ 5th Byte = 01 : 
+ 6th Byte = 03 : 
+ 7th Byte = 00 : Sub ID
+ 8th Byte = cd : 0dvmmmmm  d     (0: Host->Controller)
+                           v     (0: 2 Bytes Data Format, 1: Variable)
+                           mmmmm (Command Number)
+ 9th Byte = nn : 2 Bytes Format: Operation Number, Variable: Num of Data
+10th Byte = dd : Data
+  :
+ LastByte = F7 : End of Exclusive
+
+
++-----------------+---------------------------------------+
+|9th Byte command#| Description/Command                   |
+|   [Bin (Hex)]   |                                       |
++-----------------+---------------------------------------+
+|  000 11110 (1E) | Port Detect Request                   |
+|  000 11111 (1F) | Data Dump Request                  *2 |
+|  011 11111 (7F) | Data Dump                          *2 |
++-----------------+---------------------------------------+
+
+ *2 :Function ID Code List
++-------------+-----------------------------------+
+| Function ID | Description/Function              |
+|    [Hex]    |                                   |
++-------------+-----------------------------------+
+|     14      | Scene Change Request              |
+|     10      | Current Scene Data Dump Request   |
+|     0E      | Global Data Dump Request          |
+|     40      | Current Scene Data Dump           |
+|     51      | Global Data Dump                  |
+|     11      | Scene Write Request               |
++-------------+-----------------------------------+
+
+
+2-3 Search Device Message
+
+ Search Device Request
++---------+------------------------------------------------+
+| Byte[H] |                Description                     |
++---------+------------------------------------------------+
+|   F0    | Exclusive Status                               |
+|   42    | KORG ID              ( Manufacturers ID )      |
+|   50    | Search Device                                  |
+|   00    | Request                                        |
+|   dd    | Echo Back ID                                   |
+|   F7    | END OF EXCLUSIVE                               |
++---------+------------------------------------------------+
+ Receive this message, and transmits SEARCH DEVICE REPLY message
+ including copied Echo Back ID.
+
+
+3.MIDI Exclusive Format   (R:Receive, T:Transmit) --------------------------
+
+3-1 Standard Messages
+
+ (1) Current Scene Data Dump Request                                             R,-
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,03,00,   | Software Project (nanoPAD: 000103H)                              |
+| 0001 1111 (1F) | Data Dump Command  (Host->Controller, 2Bytes Format)             |
+| 0001 0000 (10) | Current Scene Data Dump Request                                  |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When this message was received, the nanoPAD transmits a Func=40(Current Scene Data Dump)
+ or a Func=24(NAK) message.
+
+ (2) Global Data Dump Request                                                    R,-
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,03,00,   | Software Project (nanoPAD: 000103H)                              |
+| 0001 1111 (1F) | Data Dump Command  (Host->Controller, 2Bytes Format)             |
+| 0000 1110 (0E) | Global Data Dump Request                                         |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When this message was received, the nanoPAD transmits a Func=51(Global Data Dump) or
+ a Func=24(NAK) message.
+
+ (3) Scene Write Request                                                         R,-
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,03,00,   | Software Project (nanoPAD: 000103H)                              |
+| 0001 1111 (1F) | Data Dump Command  (Host->Controller, 2Bytes Format)             |
+| 0001 0001 (11) | Scene Write Request                                              |
+| 0sss ssss (ss) | Destination Scene No.(0~3)                                       |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When this message was received, the nanoPAD writes the current scene data to the
+ internal memory and transmits Func=4F(Scene Change) and Func=21(Write Complete)
+ messages or a Func=22(Write Error) message.
+
+ (4) Scene Change Request                                                        R,-
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,03,00,   | Software Project (nanoPAD: 000103H)                              |
+| 0001 1111 (1F) | Data Dump Command  (Host->Controller, 2Bytes Format)             |
+| 0001 0100 (14) | Scene Change Request                                             |
+| 0sss ssss (ss) | Destination Scene No.(0~3)                                       |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When this message was received, the nanoPAD loads the specified scene data to the
+ current scene from the internal memory, and transmits Func=4F(Scene Change) and
+ Func=23(ACK) messages or a Func=24(NAK) message.
+
+ (5) Current Scene Data Dump                                                     R,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,03,00,   | Software Project (nanoPAD: 000103H)                              |
+| 0111 1111 (7F) | Data Dump Command  (Host<->Controller, Variable Format)          |
+| 0111 1111 (7F) | Over 0x7F Data                                                   |
+| 0000 0010 (02) | 2Bytes structure                                                 |
+| 0000 0010 (02) | Num of Data MSB (1+275 bytes : B'100010100)                      |
+| 0001 0100 (14) | Num of Data LSB                                                  |
+| 0100 0000 (40) | Current Scene Data Dump                                          |
+| 0ddd dddd (dd) | Data                                                  (NOTE 1,7) |
+|     :          |  :                                                               |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When these message and data were received, the nanoPAD saves the data to the current
+ scene, and transmits a Func=23(ACK) or a Func=24(NAK) message.
+ When a Func=10(Current Scene Data Dump Request) message was received, the nanoPAD
+ transmits this message with the current scene data.
+
+ (6) Global Data Dump                                                            R,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,03,00,   | Software Project (nanoPAD: 000103H)                              |
+| 0111 1111 (7F) | Data Dump Command  (Host<->Controller, Variable Format)          |
+| 0100 1011 (4B) | Num of Data (1+74Bytes)                                          |
+| 0101 0001 (51) | Global Data Dump                                                 |
+| 0ddd dddd (dd) | Data                                                  (NOTE 2,7) |
+|     :          |  :                                                               |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When this message was received, the nanoPAD saves them to the internal memory,
+ and transmits a Func=23(ACK) or a Func=24(NAK) message.
+ When a Func=0E(Global Data Dump Request) message was received, the nanoPAD transmits
+ this message with the global data on the internal memory.
+
+ (7) Data Load Completed (ACK)                                                   -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,03,00,   | Software Project (nanoPAD: 000103H)                              |
+| 0101 1111 (5F) | Data Dump Command  (Host<-Controller, 2Bytes Format)             |
+| 0010 0011 (23) | Data Load Completed                                              |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When the operation was completed, the nanoPAD transmits this message.
+
+ (8) Data Load Error (NAK)                                                       -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,03,00,   | Software Project (nanoPAD: 000103H)                              |
+| 0101 1111 (5F) | Data Dump Command  (Host<-Controller, 2Bytes Format)             |
+| 0010 0100 (24) | Data Load Error                                                  |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When the operation was not completed, the nanoPAD transmits this message.
+
+ (9) Write Completed                                                             -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,03,00,   | Software Project (nanoPAD: 000103H)                              |
+| 0101 1111 (5F) | Data Dump Command  (Host<-Controller, 2Bytes Format)             |
+| 0010 0001 (21) | Write Completed                                                  |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When the writing operation was completed, the nanoPAD transmits this message.
+
+ (10) Write Error                                                                -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,6E,mm | nanoPAD Exclusive Header  g;Global Channel  [Hex]                |
+| 0101 1111 (5F) | Data Dump Command  (Host<-Controller, 2Bytes Format)             |
+| 0010 0010 (22) | Write Error                                                      |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When the writing operation was not completed, the nanoPAD transmits this message.
+
+ (11) Scene Change                                                               -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,03,00,   | Software Project (nanoPAD: 000103H)                              |
+| 0101 1111 (5F) | Data Dump Command  (Host<-Controller, 2Bytes Format)             |
+| 0100 1111 (4F) | Scene Change                                                     |
+| 0sss ssss (ss) | Destination Scene No.(0~3)                                       |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When the nanoPAD completed to change the scene, it transmits this message.
+
+ (12) Port Detect Request                                                        R,-
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,03,      | Software Project (nanoPAD: 000103H)                              |
+| 0ttt tttt (tt) | Device Sub ID                                                    |
+| 0001 1110 (1E) | Port Detect Command  (Host->Controller, 2Bytes Format)           |
+| 0000 0000 (00) |                                                                  |
+| 0ppp pppp (pp) | Echo Back ID                                                     |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ tt : 00=nanoPAD, 7F=All-Call
+ pp : 1~127
+ When this message was received, the nanoPAD transmit a Command=7E(Port Detect) message.
+
+ (13) Port Detect                                                                -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,03,00,   | Software Project (nanoPAD: 000103H)                              |
+| 0111 1110 (7E) | Port Detect Command  (Host<-Controller, Variable Format)         |
+| 0000 0101 (05) | Num of Data (5Bytes)                                             |
+| 0ppp pppp (pp) | Echo Back ID                                                     |
+| 0000 0011 (01) | Num of IN-Port                                                   |
+| 0000 0010 (00) | Dedicated IN-Port Number                                         |
+| 0000 0010 (01) | Num of OUT-Port                                                  |
+| 0000 0010 (00) | Dedicated OUT-Port Number                                        |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When a Func=1E(Port Detect Request) message was received, the nanoPAD transmits
+ this message.
+
+ NOTE 1: Current Scene Data Dump Format
+         240 bytes = 7*34+2 -> 8*34+(2+1) => 275 bytes
+         (TABLE 1)
+
+ NOTE 2: Global Data Dump Format
+         64 bytes = 7*9+1  -> 8*9+(1+1)  => 74 bytes
+         (TABLE 2)
+
+ NOTE 3: The Dump Data Conversion
+
+   Data (1set = 8bit x 7Byte)
+   b7     ~      b0   b7     ~      b0   b7   ~~    b0   b7     ~      b0
+   +-+-+-+-+-+-+-+-+  +-+-+-+-+-+-+-+-+  +-+-+-~~-+-+-+  +-+-+-+-+-+-+-+-+
+   | | | | | | | | |  | | | | | | | | |  | | |    | | |  | | | | | | | | |
+   +-+-+-+-+-+-+-+-+  +-+-+-+-+-+-+-+-+  +-+-+-~~-+-+-+  +-+-+-+-+-+-+-+-+
+         7n+0               7n+1          7n+2 ~~ 7n+5         7n+6
+
+    MIDI Data (1set = 7bit x 8Byte)
+      b7b7b7b7b7b7b7     b6    ~     b0     b6 ~~    b0     b6    ~     b0
+   +-+-+-+-+-+-+-+-+  +-+-+-+-+-+-+-+-+  +-+-+-~~-+-+-+  +-+-+-+-+-+-+-+-+
+   |0| | | | | | | |  |0| | | | | | | |  |0| |    | | |  |0| | | | | | | |
+   +-+-+-+-+-+-+-+-+  +-+-+-+-+-+-+-+-+  +-+-+-~~-+-+-+  +-+-+-+-+-+-+-+-+
+   7n+6,5,4,3,2,1,0         7n+0          7n+1 ~~ 7n+5         7n+6
+
+
+
+
+ TABLE 1 : Scene Parameter
++--------+-------------------------+---------------------------------------+
+|        |     PARAMETER           |                VALUE                  |
++--------+-------------------------+---------------------------------------+
+| Common parameters                                                        |
++--------+-------------------------+---------------------------------------+
+| 0~11   | Scene name              | ASCII code                         *3 |
+|        +-------------------------+---------------------------------------+
+| 12~15  | dummy                   | 0                                     |
++--------+-------------------------+---------------------------------------+
+| X-Y Pad parameters                                                       |
++--------+-------------------------+---------------------------------------+
+| 16     | X-Y Pad MIDI Ch.        | 0~15/16~=MIDI Ch.0~15/Global MIDI Ch. |
+|        +-------------------------+---------------------------------------+
+| 17     | X-axis assign type      | 0~2=No Assign/CC/Pitch Bend           |
+|        +-------------------------+---------------------------------------+
+| 18     | X-axis CC#              | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 19     | X-axis polarity         | 0/1=Normal/Reverse                    |
+|        +-------------------------+---------------------------------------+
+| 20     | Y-axis assign type      | 0~2=No Assign/CC/Pitch Bend           |
+|        +-------------------------+---------------------------------------+
+| 21     | Y-axis CC#              | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 22     | Y-axis polarity         | 0/1=Normal/Reverse                    |
+|        +-------------------------+---------------------------------------+
+| 23     | Pad-Touch assign type   | 0/1=No Assign/CC                      |
+|        +-------------------------+---------------------------------------+
+| 24     | Pad-Touch CC#           | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 25     | Pad-Touch off value     | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 26     | Pad-Touch on value      | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 27     | Pad-Touch attack time   | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 28     | Pad-Touch release time  | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 29~31  | dummy                   | 0                                     |
++--------+-------------------------+---------------------------------------+
+| Trigger Pad 1 parameters                                                 |
++--------+-------------------------+---------------------------------------+
+| 32     | Trigger Pad MIDI Ch.    | 0~15/16~=MIDI Ch.0~15/Global MIDI Ch. |
+|        +-------------------------+---------------------------------------+
+| 33     | Assign type             | 0~2=No Assign/CC/Note                 |
+|        +-------------------------+---------------------------------------+
+| 34     | Note# 1 / CC# 1         | 0~127/128~=0~127/No Assign            |
+|        +-------------------------+---------------------------------------+
+| 35     | Note# 2 / CC# 2         | 0~127/128~=0~127/No Assign            |
+|        +-------------------------+---------------------------------------+
+| 36     | Note# 3 / CC# 3         | 0~127/128~=0~127/No Assign            |
+|        +-------------------------+---------------------------------------+
+| 37     | Note# 4 / CC# 4         | 0~127/128~=0~127/No Assign            |
+|        +-------------------------+---------------------------------------+
+| 38     | Note# 5 / CC# 5         | 0~127/128~=0~127/No Assign            |
+|        +-------------------------+---------------------------------------+
+| 39     | Note# 6 / CC# 6         | 0~127/128~=0~127/No Assign            |
+|        +-------------------------+---------------------------------------+
+| 40     | Note# 7 / CC# 7         | 0~127/128~=0~127/No Assign            |
+|        +-------------------------+---------------------------------------+
+| 41     | Note# 8 / CC# 8         | 0~127/128~=0~127/No Assign            |
+|        +-------------------------+---------------------------------------+
+| 42     | Switch type             | 0/1=Momentary/Toggle                  |
+|        +-------------------------+---------------------------------------+
+| 43     | CC off value            | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 44     | CC on value             | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 45     | Roll/Flam enable        | 0/1=Disable/Enable                    |
+|        +-------------------------+---------------------------------------+
+| 46~47  | dummy                   | 0                                     |
++--------+-------------------------+---------------------------------------+
+| 48~63  | Trigger Pad 2 assign    | ( Same as the Trigger Pad 1 format )  |
++--------+-------------------------+---------------------------------------+
+| 64~79  | Trigger Pad 3 assign    | ( Same as the Trigger Pad 1 format )  |
++--------+-------------------------+---------------------------------------+
+| 80~95  | Trigger Pad 4 assign    | ( Same as the Trigger Pad 1 format )  |
++--------+-------------------------+---------------------------------------+
+| 96~111 | Trigger Pad 5 assign    | ( Same as the Trigger Pad 1 format )  |
++--------+-------------------------+---------------------------------------+
+|112~127 | Trigger Pad 6 assign    | ( Same as the Trigger Pad 1 format )  |
++--------+-------------------------+---------------------------------------+
+|128~143 | Trigger Pad 7 assign    | ( Same as the Trigger Pad 1 format )  |
++--------+-------------------------+---------------------------------------+
+|144~159 | Trigger Pad 8 assign    | ( Same as the Trigger Pad 1 format )  |
++--------+-------------------------+---------------------------------------+
+|160~175 | Trigger Pad 9 assign    | ( Same as the Trigger Pad 1 format )  |
++--------+-------------------------+---------------------------------------+
+|176~191 | Trigger Pad 10 assign   | ( Same as the Trigger Pad 1 format )  |
++--------+-------------------------+---------------------------------------+
+|192~207 | Trigger Pad 11 assign   | ( Same as the Trigger Pad 1 format )  |
++--------+-------------------------+---------------------------------------+
+|208~223 | Trigger Pad 12 assign   | ( Same as the Trigger Pad 1 format )  |
++--------+-------------------------+---------------------------------------+
+|224~239 | dummy                   | 0                                     |
++--------+-------------------------+---------------------------------------+
+
+ Total 240 bytes
+
+ *3 Scene name parameter does not include a null-term.
+
+
+ TABLE 2 : Global Parameter
++--------+-------------------------+---------------------------------------+
+|        |     PARAMETER           |                VALUE                  |
++--------+-------------------------+---------------------------------------+
+| Common parameters                                                        |
++--------+-------------------------+---------------------------------------+
+| 0      | Global MIDI Ch.         | 0~15                                  |
+|        +-------------------------+---------------------------------------+
+| 1      | Velocity curve          | 0~3=Curve1~3/Const                    |
+|        +-------------------------+---------------------------------------+
+| 2      | Const velocity value    | 1~127                                 |
+|        +-------------------------+---------------------------------------+
+| 3~63   | dummy                   | 0                                     |
++--------+-------------------------+---------------------------------------+
+
+ Total 64 bytes
+

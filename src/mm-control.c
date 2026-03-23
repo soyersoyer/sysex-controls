@@ -30,7 +30,7 @@ struct _MmControl
   uint8_t size;
   uint8_t mask;
   double multiply;
-  uint8_t value[16];
+  uint8_t value[17];
   int8_t value_offset;
   GtkWidget *widget;
 };
@@ -300,13 +300,12 @@ entry_row_change_cb (AdwEntryRow* widget, MmControl *self)
   GtkEditable *e = GTK_EDITABLE (w);
   const char* new_text = gtk_editable_get_text (e);
 
-  if (strncmp((char*)self->value, new_text, 16) == 0)
+  if (strncmp((char*)self->value, new_text, sizeof(self->value) - 1) == 0)
     return;
 
   g_debug("entry control change 0x%08x: %s -> %s", self->real_id, self->value, new_text);
 
-  strncpy((char*)self->value, new_text, 16);
-  self->value[15] = 0;
+  strncpy((char*)self->value, new_text, sizeof(self->value) - 1);
 
   if (mm_page_write_control (page, self->real_id, self->value, self->size, self->mask) < 0)
   {
@@ -451,6 +450,8 @@ mm_control_init (MmControl *self)
 {
   self->mask = 0xff;
   self->multiply = 1.0f;
+  self->size = 1;
+  memset(self->value, 0, sizeof(self->value));
   gtk_widget_set_visible (GTK_WIDGET (&self->parent_instance), false);
   g_idle_add (G_SOURCE_FUNC (mm_control_register), self);
 }

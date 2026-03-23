@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Nk1Book" parent="KorgBook">
+    <property name="child">
+      <object class="AdwNavigationView">
+
+        <child>
+          <object class="Nk1ScenePage">
+            <property name="title" translatable="yes">Main Scene</property>
+          </object>
+        </child>
+
+      </object>
+    </property>
+  </template>
+</interface>

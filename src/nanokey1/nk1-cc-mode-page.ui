@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="Nk1CcModePage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">CcMode</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScChRow">
+                    <child><object class="MmControl"><property name="id">0x01</property></object></child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">C3</property>
+                    <property name="control-id-offset">0x18</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">C#3</property>
+                    <property name="control-id-offset">0x20</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">D3</property>
+                    <property name="control-id-offset">0x28</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">D#3</property>
+                    <property name="control-id-offset">0x30</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">E3</property>
+                    <property name="control-id-offset">0x38</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">F3</property>
+                    <property name="control-id-offset">0x40</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">F#3</property>
+                    <property name="control-id-offset">0x48</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">G3</property>
+                    <property name="control-id-offset">0x50</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">G#3</property>
+                    <property name="control-id-offset">0x58</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">A3</property>
+                    <property name="control-id-offset">0x60</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">A#3</property>
+                    <property name="control-id-offset">0x68</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">B3</property>
+                    <property name="control-id-offset">0x70</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">C4</property>
+                    <property name="control-id-offset">0x78</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">C#4</property>
+                    <property name="control-id-offset">0x80</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">D4</property>
+                    <property name="control-id-offset">0x88</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">D#4</property>
+                    <property name="control-id-offset">0x90</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">E4</property>
+                    <property name="control-id-offset">0x98</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">F4</property>
+                    <property name="control-id-offset">0xa0</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">F#4</property>
+                    <property name="control-id-offset">0xa8</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">G4</property>
+                    <property name="control-id-offset">0xb0</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">G#4</property>
+                    <property name="control-id-offset">0xb8</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">A4</property>
+                    <property name="control-id-offset">0xc0</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">A#4</property>
+                    <property name="control-id-offset">0xc8</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">B4</property>
+                    <property name="control-id-offset">0xd0</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">C5</property>
+                    <property name="control-id-offset">0xd8</property>
+                    <property name="target-page">Nk1ButtonPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

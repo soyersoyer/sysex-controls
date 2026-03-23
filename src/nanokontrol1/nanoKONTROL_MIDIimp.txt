@@ -1,0 +1,550 @@
+
+        nanoKONTROL MIDI Implementation               Revision 1.00 (2008.12.04)
+
+1.Transmitted Data -------------------------------------------------------------
+
+1-1 Channel Messages            [H]:Hex,  [D]:Decimal
++--------+----------+----------+-----------------------------------------------+
+| Status |  Second  |  Third   | Description         (Transmitted by )         |
+|  [Hex] | [H]  [D] | [H]  [D] |                                               |
++--------+----------+----------+-----------------------------------------------+
+|   8n   | kk  (kk) | 40  (64) | Note Off            (Switch A/B)              |
+|   9n   | kk  (kk) | VV  (VV) | Note On             (Switch A/B)              |
+|   Bn   | cc  (cc) | vv  (vv) | Control Change      (Panel Controls)          |
++--------+----------+----------+-----------------------------------------------+
+ n  : MIDI Channel = 0~15
+ kk : Note# 0~127
+ VV : Velocity = 1~127
+ cc : Control Change# = 0~127
+ vv : Value = 0~127
+
+
+1-2 Universal System Exclusive Message ( Non Realtime )
+
+ Device Inquiry Reply
++---------+-----------------------------------------------+
+| Byte[H] |                Description                    |
++---------+-----------------------------------------------+
+|   F0    | Exclusive Status                              |
+|   7E    | Non Realtime Message                          |
+|   0g    | Global MIDI Channel  ( Device ID )            |
+|   06    | General Information                           |
+|   02    | Identity Reply                                |
+|   42    | KORG ID              ( Manufacturers ID )     |
+|   04    | Software Project     ( Family ID   (LSB))     |
+|   01    |                      ( Family ID   (MSB))     |
+|   00    |                      ( Member ID   (LSB))     |
+|   00    |                      ( Member ID   (MSB))     |
+|   xx    |                      ( Minor Ver.  (LSB))     |
+|   xx    |                      ( Minor Ver.  (MSB))     |
+|   xx    |                      ( Major Ver.  (LSB))     |
+|   xx    |                      ( Major Ver.  (MSB))     |
+|   F7    | End Of Exclusive                              |
++---------+-----------------------------------------------+
+
+  This message is transmitted whenever an INQUIRY MESSAGE REQUEST is received.
+
+
+1-3 Universal System Exclusive Messages ( Realtime )
+
+ MIDI Machine Control Command
++---------+-----------------------------------------------+
+| Byte[H] |    Description                                |
++---------+-----------------------------------------------+
+|   F0    | Exclusive Status                              |
+|   7F    | Realtime Message                              |
+|   dd    | Device ID                                     |
+|   06    | Machine control code                          |
+|   cc    | MMC Command                                *1 |
+|   F7    | End Of Exclusive                              |
++---------+-----------------------------------------------+
+ dd : 00 ~ 7E, 7F (All-Call)
+
+ Transmitted by Transport switches.
+
+ *1 : MMC Command List
+ +---------------------+---------+
+ | Function            | Command |
+ +---------------------+---------+
+ | Stop                |   01H   |
+ | Play                |   02H   |
+ | Deferred Play       |   03H   |
+ | Fast Forward        |   04H   |
+ | Rewind              |   05H   |
+ | Record Strobe       |   06H   |
+ | Record Exit         |   07H   |
+ | Record Pause        |   08H   |
+ | Pause               |   09H   |
+ | Eject               |   0AH   |
+ | Chase               |   0BH   |
+ | Command Error Reset |   0CH   |
+ | MMC Reset           |   0DH   |
+ +---------------------+---------+
+ 
+
+1-4 System Exclusive Message Transmitted Command List
+
+ Structure of nanoKONTROL System Exclusive Messages
+
+ 1st Byte = F0 : Exclusive Status
+ 2nd Byte = 42 : KORG
+ 3rd Byte = 4g : g : Global MIDI Channel
+ 4th Byte = 00 : Software Project (nanoKONTROL: 000104H)
+ 5th Byte = 01 : 
+ 6th Byte = 04 : 
+ 7th Byte = 00 : Sub ID
+ 8th Byte = cd : 0dvmmmmm  d     (1: Controller->Host)
+                           v     (0: 2 Bytes Data Format, 1: Variable)
+                           mmmmm (Command Number)
+ 9th Byte = nn : 2 Bytes Format: Operation Number, Variable: Num of Data
+10th Byte = dd : Data
+  :
+ LastByte = F7 : End of Exclusive
+
++-----------------+---------------------------------------+
+|6th Byte command#| Description/Command                   |
+|   [Bin (Hex)]   |                                       |
++-----------------+---------------------------------------+
+|  010 11111 (5F) | Packet Communication               *2 |
+|  011 11110 (7E) | Port Detect                           |
+|  011 11111 (7F) | Data Dump                          *2 |
++-----------------+---------------------------------------+
+
+ *2 :Function ID Code List
++-------------+-----------------------------------+-----+
+| Function ID | Description/Function              |     |
+|    [Hex]    |                                   |     |
++-------------+-----------------------------------+-----+
+|     40      | Current Scene Data Dump           |  R  |
+|     4F      | Scene Change                      | R,C |
+|     23      | Data Load Completed               |  E  |
+|     24      | Data Load Error                   |  E  |
+|     21      | Write Completed                   |  E  |
+|     22      | Write Error                       |  E  |
++-------------+-----------------------------------+-----+
+Transmitted when
+      R  : Request Message is received.
+      C  : Change Scene.
+      E  : Exclusive Message is received.
+
+
+1-5 Search Device Message
+
+ Search Device Reply
++---------+------------------------------------------------+
+| Byte[H] |                Description                     |
++---------+------------------------------------------------+
+|   F0    | Exclusive Status                               |
+|   42    | KORG ID              ( Manufacturers ID )      |
+|   50    | Search Device                                  |
+|   01    | Request                                        |
+|   0g    | gggg: MIDI Global Channel  ( Device ID )       |
+|   dd    | Echo Back ID                                   |
+|   04    | nanoKONTROL ID       ( Family ID   (LSB))      |
+|   01    | nanoKONTROL ID       ( Family ID   (MSB))      |
+|   00    |                      ( Member ID   (LSB))      |
+|   00    |                      ( Member ID   (MSB))      |
+|   xx    |                      ( Minor Ver.  (LSB))      |
+|   xx    |                      ( Minor Ver.  (MSB))      |
+|   xx    |                      ( Major Ver.  (LSB))      |
+|   xx    |                      ( Major Ver.  (MSB))      |
+|   F7    | End Of Exclusive                              |
++---------+------------------------------------------------+
+
+  g  : MIDI Global Channel = 0 ~ F
+  dd : Echo Back ID = copy from SEARCH DEVICE REQUEST message.
+
+  This message is transmitted whenever a SEARCH DEVICE REQUEST is received.
+
+
+2.Recognized Receive Data --------------------------------------------------
+
+2-1 Universal System Exclusive Message (Non Realtime)
+
+ Inquiry Message Request
++---------+-----------------------------------------------+
+| Byte[H] |                Description                    |
++---------+-----------------------------------------------+
+|   F0    | Exclusive Status                              |
+|   7E    | Non Realtime Message                          |
+|   gg    | Global MIDI Channel                           |
+|   06    | General Information                           |
+|   01    | Identity Request                              |
+|   F7    | End Of Exclusive                              |
++---------+-----------------------------------------------+
+ gg = 00~0F :Received if Global Channel
+      7F    :Received on any Channel
+
+
+2-2 System Exclusive Message Received Command List
+ Structure of nanoKONTROL System Exclusive Messages
+
+ 1st Byte = F0 : Exclusive Status
+ 2nd Byte = 42 : KORG
+ 3rd Byte = 4g : g : Global MIDI Channel
+ 4th Byte = 00 : Software Project (nanoKONTROL: 000104H)
+ 5th Byte = 01 : 
+ 6th Byte = 04 : 
+ 7th Byte = 00 : Sub ID
+ 8th Byte = cd : 0dvmmmmm  d     (0: Host->Controller)
+                           v     (0: 2 Bytes Data Format, 1: Variable)
+                           mmmmm (Command Number)
+ 9th Byte = nn : 2 Bytes Format: Operation Number, Variable: Num of Data
+10th Byte = dd : Data
+  :
+ LastByte = F7 : End of Exclusive
+
++-----------------+---------------------------------------+
+|6th Byte command#| Description/Command                   |
+|   [Bin (Hex)]   |                                       |
++-----------------+---------------------------------------+
+|  000 11110 (1E) | Port Detect Req                       |
+|  000 11111 (1F) | Data Dump Req                      *3 |
+|  011 11111 (7F) | Data Dump                          *3 |
++-----------------+---------------------------------------+
+
+ *3 :Function ID Code List
++-------------+-----------------------------------+
+| Function ID | Description/Function              |
+|    [Hex]    |                                   |
++-------------+-----------------------------------+
+|     14      | Scene Change Request              |
+|     10      | Current Scene Data Dump Request   |
+|     40      | Current Scene Data Dump           |
+|     11      | Scene Write Request               |
++-------------+-----------------------------------+
+
+
+2-3 Search Device Message
+
+ Search Device Request
++---------+------------------------------------------------+
+| Byte[H] |                Description                     |
++---------+------------------------------------------------+
+|   F0    | Exclusive Status                               |
+|   42    | KORG ID              ( Manufacturers ID )      |
+|   50    | Search Device                                  |
+|   00    | Request                                        |
+|   dd    | Echo Back ID                                   |
+|   F7    | END OF EXCLUSIVE                               |
++---------+------------------------------------------------+
+ Receive this message, and transmits SEARCH DEVICE REPLY message
+ including copied Echo Back ID.
+
+
+3.MIDI Exclusive Format   (R:Receive, T:Transmit) --------------------------
+
+3-1 Standard Messages
+
+ (1) Current Scene Data Dump Request                                             R,-
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,04,00,   | Software Project (nanoKONTROL: 000104H)                          |
+| 0001 1111 (1F) | Data Dump Command  (Host->Controller, 2Bytes Format)             |
+| 0001 0000 (10) | Current Scene Data Dump Request                                  |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When this message was received, the nanoKONTROL transmits a Func=40(Current Scene Data Dump)
+ or a Func=24(NAK) message.
+
+ (2) Scene Write Request                                                         R,-
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,04,00,   | Software Project (nanoKONTROL: 000104H)                          |
+| 0001 1111 (1F) | Data Dump Command  (Host->Controller, 2Bytes Format)             |
+| 0001 0001 (11) | Scene Write Request                                              |
+| 0sss ssss (ss) | Destination Scene No.(0~3)                                       |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When this message was received, the nanoKONTROL writes the current scene data to the
+ internal memory and transmits Func=4F(Scene Change) and Func=21(Write Complete)
+ messages or a Func=22(Write Error) message.
+
+ (3) Scene Change Request                                                        R,-
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,04,00,   | Software Project (nanoKONTROL: 000104H)                          |
+| 0001 1111 (1F) | Data Dump Command  (Host->Controller, 2Bytes Format)             |
+| 0001 0100 (14) | Scene Change Request                                             |
+| 0sss ssss (ss) | Destination Scene No.(0~3)                                       |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When this message was received, the nanoKONTROL loads the specified scene data to the
+ current scene from the internal memory, and transmits Func=4F(Scene Change) and
+ Func=23(ACK) messages or a Func=24(NAK) message.
+
+ (4) Current Scene Data Dump                                                     R,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,04,00,   | Software Project (nanoKONTROL: 000104H)                          |
+| 0111 1111 (7F) | Data Dump Command  (Host<->Controller, Variable Format)          |
+| 0111 1111 (7F) | Over 0x7F Data                                                   |
+| 0000 0010 (02) | 2Bytes structure                                                 |
+| 0000 0010 (02) | Num of Data MSB (1+293 bytes : B'100100110)                      |
+| 0010 0110 (26) | Num of Data LSB                                                  |
+| 0100 0000 (40) | Current Scene Data Dump                                          |
+| 0ddd dddd (dd) | Data                                                  (NOTE 1,7) |
+|     :          |  :                                                               |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When these message and data were received, the nanoKONTROL saves the data to the current
+ scene, and transmits a Func=23(ACK) or a Func=24(NAK) message.
+ When a Func=10(Current Scene Data Dump Request) message was received, the nanoKONTROL
+ transmits this message with the current scene data.
+
+ (5) Data Load Completed (ACK)                                                   -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,04,00,   | Software Project (nanoKONTROL: 000104H)                          |
+| 0101 1111 (5F) | Data Dump Command  (Host<-Controller, 2Bytes Format)             |
+| 0010 0011 (23) | Data Load Completed                                              |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When the operation was completed, the nanoKONTROL transmits this message.
+
+ (6) Data Load Error (NAK)                                                       -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,04,00,   | Software Project (nanoKONTROL: 000104H)                          |
+| 0101 1111 (5F) | Data Dump Command  (Host<-Controller, 2Bytes Format)             |
+| 0010 0100 (24) | Data Load Error                                                  |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When the operation was not completed, the nanoKONTROL transmits this message.
+
+ (7) Write Completed                                                             -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,04,00,   | Software Project (nanoKONTROL: 000104H)                          |
+| 0101 1111 (5F) | Data Dump Command  (Host<-Controller, 2Bytes Format)             |
+| 0010 0001 (21) | Write Completed                                                  |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When the writing operation was completed, the nanoKONTROL transmits this message.
+
+ (8) Write Error                                                                 -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,04,00,   | Software Project (nanoKONTROL: 000104H)                          |
+| 0101 1111 (5F) | Data Dump Command  (Host<-Controller, 2Bytes Format)             |
+| 0010 0010 (22) | Write Error                                                      |
+| 0000 0000 (00) |                                                                  |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When the writing operation was not completed, the nanoKONTROL transmits this message.
+
+ (9) Scene Change                                                                -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,04,00,   | Software Project (nanoKONTROL: 000104H)                          |
+| 0101 1111 (5F) | Data Dump Command  (Host<-Controller, 2Bytes Format)             |
+| 0100 1111 (4F) | Scene Change                                                     |
+| 0sss ssss (ss) | Destination Scene No.(0~3)                                       |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When the nanoKONTROL completed to change the scene, it transmits this message.
+
+ (10) Port Detect Request                                                        R,-
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,04       | Software Project (nanoKONTROL: 000104H)                          |
+| 0ttt tttt (tt) | Device Sub ID                                                    |
+| 0001 1110 (1E) | Port Detect Command  (Host->Controller, 2Bytes Format)           |
+| 0000 0000 (00) |                                                                  |
+| 0ppp pppp (pp) | Echo Back ID                                                     |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ tt : 00=nanoKONTROL, 7F=All-Call
+ pp : 1~127
+ When this message was received, the nanoKONTROL transmit a Command=7E(Port Detect) message.
+
+ (11) Port Detect                                                                -,T
++----------------+------------------------------------------------------------------+
+|     Byte       |                  Description                                     |
++----------------+------------------------------------------------------------------+
+| F0,42,4g,      | Exclusive Header  g;Global Channel  [Hex]                        |
+| 00,01,04,00,   | Software Project (nanoKONTROL: 000104H)                          |
+| 0111 1110 (7E) | Port Detect Command  (Host<-Controller, Variable Format)         |
+| 0000 0101 (05) | Num of Data (5Bytes)                                             |
+| 0ppp pppp (pp) | Echo Back ID                                                     |
+| 0000 0011 (01) | Num of IN-Port                                                   |
+| 0000 0010 (00) | Dedicated IN-Port Number                                         |
+| 0000 0010 (01) | Num of OUT-Port                                                  |
+| 0000 0010 (00) | Dedicated OUT-Port Number                                        |
+| 1111 0111 (F7) | End of Exclusive (EOX)                                           |
++----------------+------------------------------------------------------------------+
+ When a Func=1E(Port Detect Request) message was received, the nanoKONTROL transmits
+ this message.
+
+ NOTE 1: Current Scene Data Dump Format
+         256 bytes = 7*36+4 -> 8*36+(4+1) => 293 bytes
+         (TABLE 1)
+
+ NOTE 2: The Dump Data Conversion
+
+   Data (1set = 8bit x 7Byte)
+   b7     ~      b0   b7     ~      b0   b7   ~~    b0   b7     ~      b0
+   +-+-+-+-+-+-+-+-+  +-+-+-+-+-+-+-+-+  +-+-+-~~-+-+-+  +-+-+-+-+-+-+-+-+
+   | | | | | | | | |  | | | | | | | | |  | | |    | | |  | | | | | | | | |
+   +-+-+-+-+-+-+-+-+  +-+-+-+-+-+-+-+-+  +-+-+-~~-+-+-+  +-+-+-+-+-+-+-+-+
+         7n+0               7n+1          7n+2 ~~ 7n+5         7n+6
+
+    MIDI Data (1set = 7bit x 8Byte)
+      b7b7b7b7b7b7b7     b6    ~     b0     b6 ~~    b0     b6    ~     b0
+   +-+-+-+-+-+-+-+-+  +-+-+-+-+-+-+-+-+  +-+-+-~~-+-+-+  +-+-+-+-+-+-+-+-+
+   |0| | | | | | | |  |0| | | | | | | |  |0| |    | | |  |0| | | | | | | |
+   +-+-+-+-+-+-+-+-+  +-+-+-+-+-+-+-+-+  +-+-+-~~-+-+-+  +-+-+-+-+-+-+-+-+
+   7n+6,5,4,3,2,1,0         7n+0          7n+1 ~~ 7n+5         7n+6
+
+
+ TABLE 1 : Scene Parameter
++--------+-------------------------+---------------------------------------+
+|        |     PARAMETER           |                VALUE                  |
++--------+-------------------------+---------------------------------------+
+| Common parameters                                                        |
++--------+-------------------------+---------------------------------------+
+| 0~11   | Scene name              | ASCII code                         *3 |
+|        +-------------------------+---------------------------------------+
+| 12     | Scene MIDI Ch.          | 0~15                                  |
+|        +-------------------------+---------------------------------------+
+| 13~15  | dummy                   | 0                                     |
++--------+-------------------------+---------------------------------------+
+| Block 1 parameters                                                       |
++--------+-------------------------+---------------------------------------+
+| 16     | Block MIDI Ch.          | 0~15/16~=MIDI Ch.0~15/Scene MIDI Ch.  |
+|        +-------------------------+---------------------------------------+
+| 17     | Slider assign type      | 0/1=No Assign/CC                      |
+|        +-------------------------+---------------------------------------+
+| 18     | Slider CC#              | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 19     | Slider min value        | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 20     | Slider max value        | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 21     | Knob assign type        | 0/1=No Assign/CC                      |
+|        +-------------------------+---------------------------------------+
+| 22     | Knob CC#                | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 23     | Knob min value          | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 24     | Knob max value          | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 25     | SW A assign type        | 0~2=No Assign/CC/Note                 |
+|        +-------------------------+---------------------------------------+
+| 26     | SW A CC#/Note#          | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 27     | SW A off value          | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 28     | SW A on value           | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 29     | SW A attack time        | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 30     | SW A release time       | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 31     | SW A switch type        | 0/1=Momentary/Toggle                  |
+|        +-------------------------+---------------------------------------+
+| 32~38  | SW B parameters         | ( Same as the SW A format )           |
++--------+-------------------------+---------------------------------------+
+| 39~61  | Block 2 parameters      | ( Same as the Block 1 format )        |
++--------+-------------------------+---------------------------------------+
+| 62~84  | Block 3 parameters      | ( Same as the Block 1 format )        |
++--------+-------------------------+---------------------------------------+
+| 85~107 | Block 4 parameters      | ( Same as the Block 1 format )        |
++--------+-------------------------+---------------------------------------+
+|108~130 | Block 5 parameters      | ( Same as the Block 1 format )        |
++--------+-------------------------+---------------------------------------+
+|131~153 | Block 6 parameters      | ( Same as the Block 1 format )        |
++--------+-------------------------+---------------------------------------+
+|154~176 | Block 7 parameters      | ( Same as the Block 1 format )        |
++--------+-------------------------+---------------------------------------+
+|177~199 | Block 8 parameters      | ( Same as the Block 1 format )        |
++--------+-------------------------+---------------------------------------+
+|200~222 | Block 9 parameters      | ( Same as the Block 1 format )        |
++--------+-------------------------+---------------------------------------+
+|223     | dummy                   | 0                                     |
++--------+-------------------------+---------------------------------------+
+| Transport switch parameters                                              |
++--------+-------------------------+---------------------------------------+
+| 224    | Transport SW MIDI Ch.   | 0~15/16~=MIDI Ch.0~15/Scene MIDI Ch.  |
+|        +-------------------------+---------------------------------------+
+| 225    | SW 1 assign type        | 0~2=No Assign/CC/MMC                  |
+|        +-------------------------+---------------------------------------+
+| 226    | SW 1 CC#                | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 227    | SW 1 MMC command#       | 0~12                               *4 |
+|        +-------------------------+---------------------------------------+
+| 228    | SW 1 MMC device ID      | 0~127                                 |
+|        +-------------------------+---------------------------------------+
+| 229    | SW 1 switch type        | 0/1=Momentary/Toggle                  |
+|        +-------------------------+---------------------------------------+
+|230~234 | SW 2 parameters         | ( Same as the Transport SW 1 format ) |
+|        +-------------------------+---------------------------------------+
+|235~239 | SW 3 parameters         | ( Same as the Transport SW 1 format ) |
+|        +-------------------------+---------------------------------------+
+|240~244 | SW 4 parameters         | ( Same as the Transport SW 1 format ) |
+|        +-------------------------+---------------------------------------+
+|245~249 | SW 5 parameters         | ( Same as the Transport SW 1 format ) |
+|        +-------------------------+---------------------------------------+
+|250~254 | SW 6 parameters         | ( Same as the Transport SW 1 format ) |
++--------+-------------------------+---------------------------------------+
+|255     | dummy                   | 0                                     |
++--------+-------------------------+---------------------------------------+
+
+ Total 256 bytes
+
+ *3 Scene name parameter does not include a null-term.
+
+ *4 MMC command list
++--------+-------------------------+
+|Command#|       MMC Command       |
++--------+-------------------------+
+|    0   | Stop                    |
++--------+-------------------------+
+|    1   | Play                    |
++--------+-------------------------+
+|    2   | Deffered Play           |
++--------+-------------------------+
+|    3   | Fast Forward            |
++--------+-------------------------+
+|    4   | Rewind                  |
++--------+-------------------------+
+|    5   | Record Strobe           |
++--------+-------------------------+
+|    6   | Record Exit             |
++--------+-------------------------+
+|    7   | Record Pause            |
++--------+-------------------------+
+|    8   | Pause                   |
++--------+-------------------------+
+|    9   | Eject                   |
++--------+-------------------------+
+|   10   | Chase                   |
++--------+-------------------------+
+|   11   | Command Error Reset     |
++--------+-------------------------+
+|   12   | MMC Reset               |
++--------+-------------------------+

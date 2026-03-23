@@ -26,6 +26,7 @@ These devices are supported and tested:
 - Arturia MiniLab mkII
 - Arturia MiniLab 3
 - Korg nanoKEY2
+- Korg nanoKONTROL
 - Korg nanoKONTROL2
 - Korg nanoPAD2
 - Moog Matriarch
@@ -38,6 +39,8 @@ These might also work, but have not been tested yet:
 - Arturia MiniBrute 2S
 - Arturia SparkLE
 - Arturia The Laboratory
+- Korg nanoKEY
+- Korg nanoPAD
 
 It doesn't support the KeyStep / BeatStep Pro sequencer banks, BeatStep Pro presets and the DrumBrute/MiniBrute banks yet.
 
