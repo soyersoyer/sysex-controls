@@ -518,7 +518,7 @@ sc_midi_arturia_v3_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t 
 int
 sc_midi_arturia_v3_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t read_ack, uint32_t control_id, uint8_t *val)
 {
-  /**                                        
+  /**
    *                                    prid pid cid rid
    * Out:   F0   00  20  6B  7F  42  20  08  40  00  00  F7  |  Sysex
    */
@@ -778,7 +778,7 @@ sc_midi_arturia_write_string (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t cont
     return err;
   }
 
-  return 0; 
+  return 0;
 }
 
 int
@@ -926,7 +926,7 @@ process_korg_message (uint8_t *input, unsigned int len, korg_event_t *ev)
     ev->search_reply.channel = input[4];
     ev->search_reply.echo_id = input[5];
   }
-  else if (len > 10 && len - 11 <= 512 && 
+  else if (len > 10 && len - 11 <= 512 &&
             memcmp (input, dump, sizeof dump) == 0 &&
             input[7] == 0x7F && (
               input[8] + 10 == len || (
@@ -1355,7 +1355,7 @@ sc_midi_korg_write_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4]
     return err;
   }
 
-  return 0; 
+  return 0;
 }
 
 
