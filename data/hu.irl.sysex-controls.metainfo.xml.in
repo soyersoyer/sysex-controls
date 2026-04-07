@@ -85,6 +85,20 @@ If not, let us know as well.
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.2.28" date="2026-04-07">
+      <description>
+        <ul>
+          <li>Moog Matriarch support (thx AcidSepp)</li>
+          <li>Add support for Korg nanoPAD</li>
+          <li>Add support for Korg nanoKEY</li>
+          <li>Add support for Korg nanoKONTROL</li>
+          <li>Move nanoKONTROL to the tested list (thx wargreen)</li>
+          <li>Move MicroLab to the tested list</li>
+          <li>nanoKONTROL2 fixes</li>
+          <li>KORG SysEX fixes</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.2.27" date="2026-01-27">
       <description>
         <ul>
