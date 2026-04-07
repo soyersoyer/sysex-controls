@@ -19,8 +19,18 @@ G_DEFINE_FINAL_TYPE(MatrBook, matr_book, SC_TYPE_BOOK)
 static void
 matr_book_class_init(MatrBookClass *klass) {
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
+  ScBookClass *sc_klass = SC_BOOK_CLASS (klass);
+
+  sc_klass->use_dummy = matr_book_use_dummy;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/hu/irl/sysex-controls/matriarch/matr-book.ui");
+}
+
+void matr_book_use_dummy (ScBook *self)
+{
+  MatrBook *m_self = MATR_BOOK (self);
+  m_self->read_control = sc_midi_matriarch_dummy_read_control;
+  m_self->write_control = sc_midi_matriarch_dummy_write_control;
 }
 
 static void

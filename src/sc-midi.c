@@ -1504,6 +1504,18 @@ sc_midi_matriarch_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t c
 }
 
 int
+sc_midi_matriarch_dummy_read_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint16_t *val)
+{
+  return 0;
+}
+
+int
+sc_midi_matriarch_dummy_write_control (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t control_id, uint16_t val)
+{
+  return 0;
+}
+
+int
 sc_midi_disconnect (snd_seq_t *seq, snd_seq_addr_t addr)
 {
   int err;

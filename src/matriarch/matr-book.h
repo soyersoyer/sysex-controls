@@ -13,4 +13,6 @@ int matr_book_read_control(MatrBook *self, uint8_t control_id, uint16_t *val);
 
 int matr_book_write_control(MatrBook *self, uint8_t control_id, uint16_t val);
 
+void matr_book_use_dummy (ScBook *self);
+
 G_END_DECLS
