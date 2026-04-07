@@ -77,6 +77,12 @@ sudo dnf install meson gcc gtk4-devel libadwaita-devel alsa-lib-devel git
 sudo apt install meson gettext libgtk-4-dev libadwaita-1-dev libasound2-dev libxml2-utils git
 ```
 
+#### Install dependencies on Arch variants
+
+```
+sudo pacman -S base-devel git meson gtk4 libadwaita alsa-lib
+```
+
 #### Get the source
 
 ```
