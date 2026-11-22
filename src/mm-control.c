@@ -448,10 +448,14 @@ mm_control_interface_init (ScControlInterface *iface)
 static void
 mm_control_init (MmControl *self)
 {
+  self->id = 0;
+  self->use_cc_offset = false;
+  self->real_id = 0;
+  self->size = 1;
   self->mask = 0xff;
   self->multiply = 1.0f;
-  self->size = 1;
   memset(self->value, 0, sizeof(self->value));
+  self->value_offset = 0;
   gtk_widget_set_visible (GTK_WIDGET (&self->parent_instance), false);
   g_idle_add (G_SOURCE_FUNC (mm_control_register), self);
 }
