@@ -16,6 +16,7 @@ enum {
   PROP_SIZE,
   PROP_MASK,
   PROP_MULTIPLY,
+  PROP_INVERTED,
   LAST_PROP,
 };
 
@@ -30,6 +31,7 @@ struct _MmControl
   uint8_t size;
   uint8_t mask;
   double multiply;
+  gboolean inverted;
   uint8_t value[17];
   int8_t value_offset;
   GtkWidget *widget;
@@ -82,6 +84,13 @@ mm_control_get_multiply (MmControl *self)
   return self->multiply;
 }
 
+gboolean
+mm_control_get_inverted (MmControl *self)
+{
+  g_return_val_if_fail (MM_IS_CONTROL (self), 0);
+  return self->inverted;
+}
+
 static void
 mm_control_get_property (GObject    *object,
                          guint       prop_id,
@@ -109,6 +118,9 @@ mm_control_get_property (GObject    *object,
     break;
     case PROP_MULTIPLY:
       g_value_set_double (value, mm_control_get_multiply (self));
+    break;
+    case PROP_INVERTED:
+      g_value_set_boolean (value, mm_control_get_inverted (self));
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -142,6 +154,9 @@ mm_control_set_property (GObject      *object,
     break;
     case PROP_MULTIPLY:
       self->multiply = g_value_get_double (value);
+    break;
+    case PROP_INVERTED:
+      self->inverted = g_value_get_boolean (value);
     break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -180,6 +195,10 @@ mm_control_class_init (MmControlClass *klass)
   value_props[PROP_MULTIPLY] = g_param_spec_double ("multiply", NULL, NULL,
                                                     0, G_MAXDOUBLE, 1,
                                                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+
+  value_props[PROP_INVERTED] = g_param_spec_boolean ("inverted", NULL, NULL,
+                                                     0,
+                                                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   g_object_class_install_properties (object_class, LAST_PROP, value_props);
 }
@@ -228,6 +247,9 @@ switch_row_change_cb (GObject * widget, GParamSpec *pspec, MmControl *self)
   MmPage *page = get_mm_page (self);
   AdwSwitchRow *w = ADW_SWITCH_ROW (widget);
   uint8_t val = adw_switch_row_get_active (w);
+
+  if (self->inverted)
+    val = !val;
 
   if (self->value[0] == val)
     return;
@@ -405,9 +427,10 @@ mm_control_update_gui (ScControl *control)
   }
   else if (ADW_IS_SWITCH_ROW (self->widget))
   {
+    gboolean value = self->inverted ? !self->value[0] : self->value[0];
     AdwSwitchRow *switch_row = ADW_SWITCH_ROW (self->widget);
-    adw_switch_row_set_active (switch_row, self->value[0]);
-    g_debug ("Set switch row with id 0x%02x to 0x%02x", self->real_id, self->value[0]);
+    adw_switch_row_set_active (switch_row, value);
+    g_debug ("Set switch row with id 0x%02x to 0x%02x", self->real_id, value);
   }
   else if (ADW_IS_SPIN_ROW (self->widget))
   {
@@ -454,6 +477,7 @@ mm_control_init (MmControl *self)
   self->size = 1;
   self->mask = 0xff;
   self->multiply = 1.0f;
+  self->inverted = false;
   memset(self->value, 0, sizeof(self->value));
   self->value_offset = 0;
   gtk_widget_set_visible (GTK_WIDGET (&self->parent_instance), false);
