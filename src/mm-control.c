@@ -32,7 +32,7 @@ struct _MmControl
   uint8_t mask;
   double multiply;
   gboolean inverted;
-  uint8_t value[17];
+  uint8_t value[25];
   int8_t value_offset;
   GtkWidget *widget;
 };
@@ -185,7 +185,7 @@ mm_control_class_init (MmControlClass *klass)
                                                      G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   value_props[PROP_SIZE] = g_param_spec_uint ("size", NULL, NULL,
-                                                     0, 16, 1,
+                                                     0, 24, 1,
                                                      G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   value_props[PROP_MASK] = g_param_spec_uint ("mask", NULL, NULL,
