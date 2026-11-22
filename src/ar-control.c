@@ -516,9 +516,10 @@ ar_control_update_gui (ScControl *control)
   }
   else if (ADW_IS_SWITCH_ROW (self->widget))
   {
+    gboolean value = self->inverted ? !self->value : self->value;
     AdwSwitchRow *switch_row = ADW_SWITCH_ROW (self->widget);
-    adw_switch_row_set_active (switch_row, self->inverted ? !self->value : self->value);
-    g_debug ("Set switch row with id 0x%08x to 0x%02x", self->real_id, self->value);
+    adw_switch_row_set_active (switch_row, value);
+    g_debug ("Set switch row with id 0x%08x to 0x%02x", self->real_id, value);
   }
   else if (ADW_IS_SPIN_ROW (self->widget))
   {
