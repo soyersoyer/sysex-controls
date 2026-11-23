@@ -11,6 +11,7 @@
 
 typedef struct
 {
+  enum korg_proto p;
   uint8_t dev_id[4];
 } KorgBookPrivate;
 
@@ -21,6 +22,13 @@ korg_book_set_dev_id (KorgBook *self, const uint8_t dev_id[4])
 {
   KorgBookPrivate *priv = korg_book_get_instance_private (self);
   memcpy(priv->dev_id, dev_id, 4);
+}
+
+void
+korg_book_set_proto (KorgBook *self, enum korg_proto p)
+{
+  KorgBookPrivate *priv = korg_book_get_instance_private (self);
+  priv->p = p;
 }
 
 static void
@@ -48,7 +56,7 @@ korg_book_change_scene (KorgBook *self, uint8_t scene_id)
   klass = KORG_BOOK_GET_CLASS (self);
   sc_book = SC_BOOK (self);
 
-  return klass->change_scene (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->dev_id, scene_id);
+  return klass->change_scene (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->p, priv->dev_id, scene_id);
 }
 
 int
@@ -65,7 +73,7 @@ korg_book_read_scene (KorgBook *self, uint8_t scene_id, uint8_t *data, uint16_t 
   sc_book = SC_BOOK (self);
 
 
-  return klass->read_scene (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->dev_id, scene_id, data, size);
+  return klass->read_scene (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->p, priv->dev_id, scene_id, data, size);
 }
 
 int
@@ -82,10 +90,10 @@ korg_book_write_scene (KorgBook *self, uint8_t scene_id, uint8_t *data, uint16_t
   klass = KORG_BOOK_GET_CLASS (self);
   sc_book = SC_BOOK (self);
 
-  err = klass->write_scene (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->dev_id, scene_id, data, size);
+  err = klass->write_scene (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->p, priv->dev_id, scene_id, data, size);
   if (err < 0)
     return err;
-  return klass->save_scene (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->dev_id, scene_id);
+  return klass->save_scene (sc_book_get_seq (sc_book), sc_book_get_addr (sc_book), priv->p, priv->dev_id, scene_id);
 }
 
 int
@@ -119,4 +127,6 @@ korg_book_init (KorgBook *self)
   g_type_ensure (KORG_TYPE_NOTE_OFFSET_ROW);
   g_type_ensure (KORG_TYPE_SCENE_PAGE);
   g_type_ensure (KORG_TYPE_SCENE_ROW);
+
+  korg_book_set_proto (self, KORG_PROTO_NANO);
 }
