@@ -906,83 +906,121 @@ typedef struct {
 } korg_event_t;
 
 static void
-process_korg_message (uint8_t *input, unsigned int len, korg_event_t *ev)
+copy_korg_data_to_ev (uint8_t *input, int size, korg_event_t *ev)
 {
-  const uint8_t device_inquiry[] = {0xf0, 0x7e};
-  const uint8_t search_reply[] = {0xf0, 0x42, 0x50, 0x01};
-  const uint8_t dump[] = {0xf0, 0x42};
+  int idx = 0;
 
-  if (len == 15 &&
-           memcmp (input, device_inquiry, sizeof device_inquiry) == 0 &&
-           input[3] == 6 && input[4] == 2)
+  for (int i = 0; i < size; i += 8)
+    for (int j = 0; j < 7; ++j)
+      if (i + 1 + j < size)
+        ev->dump.data[idx++] = input[i + 1 + j] | (input[i] & 0x01 << j ? 0x80 : 0x00);
+
+  ev->dump.size = idx;
+}
+
+static bool
+parse_korg_dev_inquiry (uint8_t *input, unsigned int len, korg_event_t *ev)
+{
+  if (len == 15 && input[1] == 0x7e && input[3] == 0x06 && input[4] == 0x02)
   {
     ev->type = KORG_DEVICE_INQUIRY;
     ev->inquiry.device_id = input[2];
     memcpy (ev->inquiry.data, &input[5], 9);
+    return true;
   }
-  else if (len == 15 && memcmp (input, search_reply, sizeof search_reply) == 0)
+
+  return false;
+}
+
+static bool
+parse_korg_search_reply (uint8_t *input, unsigned int len, korg_event_t *ev)
+{
+  if (len == 15 && input[2] == 0x50 && input[3] == 0x01)
   {
     ev->type = KORG_SEARCH_REPLY;
     ev->search_reply.channel = input[4];
     ev->search_reply.echo_id = input[5];
+    return true;
   }
-  else if (len > 10 && len - 11 <= KORG_SCENE_MAX_SIZE &&
-            memcmp (input, dump, sizeof dump) == 0 &&
-            input[7] == 0x7F && (
-              input[8] + 10 == len || (
-              input[8] == 0x7f && input[9] == 0x02 && (input[10]<<7 | input[11]) + 13 == len))
-        )
-  {
-    uint16_t idx = 0;
-    uint16_t size = input[8] != 0x7f ? input[8] - 1 : (input[10]<<7 | input[11]) -1;
-    uint8_t type = input[8] != 0x7f ? input[9] : input[12];
-    uint8_t *data = input[8] != 0x7f ? &input[10] : &input[13];
 
-    for (size_t i=0; i < size; i += 8)
-      for (int j=0; j < 7; ++j)
-        if (i+1+j < size)
-          ev->dump.data[idx++] = data[i + 1 + j] | (data[i] & 0x01 << j ? 0x80 : 0x00);
+  return false;
+}
 
-    if (type == 0x40) ev->type = KORG_SCENE_DUMP;
-    else if (type == 0x51) ev->type = KORG_GLOBAL_DUMP;
-    else ev->type = KORG_UNKNOWN;
+static bool
+parse_korg_message_nano (uint8_t *input, unsigned int len, korg_event_t *ev)
+{
+  if (len < 1 || input[0] != 0xf0)
+    return false;
 
-    ev->dump.size = idx;
-  }
-  else if (len == 11 && memcmp (input, dump, sizeof dump) == 0 &&
-            input[7] == 0x5F && input[8] == 0x23)
+  if (parse_korg_dev_inquiry (input, len, ev))
+    return true;
+
+  if (len < 2 || input[1] != 0x42)
+    return false;
+
+  if (parse_korg_search_reply (input, len, ev))
+    return true;
+
+  if (len == 11 && input[7] == 0x5F)
   {
-    ev->type = KORG_ACK;
+    switch (input[8])
+    {
+      case 0x21: ev->type = KORG_WRITE_COMPLETE; return true;
+      case 0x22: ev->type = KORG_WRITE_ERROR; return true;
+      case 0x23: ev->type = KORG_ACK; return true;
+      case 0x24: ev->type = KORG_NAK; return true;
+      case 0x4f: ev->type = KORG_SCENE_CHANGE; ev->scene.scene_id = input[9]; return true;
+      default: return false;
+    }
   }
-  else if (len == 11 && memcmp (input, dump, sizeof dump) == 0 &&
-            input[7] == 0x5F && input[8] == 0x24)
+
+  if (len > 10 && input[7] == 0x7f)
   {
-    ev->type = KORG_NAK;
+    uint16_t msg_len = input[8];
+    uint8_t type = input[9];
+    uint8_t *data = &input[10];
+
+    if (msg_len < 0x7f && msg_len + 10 != len)
+      return false;
+
+    if (msg_len == 0x7f)
+    {
+      if (input[9] != 0x02)
+        return false;
+
+      if (len < 13)
+        return false;
+
+      msg_len = input[10] << 7 | input[11];
+
+      if (msg_len + 13 != len)
+        return false;
+
+      type = input[12];
+      data = &input[13];
+    }
+
+    if (msg_len < 1)
+      return false;
+
+    if (msg_len - 1 > KORG_SCENE_MAX_SIZE)
+      return false;
+
+    switch (type)
+    {
+      case 0x40:
+        ev->type = KORG_SCENE_DUMP;
+        copy_korg_data_to_ev (data, msg_len - 1, ev);
+        return true;
+      case 0x51:
+        ev->type = KORG_GLOBAL_DUMP;
+        copy_korg_data_to_ev (data, msg_len - 1, ev);
+        return true;
+      default: return false;
+    }
   }
-  else if (len == 11 && memcmp (input, dump, sizeof dump) == 0 &&
-            input[7] == 0x5F && input[8] == 0x21)
-  {
-    ev->type = KORG_WRITE_COMPLETE;
-  }
-  else if (len == 11 && memcmp (input, dump, sizeof dump) == 0 &&
-            input[7] == 0x5F && input[8] == 0x22)
-  {
-    ev->type = KORG_WRITE_ERROR;
-  }
-  else if (len == 11 && memcmp (input, dump, sizeof dump) == 0 &&
-            input[7] == 0x5F && input[8] == 0x4F)
-  {
-    ev->type = KORG_SCENE_CHANGE;
-    ev->scene.scene_id = input[9];
-  }
-  else
-  {
-    fprintf (stderr, "%s(%02d): unexpected message: len %d: ", __func__, ev->type, len);
-    for (int i=0; i < len; ++i)
-      fprintf(stderr, "%02x ", (uint8_t)input[i]);
-    fprintf(stderr, "\n");
-    ev->type = KORG_UNKNOWN;
-  }
+
+  return false;
 }
 
 static int
@@ -1025,7 +1063,14 @@ sc_midi_korg_read_next (snd_seq_t *seq, korg_event_t *ev, korg_event_t *opt_ev)
       return ret;
     }
 
-    process_korg_message (sysex, sysex_len, &tmp_ev);
+    if (!parse_korg_message_nano (sysex, sysex_len, &tmp_ev))
+    {
+      fprintf (stderr, "%s(%02d): message parsing failed: len %d: ", __func__, ev->type, sysex_len);
+      for (int i = 0; i < sysex_len; ++i)
+        fprintf(stderr, "%02x ", sysex[i]);
+      fprintf(stderr, "\n");
+    }
+
     sysex_len = 0;
 
     if (ev->type != tmp_ev.type)
