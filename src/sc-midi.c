@@ -1148,6 +1148,151 @@ korg_write_scene_q_nano (uint8_t dev_id[4], uint8_t scene_id, uint8_t *query, in
   return 0;
 }
 
+static bool
+parse_korg_message_nano_studio (uint8_t *input, unsigned int len, korg_event_t *ev)
+{
+  int msg_len;
+
+  if (len < 1 || input[0] != 0xf0)
+    return false;
+
+  if (parse_korg_dev_inquiry (input, len, ev))
+    return true;
+
+  if (len < 2 || input[1] != 0x42)
+    return false;
+
+  if (parse_korg_search_reply (input, len, ev))
+    return true;
+
+  if (len < 10)
+    return false;
+
+  msg_len = input[8] << 14 | input[7] << 7 | input[6];
+
+  if (msg_len != len - 10)
+    return false;
+
+  if (msg_len < 1)
+    return false;
+
+  if (msg_len - 1 > KORG_SCENE_MAX_SIZE)
+    return false;
+
+  switch (input[9])
+  {
+    case 0x21: ev->type = KORG_WRITE_COMPLETE; return true;
+    case 0x22: ev->type = KORG_WRITE_ERROR; return true;
+    case 0x23: ev->type = KORG_ACK; return true;
+    case 0x24: ev->type = KORG_NAK; return true;
+    case 0x4f:
+      if (msg_len != 2)
+        return false;
+
+      ev->type = KORG_SCENE_CHANGE;
+      ev->scene.scene_id = input[10];
+      return true;
+    case 0x40:
+      ev->type = KORG_SCENE_DUMP;
+      copy_korg_data_to_ev (&input[10], msg_len - 1, ev);
+      return true;
+    case 0x51:
+      ev->type = KORG_GLOBAL_DUMP;
+      copy_korg_data_to_ev (&input[10], msg_len - 1, ev);
+      return true;
+    default: return false;
+  }
+
+  return false;
+}
+
+static int
+korg_change_scene_q_nano_studio (uint8_t dev_id[4], uint8_t scene_id, uint8_t *query, int *query_size)
+{
+  uint8_t q[] = {0xf0, 0x42, 0x40, dev_id[0], dev_id[1], dev_id[2], 0x02, 0x00, 0x00, 0x14, scene_id, 0xf7};
+
+  if (*query_size < sizeof q)
+  {
+    fprintf (stderr, "%s(): insufficient size: %d < %ld\n", __func__, *query_size, sizeof q);
+    return -EINVAL;
+  }
+
+  memcpy (query, q, sizeof q);
+
+  *query_size = sizeof q;
+
+  return 0;
+}
+
+static int
+korg_read_scene_q_nano_studio (uint8_t dev_id[4], uint8_t scene_id, uint8_t *query, int *query_size)
+{
+  uint8_t typeid = scene_id == KORG_GLOBAL_SCENE_ID ? 0x0e : 0x10;
+  uint8_t q[] = {0xf0, 0x42, 0x40, dev_id[0], dev_id[1], dev_id[2], 0x01, 0x00, 0x00, typeid, 0xf7};
+
+  if (*query_size < sizeof q)
+  {
+    fprintf (stderr, "%s(): insufficient size: %d < %ld\n", __func__, *query_size, sizeof q);
+    return -EINVAL;
+  }
+
+  memcpy (query, q, sizeof q);
+
+  *query_size = sizeof q;
+
+  return 0;
+}
+
+static int
+korg_save_scene_q_nano_studio (uint8_t dev_id[4], uint8_t scene_id, uint8_t *query, int *query_size)
+{
+  uint8_t q[] = {0xf0, 0x42, 0x40, dev_id[0], dev_id[1], dev_id[2], 0x02, 0x00, 0x00, 0x11, scene_id, 0xf7};
+
+  if (*query_size < sizeof q)
+  {
+    fprintf (stderr, "%s(): insufficient size: %d < %ld\n", __func__, *query_size, sizeof q);
+    return -EINVAL;
+  }
+
+  memcpy (query, q, sizeof q);
+
+  *query_size = sizeof q;
+
+  return 0;
+}
+
+static int
+korg_write_scene_q_nano_studio (uint8_t dev_id[4], uint8_t scene_id, uint8_t *query, int *query_size, uint8_t *data, uint16_t size)
+{
+  uint8_t q[] = {0xf0, 0x42, 0x40, dev_id[0], dev_id[1], dev_id[2]};
+  uint16_t encoded_size = size / 7 * 8 + size % 7 + (size % 7 ? 1 : 0) + 1;
+  int cur = 8;
+
+  if (size > KORG_SCENE_MAX_SIZE)
+    return -EINVAL;
+
+  if (*query_size < sizeof (q) + encoded_size + 6)
+  {
+    fprintf (stderr, "%s(): insufficient size: %d < %ld\n", __func__, *query_size, sizeof (q) + encoded_size + 6);
+    return -EINVAL;
+  }
+
+  memcpy (query, q, sizeof q);
+
+  query[cur++] = encoded_size & 0x7f;
+  query[cur++] = encoded_size >> 7 & 0x7f; 
+  query[cur++] = encoded_size >> 14 & 0x7f;
+  query[cur++] = scene_id == KORG_GLOBAL_SCENE_ID ? 0x51 : 0x40;
+
+  cur += copy_ev_to_korg_data (&query[cur], data, size);
+
+  query[cur++] = 0xf7;
+
+  *query_size = cur;
+
+  return 0;
+}
+
 korg_proto_t korg_p[KORG_PROTO_N] = {
   {
     .parse_message = parse_korg_message_nano,
@@ -1155,6 +1300,13 @@ korg_proto_t korg_p[KORG_PROTO_N] = {
     .read_scene_q = korg_read_scene_q_nano,
     .save_scene_q = korg_save_scene_q_nano,
     .write_scene_q = korg_write_scene_q_nano,
+  },
+  {
+    .parse_message = parse_korg_message_nano_studio,
+    .change_scene_q = korg_change_scene_q_nano_studio,
+    .read_scene_q = korg_read_scene_q_nano_studio,
+    .save_scene_q = korg_save_scene_q_nano_studio,
+    .write_scene_q = korg_write_scene_q_nano_studio,
   },
 };
 
@@ -1326,7 +1478,7 @@ sc_midi_korg_read_channel (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t *channel
 int
 sc_midi_korg_change_scene (snd_seq_t *seq, snd_seq_addr_t addr, enum korg_proto p, uint8_t dev_id[4], uint8_t scene_id)
 {
-  int query_size = 11;
+  int query_size = 12;
   uint8_t query[query_size];
   korg_event_t ev1 = {.type = KORG_SCENE_CHANGE};
   korg_event_t ev2 = {.type = KORG_ACK};
@@ -1428,7 +1580,7 @@ sc_midi_korg_read_scene (snd_seq_t *seq, snd_seq_addr_t addr, enum korg_proto p,
 int
 sc_midi_korg_save_scene (snd_seq_t *seq, snd_seq_addr_t addr, enum korg_proto p, uint8_t dev_id[4], uint8_t scene_id)
 {
-  int query_size = 11;
+  int query_size = 12;
   uint8_t query[query_size];
   snd_seq_event_t seq_ev;
   korg_event_t scene_change_ev = {.type=KORG_SCENE_CHANGE};

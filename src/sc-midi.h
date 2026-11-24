@@ -43,6 +43,7 @@ int sc_midi_arturia_write_string (snd_seq_t *seq, snd_seq_addr_t addr, uint32_t 
 
 enum korg_proto {
   KORG_PROTO_NANO,
+  KORG_PROTO_NANO_STUDIO,
   KORG_PROTO_N,
 };
 
