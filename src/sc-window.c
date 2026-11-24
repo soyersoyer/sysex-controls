@@ -36,6 +36,7 @@
 #include "nanokey2/nk2-book.h"
 #include "nanokontrol1/nkl1-book.h"
 #include "nanokontrol2/nkl2-book.h"
+#include "nanokontrolstudio/nkls-book.h"
 #include "nanopad1/np1-book.h"
 #include "nanopad2/np2-book.h"
 #include "sparkle/sple-book.h"
@@ -84,6 +85,7 @@ static controller_t controllers[] = {
   {"nanoKEY2", "nanoKEY2", nk2_book_get_type},
   {"nanoKONTROL", "nanoKONTROL", nkl1_book_get_type},
   {"nanoKONTROL2", "nanoKONTROL2", nkl2_book_get_type},
+  {"nanoKONTROL Studio", "nKL Studio", nkls_book_get_type},
   {"nanoPAD", "nanoPAD", np1_book_get_type},
   {"nanoPAD2", "nanoPAD2", np2_book_get_type},
   {"MPD218", "MPD218", mpd218_book_get_type},

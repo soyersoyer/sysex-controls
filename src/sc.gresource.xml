@@ -369,6 +369,20 @@
     <file preprocess="xml-stripblanks">nanokontrol2/nkl2-slider-page.ui</file>
     <file preprocess="xml-stripblanks">nanokontrol2/nkl2-transport-buttons-page.ui</file>
 
+    <file preprocess="xml-stripblanks">nanokontrolstudio/nkls-book.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrolstudio/nkls-button-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrolstudio/nkls-controller-group-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrolstudio/nkls-controller-groups-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrolstudio/nkls-global-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrolstudio/nkls-jog-wheel-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrolstudio/nkls-knob-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrolstudio/nkls-power-management-bat-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrolstudio/nkls-power-management-usb-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrolstudio/nkls-scene-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrolstudio/nkls-scenes-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrolstudio/nkls-slider-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokontrolstudio/nkls-transport-buttons-page.ui</file>
+
     <file preprocess="xml-stripblanks">nanopad1/np1-book.ui</file>
     <file preprocess="xml-stripblanks">nanopad1/np1-global-page.ui</file>
     <file preprocess="xml-stripblanks">nanopad1/np1-pad-page.ui</file>

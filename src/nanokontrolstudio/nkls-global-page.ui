@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="NklsGlobalPage" parent="KorgScenePage">
+    <property name="title" translatable="yes">Global</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="KorgFirmwareInfoGroup"/>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScChRow">
+                    <child><object class="MmControl"><property name="id">0x00</property></object></child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Controller</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="MmControl"><property name="id">0x01</property></object></child>
+                    <property name="title" translatable="yes">Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>MIDI CC</item>
+                          <item>Cubase</item>
+                          <item>DP</item>
+                          <item>Live</item>
+                          <item>Pro Tool</item>
+                          <item>Sonar</item>
+                          <item>Studio One</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="MmControl"><property name="id">0x03</property></object></child>
+                    <property name="title" translatable="yes">Use Scene Button as Scrub</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Battery</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="MmControl"><property name="id">0x02</property></object></child>
+                    <property name="title" translatable="yes">Type</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Alkaline</item>
+                          <item>Ni-MH</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Bluetooth</property>
+
+                <child>
+                  <object class="AdwEntryRow">
+                    <child>
+                      <object class="MmControl">
+                        <property name="id">0x08</property>
+                        <property name="size">24</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Device Name</property>
+                    <property name="show-apply-button">yes</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Power Management</property>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">USB</property>
+                    <property name="target-page">NklsPowerManagementUsbPage</property>
+                     <property name="control-id-offset">0x40</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Battery</property>
+                    <property name="target-page">NklsPowerManagementBatPage</property>
+                     <property name="control-id-offset">0x48</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+</interface>
