@@ -77,7 +77,7 @@
                   <object class="AdwSpinRow">
                     <child>
                       <object class="MmControl">
-                        <property name="id">0x04</property>
+                        <property name="id">0x03</property>
                         <property name="size">2</property>
                         <property name="multiply">10</property>
                       </object>
