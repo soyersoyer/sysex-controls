@@ -14,6 +14,7 @@ enum {
   PROP_USE_CC_OFFSET,
   PROP_VALUE_OFFSET,
   PROP_SIZE,
+  PROP_BIGENDIAN,
   PROP_MASK,
   PROP_MULTIPLY,
   PROP_INVERTED,
@@ -29,6 +30,7 @@ struct _MmControl
   gboolean use_cc_offset;
   uint32_t real_id;
   uint8_t size;
+  gboolean bigendian;
   uint8_t mask;
   double multiply;
   gboolean inverted;
@@ -68,6 +70,13 @@ mm_control_get_size (MmControl *self)
 {
   g_return_val_if_fail (MM_IS_CONTROL (self), 0);
   return self->size;
+}
+
+gboolean
+mm_control_get_bigendian (MmControl *self)
+{
+  g_return_val_if_fail (MM_IS_CONTROL (self), 0);
+  return self->bigendian;
 }
 
 uint8_t
@@ -113,6 +122,9 @@ mm_control_get_property (GObject    *object,
     case PROP_SIZE:
       g_value_set_uint (value, mm_control_get_size (self));
     break;
+    case PROP_BIGENDIAN:
+      g_value_set_boolean (value, mm_control_get_bigendian (self));
+    break;
     case PROP_MASK:
       g_value_set_uint (value, mm_control_get_mask (self));
     break;
@@ -148,6 +160,9 @@ mm_control_set_property (GObject      *object,
     break;
     case PROP_SIZE:
       self->size = g_value_get_uint (value);
+    break;
+    case PROP_BIGENDIAN:
+      self->bigendian = g_value_get_boolean (value);
     break;
     case PROP_MASK:
       self->mask = g_value_get_uint (value);
@@ -186,6 +201,10 @@ mm_control_class_init (MmControlClass *klass)
 
   value_props[PROP_SIZE] = g_param_spec_uint ("size", NULL, NULL,
                                                      0, 24, 1,
+                                                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+
+  value_props[PROP_BIGENDIAN] = g_param_spec_boolean ("bigendian", NULL, NULL,
+                                                     0,
                                                      G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   value_props[PROP_MASK] = g_param_spec_uint ("mask", NULL, NULL,
@@ -265,10 +284,16 @@ switch_row_change_cb (GObject * widget, GParamSpec *pspec, MmControl *self)
 }
 
 static uint16_t
-get_dvalue (uint8_t *value, uint8_t size)
+get_dvalue (uint8_t *value, uint8_t size, bool bigendian)
 {
   if (size == 2)
-    return (((uint16_t)value[0] & 0x7f) << 7) | ((uint16_t)value[1] & 0x7f);
+  {
+    if (bigendian)
+      return (((uint16_t)value[0] & 0x7f) << 7) | ((uint16_t)value[1] & 0x7f);
+    else
+      return (((uint16_t)value[1] & 0x7f) << 7) | ((uint16_t)value[0] & 0x7f);
+  }
+
   return value[0];
 }
 
@@ -279,7 +304,7 @@ spin_row_change_cb (GObject * widget, GParamSpec *pspec, MmControl *self)
   MmPage *page = get_mm_page (self);
   AdwSpinRow *w = ADW_SPIN_ROW (self->widget);
   uint16_t val = (uint16_t)((adw_spin_row_get_value (w) - self->value_offset) * self->multiply);
-  uint16_t dvalue = get_dvalue (self->value, self->size);
+  uint16_t dvalue = get_dvalue (self->value, self->size, self->bigendian);
 
   if (dvalue == val)
     return;
@@ -288,9 +313,16 @@ spin_row_change_cb (GObject * widget, GParamSpec *pspec, MmControl *self)
 
   self->value[0] = val & 0x7f;
 
-  if (self->size == 2) {
-    self->value[0] = (val >> 7) & 0x7f;
-    self->value[1] = val & 0x7f;
+  if (self->size == 2)
+  {
+    if (self->bigendian)
+    {
+      self->value[0] = val >> 7 & 0x7f;
+      self->value[1] = val & 0x7f;
+    } else {
+      self->value[0] = val & 0x7f;
+      self->value[1] = val >> 7 & 0x7f;
+    }
   }
 
   if (mm_page_write_control (page, self->real_id, self->value, self->size, self->mask) < 0)
@@ -435,7 +467,7 @@ mm_control_update_gui (ScControl *control)
   else if (ADW_IS_SPIN_ROW (self->widget))
   {
     AdwSpinRow *spin_row = ADW_SPIN_ROW (self->widget);
-    uint16_t dvalue = get_dvalue(self->value, self->size);
+    uint16_t dvalue = get_dvalue(self->value, self->size, self->bigendian);
     adw_spin_row_set_value (spin_row, (dvalue / self->multiply) + self->value_offset);
     g_debug ("Set spin row with id 0x%02x to 0x%02x (%+02d)", self->real_id, dvalue, self->value_offset);
   }
@@ -475,6 +507,7 @@ mm_control_init (MmControl *self)
   self->use_cc_offset = false;
   self->real_id = 0;
   self->size = 1;
+  self->bigendian = false;
   self->mask = 0xff;
   self->multiply = 1.0f;
   self->inverted = false;
