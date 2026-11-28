@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="NksTriggerPadPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Trigger Pad</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow" id="control_mode">
+                    <child><object class="MmControl"><property name="id">0x01</property></object></child>
+                    <property name="title" translatable="yes">Mode</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Note</item>
+                          <item>CC</item>
+                          <item>Program Change</item>
+                          <item>No Assign</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <binding name="visible">
+                  <closure type="gboolean" function="cv_in">
+                    <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                    <constant type="GVariant">[0x00, 0x01, 0x02]</constant>
+                  </closure>
+                </binding>
+
+                <child>
+                  <object class="ScChRowGlob">
+                    <child><object class="MmControl"><property name="id">0x00</property></object></child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="MmControl"><property name="id">0x06</property></object></child>
+                    <property name="title" translatable="yes">Behavior</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Momentary</item>
+                          <item>Toggle</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <binding name="visible">
+                  <closure type="gboolean" function="cv_in">
+                    <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                    <constant type="GVariant">[0x00]</constant>
+                  </closure>
+                </binding>
+
+                <child>
+                  <object class="ScNoteRow">
+                    <child><object class="MmControl"><property name="id">0x02</property></object></child>
+                    <property name="title" translatable="yes">Note 1</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgNoteNaRow">
+                    <child><object class="MmControl"><property name="id">0x03</property></object></child>
+                    <property name="title" translatable="yes">Note 2</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgNoteNaRow">
+                    <child><object class="MmControl"><property name="id">0x04</property></object></child>
+                    <property name="title" translatable="yes">Note 3</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="KorgNoteNaRow">
+                    <child><object class="MmControl"><property name="id">0x05</property></object></child>
+                    <property name="title" translatable="yes">Note 4</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <binding name="visible">
+                  <closure type="gboolean" function="cv_in">
+                    <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                    <constant type="GVariant">[0x01]</constant>
+                  </closure>
+                </binding>
+
+                <child>
+                  <object class="ScCcRow">
+                    <child><object class="MmControl"><property name="id">0x02</property></object></child>
+                    <property name="title" translatable="yes">CC</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <binding name="visible">
+                  <closure type="gboolean" function="cv_in">
+                    <lookup type="ScComboRow" name="selected-item">control_mode</lookup>
+                    <constant type="GVariant">[0x02]</constant>
+                  </closure>
+                </binding>
+
+                <child>
+                  <object class="ScPcRow">
+                    <child><object class="MmControl"><property name="id">0x02</property></object></child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

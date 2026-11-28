@@ -34,6 +34,7 @@
 #include "mpkmini3/amm3-book.h"
 #include "nanokey1/nk1-book.h"
 #include "nanokey2/nk2-book.h"
+#include "nanokeystudio/nks-book.h"
 #include "nanokontrol1/nkl1-book.h"
 #include "nanokontrol2/nkl2-book.h"
 #include "nanokontrolstudio/nkls-book.h"
@@ -83,6 +84,7 @@ static controller_t controllers[] = {
   {"Minilab3", "MiniLab 3", ml3_book_get_type},
   {"nanoKEY", "nanoKEY", nk1_book_get_type},
   {"nanoKEY2", "nanoKEY2", nk2_book_get_type},
+  {"nanoKEY Studio", "nK Studio", nks_book_get_type},
   {"nanoKONTROL", "nanoKONTROL", nkl1_book_get_type},
   {"nanoKONTROL2", "nanoKONTROL2", nkl2_book_get_type},
   {"nanoKONTROL Studio", "nKL Studio", nkls_book_get_type},

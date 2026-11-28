@@ -348,6 +348,24 @@
     <file preprocess="xml-stripblanks">nanokey2/nk2-pitch-bend-page.ui</file>
     <file preprocess="xml-stripblanks">nanokey2/nk2-scene-page.ui</file>
 
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-book.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-button-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-global-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-knob-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-knobs-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-power-management-bat-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-power-management-usb-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-scene-chord-pad-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-scene-keyboard-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-scene-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-scenes-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-touch-pitch-mod-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-touch-scale-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-touch-xy-axis.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-touch-xy-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-trigger-pad-page.ui</file>
+    <file preprocess="xml-stripblanks">nanokeystudio/nks-trigger-pads-page.ui</file>
+
     <file preprocess="xml-stripblanks">nanokontrol1/nkl1-book.ui</file>
     <file preprocess="xml-stripblanks">nanokontrol1/nkl1-button-page.ui</file>
     <file preprocess="xml-stripblanks">nanokontrol1/nkl1-controller-group-page.ui</file>
