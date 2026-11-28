@@ -941,7 +941,7 @@ process_korg_message (uint8_t *input, unsigned int len, korg_event_t *ev)
     for (size_t i=0; i < size; i += 8)
       for (int j=0; j < 7; ++j)
         if (i+1+j < size)
-          ev->dump.data[idx++] = data[i+1+j];
+          ev->dump.data[idx++] = data[i + 1 + j] | (data[i] & 0x01 << j ? 0x80 : 0x00);
 
     if (type == 0x40) ev->type = KORG_SCENE_DUMP;
     else if (type == 0x51) ev->type = KORG_GLOBAL_DUMP;
@@ -1315,10 +1315,13 @@ sc_midi_korg_write_scene (snd_seq_t *seq, snd_seq_addr_t addr, uint8_t dev_id[4]
   query[cur++] = scene_id == KORG_GLOBAL_SCENE_ID ? 0x51 : 0x40;
 
   for (int i = 0; i * 7 < size; i++) {
-    cur++; // skip first byte as we only have 7bit values yet
+    int si = cur++;
+    query[si] = 0;
     for (int j = 0; j < 7; ++j)
-      if (i * 7 + j < size)
-        query[cur++] = data[i * 7 + j];
+      if (i * 7 + j < size) {
+        query[si] |= (data[i * 7 + j] & 0x80) >> (7 - j);
+        query[cur++] = data[i * 7 + j] & 0x7f;
+      }
   }
 
   query[cur++] = 0xf7;
