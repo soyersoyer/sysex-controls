@@ -80,6 +80,7 @@
                         <property name="id">0x03</property>
                         <property name="size">2</property>
                         <property name="multiply">10</property>
+                        <property name="bigendian">true</property>
                       </object>
                     </child>
                     <property name="title" translatable="yes">BPM</property>

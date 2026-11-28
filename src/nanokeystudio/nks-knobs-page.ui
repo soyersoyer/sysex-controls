@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="NksKnobsPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Knobs</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Knob 1</property>
+                    <property name="control-id-offset">0x68</property>
+                    <property name="target-page">NksKnobPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Knob 2</property>
+                    <property name="control-id-offset">0x70</property>
+                    <property name="target-page">NksKnobPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Knob 3</property>
+                    <property name="control-id-offset">0x78</property>
+                    <property name="target-page">NksKnobPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Knob 4</property>
+                    <property name="control-id-offset">0x80</property>
+                    <property name="target-page">NksKnobPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Knob 5</property>
+                    <property name="control-id-offset">0x88</property>
+                    <property name="target-page">NksKnobPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Knob 6</property>
+                    <property name="control-id-offset">0x90</property>
+                    <property name="target-page">NksKnobPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Knob 7</property>
+                    <property name="control-id-offset">0x98</property>
+                    <property name="target-page">NksKnobPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Knob 8</property>
+                    <property name="control-id-offset">0xa0</property>
+                    <property name="target-page">NksKnobPage</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

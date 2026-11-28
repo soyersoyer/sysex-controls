@@ -41,6 +41,8 @@ These might also work, but have not been tested yet:
 - Arturia The Laboratory
 - Korg nanoKEY
 - Korg nanoPAD
+- Korg nanoKEY Studio
+- Korg nanoKONTROL Studio
 
 It doesn't support the KeyStep / BeatStep Pro sequencer banks, BeatStep Pro presets and the DrumBrute/MiniBrute banks yet.
 

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="NksGlobalPage" parent="KorgScenePage">
+    <property name="title" translatable="yes">Global</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="KorgFirmwareInfoGroup"/>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScChRow">
+                    <child><object class="MmControl"><property name="id">0x00</property></object></child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Battery</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="MmControl"><property name="id">0x01</property></object></child>
+                    <property name="title" translatable="yes">Type</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Alkaline</item>
+                          <item>Ni-MH</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Bluetooth</property>
+
+                <child>
+                  <object class="AdwEntryRow">
+                    <child>
+                      <object class="MmControl">
+                        <property name="id">0x08</property>
+                        <property name="size">24</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">Device Name</property>
+                    <property name="show-apply-button">yes</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Chord</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="MmControl"><property name="id">0x28</property></object></child>
+                    <property name="title" translatable="yes">Pad Octave offset</property>
+                    <property name="model">
+                      <!-- 0-5 or 62-66? -->
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>-2</item>
+                          <item>-1</item>
+                          <item>0</item>
+                          <item>+1</item>
+                          <item>+2</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="MmControl"><property name="id">0x29</property></object></child>
+                    <property name="title" translatable="yes">Easy Scale Octave offset</property>
+                    <property name="model">
+                      <!-- 0-5 or 62-66? -->
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>-2</item>
+                          <item>-1</item>
+                          <item>0</item>
+                          <item>+1</item>
+                          <item>+2</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Keyboard</property>
+
+                <child>
+                  <object class="ScComboRow" id="keyboard_velocity">
+                    <child><object class="MmControl"><property name="id">0x30</property></object></child>
+                    <property name="title" translatable="yes">Velocity curve</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Light</item>
+                          <item>Mid-Light</item>
+                          <item>Normal</item>
+                          <item>Mid-Heavy</item>
+                          <item>Heavy</item>
+                          <item>Const</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow" >
+                    <child><object class="MmControl"><property name="id">0x31</property></object></child>
+                    <property name="title" translatable="yes">Value</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">keyboard_velocity</lookup>
+                        <constant type="GVariant">[0x05]</constant>
+                      </closure>
+                    </binding>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Trigger Pad</property>
+
+                <child>
+                  <object class="ScComboRow" id="triggerpad_velocity">
+                    <child><object class="MmControl"><property name="id">0x32</property></object></child>
+                    <property name="title" translatable="yes">Velocity curve</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Light</item>
+                          <item>Normal</item>
+                          <item>Heavy</item>
+                          <item>Const</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow" >
+                    <child><object class="MmControl"><property name="id">0x33</property></object></child>
+                    <property name="title" translatable="yes">Value</property>
+                    <binding name="visible">
+                      <closure type="gboolean" function="cv_in">
+                        <lookup type="ScComboRow" name="selected-item">triggerpad_velocity</lookup>
+                        <constant type="GVariant">[0x03]</constant>
+                      </closure>
+                    </binding>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="MmControl"><property name="id">0x34</property></object></child>
+                    <property name="title" translatable="yes">Sensitivity</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Sensitive</item>
+                          <item>Mid sensitive</item>
+                          <item>Least sensitive</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Touch Scale</property>
+
+                <child>
+                  <object class="AdwSpinRow" >
+                    <child><object class="MmControl"><property name="id">0x35</property></object></child>
+                    <property name="title" translatable="yes">Note On velocity</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">1</property>
+                        <property name="upper">127</property>
+                        <property name="page-increment">10</property>
+                        <property name="step-increment">1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Pitch / Mod</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="MmControl"><property name="id">0x36</property></object></child>
+                    <property name="title" translatable="yes">Return speed</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Immediate</item>
+                          <item>Fast</item>
+                          <item>Normal</item>
+                          <item>Slow</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">MIDI</property>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="MmControl"><property name="id">0x38</property></object></child>
+                    <property name="title" translatable="yes">Clock Source</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Auto</item>
+                          <item>Internal</item>
+                          <item>External-USB</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSpinRow">
+                    <child>
+                      <object class="MmControl">
+                        <property name="id">0x39</property>
+                        <property name="size">2</property>
+                        <property name="multiply">10</property>
+                      </object>
+                    </child>
+                    <property name="title" translatable="yes">BPM</property>
+                    <property name="digits">1</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment">
+                        <property name="lower">20</property>
+                        <property name="upper">300</property>
+                        <property name="page-increment">60</property>
+                        <property name="step-increment">0.1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Power Management</property>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">USB</property>
+                    <property name="target-page">NksPowerManagementUsbPage</property>
+                     <property name="control-id-offset">0x48</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScActionRow">
+                    <property name="title" translatable="yes">Battery</property>
+                    <property name="target-page">NksPowerManagementBatPage</property>
+                     <property name="control-id-offset">0x50</property>
+                    <signal name="activated" handler="sc_action_nav_push"/>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+</interface>

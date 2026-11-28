@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
+  <template class="NksPowerManagementBatPage" parent="ScNavigationPage">
+    <property name="title" translatable="yes">Battery Power Management</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top"><object class="AdwHeaderBar"/></child>
+        <property name="content">
+          <object class="ScPreferencesPage">
+
+            <child>
+              <object class="AdwPreferencesGroup">
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="MmControl"><property name="id">0x00</property></object></child>
+                    <property name="title" translatable="yes">Auto Power Off</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>Disable</item>
+                          <item>30 min</item>
+                          <item>1 hour</item>
+                          <item>2 hours</item>
+                          <item>4 hours</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="MmControl"><property name="id">0x01</property></object></child>
+                    <property name="title" translatable="yes">Auto LED Off</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="ScComboRow">
+                    <child><object class="MmControl"><property name="id">0x02</property></object></child>
+                    <property name="title" translatable="yes">LED Brightness</property>
+                    <property name="model">
+                      <object class="ScControlValueList">
+                        <items>
+                          <item>1</item>
+                          <item>2</item>
+                          <item>3</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="MmControl"><property name="id">0x03</property></object></child>
+                    <property name="title" translatable="yes">LED Illumination</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwSwitchRow">
+                    <child><object class="MmControl"><property name="id">0x04</property></object></child>
+                    <property name="title" translatable="yes">LED Eco mode</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+          </object>
+        </property>
+      </object>
+    </property>
+
+  </template>
+</interface>

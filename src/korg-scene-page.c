@@ -17,7 +17,7 @@ static GParamSpec *value_props[LAST_PROP];
 typedef struct
 {
   uint8_t scene_id;
-  uint8_t data[512];
+  uint8_t data[KORG_SCENE_MAX_SIZE];
   uint16_t size;
   gboolean scene_change;
 } KorgScenePagePrivate;
@@ -220,7 +220,7 @@ static void
 korg_scene_page_init (KorgScenePage *self)
 {
   KorgScenePagePrivate *priv = korg_scene_page_get_instance_private (self);
-  priv->size = 512;
+  priv->size = KORG_SCENE_MAX_SIZE;
   priv->scene_id = 0;
   priv->scene_change = false;
 
